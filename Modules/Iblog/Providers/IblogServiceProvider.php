@@ -71,7 +71,7 @@ class IblogServiceProvider extends ServiceProvider
         $this->app->bind(PostRepository::class, function () {
             $repository = new EloquentPostRepository(new Post());
 
-            if (config('app.cache') === false) {
+            if (! config('app.cache')) {
                 return $repository;
             }
 
@@ -81,7 +81,7 @@ class IblogServiceProvider extends ServiceProvider
         $this->app->bind(CategoryRepository::class, function () {
             $repository = new EloquentCategoryRepository(new Category());
 
-            if (config('app.cache') === false) {
+            if (! config('app.cache')) {
                 return $repository;
             }
 

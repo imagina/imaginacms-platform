@@ -39,6 +39,11 @@
         <testsuite name="Workshop">
             <directory>./Modules/Workshop/Tests/</directory>
         </testsuite>
+
+        <testsuite name="Iblog">
+            <directory>./Modules/Iblog/Tests/</directory>
+        </testsuite>
+
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
