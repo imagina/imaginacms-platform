@@ -1,0 +1,35 @@
+/* =========== PRELOADER ============ */
+#content_preloader {
+  position: absolute;
+  z-index: 999999999;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+}
+#preloader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #fff;
+  border-top: 10px solid $primary;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 0.80s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  position: absolute;
+  left:50%;
+  margin-left: -42.5px;  /* 50% del ancho de la div en px */
+
+  top: 30%;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

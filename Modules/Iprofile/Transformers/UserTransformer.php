@@ -3,6 +3,8 @@
 namespace Modules\Iprofile\Transformers;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Modules\Ihelpers\Http\Controllers\Api\PermissionsApiController;
+use Modules\Ihelpers\Http\Controllers\Api\SettingsApiController;
 use Modules\Ihelpers\Transformers\BaseApiTransformer;
 use Cartalyst\Sentinel\Activations\EloquentActivation as Activation;
 
@@ -10,6 +12,8 @@ class UserTransformer extends Resource
 {
   public function toArray($request)
   {
+    $this->permissionsApiController = new PermissionsApiController();
+    $this->settingsApiController = new SettingsApiController();
     $smallImage = $this->fields()->where('name','smallImage')->first();
     $mediumImage = $this->fields()->where('name','mediumImage')->first();
     $mainImage = $this->fields()->where('name','mainImage')->first();
@@ -44,6 +48,9 @@ class UserTransformer extends Resource
       'fields' => FieldTransformer::collection($this->whenLoaded('fields')),
       'addresses' => AddressTransformer::collection($this->whenLoaded('addresses')),
       'roles' => RoleTransformer::collection($this->whenLoaded('roles')),
+
+      'allPermissions' => $this->permissionsApiController->getAll(['userId' => $this->id]),
+      'allSettings' => $this->settingsApiController->getAll(['userId' => $this->id]),
     ];
 
     $customUserIncludes = config('asgard.iprofile.config.customUserIncludes');

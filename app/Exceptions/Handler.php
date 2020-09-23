@@ -3,21 +3,27 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that are not reported.
+     * A list of the exception types that should not be reported.
      *
      * @var array
      */
     protected $dontReport = [
-        //
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        TokenMismatchException::class,
+        ValidationException::class,
     ];
 
     /**
@@ -33,6 +39,8 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
      * @param  \Exception  $exception
      * @return void
      */
@@ -45,35 +53,35 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $e)
     {
-        if ($exception instanceof ValidationException) {
-            return parent::render($request, $exception);
+        if ($e instanceof ValidationException) {
+            return parent::render($request, $e);
         }
 
-        if ($exception instanceof TokenMismatchException) {
+        if ($e instanceof TokenMismatchException) {
             return redirect()->back()
-                ->withInput($request->except('password'))
-                ->withErrors(trans('core::core.error token mismatch'));
+                 ->withInput($request->except('password'))
+                 ->withErrors(trans('core::core.error token mismatch'));
         }
 
         if (config('app.debug') === false) {
-            return $this->handleExceptions($exception);
+            return $this->handleExceptions($e);
         }
 
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
 
-    private function handleExceptions($exception)
+    private function handleExceptions($e)
     {
-        if ($exception instanceof ModelNotFoundException) {
+        if ($e instanceof ModelNotFoundException) {
             return response()->view('errors.404', [], 404);
         }
 
-        if ($exception instanceof NotFoundHttpException) {
+        if ($e instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
         }
 

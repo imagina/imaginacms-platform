@@ -1,0 +1,42 @@
+.post {
+    a {
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        height: 300px;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+
+        .content {
+            background: rgba($primary, .5);
+            width: 100%;
+            padding: 20px;
+            min-height: 30%;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            h5 {
+                font-size: 25px;
+                font-weight: bold;
+            }
+
+            span {
+                display: none;
+            }
+        }
+
+        &:hover .content {
+            height: 100%;
+
+            span {
+                display: inline;
+            }
+        }
+    }
+}

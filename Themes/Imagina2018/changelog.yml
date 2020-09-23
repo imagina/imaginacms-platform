@@ -1,0 +1,15 @@
+url: https://github.com/AsgardCms/Platform
+versions:
+    "3.1.0":
+        added:
+            - New css and js stack in master template
+            - New admin navigation bar
+    "2.4.0":
+        added:
+            - Moved to using laravel.mix
+    "2.0.0":
+        added:
+            - Manual notifications partial, to remove laracasts/flash
+        changed:
+            - Set a fixed version for laravel-elixir
+            - Update gulpfile for laravel-elixir 5.0

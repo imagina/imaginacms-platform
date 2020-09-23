@@ -27,7 +27,6 @@ return [
     | skin-black, skin-purple, skin-red and skin-yellow.
     */
     'skin' => 'skin-red',
-
     /*
     |--------------------------------------------------------------------------
     | WYSIWYG Backend Editor
@@ -76,6 +75,7 @@ return [
     'admin-assets' => [
         // Css
         'bootstrap.css' => ['theme' => 'vendor/bootstrap/dist/css/bootstrap.min.css'],
+        'font-awesome.css' => ['cdn' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'],
         'alertify.core.css' => ['theme' => 'css/vendor/alertify/alertify.core.css'],
         'alertify.default.css' => ['theme' => 'css/vendor/alertify/alertify.default.css'],
         'dataTables.bootstrap.css' => ['theme' => 'vendor/datatables.net-bs/css/dataTables.bootstrap.min.css'],
@@ -93,8 +93,6 @@ return [
         'simplemde.css' => ['theme' => 'vendor/simplemde/dist/simplemde.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
-        'font-awesome.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.7.1/js/all.js'],
-        'font-awesome-v4-shims.js' => ['cdn' => 'https://use.fontawesome.com/releases/v5.7.1/js/v4-shims.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
         'alertify.js' => ['theme' => 'js/vendor/alertify/alertify.js'],
         'icheck.js' => ['theme' => 'vendor/iCheck/icheck.min.js'],
@@ -131,6 +129,7 @@ return [
     'admin-required-assets' => [
         'css' => [
             'bootstrap.css',
+            'font-awesome.css',
             'dataTables.bootstrap.css',
             'icheck.blue.css',
             'AdminLTE.css',
@@ -142,8 +141,6 @@ return [
         ],
         'js' => [
             'bootstrap.js',
-            'font-awesome.js',
-            'font-awesome-v4-shims.js',
             'mousetrap.js',
             'icheck.js',
             'jquery.dataTables.js',
@@ -172,5 +169,5 @@ return [
     | Check if asgard was installed
     |--------------------------------------------------------------------------
     */
-    'is_installed' => env('INSTALLED', false),
+    'is_installed' => env('INSTALLED', false)
 ];

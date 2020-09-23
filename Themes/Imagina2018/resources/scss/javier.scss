@@ -1,0 +1,380 @@
+body {
+    font-family: 'Arimo', sans-serif;
+}
+
+header {
+    .header-top {
+        padding: 10px 0;
+        color: $white;
+
+        a {
+            color: $white;
+        }
+
+        #accMenuDrop {
+            #drop-menu {
+                a {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .header-bottom {
+        padding: 10px 0;
+
+        nav {
+            margin-left: -100px;
+        }
+
+        #pinturasNavbar {
+            ul {
+                li {
+                    a {
+                        margin-left: 30px;
+                        color: black;
+                        font-weight: bold;
+                    }
+
+                    a:hover {
+                        color: #FF7200;
+                    }
+                }
+            }
+        }
+
+        .vlleft {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-left: 1px solid lightgray;
+            height: 21px;
+        }
+
+        .vlright {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-right: 1px solid lightgray;
+            height: 21px;
+        }
+    }
+}
+
+footer {
+    font-size: 13px;
+    background-color: black;
+
+    a {
+        color: white;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+
+    .marginfoo {
+        margin-left: 175px;
+    }
+
+}
+
+.text-slider {
+    color: #026187;
+}
+
+.centered2 {
+    position: absolute;
+    top: 9%;
+    //left: 50%;
+    margin-left: 5%;
+    padding-bottom: 9%;
+    //transform: translate(-50%, -50%);
+}
+
+//.container-suscribe{
+//  position: relative;
+//  text-align: left;
+//  color: white;
+//}
+.img-height-slider {
+    img {
+        height: 500px;
+    }
+}
+
+.img-height-slider2 {
+    height: 500px;
+}
+
+.margins-text-slider {
+    margin: 3%;
+    text-align: left;
+    margin-left: -1%;
+}
+
+.margins-text-slider2 {
+    padding: 10% 40px;
+}
+
+.margins-text-slider3 {
+    font-weight: bold;
+    margin-top: 9px;
+    margin-bottom: 1rem;
+    margin-left: 6%;
+}
+
+.margins-text-slider4 {
+    font-weight: normal;
+    font-size: 24px;
+    margin-left: 6%;
+}
+
+.btn-slider {
+    padding: 6px;
+    padding-right: 4%;
+    padding-left: 4%;
+    margin-left: 7%;
+    margin-top: -12%;
+}
+
+.margins-button-suscribe {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 164%;
+    font-weight: bolder;
+    margin-right: 5%;
+}
+
+.text1-suscribe-footer {
+    font-size: 26px;
+}
+
+.text2-suscribe-footer {
+    font-size: 14px;
+}
+
+.text3-suscribe-footer {
+    font-size: 13px;
+    //margin-left: 0%;
+}
+
+::placeholder {
+    color: white;
+}
+
+.margins-footer {
+    padding-top: 9%;
+    margin-top: -10%;
+    margin-bottom: -2%;
+}
+
+.opacity-suscribe {
+    background-color: rgba(249, 102, 17, 0.2);
+}
+
+.centered4 {
+    margin-top: -20%;
+}
+
+.title1 {
+    font-size: 1.0625rem;
+    color: #202123;
+    font-weight: bold;
+}
+
+.title2 {
+    font-size: 1.625rem;
+    font-weight: bold;
+    color: #868686;
+}
+
+.title3 {
+    font-size: 1.625rem;
+    color: $primary;
+    font-weight: bold;
+}
+
+.margins-nosotros-page-2 {
+    margin-bottom: 10%;
+}
+
+.margins-footer-icons-social {
+    margin-top: -11%;
+    padding-bottom: 4%;
+    padding-left: 8%;
+    font-size: 166%;
+}
+
+.margins-contact-form {
+    margin-bottom: 12%;
+}
+
+.padding-icons-product-new {
+    padding: 4%;
+    background-color: #DBDBDB;
+    color: #878787;
+}
+
+.pointer-product-new {
+    cursor: pointer;
+}
+
+.margin-button-product-new {
+    padding: 4%;
+}
+
+.actions-product {
+    &:hover {
+        .icon-actions {
+            display: inline-block !important;
+        }
+
+        &:hover {
+            .change-color-buttom-comprar {
+                background-color: $primary !important;
+            }
+        }
+    }
+}
+
+.action-shadow {
+    &:hover {
+        .shadow-product {
+            -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+    }
+}
+
+.action-categories {
+    &:hover {
+        .card {
+            .card-img-overlay {
+                background-color: rgba(249, 102, 17, 0.5);
+                transition: 0.3s;
+
+                .margins-text-category {
+                    #textCategory1 {
+                        //color: red;
+                        display: block;
+                    }
+                }
+
+                p {
+                    display: block;
+                }
+
+                a {
+                    display: block;
+                }
+            }
+
+            #actionsTextCategory {
+                display: none;
+                //margin-top: 60%;
+                margin-top: -19%;
+            }
+
+            #textCategory2 {
+                display: none;
+            }
+        }
+    }
+
+    .card {
+        .card-img-overlay {
+            padding: 26%;
+
+            .margins-text-category {
+                margin: -3%;
+
+                #textCategory1 {
+                    font-size: 28px;
+                    display: none;
+                }
+            }
+
+            p {
+                display: none;
+            }
+
+            a {
+                display: none;
+            }
+        }
+
+        #textCategory2 {
+            font-size: 28px;
+            margin-top: 2%;
+            padding-top: -8%;
+            padding: 2%;
+        }
+
+        #actionsTextCategory {
+            margin-top: -19%;
+        }
+    }
+}
+
+.actions-bestsellers {
+    .container {
+        .row {
+            .container2 {
+                .border-1 {
+                    border-width: 5px;
+                    padding-left: 1%;
+                    border-style: solid;
+                }
+
+            }
+        }
+    }
+}
+
+
+
+#bestsellers {
+
+    //hovers for best sellers
+    .nav-link:hover {
+        color: $primary;
+        font-weight: bold;
+    }
+
+    .nav-link {
+        color: $dark;
+    }
+
+    #actionsNav {
+        margin-left: 6px;
+        width: 99%;
+    }
+
+    #categoryControlls {
+        margin-top: -44px;
+    }
+
+
+    #bestSellersVerticalLine {
+        //color: $primary;
+        border-style: solid;
+    }
+
+    #nav-tab {
+        margin-left: -29px;
+    }
+}
+
+//action in products slider in component vue in BestSellers.vue
+#actionsSliderProducts {
+    .card-product-mini {
+        &:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+    }
+
+    .btn-secondary:hover {
+        //color: red;
+        background-color: $primary !important;
+        border-color: transparent;
+    }
+}

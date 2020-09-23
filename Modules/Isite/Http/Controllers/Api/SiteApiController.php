@@ -49,7 +49,7 @@ class SiteApiController extends BaseApiController
       //Request to Repository
 
       // getting modules with settings and enabled
-      $modulesWithSettings = $this->setting->moduleSettings($this->module->enabled());
+      $modulesWithSettings = $this->setting->moduleSettings($this->module->allEnabled());
 
       $dbSettings = [];
       $translatableSettings = [];

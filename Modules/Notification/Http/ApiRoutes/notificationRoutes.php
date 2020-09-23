@@ -18,7 +18,7 @@ $router->group(['prefix' => '/notifications'], function (Router $router) {
   
   /** @var Router $router */
   $router->put('/mark-read/{id}',
-    ['as' => 'api.notification.read',
+    ['as' => 'api.notification.mark-read',
       'uses' => 'NotificationApiController@markAsRead',
       'middleware' => ['auth:api']
     ]);

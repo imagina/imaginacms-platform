@@ -1,0 +1,152 @@
+@import "../../node_modules/animate.css/animate.css";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/mixins";
+//g@igport "../../node_modules/owl.carousel/dist/assets/owl.carousel.css";
+//@import "../../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css";
+@import "../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css";
+@import "variables";
+@import "errorpages";
+@import "javier";
+@import "diana";
+@import "extras";
+
+body {
+    min-width: 320px;
+}
+
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    svg {
+        g {
+            .imaginalogo {
+                fill: #878787;
+            }
+        }
+    }
+
+    svg:hover {
+        g {
+            .imaginalogo {
+                fill: #7e7e7e;
+            }
+        }
+    }
+}
+
+.share-box {
+    margin-top: 15px;
+    margin-bottom: 23px;
+
+    .share-box-wrap {
+        padding-top: 0;
+        margin-top: 0;
+        display: inline-block;
+
+        .share-box {
+            display: inline-block;
+
+            .social-share {
+                padding-left: 0;
+
+                li {
+                    display: inline-block;
+                    border-radius: 2px;
+                    text-align: center;
+                    cursor: pointer;
+                    margin-top: 8px;
+                    width: 40px;
+
+                    .fa {
+                        color: theme-colors('secondary');
+                        font-size: 20px;
+                        padding: 5px;
+                    }
+                }
+
+                .facebook_share {
+                    .share-item-icon {
+                        background-color: red;
+                    }
+                }
+
+                .twitter_share {
+                    .share-item-icon {
+                        background-color: #00ACEE;
+                    }
+                }
+
+                .gplus_share {
+                    .share-item-icon {
+                        background-color: #DD4B39;
+                    }
+                }
+
+                .pinterest_share {
+                    .share-item-icon {
+                        background-color: #C92228;
+                    }
+                }
+
+                .linkedin_share {
+                    .share-item-icon {
+                        background-color: #0E76A8;
+                    }
+                }
+
+                .whatsapp_share {
+                    display: none;
+
+                    .share-item-icon {
+                        background-color: #25D366;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.masonry {
+    line-height: 0;
+    -webkit-column-count: 5;
+    -webkit-column-gap: 0;
+    -moz-column-count: 5;
+    -moz-column-gap: 0;
+    column-count: 5;
+    column-gap: 12px;
+    padding: 0 12px 20px;
+}
+
+@include media-breakpoint-up(sm) {
+    .share-box {
+        .whatsapp_share {
+            display: block;
+        }
+    }
+}
+
+.general-block11 {
+    .carousel-inner {
+        .carousel-item {
+            height: 0;
+            padding-bottom: 30.555%;
+
+            .carousel-caption {
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+}

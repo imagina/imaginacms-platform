@@ -1,0 +1,36 @@
+
+
+header{
+  .container-fluid{
+    background-color: $primary;
+  }
+  color: white;
+  a{
+    color: white;
+  }
+  .btn-primary{
+    background-color: white;
+    color: $primary;
+  }
+
+  .fa-hear{
+    color: black;
+  }
+  .input-group {
+    //.btn-outline-primary {
+    //  color: #444;
+    //  background-color: #D9D9D9;
+    //  border-color: #D9D9D9;
+    //  font-weight: bold;
+    //  &:hover {
+    //    color: #444;
+    //    background-color: #c6c6c6;
+    //    border-color: #c0bfbf;
+    //  }
+    //}
+    .border-primary {
+      border-color: #D9D9D9 !important;
+    }
+  }
+}
+

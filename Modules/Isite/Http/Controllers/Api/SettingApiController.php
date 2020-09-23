@@ -43,7 +43,7 @@ class SettingApiController extends BaseApiController
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
       
-      $modulesWithSettings = $this->settings->moduleSettings($this->module->enabled());
+      $modulesWithSettings = $this->settings->moduleSettings($this->module->allEnabled());
       
       $dbSettings = [];
       $translatableSettings = [];

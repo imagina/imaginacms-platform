@@ -3,28 +3,30 @@
 namespace Modules\Ihelpers\Http\Controllers\Api;
 
 use Modules\Core\Http\Controllers\BasePublicController;
+use Modules\Ihelpers\Http\Controllers\Api\PermissionsApiController;
+use Modules\Ihelpers\Http\Controllers\Api\SettingsApiController;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Modules\Iprofile\Entities\Role;
 use Validator;
-use Route;
-use Log;
 
 class BaseApiController extends BasePublicController
 {
   private $permissions;
+  private $settingsController;
+  private $permissionsController;
   private $user;
 
   public function __construct()
   {
-    parent::__construct();
   }
 
   //Return params from Request
   public function getParamsRequest($request, $params = [])
   {
     $defaultValues = (object)$params;//Convert to object the params
+    $this->settingsController = new SettingsApiController();
+    $this->permissionsController = new PermissionsApiController();
 
     //Set default values
     $default = (object)[
@@ -37,7 +39,14 @@ class BaseApiController extends BasePublicController
 
     // set current auth user
     $this->user = Auth::user();
-    $setting = $request->input('setting') ? json_decode($request->input('setting')) : false;
+    $setting = $request->input('setting') ? (is_string($request->input('setting')) ? json_decode($request->input('setting')) : (is_array($request->input('setting')) ? json_decode(json_encode($request->input('setting'))) : $request->input('setting'))) : false;
+
+    $departments = $this->user ? $this->user->departments()->get() : false;//Department data
+    $roles = $this->user ? $this->user->roles()->get() : false;//Role data
+    $department = ($departments && $setting && isset($setting->departmentId)) ?
+      $departments->where("id", $setting->departmentId)->first() : false;
+    $role = ($roles && $setting && isset($setting->roleId)) ? $roles->where("id", $setting->roleId)->first() : false;
+
     //Return params
     $params = (object)[
       "page" => is_numeric($request->input('page')) ? $request->input('page') : $default->page,
@@ -46,13 +55,19 @@ class BaseApiController extends BasePublicController
       "filter" => json_decode($request->input('filter')) ?? (object)$default->filter,
       "include" => $request->input('include') ? explode(",", $request->input('include')) : $default->include,
       "fields" => $request->input('fields') ? explode(",", $request->input('fields')) : $default->fields,
-      'department' => $this->user ?
-        ($setting ? $this->user->departments()->where("iprofile__departments.id", $setting->departmentId)->first() : false) : false,
-      'role' => $this->user ?
-        ($setting ? $this->user->roles()->whereId($setting->roleId)->first() : false) : false,
+      'department' => $department,
+      'departments' => $departments,
+      'role' => $role,
+      'roles' => $roles,
       'setting' => $setting,//Role and department selected
-      'settings' => $this->user ? $this->getSettings($request) : [],
-      'permissions' => $this->user ? $this->getPermissions($request) : [],
+      'settings' => $this->user ? $this->settingsController->getAll([
+        "userId" => $this->user->id,
+        "roleId" => $role->id ?? false,
+        "departmentId" => $department->id ?? false]) : [],
+      'permissions' => $this->user ? $this->permissionsController->getAll([
+        "userId" => $this->user->id,
+        "roleId" => $role->id ?? false,
+      ]) : [],
       "user" => $this->user
     ];
 
@@ -88,9 +103,12 @@ class BaseApiController extends BasePublicController
   //Validate if fields are validated according to rules
   public function validateRequestApi($request)
   {
-    //Create Validator
-    $validator = Validator::make($request->all(), $request->rules());
-
+    $request->setContainer(app());
+    if(method_exists($request, "getValidator"))
+      $validator = $request->getValidator();
+    else
+      $validator = Validator::make($request->all(), $request->rules(),$request->messages());
+  
     //if get errors, throw errors
     if ($validator->fails()) {
       $errors = json_decode($validator->errors());
@@ -104,7 +122,8 @@ class BaseApiController extends BasePublicController
   public function validatePermission($request, $permissionName)
   {
     //Get permissions
-    $permissions = $this->getPermissions($request);
+    $this->permissionsController = new PermissionsApiController();
+    $permissions = $this->permissionsController->getAll($request);
 
     //Validate permissions
     if ($permissions && !isset($permissions[$permissionName]))
@@ -140,109 +159,6 @@ class BaseApiController extends BasePublicController
         return 500;
         break;
     }
-  }
-
-  //Return all permissons assigned to user
-  public function getPermissions($request)
-  {
-    //Get Settings
-    $setting = $request->input('setting') ? json_decode($request->input('setting')) : false;
-    $this->user = \Auth::user();
-    $response = [];
-
-    //Get permissions user
-    if (isset($this->user) && isset($this->user->permissions))
-      $response = (array)$this->user->permissions;
-
-    //Get permissions role
-    if ($setting && isset($setting->roleId)) {
-      //Get role
-      $role = $this->user->roles()->whereId($setting->roleId)->first();
-
-      //Merge role permissions with user permissions
-      if ($role && isset($role->permissions))
-        $response = array_merge((array)$role->permissions, $response);
-    }
-
-    //Assigned global
-    $this->permissions = $response;
-
-    //Response
-    return $response;
-  }
-
-  //Return all settings assigned to user
-  public function getSettings($request)
-  {
-    //Get Settings
-    $setting = $request->input('setting') ? json_decode($request->input('setting')) : false;
-    $settingsResult = [];
-    $userSettings = [];
-    $departmentSettings = [];
-    $roleSettings = [];
-
-    //Order name settings
-    $orderNameSettings = function ($settings) {
-      $settings = $settings->toArray();//convert to array
-
-      //Create new key with name, and remove numeric key
-      foreach ($settings as $key => $setting) {
-        $settings[$setting['name']] = ((object)$setting)->value;
-        unset($settings[$key]);
-      }
-      return $settings;//Response
-    };
-
-    //Get settings user
-    if (isset($this->user)) {
-      $uSettings = $this->user->settings()->get();
-      if (isset($uSettings))
-        $userSettings = $orderNameSettings($uSettings);
-    }
-
-    if ($setting) {
-      //Get department Settings
-      if (isset($setting->departmentId)) {
-        //Get department
-        $department = $this->user->departments()
-          ->where('iprofile__departments.id', $setting->departmentId)
-          ->first();
-
-        //Merge role Settings with user settings
-        if ($department && isset($department->settings))
-          $departmentSettings = $orderNameSettings($department->settings);
-      }
-
-      //Get role Settings
-      if (isset($setting->roleId)) {
-        //Get role from user
-        $roleUser = $this->user->roles()->whereId($setting->roleId)->first();
-
-        if ($roleUser) {
-          //Get model role
-          $role = Role::find($roleUser->id);
-
-          //Merge role Settings with user settings
-          if ($role && isset($role->settings))
-            $roleSettings = $orderNameSettings($role->settings);
-        }
-      }
-    }
-
-    //merge settings function
-    $mergeSettings = function ($settings) use (&$settingsResult){
-      foreach ($settings as $key => $setting){
-        $settingsResult[$key] = $setting;
-      }
-    };
-
-    // merging in base on priority
-    $mergeSettings($roleSettings);
-    $mergeSettings($departmentSettings);
-    $mergeSettings($userSettings);
-
-    //Response
-    return $settingsResult;
   }
 
   //Get users from department

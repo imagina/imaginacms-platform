@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //IMAGINA - TODO: Is there a better location to force base_url ?
+        //IMAGINA- Force base_url
         /** @var \Illuminate\Routing\UrlGenerator $url */
         $url = $this->app['url'];
         // Force the application URL
@@ -39,11 +39,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        // $this->mapApiRoutes();
-
         // $this->mapWebRoutes();
-
-        //
+        // $this->mapApiRoutes();
     }
     /**
      * Define the "web" routes for the application.
@@ -54,10 +51,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::prefix(LaravelLocalization::setLocale())
-            ->middleware(['localizationRedirect', 'web'])
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+        Route::group([
+            'middleware' => ['localizationRedirect', 'web'],
+            'namespace' => $this->namespace,
+            'prefix' => LaravelLocalization::setLocale(),
+        ], function ($router) {
+            require base_path('routes/web.php');
+        });
     }
     /**
      * Define the "api" routes for the application.
@@ -68,9 +68,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => $this->namespace,
+            'prefix' => 'api',
+        ], function ($router) {
+            require base_path('routes/api.php');
+        });
     }
 }

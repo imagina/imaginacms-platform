@@ -1,0 +1,78 @@
+
+//************************
+.checkout {
+  .rounded-circle {
+    width: 40px;
+    height: 40px;
+  }
+  .form-control {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    height: auto !important;
+  }
+  .cart-img {
+    img {
+      font-size: 1px;
+    }
+  }
+  h3, .h3 {
+    font-size: 25px;
+    
+    font-weight: 700 !important;
+  }
+  h5, .h5 {
+    font-size: 15px;
+    
+    font-weight: 700 !important;
+
+  }
+  .input-group {
+    flex-wrap: nowrap;
+    display: flex;
+    .btn {
+      padding:0px 5px !important;
+      margin:0px !important;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      border-radius: 0px !important;
+    }
+  }
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    
+    font-weight: 400 !important;
+  }
+  .input-group {
+    .btn-outline-primary {
+      color: #fff;
+      background-color: $primary;
+      border-color: $primary;
+      height: 100%;
+      font-weight: bold;
+      &:hover {
+        color: #fff;
+        background-color: $primary;
+        border-color: $primary;
+      }
+    }
+    .border-primary {
+      border-color: $primary !important;
+      background-color: #fff !important;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  .cart-remove {
+    .fa-times {
+      position: relative;
+      right: -30px;
+      font-size: 15px;
+      color: $danger;
+      cursor: pointer;
+    }
+  }
+
+}
