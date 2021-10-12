@@ -56,6 +56,8 @@ return [
     'created_at' => 'Creation date',
     'parent' => 'Parent',
 
-
+  'social' => [
+    'share' => 'Share'
+  ],
 
 ];

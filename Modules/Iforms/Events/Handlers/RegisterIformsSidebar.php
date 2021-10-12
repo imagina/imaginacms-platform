@@ -70,7 +70,17 @@ class RegisterIformsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('iforms.leads.index')
                     );
                 });
+                $item->item(trans('iforms::blocks.title.blocks'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->append('admin.iforms.block.create');
+                    $item->route('admin.iforms.block.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('iforms.blocks.index')
+                    );
+                });
 // append
+
 
 
 

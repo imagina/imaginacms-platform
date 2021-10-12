@@ -4,6 +4,7 @@ namespace Modules\Media\Support\Traits;
 
 use Modules\Media\Entities\File;
 use Modules\Media\Image\Imagy;
+use Modules\Media\Image\ThumbnailManager;
 
 trait MediaRelation
 {
@@ -44,7 +45,7 @@ trait MediaRelation
         $entityNamespace = get_class($this);
         $entityNamespaceExploded = explode('\\', strtolower($entityNamespace));
         $moduleName = $entityNamespaceExploded[1];//Get module name
-        $entityName = $entityNamespaceExploded[3];//Get entirty name
+        $entityName = $entityNamespaceExploded[3];//Get entity name
         //Get media fillable
         $mediaFillable = config("asgard.{$moduleName}.config.mediaFillable.{$entityName}") ?? [];
         //Define default image
@@ -67,9 +68,12 @@ trait MediaRelation
                 $fileTransformer = (object)[
                     'id' => $file->id ?? null,
                     'filename' => $file->filename ?? null,
+                    'mimeType' => $file->mimetype ?? null,
+                    'fileSize' => $file->filesize ?? null,
                     'path' => $file ? ($file->is_folder ? $file->path->getRelativeUrl() : (string)$file->path) : $defaultPath,
                     'relativePath' => $file ? $file->path->getRelativeUrl() : '',
                     'isImage' => $file ? $file->isImage() : false,
+                    'isVideo' => $file ? $file->isVideo() : false,
                     'isFolder' => $file ? $file->isFolder() : false,
                     'mediaType' => $file->media_type ?? null,
                     'createdAt' => $file->created_at ?? null,
@@ -77,11 +81,14 @@ trait MediaRelation
                     'createdBy' => $file->created_by ?? null
                 ];
                 //Add imagy
-                $fileTransformer->smallThumb = $file && $file->isImage() ? $imagy->getThumbnail($file->path, 'smallThumb') : $defaultPath;
-                $fileTransformer->mediumThumb = $file  && $file->isImage() ? $imagy->getThumbnail($file->path, 'mediumThumb') : $defaultPath;
-                $fileTransformer->relativeSmallThumb = $file  && $file->isImage() ? str_replace(url("/"),"",$imagy->getThumbnail($file->path, 'smallThumb')) : $defaultPath;
-                $fileTransformer->relativeMediumThumb = $file  && $file->isImage() ? str_replace(url("/"),"",$imagy->getThumbnail($file->path, 'mediumThumb')) : $defaultPath;
-                
+  
+              $thumbnails = app(ThumbnailManager::class)->all();
+              foreach ($thumbnails as $thumbnail){
+                $name = $thumbnail->name();
+                $fileTransformer->{$name} = $file && $file->isImage() ? $imagy->getThumbnail($file, $name) : $defaultPath;
+                $fileTransformer->{'relative'.ucfirst($name)} = $file  && $file->isImage() ? str_replace(url("/"),"",$imagy->getThumbnail($file, $name)) : $defaultPath;
+              }
+             
                 //Add to response
                 if ($fileType == 'multiple') {
                     if ($file) array_push($response[$zone], $fileTransformer);

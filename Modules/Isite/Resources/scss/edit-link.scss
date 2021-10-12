@@ -1,0 +1,17 @@
+.editLink {
+  #buttonEditLink {
+    background: dodgerblue;
+    z-index: 999;
+  }
+  #buttonEditLink span {
+    max-width: 0;
+    -webkit-transition: max-width 1s;
+    transition: max-width 1s;
+    display: inline-flex;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  #buttonEditLink:hover span {
+    max-width: 7rem;
+  }
+}

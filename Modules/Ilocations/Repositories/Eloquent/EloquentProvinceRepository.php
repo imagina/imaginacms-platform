@@ -62,22 +62,33 @@ class EloquentProvinceRepository extends EloquentBaseRepository implements Provi
         $query = $this->model->query();
 
         /*== RELATIONSHIPS ==*/
-        if (in_array('*', $params->include)) {//If Request all relationships
+        if (in_array('*', $params->include ?? [])) {//If Request all relationships
             $query->with(['cities','country']);
         } else {//Especific relationships
             $includeDefault = [];//Default relationships
             if (isset($params->include))//merge relations with default relationships
-                $includeDefault = array_merge($includeDefault, $params->include);
+                $includeDefault = array_merge($includeDefault, $params->include ?? []);
             $query->with($includeDefault);//Add Relationships to query
         }
 
         /*== FILTERS ==*/
         if (isset($params->filter)) {
             $filter = $params->filter;//Short filter
-
+          /**
+           * @deprecated Use $filter->countryId
+           */
             if (isset($filter->country)) {
                 $query->where("country_id", $filter->country);
             }
+            
+            if (isset($filter->countryId)) {
+                $query->where("country_id", $filter->countryId);
+            }
+            
+            if (isset($filter->iso2)) {
+                $query->where("iso_2", $filter->iso2);
+            }
+            
             if (isset($filter->countryCode)) {
                 $code=$filter->countryCode;
                 $query->whereHas("country", function ($q) use ($code) {
@@ -101,7 +112,19 @@ class EloquentProvinceRepository extends EloquentBaseRepository implements Provi
                 $query->orderBy($orderByField, $orderWay);//Add order to query
             }
         }
+  
+  
+      $availableProvinces = json_decode(setting("ilocations::availableProvinces", null, "[]"));
 
+      /*=== SETTINGS ===*/
+      if (!empty($availableProvinces) && !isset($params->filter->indexAll)) {
+        if (!isset($params->permissions['ilocations.provinces.manage']) || (!$params->permissions['ilocations.provinces.manage'])) {
+      
+          $query->whereIn('iso_2', $availableProvinces);
+      
+        }
+      }
+ 
         /*== FIELDS ==*/
         if (isset($params->fields) && count($params->fields))
             $query->select($params->fields);
@@ -110,7 +133,7 @@ class EloquentProvinceRepository extends EloquentBaseRepository implements Provi
         if (isset($params->page) && $params->page) {
             return $query->paginate($params->take);
         } else {
-            $params->take ? $query->take($params->take) : false;//Take
+          isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
             return $query->get();
         }
     }

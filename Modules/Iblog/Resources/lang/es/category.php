@@ -31,6 +31,7 @@ return [
         'image'=>'Imagen Principal'
     ],
     'messages' => [
+      "sameSlug" => "El Slug: ':slug' ya existe en otra categoría"
     ],
     'validation' => [
     ],

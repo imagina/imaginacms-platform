@@ -28,6 +28,12 @@ class Province extends Model
         return $this->hasMany(City::class);
     }
 
+
+    public function children()
+    {
+        return $this->hasMany(City::class);
+    }
+
     public function zones()
     {
         return $this->hasMany(GeozonesCountries::class);

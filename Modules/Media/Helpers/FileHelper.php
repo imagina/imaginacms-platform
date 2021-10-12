@@ -48,7 +48,7 @@ class FileHelper
      * @param $name
      * @return string
      */
-    private static function getExtension($name)
+    public static function getExtension($name)
     {
         return substr($name, strrpos($name, '.'));
     }

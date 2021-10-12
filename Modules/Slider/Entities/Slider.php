@@ -16,7 +16,7 @@ class Slider extends Model
 
   public function slides()
   {
-    return $this->hasMany(Slide::class)->orderBy('position', 'asc');
+    return $this->hasMany(Slide::class)->with('translations')->orderBy('position', 'asc');
   }
 
   protected function setOptionsAttribute($value)

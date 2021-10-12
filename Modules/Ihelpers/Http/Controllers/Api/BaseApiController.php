@@ -50,10 +50,12 @@ class BaseApiController extends BasePublicController
 
     //Return params
     $params = (object)[
+      "order" => $request->input('order') ? json_decode($request->input('order')) : null,
       "page" => is_numeric($request->input('page')) ? $request->input('page') : $default->page,
       "take" => is_numeric($request->input('take')) ? $request->input('take') :
         ($request->input('page') ? 12 : $default->take),
-      "filter" => json_decode($request->input('filter')) ?? (object)$default->filter,
+      "filter" => !$request->input('filter') ? (object)$default->filter :
+        (is_string($request->input('filter')) ? json_decode($request->input('filter')) : json_decode(json_encode($request->input('filter')))),
       "include" => $request->input('include') ? explode(",", $request->input('include')) : $default->include,
       "fields" => $request->input('fields') ? explode(",", $request->input('fields')) : $default->fields,
       'department' => $department,
@@ -95,8 +97,8 @@ class BaseApiController extends BasePublicController
 
     //If there is errors, throw error
     if (isset($data->errors)) {
-         throw new Exception($data->errors, $response->getStatusCode());
-    }else {//if response is successful, return response
+      throw new Exception($data->errors, $response->getStatusCode());
+    } else {//if response is successful, return response
       return $data->data;
     }
   }
@@ -105,11 +107,11 @@ class BaseApiController extends BasePublicController
   public function validateRequestApi($request)
   {
     $request->setContainer(app());
-    if(method_exists($request, "getValidator"))
+    if (method_exists($request, "getValidator"))
       $validator = $request->getValidator();
     else
-      $validator = Validator::make($request->all(), $request->rules(),$request->messages());
-  
+      $validator = Validator::make($request->all(), $request->rules(), $request->messages());
+
     //if get errors, throw errors
     if ($validator->fails()) {
       $errors = json_decode($validator->errors());
@@ -162,17 +164,15 @@ class BaseApiController extends BasePublicController
     }
   }
 
-
-
-    //Validate if code is like status response, and return status code
-    public function getErrorMessage(\Exception $e) : string
-    {
-        if(env('APP_DEBUG')==true) {
-            return $e->getMessage()."\n".$e->getFile()."\n".$e->getLine().$e->getTraceAsString();
-        } else {
-            return $e->getMessage();
-        }
+  //Validate if code is like status response, and return status code
+  public function getErrorMessage(\Exception $e): string
+  {
+    if (env('APP_DEBUG') == true) {
+      return $e->getMessage() . "\n" . $e->getFile() . "\n" . $e->getLine() . $e->getTraceAsString();
+    } else {
+      return $e->getMessage();
     }
+  }
 
   //Get users from department
   public function getUsersByDepartment($params, $pluck = 'id')

@@ -11,17 +11,17 @@ class BannerApiTransformer extends JsonResource
   {
     $data = [
       'id' => $this->id,
-      'title' => $this->title,
-      'caption' => $this->caption,
-      'uri' => $this->uri,
-      'url' => $this->url,
-      'active' => $this->active == 1 ? true : false,
-      'type' => $this->type,
+      'title' => $this->when($this->title, $this->title),
+      'caption' => $this->when($this->caption, $this->caption),
+      'uri' => $this->when($this->uri, $this->uri),
+      'url' => $this->when($this->url, $this->url),
+      'active' => $this->when($this->active, $this->active),
+      'type' => $this->when($this->type, $this->type),
       'order' => (int)$this->order,
       'positionId' => (int)$this->position_id,
-      'customHtml' => $this->custom_html ? $this->custom_html : '',
-      'externalImageUrl' => $this->external_image_url,
-      'target' => $this->target,
+      'customHtml' => $this->when($this->custom_html, $this->custom_html),
+      'externalImageUrl' => $this->when($this->external_image_url, $this->external_image_url),
+      'target' => $this->when($this->target,  $this->target),
       'options' => $this->when($this->options, $this->options),
       'imageUrl' => $this->getImageUrl()
     ];
@@ -43,9 +43,9 @@ class BannerApiTransformer extends JsonResource
         $data[$lang]['url'] = $this->hasTranslation($lang) ?
           $this->translate("$lang")['url'] : '';
         $data[$lang]['active'] = $this->hasTranslation($lang) ?
-          $this->translate("$lang")['active'] == 1 ? true : false : '';
+          $this->translate("$lang")['active'] == 1 ? 1 : 0 : 0;
         $data[$lang]['customHtml'] = $this->hasTranslation($lang) ?
-          $this->translate("$lang")['customHtml'] ? $this->translate("$lang")['customHtml'] : '' : '';
+          $this->translate("$lang")['custom_html'] ? $this->translate("$lang")['custom_html'] : '' : '';
       }
     }
 

@@ -10,7 +10,8 @@ class SlideTranslation extends Model
         'uri',
         'url',
         'active',
-        'custom_html'
+        'custom_html',
+        'summary',
     ];
 
     protected $table = 'slider__slide_translations';

@@ -24,7 +24,21 @@ $router->group(['prefix' => 'forms'], function (Router $router) {
     'uses' => 'FormApiController@show',
     //'middleware' => ['auth:api']
   ]);
-
+  
+  //Route update
+  $router->put('/fields', [
+    'as' => 'api.iforms.forms.fields.batch.update',
+    'uses' => 'FieldApiController@batchUpdate',
+    'middleware' => ['auth:api']
+  ]);
+  
+  //Route update
+  $router->put('/blocks', [
+    'as' => 'api.iforms.forms.blocks.batch.update',
+    'uses' => 'BlockApiController@batchUpdate',
+    'middleware' => ['auth:api']
+  ]);
+  
   //Route update
   $router->put('/{criteria}', [
     'as' => 'api.iforms.forms.update',
@@ -38,4 +52,5 @@ $router->group(['prefix' => 'forms'], function (Router $router) {
     'uses' => 'FormApiController@delete',
     'middleware' => ['auth:api']
   ]);
+  
 });

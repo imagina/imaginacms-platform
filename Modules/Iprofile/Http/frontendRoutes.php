@@ -2,6 +2,9 @@
 
 use Illuminate\Routing\Router;
 
+$locale = LaravelLocalization::setLocale() ?: App::getLocale();
+
+
 #==================================================== Overwrite Default Asgard Login
 
 $router->get('auth/login', [
@@ -11,15 +14,20 @@ $router->get('auth/login', [
 ]);
 
 #==================================================== Prefix account
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+  'middleware' => ['localize']], function (Router $router) use ($locale) {
+  
+  $router->get(trans('iprofile::routes.account'), [
+    'as' => $locale . '.iprofile.account.index',
+    'uses' => 'ProfileController@index',
+    'middleware' => 'logged.in'
+  ]);
+  
+});
 
 $router->group(['prefix' => '/account'], function (Router $router) {
-
-    $router->get('/', [
-        'as' => 'account.profile.index',
-        'uses' => 'ProfileController@index',
-        'middleware' => 'can:profile.user.index'
-        //'middleware' => 'can:iprofile.profiles.index'
-    ]);
+  
+  
     $router->get('profile/', [
         'as' => 'account.profile.edit',
         'uses' => 'ProfileController@edit',
@@ -30,6 +38,7 @@ $router->group(['prefix' => '/account'], function (Router $router) {
         'uses' => 'ProfileController@store',
         'middleware' => 'can:iprofile.profiles.create'
     ]);
+    
     $router->put('profile/{user_id}', [
         'as' => 'iprofile.profile.update',
         'uses' => 'ProfileController@update',

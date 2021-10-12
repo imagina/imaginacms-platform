@@ -56,4 +56,30 @@ NOCAPTCHA_SITEKEY=site-key
   | /iforms/v4/fields | [GET, POST, PUT, DELETE] |
   | /iforms/v4/types | [GET] |
   | /iforms/v4/leads | [GET, POST] |
+  
+### Iforms blade component
 
+```html
+<x-iforms::form :id="$formId" :layout="$layout" />
+```
+
+`$formId` the form id or system name ex: `contact` or `1`
+
+`$layout` the form layout
+
+| LAYOUT | TYPE |
+| ------ | ------------- | 
+| form-layout-1 | horizontal |
+| form-layout-2 | inline |
+| form-layout-3 | no label |
+
+
+### Iforms newsletter subscription form component
+
+```html
+<x-iforms::newsletter :title="$title" :description="$description" />
+```
+
+`$title` the form title
+
+`$description` the form description

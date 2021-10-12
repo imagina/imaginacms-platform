@@ -16,5 +16,6 @@ class IblogDatabaseSeeder extends Seeder
   public function run()
   {
     $this->call(RoleTableSeeder::class);
+    $this->call(SlugCheckerTableSeeder::class);
   }
 }

@@ -15,8 +15,11 @@ class Create$MODULE_NAME$$PLURAL_CLASS_NAME$Table extends Migration
         Schema::create('$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // Your fields
+            // Your fields...
+
+            // Audit fields
             $table->timestamps();
+            $table->auditStamps();
         });
     }
 

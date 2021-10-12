@@ -155,7 +155,7 @@ class FieldApiController extends BaseApiController
     return response()->json($response, $status ?? 200);
   }
 
-  public function updateOrders (Request $request)
+  public function batchUpdate (Request $request)
   {
     \DB::beginTransaction();
     try {

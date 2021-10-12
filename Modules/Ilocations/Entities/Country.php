@@ -33,6 +33,11 @@ class Country extends Model
     return $this->hasMany(Province::class);
   }
 
+  public function children()
+  {
+    return $this->hasMany(Province::class)->with("children");
+  }
+
   public function cities()
   {
     return $this->hasMany(City::class);

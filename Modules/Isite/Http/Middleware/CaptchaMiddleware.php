@@ -23,7 +23,7 @@ class CaptchaMiddleware extends BaseApiController
   {
     try {
       $activateCaptcha = $this->setting->get('isite::activateCaptcha');
-      if($activateCaptcha===true) {
+      if($activateCaptcha) {
         //Get data
         $data = (object)$request->input('attributes');
         if (isset($data->captcha)) {
@@ -49,8 +49,8 @@ class CaptchaMiddleware extends BaseApiController
       }
     } catch (\Exception $error) {
       \Log::info($error->getMessage().' '.$error->getFile().' '.$error->getLine());
-      $response = ["errors" => 'Invalid Captcha'];
-      return response($response, Response::HTTP_UNAUTHORIZED);
+      $response = ["errors" => json_encode(["invalidCaptcha" => [trans("isite::sites.messages.invalidCaptcha")]])];
+      return response($response, 400);
     }
 
     return $next($request);

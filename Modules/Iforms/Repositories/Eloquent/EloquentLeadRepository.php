@@ -5,6 +5,8 @@ namespace Modules\Iforms\Repositories\Eloquent;
 use Modules\Iforms\Events\LeadWasCreated;
 use Modules\Iforms\Repositories\LeadRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Ihelpers\Events\CreateMedia;
+use Modules\Ihelpers\Events\DeleteMedia;
 
 class EloquentLeadRepository extends EloquentBaseRepository implements LeadRepository
 {
@@ -60,11 +62,22 @@ class EloquentLeadRepository extends EloquentBaseRepository implements LeadRepos
       if (isset($filter->formId)) {
         $query->where("form_id", $filter->formId);
       }
+  
+      //add filter by id
+      if (isset($filter->id)) {
+        is_array($filter->id) ? true : $filter->id = [$filter->id];
+        $query->whereIn('id', $filter->id);
+      }
 
     }
+
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
+
+    //Return as query
+    if (isset($params->returnAsQuery) && $params->returnAsQuery) return $query;
+
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
       return $query->paginate($params->take);
@@ -111,9 +124,9 @@ class EloquentLeadRepository extends EloquentBaseRepository implements LeadRepos
   }
   public function create($data)
   {
-
     $lead= $this->model->create($data);
     event(new  LeadWasCreated($lead,$data));
+    event(new CreateMedia($lead, $data));
 
     return $lead;
   }
@@ -144,6 +157,9 @@ class EloquentLeadRepository extends EloquentBaseRepository implements LeadRepos
     }
     /*== REQUEST ==*/
     $model = $query->where($field ?? 'id', $criteria)->first();
-    $model ? $model->delete() : false;
+    if(isset($model->id)) {
+      event(new DeleteMedia($model->id, get_class($model)));
+      $model->delete();
+    };
   }
 }

@@ -18,6 +18,9 @@ return [
   'adminNeedsToActivateNewUsers' => 'El administrador necesita activar los usuarios',
   'registerUsersWithSocialNetworks' => 'Permitir registro con redes sociales',
   'registerUserWithPoliticsOfPrivacy' => 'Requerido registro con Politicas de Privacidad',
+  'registerUserWithTermsAndConditions' => 'Requerido registro con Términos y condiciones',
+  'rolesAsDirectory' => 'Roles como directorio corporativo',
+  'rolesToRegister' => 'Roles habilitados para registro',
   'registerExtraFieldsActive' => 'Campos extra activos para el registro',
   'registerExtraFieldsRequired' => 'Campos extra requeridos para el registro',
   'addressesExtraFieldsActive' => 'Campos extra de dirección activos',
@@ -31,7 +34,9 @@ return [
   'validation' => [
   ],
   'settingGroups' => [
-    'registerExtraFields' => 'Campos extra para el registro'
+    'registerExtraFields' => 'Campos extra para el registro',
+    'addressesExtraFields' => 'Campos extra para las direcciones',
+    'register' => 'Configuración de Autenticación',
   ],
   'settingFields' => [
     'enabled' => 'Activo',

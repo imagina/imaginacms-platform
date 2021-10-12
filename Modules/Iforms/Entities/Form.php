@@ -12,7 +12,9 @@ class Form extends Model
     protected $table = 'iforms__forms';
 
     public $translatedAttributes = [
-        'title'
+        'title',
+        'submit_text',
+        'success_text',
     ];
 
     protected $fillable = [
@@ -21,6 +23,7 @@ class Form extends Model
         'destination_email',
         'user_id',
         'options',
+        'form_type',
     ];
 
     protected $casts = [
@@ -38,6 +41,11 @@ class Form extends Model
         return $this->hasMany(Lead::class);
     }
 
+    public function blocks()
+    {
+        return $this->hasMany(Block::class)->orderBy('sort_order','asc');
+    }
+
     public function user()
     {
         $driver = config('asgard.user.config.driver');
@@ -47,6 +55,16 @@ class Form extends Model
     public function getDestinationEmailAttribute($value)
     {
         return json_decode($value);
+    }
+
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function formeable()
+    {
+        return $this->morphTo();
     }
 
 }

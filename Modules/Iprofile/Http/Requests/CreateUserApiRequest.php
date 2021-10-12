@@ -4,15 +4,16 @@ namespace Modules\Iprofile\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
 use Modules\Iprofile\Rules\FieldsRule;
+use Modules\Ihelpers\Rules\UniqueRule;
 
 class CreateUserApiRequest extends BaseFormRequest
 {
     public function rules()
     {
       return [
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'email' => 'required',
+       // 'first_name' => 'required',
+       // 'last_name' => 'required',
+        'email' => ['required',new UniqueRule("users", null, null, trans("iprofile::userapis.messages.unavailableUserName"))],
         'password' => 'required',
         'fields' => new FieldsRule(),
       ];
@@ -32,16 +33,16 @@ class CreateUserApiRequest extends BaseFormRequest
     {
       return [
         // First Name
-        'first_name.required' => trans('iprofile::common.messages.field required'),
+        'first_name.required' => trans('iprofile::userapis.messages.firstNameRequired'),
         
         // Last Name
-        'last_name.required' => trans('iprofile::common.messages.field required'),
+        'last_name.required' => trans('iprofile::userapis.messages.lastNameRequired'),
         
         // email
-        'email.required' => trans('iprofile::common.messages.field required'),
+        'email.required' => trans('iprofile::userapis.messages.emailRequired'),
   
         // password
-        'password.required' => trans('iprofile::common.messages.field required'),
+        'password.required' => trans('iprofile::userapis.messages.passwordRequired'),
 
       ];
     }

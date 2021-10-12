@@ -64,9 +64,7 @@ class SettingsApiController extends BasePublicController
       $params->roleId = $user->roles->pluck('id')->toArray();
     //Validate department id
     if (!isset($params->departmentId) || !$params->departmentId)
-      $params->departmentId = $user->roles->pluck('id')->toArray();
-
-    //dd($user, $params);
+      $params->departmentId = $user->departments->pluck('id')->toArray();
 
     //Get settings per entity
     $userSettings = $this->index(['relatedId' => $params->userId, 'entityName' => 'user']);

@@ -12,21 +12,17 @@ use Modules\Media\ValueObjects\MediaPath;
 use Modules\Tag\Contracts\TaggableInterface;
 use Modules\Tag\Traits\TaggableTrait;
 use Modules\User\Entities\Sentinel\User;
-
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Core\Icrud\Entities\CrudModel;
 /**
  * Class File
  * @package Modules\Media\Entities
  * @property \Modules\Media\ValueObjects\MediaPath path
  */
-class File extends Model implements TaggableInterface, Responsable
+class File extends CrudModel implements TaggableInterface, Responsable
 {
-    use Translatable, NamespacedEntity, TaggableTrait;
-    /**
-     * All the different images types where thumbnails should be created
-     * @var array
-     */
-    private $imageExtensions = ['jpg', 'png', 'jpeg', 'gif'];
-
+    use Translatable, NamespacedEntity, TaggableTrait, BelongsToTenant;
+    
     protected $table = 'media__files';
     public $translatedAttributes = ['description', 'alt_attribute', 'keywords'];
     protected $fillable = [
@@ -43,7 +39,8 @@ class File extends Model implements TaggableInterface, Responsable
         'height',
         'filesize',
         'folder_id',
-    'created_by',
+        'created_by',
+        'disk'
     ];
     protected $appends = ['path_string', 'media_type'];
   protected $casts = ['is_folder' => 'boolean'];
@@ -56,7 +53,10 @@ class File extends Model implements TaggableInterface, Responsable
 
     public function getPathAttribute($value)
     {
-        return new MediaPath($value);
+        $disk = is_null($this->disk)? setting('media::filesystem', null, config("asgard.media.config.filesystem")) : $this->disk;
+
+     
+        return new MediaPath( ($disk == "privatemedia" ? config('asgard.media.config.files-path').$this->id : $value),$disk, $this->organization_id);
     }
 
     public function getPathStringAttribute()
@@ -76,13 +76,31 @@ class File extends Model implements TaggableInterface, Responsable
 
     public function isImage()
     {
-        return in_array(pathinfo($this->path, PATHINFO_EXTENSION), $this->imageExtensions);
+      $imageExtensions = json_decode(setting('media::allowedImageTypes',null,config("asgard.media.config.allowedImageTypes")));
+      if( $this->disk == 'privatemedia' ){
+        $privateDisk = config('filesystems.disks.privatemedia');
+        $path = $privateDisk["root"]. config('asgard.media.config.files-path').$this->filename;
+      }
+   
+        return in_array(pathinfo($path ?? $this->path, PATHINFO_EXTENSION), $imageExtensions);
+    }
+
+
+    public function isVideo()
+    {
+      $videoExtensions = json_decode(setting('media::allowedVideoTypes',null,config("asgard.media.config.allowedVideoTypes")));
+      if( $this->disk == 'privatemedia' ){
+        $privateDisk = config('filesystems.disks.privatemedia');
+        $path = $privateDisk["root"]. config('asgard.media.config.files-path').$this->filename;
+      }
+        
+        return in_array(pathinfo($path ?? $this->path, PATHINFO_EXTENSION), $videoExtensions);
     }
 
     public function getThumbnail($type)
     {
         if ($this->isImage() && $this->getKey()) {
-            return Imagy::getThumbnail($this->path, $type);
+            return Imagy::getThumbnail($this, $type, $this->disk);
         }
 
         return false;
@@ -100,7 +118,7 @@ class File extends Model implements TaggableInterface, Responsable
                 'Content-Type' => $this->mimetype,
             ]);
     }
-  
+
   /**
    * Created by relation
    * @return mixed
@@ -108,6 +126,15 @@ class File extends Model implements TaggableInterface, Responsable
   public function createdBy()
   {
     return $this->belongsTo(User::class, 'created_by');
+  }
+
+  /**
+   * Imageable relation
+   * @return mixed
+   */
+  public function imageable()
+  {
+    return $this->hasMany(User::class, 'created_by');
   }
   /**
    * Created by relation
@@ -117,6 +144,6 @@ class File extends Model implements TaggableInterface, Responsable
   {
     return $this->belongsTo(File::class, 'folder_id');
   }
-  
-  
+
+
 }

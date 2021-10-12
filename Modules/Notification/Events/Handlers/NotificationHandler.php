@@ -56,7 +56,7 @@ class NotificationHandler implements ShouldQueue
     
       // Getting the class name of the event
       $eventClassName = get_class($event);
-      
+ 
       // Ordering events by path
       $events = collect($entityConfig["events"])->keyBy("path");
     
@@ -65,7 +65,7 @@ class NotificationHandler implements ShouldQueue
         $notifiableConfigEvent = $events[$eventClassName];
         
         // Merge event notification data with event notifiable entity data
-        $notificationData = array_merge($notifiableConfigEvent, $event->notification());
+        $notificationData = array_merge($notifiableConfigEvent, $event->notification() ?? []);
         
         //finding Rules in DB by event path
       

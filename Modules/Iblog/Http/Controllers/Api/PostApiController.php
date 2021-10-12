@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Log;
 use Mockery\CountValidator\Exception;
 use Modules\Iblog\Http\Requests\CreatePostRequest;
+use Modules\Iblog\Http\Requests\UpdatePostRequest;
 use Modules\Iblog\Repositories\PostRepository;
 use Modules\Iblog\Transformers\PostTransformer;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
@@ -129,14 +130,13 @@ class PostApiController extends BaseApiController
             $data = $request->input('attributes') ?? [];//Get data
 
             //Validate Request
-            $this->validateRequestApi(new CreatePostRequest($data));
+            $this->validateRequestApi(new UpdatePostRequest($data));
 
             //Get Parameters from URL.
             $params = $this->getParamsRequest($request);
+    
             //Request to Repository
-            $post = $this->post->getItem($criteria, $params);
-            //Request to Repository
-            $this->post->update($post, $data);
+            $this->post->updateBy($criteria, $data, $params);
 
             //Response
             $response = ["data" => trans('iblog::common.messages.resource updated')];
@@ -164,12 +164,9 @@ class PostApiController extends BaseApiController
         try {
             //Get params
             $params = $this->getParamsRequest($request);
-
-            //Request to Repository
-            $post = $this->post->getItem($criteria, $params);
-
+            
             //call Method delete
-            $this->post->destroy($post);
+            $this->post->deleteBy($criteria,$params);
 
             //Response
             $response = ["data" => trans('iblog::common.messages.resource deleted')];

@@ -52,7 +52,7 @@ class NotificationServiceProvider extends ServiceProvider
   public function boot()
   {
     $this->publishConfig('notification', 'config');
-    $this->publishConfig('notification', 'permissions');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'permissions'), "asgard.notification.permissions");
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
     

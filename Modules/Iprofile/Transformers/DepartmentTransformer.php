@@ -12,12 +12,13 @@ class DepartmentTransformer extends BaseApiTransformer
   {
     $settings = $this->settings()->get();
     return [
-      'id' => $this->when($this->id,$this->id),
-      'title' => $this->when($this->title,$this->title),
-      'parentId' => $this->when($this->parent_id,$this->parent_id),
-      'options' => $this->when($this->options,$this->options),
+      'id' => $this->when($this->id, $this->id),
+      'title' => $this->when($this->title, $this->title),
+      'parentId' => $this->when(isset($this->parent_id), $this->parent_id),
+      'options' => $this->when($this->options, $this->options),
       'users' => UserTransformer::collection($this->whenLoaded('users')),
       'parent' => new DepartmentTransformer($this->whenLoaded('parent')),
+      'internal' => $this->when(isset($this->internal), $this->internal),
       'settings' => $settings ? SettingTransformer::collection($settings) : [],
       'createdAt' => $this->when($this->created_at, $this->created_at),
       'updatedAt' => $this->when($this->updated_at, $this->updated_at),

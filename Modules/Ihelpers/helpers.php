@@ -178,7 +178,7 @@ if (!function_exists('saveImage')) {
     $watermark = json_decode(json_encode(array_merge($default_watermark, $watermark)));
 
     //Defined return.
-    if (ends_with($value, '.jpg')) {
+    if (is_string($value) && strpos($value, '.jpg')) {
       return $value;
     }
 

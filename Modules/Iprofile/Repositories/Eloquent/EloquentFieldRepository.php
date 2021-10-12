@@ -159,4 +159,38 @@ class EloquentFieldRepository extends EloquentBaseRepository implements FieldRep
 
     }
   }
+
+  //Get users birthday
+  public function usersBirthday($params)
+  {
+    $birthdayFields = $this->model->where('name', 'birthday')->get();
+    $futureBirthdayUsersId = [];
+    $response = [];
+
+    //Get future birthdays
+    foreach ($birthdayFields as $field) {
+      if (date("m", strtotime($field->value)) >= date('m'))
+        $futureBirthdayUsersId[] = $field->user_id;
+    }
+
+    //Get data user
+    $usersData = \DB::table('users')->whereIn('id', $futureBirthdayUsersId)->get();
+
+    //Transform data
+    foreach ($usersData as $user) {
+      $response[] = collect([
+        'id' => $user->id,
+        'firstName' => $user->first_name,
+        'lastName' => $user->last_name,
+        'fullName' => "{$user->first_name} {$user->last_name}",
+        'birthday' => date(
+          date('Y') . "-m-d 12:00:00",
+          strtotime($birthdayFields->where('user_id', $user->id)->pluck('value')->first())
+        )
+      ]);
+    }
+
+    //Response
+    return $response;
+  }
 }

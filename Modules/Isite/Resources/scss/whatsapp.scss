@@ -1,0 +1,308 @@
+//whatsapp layout 2
+.whatsapp-layout-2 {
+  #dropdownMenuWhatsapp {
+    &:before {
+      display: none;
+    }
+  }
+  
+  .number-whatsapp {
+    text-align: center;
+    
+    i {
+      border-radius: 50%;
+      padding: 5px;
+      padding-left: 7px;
+      padding-right: 7px;
+      background-color: #06d755;
+      font-size: 18px;
+      color: #ffffff !important;
+      margin-right: 7px;
+    }
+  }
+}
+
+//Generic whatsapp fixed
+.whatsapp-fixed {
+  position: fixed;
+  z-index: 1037;
+}
+
+//whatsapp layout 3
+#whatsappImageFixed {
+  position: fixed;
+  background: #06d755;
+  width: 39px;
+  height: 137px;
+  color: #ffffff;
+  
+  .content-whatsapp {
+    position: relative;
+
+    .dropright, .dropleft {
+      padding: 0;
+      position: relative;
+      bottom: -37px;
+
+      #dropdownMenuWhatsapp {
+        padding: 7px;
+
+        &:before {
+          display: none;
+        }
+      }
+
+      .dropdown-menu-whatsapp {
+        top: -10px !important;
+      }
+    }
+  }
+
+  #WhatsappimageText {
+    transform: rotate(-90deg);
+    margin-top: 43px;
+    margin-left: -18px;
+  
+    a.whatsapp-layout-2{
+    position: relative;
+      bottom: -43px;
+    left: 7px;
+    }
+  }
+  
+  .icon-whatsapp {
+    color: #fff;
+    font-size: 27px;
+  }
+}
+
+//whatsapp layout 4
+#whatsappIconFixed {
+  right: 10px;
+  top: 25%;
+  
+  .dropdown-menu-whatsapp {
+    top: 11px !important;
+  }
+  
+  .content-background {
+    color: white;
+    background-color: #06d755;
+    align-items: center;
+    display: flex !important;
+    font-size: 29px;
+    width: 60px;
+    height: 60px;
+    display: block;
+    box-shadow: 2px 2px 12px #aaa;
+    border-radius: 48%;
+    
+    a {
+      margin: 0 auto;
+    }
+  }
+  
+  .icon-whatsapp {
+    color: #ffffff;
+    font-size: 40px;
+  }
+}
+//whatsapp layout 5
+#whatsappIconChatFixed {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  visibility: hidden;
+
+  .pre-window {
+    display: flex;
+    align-items: center;
+    z-index: 99999;
+    .icon {
+      width: 54px;
+      height: 54px;
+      background-color: #22ce5a;
+      color: $white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 33px;
+      cursor: pointer;
+    }
+    .text {
+      background-color: #F6F6F6;
+      padding: 8px 20px;
+      margin-left: 25px;
+      border-radius: 10px;
+      color: $primary;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      border: 2px solid #E9E9E9;
+      position: relative;
+      &:before {
+        position: absolute;
+        content: '';
+        left: -16px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 16px solid #E9E9E9;
+      }
+      &:after {
+        position: absolute;
+        content: '';
+        left: -11px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 14px solid #f6f6f6;
+      }
+    }
+  }
+
+  .window {
+    position: fixed;
+    box-shadow: 0 0 30px rgb(0 0 0 / 30%);
+    background: #fff;
+    overflow: hidden;
+    width: 350px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+    bottom: 20px;
+    display: block;
+    border-radius: 20px;
+    .window-header {
+      background-color: $primary;
+      color: #fff;
+      padding: 26px;
+      position: relative;
+      .header-close {
+        float: right;
+        cursor: pointer;
+        display: table;
+      }
+      .header-title {
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 100%;
+        margin-bottom: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .header-text {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 100%;
+        color: #EFEFEF;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-left: 25px;
+      }
+    }
+    .window-content {
+      padding: 0;
+      background-color: #F6F6F6;
+      height: 297px;
+      overflow-y: auto;
+
+      .content-list {
+        font-size: 13px;
+        padding: 21px 30px;
+        overflow: hidden;
+        border-bottom: 2px solid #E9E9E9;
+        display: flex;
+        background-color: #F6F6F6;
+        cursor: pointer;
+        align-items: center;
+        .list-image {
+          position: relative;
+          margin-right: 10px;
+          .icon {
+            height: 55px;
+            width: 55px;
+            background-color: $primary;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 33px;
+          }
+        }
+        .list-info {
+          .title {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 0.1em;
+          }
+          .subtitle {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            color: #444444;
+            font-weight: 500;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .window {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 0;
+      .chat-content {
+        max-height: 90%;
+        height: calc(100vh - 100px) !important;
+      }
+    }
+  }
+
+  .scroll {
+    overflow:auto;
+    height: 100%;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+    margin-right: 3px;
+  }
+
+  .scroll::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  .scroll::-webkit-scrollbar:vertical {
+    width:5px;
+  }
+
+  .scroll::-webkit-scrollbar-button:increment,.scroll::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .scroll::-webkit-scrollbar:horizontal {
+    height: 10px;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #DBDBDB;
+    border-radius: 0;
+    border: 1px solid #DBDBDB;
+  }
+
+  .scroll::-webkit-scrollbar-track {
+    border-radius: 0;
+  }
+
+}

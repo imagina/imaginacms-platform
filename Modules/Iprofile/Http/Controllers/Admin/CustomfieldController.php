@@ -10,7 +10,7 @@ use Modules\Iprofile\Http\Requests\UpdateCustomFieldRequest;
 use Modules\Iprofile\Repositories\FieldRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
-class CustomFieldController extends AdminBaseController
+class CustomfieldController extends AdminBaseController
 {
     /**
      * @var FieldRepository

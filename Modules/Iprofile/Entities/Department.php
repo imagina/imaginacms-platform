@@ -14,6 +14,7 @@ class Department extends Model
   protected $fillable = [
     'title',
     'parent_id',
+    'internal',
     'options'
   ];
 

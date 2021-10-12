@@ -54,7 +54,7 @@ class MediaController extends Controller
                     return '<i class="fa fa-folder" style="font-size: 20px;"></i>';
                 }
                 if ($file->isImage()) {
-                    return '<img src="' . $this->imagy->getThumbnail($file->path, 'smallThumb') . '"/>';
+                    return '<img src="' . $this->imagy->getThumbnail($file, 'smallThumb') . '"/>';
                 }
 
                 return '<i class="fa ' . FileHelper::getFaIcon($file->media_type) . '" style="font-size: 20px;"></i>';
@@ -122,29 +122,14 @@ class MediaController extends Controller
      */
     public function store(UploadMediaRequest $request) : JsonResponse
     {
+
+        $disk = (in_array($request->get('disk'),array_keys(config('filesystems.disks'))))? $request->get('disk') : null;
+
         $file = $request->file('file');
         $extension = $file->extension();
 
-        //return [$contentType];
-        if($extension == 'jpeg'){
-            $image = \Image::make($request->file('file'));
-
-            $imageSize = (Object) config('asgard.media.config.imageSize');
-            $watermark = (Object) config('asgard.media.config.watermark');
-
-            $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-
-            if ($watermark->activated) {
-                $image->insert(url($watermark->url), $watermark->position, $watermark->x, $watermark->y);
-            }
-            $filePath = $file->getPathName();
-            \File::put($filePath, $image->stream('jpg',$imageSize->quality));
-        }
-
-        $savedFile = $this->fileService->store($file, $request->get('parent_id'));
+        $savedFile = $this->fileService->store($file, $request->get('parent_id'), null, $disk);
+        //$savedFile = $this->fileService->store($request->file('file'), null, $disk);
 
         if (is_string($savedFile)) {
             return response()->json([
@@ -159,7 +144,8 @@ class MediaController extends Controller
 
     public function storeDropzone(UploadDropzoneMediaRequest $request) : JsonResponse
     {
-        $savedFile = $this->fileService->store($request->file('file'));
+        $disk = (in_array($request->get('disk'),config('filesystems.disks')))? $request->get('disk') : null;
+        $savedFile = $this->fileService->store($request->file('file'), null, $disk);
 
         if (is_string($savedFile)) {
             return response()->json([
@@ -290,7 +276,7 @@ class MediaController extends Controller
     private function getThumbnailPathFor($mediaType, File $file) : string
     {
         if ($mediaType === 'image') {
-            return $this->imagy->getThumbnail($file->path, 'mediumThumb');
+            return $this->imagy->getThumbnail($file, 'mediumThumb');
         }
 
         return $file->path->getRelativeUrl();

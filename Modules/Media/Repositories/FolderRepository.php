@@ -14,7 +14,7 @@ interface FolderRepository extends BaseRepository
      * @param int $folderId
      * @return File|null
      */
-    public function findFolder(int $folderId);
+    public function findFolder($folderId);
 
     /**
      * @param File $folder

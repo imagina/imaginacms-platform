@@ -64,7 +64,7 @@
             <?php foreach ($$zoneVar as $file): ?>
                 <figure data-id="{{ $file->pivot->id }}">
                     <?php if ($file->media_type == 'image'): ?>
-                    <img src="{{ Imagy::getThumbnail($file->path, (isset($thumbnailSize) ? $thumbnailSize : 'mediumThumb')) }}" alt="{{ $file->alt_attribute }}"/>
+                    <img src="{{ Imagy::getThumbnail($file, (isset($thumbnailSize) ? $thumbnailSize : 'mediumThumb')) }}" alt="{{ $file->alt_attribute }}"/>
                     <?php elseif ($file->media_type == 'video'): ?>
                     <video src="{{ $file->path }}"  controls width="320"></video>
                     <?php elseif ($file->media_type == 'audio'): ?>

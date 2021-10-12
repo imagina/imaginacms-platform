@@ -19,7 +19,11 @@ return [
     ],
     'messages' => [
         'message sent successfully'=>'Mensaje enviado correctamente',
+        'invalidFileExtension'=>'Extension de archivo inválida para el campo: <strong>:fieldLabel</strong>',
     ],
     'validation' => [
     ],
+ 
+ 
+ 
 ];

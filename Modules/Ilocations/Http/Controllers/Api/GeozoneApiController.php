@@ -112,12 +112,7 @@ class GeozoneApiController extends BaseApiController
 
             $params = $this->getParamsRequest($request);
 
-            $dataEntity = $this->geozone->getItem($criteria, $params);
-
-
-            if (!$dataEntity) throw new \Exception('Item not found', 404);
-
-            $this->geozone->update($dataEntity, $data);
+            $dataEntity = $this->geozone->update($criteria, $data, $params);
 
             $response = ["data" => "Request successful"];
 

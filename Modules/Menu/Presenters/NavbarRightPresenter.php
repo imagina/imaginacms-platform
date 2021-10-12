@@ -22,7 +22,7 @@ class NavbarRightPresenter extends Presenter
   public function getMenuWithDropDownWrapper($item)
   {
     return '<li class="nav-item dropdown">
-			      <a href="#" class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      <a href="#" class="nav-link dropdown-toggle'.($item->attributes['class'] ?? '').'"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					' . $item->getIcon() . ' ' . $item->title . '
 			      </a>
 			      <ul class="dropdown-menu">

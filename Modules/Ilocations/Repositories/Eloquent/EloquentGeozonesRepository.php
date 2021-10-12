@@ -3,6 +3,8 @@
 namespace Modules\Ilocations\Repositories\Eloquent;
 
 use Illuminate\Support\Arr;
+use Modules\Ilocations\Entities\Geozones;
+use Modules\Ilocations\Entities\GeozonesCountries;
 use Modules\Ilocations\Repositories\GeozonesRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 
@@ -124,61 +126,49 @@ class EloquentGeozonesRepository extends EloquentBaseRepository implements Geozo
 
   public function create($data)
   {
-    $geozone = $this->model->create($data);
+      /**
+       * @var Geozones $model
+       */
+        $model = $this->model->create($data);
 
-    if ($geozone) {
-
-      if (isset($data['countries'])){
-        $geozone->countries()->sync(Arr::get($data, 'countries', []));
-      }
-
-      if (isset($data['cities'])){
-        $geozone->cities()->sync(Arr::get($data, 'cities', []));
-      }
-
-      if (isset($data['provinces'])){
-        $geozone->provinces()->sync(Arr::get($data, 'provinces', []));
-      }
-
-      if (isset($data['polygons'])){
-        $geozone->polygons()->sync(Arr::get($data, 'polygons', []));
-      }
-
-      if (isset($data['neighborhoods'])){
-        $geozone->neighborhoods()->sync(Arr::get($data, 'neighborhoods', []));
-      }
-    }
-
-    return $geozone;
+        if ($model) {
+            if(isset($data['zones_to_geozone'])){
+                $model->zonesToGeozone()->createMany($data['zones_to_geozone']);
+            }
+        }
+        return $model;
   }
 
-  public function update($model, $data)
+  public function update($criteria, $data, $params = false)
   {
-    $geozone = $model->update($data);
+      /*== initialize query ==*/
+      $query = $this->model->query();
 
-    if ($geozone) {
+      /*== FILTER ==*/
+      if (isset($params->filter)) {
+          $filter = $params->filter;
 
-      if (isset($data['countries'])){
-        $geozone->countries()->sync(Arr::get($data, 'countries', []));
+          //Update by field
+          if (isset($filter->field))
+              $field = $filter->field;
       }
 
-      if (isset($data['cities'])){
-        $geozone->cities()->sync(Arr::get($data, 'cities', []));
-      }
+      /*== REQUEST ==*/
+      /**
+       * @var Geozones $model
+       */
+      $model = $query->where($field ?? 'id', $criteria)->first();
 
-      if (isset($data['provinces'])){
-        $geozone->provinces()->sync(Arr::get($data, 'provinces', []));
-      }
+      $model->update((array)$data);
 
-      if (isset($data['polygons'])){
-        $geozone->polygons()->sync(Arr::get($data, 'polygons', []));
+      if ($model) {
+          if(isset($data['zones_to_geozone'])) {
+              $model->zonesToGeozone()->delete();
+              $model->zonesToGeozone()->createMany($data['zones_to_geozone']);
+          }
+          return $model;
       }
+      return false;
 
-      if (isset($data['neighborhoods'])){
-        $geozone->neighborhoods()->sync(Arr::get($data, 'neighborhoods', []));
-      }
-    }
-
-    return $geozone;
   }
 }

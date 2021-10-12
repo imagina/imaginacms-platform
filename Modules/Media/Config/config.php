@@ -9,7 +9,7 @@ return [
     | in app/config/filesystems.php
     | Supported: "local", "s3"
     */
-    'filesystem' => 'local',
+    'filesystem' => 'publicmedia',
     /*
     |--------------------------------------------------------------------------
     | The path where the media files will be uploaded
@@ -22,14 +22,18 @@ return [
     | Specify all the allowed file extensions a user can upload on the server
     |--------------------------------------------------------------------------
     */
-    'allowed-types' => '.jpg,.png,.pdf,.jpeg',
+    'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg',
+    'allowedImageTypes' => json_encode(["jpg", "png", "jpeg", "svg"]),
+    'allowedFileTypes' => json_encode(["pdf", "doc", "docx", "xls", "xlsx"]),
+    'allowedVideoTypes' => json_encode(["mp4","webm","ogg"]),
+    'allowedAudioTypes' => json_encode([ "mp3", "avi"]),
     /*
     |--------------------------------------------------------------------------
     | Determine the max file size upload rate
     | Defined in MB
     |--------------------------------------------------------------------------
     */
-    'max-file-size' => '5',
+    'max-file-size' => '10',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +72,7 @@ return [
     ],
 
 
-  'imageSize' => ['width' => 1024, 'height' => 768, 'quality' => 90],
+  'defaultImageSize' => json_encode(['width' => 1920, 'height' => 1080, 'quality' => 90]),
  
   'watermark' => [
     'activated' => false,
@@ -77,4 +81,39 @@ return [
     'x' => 10,
     'y' => 10,
   ],
+  
+  "defaultThumbnails" => json_encode([
+    "smallThumb" => [
+      "quality" => 80,
+      "width" => 300,
+      "height" => null,
+      "aspectRatio" => true,
+      "upsize" => true,
+      "format" => "webp",
+    ],
+    "mediumThumb" => [
+      "quality" => 80,
+      "width" => 600,
+      "height" => null,
+      "aspectRatio" => true,
+      "upsize" => true,
+      "format" => "webp",
+    ],
+    "largeThumb" => [
+      "quality" => 80,
+      "width" => 900,
+      "height" => null,
+      "aspectRatio" => true,
+      "upsize" => true,
+      "format" => "webp",
+    ],
+    "extraLargeThumb" => [
+      "quality" => 80,
+      "width" => 1920,
+      "height" => null,
+      "aspectRatio" => true,
+      "upsize" => true,
+      "format" => "webp",
+    ]
+  ])
 ];

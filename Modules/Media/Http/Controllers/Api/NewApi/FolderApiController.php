@@ -65,6 +65,37 @@ class FolderApiController extends BaseApiController
   }
   
   /**
+     * GET A ITEM
+     *
+     * @param $criteria
+     * @return mixed
+     */
+    public function show($criteria, Request $request)
+    {
+      try {
+        //Get Parameters from URL.
+        $params = $this->getParamsRequest($request);
+  
+        //Request to Repository
+        $dataEntity = $this->folder->getItem($criteria, $params);
+      
+        //Break if no found item
+        if(!$dataEntity) throw new \Exception('Item not found',404);
+        
+        //Response
+        $response = ["data" => new MediaTransformer($dataEntity)];
+  
+      } catch (\Exception $e) {
+        $status = $this->getStatusError($e->getCode());
+        $response = ["errors" => $e->getMessage()];
+      }
+  
+      //Return response
+      return response()->json($response, $status ?? 200);
+    }
+  
+  
+  /**
    * GET BREADCRUMB
    *
    * @param $criteria
@@ -125,6 +156,7 @@ class FolderApiController extends BaseApiController
     try {
       //Get data
       $data = $request->input('attributes');
+  
       $params = $this->getParamsRequest($request);
       //Validate Request
       $this->validateRequestApi(new CreateFolderRequest((array)$data));
@@ -138,7 +170,7 @@ class FolderApiController extends BaseApiController
       event(new FileWasUploaded($folder));
       
       //Response
-      $response = ["data" => ""];
+      $response = ["data" => new MediaTransformer($folder)];
       \DB::commit(); //Commit to Data Base
     } catch (\Exception $e) {
       \Log::error($e->getMessage());

@@ -1,7 +1,12 @@
 @foreach($slider->slides as $index => $slide)
     @if($slide->active)
         <div class="carousel-item @if($index === 0) active @endif ">
-            <img class="d-block w-100" src="{!! $slide->getImageUrl() !!}" alt="{{$slide->title}}">
+          <x-media::single-image :alt="$slide->title ?? setting::get('core::site-name')"
+                                :title="$slide->title ?? setting::get('core::site-name')"
+                                :url="$slide->uri ?? null" :isMedia="true"
+                                imgClasses="d-block w-100"
+                                :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+          
             @if(!empty($slide->getLinkUrl()))
                 <a href="{{$slide->getLinkUrl()}}" target="{{$slide->target}}">
                     @endif

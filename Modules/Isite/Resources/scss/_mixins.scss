@@ -1,0 +1,55 @@
+
+/***** Mixins *****/
+@mixin absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@mixin translateX-prefixes {
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+@mixin translateY-prefixes {
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin pseudo($pos: absolute, $content: '') {
+  position: $pos;
+  content: $content;
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin title-props($trans) {
+  color: $primary;
+  text-align: center;
+  
+  span {
+    display: block;
+    color: $primary;
+    font-size: 18px;
+    text-transform: #{$trans};
+  }
+}
+
+@mixin img-filter() {
+  filter: invert(90%) hue-rotate(175deg);
+  &:hover {
+    filter: invert(0) hue-rotate(175deg);
+  }
+}

@@ -21,5 +21,6 @@
         "MediaThumbnailDirective": "Modules\\Media\\Blade\\Facades\\MediaThumbnailDirective"
     },
     "files": [
+        "helpers.php"
     ]
 }

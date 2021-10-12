@@ -18,6 +18,8 @@ class  Provider extends Model
     "status",
     "system_name",
     "options",
+    "default",
+    "type",
     "fields"
   ];
   

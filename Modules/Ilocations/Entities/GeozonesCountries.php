@@ -14,15 +14,17 @@ class GeozonesCountries extends Model
       'geozone_id',
       'country_id',
       'province_id',
+      'city_id'
     ];
-  
+
   public function country(){
-    \App::setLocale('en');
     return $this->belongsTo(Country::class);
   }
   public function province(){
-    \App::setLocale('en');
     return $this->belongsTo(Province::class);
+  }
+  public function city(){
+     return $this->belongsTo(City::class);
   }
   public function geoZone(){
     return $this->belongsTo(Geozones::class);

@@ -12,26 +12,31 @@ class Thumbnail
      * @var string
      */
     private $name;
+    /**
+     * @var string
+     */
+    private $format;
 
     /**
      * @param $name
      * @param $filters
      */
-    private function __construct($name, $filters)
+    private function __construct($name, $filters, $format = 'jpg')
     {
         $this->filters = $filters;
         $this->name = $name;
+        $this->format = $format;
     }
 
     /**
      * @param $thumbnailDefinition
      * @return static
      */
-    public static function make($thumbnailDefinition)
+    public static function make($thumbnailDefinition, $format = 'jpg')
     {
         $name = key($thumbnailDefinition);
 
-        return new static($name, $thumbnailDefinition[$name]);
+        return new static($name, $thumbnailDefinition[$name], $format);
     }
 
     /**
@@ -65,6 +70,13 @@ class Thumbnail
     public function filters()
     {
         return $this->filters;
+    }
+    /**
+     * @return string
+     */
+    public function format()
+    {
+        return $this->format;
     }
 
     /**

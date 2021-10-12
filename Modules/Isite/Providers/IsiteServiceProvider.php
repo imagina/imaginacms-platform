@@ -2,6 +2,7 @@
 
 namespace Modules\Isite\Providers;
 
+use Anhskohbo\NoCaptcha\NoCaptcha;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
@@ -10,6 +11,9 @@ use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Isite\Events\Handlers\RegisterIsiteSidebar;
 use Modules\Isite\Http\Middleware\CaptchaMiddleware;
 use Illuminate\Support\Facades\Blade;
+use Livewire\Livewire;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Isite\View\Components\Multilang;
 
 class IsiteServiceProvider extends ServiceProvider
 {
@@ -37,21 +41,41 @@ class IsiteServiceProvider extends ServiceProvider
 
     $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
       $event->load('sites', Arr::dot(trans('isite::sites')));
-      // append translations
+      $event->load('recommendations', Arr::dot(trans('isite::recommendations')));
+            // append translations
+
 
     });
+
+    $this->app->singleton('icaptcha', function ($app) {
+        return new NoCaptcha(
+            setting('isite::reCaptchaV2Secret') ?? setting('isite::reCaptchaV3Secret'),
+            setting('isite::reCaptchaV2Site') ?? setting('isite::reCaptchaV3Site'),
+            $app['config']['captcha.options']
+        );
+    });
+  
+    BelongsToTenant::$tenantIdColumn = 'organization_id';
   }
 
   public function boot()
   {
     $this->registerMiddleware();
     $this->publishConfig('isite', 'config');
-    $this->publishConfig('isite', 'permissions');
-    $this->publishConfig('isite', 'settings');
-    $this->publishConfig('isite', 'settings-fields');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'settings'), "asgard.isite.settings");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'settings-fields'), "asgard.isite.settings-fields");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'permissions'), "asgard.isite.permissions");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'deprecated-settings'), "asgard.isite.deprecated-settings");
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-  
+
+    $app = $this->app;
+
+    $this->app['validator']->extend('icaptcha', function ($attribute, $value) use ($app) {
+          return $app['icaptcha']->verifyResponse($value, $app['request']->getClientIp());
+    });
+
     $this->registerComponents();
+    $this->registerComponentsLivewire();
   }
 
   /**
@@ -66,7 +90,31 @@ class IsiteServiceProvider extends ServiceProvider
 
   private function registerBindings()
   {
-
+    $this->app->bind(
+      'Modules\Isite\Repositories\RecommendationRepository',
+      function () {
+        $repository = new \Modules\Isite\Repositories\Eloquent\EloquentRecommendationRepository(new \Modules\Isite\Entities\Recommendation());
+      
+        if (!config('app.cache')) {
+          return $repository;
+        }
+      
+        return new \Modules\Isite\Repositories\Cache\CacheRecommendationDecorator($repository);
+      }
+    );
+  
+    $this->app->bind(
+      'Modules\Isite\Repositories\OrganizationRepository',
+      function () {
+        $repository = new \Modules\Isite\Repositories\Eloquent\EloquentOrganizationRepository(new \Modules\Isite\Entities\Organization());
+      
+        if (!config('app.cache')) {
+          return $repository;
+        }
+      
+        return new \Modules\Isite\Repositories\Cache\CacheOrganizationDecorator($repository);
+      }
+    );
 
   }
 
@@ -76,15 +124,37 @@ class IsiteServiceProvider extends ServiceProvider
       $this->app['router']->aliasMiddleware($name, $class);
     }
   }
-  
-  
+
+
   /**
    * Register Blade components
    */
-  
+
   private function registerComponents(){
-    
-    Blade::component('isite-owl-carousel', \Modules\Isite\View\Components\OwlCarousel::class);
-    
+      Blade::componentNamespace("Modules\Isite\View\Components", 'isite');
   }
+
+   /**
+   * Register components Livewire
+   */
+  private function registerComponentsLivewire()
+  {
+
+    Livewire::component('isite::items-list', \Modules\Isite\Http\Livewire\Index\ItemsList::class);
+    Livewire::component('isite::load-more-button', \Modules\Isite\Http\Livewire\Index\LoadMoreButton::class);
+    Livewire::component('isite::item-modal', \Modules\Isite\Http\Livewire\Index\ItemModal::class);
+
+    Livewire::component('isite::filters', \Modules\Isite\Http\Livewire\Filters::class);
+    Livewire::component('isite::filter-range', \Modules\Isite\Http\Livewire\Filters\Range::class);
+    Livewire::component('isite::filter-checkbox', \Modules\Isite\Http\Livewire\Filters\Checkbox::class);
+    Livewire::component('isite::filter-radio', \Modules\Isite\Http\Livewire\Filters\Radio::class);
+    Livewire::component('isite::filter-tree', \Modules\Isite\Http\Livewire\Filters\Tree::class);
+    Livewire::component('isite::filter-select', \Modules\Isite\Http\Livewire\Filters\Select::class);
+    Livewire::component('isite::filter-location', \Modules\Isite\Http\Livewire\Filters\Location::class);
+
+
+    Livewire::component('isite::filter-order-by', \Modules\Isite\Http\Livewire\Index\Filters\OrderBy::class);
+
+  }
+
 }

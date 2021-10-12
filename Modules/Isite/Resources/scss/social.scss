@@ -1,0 +1,26 @@
+.social-left, .social-right{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  left: auto;
+}
+.social-left{
+  left: 0;
+  right: auto;
+}
+#dropdownMenuWhatsapp{
+  &:after{
+    display: none;
+  }
+
+}
+.dropdown-whatsapp{
+  .dropdown-menu-whatsapp{
+    a{
+      font-size: 14px !important;
+      font-weight: normal !important;
+      margin: 0 5px !important;
+      color: $primary !important;
+    }
+  }
+}

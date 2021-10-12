@@ -18,8 +18,12 @@ import Vue from 'vue';
 import axios from 'axios';
 import toastr from 'toastr';
 import 'lazysizes';
-
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 window.bus = new Vue();
+
+//sweetalert2 for livewire alerts
+// CommonJS
+window.Swal = require('sweetalert2')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

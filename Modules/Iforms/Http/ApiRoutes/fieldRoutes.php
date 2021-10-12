@@ -42,7 +42,7 @@ $router->group(['prefix' => 'fields'], function (Router $router) {
   //Route update
   $router->post('/updateOrders', [
     'as' => 'api.iforms.fields.updateOrders',
-    'uses' => 'FieldApiController@updateOrders',
+    'uses' => 'FieldApiController@batchUpdate',
     'middleware' => ['auth:api']
   ]);
 

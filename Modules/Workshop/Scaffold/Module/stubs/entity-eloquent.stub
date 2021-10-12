@@ -3,13 +3,18 @@
 namespace Modules\$MODULE_NAME$\Entities;
 
 use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Icrud\Entities\CrudModel;
 
-class $CLASS_NAME$ extends Model
+class $CLASS_NAME$ extends CrudModel
 {
     use Translatable;
 
     protected $table = '$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$';
+    public $transformer = 'Modules\$MODULE_NAME$\Transformers\$CLASS_NAME$Transformer';
+    public $requestValidation = [
+        'create' => 'Modules\$MODULE_NAME$\Http\Requests\Create$CLASS_NAME$Request',
+        'update' => 'Modules\$MODULE_NAME$\Http\Requests\Update$CLASS_NAME$Request',
+      ];
     public $translatedAttributes = [];
     protected $fillable = [];
 }

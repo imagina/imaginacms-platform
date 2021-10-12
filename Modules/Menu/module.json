@@ -17,5 +17,7 @@
     "Menu": "Nwidart\\Menus\\Facades\\Menu",
     "MenuDirective": "Modules\\Menu\\Blade\\Facades\\MenuDirective"
   },
-  "files": []
+  "files": [
+    "helpers.php"
+  ]
 }

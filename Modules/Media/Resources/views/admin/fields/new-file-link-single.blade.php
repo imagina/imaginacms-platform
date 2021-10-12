@@ -12,7 +12,7 @@
         <?php if (isset($media->path)): ?>
         <figure data-id="{{ $media->id }}">
             <?php if ($media->media_type === 'image'): ?>
-            <img src="{{ Imagy::getThumbnail($media->path, (isset($thumbnailSize) ? $thumbnailSize : 'mediumThumb')) }}" alt="{{ $media->alt_attribute }}"/>
+            <img src="{{ Imagy::getThumbnail($media, (isset($thumbnailSize) ? $thumbnailSize : 'mediumThumb'),$media->disk) }}" alt="{{ $media->alt_attribute }}"/>
             <?php elseif ($media->media_type === 'video'): ?>
             <video src="{{ $media->path }}"  controls width="320"></video>
             <?php elseif ($media->media_type === 'audio'): ?>

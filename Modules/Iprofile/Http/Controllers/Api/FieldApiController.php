@@ -148,9 +148,13 @@ class FieldApiController extends BaseApiController
 
       //Validate Request
       $this->validateRequestApi(new UpdateCustomFieldRequest($data));
-      if ($data['name'] == 'mainImage' && Str::contains($data['value'], 'data:image/jpeg;base64')) {
+      if ($data['name'] == 'mainImage' && Str::contains($data['value'], 'data:image')) {
+        $endFile = 'jpg';
+        if(Str::startsWith($data['value'], 'data:image/png;'))
+          $endFile = 'png';
+        
         //Update Iprofile image
-        $data['value'] = saveImage($data['value'], "assets/iprofiles/" . $data['user_id'] . ".jpg");
+        $data['value'] = saveImage($data['value'], "assets/iprofiles/" . $data['user_id'] . ".$endFile");
       }
 
       //Get Parameters from URL.

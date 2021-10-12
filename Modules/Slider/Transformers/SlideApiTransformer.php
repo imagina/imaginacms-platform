@@ -19,11 +19,13 @@ class SlideApiTransformer extends JsonResource
       'type' => $this->type,
       'position' => (int)$this->position,
       'sliderId' => (int)$this->slider_id,
+      'summary' => $this->summary ?? '',
       'customHtml' => $this->custom_html ? $this->custom_html : '',
       'externalImageUrl' => $this->external_image_url,
       'target' => $this->target,
       'options' => $this->when($this->options, $this->options),
-      'imageUrl' => $this->getImageUrl()
+      'imageUrl' => $this->getImageUrl(),
+      'mediaFiles' => $this->mediaFiles(),
     ];
 
     $filter = json_decode($request->filter);
@@ -38,6 +40,8 @@ class SlideApiTransformer extends JsonResource
           $this->translate("$lang")['title'] : '';
         $data[$lang]['caption'] = $this->hasTranslation($lang) ?
           $this->translate("$lang")['caption'] ?? '' : '';
+        $data[$lang]['summary'] = $this->hasTranslation($lang) ?
+          $this->translate("$lang")['summary'] ?? '' : '';
         $data[$lang]['uri'] = $this->hasTranslation($lang) ?
           $this->translate("$lang")['uri'] : '';
         $data[$lang]['url'] = $this->hasTranslation($lang) ?

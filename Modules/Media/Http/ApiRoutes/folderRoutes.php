@@ -35,6 +35,12 @@ $router->group(['prefix' => '/folders','middleware' => ['auth:api']], function (
     'middleware' => 'auth-can:media.folders.create'
   ]);
   
+  $router->get('/{criteria}', [
+    'as' => 'api.imedia.folders.show',
+    'uses' => 'NewApi\FolderApiController@show',
+    'middleware' => 'auth-can:media.folders.show'
+  ]);
+  
   $router->put('/{folder}', [
     'as' => 'api.imedia.folders.update',
     'uses' => 'NewApi\FolderApiController@update',

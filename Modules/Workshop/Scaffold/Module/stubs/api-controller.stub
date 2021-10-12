@@ -1,0 +1,20 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Http\Controllers\Api;
+
+use Modules\Core\Icrud\Controllers\BaseCrudController;
+//Model
+use Modules\$MODULE_NAME$\Entities\$CLASS_NAME$;
+use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
+
+class $CLASS_NAME$ApiController extends BaseCrudController
+{
+  public $model;
+  public $modelRepository;
+
+  public function __construct($CLASS_NAME$ $model, $CLASS_NAME$Repository $modelRepository)
+  {
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
+  }
+}

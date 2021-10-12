@@ -41,24 +41,26 @@ class PublicController extends BasePublicController
     public function search(Request $request)
     {
 
-        $searchphrase = $request->input('q');
+        $searchphrase = $request->input('search');
         $take=12;
-        if(config('asgard.isearch.config.queries.iblog')){
+        if(config('asgard.isearch.config.queries.iblog') && is_module_enabled('Iblog')){
             $posts=app('Modules\Iblog\Repositories\PostRepository');
-            $items=$posts->getItemsBy(json_decode(json_encode(['filter'=>['search'=>$searchphrase],'page'=>$request->page??1, 'take'=> $take, 'include'=>['user']])));
+            $items=$posts->getItemsBy(json_decode(json_encode(['filter'=>['search'=>$searchphrase, 'locale' => \App::getLocale()],'page'=>$request->page??1, 'take'=> $take, 'include'=>['user']])));
             $result['post']=["title"=>trans('iblog::post.title.posts'),'items'=>$items];
         }
 
-        if(config('asgard.isearch.config.queries.iplaces')){
+        if(config('asgard.isearch.config.queries.icommerce') && is_module_enabled('Icommerce')){
+            $posts=app('Modules\Icommerce\Repositories\ProductRepository');
+            $items=$posts->getItemsBy(json_decode(json_encode(['filter'=>['search'=>$searchphrase, 'locale' => app()->getLocale()],'page'=>$request->page??1, 'take'=> $take, 'include'=>['addedBy']])));
+            $result['product']=["title"=>trans('icommerce::products.title.products'),'items'=>$items];
+        }
+
+        if(config('asgard.isearch.config.queries.iplaces') && is_module_enabled('Iplaces')){
             $posts=app('Modules\Iplaces\Repositories\PlaceRepository');
             $items=$posts->getItemsBy(json_decode(json_encode(['filter'=>['search'=>$searchphrase],'page'=>$request->page??1, 'take'=> $take, 'include'=>['user']])));
             $result['places']=["title"=>trans('iplaces::places.title.places'),'items'=>$items];
         }
-        if(config('asgard.isearch.config.queries.iperformers')){
-            $posts=app('Modules\Iplaces\Repositories\PlaceRepository');
-            $items=$posts->getItemsBy(json_decode(json_encode(['filter'=>['search'=>$searchphrase],'page'=>$request->page??1, 'take'=> $take, 'include'=>['user']])));
-            $result['places']=["title"=>trans('iplaces::places.title.places'),'items'=>$items];
-        }
+
         $tpl = 'isearch::index';
         $ttpl = 'isearch.index';
         if (view()->exists($ttpl)) $tpl = $ttpl;

@@ -17,9 +17,13 @@ return [
     'table' => [
     ],
     'form' => [
+        'search_here' => 'Search Here',
     ],
     'messages' => [
     ],
     'validation' => [
     ],
+    'settings' => [
+        'minSearchChars' => 'Min. Search Chars'
+    ]
 ];

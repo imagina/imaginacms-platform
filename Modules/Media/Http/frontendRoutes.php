@@ -4,12 +4,11 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Storage;
 
 /** @var Router $router */
-$router->group(['prefix' => '/storage','middleware' => ['auth:api']], function (Router $router) {
+$router->group(['prefix' => '/storage','middleware' => 'auth'], function (Router $router) {
 
-  $router->get('/assets/media/{path}', [
+  $router->get('/assets/media/{criteria}', [
     'as' => 'public.media.media.show',
-    'uses' => 'Frontend\MediaController@show',
-    'middleware' =>  'auth-can:media.medias.show'
+    'uses' => 'Frontend\MediaController@show'
   ]);
   
 });
@@ -17,5 +16,4 @@ $router->group(['prefix' => '/storage','middleware' => ['auth:api']], function (
 $router->get('storage/assets/media/{path}',[
     'as' => 'public.media.media.show',
     'uses' => 'Frontend\MediaController@show',
-]);
-*/
+]);*/

@@ -1,10 +1,13 @@
 <?php namespace Modules\Slider\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Entities\Slide;
 use Modules\Slider\Presenters\SliderPresenter;
+use Modules\Slider\Repositories\Cache\CacheSlideApiDecorator;
+use Modules\Slider\Repositories\Cache\CacheSliderApiDecorator;
 use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
 use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
 use Modules\Slider\Repositories\Eloquent\EloquentSlideApiRepository;
@@ -40,10 +43,13 @@ class SliderServiceProvider extends ServiceProvider
   public function boot()
   {
     $this->publishConfig('slider', 'config');
-    $this->publishConfig('slider', 'permissions');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('slider', 'permissions'), "asgard.slider.permissions");
 
     $this->registerSliders();
     $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
+
+    $this->registerComponents();
+
   }
 
   /**
@@ -126,5 +132,13 @@ class SliderServiceProvider extends ServiceProvider
       return;
     }
   }
+
+    /**
+     * Register Blade components
+     */
+
+    private function registerComponents(){
+        Blade::componentNamespace("Modules\Slider\View\Components", 'slider');
+    }
 
 }

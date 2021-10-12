@@ -12,6 +12,7 @@ class PageTransformer extends JsonResource
             'id' => $this->resource->id,
             'is_home' => $this->resource->is_home,
             'template' => $this->resource->template,
+            'options' => $this->resource->options,
             'created_at' => $this->resource->created_at->format('d-m-Y'),
             'translations' => [
                 'title' => optional($this->resource->translate(locale()))->title,

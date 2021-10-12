@@ -2,23 +2,27 @@
 <html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 <head>
     <meta charset="UTF-8">
-    @section('meta')
-        <meta name="description" content="@setting('core::site-description')"/>
-    @show
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@section('title')@setting('core::site-name')@show</title>
     @if(isset($alternate))
-        @foreach($alternate as $alternateLocale=>$alternateSlug)
-            <link rel="alternate" hreflang="{{$alternateLocale}}" href="{{url($alternateLocale.'/'.$alternateSlug)}}">
+        @foreach($alternate as $link)
+            {!! $link["link"] !!}
         @endforeach
     @endif
-    <link rel="canonical" href="{{url()->current()}}" />
-    <link rel="shortcut icon" href="{{ Theme::url('favicon.ico') }}">
+    <link rel="shortcut icon" href="@setting('isite::favicon')">
     <link rel="canonical" href="{{canonical_url()}}"/>
-    {!! Theme::style('css/app.css?v='.config('app.version')) !!}
-    {!! Theme::script('js/app.js?v='.config('app.version')) !!}
+    {!! Theme::style('css/app.css?v='.setting('isite::appVersion')) !!}
+ 
+    {!! Theme::script('js/app.js?v='.setting('isite::appVersion')) !!}
+    
     @stack('css-stack')
+    @livewireStyles
+
+    {{-- Custom JS --}}
+    @if(Setting::has('isite::headerCustomJs'))
+        <script> {!! Setting::get('isite::headerCustomJs') !!} </script>
+    @endif
 </head>
 <body>
 
@@ -29,9 +33,14 @@
     @include('partials.footer')
 </div>
 
-{!! Theme::style('css/secondary.css?v='.config('app.version')) !!}
-{!! Theme::script('js/secondary.js?v='.config('app.version')) !!}
 
+{!! Theme::style('css/secondary.css?v='.setting('isite::appVersion'),["rel" => "preload", "as" => "style", "onload" => "this.onload=null;this.rel='stylesheet'"]) !!}
+{!! Theme::script('js/secondary.js?v='.setting('isite::appVersion'),["defer" => true]) !!}
+
+@livewireScripts
+<x-livewire-alert::scripts />
+
+<script defer type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fd9384eb64d610011fa8357&product=inline-share-buttons" async="async"></script>
 @yield('scripts-owl')
 @yield('scripts-header')
 @yield('scripts')

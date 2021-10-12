@@ -3,6 +3,7 @@
 namespace Modules\Isearch\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Iblog\Entities\Post;
 use Modules\Isearch\Repositories\Cache\CacheSearchDecorator;
@@ -32,8 +33,12 @@ class IsearchServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishConfig('isearch', 'permissions');
+
         $this->publishConfig('isearch', 'config');
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings'), "asgard.isearch.settings");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings-fields'), "asgard.isearch.settings-fields");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'permissions'), "asgard.isearch.permissions");
+        $this->registerComponentsLivewire();
     }
 
     /**
@@ -59,5 +64,13 @@ class IsearchServiceProvider extends ServiceProvider
             return new CacheSearchDecorator($repository);
         });
 */
+    }
+
+    /**
+     * Register components Livewire
+     */
+    private function registerComponentsLivewire()
+    {
+        Livewire::component('isearch::search', \Modules\Isearch\Http\Livewire\Search::class);
     }
 }

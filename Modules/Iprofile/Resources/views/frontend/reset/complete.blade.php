@@ -13,14 +13,14 @@
                 <div class="col-12 col-md-8 col-lg-6">
 
                     <div class="title">
-                        <h1 class="text-primary">Restablecer contraseña</h1>
+                        <h1 class="text-primary">{{trans('iprofile::frontend.title.resetPassword')}}</h1>
                     </div>
                     <hr class="border-top-dotted">
 
                     <div class="formulario">
 
                         <p class="login-box-msg">{{ trans('user::auth.reset password') }}</p>
-                        @include('partials.notifications')
+                        @include('isite::frontend.partials.notifications')
 
                         {!! Form::open() !!}
                         <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">

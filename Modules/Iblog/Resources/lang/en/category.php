@@ -31,6 +31,7 @@ return [
         'image'=>'Main Image'
     ],
     'messages' => [
+      "sameSlug" => "The Slug: ':slug' belongs to another category"
     ],
     'validation' => [
     ],

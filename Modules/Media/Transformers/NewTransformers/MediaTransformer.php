@@ -19,17 +19,18 @@ class MediaTransformer extends JsonResource
    * @var ThumbnailManager
    */
   private $thumbnailManager;
-  
+
   public function __construct($resource)
   {
     parent::__construct($resource);
-    
+
     $this->imagy = app(Imagy::class);
     $this->thumbnailManager = app(ThumbnailManager::class);
   }
-  
+
   public function toArray($request)
   {
+
     $data = [
       'id' => $this->id,
       'filename' => $this->filename,
@@ -40,53 +41,69 @@ class MediaTransformer extends JsonResource
       'faIcon' => FileHelper::getFaIcon($this->media_type),
       'createdAt' => $this->created_at,
       'folderId' => $this->folder_id,
-      'smallThumb' => $this->imagy->getThumbnail($this->path, 'smallThumb'),
-      'mediumThumb' => $this->imagy->getThumbnail($this->path, 'mediumThumb'),
-      'createdBy' => $this->created_by
-      
+      'filesize' => $this->filesize,
+      'extension' => $this->extension,
+      'zone' => $this->when(isset($this->pivot->zone) && !empty($this->pivot->zone), $this->pivot->zone ?? null),
+      'smallThumb' => $this->imagy->getThumbnail($this->resource, 'smallThumb'),
+      'mediumThumb' => $this->imagy->getThumbnail($this->resource, 'mediumThumb'),
+      'largeThumb' => $this->imagy->getThumbnail($this->resource, 'largeThumb'),
+      'extraLargeThumb' => $this->imagy->getThumbnail($this->resource, 'extraLargeThumb'),
+      'createdBy' => $this->created_by,
+
     ];
-  
+
     $data['createdByUser'] = new UserTransformer($this->createdBy);
-    
+
     foreach ($this->thumbnailManager->all() as $thumbnail) {
       $thumbnailName = $thumbnail->name();
-      
+
       $data['thumbnails'][] = [
         'name' => $thumbnailName,
-        'path' => $this->imagy->getThumbnail($this->path, $thumbnailName),
+        'path' => $this->imagy->getThumbnail($this->resource, $thumbnailName),
         'size' => $thumbnail->size(),
       ];
     }
+  
+    $filter = json_decode($request->filter);
+  
+    // Return data with available translations
+    if (isset($filter->allTranslations) && $filter->allTranslations) {
+      // Get langs avaliables
+      $languages = \LaravelLocalization::getSupportedLocales();
     
-    foreach (LaravelLocalization::getSupportedLocales() as $locale => $supportedLocale) {
-      $data[$locale] = [];
-      foreach ($this->translatedAttributes as $translatedAttribute) {
-        $data[$locale][$translatedAttribute] = $this->translateOrNew($locale)->$translatedAttribute;
+      foreach ($languages as $lang => $value) {
+        $data[$lang]['description'] = $this->hasTranslation($lang) ?
+          $this->translate("$lang")['description'] : '';
+        $data[$lang]['altAttribute'] = $this->hasTranslation($lang) ?
+          $this->translate("$lang")['alt_attribute'] ?? '' : '';
+        $data[$lang]['keywords'] = $this->hasTranslation($lang) ?
+          $this->translate("$lang")['keywords'] : '';
       }
     }
     
+
     foreach ($this->tags as $tag) {
       $data['tags'][] = $tag->name;
     }
-    
+
     return $data;
   }
-  
+
   private function getPath()
   {
     if ($this->is_folder) {
       return $this->path->getRelativeUrl();
     }
-    
+
     return (string)$this->path;
   }
-  
+
   private function getDeleteUrl()
   {
     if ($this->isImage()) {
       return route('api.media.media.destroy', $this->id);
     }
-    
+
     return route('api.media.folders.destroy', $this->id);
   }
 }

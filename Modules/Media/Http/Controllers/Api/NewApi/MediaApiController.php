@@ -112,41 +112,18 @@ class MediaApiController extends BaseApiController
   {
     \DB::beginTransaction();
     try {
+      
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
   
-      //Get data
-      // $data = $request->input('attributes');
+      $disk = (in_array($request->get('disk'),array_keys(config('filesystems.disks'))))? $request->get('disk') : null;
       
-      //Validate Request
-      $this->validateRequestApi(new UploadMediaRequest($request->all()));
       $file = $request->file('file');
       $contentType = $request["Content-Type"];
       //return [$contentType];
-      if($contentType == 'image/jpeg'){
-    
-    
-        $image = \Image::make($request->file('file'));
-    
-        $imageSize = (Object) config('asgard.media.config.imageSize');
-        $watermark = (Object) config('asgard.media.config.watermark');
-    
-        $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
-          $constraint->aspectRatio();
-          $constraint->upsize();
-        });
-    
-        if ($watermark->activated) {
-          $image->insert($watermark->url, $watermark->position, $watermark->x, $watermark->y);
-        }
-        $filePath = $file->getPathName();
-        \File::put($filePath, $image->stream('jpg',$imageSize->quality));
-      }
       
-      $savedFile = $this->fileService->store($file, $request->get('parent_id'));
+      $savedFile = $this->fileService->store($file, $request->get('parent_id'),$disk);
   
-      $savedFile->created_by =  $params->user->id;
-      $savedFile->save();
       if (is_string($savedFile)) throw new \Exception($savedFile, 409);
       
       event(new FileWasUploaded($savedFile));

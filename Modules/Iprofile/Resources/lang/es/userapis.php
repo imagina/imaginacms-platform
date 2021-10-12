@@ -18,6 +18,13 @@ return [
     'form' => [
     ],
     'messages' => [
+      
+      "unavailableUserName" => "El Email o Usuario no está disponible",
+      "firstNameRequired" => "El Nombre es obligatorio",
+      "lastNameRequired" => "El Apellido es obligatorio",
+      "emailRequired" => "El Correo Eletrónico/Usuario es obligatorio",
+      "passwordRequired" => "La Contraseña es obligatoria",
+      
     ],
     'validation' => [
     ],

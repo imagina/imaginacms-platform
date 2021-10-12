@@ -12,11 +12,12 @@ interface FileRepository extends BaseRepository
 {
     /**
      * Create a file row from the given file
-     * @param  UploadedFile $file
-     * @param int $parentId
+     * @param  UploadedFile  $file
+     * @param  int  $parentId
+     * @param  string  $disk
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file, int $parentId = 0);
+    public function createFromFile(UploadedFile $file, $parentId = 0, $disk = null);
 
     /**
      * Find a file for the entity by zone
@@ -44,9 +45,9 @@ interface FileRepository extends BaseRepository
      * @param int $folderId
      * @return Collection
      */
-    public function allChildrenOf(int $folderId) : Collection;
+    public function allChildrenOf($folderId) : Collection;
 
-    public function findForVirtualPath(string $path);
+    public function findForVirtualPath($criteria);
 
     public function allForGrid() : Collection;
 

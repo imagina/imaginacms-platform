@@ -1,5 +1,7 @@
 <?php
+
 namespace Modules\Isite\Http\Controllers\Api;
+
 use Illuminate\Session\Store;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -9,6 +11,8 @@ use Modules\Isite\Transformers\SettingTransformer;
 use Modules\Setting\Repositories\SettingRepository;
 use Nwidart\Modules\Module;
 use Illuminate\Support\Str;
+use Modules\Setting\Contracts\Setting;
+
 class SettingApiController extends BaseApiController
 {
   /**
@@ -23,15 +27,19 @@ class SettingApiController extends BaseApiController
    * @var Store
    */
   private $session;
-  public function __construct(SettingRepository $settings, Store $session)
+
+  private $setting;
+
+  public function __construct(SettingRepository $settings, Store $session, Setting $setting)
   {
-    
+
     $this->settings = $settings;
     $this->module = app('modules');
     $this->session = $session;
+    $this->setting = $setting;
   }
-  
-  
+
+
   /**
    * GET ITEMS
    *
@@ -42,73 +50,72 @@ class SettingApiController extends BaseApiController
     try {
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
-      
+
       $modulesWithSettings = $this->settings->moduleSettings($this->module->allEnabled());
-      
+
       $dbSettings = [];
       $translatableSettings = [];
       $plainSettings = [];
-      
+
       // fetching translatable, plain, and DB setting by each module enabled with settings
-      foreach ($modulesWithSettings as $key => $module){
+      foreach ($modulesWithSettings as $key => $module) {
         $translatableSettings[$key] = $this->settings->translatableModuleSettings($key);
         $plainSettings[$key] = $this->settings->plainModuleSettings($key);
         $dbSettings[$key] = $this->settings->savedModuleSettings($key);
       }
       /*=== SETTINGS ===*/
       $assignedSettings = [];
-      if (isset($params->settings)) {
+      /*if (isset($params->settings)) {
         if (isset($params->settings['assignedSettings']) && !empty($params->settings['assignedSettings'])) {
           $assignedSettings = $params->settings['assignedSettings'];
         }
-      }
-      
+      }*/
+
       // merging translatable and plain settings
-      $mergedSettings = array_merge_recursive($translatableSettings,$plainSettings);
-      
+      $mergedSettings = array_merge_recursive($translatableSettings, $plainSettings);
+
       $response = ["data" => $this->transformSettings($mergedSettings, $dbSettings, $assignedSettings)];
-      
     } catch (\Exception $e) {
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  
+
+
   /**
    * GET A ITEM
    *
    * @param $criteria
    * @return mixed
    */
-  public function show($criteria,Request $request)
+  public function show($criteria, Request $request)
   {
     try {
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
-      
+
       $module = $this->module->find($criteria);
-      
+
       //Break if no found item
-      if(!$module) throw new \Exception('Item not found',404);
-      
+      if (!$module) throw new \Exception('Item not found', 404);
+
       $this->session->put('module', $module->getLowerName());
       $dbSettings = $this->settings->findByModule($module->getLowerName());
       //Response
-      $response = ["data" =>  SettingTransformer::collection($dbSettings)];
-      
+      $response = ["data" => SettingTransformer::collection($dbSettings)];
+
     } catch (\Exception $e) {
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
+
   /**
    * UPDATE ITEM
    *
@@ -120,11 +127,20 @@ class SettingApiController extends BaseApiController
   {
     \DB::beginTransaction(); //DB Transaction
     try {
-      
+      //Get Parameters from URL.
+      $params = $this->getParamsRequest($request);
+      //Get data
       $data = $request->input('attributes');
-      
+
+      //Validate settings can manage
+      if (isset($params->settings['assignedSettings']) && count($params->settings['assignedSettings'])) {
+        foreach ($data as $settingName => $settingValue) {
+          if (!in_array($settingName, $params->settings['assignedSettings'])) unset($data[$settingName]);
+        };
+      }
+
       $this->settings->createOrUpdate($data);
-      
+
       //Response
       $response = ["data" => 'Item Updated'];
       \DB::commit();//Commit to DataBase
@@ -133,154 +149,71 @@ class SettingApiController extends BaseApiController
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  public function transformSettings(&$mergedSettings, $dbSettings, $assignedSettings){
-    $transformedModules = [];
-    
-    foreach ($mergedSettings as $keyModule => &$module){
-      
+
+  public function transformSettings(&$mergedSettings, $dbSettings, $assignedSettings)
+  {
+    foreach ($mergedSettings as $keyModule => &$module) {
       foreach ($module as $keySetting => &$setting) {
-        
-        // name of setting in DB setting
-        $dbSettingName = strtolower($keyModule) . '::' . $keySetting;
-        
-        if (empty($assignedSettings) || in_array($dbSettingName, $assignedSettings)) {
-          
-          
-          if (isset($dbSettings[$keyModule][$dbSettingName])) {
-            
-            // merging data on DB with config setting
-            $settingTransformed = new SettingTransformer($dbSettings[$keyModule][$dbSettingName]);
-            
-            $setting = array_merge(collect($settingTransformed)->toArray(), $setting);
-          } else {
-            // init setting value if is file
-            if (Str::contains($setting['view'], 'file'))
-              $setting['value'] = ['medias_single' => [$dbSettingName => '']];
-            else // or plain string
-              if (Str::contains($setting['view'], 'select-locales') || Str::contains($setting['view'], 'select-multi'))
-                $setting['value'] = [];
-              else
-                $setting['value'] = '';
-            
-            // init setting name
-            $setting['name'] = $dbSettingName;
-            
+        $settingName = strtolower($keyModule) . '::' . $keySetting;//Setting name
+        $dbSetting = $dbSettings[$keyModule][$settingName] ?? false;//DB setting value
+        //Get available locales
+        $locales = json_decode($dbSettings['Core']['core::locales']->plainValue ?? json_encode(['en']));
+
+        //Transform settings
+        if (empty($assignedSettings) || in_array($settingName, $assignedSettings)) {
+          //Set setting value from DB
+          if ($dbSetting) $setting = array_merge($setting, $dbSetting->toArray());
+          //Get default value
+          $defaultValue = !isset($setting['default']) ? null :
+            ($this->isJson($setting['default']) ? json_decode($setting['default']) : $setting['default']);
+          //Get plain value
+          $plainValue = !isset($setting['plainValue']) ? null :
+            ($this->isJson($setting['plainValue']) ? json_decode($setting['plainValue']) : $setting['plainValue']);
+          //Validate default values
+          $setting = array_merge($setting, [
+            'name' => $settingName,
+            'description' => isset($setting['description']) ? trans($setting['description']) : '',
+            'isTranslatable' => $setting['translatable'] ?? false,
+            'plainValue' => $plainValue ?? $defaultValue,
+            'value' => $plainValue ? $plainValue : ($setting['value'] ?? $defaultValue ?? null)
+          ]);
+          //Get media path
+          if (is_object($setting['value']) && isset($setting['value']->medias_single)) {
+            //Get media
+            $media = $dbSetting ? $dbSetting->files()->where('zone', $settingName)->first() : null;
+            //Set media value
+            $setting["media"] = [
+              'mimeType' => ($media === null) ? 'image/jpeg' : $media->mimetype,
+              'path' => ($media === null) ? url('modules/isite/img/defaultLogo.jpg') : $media->path_string
+            ];
           }
-          
-          if (isset($setting['plainValue'])) {
-            // decode plain value if is object or array
-            $plainValue = $setting['plainValue'];
-            $plainValue = $this->isJson($plainValue) ? json_decode($plainValue) : $plainValue;
-            
-            // update plain value
-            $setting['plainValue'] = $plainValue;
-            
-            // setting value off settings not translatable
-            $setting['value'] = $plainValue;
-            
-          }
-          
-          if (isset($setting['description'])) {
-            // translate description
-            $description = $setting['description'];
-            $setting['description'] = trans($description);
-          }
-          
-          if (!isset($setting['isTranslatable'])) {
-            $setting['isTranslatable'] = $setting['translatable'] ?? false;
-          }
-          
-          
-          // type setting standard based in view param
-          $setting['type'] = $setting['view'];
-          if (Str::contains($setting['view'], 'select'))
-            $setting['type'] = 'select';
-          
-          if (Str::contains($setting['view'], 'select-multi'))
-            $setting['type'] = 'select-multi';
-          
-          
-          // type selectMultiple where view contains select-locale string
-          if (Str::contains($setting['view'], 'select-locales'))
-            $setting['type'] = 'select-multi';
-          
-          // init boolean value when type is checkbox
-          if ($setting['type'] == 'checkbox') {
-            if($setting['value']=='1')
-              $setting['value'] = true;
-            else
-              if($setting['value'] == '0')
-                $setting['value']= false;
-              else
-                if(isset($setting["default"]))
-                  $setting['value'] = $setting["default"];
-          }
-          
-          // type setting standard based in view param
-          if (Str::contains($setting['view'], 'file')){
-            $setting['type'] = 'file';
-            if(!isset($setting['media'])){
-              $setting["media"] = [
-                'mimeType' => 'image/jpeg',
-                'path' => url('modules/isite/img/defaultLogo.jpg')
-              ];
+          //Validate translations
+          if ($setting['isTranslatable'] && !isset($setting['translations'])) {
+            $setting['translations'] = [];//Default value
+            //Set translations
+            foreach ($locales as $locale) {
+              $setting['translations'][] = ['locale' => $locale, 'value' => $setting['value']];
             }
           }
-          
-          // type setting standard based in view param
-          if (Str::contains($setting['view'], 'color'))
-            $setting['type'] = 'color';
-          
-          // type setting standard based in view param
-          if (Str::contains($setting['view'], 'text-multi')){
-            
-            $setting['type'] = 'text-multi';
-            if(!$setting['value']){
-              $setting['value'] = [];
-            }
-          }
-          
-          // type setting standard based in view param
-          if (Str::contains($setting['view'], 'text-multi-with-options')){
-            $setting['type'] = 'text-multi-with-options';
-            if(!$setting['value']){
-              $setting['value'] = [];
-            }
-          }
-          // type setting standard based in view param
-          if (Str::contains($setting['view'], 'checkbox-multi-with-options')){
-            $setting['type'] = 'checkbox-multi-with-options';
-            if(!$setting['value']){
-              $setting['value'] = [];
-            }
-          }
-          
-          // type setting standard based in view param
-          if (isset($setting["custom"]) && $setting["custom"]){
-            $setting['type'] = $setting['view'];
-          }
-          
-          
-          
-        }else{
+        } else {
           unset($module[$keySetting]);
         }
       }
-      
+
       if (empty($module))
         unset($mergedSettings[$keyModule]);
     }
-    
+
     return $mergedSettings;
   }
-  
-  
-  function isJson($string) {
+
+
+  function isJson($string)
+  {
     return ((is_string($string) &&
       (is_object(json_decode($string)) ||
         is_array(json_decode($string))))) ? true : false;

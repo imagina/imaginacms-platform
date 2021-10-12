@@ -71,7 +71,7 @@ final class FileMover implements MoverInterface
         $this->fromPath = $folder->path->getRelativeUrl();
         $this->toPath = $this->getNewPathFor($folder->filename, $destination->id);
 
-        return $this->moveFile($this->fromPath, $this->toPath);
+        return $this->moveFile($this->fromPath, $this->toPath, $folder->disk);
     }
 
     private function moveDatabase(File $file, File $destination) : File
@@ -79,10 +79,11 @@ final class FileMover implements MoverInterface
         return $this->file->move($file, $destination);
     }
 
-    private function moveFile($fromPath, $toPath) : bool
+    private function moveFile($fromPath, $toPath, $disk = null) : bool
     {
+        $disk = is_null($disk)? $this->getConfiguredFilesystem() : $disk;
         try {
-            $this->filesystem->disk($this->getConfiguredFilesystem())
+            $this->filesystem->disk($disk)
                 ->move(
                     $this->getDestinationPath($fromPath),
                     $this->getDestinationPath($toPath)
@@ -105,7 +106,7 @@ final class FileMover implements MoverInterface
 
     private function getConfiguredFilesystem() : string
     {
-        return config('asgard.media.config.filesystem');
+        return setting('media::filesystem', null, config("asgard.media.config.filesystem"));
     }
 
     private function getNewPathFor(string $filename, int $folderId)

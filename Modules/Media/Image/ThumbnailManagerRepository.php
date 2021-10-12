@@ -9,9 +9,9 @@ class ThumbnailManagerRepository implements ThumbnailManager
      */
     private $thumbnails = [];
 
-    public function registerThumbnail($name, array $filters)
+    public function registerThumbnail($name, array $filters, $format = 'jpg')
     {
-        $this->thumbnails[$name] = Thumbnail::make([$name => $filters]);
+        $this->thumbnails[$name] = Thumbnail::make([$name => $filters], $format);
     }
 
     /**

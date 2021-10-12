@@ -11,12 +11,15 @@ return [
   'form' => [
   ],
   'messages' => [
+    'fieldRequired' => 'El Campo :field es obligatorio',
     'title is required' => 'The title is required',
     'title min 2' => 'Title must contain at least two characters',
     'description is required' => 'The Description is required',
     'description min 2' => 'The description must contain at least two characters',
     'summary is required' => 'The summary is required',
     'summary min 2' => 'The summary must contain at least two characters',
+    'captcha_required' => 'El Captcha es requerido',
+    'captcha_invalid' => 'El Captcha es inválido o no está correctamente configurado',
   ],
   'validation' => [
   ],
@@ -35,6 +38,11 @@ return [
     'location' => 'Localizaciòn',
     'phone' => 'Teléfono',
     'date' => 'Fecha',
+    'file' => 'Archivo',
+  ],
+  'formTypes' => [
+      'normal' => 'Formulario normal',
+      'steps' => 'Formulario con pasos'
   ],
 
   'status_text' => 'Estatus',
@@ -69,5 +77,12 @@ return [
     'api' => 'Api',
     'recaptcha' => 'Recaptcha',
     'trans' => 'Traducible',
+  ],
+  'editLink' => [
+    'tooltipForm' => 'Editar este formulario'
+  ],
+  'settingHints' => [
+    'emails' => 'Ingresa el correo y presiona enter',
+    'usersToNotify' => 'Usuarios para enviar notificaciones',
   ]
 ];

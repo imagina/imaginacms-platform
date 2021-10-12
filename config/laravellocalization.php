@@ -7,6 +7,7 @@ return [
     // Regional languages are sorted by their base languge, so "British English" sorts as "English, British"
     'supportedLocales' => [
         'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English'],
+	'es' => ['name' => 'Spanish', 'script' => 'Latn', 'native' => 'español']
     ],
     // Negotiate for the user locale using the Accept-Language header if it's not defined in the URL?
     // If false, system will take app.php locale attribute

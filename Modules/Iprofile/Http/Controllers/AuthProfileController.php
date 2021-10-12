@@ -2,13 +2,18 @@
 
 namespace Modules\Iprofile\Http\Controllers;
 
+use Cartalyst\Sentinel\Laravel\Facades\Reminder;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\MessageBag;
 
 use Modules\Core\Http\Controllers\BasePublicController;
 
+use Modules\User\Events\UserHasRegistered;
+use Modules\User\Events\UserLoggedIn;
 use Modules\User\Http\Requests\LoginRequest;
 use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
@@ -18,6 +23,8 @@ use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Entities\Sentinel\User;
 use Modules\Setting\Contracts\Setting;
+use Lcobucci\JWT\Parser;
+use Validator;
 
 use Socialite;
 use Laravel\Socialite\Contracts\User as ProviderUser;
@@ -75,6 +82,16 @@ class AuthProfileController extends AuthController
     $tpl = 'iprofile::frontend.login';
     $ttpl = 'iprofile.login';
 
+    request()->session()->put('url.intended',url()->previous());
+  
+    $panel = config("asgard.iprofile.config.panel");
+
+    if(!empty($panel) && $panel == "quasar"){
+    
+        return redirect("/ipanel/#/auth/login"."?redirectTo=".url()->previous());
+      
+    }
+
     if (view()->exists($ttpl)) $tpl = $ttpl;
     return view($tpl);
 
@@ -89,16 +106,40 @@ class AuthProfileController extends AuthController
   public function postLogin(LoginRequest $request)
   {
 
-    parent::postLogin($request);
-
     $data = $request->all();
 
-    if (isset($data["embedded"]) && $data["embedded"])
-      return redirect()->route($data["embedded"])
-        ->withSuccess(trans('user::messages.successfully logged in'));
+      $credentials = [
+          'email' => $request->email,
+          'password' => $request->password,
+      ];
 
-    return redirect()->intended(route(config('asgard.user.config.redirect_route_after_login')))
-      ->withSuccess(trans('user::messages.successfully logged in'));
+      $remember = (bool) $request->get('remember_me', false);
+
+      $error = $this->auth->login($credentials, $remember);
+
+      if ($error) {
+          return redirect()->back()->withInput()->withError($error);
+      }
+
+      $user = $this->auth->user();
+      event(new UserLoggedIn($user));
+
+
+      if (isset($data["embedded"]) && $data["embedded"]) {
+              return redirect()->route($data['embedded'])
+                  ->withSuccess(trans('user::messages.successfully logged in'));
+      }else if(!empty(request()->session()->get('url.intended'))){
+          $url = request()->session()->get('url.intended');
+          request()->session()->put('url.intended', null);
+          return redirect()->to($url)
+              ->withSuccess(trans('user::messages.successfully logged in'));
+      }else if(!empty($request->headers->get('referer'))){
+          return redirect()->to($request->headers->get('referer'))
+              ->withSuccess(trans('user::messages.successfully logged in'));
+      }
+
+      return redirect()->intended(route(config('asgard.user.config.redirect_route_after_login')))
+          ->withSuccess(trans('user::messages.successfully logged in'));
 
   }
 
@@ -111,7 +152,8 @@ class AuthProfileController extends AuthController
    */
   public function getLogout()
   {
-    parent::getLogout();
+    \DB::table('oauth_access_tokens')->where('user_id', \Auth::id() ?? null)->delete();//Delete Token
+    $this->auth->logout();
     return \Redirect::to('/');
   }
 
@@ -123,12 +165,25 @@ class AuthProfileController extends AuthController
    */
   public function getRegister()
   {
-    parent::getRegister();
+    $usersCanRegisterSetting = setting("iprofile::registerUsers", null, true);
 
-    $tpl = 'iprofile::frontend.register';
-    $ttpl = 'iprofile.register';
-    if (view()->exists($ttpl)) $tpl = $ttpl;
-    return view($tpl);
+    if($usersCanRegisterSetting){
+      parent::getRegister();
+
+      $panel = config("asgard.iprofile.config.panel");
+      
+      if($panel == "quasar"){
+        return redirect("/ipanel/#/auth/login"."?redirectTo=".url()->previous());
+      }
+      
+      $tpl = 'iprofile::frontend.register';
+      $ttpl = 'iprofile.register';
+      if (view()->exists($ttpl)) $tpl = $ttpl;
+      return view($tpl);
+
+    }else{
+      return abort(404);
+    }
 
   }
 
@@ -146,76 +201,91 @@ class AuthProfileController extends AuthController
 
     try {
 
-      $data = $request->all();
+      $usersCanRegisterSetting = setting("iprofile::registerUsers", null, true);
 
-      // Check Exist Roles
-      if (isset($data['roles'])) {
+      if($usersCanRegisterSetting){
+        $data = $request->all();
 
-        $roles = $data['roles'];
-        $newRoles = [];
+        $validateRegisterWithEmail = setting('iprofile::validateRegisterWithEmail',null, false);
 
-        foreach ($roles as $rolName) {
-          $roleCustomer = $this->role->findByName($rolName);
-          if ($roleCustomer) {
-            array_push($newRoles, $roleCustomer->id);
+        // Check Exist Roles
+        if (isset($data['roles'])) {
+
+          $roles = $data['roles'];
+          $newRoles = [];
+
+          foreach ($roles as $rolName) {
+            $roleCustomer = $this->role->findByName($rolName);
+            if ($roleCustomer) {
+              array_push($newRoles, $roleCustomer->id);
+            }
           }
-        }
 
-        $data['roles'] = [];
+          $data['roles'] = [];
 
-        if (count($newRoles) > 0) {
-          $data['roles'] = $newRoles;
+          if (count($newRoles) > 0) {
+            $data['roles'] = $newRoles;
+          } else {
+            $roleCustomer = $this->role->findByName('User');
+            array_push($data['roles'], $roleCustomer->id);
+          }
+
         } else {
+          $data['roles'] = [];
           $roleCustomer = $this->role->findByName('User');
           array_push($data['roles'], $roleCustomer->id);
         }
 
-      } else {
-        $data['roles'] = [];
-        $roleCustomer = $this->role->findByName('User');
-        array_push($data['roles'], $roleCustomer->id);
-      }
+        if (!isset($data["is_activated"]) && !$validateRegisterWithEmail)
+          $data["is_activated"] = 1;
+        else if($validateRegisterWithEmail)
+          $data["is_activated"] = 0;
 
-      if (!isset($data["is_activated"]))
-        $data["is_activated"] = 1;
+        // Create User with Roles
+        $user = $this->user->createWithRoles($data, $data["roles"], $data["is_activated"]);
+        $checkPointRegister = $this->setting->get('iredeems::points-per-register-user-checkbox');
+        if ($checkPointRegister) {
+          //Assign points to user
+          $pointsPerRegister = $this->setting->get('iredeems::points-per-register-user');
+          if ((int)$pointsPerRegister > 0) {
+            iredeems_StorePointUser([
+              "user_id" => $user->id,
+              "pointable_id" => 0,
+              "pointable_type" => "---",
+              "type" => 1,
+              "description" => trans("iredeems::common.settingsMsg.points-per-register"),
+              "points" => (int)$pointsPerRegister
+            ]);
+          }//points to assign > 0
+        }//Checkpoint per register
+        //Extra Fields
+        if (isset($data["fields"])) {
+          $field = [];
+          foreach ($data["fields"] as $key => $value) {
 
-      // Create User with Roles
-      $user = $this->user->createWithRoles($data, $data["roles"], $data["is_activated"]);
-      $checkPointRegister = $this->setting->get('iredeems::points-per-register-user-checkbox');
-      if ($checkPointRegister) {
-        //Assign points to user
-        $pointsPerRegister = $this->setting->get('iredeems::points-per-register-user');
-        if ((int)$pointsPerRegister > 0) {
-          iredeems_StorePointUser([
-            "user_id" => $user->id,
-            "pointable_id" => 0,
-            "pointable_type" => "---",
-            "type" => 1,
-            "description" => trans("iredeems::common.settingsMsg.points-per-register"),
-            "points" => (int)$pointsPerRegister
-          ]);
-        }//points to assign > 0
-      }//Checkpoint per register
-      //Extra Fields
-      if (isset($data["fields"])) {
-        $field = [];
-        foreach ($data["fields"] as $key => $value) {
+            $field['user_id'] = $user->id;// Add user Id
+            $field['value'] = $value;
+            $field['name'] = $key;
 
-          $field['user_id'] = $user->id;// Add user Id
-          $field['value'] = $value;
-          $field['name'] = $key;
+            /*
+            $this->validateResponseApi(
+                $this->field->create(new Request(['attributes' => (array)$field]))
+            );
+            */
+            $this->field->create(new Request(['attributes' => (array)$field]));
 
-          /*
-          $this->validateResponseApi(
-              $this->field->create(new Request(['attributes' => (array)$field]))
-          );
-          */
-          $this->field->create(new Request(['attributes' => (array)$field]));
-
+          }
         }
+
+        if($validateRegisterWithEmail){
+          event(new UserHasRegistered($user));
+        }
+
+        \DB::commit(); //Commit to Data Base
+      }else{
+        abort(401);
       }
 
-      \DB::commit(); //Commit to Data Base
 
     } catch (\Throwable $t) {
 
@@ -273,6 +343,7 @@ class AuthProfileController extends AuthController
     $tpl = 'iprofile::frontend.reset.begin';
     $ttpl = 'iprofile.reset.begin';
     if (view()->exists($ttpl)) $tpl = $ttpl;
+    
     return view($tpl);
   }
 
@@ -284,7 +355,13 @@ class AuthProfileController extends AuthController
    */
   public function postReset(ResetRequest $request)
   {
-    parent::postReset($request);
+    $user = $this->user->findByCredentials($request->all());
+    if($user) {
+        $reminder = Reminder::exists($user);
+        if ($reminder == false) {
+            parent::postReset($request);
+        }
+    }
 
     return redirect()->route('account.reset')
       ->withSuccess(trans('user::messages.check email to reset password'));
@@ -380,11 +457,11 @@ class AuthProfileController extends AuthController
       try {
 
         if(!setting("iprofile::registerUsersWithSocialNetworks")){
-          throw new Exception('Users can\'t login with social networks', 401);
+          throw new \Exception('Users can\'t login with social networks', 401);
         }
-
+       
         $user = $this->_createOrGetUser($provider, $fields);
-
+    
 
         if (isset($user->id)) {
           $autn = \Sentinel::login($user);
@@ -395,14 +472,18 @@ class AuthProfileController extends AuthController
             ->withSuccess(trans('iprofile::messages.account created'));
 
         } else {
-          return redirect()->back()->with(trans('user::messages.error create account'));;
+           throw new \Exception('Users can\'t login with social networks', 401);
         }
 
 
       } catch (\Exception $e) {
         $status = $e->getCode();
         $response = ["errors" => $e->getMessage()];
+        return redirect()->route('account.register')
+          ->withError($e->getMessage());
       }
+  
+  
     }
 
 
@@ -445,29 +526,31 @@ class AuthProfileController extends AuthController
         //$social_picture = $providerUser->user['picture']['data'];
         $userdata['first_name'] = $providerUser->user['first_name'];
         $userdata['last_name'] = $providerUser->user['last_name'];
-        $userdata["verified"] = true;
+        $userdata["is_activated"] = true;
 
       } else {
         $fullname = explode(" ", $providerUser->getName());
         $userdata['first_name'] = $fullname[0];
         $userdata['last_name'] = $fullname[1];
-        $userdata["verified"] = true;
+        $userdata["is_activated"] = true;
       }
-
+      //validating if the userData contain the email
+      if(empty($userdata['email'])) throw new \Exception(trans("iprofile::frontend.messages.providerEmailEmpty",["providerName" => $provider]),400);
+      
       //Let's create the User
       $role = $this->role->findByName(config('asgard.user.config.default_role', 'User'));
       $existUser = false;
       $user = User::where('email', $userdata['email'])->first();
+   
       if (!$user) {
-        if ($userdata["verified"]) {
-          $user = $this->user->createWithRoles($userdata, $role, true);
-        } else {
-          $user = $this->user->createWithRoles($userdata, $role);
+        if ($userdata["is_activated"]) {
+ 
+          $user = $this->user->createWithRoles($userdata, [$role->id], $userdata["is_activated"] ?? false);
+        
         }
       } else {
         $existUser = true;
       }
-
 
       if (isset($user->email) && !empty($user->email)) {
         $createSocial = true;
@@ -507,6 +590,7 @@ class AuthProfileController extends AuthController
     }
 
   }
+  
 
 
 }

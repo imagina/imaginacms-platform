@@ -12,9 +12,10 @@ use Modules\Iforms\Http\Requests\CreateLeadRequest;
 use Modules\Iforms\Repositories\FieldRepository;
 use Modules\Iforms\Repositories\FormRepository;
 use Modules\Setting\Contracts\Setting;
-use Request;
+use Illuminate\Http\Request;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
-class PublicController extends BasePublicController
+class PublicController extends BaseApiController
 {
 
     private $lead;
@@ -26,6 +27,7 @@ class PublicController extends BasePublicController
     private $form;
     private $setting;
     private $field;
+    private $leadRepository;
 
     public function __construct(Application $app, Setting $setting, FieldRepository $field, FormRepository $form)
     {
@@ -34,6 +36,7 @@ class PublicController extends BasePublicController
         $this->setting = $setting;
         $this->field = $field;
         $this->form = $form;
+        $this->leadRepository = app('Modules\Iforms\Repositories\LeadRepository');
 
     }
 
@@ -126,6 +129,43 @@ class PublicController extends BasePublicController
 
         return response()->json($response);
 
+
+    }
+
+
+    public function getAttachment(Request $request, $formId, $leadId, $fileZone)
+    {
+ 
+        try {
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
+          
+            //Request to Repository
+            $lead = $this->leadRepository->getItem($leadId,$params);
+         
+            //Request to Repository
+            $form = $this->form->getItem($formId,$params);
+
+            if (!isset($lead->id) || !isset($form->id))
+                throw new Exception('Item not found', 404);
+
+            $attachment = $lead->filesByZone($fileZone)->first();
+
+            $type = $attachment["mimetype"] ?? null;
+
+            $privateDisk = config('filesystems.disks.public');
+            $mediaFilesPath = config('asgard.media.config.files-path');
+
+            $path = $privateDisk["root"].$mediaFilesPath. $attachment->filename;
+
+            return response()->file($path, [
+                'Content-Type' => $type,
+            ]);
+
+
+        } catch (\Exception $e) {
+          return abort(404);
+        }
 
     }
 

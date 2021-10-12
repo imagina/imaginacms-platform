@@ -19,4 +19,8 @@ class AddIformsFormsTable extends Migration
         });
     }
 
+    public function down(){
+
+    }
+
 }

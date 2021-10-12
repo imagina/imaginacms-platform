@@ -26,7 +26,11 @@ if (!function_exists('getSettingsFormat')) {
           'view' => 'settingField',
           'translatable' => isset($field->isTranslatable) && $field->isTranslatable ? true : false,
         ];
+      } else {
+        //Validate others fields if setting is translatable
+        if (isset($field->isTranslatable) && $field->isTranslatable) $response[$settingName]['translatable'] = true;
       }
+
 
       //Add fake values
       if (isset($field->fakeFieldName)) $response[$settingName]['default'][$field->name] = $field->value;

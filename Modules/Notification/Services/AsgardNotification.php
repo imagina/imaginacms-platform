@@ -64,7 +64,7 @@ final class AsgardNotification implements Notification
     {
 
         try {
-            \Log::info('Norification push');
+            \Log::info('Notification push');
             fcm()->toTopic('notification.new.' . $notification->user_id) // $topic must an string (topic name)
             ->priority('normal')
                 ->timeToLive(0)

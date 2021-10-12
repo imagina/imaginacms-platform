@@ -29,7 +29,7 @@ $mainImage=\Modules\Iprofile\Entities\Field::where('user_id',Auth::user()->id)->
                 </span>
             </div>
             <a class="dropdown-item"  href="{{url('/account')}}">
-                <i class="fa fa-user mr-2"></i>{{trans('iprofile::frontend.title.profiles')}}
+                <i class="fa fa-user mr-2"></i>{{trans('iprofile::frontend.title.profile')}}
             </a>
             @if(is_module_enabled('Icommerce'))
             <a class="dropdown-item"  href="{{url('/orders')}}">

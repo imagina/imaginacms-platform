@@ -19,82 +19,84 @@ use Modules\Tag\Repositories\TagRepository;
 
 class TagServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration, CanGetSidebarClassForModule;
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerBindings();
-
-        $this->app->singleton('tag.widget.directive', function ($app) {
-            return new TagWidget($app[TagRepository::class]);
-        });
-        $this->app['events']->listen(
-            BuildingSidebar::class,
-            $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
-        );
-
-        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('tags', Arr::dot(trans('tag::tags')));
-        });
-
-        app('router')->bind('tag__tag', function ($id) {
-            return app(TagRepository::class)->find($id);
-        });
+  use CanPublishConfiguration, CanGetSidebarClassForModule;
+  
+  /**
+   * Indicates if loading of the provider is deferred.
+   *
+   * @var bool
+   */
+  protected $defer = false;
+  
+  /**
+   * Register the service provider.
+   *
+   * @return void
+   */
+  public function register()
+  {
+    $this->registerBindings();
+    
+    $this->app->singleton('tag.widget.directive', function ($app) {
+      return new TagWidget($app[TagRepository::class]);
+    });
+    $this->app['events']->listen(
+      BuildingSidebar::class,
+      $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
+    );
+    
+    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+      $event->load('tags', Arr::dot(trans('tag::tags')));
+    });
+    
+    app('router')->bind('tag__tag', function ($id) {
+      return app(TagRepository::class)->find($id);
+    });
+  }
+  
+  public function boot()
+  {
+    
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('tag', 'permissions'), "asgard.tag.permissions");
+    $this->publishConfig('tag', 'config');
+    $this->registerBladeTags();
+    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+  }
+  
+  /**
+   * Get the services provided by the provider.
+   *
+   * @return array
+   */
+  public function provides()
+  {
+    return [];
+  }
+  
+  private function registerBindings()
+  {
+    $this->app->bind(TagRepository::class, function () {
+      $repository = new EloquentTagRepository(new Tag());
+      
+      if (!config('app.cache')) {
+        return $repository;
+      }
+      
+      return new CacheTagDecorator($repository);
+    });
+    
+    $this->app->singleton(TagManager::class, function () {
+      return new TagManagerRepository();
+    });
+  }
+  
+  protected function registerBladeTags()
+  {
+    if (app()->environment() === 'testing') {
+      return;
     }
-
-    public function boot()
-    {
-        $this->publishConfig('tag', 'permissions');
-        $this->publishConfig('tag', 'config');
-        $this->registerBladeTags();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [];
-    }
-
-    private function registerBindings()
-    {
-        $this->app->bind(TagRepository::class, function () {
-            $repository = new EloquentTagRepository(new Tag());
-
-            if (! config('app.cache')) {
-                return $repository;
-            }
-
-            return new CacheTagDecorator($repository);
-        });
-
-        $this->app->singleton(TagManager::class, function () {
-            return new TagManagerRepository();
-        });
-    }
-
-    protected function registerBladeTags()
-    {
-        if (app()->environment() === 'testing') {
-            return;
-        }
-        $this->app['blade.compiler']->directive('tags', function ($value) {
-            return "<?php echo TagWidget::show([$value]); ?>";
-        });
-    }
+    $this->app['blade.compiler']->directive('tags', function ($value) {
+      return "<?php echo TagWidget::show([$value]); ?>";
+    });
+  }
 }

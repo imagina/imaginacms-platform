@@ -3,12 +3,17 @@
 namespace Modules\Iforms\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
+use Modules\Media\Validators\AvailableExtensionsRule;
 
 class UpdateFieldRequest extends BaseFormRequest
 {
     public function rules()
     {
-        return [];
+      return [
+        "options.availableExtensions" => [
+          new AvailableExtensionsRule()
+        ]
+      ];
     }
 
     public function translationRules()

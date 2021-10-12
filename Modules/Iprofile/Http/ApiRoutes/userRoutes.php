@@ -25,6 +25,11 @@ $router->group(['prefix' => '/users'], function (Router $router) {
     'uses' => 'UserApiController@changePassword',
     //'middleware' => ['auth:api']
   ]);
+  $router->get('/birthday', [
+    'as' => $locale . 'api.iprofile.users.birthday',
+    'uses' => 'UserApiController@usersBirthday',
+    'middleware' => ['auth:api']
+  ]);
   $router->put('/{criteria}', [
     'as' => $locale . 'api.iprofile.users.update',
     'uses' => 'UserApiController@update',

@@ -16,6 +16,6 @@ class IformsDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(BlockTableSeeder::class);
     }
 }

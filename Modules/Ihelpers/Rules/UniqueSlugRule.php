@@ -14,12 +14,14 @@ class UniqueSlugRule implements Rule
     public $table;
     public $id;
     public $columnId;
+    public $message;
     
-    public function __construct($table, $id = null, $columnId = "")
+    public function __construct($table, $id = null, $columnId = "", $message = "")
     {
       $this->table = $table;
       $this->id = $id;
       $this->columnId = $columnId;
+      $this->message = !empty($message) ? $message : 'There are another register with the same slug-locale.';
     }
 
     /**
@@ -52,6 +54,6 @@ class UniqueSlugRule implements Rule
      */
     public function message()
     {
-        return 'There are another register with the same slug-locale.';
+      return $this->message;
     }
 }

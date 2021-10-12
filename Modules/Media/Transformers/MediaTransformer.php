@@ -39,8 +39,8 @@ class MediaTransformer extends JsonResource
             'fa_icon' => FileHelper::getFaIcon($this->resource->media_type),
             'created_at' => $this->resource->created_at,
             'folder_id' => $this->resource->folder_id,
-            'small_thumb' => $this->imagy->getThumbnail($this->resource->path, 'smallThumb'),
-            'mediumThumb' => $this->imagy->getThumbnail($this->resource->path, 'mediumThumb'),
+            'small_thumb' => $this->imagy->getThumbnail($this->resource->path, 'smallThumb', $this->resource->disk),
+            'medium_thumb' => $this->imagy->getThumbnail($this->resource->path, 'mediumThumb', $this->resource->disk),
             'urls' => [
                 'delete_url' => $this->getDeleteUrl(),
             ],
@@ -51,7 +51,7 @@ class MediaTransformer extends JsonResource
 
             $data['thumbnails'][] = [
                 'name' => $thumbnailName,
-                'path' => $this->imagy->getThumbnail($this->resource->path, $thumbnailName),
+                'path' => $this->imagy->getThumbnail($this->resource->path, $thumbnailName, $this->resource->disk),
                 'size' => $thumbnail->size(),
             ];
         }

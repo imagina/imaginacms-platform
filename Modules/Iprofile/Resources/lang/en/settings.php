@@ -18,6 +18,8 @@ return [
   'adminNeedsToActivateNewUsers' => 'Admin need active users',
   'registerUsersWithSocialNetworks' => 'Allow social network register',
   'registerUserWithPoliticsOfPrivacy' => 'Require register with politics of privacy',
+  'rolesAsDirectory' => 'Roles as corporate directory',
+  'rolesToRegister' => 'Roles to register',
   'registerExtraFieldsActive' => 'Active register extra fields',
   'registerExtraFieldsRequired' => 'Required register extra fields',
   'addressesExtraFieldsActive' => 'Active address extra fields',
@@ -32,7 +34,8 @@ return [
   ],
   'settingGroups' => [
     'registerExtraFields' => 'Register extra fields',
-    'addressesExtraFields' => 'Address extra fields'
+    'addressesExtraFields' => 'Address extra fields',
+    'register' => 'Auth Configuration',
   ],
   'settingFields' => [
     'enabled' => 'Enabled',

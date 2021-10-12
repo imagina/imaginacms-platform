@@ -25,6 +25,8 @@ class Post extends Model implements TaggableInterface
         'category_id',
         'user_id',
         'status',
+        'featured',
+        'sort_order',
         'created_at',
     ];
     public $translatedAttributes = [
@@ -44,15 +46,6 @@ class Post extends Model implements TaggableInterface
         'options' => 'array'
     ];
 
-
-    public function __construct(array $attributes = [])
-    {
-        if (config()->has('asgard.iblog.config.fillable.post')) {
-            $this->fillable = config('asgard.iblog.config.fillable.post');
-        }
-
-        parent::__construct($attributes);
-    }
 
     public function categories()
     {
@@ -152,21 +145,35 @@ class Post extends Model implements TaggableInterface
      */
     public function getUrlAttribute()
     {
-
+      $useOldRoutes = config('asgard.iblog.config.useOldRoutes') ?? false;
+      $currentLocale = \LaravelLocalization::getCurrentLocale();
+      
       $category = $this->category;
-      if (!isset($category->slug)) {
-        if (!empty($this->categories)) {
-          $category = $this->categories->first();
-          if (!isset($category->slug)) {
+      
+      if(empty($category->slug))
+        $category = $category->getTranslation(\LaravelLocalization::getDefaultLocale());
+      
+      if(empty($this->slug)){
+        $post = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
+        $this->slug = $post->slug;
+      }
+      
+      
+        if (!isset($category->slug)) {
+          if (!empty($this->categories)) {
+            $category = $this->categories->first();
+            if (!isset($category->slug)) {
+              $category = Category::take(1)->get()->first();
+            }
+          } else {
             $category = Category::take(1)->get()->first();
           }
-        } else {
-          $category = Category::take(1)->get()->first();
         }
-      }
 
-        return \URL::route(\LaravelLocalization::getCurrentLocale() . '.iblog.'.$category->slug.'.post', [$this->slug]);
-
+        return \URL::route($currentLocale. '.iblog.'.$category->slug.'.post', [$this->slug]);
+  
+     
+  
     }
 
     /**

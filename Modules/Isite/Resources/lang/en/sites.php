@@ -5,6 +5,8 @@ return [
   'create resource' => 'Create sites',
   'edit resource' => 'Edit sites',
   'destroy resource' => 'Destroy sites',
+  'cacheCleared' => 'Cache cleared',
+  'failedCacheClear' => 'Failed cache clear, try again please',
   'title' => [
     'sites' => 'Site',
     'create site' => 'Create a site',
@@ -18,10 +20,14 @@ return [
   'form' => [
   ],
   'messages' => [
+  
+    'invalidCaptcha' => 'Invalid Captcha'
+    
   ],
   'validation' => [
   ],
   'settings' => [
-    'apimaps' => 'Api Code Maps'
+    'apimaps' => 'Api Code Maps',
+    'appVersion' => 'App version',
   ]
 ];

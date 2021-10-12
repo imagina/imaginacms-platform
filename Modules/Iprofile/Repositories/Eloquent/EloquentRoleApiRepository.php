@@ -5,6 +5,7 @@ namespace Modules\Iprofile\Repositories\Eloquent;
 use Modules\Iprofile\Repositories\RoleApiRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\User\Entities\Sentinel\User;
+use Modules\Iforms\Events\SyncFormeable;
 
 class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleApiRepository
 {
@@ -43,6 +44,12 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
           $query->whereDate($date->field, '>=', $date->from);
         if (isset($date->to))//to a date
           $query->whereDate($date->field, '<=', $date->to);
+      }
+
+      //Filter by ID
+      if(isset($filter->id)){
+        $idFilter = is_array($filter->id) ? $filter->id : [$filter->id];
+        $query->whereIn('id', $idFilter);
       }
 
       //Order by
@@ -129,6 +136,9 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
     if ($model) {
       $oldData = $model->toArray();
       $model->update($data);
+  
+      event(new SyncFormeable($model,$data));
+      
       $newData = $model->toArray();
     }
     return $model;
@@ -137,8 +147,9 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
   public function create($data)
   {
     $role = $this->model->create($data);
-
-    $newData = $role->toArray();
+    
+    event(new SyncFormeable($role,$data));
+    
     return $role;
   }
 

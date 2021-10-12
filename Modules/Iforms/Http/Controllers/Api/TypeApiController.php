@@ -21,10 +21,10 @@ class TypeApiController extends BaseApiController
 
   private $types;
 
-  public function __construct(Type $types)
+  public function __construct(Type $formTypes)
   {
     parent::__construct();
-    $this->types = $types;
+    $this->types = $formTypes;
   }
 
   /**

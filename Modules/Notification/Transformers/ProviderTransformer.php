@@ -16,6 +16,7 @@ class ProviderTransformer extends JsonResource
       'name' => $this->when($this->name, $this->name),
       'systemName' => $this->when($this->system_name, $this->system_name),
       'status' => $this->status ? '1' : '0',
+      'default' => $this->default ? true : false,
       'description' => $this->when($this->description, $this->description),
       'options' => $this->options,
       'fields' => $this->fields,

@@ -15,18 +15,23 @@ class CreateThumbnails implements ShouldQueue
      * @var MediaPath
      */
     private $path;
+    /**
+     * @var mixed|null
+     */
+    private $disk = null;
 
-    public function __construct(MediaPath $path)
+    public function __construct(MediaPath $path, $disk = null)
     {
         $this->path = $path;
+        $this->disk = $disk;
     }
 
     public function handle()
     {
         $imagy = app('imagy');
 
-        app('log')->info('Generating thumbnails for path: ' . $this->path);
+        app('log')->info('Generating thumbnails for path: ' . $this->path.((!is_null($this->disk))?' in disk: '.$this->disk:''));
 
-        $imagy->createAll($this->path);
+        $imagy->createAll($this->path,$this->disk);
     }
 }

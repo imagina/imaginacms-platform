@@ -39,11 +39,16 @@ class RenameFolderOnDisk
 
     private function renameFolder($event)
     {
-        $this->filesystem->disk($this->getConfiguredFilesystem())
-            ->move(
-                $this->getDestinationPath($event->previousFolderData['path']->getRelativeUrl()),
-                $this->getDestinationPath($event->folder->path->getRelativeUrl())
-            );
+    if($event->previousFolderData["filename"] != $event->folder->filename){
+      $disk = is_null($event->folder->disk)? $this->getConfiguredFilesystem() : $event->folder->disk;
+
+      $this->filesystem->disk($disk)
+        ->move(
+          $this->getDestinationPath($event->previousFolderData['path']->getRelativeUrl()),
+          $this->getDestinationPath($event->folder->path->getRelativeUrl())
+        );
+    }
+   
     }
 
     private function getDestinationPath($path)
@@ -60,7 +65,7 @@ class RenameFolderOnDisk
      */
     private function getConfiguredFilesystem()
     {
-        return config('asgard.media.config.filesystem');
+        return setting('media::filesystem', null, config("asgard.media.config.filesystem"));
     }
 
     private function replacePathReferences($folderId, $previousPath, $newPath)

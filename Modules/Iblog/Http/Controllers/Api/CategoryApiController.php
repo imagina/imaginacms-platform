@@ -7,6 +7,7 @@ use Log;
 use Mockery\CountValidator\Exception;
 use Modules\Core\Http\Controllers\BasePublicController;
 use Modules\Iblog\Http\Requests\CreateCategoryRequest;
+use Modules\Iblog\Http\Requests\UpdateCategoryRequest;
 use Modules\Iblog\Repositories\CategoryRepository;
 use Modules\Iblog\Repositories\PostRepository;
 use Modules\Iblog\Transformers\CategoryTransformer;
@@ -139,17 +140,13 @@ class CategoryApiController extends BaseApiController
             $data = $request->input('attributes') ?? [];//Get data
 
             //Validate Request
-            $this->validateRequestApi(new CreateCategoryRequest($data));
+            $this->validateRequestApi(new UpdateCategoryRequest($data));
 
             //Get Parameters from URL.
             $params = $this->getParamsRequest($request);
-
-
+   
             //Request to Repository
-            $category = $this->category->getItem($criteria, $params);
-
-            //Request to Repository
-            $this->category->update($category, $data);
+            $this->category->updateBy($criteria, $data, $params);
 
             //Response
             $response = ["data" => trans('iblog::common.messages.resource updated')];
@@ -179,10 +176,8 @@ class CategoryApiController extends BaseApiController
             //Get params
             $params = $this->getParamsRequest($request);
 
-            //Request to Repository
-            $category = $this->category->getItem($criteria, $params);
             //call Method delete
-            $this->category->destroy($category);
+            $this->category->deleteBy($criteria,$params);
 
             //Response
             $response = ["data" => trans('iblog::common.messages.resource deleted')];

@@ -3,7 +3,7 @@
 return [
   'site-name' => [
     'name' => 'core::site-name',
-    'value' => null,
+    'value' => 'My Site',
     'type' => 'input',
     'isTranslatable' => true,
     'columns' => 'col-12 col-md-6',
@@ -22,6 +22,7 @@ return [
     ],
   ],
   'locales' => [
+    
     'name' => 'core::locales',
     'value' => [],
     'type' => 'select',
@@ -38,6 +39,7 @@ return [
     ]
   ],
   'template' => [
+    "onlySuperAdmin" => true,
     'name' => 'core::template',
     'value' => null,
     'type' => 'select',

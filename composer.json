@@ -37,7 +37,6 @@
         "typicms/nestablecollection": "^1.1",
         "venturecraft/revisionable": "^1.35",
         "laravel/passport": "^10.0",
-        "kalnoy/nestedset": "^6.0",
         "livewire/livewire": "^2.3",
         "pusher/pusher-php-server": "^4.1",
         "cviebrock/eloquent-sluggable": "^8.0",

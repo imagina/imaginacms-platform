@@ -28,7 +28,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
      * @param int $folderId
      * @return File|null
      */
-    public function findFolder(int $folderId)
+    public function findFolder($folderId)
     {
         return $this->model->where('is_folder', 1)->where('id', $folderId)->first();
     }
@@ -36,10 +36,11 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     public function create($data)
     {
         $data = [
-            'filename' => Arr::get($data, 'name'),
+            'filename' => Arr::get($data, 'name') ?? Arr::get($data, 'filename'),
             'path' => $this->getPath($data),
             'is_folder' => true,
-            'folder_id' => Arr::get($data, 'parent_id'),
+            'folder_id' => Arr::get($data, 'parent_id') ?? 0,
+            'disk' => Arr::get($data,'disk')
         ];
         event($event = new FolderIsCreating($data));
         $folder = $this->model->create($event->getAttributes());
@@ -54,26 +55,30 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         $previousData = [
             'filename' => $model->filename,
             'path' => $model->path,
+            'id' => $model->id,
         ];
         $formattedData = [
-            'filename' => Arr::get($data, 'name'),
+            'id' => Arr::get($data, 'id'),
+            'filename' => Arr::get($data, 'name') ?? Arr::get($data, 'filename'),
             'path' => $this->getPath($data),
             'parent_id' => Arr::get($data, 'parent_id'),
+            'disk' => Arr::get($data,'disk')
         ];
 
         event($event = new FolderIsUpdating($formattedData));
-        $model->update($event->getAttributes());
-
-        event(new FolderWasUpdated($model, $formattedData, $previousData));
-
-        return $model;
+      
+      $model->update($event->getAttributes());
+   
+      event(new FolderWasUpdated($model, $formattedData, $previousData));
+ 
+      return $model;
     }
 
     public function destroy($folder)
     {
         event(new FolderIsDeleting($folder));
-
-        return $folder->delete();
+        $folder->delete();
+        return $folder->forceDelete();
     }
 
     /**
@@ -164,7 +169,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
             'path' => config('asgard.media.config.files-path'),
         ]);
     }
-  
+
   /**
    * @param bool $params
    * @return mixed
@@ -173,7 +178,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
   {
     /*== initialize query ==*/
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (in_array('*', $params->include)) {//If Request all relationships
       $query->with(["createdBy"]);
@@ -183,11 +188,11 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
     }
-    
+
     /*== FILTERS ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;//Short filter
-      
+
       //Filter by date
       if (isset($filter->date)) {
         $date = $filter->date;//Short filter date
@@ -197,7 +202,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         if (isset($date->to))//to a date
           $query->whereDate($date->field, '<=', $date->to);
       }
-      
+
       //Order by
       if (isset($filter->order)) {
         $orderByField = $filter->order->field ?? 'is_Folder';//Default field
@@ -207,42 +212,42 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         $query->orderBy('is_Folder', 'desc');//Add order to query
         $query->orderBy('media__files.created_at', 'desc');//Add order to query
       }
-      
+
       //folder id
       if (isset($filter->folderId) && (string)$filter->folderId != "") {
         $query->where('folder_id', $filter->folderId);
-        
+
       }
-      
+
       if (!isset($params->permissions['media.medias.index']) ||
         (isset($params->permissions['media.medias.index']) &&
           !$params->permissions['media.medias.index'])) {
         $query->where("is_folder","!=",0);
       }
-      
-      
+
+
       if (!isset($params->permissions['media.folders.index']) ||
         (isset($params->permissions['media.folders.index']) &&
           !$params->permissions['media.folders.index'])) {
         $query->where("is_folder","!=",1);
       }
-      
+
       //folder name
       if (isset($filter->folderName) && $filter->folderName != "Home") {
-        
+
         $folder = \DB::table("media__files as files")
           ->where("is_folder",true)
           ->where("filename",$filter->folderName)
           ->first();
-  
+
         if(isset($folder->id)){
           $query->where('folder_id',$filter->folderId ?? $folder->id);
         }
       }
-      
+
       //is Folder
       $query->where('is_folder',true);
-      
+
       //is Folder
       if (isset($filter->zone)) {
         $filesIds = \DB::table("media__imageables as imageable")
@@ -252,24 +257,29 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
           ->get()->pluck("file_id")->toArray();
         $query->whereIn("id",$filesIds);
       }
-      
+  
+      //disk
+      if (isset($filter->disk) && !empty($filter->disk)) {
+        $query->whereIn("disk",$filter->disk);
+      }
+
       //add filter by search
       if (isset($filter->search) && $filter->search) {
         //find search in columns
         $query->where(function ($query) use ($filter) {
           $query->where('id', 'like', '%' . $filter->search . '%')
-            ->orWhere('name', 'like', '%' . $filter->search . '%')
+            ->orWhere('filename', 'like', '%' . $filter->search . '%')
             ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
             ->orWhere('created_at', 'like', '%' . $filter->search . '%');
         });
       }
     }
-    
+
     $this->validateIndexAllPermission($query,$params);
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
-    
+
     //dd($query->toSql(), $query->getBindings());
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
@@ -279,12 +289,42 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
       return $query->get();
     }
   }
+
+  public function getItem($criteria, $params = false)
+      {
+        //Initialize query
+        $query = $this->model->query();
   
+      /*== RELATIONSHIPS ==*/
+      if(in_array('*',$params->include)){//If Request all relationships
+        $query->with([]);
+      }else{//Especific relationships
+        $includeDefault = [];//Default relationships
+        if (isset($params->include))//merge relations with default relationships
+          $includeDefault = array_merge($includeDefault, $params->include);
+        $query->with($includeDefault);//Add Relationships to query
+      }
   
+        /*== FILTER ==*/
+        if (isset($params->filter)) {
+          $filter = $params->filter;
+  
+          if (isset($filter->field))//Filter by specific field
+            $field = $filter->field;
+        }
+  
+        /*== FIELDS ==*/
+        if (isset($params->fields) && count($params->fields))
+          $query->select($params->fields);
+  
+        /*== REQUEST ==*/
+        return $query->where($field ?? 'id', $criteria)->first();
+      }
+
   function validateIndexAllPermission(&$query, $params)
   {
     // filter by permission: index all leads
-    
+
     if (!isset($params->permissions['media.folders.index-all']) ||
       (isset($params->permissions['media.folders.index-all']) &&
         !$params->permissions['media.folders.index-all'])) {
@@ -292,8 +332,8 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
       $role = $params->role;
       // if is salesman or salesman manager or salesman sub manager
       $query->where('created_by', $user->id);
-      
-      
+
+
     }
   }
 

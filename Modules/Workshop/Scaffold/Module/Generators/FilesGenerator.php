@@ -69,6 +69,7 @@ class FilesGenerator extends Generator
                 '$PLURAL_MODULE$',
                 '$UPPERCASE_PLURAL_MODULE$',
                 '$SIDEBAR_LISTENER_NAME$',
+                '$LOWERCASE_MODULE_NAME$'
             ],
             [
                 $this->name,
@@ -76,6 +77,7 @@ class FilesGenerator extends Generator
                 strtolower(Str::plural($this->name)),
                 Str::plural($this->name),
                 "Register{$this->name}Sidebar",
+                strtolower($this->name)
             ],
             $stub
         );

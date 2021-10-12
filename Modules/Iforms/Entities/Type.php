@@ -17,6 +17,7 @@ class Type extends Model
   const LOCATION = 9;
   const PHONE = 10;
   const DATE = 11;
+  const FILE = 12;
 
   /**
    * @var array
@@ -80,6 +81,11 @@ class Type extends Model
         'id' => self::DATE,
         'name' => trans('iforms::common.types.date'),
         'value' => 'date'
+      ],
+      [
+        'id' => self::FILE,
+        'name' => trans('iforms::common.types.file'),
+        'value' => 'file'
       ],
     ];
   }

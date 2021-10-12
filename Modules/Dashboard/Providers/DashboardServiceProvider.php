@@ -62,10 +62,11 @@ class DashboardServiceProvider extends ServiceProvider
             'dashboard',
             $theme->find(config('asgard.core.core.admin-theme'))->getPath() . '/views/modules/dashboard'
         );
-
-        $this->publishConfig('dashboard', 'permissions');
+        
         $this->publishConfig('dashboard', 'config');
-        $this->publishConfig('dashboard', 'settings');
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'permissions'), "asgard.dashboard.permissions");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'settings'), "asgard.dashboard.settings");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'settings-fields'), "asgard.dashboard.settings-fields");
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 

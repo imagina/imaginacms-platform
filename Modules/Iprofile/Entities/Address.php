@@ -6,6 +6,8 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Fhia\Entities\BranchOffice;
 use Modules\User\Entities\Sentinel\User;
+use Modules\Ilocations\Entities\Country;
+use Modules\Ilocations\Entities\Province;
 
 class Address extends Model
 {
@@ -39,7 +41,29 @@ class Address extends Model
     'options' => 'array'
   ];
   
+  
   public function user(){
-    $this->belognsTo(User::class);
+    return $this->belongsTo(User::class);
   }
+ 
+  public function countryIso2(){
+    return $this->belongsTo(Country::class, 'country', 'iso_2');
+  }
+ 
+  public function provinceIso2(){
+    return $this->belongsTo(Province::class, 'state', 'iso_2');
+  }
+  
+  
+  public function setOptionsAttribute($value)
+  {
+    $this->attributes['options'] = json_encode($value);
+  }
+  
+  
+  public function getOptionsAttribute($value)
+  {
+    return json_decode($value);
+  }
+  
 }

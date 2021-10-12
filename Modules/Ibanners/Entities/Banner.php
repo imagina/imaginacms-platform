@@ -62,7 +62,7 @@ class Banner extends Model
             if (!empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
             } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
-                $this->imageUrl = $this->filesByZone('bannerImage')->first()->path_string;
+                $this->imageUrl = $this->filesByZone('bannerimage')->first()->path_string;
             }
         }
 

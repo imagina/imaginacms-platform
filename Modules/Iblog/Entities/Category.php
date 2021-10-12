@@ -7,16 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\Core\Traits\NamespacedEntity;
 use Modules\Media\Entities\File;
+use Kalnoy\Nestedset\NodeTrait;
 use Modules\Media\Support\Traits\MediaRelation;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    use Translatable, MediaRelation, PresentableTrait, NamespacedEntity;
+    use Translatable, MediaRelation, PresentableTrait, NamespacedEntity, NodeTrait;
 
     protected $table = 'iblog__categories';
-    protected static $entityNamespace = 'iblog/category';
 
-    protected $fillable = ['parent_id', 'options'];
+    protected $fillable = [
+      'parent_id',
+      'show_menu',
+      'featured',
+      'internal',
+      'status',
+      'sort_order',
+      'options'
+    ];
 
     public $translatedAttributes = ['title', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'translatable_options'];
 
@@ -28,14 +37,7 @@ class Category extends Model
     protected $casts = [
         'options' => 'array'
     ];
-
-    public function __construct(array $attributes = [])
-    {
-        if (config()->has('asgard.iblog.config.fillable.category')) {
-            $this->fillable = config('asgard.iblog.config.fillable.category');
-        }
-        parent::__construct($attributes);
-    }
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -108,12 +110,27 @@ class Category extends Model
 
     }
 
-    public function getUrlAttribute()
-    {
+  
+  public function getUrlAttribute()
+  {
+    $url = "";
 
-        return \URL::route(\LaravelLocalization::getCurrentLocale() . '.iblog.category.' . $this->slug);
-
+    $currentLocale = \LaravelLocalization::getCurrentLocale();
+//dd($useOldRoutes);
+    if(empty($this->slug)){
+  
+      $category = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
+      $this->slug = $category->slug;
     }
+    
+
+    if (!(request()->wantsJson() || Str::startsWith(request()->path(), 'api'))) {
+      
+        $url = \URL::route($currentLocale . '.iblog.category.' . $this->slug);
+     
+    }
+    return $url;
+  }
 
     /*
     |--------------------------------------------------------------------------
@@ -143,4 +160,25 @@ class Category extends Model
         #i: No relation found, return the call to parent (Eloquent) to handle it.
         return parent::__call($method, $parameters);
     }
+  
+  public function getLftName()
+  {
+    return 'lft';
+  }
+  
+  public function getRgtName()
+  {
+    return 'rgt';
+  }
+  
+  public function getDepthName()
+  {
+    return 'depth';
+  }
+  
+  public function getParentIdName()
+  {
+    return 'parent_id';
+  }
+  
 }

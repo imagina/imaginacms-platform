@@ -16,10 +16,11 @@ class Rule extends Model
       "event_path",
       "conditions",
       "settings",
+      "status"
     ];
-  
+
   protected $fakeColumns = ['conditions','settings'];
-  
+
   protected $casts = [
     'conditions' => 'array',
     'settings' => 'array'
@@ -27,7 +28,7 @@ class Rule extends Model
   public function getConditionsAttribute($value) {
     return json_decode($value);
   }
-  
+
   public function setConditionsAttribute($value) {
     $this->attributes['conditions'] = json_encode($value);
   }

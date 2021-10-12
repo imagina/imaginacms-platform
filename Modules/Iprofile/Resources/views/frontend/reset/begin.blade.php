@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="formulario">
-                        @include('partials.notifications')
+                        @include('isite::frontend.partials.notifications')
 
                         {!! Form::open(['route' => 'account.reset.post']) !!}
                         <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
@@ -73,7 +73,7 @@
 
                             <div class="formulario">
                                 <p class="login-box-msg">{{ trans('user::auth.to reset password complete this form') }}</p>
-                                @include('partials.notifications')
+                                @include('isite::frontend.partials.notifications')
 
                                 {!! Form::open(['route' => 'account.reset.post']) !!}
                                 <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">

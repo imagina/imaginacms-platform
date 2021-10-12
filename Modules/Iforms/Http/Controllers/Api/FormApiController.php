@@ -91,6 +91,12 @@ class FormApiController extends BaseApiController
       //Validate Request
       $this->validateRequestApi(new CreateFormRequest($data));
       //Create item
+      
+      //validate customLeadPDFTemplate
+      if(isset($data["options"]) && isset($data["options"]["customLeadPDFTemplate"]))
+        if(!empty($data["options"]["customLeadPDFTemplate"]) && !view()->exists($data["options"]["customLeadPDFTemplate"]))
+          throw new \Exception(trans("iforms::forms.messages.customLeadPDFTemplateExist"),400);
+        
       $newData = $this->resource->create($data);
       //Response
       $response = ["data" => new FormTransformer($newData)];
@@ -98,7 +104,7 @@ class FormApiController extends BaseApiController
     } catch (\Exception $e) {
       \DB::rollback();//Rollback to Data Base
       $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+      $response = ["errors" => [$e->getMessage()]];
     }
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
@@ -119,6 +125,13 @@ class FormApiController extends BaseApiController
       $data = $request->input('attributes');
       //Validate Request
       $this->validateRequestApi(new UpdateRequest($data));
+  
+      //validate customLeadPDFTemplate
+      if(isset($data["options"]) && isset($data["options"]["customLeadPDFTemplate"]))
+        if(!empty($data["options"]["customLeadPDFTemplate"]) && !view()->exists($data["options"]["customLeadPDFTemplate"]))
+          throw new \Exception(trans("iforms::forms.messages.customLeadPDFTemplateExist"),400);
+  
+        
       //Update data
       $entity = $this->resource->getItem($criteria, $params);
       $newData = $this->resource->update($entity, $data);
@@ -128,7 +141,7 @@ class FormApiController extends BaseApiController
     } catch (\Exception $e) {
       \DB::rollback();//Rollback to Data Base
       $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+      $response = ["errors" => [$e->getMessage()]];
     }
     return response()->json($response, $status ?? 200);
   }

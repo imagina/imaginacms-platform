@@ -18,6 +18,7 @@ class Slide extends Model
     'url',
     'active',
     'custom_html',
+    'summary',
   ];
 
   protected $fillable = [

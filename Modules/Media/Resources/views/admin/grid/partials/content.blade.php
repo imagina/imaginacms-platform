@@ -61,7 +61,7 @@
                             <td>{{ $file->id }}</td>
                             <td>
                                 <?php if ($file->isImage()): ?>
-                                <img src="{{ Imagy::getThumbnail($file->path, 'smallThumb') }}" alt=""/>
+                                <img src="{{ Imagy::getThumbnail($file, 'smallThumb') }}" alt=""/>
                                 <?php else: ?>
                                 <i class="fa {{ FileHelper::getFaIcon($file->media_type) }}" style="font-size: 20px;"></i>
                                 <?php endif; ?>
@@ -75,7 +75,7 @@
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <?php foreach ($thumbnails as $thumbnail): ?>
-                                        <li data-file-path="{{ Imagy::getThumbnail($file->path, $thumbnail->name()) }}"
+                                        <li data-file-path="{{ Imagy::getThumbnail($file, $thumbnail->name()) }}"
                                             data-id="{{ $file->id }}" data-media-type="{{ $file->media_type }}"
                                             data-mimetype="{{ $file->mimetype }}" class="jsInsertImage">
                                             <a href="">{{ $thumbnail->name() }} ({{ $thumbnail->size() }})</a>
@@ -89,7 +89,7 @@
                                     </ul>
                                     <?php else: ?>
                                     <a href="" class="btn btn-primary jsInsertImage btn-flat" data-id="{{ $file->id }}"
-                                       data-file-path="{{ Imagy::getThumbnail($file->path, 'mediumThumb') }}"
+                                       data-file-path="{{ Imagy::getThumbnail($file, 'mediumThumb') }}"
                                        data-media-type="{{ $file->media_type }}" data-mimetype="{{ $file->mimetype }}">
                                         {{ trans('media::media.insert') }}
                                     </a>

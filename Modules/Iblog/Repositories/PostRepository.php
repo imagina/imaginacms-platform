@@ -10,27 +10,33 @@ use Modules\Core\Repositories\BaseRepository;
  */
 interface PostRepository extends BaseRepository
 {
-
-    /**
-     * Get the next post of the given post
-     * @param object $id
-     * @return object
-     */
-
-    public function WhereCategory($id);
-
-    /**
-     * @param $params
-     * @return mixed
-     */
-    public function getItemsBy($params);
-
-    /**
-     * @param $criteria
-     * @param $params
-     * @return mixed
-     */
-    public function getItem($criteria, $params);
-
-
+  
+  /**
+   * Get the next post of the given post
+   * @param object $id
+   * @return object
+   */
+  
+  public function WhereCategory($id);
+  
+  /**
+   * @param $params
+   * @return mixed
+   */
+  public function getItemsBy($params);
+  
+  /**
+   * @param $criteria
+   * @param $params
+   * @return mixed
+   */
+  public function getItem($criteria, $params);
+  
+  
+  public function create($data);
+  
+  public function updateBy($criteria, $data, $params);
+  
+  public function deleteBy($criteria, $params);
+  
 }

@@ -147,8 +147,8 @@ class EloquentFieldRepository extends EloquentBaseRepository implements FieldRep
   public function updateOrders ($data)
   {
     $fields = [];
-    foreach ($data['fields'] as $field){
-      $fields[] = $this->model->find($field['id'])->update(['order' => $field['order']]);
+    foreach ($data as $field){
+      $fields[] = $this->model->find($field['id'])->update($field);
     }
     return $fields;
   }

@@ -72,4 +72,16 @@ class CacheFieldDecorator extends BaseCacheDecorator implements FieldRepository
     
     return $this->repository->deleteBy($criteria, $params);
   }
+  
+  /**
+   * List or resources
+   *
+   * @return collection
+   */
+  public function usersBirthday($params)
+  {
+    return $this->remember(function () use ($params) {
+      return $this->repository->usersBirthday($params);
+    });
+  }
 }

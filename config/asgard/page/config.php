@@ -43,9 +43,6 @@ return [
     'template-ignored-directories' => [
         'layouts',
         'partials',
-        'pages',
-        'blog',
-        'blocksrc',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -74,4 +71,12 @@ return [
         // Read module views from /resources/views/asgard/<module-name>
         'resources' => false,
     ],
+    //Media Fillables
+    'mediaFillable' => [
+      'page' => [
+        'mainimage' => 'single',
+        'secondaryimage' => 'single',
+        'breadcrumbimage' => 'single'
+      ]
+    ]
 ];

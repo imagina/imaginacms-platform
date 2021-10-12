@@ -10,7 +10,7 @@ use Illuminate\Broadcasting\Channel;
 use Modules\Notification\Entities\Notification;
 use Modules\Notification\Transformers\NotificationTransformer;
 
-class BroadcastNotification implements ShouldBroadcastNow, ShouldQueue
+class BroadcastNotification implements ShouldBroadcast, ShouldQueue
 {
     use SerializesModels;
 
@@ -18,16 +18,18 @@ class BroadcastNotification implements ShouldBroadcastNow, ShouldQueue
      * @var Notification
      */
     public $notification;
+    public $payload;
 
-    public function __construct(Notification $notification)
+    public function __construct(Notification $notification, $payload)
     {
         $this->notification = $notification;
+        $this->payload = $payload;
     }
 
     public function broadcastWith(){
 
         $data=[
-            'created_at'=>$this->notification->created_at,
+            'createdAt'=>$this->notification->created_at,
             'entity'=>$this->notification->icon_class,
             'id'=>$this->notification->id,
             'link'=>$this->notification->link,
@@ -35,10 +37,14 @@ class BroadcastNotification implements ShouldBroadcastNow, ShouldQueue
             'timeAgo'=>$this->notification->timeAgo,
             'title'=>$this->notification->title,
             'type'=> $this->notification->type,
-            'updated_at'=>$this->notification->updated_at,
+            'updatedAt'=>$this->notification->updated_at,
             'user'=>$this->notification->user_id,
-            'recipient'=>$this->notification->recipient,
+            'options'=>$this->notification->options,
+            'isAction'=>$this->notification->is_action,
+            'recipient'=>$this->notification->recipient
         ];
+        $data = array_merge($data,$this->payload);
+        
         return $data;
     }
 

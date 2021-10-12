@@ -22,7 +22,15 @@ return [
         'edit' => 'iforms::leads.edit resource',
         'destroy' => 'iforms::leads.destroy resource',
     ],
+    'iforms.blocks' => [
+        'manage' => 'iforms::blocks.manage resource',
+        'index' => 'iforms::blocks.list resource',
+        'create' => 'iforms::blocks.create resource',
+        'edit' => 'iforms::blocks.edit resource',
+        'destroy' => 'iforms::blocks.destroy resource',
+    ],
 // append
+
 
 
 

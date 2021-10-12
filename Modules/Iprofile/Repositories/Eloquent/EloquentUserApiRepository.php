@@ -16,12 +16,12 @@ class EloquentUserApiRepository extends EloquentBaseRepository implements UserAp
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with([]);
     } else {//specific relationships
-      $includeDefault = ['fields','settings'];//Default relationships
+      $includeDefault = ['fields', 'settings'];//Default relationships
       if (isset($params->include))//merge relations with default relationships
-        $includeDefault = array_merge($includeDefault, $params->include);
+        $includeDefault = array_merge($includeDefault, $params->include ?? []);
       $query->with($includeDefault);//Add Relationships to query
     }
 
@@ -150,11 +150,14 @@ class EloquentUserApiRepository extends EloquentBaseRepository implements UserAp
       } else
         $query->select($params->fields);
 
+    //Return as query
+    if (isset($params->returnAsQuery) && $params->returnAsQuery) return $query;
+
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
       return $query->paginate($params->take);
     } else {
-      $params->take ? $query->take($params->take) : false;//Take
+      isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
       return $query->get();
     }
   }

@@ -21,88 +21,89 @@ use Modules\Tag\Repositories\TagManager;
 
 class PageServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration, CanGetSidebarClassForModule;
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerBindings();
-
-        $this->app['events']->listen(
-            BuildingSidebar::class,
-            $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
-        );
-
-        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('pages', Arr::dot(trans('page::pages')));
-        });
-
-        app('router')->bind('page', function ($id) {
-            return app(PageRepository::class)->find($id);
-        });
-    }
-
-    public function boot()
-    {
-        $this->publishConfig('page', 'config');
-        $this->publishConfig('page', 'permissions');
-        $this->publishConfig('page', 'crud-fields');
-
-        $this->app[TagManager::class]->registerNamespace(new Page());
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
-        $this->handleAssets();
-
-        $this->commands(CreatePagesCommand::class);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [];
-    }
-
-    private function registerBindings()
-    {
-        $this->app->bind(FinderService::class, function () {
-            return new FinderService();
-        });
-
-        $this->app->bind(PageRepository::class, function () {
-            $repository = new EloquentPageRepository(new Page());
-
-            if (! Config::get('app.cache')) {
-                return $repository;
-            }
-
-            return new CachePageDecorator($repository);
-        });
-    }
-
-    /**
-     * Require iCheck on edit and create pages
-     */
-    private function handleAssets()
-    {
-        $this->app['events']->listen(CollectingAssets::class, function (CollectingAssets $event) {
-            if ($event->onRoutes(['*page*create', '*page*edit'])) {
-                $event->requireCss('icheck.blue.css');
-                $event->requireJs('icheck.js');
-            }
-        });
-    }
+  use CanPublishConfiguration, CanGetSidebarClassForModule;
+  
+  /**
+   * Indicates if loading of the provider is deferred.
+   *
+   * @var bool
+   */
+  protected $defer = false;
+  
+  /**
+   * Register the service provider.
+   *
+   * @return void
+   */
+  public function register()
+  {
+    $this->registerBindings();
+    
+    $this->app['events']->listen(
+      BuildingSidebar::class,
+      $this->getSidebarClassForModule('page', RegisterPageSidebar::class)
+    );
+    
+    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+      $event->load('pages', Arr::dot(trans('page::pages')));
+    });
+    
+    app('router')->bind('page', function ($id) {
+      return app(PageRepository::class)->find($id);
+    });
+  }
+  
+  public function boot()
+  {
+    $this->publishConfig('page', 'config');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('page', 'permissions'), "asgard.page.permissions");
+    $this->publishConfig('page', 'crud-fields');
+    
+    $this->app[TagManager::class]->registerNamespace(new Page());
+    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    
+    $this->handleAssets();
+    
+    $this->commands(CreatePagesCommand::class);
+  }
+  
+  /**
+   * Get the services provided by the provider.
+   *
+   * @return array
+   */
+  public function provides()
+  {
+    return [];
+  }
+  
+  private function registerBindings()
+  {
+    $this->app->bind(FinderService::class, function () {
+      return new FinderService();
+    });
+    
+    $this->app->bind(PageRepository::class, function () {
+      $repository = new EloquentPageRepository(new Page());
+      
+      if (!Config::get('app.cache')) {
+        return $repository;
+      }
+      
+      return new CachePageDecorator($repository);
+    });
+  }
+  
+  /**
+   * Require iCheck on edit and create pages
+   */
+  private function handleAssets()
+  {
+    $this->app['events']->listen(CollectingAssets::class, function (CollectingAssets $event) {
+      if ($event->onRoutes(['*page*create', '*page*edit'])) {
+        $event->requireCss('icheck.blue.css');
+        $event->requireJs('icheck.js');
+      }
+    });
+  }
 }

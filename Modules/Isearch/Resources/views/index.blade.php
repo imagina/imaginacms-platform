@@ -27,32 +27,33 @@
 
                             @php $cont = 0; @endphp
                             <h2 class="page-header">{{$entities['title']}}</h2>
-                            @foreach($entities['items'] as $result)
-                            <!-- Blog Post -->
-                                <div class="col-xs-6 col-sm-4 contend post post{{$result->id}}">
-                                    <div class="bg-imagen">
-                                        <a href="{{$result->url}}">
-                                            <img class="image img-responsive"
-                                                 src="{{url(str_replace('.jpg','_mediumThumb.jpg',$result->mainimage->path??''))}}"
-                                                 alt="{{$result->title}}"/>
-                                        </a>
+                            @if(count($entities['items']) == 0)
+                                <h5>
+                                    {{trans('isearch::common.index.Not Found')}} </h5>
+                            @endif
+                            <div class="card-deck">
+                                @foreach($entities['items'] as $result)
+                                <!-- Blog Post and/or E-commerce Product -->
+                                    <div class="card contend post post{{$result->id}}">
+                                        <x-media::single-image :alt="$result->title ?? $result->name" :title="$result->title ?? $result->name" :url="$result->url" :isMedia="true"
+                                               :mediaFiles="$result->mediaFiles()" imgClasses="card-img-top"/>
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <a href="{{$result->url}}"><h2>{{$result->title ?? $result->name}}</h2></a>
+                                            </div>
+                                            <p class="card-text">
+                                                {!! $result->summary!!}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a class="btn btn-primary post-link"
+                                               href="{{$result->url}}">{{trans('isearch::common.index.Read More')}}<span
+                                                        class="glyphicon glyphicon-chevron-right"></span></a>
+                                        </div>
                                     </div>
-                                    <div class="content">
-                                        <a href="{{$result->url}}"><h2>{{$result->title}}</h2></a>
-                                        <p>{!! $result->summary!!}</p>
-                                        <a class="btn btn-primary post-link"
-                                           href="{{$result->url}}">{{trans('isearch::common.index.Read More')}}<span
-                                                    class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                                @php $cont++; @endphp
-                                @if($cont%3==0)
-                                    <div class="clearfix" style="margin-bottom: 14px;"></div>
-                                @endif
-                                @if($cont%2==0)
-                                    <div class="clearfix visible-xs-block" style="margin-bottom: 14px;"></div>
-                                @endif
-                            @endforeach
+                                    @php $cont++; @endphp
+                                @endforeach
+                            </div>
                             <div class="clearfix"></div>
                             <div class="pagination paginacion-blog row">
                                 <div class="pull-right">

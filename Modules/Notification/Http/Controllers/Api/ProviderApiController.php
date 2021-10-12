@@ -206,6 +206,6 @@ class ProviderApiController extends BaseApiController
       }
     }
     
-    return $providersConfig;
+    return array_values($providersConfig);
   }
 }

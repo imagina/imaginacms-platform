@@ -8,7 +8,7 @@ $router->group(['prefix' => 'leads'], function (Router $router) {
   $router->post('/', [
     'as' => 'api.iforms.leads.create',
     'uses' => 'LeadApiController@create',
-    'middleware' => ['captcha']
+   // 'middleware' => ['captcha']
   ]);
 
   //Route index
@@ -24,14 +24,14 @@ $router->group(['prefix' => 'leads'], function (Router $router) {
     'uses' => 'LeadApiController@show',
     'middleware' => ['auth:api']
   ]);
-/*
+
   //Route update
   $router->put('/{criteria}', [
     'as' => 'api.iforms.leads.update',
     'uses' => 'LeadApiController@update',
-    'middleware' => ['auth:api']
+    'middleware' => ['logged.in']
   ]);
-*/
+
   //Route delete
   $router->delete('/{criteria}', [
     'as' => 'api.iforms.leads.delete',

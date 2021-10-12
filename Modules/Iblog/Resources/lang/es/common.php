@@ -56,7 +56,10 @@ return [
     'admin_notes' => 'Notas de Administración',
     'created_at' => 'Fecha de Creación',
     'parent' => 'Superior',
-
-
+  
+  
+  'social' => [
+    'share' => 'Compartir'
+  ],
 
 ];

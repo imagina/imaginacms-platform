@@ -5,6 +5,7 @@ namespace Modules\Iprofile\Transformers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Ihelpers\Http\Controllers\Api\PermissionsApiController;
 use Modules\Ihelpers\Http\Controllers\Api\SettingsApiController;
+use Modules\Isite\Transformers\OrganizationTransformer;
 use Modules\Ihelpers\Transformers\BaseApiTransformer;
 use Cartalyst\Sentinel\Activations\EloquentActivation as Activation;
 
@@ -21,13 +22,13 @@ class UserTransformer extends JsonResource
     //Get settings
     $settings = json_decode(json_encode(SettingTransformer::collection($this->settings ?? collect([]))));
     $settingsResponse = [];
-    foreach ($settings as $setting) $settingsResponse[$setting->name] = $setting->value;
+    foreach ($settings as $setting) $settingsResponse[$setting->value->name ?? $setting->name] = $setting->value->value ?? $setting->value;
 
     $data = [
       'id' => $this->when($this->id, $this->id),
       'firstName' => $this->when($this->first_name, $this->first_name),
       'lastName' => $this->when($this->last_name, $this->last_name),
-      'fullName' => $this->when(($this->first_name && $this->last_name), trim($this->present()->fullname)),
+      'fullName' => trim($this->present()->fullname),
       'isActivated' => $this->isActivated() ? "1" : "0",
       'email' => $this->when($this->email, $this->email),
       'permissions' => $this->permissions ?? [],
@@ -46,6 +47,7 @@ class UserTransformer extends JsonResource
       'socialNetworks' => isset($socialNetworks->value) ? new FieldTransformer($socialNetworks) : ["name"=>"socialNetworks","value" =>[]],
 
       'departments' => DepartmentTransformer::collection($this->whenLoaded('departments')),
+      'organizations' => OrganizationTransformer::collection($this->whenLoaded('organizations')),
       'settings' => $settingsResponse,//SettingTransformer::collection($this->whenLoaded('settings')),
       'fields' => FieldTransformer::collection($this->whenLoaded('fields')),
       'addresses' => AddressTransformer::collection($this->whenLoaded('addresses')),

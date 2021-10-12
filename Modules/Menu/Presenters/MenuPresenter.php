@@ -11,12 +11,12 @@ class MenuPresenter extends Presenter
 {
     public function setLocale($item)
     {
-        if (Str::startsWith($item->url, 'http')) {
-            return;
-        }
-        if (LaravelLocalization::hideDefaultLocaleInURL() === false) {
-            $item->url = locale() . '/' . preg_replace('%^/?' . locale() . '/%', '$1', $item->url);
-        }
+      if (Str::startsWith($item->url, 'http')) {
+        return;
+      }
+      if (LaravelLocalization::hideDefaultLocaleInURL() === true) {
+        $item->url = \LaravelLocalization::localizeUrl($item->url);
+      }
     }
     /**
      * {@inheritdoc }.

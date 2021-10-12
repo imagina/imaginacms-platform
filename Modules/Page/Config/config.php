@@ -75,7 +75,8 @@ return [
     'mediaFillable' => [
       'page' => [
         'mainimage' => 'single',
-        'secondaryimage' => 'single'
+        'secondaryimage' => 'single',
+        'breadcrumbimage' => 'single'
       ]
     ]
 ];

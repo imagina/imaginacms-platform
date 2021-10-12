@@ -88,7 +88,7 @@ class ImagyTest extends MediaTestCase
         $file = app(FileService::class)->store($file);
 
         $expected = config('app.url') . config('asgard.media.config.files-path') . 'my-file_smallThumb.jpg';
-        $path = $this->imagy->getThumbnail($file->path, 'smallThumb');
+        $path = $this->imagy->getThumbnail($file, 'smallThumb');
 
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-file.jpg')));
         $this->assertEquals($expected, $path);
@@ -106,7 +106,7 @@ class ImagyTest extends MediaTestCase
 
         $this->assertTrue($this->app['files']->exists(public_path('assets/media/my-folder/my-file.jpg')));
 
-        $smallThumbPath = $this->imagy->getThumbnail($file->path, 'smallThumb');
+        $smallThumbPath = $this->imagy->getThumbnail($file, 'smallThumb');
 
         $expected = config('app.url') . config('asgard.media.config.files-path') . 'my-folder/my-file_smallThumb.jpg';
 

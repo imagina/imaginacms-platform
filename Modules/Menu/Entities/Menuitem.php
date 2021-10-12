@@ -10,7 +10,7 @@ class Menuitem extends Model
 {
     use Translatable, NestableTrait;
 
-    public $translatedAttributes = ['title', 'uri', 'url', 'status', 'locale'];
+    public $translatedAttributes = ['title', 'uri', 'url', 'status', 'locale', 'description'];
     protected $fillable = [
         'menu_id',
         'page_id',
@@ -18,16 +18,10 @@ class Menuitem extends Model
         'position',
         'target',
         'module_name',
-        'title',
-        'uri',
-        'url',
-        'status',
         'is_root',
         'icon',
         'link_type',
-        'locale',
         'class',
-        'description',
     ];
     protected $table = 'menu__menuitems';
 

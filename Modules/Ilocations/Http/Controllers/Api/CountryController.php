@@ -13,12 +13,12 @@ use Modules\Ilocations\Entities\Province;
 
 class CountryController extends BasePublicController
 {
-  
+
   public function allMinCountries()
   {
     \App::setLocale('en');
     try {
-      
+
       $countries = Country::where('status', 1)->get()->sortBy('name');
       $allMinCountries = [];
       foreach ($countries as $key => $country) {
@@ -30,25 +30,25 @@ class CountryController extends BasePublicController
         ]);
       }
       return response()->json($allMinCountries, 200);
-      
+
     } catch (Exception $e) {
       return response()->json($e->getMessage(), $e->status);
     }
   }
-  
+
   public function allFullCountries()
   {
     \App::setLocale('en');
     try {
       $countries = Country::where('status', 1)->get()->sortBy('name');
       return response()->json($countries, 200);
-      
+
     } catch (Exception $e) {
       return response()->json($e->getMessage(), $e->status);
     }
-    
+
   }
-  
+
   public function allProvincesByCountryIso2($countryCode)
   {
     \App::setLocale('en');
@@ -58,7 +58,7 @@ class CountryController extends BasePublicController
       $provinces = Province::where('country_id', $country->id)->get()->sortBy('name');
     else
       return response()->json('Country not Found', 404);
-    
+
     $allProvincesByCountryIso2 = [];
     foreach ($provinces as $key => $province) {
       array_push($allProvincesByCountryIso2, [
@@ -72,7 +72,7 @@ class CountryController extends BasePublicController
       return response()->json($e->getMessage(), $e->status);
     }
   }
-  
+
   public function allProvincesByCountryIso3($countryCode)
   {
     \App::setLocale('en');
@@ -95,7 +95,7 @@ class CountryController extends BasePublicController
       return response()->json($e->getMessage(), $e->status);
     }
   }
-  
+
   public function allCitiesByProvinceId($provinceId)
   {
     \App::setLocale('en');

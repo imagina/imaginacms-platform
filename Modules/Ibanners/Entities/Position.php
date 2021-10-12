@@ -7,7 +7,8 @@ class Position extends Model
     protected $fillable = [
         'name',
         'system_name',
-        'active'
+        'active',
+        'show_as_popup',
     ];
 
     protected $table = 'ibanners__positions';

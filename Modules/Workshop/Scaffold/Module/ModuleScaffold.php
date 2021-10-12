@@ -38,7 +38,11 @@ class ModuleScaffold
      */
     protected $files = [
         'permissions.stub' => 'Config/permissions',
-        'routes.stub' => 'Http/backendRoutes',
+        'config.stub' => 'Config/config',
+        'settings-fields.stub' => 'Config/settings-fields',
+        'settings.stub' => 'Config/settings',
+        'crud-fields.stub' => 'Config/crud-fields',
+        'routes-api.stub' => 'Http/apiRoutes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',
     ];
     /**

@@ -5,6 +5,7 @@ namespace Modules\Iprofile\Transformers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Ihelpers\Transformers\BaseApiTransformer;
 use Modules\Iprofile\Entities\Role;
+use Modules\Iforms\Transformers\FormTransformer;
 
 class RoleTransformer extends BaseApiTransformer
 {
@@ -25,6 +26,8 @@ class RoleTransformer extends BaseApiTransformer
       'createdAt' => $this->when($this->created_at, $this->created_at),
       'updatedAt' => $this->when($this->updated_at, $this->updated_at),
       'settings' => (object)$settingsResponse,
+      'form' => new FormTransformer($this->form),
+      'formId' => $this->form ? $this->form->id : null,
       'users' => UserTransformer::collection($this->whenLoaded('users'))
     ];
   }

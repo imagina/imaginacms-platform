@@ -13,9 +13,7 @@ trait Transformeable
     $classNamespace = get_class($this->resource);
     $classNamespaceExploded = explode('\\',strtolower($classNamespace));
     
-    
     $customProductIncludes = config('asgard.'.strtolower($classNamespaceExploded[1]).'.config.includes.'.$classNamespaceExploded[3]) ?? [];
-    
     
     foreach ($customProductIncludes as $include=>$customProductInclude){
       if($customProductInclude['multiple']){

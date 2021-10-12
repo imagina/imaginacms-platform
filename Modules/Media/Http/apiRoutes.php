@@ -112,5 +112,9 @@ $router->group(['prefix' => '/imedia/v1'], function (Router $router) {
 //======  BATCHS
   require('ApiRoutes/batchRoutes.php');
   
-  
+  $router->apiCrud([
+    'module' => 'imedia',
+    'prefix' => 'zones',
+    'controller' => 'ZoneApiController',
+  ]);
 });

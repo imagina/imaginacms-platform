@@ -12,6 +12,7 @@ class FullPageTransformer extends JsonResource
         $pageData = [
             'id' => $this->resource->id,
             'template' => $this->resource->template,
+            'options' => $this->resource->options,
             'is_home' => $this->resource->is_home,
             'urls' => [
                 'public_url' => $this->resource->getCanonicalUrl(),

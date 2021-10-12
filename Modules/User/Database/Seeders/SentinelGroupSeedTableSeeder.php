@@ -3,127 +3,82 @@
 namespace Modules\User\Database\Seeders;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Modules\User\Permissions\PermissionManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Illuminate\Console\Scheduling\Schedule;
 
 class SentinelGroupSeedTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        Model::unguard();
+  private $permissions;
+  private $schedule;
+  
+  public function __construct(PermissionManager $permissions, Schedule $schedule)
+  {
+    $this->permissions = $permissions;
+    $this->schedule = $schedule;
+  }
+  
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    Model::unguard();
+    
+    $this->schedule->command('php artisan config:clear');
 
-        $groups = Sentinel::getRoleRepository();
-  
-      $superAdmin = Sentinel::findRoleBySlug('super-admin');
-      if(!isset($superAdmin->id)){
-        // Create an SuperUser group
-        $groups->createModel()->create(
-          [
-            'name' => 'Super Admin',
-            'slug' => 'super-admin',
-          ]
-        );
-      }
-      
-      $adminGroup = Sentinel::findRoleBySlug('admin');
-      if(!isset($adminGroup->id)){
-        // Create an Admin group
-        $groups->createModel()->create(
-          [
-            'name' => 'Admin',
-            'slug' => 'admin',
-          ]
-        );
-  
-        // Save the permissions
-        $adminGroup = Sentinel::findRoleBySlug('admin');
-        $adminGroup->permissions = [
-          'core.sidebar.group' => true,
-          /* Dashboard */
-          'dashboard.index' => true,
-          'dashboard.update' => true,
-          'dashboard.reset' => true,
-          /* Workbench */
-          'workshop.sidebar.group' => true,
-          'workshop.modules.index' => true,
-          'workshop.modules.show' => true,
-          'workshop.modules.update' => true,
-          'workshop.modules.disable' => true,
-          'workshop.modules.enable' => true,
-          'workshop.modules.publish' => true,
-          'workshop.themes.index' => true,
-          'workshop.themes.show' => true,
-          'workshop.themes.publish' => true,
-          /* Roles */
-          'user.roles.index' => true,
-          'user.roles.create' => true,
-          'user.roles.edit' => true,
-          'user.roles.destroy' => true,
-          /* Users */
-          'user.users.index' => true,
-          'user.users.create' => true,
-          'user.users.edit' => true,
-          'user.users.destroy' => true,
-          /* API keys */
-          'account.api-keys.index' => true,
-          'account.api-keys.create' => true,
-          'account.api-keys.destroy' => true,
-          /* Menu */
-          'menu.menus.index' => true,
-          'menu.menus.create' => true,
-          'menu.menus.edit' => true,
-          'menu.menus.destroy' => true,
-          'menu.menuitems.index' => true,
-          'menu.menuitems.create' => true,
-          'menu.menuitems.edit' => true,
-          'menu.menuitems.destroy' => true,
-          /* Media */
-          'media.medias.index' => true,
-          'media.medias.create' => true,
-          'media.medias.edit' => true,
-          'media.medias.destroy' => true,
-          'media.folders.index' => true,
-          'media.folders.create' => true,
-          'media.folders.edit' => true,
-          'media.folders.destroy' => true,
-          /* Settings */
-          'setting.settings.index' => true,
-          'setting.settings.edit' => true,
-          /* Page */
-          'page.pages.index' => true,
-          'page.pages.create' => true,
-          'page.pages.edit' => true,
-          'page.pages.destroy' => true,
-          /* Translation */
-          'translation.translations.index' => true,
-          'translation.translations.edit' => true,
-          'translation.translations.export' => true,
-          'translation.translations.import' => true,
-          /* Tags */
-          'tag.tags.index' => true,
-          'tag.tags.create' => true,
-          'tag.tags.edit' => true,
-          'tag.tags.destroy' => true,
-        ];
-        $adminGroup->save();
-      }
-  
-      $userGroup = Sentinel::findRoleBySlug('user');
-      if(!isset($userGroup->id)) {
-        // Create an Users group
-        $groups->createModel()->create(
-          [
-            'name' => 'User',
-            'slug' => 'user',
-          ]
-        );
-      }
-
-      
+    $groups = Sentinel::getRoleRepository();
+    
+    $superAdminGroup = Sentinel::findRoleBySlug('super-admin');
+    if (!isset($superAdminGroup->id)) {
+      // Create an Admin group
+      $groups->createModel()->create(
+        [
+          'name' => 'Super Admin',
+          'slug' => 'super-admin',
+        ]
+      );
     }
+  
+  
+    $permissions = $this->permissions->all();
+  
+    $this->module = app('modules');
+    $modules = array_keys($this->module->allEnabled());
+  
+    $allPermissions = [];
+  
+    //Get permissions and set true
+    foreach ($permissions as $moduleName => $modulePermissions) {
+      if (in_array($moduleName, $modules)) {
+        foreach ($modulePermissions as $entityName => $entityPermissions) {
+          foreach ($entityPermissions as $permissionName => $permission) {
+            $allPermissions["{$entityName}.{$permissionName}"] = true;
+          }
+        }
+      }
+    
+    }
+    // Save the permissions
+    $superAdminGroup = Sentinel::findRoleBySlug('super-admin');
+    $superAdminGroup->permissions = $allPermissions;
+    $superAdminGroup->save();
+   
+    
+    $userGroup = Sentinel::findRoleBySlug('user');
+    if (!isset($userGroup->id)) {
+      // Create an Users group
+      $groups->createModel()->create(
+        [
+          'name' => 'User',
+          'slug' => 'user',
+        ]
+      );
+    }
+    
+    
+  }
 }

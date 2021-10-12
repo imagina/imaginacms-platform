@@ -8,12 +8,12 @@ use Modules\Slider\Repositories\SliderApiRepository;
 
 class EloquentSliderApiRepository extends EloquentBaseRepository implements SliderApiRepository
 {
-  
+
   public function getItemsBy($params = false)
   {
     /*== initialize query ==*/
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (in_array('*', $params->include)) {//If Request all relationships
       $query->with([]);
@@ -23,11 +23,11 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
     }
-    
+
     /*== FILTERS ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;//Short filter
-      
+
       //Filter by date
       if (isset($filter->date)) {
         $date = $filter->date;//Short filter date
@@ -37,14 +37,14 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
         if (isset($date->to))//to a date
           $query->whereDate($date->field, '<=', $date->to);
       }
-      
+
       //Order by
       if (isset($filter->order)) {
         $orderByField = $filter->order->field ?? 'created_at';//Default field
         $orderWay = $filter->order->way ?? 'desc';//Default way
         $query->orderBy($orderByField, $orderWay);//Add order to query
       }
-      
+
       //add filter by search
       if (isset($filter->search)) {
         //find search in columns
@@ -56,17 +56,21 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
             ->orWhere('created_at', 'like', '%' . $filter->search . '%');
         });
       }
-      
+
       //Filter by slug
       if (isset($filter->sliderId)) {
         $query->where('slider_id', $filter->sliderId);
       }
+      //Filter by slug
+      if (isset($filter->systemName)) {
+        $query->where('system_name', $filter->systemName);
+      }
     }
-    
+
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
-    
+
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
       return $query->paginate($params->take);
@@ -75,13 +79,13 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
       return $query->get();
     }
   }
-  
-  
+
+
   public function getItem($criteria, $params = false)
   {
     //Initialize query
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (in_array('*', $params->include)) {//If Request all relationships
       $query->with([]);
@@ -91,35 +95,34 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
     }
-    
+
     /*== FILTER ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;
-      
+
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
     }
-    
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
-    
+
     /*== REQUEST ==*/
     return $query->where($field ?? 'id', $criteria)->first();
   }
-  
+
   public function index($page, $take, $filter, $include)
   {
     //Initialize Query
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (count($include)) {
       //Include relationships for default
       $includeDefault = [];
       $query->with(array_merge($includeDefault, $include));
     }
-    
+
     /*== FILTER ==*/
     if ($filter) {
       //Filter by slug
@@ -127,7 +130,7 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
         $query->where('slider_id', $filter->sliderId);
       }
     }
-    
+
     /*=== REQUEST ===*/
     if ($page) {//Return request with pagination
       $take ? true : $take = 12; //If no specific take, query default take is 12
@@ -137,57 +140,57 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
       return $query->get();
     }
   }
-  
+
   public function show($id, $include)
   {
     //Initialize Query
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (count($include)) {
       //Include relationships for default
       $includeDefault = [];
       $query->with(array_merge($includeDefault, $include));
     }
-    
+
     $query->where('id', $id);
-    
+
     /*=== REQUEST ===*/
     return $query->first();
   }
-  
+
   public function updateBy($criteria, $data, $params = false)
   {
     /*== initialize query ==*/
     $query = $this->model->query();
-    
+
     /*== FILTER ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;
-      
+
       //Update by field
       if (isset($filter->field))
         $field = $filter->field;
     }
-    
+
     /*== REQUEST ==*/
     $model = $query->where($field ?? 'id', $criteria)->first();
     return $model ? $model->update((array)$data) : false;
   }
-  
+
   public function deleteBy($criteria, $params = false)
   {
     /*== initialize query ==*/
     $query = $this->model->query();
-    
+
     /*== FILTER ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;
-      
+
       if (isset($filter->field))//Where field
         $field = $filter->field;
     }
-    
+
     /*== REQUEST ==*/
     $model = $query->where($field ?? 'id', $criteria)->first();
     $model ? $model->delete() : false;

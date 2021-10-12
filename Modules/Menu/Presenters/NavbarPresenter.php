@@ -5,9 +5,21 @@ namespace Modules\Menu\Presenters;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Nwidart\Menus\MenuItem;
 use Nwidart\Menus\Presenters\Presenter;
+use Illuminate\Support\Str;
 
 class NavbarPresenter extends Presenter
 {
+  
+  public function setLocale($item)
+  {
+    if (Str::startsWith($item->url, 'http')) {
+      return;
+    }
+    if (LaravelLocalization::hideDefaultLocaleInURL() === true) {
+      $item->url = \LaravelLocalization::localizeUrl($item->url);
+    }
+  }
+  
   /**
    * {@inheritdoc }.
    */
@@ -29,7 +41,8 @@ class NavbarPresenter extends Presenter
    */
   public function getMenuWithoutDropdownWrapper($item)
   {
-    return '<li class="nav-item"'. $this->getActiveState($item) . '><a class="nav-link" href="' . $item->getUrl() . '" ' . $item->getAttributes() . '>' . $item->getIcon() . '' . $item->title . '</a></li>' . PHP_EOL;
+    $this->setLocale($item);
+    return '<li class="nav-item"'. $this->getActiveState($item) . '><a class="nav-link '.($item->attributes['class'] ?? '').'" href="' . $item->getUrl() . '" ' . $item->getAttributes() . '>' . $item->getIcon() . '' . $item->title . '</a></li>' . PHP_EOL;
   }
   
   /**
@@ -74,8 +87,9 @@ class NavbarPresenter extends Presenter
    */
   public function getMenuWithDropDownWrapper($item)
   {
+    
     return '<li class="nav-item dropdown' . $this->getActiveStateOnChild($item, ' active') . '">
-		          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          <a href="#" class="nav-link dropdown-toggle  '.($item->attributes['class'] ?? '').'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					' . $item->getIcon() . ' ' . $item->title . '
 			      
 			      </a>
@@ -96,7 +110,7 @@ class NavbarPresenter extends Presenter
   public function getMultiLevelDropdownWrapper($item)
   {
     return '<li class="nav-item dropdown' . $this->getActiveStateOnChild($item, ' active') . '">
-		          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+		          <a href="#" class="nav-link dropdown-toggle '.($item->attributes['class'] ?? '').'" data-toggle="dropdown">
 					' . $item->getIcon() . ' ' . $item->title . '
 			      
 			      </a>
