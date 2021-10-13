@@ -158,6 +158,8 @@ class MediaServiceProvider extends ServiceProvider
    */
   private function registerAwsCredentials()
   {
+  
+    try {
     config(["filesystems.disks.s3" => [
       'driver' => 's3',
       'key' => setting('media::awsAccessKeyId'),
@@ -167,34 +169,41 @@ class MediaServiceProvider extends ServiceProvider
       'url' => setting('media::awsUrl'),
       'endpoint' => setting('media::awsEndpoint'),
     ]]);
+    }catch(\Exception $error){
+      \Log::info("Media:: RegisterThumbnails error: ".$error->getMessage());
+    }
   //  dd(trans('media::media'));
   }
   
   private function registerThumbnails()
   {
+    try {
+      $thumbnails = json_decode(setting("media::thumbnails",null,config("asgard.media.config.defaultThumbnails")));
   
-    $thumbnails = json_decode(setting("media::thumbnails",null,config("asgard.media.config.defaultThumbnails")));
-    
-    foreach ($thumbnails as $key => $thumbnail){
-      $this->app[ThumbnailManager::class]->registerThumbnail($key, [
-    
-        'quality' => $thumbnail->quality ?? 80,
-        'resize' => [
-          'width' => $thumbnail->width ?? 300,
-          'height' => $thumbnail->height ?? null,
-          'callback' => function ($constraint) use ($thumbnail){
-            if(isset($thumbnail->aspectRatio) && $thumbnail->aspectRatio){
-              $constraint->aspectRatio();
-            }
-            if(isset($thumbnail->upsize) && $thumbnail->upsize){
-              $constraint->upsize();
-            }
-          },
+      foreach ($thumbnails as $key => $thumbnail){
+        $this->app[ThumbnailManager::class]->registerThumbnail($key, [
+      
+          'quality' => $thumbnail->quality ?? 80,
+          'resize' => [
+            'width' => $thumbnail->width ?? 300,
+            'height' => $thumbnail->height ?? null,
+            'callback' => function ($constraint) use ($thumbnail){
+              if(isset($thumbnail->aspectRatio) && $thumbnail->aspectRatio){
+                $constraint->aspectRatio();
+              }
+              if(isset($thumbnail->upsize) && $thumbnail->upsize){
+                $constraint->upsize();
+              }
+            },
+          ],
         ],
-      ],
-        $thumbnail->format ?? "webp"
-      );
+          $thumbnail->format ?? "webp"
+        );
+      }
+    }catch(\Exception $error){
+      \Log::info("Media:: RegisterThumbnails error: ".$error->getMessage());
     }
+    
   }
   
   private function registerBladeTags()

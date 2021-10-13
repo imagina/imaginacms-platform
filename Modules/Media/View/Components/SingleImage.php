@@ -33,8 +33,9 @@ class SingleImage extends Component
   
   public function __construct($src = '', $alt = '', $title = null, $url = null, $isMedia = false, $mediaFiles = null,
                               $zone = 'mainimage', $extraLargeSrc = null, $largeSrc = null, $mediumSrc = null,
-                              $smallSrc = null, $fallback = null, $imgClasses = '', $linkClasses = '', $linkRel = '', $defaultLinkClasses = 'image-link w-100',
-                              $imgStyles = '', $width = "300px", $dataFancybox = null, $dataCaption = null, $target = "_self")
+                              $smallSrc = null, $fallback = null, $imgClasses = '', $linkClasses = '', $linkRel = '',
+                              $defaultLinkClasses = 'image-link w-100', $imgStyles = '', $width = "300px",
+                              $dataFancybox = null, $dataCaption = null, $target = "_self", $setting = '')
   {
     $this->src = $src;
     $this->alt = $alt;
@@ -49,6 +50,20 @@ class SingleImage extends Component
     $this->dataFancybox = $dataFancybox;
     $this->dataCaption = $dataCaption;
     $this->target = $target;
+    
+    if(!empty($setting)){
+      
+      $settingRepository = app("Modules\Setting\Repositories\SettingRepository");
+  
+      $setting = $settingRepository->findByName($setting);
+      
+      if(isset($setting->id)){
+        $isMedia = true;
+        $zone = "setting::mainimage";
+        $mediaFiles = $setting->mediaFiles();
+      }
+      
+    }
     
     if (!empty($fallback)) {
       $this->fallbackExtension = pathinfo($fallback, PATHINFO_EXTENSION);
