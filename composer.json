@@ -45,7 +45,7 @@
         "stancl/tenancy": "^3.4",
         "imagina/core-module": "v8.x-dev",
         "imagina/dashboard-module": "v8.x-dev",
-
+        "kalnoy/nestedset": "6.0",
         "imagina/tag-module": "v8.x-dev",
         "imagina/media-module": "v8.x-dev",
         "imagina/page-module": "v8.x-dev",

@@ -42,7 +42,8 @@
         "cviebrock/eloquent-sluggable": "^8.0",
         "jantinnerezo/livewire-alert":"^2.0",
         "anhskohbo/no-captcha":"^3.0",
-        "stancl/tenancy": "^3.4"
+        "stancl/tenancy": "^3.4",
+        "kalnoy/nestedset": "6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
