@@ -42,7 +42,7 @@
         "cviebrock/eloquent-sluggable": "^8.0",
         "jantinnerezo/livewire-alert":"^2.0",
         "anhskohbo/no-captcha":"^3.0",
-
+        "stancl/tenancy": "^3.4",
         "imagina/core-module": "v8.x-dev",
         "imagina/dashboard-module": "v8.x-dev",
 
