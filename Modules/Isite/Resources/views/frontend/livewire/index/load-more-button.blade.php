@@ -30,7 +30,7 @@
 					  window.bricklayer.append(value)
 					}
 				@else
-					$(".items-list .items .items-list-wrapper").append(event.detail.newHtml);
+					$(".items-list .items .{{$parentItemListUniqueClass}}").append(event.detail.newHtml);
 				@endif
 
 

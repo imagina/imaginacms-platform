@@ -5,16 +5,17 @@ namespace Modules\Iprofile\Entities;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Entities\Sentinel\User;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Department extends Model
 {
-
+use BelongsToTenant;
   protected $table = 'iprofile__departments';
 
   protected $fillable = [
     'title',
     'parent_id',
-    'internal',
+    'is_internal',
     'options'
   ];
 

@@ -8,7 +8,7 @@
 		
 		@if(isset($items) && count($items)>0)
 			
-			<div class="items-list-wrapper {{$wrapperClass}}">
+			<div class="items-list-wrapper {{$itemListUniqueClass}} {{$wrapperClass}}">
 				
 				@include("isite::frontend.livewire.index.partials.items")
 

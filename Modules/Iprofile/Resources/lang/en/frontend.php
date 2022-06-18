@@ -29,6 +29,7 @@ return [
     'password confirmation' => 'Password confirmation',
     'stay connect'      => 'Stay connected to this computer.',
     'resetPassword'     => 'Reset Password',
+    'changePassword'     => 'Change Password',
   ],
 
   'form' => [
@@ -99,7 +100,11 @@ return [
 
   'messages' => [
     'account created' => 'Account created! You can sign in now.',
-    "providerEmailEmpty" => "The Email is empty, check your provider (:providerName) permissions to get the email field."
+    "providerEmailEmpty" => "The Email is empty, check your provider (:providerName) permissions to get the email field.",
+    "resetPasswordModal" => 'Hello, You must change the password',
+    "password updated" => 'Password Updated!',
+    "You already used this password" => "You already used this password",
+    "You must change the password" => "You must change the password since it is expired"
   ]
 
 

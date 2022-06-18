@@ -26,7 +26,7 @@
                             @if ($page == $paginator->currentPage())
                                 <li class="page-item active" wire:key="paginator-page-{{ $page }}" aria-current="page"><span class="page-link">{{ $page }}</span></li>
                             @else
-                                <li class="page-item page-link-scroll" wire:key="paginator-page-{{ $page }}"><button type="button" class="page-link" wire:click="gotoPage({{ $page }})">{{ $page }}</button></li>
+                                <li class="page-item page-link-scroll" wire:key="paginator-page-{{ $page }}"><a href="{{Request::url()}}?page={{$page}}" class="page-link" wire:click.prevent="gotoPage({{ $page }})">{{ $page }}</a></li>
                             @endif
                         @endforeach
                     @endif

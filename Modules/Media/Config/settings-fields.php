@@ -1,12 +1,12 @@
 <?php
 $filesystems = config("filesystems.disks");
 $disksOptions = [];
-foreach ($filesystems as $index => $disk){
-  array_push($disksOptions,["label" => $index, "value" => $index]);
+foreach ($filesystems as $index => $disk) {
+  array_push($disksOptions, ["label" => $index, "value" => $index]);
 }
 
 return [
-  
+
   'filesystem' => [
     "onlySuperAdmin" => true,
     'name' => 'media::filesystem',
@@ -23,7 +23,7 @@ return [
       'options' => $disksOptions
     ]
   ],
-  
+
   'allowedImageTypes' => [
     "onlySuperAdmin" => true,
     'name' => 'media::allowedImageTypes',
@@ -40,7 +40,7 @@ return [
       'label' => 'media::settings.label.allowedImageTypes'
     ],
   ],
-  
+
   'allowedFileTypes' => [
     "onlySuperAdmin" => true,
     'name' => 'media::allowedFileTypes',
@@ -57,7 +57,7 @@ return [
       'label' => 'media::settings.label.allowedFileTypes'
     ],
   ],
-  
+
   'allowedVideoTypes' => [
     "onlySuperAdmin" => true,
     'name' => 'media::allowedVideoTypes',
@@ -90,7 +90,22 @@ return [
       'label' => 'media::settings.label.allowedAudioTypes'
     ],
   ],
-  
+  'allowedRatios' => [
+    "onlySuperAdmin" => true,
+    'name' => 'media::allowedRatios',
+    'value' => config("asgard.media.config.allowedRatios"),
+    'type' => 'select',
+    'columns' => 'col-12 col-md-6',
+    'props' => [
+      'useInput' => true,
+      'useChips' => true,
+      'multiple' => true,
+      'hint' => 'media::settings.hint.allowedTypes',
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'label' => 'media::settings.label.allowedRatios'
+    ],
+  ],
   'maxFileSize' => [
     "onlySuperAdmin" => true,
     'name' => 'media::maxFileSize',
@@ -111,35 +126,35 @@ return [
       'label' => 'media::settings.label.maxTotalSize'
     ]
   ],
-  
-  //TODO::falta convertir este setting s tipo json cuando ya esté el campo en el iadmin creado
+
   "thumbnails" => [
     "onlySuperAdmin" => true,
     'name' => 'media::thumbnails',
     "value" => config("asgard.media.config.defaultThumbnails"),
     'label' => 'Thumbnail Config',
-    "type" => "input",
+    "type" => "json",
+    'columns' => 'col-12',
     "props" => [
       'label' => 'media::settings.label.thumbnails',
       "type" => "textarea"
     ]
-  
+
   ],
-  
-  //TODO::falta convertir este setting s tipo json cuando ya esté el campo en el iadmin creado
+
   "defaultImageSize" => [
     "onlySuperAdmin" => true,
     'name' => 'media::defaultImageSize',
     "value" => config("asgard.media.config.defaultImageSize"),
     'label' => 'Default Image Size',
-    "type" => "input",
+    "type" => "json",
+    'columns' => 'col-12',
     "props" => [
       'label' => 'media::settings.label.defaultImageSize',
       "type" => "textarea"
     ]
-  
+
   ],
-  
+
   //configuring AWS in the Modules\Media\Providers\MediaServiceProvider::155
   'awsAccessKeyId' => [
     "onlySuperAdmin" => true,

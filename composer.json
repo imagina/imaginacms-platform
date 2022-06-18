@@ -54,6 +54,8 @@
         "imagina/translation-module": "v8.x-dev",
         "imagina/workshop-module": "v8.x-dev",
         "imagina/user-module": "v8.x-dev",
+        "imagina/ifillable-module": "v8.x-dev",
+        "imagina/ischedulable-module": "v8.x-dev",
 
         "imagina/iblog-module": "v8.x-dev",
         "imagina/iforms-module": "v8.x-dev",

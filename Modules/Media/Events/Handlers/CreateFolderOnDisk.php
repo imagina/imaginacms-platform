@@ -20,7 +20,10 @@ class CreateFolderOnDisk
     public function handle(FolderWasCreated $event)
     {
         $disk = is_null($event->folder->disk)? $this->getConfiguredFilesystem() : $event->folder->disk;
-        $this->filesystem->disk($disk)->makeDirectory($this->getDestinationPath($event->folder->path->getRelativeUrl()));
+      
+        $organizationId = $event->folder->organization_id ?? null;
+        
+        $this->filesystem->disk($disk)->makeDirectory(($organizationId ? "/organization$organizationId" : "").$this->getDestinationPath($event->folder->path->getRelativeUrl()));
     }
 
     private function getDestinationPath($path)

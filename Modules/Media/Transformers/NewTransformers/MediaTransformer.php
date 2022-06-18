@@ -42,6 +42,7 @@ class MediaTransformer extends JsonResource
       'createdAt' => $this->created_at,
       'folderId' => $this->folder_id,
       'filesize' => $this->filesize,
+      'disk' => $this->disk,
       'extension' => $this->extension,
       'zone' => $this->when(isset($this->pivot->zone) && !empty($this->pivot->zone), $this->pivot->zone ?? null),
       'smallThumb' => $this->imagy->getThumbnail($this->resource, 'smallThumb'),
@@ -92,7 +93,7 @@ class MediaTransformer extends JsonResource
   private function getPath()
   {
     if ($this->is_folder) {
-      return $this->path->getRelativeUrl();
+      return (string)$this->pathString;
     }
 
     return (string)$this->path;

@@ -24,6 +24,7 @@ class PostTransformer extends JsonResource
       'metaDescription' => $this->when($this->meta_description, $this->meta_description),
       'metaKeywords' => $this->when($this->meta_keywords, $this->meta_keywords),
       'mainImage' => $this->main_image,
+      'layoutId' => $this->layout_id,
       'secondaryImage' => $this->when($this->secondary_image, $this->secondary_image),
       'gallery' => $this->gallery,
       'featured' => $this->when($this->featured, $this->featured),

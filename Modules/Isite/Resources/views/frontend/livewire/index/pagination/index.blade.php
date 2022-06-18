@@ -21,6 +21,7 @@
 				:pagination="$pagination"
 				:itemMainClass="$itemMainClass"
 				:itemModal="$itemModal"
+				:parentItemListUniqueClass="$itemListUniqueClass"
 			/>
 		
 		@endif	

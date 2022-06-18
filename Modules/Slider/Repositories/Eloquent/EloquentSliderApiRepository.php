@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\App;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Repositories\SliderApiRepository;
-
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 class EloquentSliderApiRepository extends EloquentBaseRepository implements SliderApiRepository
 {
 
@@ -66,16 +66,28 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
         $query->where('system_name', $filter->systemName);
       }
     }
-
+    $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("slider",$entitiesWithCentralData);
+  
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+    
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
 
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
-      return $query->paginate($params->take);
+      //return $query->paginate($params->take);
+      return $query->paginate($params->take, ['*'], null, $params->page);
     } else {
-      $params->take ? $query->take($params->take) : false;//Take
+      isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
       return $query->get();
     }
   }
@@ -87,7 +99,7 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with([]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
@@ -103,10 +115,24 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
     }
+  
+    $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("sliders",$entitiesWithCentralData);
+  
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+    
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
+ 
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
-
+    
     /*== REQUEST ==*/
     return $query->where($field ?? 'id', $criteria)->first();
   }

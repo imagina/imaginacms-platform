@@ -17,9 +17,9 @@ class UpdatePostRequest extends BaseFormRequest
   public function translationRules()
   {
     return [
-      'name' => 'min:2',
-      'slug' => [new UniqueSlugRule("iblog__post_translations", $this->id, "post_id") ,"min:2"],
-      'description' => 'min:2'
+      'name' => 'min:1',
+      'slug' => [new UniqueSlugRule("iblog__post_translations", $this->id, "post_id") ,"min:1"],
+      'description' => 'min:1'
     ];
   }
 
@@ -40,15 +40,15 @@ class UpdatePostRequest extends BaseFormRequest
     return [
       // title
       'name.required' => trans('icommerce::common.messages.field required'),
-      'name.min:2' => trans('icommerce::common.messages.min 2 characters'),
+      'name.min:1' => trans('icommerce::common.messages.min 2 characters'),
 
       // slug
       'slug.required' => trans('icommerce::common.messages.field required'),
-      'slug.min:2' => trans('icommerce::common.messages.min 2 characters'),
+      'slug.min:1' => trans('icommerce::common.messages.min 2 characters'),
 
       // description
       'description.required' => trans('icommerce::common.messages.field required'),
-      'description.min:2' => trans('icommerce::common.messages.min 2 characters'),
+      'description.min:1' => trans('icommerce::common.messages.min 2 characters'),
     ];
   }
 }

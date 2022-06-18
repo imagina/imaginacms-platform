@@ -116,6 +116,7 @@ class LeadApiController extends BaseApiController
       $attr = array();
       $attr['form'] = $form;
       $attr['form_id'] = $form->id;
+      $attr['organization_id'] = $form->organization_id ?? null;
       $attr['values'] = array();
       $attr['reply'] = ['to' => env('MAIL_FROM_ADDRESS'), 'toName' => 'Client'];
       $fields = $form->fields;
@@ -257,8 +258,7 @@ class LeadApiController extends BaseApiController
       //getting the file extension
       $extension  = FileHelper::getExtension($file->getClientOriginalName());
 
-      if (!$availableExtensionsRule->passes($field->label, \Str::replace(".","",$extension)))
-      {
+      if (!$availableExtensionsRule->passes($field->label, \Str::replace(".","",$extension))){
         throw new \Exception(json_encode(["errors" => [$availableExtensionsRule->message()]]), 400);
       }
     }

@@ -56,6 +56,7 @@
           :showTitle="true"
           :params="['filter' => ['tagId' => $tag->id ?? '']]"
           :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
+          :pagination="config('asgard.iblog.config.pagination')"
         />
 
         </div>

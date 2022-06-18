@@ -26,14 +26,14 @@ use Nwidart\Menus\MenuItem as PingpongMenuItem;
 class MenuServiceProvider extends ServiceProvider
 {
   use CanPublishConfiguration, CanGetSidebarClassForModule;
-  
+
   /**
    * Indicates if loading of the provider is deferred.
    *
    * @var bool
    */
   protected $defer = false;
-  
+
   /**
    * Register the service provider.
    *
@@ -42,21 +42,21 @@ class MenuServiceProvider extends ServiceProvider
   public function register()
   {
     $this->registerBindings();
-    
+
     $this->app->bind('menu.menu.directive', function () {
       return new MenuDirective();
     });
-    
+
     $this->app['events']->listen(
       BuildingSidebar::class,
       $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
     );
-    
+
     $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
       $event->load('menu', Arr::dot(trans('menu::menu')));
       $event->load('menu-items', Arr::dot(trans('menu::menu-items')));
     });
-    
+
     app('router')->bind('menu', function ($id) {
       return app(MenuRepository::class)->find($id);
     });
@@ -64,7 +64,7 @@ class MenuServiceProvider extends ServiceProvider
       return app(MenuItemRepository::class)->find($id);
     });
   }
-  
+
   /**
    * Register all online menus on the Pingpong/Menu package
    */
@@ -73,10 +73,12 @@ class MenuServiceProvider extends ServiceProvider
     $this->registerMenus();
     $this->registerBladeTags();
     $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'permissions'), "asgard.menu.permissions");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsPages'), "asgard.menu.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsSidebar'), "asgard.menu.cmsSidebar");
     $this->publishConfig('menu', 'config');
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
   }
-  
+
   /**
    * Get the services provided by the provider.
    *
@@ -86,7 +88,7 @@ class MenuServiceProvider extends ServiceProvider
   {
     return [];
   }
-  
+
   /**
    * Register class binding
    */
@@ -94,25 +96,25 @@ class MenuServiceProvider extends ServiceProvider
   {
     $this->app->bind(MenuRepository::class, function () {
       $repository = new EloquentMenuRepository(new Menu());
-      
+
       if (!config('app.cache')) {
         return $repository;
       }
-      
+
       return new CacheMenuDecorator($repository);
     });
-    
+
     $this->app->bind(MenuItemRepository::class, function () {
       $repository = new EloquentMenuItemRepository(new Menuitem());
-      
+
       if (!config('app.cache')) {
         return $repository;
       }
-      
+
       return new CacheMenuItemDecorator($repository);
     });
   }
-  
+
   /**
    * Add a menu item to the menu
    * @param Menuitem $item
@@ -134,7 +136,7 @@ class MenuServiceProvider extends ServiceProvider
     } else {
       $localisedUri = ltrim(parse_url(LaravelLocalization::localizeURL($item->uri), PHP_URL_PATH), '/');
       $target = $item->link_type != 'external' ? $localisedUri : $item->url;
-      
+
       $menu->url(
         $target,
         $item->title,
@@ -146,7 +148,7 @@ class MenuServiceProvider extends ServiceProvider
       );
     }
   }
-  
+
   /**
    * Add children to menu under the give name
    *
@@ -162,7 +164,7 @@ class MenuServiceProvider extends ServiceProvider
       }
     }, 0, $attribs);
   }
-  
+
   /**
    * Add children to the given menu recursively
    * @param Menuitem $child
@@ -177,7 +179,7 @@ class MenuServiceProvider extends ServiceProvider
       $sub->url($target, $child->title, 0, ['icon' => $child->icon, 'target' => $child->target, 'class' => $child->class]);
     }
   }
-  
+
   /**
    * Check if the given menu item has children
    *
@@ -188,7 +190,7 @@ class MenuServiceProvider extends ServiceProvider
   {
     return $item->items->count() > 0;
   }
-  
+
   /**
    * Register the active menus
    */
@@ -200,7 +202,7 @@ class MenuServiceProvider extends ServiceProvider
     ) {
       return;
     }
-    
+
     $menu = $this->app->make(MenuRepository::class);
     $menuItem = $this->app->make(MenuItemRepository::class);
     foreach ($menu->allOnline() as $menu) {
@@ -212,7 +214,7 @@ class MenuServiceProvider extends ServiceProvider
       });
     }
   }
-  
+
   /**
    * Register menu blade tags
    */
@@ -221,7 +223,7 @@ class MenuServiceProvider extends ServiceProvider
     if (app()->environment() === 'testing') {
       return;
     }
-    
+
     $this->app['blade.compiler']->directive('menu', function ($arguments) {
       return "<?php echo MenuDirective::show([$arguments]); ?>";
     });

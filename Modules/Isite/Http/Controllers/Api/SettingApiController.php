@@ -65,11 +65,6 @@ class SettingApiController extends BaseApiController
       }
       /*=== SETTINGS ===*/
       $assignedSettings = [];
-      /*if (isset($params->settings)) {
-        if (isset($params->settings['assignedSettings']) && !empty($params->settings['assignedSettings'])) {
-          $assignedSettings = $params->settings['assignedSettings'];
-        }
-      }*/
 
       // merging translatable and plain settings
       $mergedSettings = array_merge_recursive($translatableSettings, $plainSettings);
@@ -161,7 +156,7 @@ class SettingApiController extends BaseApiController
         $settingName = strtolower($keyModule) . '::' . $keySetting;//Setting name
         $dbSetting = $dbSettings[$keyModule][$settingName] ?? false;//DB setting value
         //Get available locales
-        $locales = json_decode($dbSettings['Core']['core::locales']->plainValue ?? json_encode(['en']));
+        $locales = json_decode($dbSettings['Core']['core::locales']->plainValue ?? json_encode([locale()]));
 
         //Transform settings
         if (empty($assignedSettings) || in_array($settingName, $assignedSettings)) {
@@ -179,7 +174,7 @@ class SettingApiController extends BaseApiController
             'description' => isset($setting['description']) ? trans($setting['description']) : '',
             'isTranslatable' => $setting['translatable'] ?? false,
             'plainValue' => $plainValue ?? $defaultValue,
-            'value' => $plainValue ? $plainValue : ($setting['value'] ?? $defaultValue ?? null)
+            'value' => !is_null($plainValue) ? $plainValue : ($setting['value'] ?? $defaultValue ?? null)
           ]);
           //Get media path
           if (is_object($setting['value']) && isset($setting['value']->medias_single)) {

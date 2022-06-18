@@ -5,11 +5,12 @@
     "keywords": [],
     "version": "0.0.13",
     "active": 1,
-    "priority": 1,
+    "priority": 10000,
     "providers": [
         "Modules\\Isite\\Providers\\EventServiceProvider",
         "Modules\\Isite\\Providers\\IsiteServiceProvider",
-        "Modules\\Isite\\Providers\\RouteServiceProvider"
+        "Modules\\Isite\\Providers\\RouteServiceProvider",
+        "Modules\\Isite\\Providers\\ScheduleServiceProvider"
     ],
     "aliases": {},
     "files": [

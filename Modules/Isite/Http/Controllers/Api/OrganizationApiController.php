@@ -4,6 +4,7 @@ namespace Modules\Isite\Http\Controllers\Api;
 
 use Modules\Core\Icrud\Controllers\BaseCrudController;
 //Model Repository
+use Modules\Isite\Entities\Organization;
 use Modules\Isite\Repositories\OrganizationRepository;
 //Model Requests
 use Modules\Isite\Http\Requests\CreateOrganizationRequest;

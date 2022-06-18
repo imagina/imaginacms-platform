@@ -7,14 +7,24 @@ use Modules\Core\Icrud\Entities\CrudModel;
 
 class $CLASS_NAME$ extends CrudModel
 {
-    use Translatable;
+  use Translatable;
 
-    protected $table = '$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$';
-    public $transformer = 'Modules\$MODULE_NAME$\Transformers\$CLASS_NAME$Transformer';
-    public $requestValidation = [
-        'create' => 'Modules\$MODULE_NAME$\Http\Requests\Create$CLASS_NAME$Request',
-        'update' => 'Modules\$MODULE_NAME$\Http\Requests\Update$CLASS_NAME$Request',
-      ];
-    public $translatedAttributes = [];
-    protected $fillable = [];
+  protected $table = '$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$';
+  public $transformer = 'Modules\$MODULE_NAME$\Transformers\$CLASS_NAME$Transformer';
+  public $requestValidation = [
+      'create' => 'Modules\$MODULE_NAME$\Http\Requests\Create$CLASS_NAME$Request',
+      'update' => 'Modules\$MODULE_NAME$\Http\Requests\Update$CLASS_NAME$Request',
+    ];
+  //Instance external/internal events to dispatch with extraData
+  public $dispatchesEventsWithBindings = [
+    //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
+    'created' => [],
+    'creating' => [],
+    'updated' => [],
+    'updating' => [],
+    'deleting' => [],
+    'deleted' => []
+  ];
+  public $translatedAttributes = [];
+  protected $fillable = [];
 }

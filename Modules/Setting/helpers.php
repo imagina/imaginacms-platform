@@ -1,9 +1,9 @@
 <?php
 
 if (!function_exists('setting')) {
-  function setting($name, $locale = null, $default = null)
+  function setting($name, $locale = null, $default = null, $central = false)
   {
-    return app('setting.settings')->get($name, $locale, $default);
+    return app('setting.settings')->get($name, $locale, $default, $central);
   }
 }
 
@@ -20,6 +20,7 @@ if (!function_exists('getSettingsFormat')) {
       //Create setting
       if (!isset($response[$settingName])) {
         $response[$settingName] = [
+          'onlySuperAdmin' => $field->onlySuperAdmin ?? false,
           'description' => isset($field->children) ? ($field->group ?? $field->label ?? '') :
             (isset($field->props) ? ($field->props->label ?? '') : ''),
           'default' => isset($field->children) || isset($field->fakeFieldName) ? [] : ($field->value ?? null),

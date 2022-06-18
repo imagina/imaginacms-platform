@@ -14,6 +14,7 @@ return [
     'create departmentsetting' => 'Create a departmentsetting',
   ],
   'registerUsers' => 'User can register',
+  'allowResetPassword' => 'Allow reset password in the login page',
   'validateRegisterWithEmail' => 'Validate register with email',
   'adminNeedsToActivateNewUsers' => 'Admin need active users',
   'registerUsersWithSocialNetworks' => 'Allow social network register',
@@ -24,6 +25,21 @@ return [
   'registerExtraFieldsRequired' => 'Required register extra fields',
   'addressesExtraFieldsActive' => 'Active address extra fields',
   'addressesExtraFieldsRequired' => 'Required address extra fields',
+  'authTitle' => 'Title',
+  'hideLogo' => 'hide Logo',
+  'authLoginCaption' => 'Caption Login',
+  'authRegisterCaption' => 'Caption Resgister',
+  'yes' => 'Yes',
+  'no' => 'No',
+  'passwordExpiredTime' => 'Password expired time',
+  'expiredTime' => [
+    'never' => 'Never',
+    '1 week' => '1 week',
+    '1 month' => '1 month',
+    '3 months' => '3 months',
+    '1 year' => '1 year'
+  ],
+  'notAllowOldPassword' => 'The user will not be able to save repeated passwords',
   'table' => [
   ],
   'form' => [
@@ -35,7 +51,7 @@ return [
   'settingGroups' => [
     'registerExtraFields' => 'Register extra fields',
     'addressesExtraFields' => 'Address extra fields',
-    'register' => 'Auth Configuration',
+    'auth' => 'Auth Configuration',
   ],
   'settingFields' => [
     'enabled' => 'Enabled',
@@ -47,5 +63,9 @@ return [
     "company" => 'Company',
     "zipCode" => 'Zipcode',
     "extraInfo" => 'Additional Information',
+  ],
+  'logoutIdlTime' => [
+    'label' => "Logout due to inactivity (minutes)",
+    'helpText' => "Define the number of minutes, to close the session due to inactivity. If the value is less than 1, the session will not be closed due to inactivity"
   ]
 ];

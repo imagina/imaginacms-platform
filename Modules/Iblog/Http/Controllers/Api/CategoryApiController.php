@@ -48,7 +48,7 @@ class CategoryApiController extends BaseApiController
             $params = $this->getParamsRequest($request);
             //Request to Repository
             $categories = $this->category->getItemsBy($params);
-
+//dd($categories,$params);
             //Response
             $response = ["data" => CategoryTransformer::collection($categories)];
 

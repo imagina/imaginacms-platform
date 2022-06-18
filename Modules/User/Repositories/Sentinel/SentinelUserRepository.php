@@ -54,8 +54,9 @@ class SentinelUserRepository implements UserRepository
         $this->hashPassword($data);
 
         event($event = new UserIsCreating($data));
+      
         $user = $this->user->create($event->getAttributes());
-
+ 
         if ($activated) {
             $this->activateUser($user);
             event(new UserWasCreated($user));
@@ -76,6 +77,7 @@ class SentinelUserRepository implements UserRepository
      */
     public function createWithRoles($data, $roles, $activated = false)
     {
+     
         $user = $this->create((array) $data, $activated);
 
         if (!empty($roles)) {

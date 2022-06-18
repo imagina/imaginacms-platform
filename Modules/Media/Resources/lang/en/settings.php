@@ -6,6 +6,7 @@ return [
     "allowedFileTypes" => "Available file extensions",
     "allowedVideoTypes" => "Available video extensions",
     "allowedAudioTypes" => "Available audio extensions",
+    "allowedRatios" => "Available ratios",
     "defaultImageSize" => "Default Image Size",
     "maxFileSize" => "Max File Size (Mb)",
     "maxTotalSize" => "Max Media Sizes (Bytes)",

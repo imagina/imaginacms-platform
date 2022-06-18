@@ -53,7 +53,7 @@ class Menu extends Component
       "include" => $this->params["include"] ?? ["children"],
       "take" => $this->params["take"] ?? false,
       "page" => $this->params["page"] ?? false,
-      "filter" => $this->params["filter"] ?? ["showMenu" => true,"parentId" => 0],
+      "filter" => $this->params["filter"] ?? ["showMenu" => true],
       "order" => $this->params["order"] ?? null
     ];
   }
@@ -61,11 +61,14 @@ class Menu extends Component
   private function getItems(){
 
     $params = $this->makeParamsFunction();
-
-
-    if($this->repository)
-      $this->items = app($this->repository)->getItemsBy(json_decode(json_encode($params)));
-
+    
+    if($this->repository){
+      $items = app($this->repository)->getItemsBy(json_decode(json_encode($params)));
+   
+      if($items->isNotEmpty())
+        $this->items = $items->toTree();
+    }
+    
   }
   /**
    * Get the view / contents that represent the component.

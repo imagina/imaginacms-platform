@@ -10,7 +10,7 @@ class UpdateUserApiRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'email' => ['required',new UniqueRule("users", $this->id, "id", trans("iprofile::userapis.messages.unavailableUserName"))],
+        //  'email' => ['required',new UniqueRule("users", $this->id, "id", trans("iprofile::userapis.messages.unavailableUserName"))],
         ];
     }
 

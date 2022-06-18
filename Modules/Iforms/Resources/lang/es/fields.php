@@ -34,12 +34,14 @@ return [
       "min" => "Valor mínimo permitido",
       "max" => "Valor máximo permitido",
       "maxlength" => "Longitud máxima permitida",
+      "entity" => "Path de entidad relacionada (exclusivo para campos tipo 'Archivo')",
     ],
     "hint" => [
       "mimes" => "escriba la extensión y presione enter - Sólo se permiten extensiones sin punto(.), y deben estar previamente habilitadas en el módulo Media",
       "min" => "Usa números para campos tipo Número. Para campos tipo fecha usar formato (YYYY-MM-DD)",
       "max" => "Usa números para campos tipo Número. Para campos tipo fecha usar formato (YYYY-MM-DD)",
       "maxlength" => "Longitud máxima de caracteres permitida. No aplica para campos tipo Número",
+      "entity" => "Este campo es sensible a la configuración, consulta con nuestra área de soporte antes de realizarle modificación",
     ],
   
   ],

@@ -71,7 +71,7 @@ class AuthApiController extends BaseApiController
       //Auth attemp and get token
       $token = $this->validateResponseApi($this->authAttempt($credentials));
       $user = $this->validateResponseApi($this->me());//Get user Data
-      
+     
       $response = ["data" => [
         'userToken' => $token->bearer,
         'expiresIn' => $token->expiresDate,
@@ -102,7 +102,8 @@ class AuthApiController extends BaseApiController
         'email' => $data->username
       ];
       app(UserResetter::class)->startReset($credentials);
-      $response = ["data" => ["data" => "Request successful"]];//Response
+      
+      $response = ["data" => ["message" => trans('iprofile::cms.message.checkMail')]];//Response
     } catch (UserNotFoundException $e) {
       $status = $this->getStatusError(404);
       $response = ["errors" => trans('user::messages.no user found')];
@@ -125,9 +126,9 @@ class AuthApiController extends BaseApiController
     try {
       $credentials = [ //Get credentials
         'password' => $request->input('password'),
-        'password_confirmation' => $request->input('passwordConfirmation'),
+        'password_confirmation' => $request->input('password_confirmation'),
         'userId' => $request->input('userId'),
-        'code' => $request->input('token')
+        'code' => $request->input('code')
       ];
       $this->validateRequestApi(new ResetCompleteRequest($credentials));
       app(UserResetter::class)->finishReset($credentials);
@@ -183,7 +184,7 @@ class AuthApiController extends BaseApiController
       }
       
       $error = $this->auth->login((array)$credentials);
-      
+
       //Try login
       if (!$error) {
         $user = $this->auth->user();//Get user
@@ -195,14 +196,19 @@ class AuthApiController extends BaseApiController
           "expiresDate" => $token->token->expires_at,
         ]];
       } else {
-        throw new Exception('User or Password invalid', 401);
+        throw new Exception(is_string($error) ? $error : 'User or Password invalid', 400);
       }
       
       
     } catch (Exception $e) {
+      /*
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $this->getErrorMessage($e)];
-      if ($e->getMessage() === 'Your account has not been activated yet.') $status = 401;
+      if ($e->getMessage() === 'Your account has not been activated yet.') $status = 400;
+      */
+      $status = $this->getStatusError($e->getCode());
+      $response = ["errors" => $e->getMessage()];
+
     }
     
     //Return response
@@ -226,9 +232,20 @@ class AuthApiController extends BaseApiController
       //Find user with relationships
       $userData = $this->validateResponseApi(
         $this->userApiController->show($user->id, new Request([
-            'include' => 'fields,departments,addresses,settings,roles' . (count($includes) ? ',' . join(',', $includes) : '')]
+            'include' => 'fields,departments,organizations,addresses,settings,roles' . (count($includes) ? ',' . join(',', $includes) : '')]
         ))
       );
+
+      if(is_module_enabled('Icommerce')){
+
+        // Get a collection with the configuration of each payout for the logged in user
+        $payoutsConfigUser = app('Modules\Icommerce\Services\PaymentMethodService')->getPayoutsForUser();
+
+        // Add in userData
+        if(!is_null($payoutsConfigUser))
+          $userData->payouts = $payoutsConfigUser;
+        
+      }
       
       //Response
       $response = ["data" => [

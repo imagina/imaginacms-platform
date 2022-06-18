@@ -112,16 +112,16 @@ class MediaApiController extends BaseApiController
   {
     \DB::beginTransaction();
     try {
-      
+   
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
   
       $disk = (in_array($request->get('disk'),array_keys(config('filesystems.disks'))))? $request->get('disk') : null;
-      
+     
       $file = $request->file('file');
       $contentType = $request["Content-Type"];
       //return [$contentType];
-      
+    
       $savedFile = $this->fileService->store($file, $request->get('parent_id'),$disk);
   
       if (is_string($savedFile)) throw new \Exception($savedFile, 409);

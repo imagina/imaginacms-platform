@@ -1,0 +1,75 @@
+$theme-color: () !default;
+$theme-color: map-merge(
+    (
+            "primary":    var(--primary),
+            "secondary":  var(--secondary),
+            "success":    var(--success),
+            "dark":       var(--dark),
+            "info":       var(--info),
+            "warning":    var(--warning),
+            "danger":     var(--danger),
+            "light":      var(--light),
+    ),
+    $theme-color
+);
+
+@function darken($color, $porcentaje) {
+  @return unquote('darken('+ $color +', '+ $porcentaje +')');
+}
+
+@each $color, $value in $theme-color {
+  .btn-#{$color} {
+    color: #ffffff;
+    background-color: $value;
+    border-color: $value;
+    /*&:hover, &:active, &:focus, &:visited,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: #ffffff;
+      background-color: oscurecer($value,30%);
+      border-color: oscurecer($value,30%);
+    }*/
+    &:hover, &:active, &:focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: #ffffff !important;
+      background-color: $value !important;
+      border-color: oscurecer($value,30%) !important;
+    }
+  }
+
+  .btn-outline-#{$color} {
+    color: $value !important;
+    border-color: $value;
+    background-color: #ffffff;
+    /*&:hover, &:active, &:focus, &:visited {
+      background-color: $value;
+      border-color: $value;
+      color: #ffffff;
+    }*/
+    &:hover, &:active, &:focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      background-color: $value;
+      border-color: $value;
+      color: #ffffff !important;
+    }
+  }
+
+  .text-#{$color} {
+    color: $value !important;
+  }
+
+  a.text-#{$color} {
+    color: $value !important;
+  }
+
+  .bg-#{$color} {
+    background-color: $value !important;
+  }
+
+}
+

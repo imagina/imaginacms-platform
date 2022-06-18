@@ -18,7 +18,7 @@ class DepartmentTransformer extends BaseApiTransformer
       'options' => $this->when($this->options, $this->options),
       'users' => UserTransformer::collection($this->whenLoaded('users')),
       'parent' => new DepartmentTransformer($this->whenLoaded('parent')),
-      'internal' => $this->when(isset($this->internal), $this->internal),
+      'isInternal' => $this->when(isset($this->is_internal), $this->is_internal),
       'settings' => $settings ? SettingTransformer::collection($settings) : [],
       'createdAt' => $this->when($this->created_at, $this->created_at),
       'updatedAt' => $this->when($this->updated_at, $this->updated_at),

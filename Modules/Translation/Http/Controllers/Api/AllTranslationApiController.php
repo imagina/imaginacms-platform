@@ -10,6 +10,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Modules\Translation\Transformers\TranslationApiTransformer;
+use Illuminate\Support\Str;
 
 class AllTranslationApiController extends BaseApiController
 {
@@ -30,9 +31,14 @@ class AllTranslationApiController extends BaseApiController
     $returnedTranslations = [];
 
     foreach ($translations as $key => $translation) {
-      //Filter by search
-      if (isset($params->filter->search) && (strrpos($key, $params->filter->search) === false)) continue;
 
+      //Filter by search
+      if (isset($params->filter->search) && !empty($params->filter->search)){
+        if(!Str::contains($key, $params->filter->search) && !Str::contains(json_encode($translation), $params->filter->search))
+          continue;
+  
+      }
+      
       $returnedTranslation = ['key' => $key];
       foreach ($translation as $locale => $value) $returnedTranslation[$locale] = ['value' => $value];
 

@@ -11,7 +11,7 @@
         @endif
       </li>
     @endforeach
-  @endif
+  @endisset
   
   @if(isset($post->id))
     <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>

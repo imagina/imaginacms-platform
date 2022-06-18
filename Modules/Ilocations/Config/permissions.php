@@ -57,7 +57,16 @@ return [
       'edit' => 'ilocations::neighborhoods.edit resource',
       'destroy' => 'ilocations::neighborhoods.destroy resource',
     ],
+    'ilocations.localities' => [
+        'manage' => 'ilocations::localities.manage resource',
+        'index' => 'ilocations::localities.list resource',
+        'create' => 'ilocations::localities.create resource',
+        'edit' => 'ilocations::localities.edit resource',
+        'destroy' => 'ilocations::localities.destroy resource',
+        'restore' => 'ilocations::localities.restore resource',
+    ],
 // append
+
 
 
 

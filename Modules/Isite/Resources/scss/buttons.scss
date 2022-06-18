@@ -1,0 +1,157 @@
+//
+// Base styles
+//
+.button-base {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+    opacity: .65;
+  }
+}
+
+
+
+@function darken-button($color, $porcentaje) {
+  @return unquote('darken('+ $color +', '+ $porcentaje +')');
+}
+
+@each $color, $value in $theme-color {
+  .button-#{$color} {
+    color: #ffffff;
+    background-color: $value;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $value;
+    /*&:hover, &:active, &:focus, &:visited,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: #ffffff;
+      background-color: darken-button($value,30%);
+      border-color: darken-button($value,30%);
+    }*/
+    &:hover, &:active, &:focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: #ffffff !important;
+      background-color: $value !important;
+      border-color: darken-button($value,30%) !important;
+    }
+  }
+
+  .button-outline-#{$color} {
+    color: $value !important;
+    border-color: $value;
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    /*&:hover, &:active, &:focus, &:visited {
+      background-color: $value;
+      border-color: $value;
+      color: #ffffff;
+    }*/
+    &:hover, &:active, &:focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      background-color: $value;
+      border-color: $value;
+      color: #ffffff !important;
+    }
+  }
+
+}
+
+//
+// Button Sizes
+//
+/* Sin padding de los lados */
+.button-link {
+  padding: 0;
+}
+/* pequeno */
+.button-small {
+  padding: 6px 15px;
+}
+/* normal */
+.button-normal {
+  padding: 10px 20px;
+}
+/* mediano */
+.button-big {
+  padding: 15px 30px;
+}
+/* Cuadrado*/
+.button-square {
+  padding: 10px;
+}
+/* Espaciado x */
+.button-padding-x {
+  padding: 0 6px;
+}
+
+//
+// Button Style
+//
+/* Linea lateral, botones juntos */
+.button-line-side {
+  color: var(--dark);
+  border-radius: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 1px solid;
+  background-color: transparent !important;
+  &:hover {
+    background-color: transparent !important;
+    color: var(--dark) !important;
+  }
+  + .button-line-side {
+    border-right:0;
+    margin-left: -4px;
+  }
+}
+/* lateral dentro de wrapper */
+.wrapper {
+  .nextBtn.button-line-side {
+    border-right: 0;
+    border-left: 1px solid;
+  }
+}
+
+.button-icon {
+  padding: 0 !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+    &.button-normal {
+      width: 35px;
+      height: 35px;
+  }
+    &.button-small {
+      width: 28px;
+      height: 28px;
+  }
+    &.button-big {
+      width: 50px;
+      height: 50px;
+  }
+}
+
+.button-base span,.button-base i {
+  pointer-events: none;
+}

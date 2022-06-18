@@ -21,9 +21,14 @@ use Modules\Setting\Contracts\Setting;
 use Modules\Iprofile\Entities\Setting as profileSetting;
 use Modules\Iprofile\Repositories\FieldRepository;
 
+use Modules\Iprofile\Http\Requests\UpdatePasswordRequest;
+
 //Events
 use Modules\Iprofile\Events\UserUpdatedEvent;
 use Modules\Iprofile\Events\UserCreatedEvent;
+
+use Modules\Iprofile\Entities\UserPasswordHistory;
+use Carbon\Carbon;
 
 class UserApiController extends BaseApiController
 {
@@ -36,6 +41,8 @@ class UserApiController extends BaseApiController
   private $fhaOld;
   private $settingAsgard;
   private $profileSetting;
+  private $userPasswordHistoryService;
+  private $userService;
 
   public function __construct(
     UserApiRepository $user,
@@ -56,6 +63,8 @@ class UserApiController extends BaseApiController
     $this->userRepository = $userRepository;
     $this->settingAsgard = $settingAsgard;
     $this->profileSetting = $profileSetting;
+    $this->userPasswordHistoryService = app("Modules\Iprofile\Services\UserPasswordHistoryService");
+    $this->userService = app("Modules\Iprofile\Services\UserService");
   }
 
   /**
@@ -133,8 +142,12 @@ class UserApiController extends BaseApiController
    */
   public function register(Request $request)
   {
+    
+    //\Log::info("Iprofile:: UserApiController|Register");
+
     try {
       $data = (object)$request->input('attributes');//Get data from request
+
       $filter = [];//define filters
       $validateEmail = $this->settingAsgard->get('iprofile::validateRegisterWithEmail');
 
@@ -147,15 +160,15 @@ class UserApiController extends BaseApiController
       // registerExtraFields
       $registerExtraFieldsSetting = json_decode(setting('iprofile::registerExtraFields', null, "[]"));
       
-      /*
-      foreach ($registerExtraFieldsSetting as $extraFieldSetting) {
-        if ($extraFieldSetting->active && isset($data[$extraFieldSetting->field])) {
-          $fields[] = [
-            "name" => $extraFieldSetting->field,
-            "value" => $data[$extraFieldSetting->field]
-          ];
-        }
-      }*/
+      
+    if(isset($data->fields)){
+      foreach ($data->fields as $name => $value){
+        $fields[] = [
+          "name" => $name,
+          "value" => $value
+        ];
+      }
+    }
       
       //Checking Role if exist in the setting rolesToRegister
       $rolesToRegister = json_decode(setting("iprofile::rolesToRegister",null, "[2]")); //Default role is USER, ID 2
@@ -163,20 +176,20 @@ class UserApiController extends BaseApiController
         $role = is_array($data->role_id) ? $data->role_id : [$data->role_id];
       }
 
+      $attributes = array_merge($request->input('attributes'),[
+        'first_name' => $data->first_name ?? '',
+        'last_name' => $data->last_name ?? '',
+        'email' => $data->email,
+        'password' => $data->password,
+        'password_confirmation' => $data->password_confirmation,
+        'departments' => [1],//Default department is USERS, ID 1
+        'roles' => $role ?? [2],//Default role is USER, ID 2
+        'fields' => $fields ?? [],
+        'is_activated' => (int)$validateEmail ? false : true
+      ],);
       //Format dat ot create user
       $params = [
-        'attributes' => [
-          'first_name' => $data->first_name,
-          'last_name' => $data->last_name,
-          'fields' => $data->fields,
-          'email' => $data->email,
-          'password' => $data->password,
-          'password_confirmation' => $data->password_confirmation,
-          'departments' => [1],//Default departme is USERS, ID 1
-          'roles' => $role ?? [2],//Default role is USER, ID 2
-          'fields' => $fields ?? [],
-          'is_activated' => (int)$validateEmail ? false : true
-        ],
+        'attributes' => $attributes,
         'filter' => json_encode([
           'checkEmail' => (int)$validateEmail ? 1 : 0,
           'checkAdminActivate' => (int)$adminNeedsToActivateNewUsers ? 1 : 0,
@@ -189,6 +202,8 @@ class UserApiController extends BaseApiController
       //Response and especific if user required check email
       $response = ["data" => ['checkEmail' => (int)$validateEmail ? true : false]];
     } catch (\Exception $e) {
+      \Log::error("Iprofile:: UserApiController|Register: ".$e->getMessage());
+      //dd($e);
       \DB::rollback();//Rollback to Data Base
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
@@ -206,6 +221,8 @@ class UserApiController extends BaseApiController
    */
   public function create(Request $request)
   {
+    //\Log::info("Iprofile: UserApiController|Create");
+
     \DB::beginTransaction();
     try {
       //Validate permissions
@@ -213,6 +230,11 @@ class UserApiController extends BaseApiController
 
       //Get data
       $data = $request->input('attributes');
+
+      //Get setting from request
+      $requestSetting = json_decode($request->input('setting'));
+      //\Log::info("Iprofile: UserApiController|Create|RequestSetting: ".$request->input('setting'));
+
       $data["email"] = strtolower($data["email"]);//Parse email to lowercase
       $params = $this->getParamsRequest($request);
       $checkEmail = isset($params->filter->checkEmail) ? $params->filter->checkEmail : false;
@@ -220,6 +242,7 @@ class UserApiController extends BaseApiController
 
       //$this->validateRequestApi(new RegisterRequest ($data));//Validate Request User
       $this->validateRequestApi(new CreateUserApiRequest($data));//Validate custom Request user
+     
       if ($checkEmail) { //Create user required validate email
         $user = app(UserRegistration::class)->register($data);
       } else { //Create user activated
@@ -248,7 +271,7 @@ class UserApiController extends BaseApiController
             $this->field->create(new Request(['attributes' => (array)$field]))
           );
         }
-
+   
       //Create Addresses
       if (isset($data["addresses"]))
         foreach ($data["addresses"] as $address) {
@@ -269,10 +292,14 @@ class UserApiController extends BaseApiController
         }
       }
 
+      //Add value from admin
+      if(isset($requestSetting->fromAdmin))
+        $data['fromAdmin'] = $requestSetting->fromAdmin;
+
       $response = ["data" => "User Created"];
 
       //dispatch Event
-      event(new UserCreatedEvent($user));
+      event(new UserCreatedEvent($user,$data));
 
       \DB::commit(); //Commit to Data Base
     } catch (\Exception $e) {
@@ -294,11 +321,18 @@ class UserApiController extends BaseApiController
    */
   public function update($criteria, Request $request)
   {
+
+    //\Log::info("Iprofile: UserApiController|Update");
+
     \DB::beginTransaction(); //DB Transaction
     try {
       //Validate permissions
       $this->validatePermission($request, 'profile.user.edit');
       $data = $request->input('attributes');//Get data
+
+      //Get setting from request
+      $requestSetting = json_decode($request->input('setting'));
+
       $params = $this->getParamsRequest($request);//Get Params
 
       //Validate Request
@@ -420,8 +454,12 @@ class UserApiController extends BaseApiController
         $response = ["errors" => $data["email"] . ' | User Name already exist'];
       }
 
+      //Add value from admin
+      if(isset($requestSetting->fromAdmin))
+        $data['fromAdmin'] = $requestSetting->fromAdmin;
+
       //dispatch Event
-      event(new UserUpdatedEvent($user));
+      event(new UserUpdatedEvent($user,$data));
 
       \DB::commit();//Commit to DataBase
     } catch (\Exception $e) {
@@ -442,6 +480,7 @@ class UserApiController extends BaseApiController
    */
   public function changePassword(Request $request)
   {
+
     \DB::beginTransaction(); //DB Transaction
     try {
       //Auth api controller
@@ -451,13 +490,16 @@ class UserApiController extends BaseApiController
       //Get Parameters from URL.
       $params = $request->input('attributes');
 
+      //Validate Request
+      $this->validateRequestApi(new UpdatePasswordRequest((array)$params));
+      
       //Try to login and Get Token
       $token = $this->validateResponseApi($authApiController->authAttempt($params));
       $requestLogout->headers->set('Authorization', $token->bearer);//Add token to headers
       $user = Auth::user();//Get User
 
       //Check if password exist in history
-      $usedPassword = $this->validateResponseApi($authApiController->checkPasswordHistory($params['newPassword']));
+      $result = $this->userPasswordHistoryService->checkOldPasswords($user,$params);
 
       //Update password
       $userUpdated = $this->validateResponseApi(
@@ -473,13 +515,27 @@ class UserApiController extends BaseApiController
       //Logout token
       $this->validateResponseApi($authApiController->logout($requestLogout));
 
-      //response with userId
-      $response = ['data' => ['userId' => $user->id]];
+      $response['data']["messages"] = [
+          [
+            "mode" => "modal",
+            "type" => "warning",
+            "title" => trans("iprofile::frontend.title.resetPassword"),
+            "message" => trans("iprofile::frontend.messages.password updated"),
+            "persistent" => true,
+            "actions" => [
+              [
+                "label" => trans("iprofile::frontend.title.login"),
+                "toUrl" => url("/iadmin/#/auth/login")
+              ]
+            ]
+          ]
+      ];
+
       \DB::commit();//Commit to DataBase
     } catch (\Exception $e) {
       \DB::rollback();//Rollback to Data Base
       $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+      $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
     }
 
     //Return response
@@ -620,4 +676,98 @@ class UserApiController extends BaseApiController
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
   }
+
+  /**
+   * Password Validate Change
+   *
+   * @return mixed
+   */
+  public function passwordValidateChange(Request $request){
+
+    try {
+      //Get Parameters from URL.
+      $params = $this->getParamsRequest($request);
+
+      $user = Auth::user();
+
+      // Default change password
+      $shouldChangePassword = false;
+
+      //Default description
+      $description = trans("iprofile::frontend.messages.You must change the password");
+     
+      // Get setting days
+      $settingDays = setting("iprofile::passwordExpiredTime", null, 0);
+
+      // 0 is (Never update)
+      if($settingDays!=0){
+
+        // Get last history
+        $lastPasswordHistory = UserPasswordHistory::where('user_id',$user->id)->latest()->first();
+
+        // User has password history
+        if(!empty($lastPasswordHistory)){
+          
+          
+          $datePassword = $lastPasswordHistory->created_at->format("Y-m-d");
+          $date = Carbon::parse($datePassword);
+
+          $now = Carbon::now();
+
+          //Get diference in days
+          $diff = $date->diffInDays($now);
+
+          if($diff>=$settingDays)
+            $shouldChangePassword = true;
+          
+
+        }else{
+
+          //The user has no history so he is forced to change and it will be saved in the history
+          $shouldChangePassword = true;
+
+        }
+
+      }
+
+      // Response
+      $response['data']['shouldChangePassword'] = $shouldChangePassword;
+      if($shouldChangePassword)
+        $response['data']['description'] = $description;
+
+      // Response Messages like modal
+      if($shouldChangePassword){
+
+        // Get Workspace User
+        $workspace = $this->userService->getUserWorkspace($user);
+        
+        $response['data']["messages"] = [
+          [
+            "mode" => "modal",
+            "type" => "warning",
+            "title" => trans("iprofile::frontend.title.changePassword"),
+            "message" => trans("iprofile::frontend.messages.resetPasswordModal"),
+            "persistent" => true,
+            "actions" => [
+              [
+                "label" => trans("iprofile::frontend.title.changePassword"),
+                "toUrl" => url("/{$workspace}/#/auth/force-change-password")
+              ]
+            ]
+          ]
+        ];
+      }
+      
+      
+    } catch (\Exception $e) {
+      $status = $this->getStatusError($e->getCode());
+      $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+    }
+
+    //Return response
+    return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+
+  }
+
+
 }

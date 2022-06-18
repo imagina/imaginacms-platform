@@ -35,12 +35,18 @@ class CrudResource extends JsonResource
 
     //Add attributes
     foreach (array_keys($this->getAttributes()) as $fieldName) {
-      $response[snakeToCamel($fieldName)] = $this->when(isset($this[$fieldName]), $this[$fieldName]);
+      $response[snakeToCamel($fieldName)] = $this->when(
+        (isset($this[$fieldName]) || is_null($this[$fieldName])),
+        $this[$fieldName]
+      );
     }
 
     //Add translatable attributes
     foreach ($translatableAttributes as $fieldName) {
-      $response[snakeToCamel($fieldName)] = $this->when(isset($this[$fieldName]), $this[$fieldName]);
+      $response[snakeToCamel($fieldName)] = $this->when(
+        (isset($this[$fieldName]) || is_null($this[$fieldName])),
+        $this[$fieldName]
+      );
     }
 
     // Add translations
@@ -57,7 +63,17 @@ class CrudResource extends JsonResource
 
     //Transform relations.
     foreach ($this->getRelations() as $relationName => $relation) {
-      if (!in_array($relationName, $excludeRelations)) $response[$relationName] = $this->transformData($relation);
+      if (!in_array($relationName, $excludeRelations)) {
+        //Transform relation
+        $response[$relationName] = $this->transformData($relation);
+        //Format fields relation
+        if (($relationName == 'fields') && method_exists($this->resource, 'formatFillableToModel')) {
+          //Get fillable data
+          $fillableData = json_decode(json_encode($response[$relationName]));
+          //Merge fillable to main level of response
+          $response = array_merge_recursive($response, $this->formatFillableToModel($fillableData));
+        }
+      }
     }
 
     //Add model extra attributes

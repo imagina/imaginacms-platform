@@ -1,5 +1,6 @@
 <?php namespace Modules\Ibanners\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Ibanners\Entities\Position;
@@ -38,8 +39,8 @@ class IbannersServiceProvider extends ServiceProvider
       $this->app['events']->listen(BuildingSidebar::class, RegisterIbannersSidebar::class);
 
       $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-          $event->load('position', array_dot(trans('ibanners::position')));
-          $event->load('banners', array_dot(trans('ibanners::banners')));
+          $event->load('position', Arr::dot(trans('ibanners::position')));
+          $event->load('banners', Arr::dot(trans('ibanners::banners')));
           // append translations
 
       });
@@ -51,7 +52,10 @@ class IbannersServiceProvider extends ServiceProvider
   public function boot()
   {
     $this->publishConfig('ibanners', 'config');
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('ibanners', 'permissions'), "asgard.ibanners.permissions");
+    $this->publishConfig('ibanners', 'permissions');
+
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('ibanners', 'cmsPages'), "asgard.ibanners.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('ibanners', 'cmsSidebar'), "asgard.ibanners.cmsSidebar");
 
     $this->registerPositions();
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');

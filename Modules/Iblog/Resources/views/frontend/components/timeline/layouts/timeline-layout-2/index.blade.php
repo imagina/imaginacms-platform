@@ -1,25 +1,31 @@
 <div id="timelineLayout2" class="timeline">
 
-    <div class="entry">
-        @foreach($items as $index => $item)
-      <div class="title">
-        <h3>06 | 05 <br>
-        Title <br> 9:00 Am </h3>
-        <i class="{{$item->icom}}" style=" opacity: 0.5;"></i>
+  <div class="entry">
+    @foreach($items as $index => $item)
+      <div class="content-timeline">
+        <div class="title">
+          <h3>
+            <div class="date">
+              {{$item->options->eventDate ?? ''}}
+            </div>
+            <div class="place font-weight-bold">
+              {{$item->options->eventPlace ?? ''}}
+            </div>
+            <div class="hour">
+              {{$item->options->eventHour ?? ''}}
+            </div>
+          </h3>
+          <i class="icon fa fa-home {{$item->options->icon ?? ''}}"></i>
+        </div>
+        <div class="body">
+          <hr>
+          <h2>{{$item->title}}</h2>
+          <ul>
+            <li> {!! $item->description ? $item->description : $item->summary !!}</li>
+          </ul>
+          <hr>
+        </div>
       </div>
-      <div class="body">
-        <hr>
-        <p>{{$item->title}}</p>
-        <ul>
-          <li > {!! $item->description !!}</li>
-         
-        </ul>
-        <hr>
-      </div>
-      @endforeach
-    </div>
-   
-    
-  
+    @endforeach
   </div>
-
+</div>

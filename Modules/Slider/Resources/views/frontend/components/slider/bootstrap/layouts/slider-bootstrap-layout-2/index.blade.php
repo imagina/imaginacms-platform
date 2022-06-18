@@ -19,13 +19,23 @@
                         <div class="container p-lg-0 h-100">
                             <div class="row carousel-item__row align-items-lg-center">
                                 <div class="col-md-7 mb-4 mb-xl-0 pb-md-5">
-                                    @if(isset($slide->title) || isset($slide->caption) || isset($slide->custom_html))
+                                    @if(isset($slide->title) || isset($slide->summary) || isset($slide->caption) || isset($slide->custom_html))
                                         <div class="carousel-caption position-static text-left">
-                                            @if(isset($slide->caption))
-                                                <h1 class="carousel-item__caption">
-                                                    {{$slide->caption}}
-                                                </h1>
+                                            @if(!empty($slide->title))
+                                                <h1 class="title1 h1">{{$slide->title}}</h1>
                                             @endif
+                                            @if(!empty($slide->summary))
+                                                <p class="summary d-none d-md-block">{{$slide->summary}}</p>
+                                            @endif
+                                            @if(!empty($slide->custom_html))
+                                                <div class="custom-html d-none d-md-block">
+                                                    {!! $slide->custom_html !!}
+                                                </div>
+                                            @endif
+
+                                            <div class="d-block">
+                                                <a class="btn btn-secondary" href="{{ $slide->url ?? $slide->uri }}">{{ $slide->caption ?? trans('isite::common.menu.viewMore') }}</a>
+                                            </div>
                                         </div>
                                     @endif
                                 </div>

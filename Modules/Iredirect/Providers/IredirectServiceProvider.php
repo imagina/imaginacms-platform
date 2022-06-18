@@ -20,14 +20,14 @@ use Modules\Core\Traits\CanPublishConfiguration;
 class IredirectServiceProvider extends ServiceProvider
 {
   use CanPublishConfiguration;
-  
+
   /**
    * Indicates if loading of the provider is deferred.
    *
    * @var bool
    */
   protected $defer = false;
-  
+
   /**
    * Register the service provider.
    *
@@ -37,15 +37,17 @@ class IredirectServiceProvider extends ServiceProvider
   {
     $this->registerBindings();
   }
-  
+
   public function boot()
   {
     $this->publishConfig('iredirect', 'config');
     //$this->publishConfig('iredirect', 'settings');
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iredirect', 'permissions'), "asgard.iredirect.permissions");
-    
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iredirect', 'cmsPages'), "asgard.iredirect.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iredirect', 'cmsSidebar'), "asgard.iredirect.cmsSidebar");
+
   }
-  
+
   /**
    * Get the services provided by the provider.
    *
@@ -55,18 +57,18 @@ class IredirectServiceProvider extends ServiceProvider
   {
     return array();
   }
-  
+
   private function registerBindings()
   {
     $this->app->bind(RedirectRepository::class, function () {
       $repository = new EloquentRedirectRepository(new Redirect());
-      
+
       if (config('app.cache') === false) {
         return $repository;
       }
-      
+
       return new CacheRedirectDecorator($repository);
     });
-    
+
   }
 }

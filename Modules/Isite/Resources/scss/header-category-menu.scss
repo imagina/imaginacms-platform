@@ -2,7 +2,7 @@
 
   .navbar-nav > .nav-item .nav-link {
     background-color: #ffffff;
-    color: $primary;
+    color: var(--primary);
     @include font-size(18px);
     padding: 29px 15px;
     text-transform: uppercase;
@@ -39,7 +39,7 @@
 
       &:hover {
         color: #fff;
-        background-color: $primary;
+        background-color: var(--primary);
 
         img.white {
           display: inline-block;
@@ -153,7 +153,7 @@
       @include font-size(14px);
 
       &:hover {
-        color: $primary;
+        color: var(--primary);
       }
     }
   }
@@ -165,7 +165,7 @@
       border-bottom: 1px solid #DEDEDE;
 
       .nav-link {
-        @include responsive-font-size(15px);
+        @include font-size(15px);
         color: #363436;
         font-weight: bold;
         padding: 10px 25px;
@@ -196,7 +196,7 @@
       }
 
       &:hover {
-        background-color: $primary;
+        background-color: var(--primary);
 
         > .nav-link {
           color: $white;
@@ -204,7 +204,7 @@
       }
 
       .nav-link[aria-expanded="true"] {
-        background-color: $primary;
+        background-color: var(--primary);
         color: $white;
       }
     }
@@ -222,7 +222,7 @@
           color: #363436;
 
           &:hover {
-            color: $primary;
+            color: var(--primary);
           }
         }
 
@@ -247,7 +247,7 @@
             @include font-size(14px);
 
             &:hover {
-              color: $primary;
+              color: var(--primary);
             }
           }
         }

@@ -20,7 +20,7 @@ class Province extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class,"country_id","country_code");
+        return $this->belongsTo(Country::class);
     }
 
     public function cities()

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\Iforms\Presenters\FieldPresenter;
 use Illuminate\Support\Str;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Field extends Model
 {

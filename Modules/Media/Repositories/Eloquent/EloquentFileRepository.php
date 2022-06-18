@@ -324,11 +324,15 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
       if (isset($filter->search) && $filter->search) {
         //find search in columns
         $query->where(function ($query) use ($filter) {
-          $query->where('id', 'like', '%' . $filter->search . '%')
+          $query->whereHas('translations', function ($query) use ($filter) {
+            $query->where('description', 'like', "%{$filter->search}%")
+            ->orWhere('alt_attribute', 'like', "%{$filter->search}%");
+          });
+        })->orWhere('id', 'like', '%' . $filter->search . '%')
             ->orWhere('filename', 'like', '%' . $filter->search . '%')
             ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
             ->orWhere('created_at', 'like', '%' . $filter->search . '%');
-        });
+        
       }
 
       //Filter by extension

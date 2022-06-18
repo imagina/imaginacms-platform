@@ -22,10 +22,10 @@ class PageDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-  
+
       //Seed Home Page/Inicio
       $page = $this->page->findByAttributes(["is_home" => 1]);
-  
+
       if(!isset($page->id)){
         $data = [
           'template' => 'default',
@@ -50,10 +50,10 @@ class PageDatabaseSeeder extends Seeder
         ];
         $this->page->create($data);
       }
-  
+
       //Seed Our History/Nosotros
       $history = PageTranslation::where("slug","history")->first();
-  
+
       if(!isset($history->id)){
         $data = [
           'template' => 'default',
@@ -73,10 +73,10 @@ class PageDatabaseSeeder extends Seeder
         ];
         $this->page->create($data);
       }
-  
+
       //Seed Our Contact/Contacto
       $contact = PageTranslation::where("slug","contact")->first();
-  
+
       if(!isset($contact->id)){
         $data = [
           'template' => 'default',
@@ -96,6 +96,8 @@ class PageDatabaseSeeder extends Seeder
         ];
         $this->page->create($data);
       }
-      
+
+      //Seed cms pages
+      $this->call(CMSPagesDatabaseSeeder::class);
     }
 }

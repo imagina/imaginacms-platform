@@ -14,8 +14,11 @@
         "kalnoy/nestedset": "6.0",
         "hisorange/browser-detect": "^4.4.0",
         "maatwebsite/excel": "^3.1",
-        "stancl/tenancy": "^3.4",
-        "barryvdh/laravel-dompdf": "^0.9.0"
+        "stancl/tenancy": "3.5.1",
+        "barryvdh/laravel-dompdf": "^0.9.0",
+        "imagina/ischedulable-module": "^v8.x-dev",
+        "imagina/ifillable-module": "^v8.x-dev",
+        "spatie/laravel-sitemap": "^5.8"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",

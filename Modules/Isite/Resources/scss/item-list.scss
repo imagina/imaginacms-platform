@@ -1,0 +1,79 @@
+
+.opacity-light, .opacity-dark, .opacity-primary {
+  picture {
+    position: relative;
+    display: block !important;
+    overflow: hidden;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+@mixin opacity-background($color) {
+  &.opacity-left picture:before {
+    background: linear-gradient(270deg,transparent,$color);
+  }
+  &.opacity-right picture:before{
+    background: linear-gradient(270deg,$color,transparent);
+  }
+  &.opacity-top picture:before{
+    background: linear-gradient(180deg,$color,transparent);
+  }
+  &.opacity-bottom picture:before{
+    background: linear-gradient(180deg,transparent,$color);
+  }
+}
+
+.opacity-light  {
+  @include opacity-background(hsla(0,0%,96.1%,.9));
+  &.opacity-all picture:before{
+      background: hsla(0,0%,96.1%,.9);
+  }
+}
+
+.opacity-dark {
+  @include opacity-background(#000);
+  &.opacity-all picture:before{
+    background: hsl(0deg 0% 0% / 47%);
+  }
+}
+
+.opacity-primary {
+  @include opacity-background(var(--primary));
+}
+.opacity-secondary {
+  @include opacity-background(var(--secondary));
+}
+
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &.align-self-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  &.align-self-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &.align-self-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+}
+
+
+

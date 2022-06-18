@@ -39,22 +39,5 @@ class PostTranslation extends Model
 
 
     }
-    /**
-     * @return mixed
-     */
-    public function getMetaDescriptionAttribute()
-    {
-
-        return $this->meta_description ?? $this->summary;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMetaTitleAttribute()
-    {
-
-        return $this->meta_title ?? $this->title;
-    }
 
 }

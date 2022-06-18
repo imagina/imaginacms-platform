@@ -66,5 +66,16 @@ return [
         'label' => 'iforms::fields.crudFields.label.mimes'
       ],
     ],
+    'entity' => [
+      'name' => 'entity',
+      'value' => [],
+      'type' => 'input',
+      'fakeFieldName' => "options",
+      'columns' => 'col-12 col-md-6',
+      'props' => [
+        'hint' => 'iforms::fields.crudFields.hint.entity',
+        'label' => 'iforms::fields.crudFields.label.entity'
+      ],
+    ],
   ]
 ];

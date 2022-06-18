@@ -27,7 +27,7 @@ $router->group(['prefix' => '/translation', 'middleware' => 'api.token'], functi
   ]);
 
 });
-$router->group(['prefix' => '/translation/v2/translations', 'middleware' => 'auth:api'], function (Router $router) {
+$router->group(['prefix' => '/translation/v2/translations'], function (Router $router) {
   /* get new routing */
   $router->get('/', [
     'uses' => 'AllTranslationApiController@index',
@@ -36,6 +36,7 @@ $router->group(['prefix' => '/translation/v2/translations', 'middleware' => 'aut
   $router->post('clearCache', [
     'uses' => 'TranslationApiController@clearCache',
     'as' => 'api.translation.v2.translations.clearCache',
+    'middleware' => ['auth:api']
   ]);
   $router->get('/{criteria}', [
     'uses' => 'TranslationApiController@show',
@@ -44,13 +45,16 @@ $router->group(['prefix' => '/translation/v2/translations', 'middleware' => 'aut
   $router->put('/{criteria}', [
     'uses' => 'TranslationApiController@update',
     'as' => 'api.translation.v2.translations.update',
+    'middleware' => ['auth:api']
   ]);
   $router->post('/', [
     'uses' => 'TranslationApiController@create',
     'as' => 'api.translation.v2.translations.create',
+    'middleware' => ['auth:api']
   ]);
   $router->delete('/{criteria}', [
     'uses' => 'TranslationApiController@delete',
     'as' => 'api.translation.v2.translations.delete',
+    'middleware' => ['auth:api']
   ]);
 });

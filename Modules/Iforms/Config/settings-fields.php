@@ -41,5 +41,24 @@ return [
       'label' => 'iforms::common.setting.emails'
     ],
   ],
-  
+  'tenantWithCentralData' => [
+    'value' => [],
+    'name' => 'iforms::tenantWithCentralData',
+    "onlySuperAdmin" => true,
+    'groupName' => 'tenantConfiguration',
+    'groupTitle' => 'iforms::common.settings.tenant.group',
+    'type' => 'select',
+    'columns' => 'col-6',
+    'props' => [
+      'label' => 'iforms::common.settings.tenant.tenantWithCentralData',
+      'useInput' => false,
+      'useChips' => true,
+      'multiple' => true,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'iforms::common.settings.tenant.entities.forms', 'value' => 'forms'],
+      ]
+    ]
+  ],
 ];

@@ -44,6 +44,8 @@ class SliderServiceProvider extends ServiceProvider
   {
     $this->publishConfig('slider', 'config');
     $this->mergeConfigFrom($this->getModuleConfigFilePath('slider', 'permissions'), "asgard.slider.permissions");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('slider', 'cmsPages'), "asgard.slider.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('slider', 'cmsSidebar'), "asgard.slider.cmsSidebar");
 
     $this->registerSliders();
     $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');

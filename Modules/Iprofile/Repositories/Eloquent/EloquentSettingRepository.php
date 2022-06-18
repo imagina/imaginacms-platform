@@ -54,6 +54,19 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
         $query->where('name', $filter->name);
       }
     }
+
+    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("settings",$entitiesWithCentralData);
+
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
     
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
@@ -90,6 +103,19 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
       
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
+    }
+
+    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("settings",$entitiesWithCentralData);
+
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
     }
     
     /*== FIELDS ==*/

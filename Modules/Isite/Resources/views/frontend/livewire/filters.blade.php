@@ -15,7 +15,7 @@
 
 				<div class="filter-buttons d-flex justify-content-center my-2">
 					@if($showBtnFilter)
-						<button wire:click="updateItemsList" id="btnFilter" type="button" class="btnFilter btn btn-primary mx-2">{{trans('isite::frontend.buttons.filter')}}</button>
+						<button wire:click="updateItemsList" id="btnFilter" type="button" class="btnFilter btn btn-primary mx-2">{{$btnFilterLabel ?? trans('isite::frontend.buttons.filter')}}</button>
 					@endif
 					@if($showBtnClear)
 						<button wire:click="clearValuesFilters" id="btnClear" type="button" class="btnClear btn btn-primary mx-2">{{trans('isite::frontend.buttons.clear')}}</button>

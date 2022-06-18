@@ -19,12 +19,12 @@ class PageApiController extends BaseApiController
    * @var PageRepository
    */
   private $repoEntity;
-  
+
   public function __construct(PageRepository $page)
   {
     $this->repoEntity = $page;
   }
-  
+
   /**
    * GET ITEMS
    *
@@ -35,27 +35,65 @@ class PageApiController extends BaseApiController
     try {
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
-      
+
       //Request to Repository
       $dataEntity = $this->repoEntity->getItemsBy($params);
-      
+
       //Response
       $response = [
         "data" => PageApiTransformer::collection($dataEntity)
       ];
-      
+
       //If request pagination add meta-page
       $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
     } catch (\Exception $e) {
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  
+
+  /**
+   * GET ITEMS
+   *
+   * @return mixed
+   */
+  public function indexCMS(Request $request)
+  {
+    try {
+      //Get Parameters from URL.
+      $params = $this->getParamsRequest($request);
+
+      //Add filters
+      $params->filter = (object)array_merge((array)$params->filter, [
+        "type" => "cms",
+        "allTranslations" => true
+      ]);
+
+      //Add the Request All Pages param to request
+      $params->allowIndexAll = true;
+
+      //Request to Repository
+      $dataEntity = $this->repoEntity->getItemsBy($params);
+
+      //Response
+      $response = [
+        "data" => PageApiTransformer::collection($dataEntity)
+      ];
+
+      //If request pagination add meta-page
+      $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
+    } catch (\Exception $e) {
+      $status = $this->getStatusError($e->getCode());
+      $response = ["errors" => $e->getMessage()];
+    }
+
+    //Return response
+    return response()->json($response, $status ?? 200);
+  }
+
   /**
    * GET A ITEM
    *
@@ -67,26 +105,26 @@ class PageApiController extends BaseApiController
     try {
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
-      
+
       //Request to Repository
       $dataEntity = $this->repoEntity->getItem($criteria, $params);
-      
+
       //Break if no found item
       if (!$dataEntity) throw new \Exception('Item not found', 404);
-      
+
       //Response
       $response = ["data" => new PageApiTransformer($dataEntity)];
-      
+
     } catch (\Exception $e) {
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  
+
+
   /**
    * CREATE A ITEM
    *
@@ -99,13 +137,13 @@ class PageApiController extends BaseApiController
     try {
       //Get data
       $data = $request->input('attributes');
-      
+
       //Validate Request
       $this->validateRequestApi(new CreatePageRequest((array)$data));
-      
+
       //Create item
       $this->repoEntity->create($data);
-      
+
       //Response
       $response = ["data" => ""];
       \DB::commit(); //Commit to Data Base
@@ -117,8 +155,8 @@ class PageApiController extends BaseApiController
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  
+
+
   /**
    * UPDATE ITEM
    *
@@ -132,16 +170,16 @@ class PageApiController extends BaseApiController
     try {
       //Get data
       $data = $request->input('attributes');
-      
+
       //Validate Request
       $this->validateRequestApi(new UpdatePageRequest((array)$data));
-      
+
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
-      
+
       //Request to Repository
       $this->repoEntity->updateBy($criteria, $data, $params);
-      
+
       //Response
       $response = ["data" => 'Item Updated'];
       \DB::commit();//Commit to DataBase
@@ -150,12 +188,12 @@ class PageApiController extends BaseApiController
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
-  
+
+
   /**
    * DELETE A ITEM
    *
@@ -168,10 +206,10 @@ class PageApiController extends BaseApiController
     try {
       //Get params
       $params = $this->getParamsRequest($request);
-      
+
       //call Method delete
       $this->repoEntity->deleteBy($criteria, $params);
-      
+
       //Response
       $response = ["data" => ""];
       \DB::commit();//Commit to Data Base
@@ -180,9 +218,9 @@ class PageApiController extends BaseApiController
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
     }
-    
+
     //Return response
     return response()->json($response, $status ?? 200);
   }
-  
+
 }

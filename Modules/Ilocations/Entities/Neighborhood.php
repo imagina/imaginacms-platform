@@ -11,11 +11,24 @@ class Neighborhood extends Model
 
     protected $table = 'ilocations__neighborhoods';
     public $translatedAttributes = ["name"];
-    protected $fillable = ["city_id"];
+    protected $fillable = [
+      "city_id",
+      "country_id",
+      "province_id",
+      
+    ];
 
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 
   public function geozones()

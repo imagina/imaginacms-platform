@@ -1,9 +1,13 @@
 <?php namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Slider extends Model
 {
+  
+  use BelongsToTenant;
+  
   protected $fillable = [
     'name',
     'system_name',

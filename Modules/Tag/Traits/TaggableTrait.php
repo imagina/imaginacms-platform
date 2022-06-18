@@ -64,7 +64,7 @@ trait TaggableTrait
     {
         $instance = new static;
 
-        return self::createTagsModel()->with('translations')->where('namespace', $instance->getEntityClassName());
+        return self::createTagsModel()->with('translations');
     }
 
     public function setTags($tags, string $type = 'slug'): bool

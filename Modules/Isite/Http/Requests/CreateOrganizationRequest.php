@@ -8,7 +8,9 @@ class CreateOrganizationRequest extends BaseFormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+          'title' => 'required|min:2',
+        ];
     }
 
     public function translationRules()

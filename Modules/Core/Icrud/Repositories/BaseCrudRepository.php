@@ -51,4 +51,18 @@ interface BaseCrudRepository extends BaseRepository
    * @return mixed
    */
   public function restoreBy($criteria, $params);
+
+  /**
+   * @param $query
+   * @param $filter
+   * @return mixed
+   */
+  public function filterQuery($query, $filter);
+
+  /**
+   * @param $model
+   * @param $data
+   * @return mixed
+   */
+  public function syncModelRelations($model, $data);
 }

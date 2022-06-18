@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 use Stancl\Tenancy\Database\Models\Domain;
 use Stancl\Tenancy\Database\Models\Tenant;
+use Illuminate\Support\Str;
 
 return [
   'tenant_model' => Modules\Isite\Entities\Organization::class,
   'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
   
-  'domain_model' => Domain::class,
+    'domain_model' => Modules\Isite\Entities\Domain::class,
   
   /**
    * The list of domains hosting your central app.
@@ -19,6 +20,7 @@ return [
   'central_domains' => [
     '127.0.0.1',
     'localhost',
+      Str::remove('https://', env('APP_URL', 'localhost'))
   ],
   
   /**

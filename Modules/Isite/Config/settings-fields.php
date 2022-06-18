@@ -8,7 +8,7 @@ return [
     'type' => 'input',
     'props' => ['label' => "isite::sites.settings.appVersion"]
   ],
-  
+
   //Media
   'logo1' => [
     'value' => (object)['isite::logo1' => null],
@@ -17,6 +17,7 @@ return [
     'type' => 'media',
     'groupName' => 'media',
     'groupTitle' => 'isite::common.settingGroups.media',
+    'quickSetting' => true,
     'props' => [
       'label' => 'isite::common.settings.logo1',
       'zone' => 'isite::logo1',
@@ -66,6 +67,20 @@ return [
       'entityId' => null
     ]
   ],
+  'logoIadminSM' => [
+    'value' => (object)['isite::logoIadminSM' => null],
+    'name' => 'medias_single',
+    'fakeFieldName' => 'isite::logoIadminSM',
+    'type' => 'media',
+    'groupName' => 'media',
+    'groupTitle' => 'isite::common.settingGroups.media',
+    'props' => [
+      'label' => 'isite::common.settings.logoIadminSM',
+      'zone' => 'isite::logoIadminSM',
+      'entity' => "Modules\Setting\Entities\Setting",
+      'entityId' => null
+    ]
+  ],
   'favicon' => [
     'value' => (object)['isite::favicon' => null],
     'name' => 'medias_single',
@@ -81,26 +96,28 @@ return [
     ]
   ],
   //Colors
-  'brandAddressBar' => [
-    'value' => null,
-    'name' => 'isite::brandAddressBar',
-    'type' => 'inputColor',
-    'groupName' => 'colors',
-    'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
-    'props' => [
-      'label' => 'isite::common.settings.addressBar'
-    ]
-  ],
   'brandPrimary' => [
     'value' => null,
     'name' => 'isite::brandPrimary',
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
+    'quickSetting' => true,
     'props' => [
       'label' => 'isite::common.settings.brandPrimary'
+    ]
+  ],
+  'primaryContrast' => [
+    'value' => null,
+    'name' => 'isite::primaryContrast',
+    'type' => 'inputColor',
+    'groupName' => 'colors',
+    'groupTitle' => 'isite::common.settingGroups.colors',
+    'colClass' => 'col-12 col-md-6',
+    'quickSetting' => true,
+    'props' => [
+      'label' => 'isite::common.settings.primaryContrast'
     ]
   ],
   'brandSecondary' => [
@@ -109,9 +126,33 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
+    'quickSetting' => true,
     'props' => [
       'label' => 'isite::common.settings.brandSecondary'
+    ]
+  ],
+  'secondaryContrast' => [
+    'value' => null,
+    'name' => 'isite::secondaryContrast',
+    'type' => 'inputColor',
+    'groupName' => 'colors',
+    'groupTitle' => 'isite::common.settingGroups.colors',
+    'colClass' => 'col-12 col-md-6',
+    'quickSetting' => true,
+    'props' => [
+      'label' => 'isite::common.settings.secondaryContrast'
+    ]
+  ],
+  'brandAddressBar' => [
+    'value' => null,
+    'name' => 'isite::brandAddressBar',
+    'type' => 'inputColor',
+    'groupName' => 'colors',
+    'groupTitle' => 'isite::common.settingGroups.colors',
+    'colClass' => 'col-12 col-md-6',
+    'props' => [
+      'label' => 'isite::common.settings.addressBar'
     ]
   ],
   'brandAccent' => [
@@ -120,7 +161,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandAccent'
     ]
@@ -131,7 +172,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandPositive'
     ]
@@ -142,7 +183,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandNegative'
     ]
@@ -153,7 +194,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandInfo'
     ]
@@ -164,7 +205,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandWarning'
     ]
@@ -175,7 +216,7 @@ return [
     'type' => 'inputColor',
     'groupName' => 'colors',
     'groupTitle' => 'isite::common.settingGroups.colors',
-    'columns' => 'col-12 col-md-6',
+    'colClass' => 'col-12 col-md-6',
     'props' => [
       'label' => 'isite::common.settings.brandDark'
     ]
@@ -251,6 +292,37 @@ return [
     'groupTitle' => 'isite::common.settingGroups.socialNetworks',
     'props' => ['label' => 'Telegram']
   ],
+  'youtube' => [
+    'value' => null,
+    'name' => 'youtube',
+    'fakeFieldName' => 'isite::socialNetworks',
+    'groupName' => 'socialNetworks',
+    'groupTitle' => 'isite::common.settingGroups.socialNetworks',
+    'type' => 'input',
+    'isTranslatable' => true,
+    'group' => 'isite::common.settingGroups.socialNetworks',
+    'props' => ['label' => 'YouTube']
+  ],
+  'flickr' => [
+    'value' => null,
+    'name' => 'flickr',
+    'fakeFieldName' => 'isite::socialNetworks',
+    'type' => 'input',
+    'isTranslatable' => true,
+    'groupName' => 'socialNetworks',
+    'groupTitle' => 'isite::common.settingGroups.socialNetworks',
+    'props' => ['label' => 'Flickr']
+  ],
+  'pinterest' => [
+    'value' => null,
+    'name' => 'pinterest',
+    'fakeFieldName' => 'isite::socialNetworks',
+    'type' => 'input',
+    'isTranslatable' => true,
+    'groupName' => 'socialNetworks',
+    'groupTitle' => 'isite::common.settingGroups.socialNetworks',
+    'props' => ['label' => 'Pinterest']
+  ],
   'whatsapp1' => [
     'name' => 'isite::whatsapp1',
     'label' => 'Whatsapp #1',
@@ -263,7 +335,7 @@ return [
         'name' => 'callingCode',
         'value' => null,
         'type' => 'select',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.callingCode',
         ],
@@ -276,7 +348,7 @@ return [
         'name' => 'number',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.number',
           'type' => 'number',
@@ -286,7 +358,7 @@ return [
         'name' => 'message',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.message',
         ]
@@ -295,7 +367,7 @@ return [
         'name' => 'label',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.label',
         ]
@@ -304,7 +376,7 @@ return [
         'name' => 'iconLabel',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.icon-label',
         ]
@@ -323,7 +395,7 @@ return [
         'name' => 'callingCode',
         'value' => null,
         'type' => 'select',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.callingCode',
         ],
@@ -336,7 +408,7 @@ return [
         'name' => 'number',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.number',
           'type' => 'number',
@@ -346,7 +418,7 @@ return [
         'name' => 'message',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.message',
         ]
@@ -355,7 +427,7 @@ return [
         'name' => 'label',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.label',
         ]
@@ -364,7 +436,7 @@ return [
         'name' => 'iconLabel',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.icon-label',
         ]
@@ -382,7 +454,7 @@ return [
         'name' => 'callingCode',
         'value' => null,
         'type' => 'select',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.callingCode',
         ],
@@ -395,7 +467,7 @@ return [
         'name' => 'number',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.number',
           'type' => 'number',
@@ -405,7 +477,7 @@ return [
         'name' => 'message',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-12 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.message',
         ]
@@ -414,7 +486,7 @@ return [
         'name' => 'label',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-3 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.label',
         ]
@@ -423,23 +495,12 @@ return [
         'name' => 'iconLabel',
         'value' => null,
         'type' => 'input',
-        'columns' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
+        'colClass' => 'col-6 col-xl-2 q-pr-sm q-pt-sm',
         'props' => [
           'label' => 'isite::common.settings.whatsapp.icon-label',
         ]
       ],
     ]
-  ],
-  'youtube' => [
-    'value' => null,
-    'name' => 'youtube',
-    'fakeFieldName' => 'isite::socialNetworks',
-    'groupName' => 'socialNetworks',
-    'groupTitle' => 'isite::common.settingGroups.socialNetworks',
-    'type' => 'input',
-    'isTranslatable' => true,
-    'group' => 'isite::common.settingGroups.socialNetworks',
-    'props' => ['label' => 'YouTube']
   ],
   //Recaptcha
   'activateCaptcha' => [
@@ -523,6 +584,7 @@ return [
     'type' => 'select',
     'groupName' => 'contact',
     'groupTitle' => 'isite::common.settingGroups.contact',
+    'quickSetting' => true,
     'props' => [
       'label' => 'isite::common.settings.phones',
       'useInput' => true,
@@ -539,6 +601,7 @@ return [
     'type' => 'select',
     'groupName' => 'contact',
     'groupTitle' => 'isite::common.settingGroups.contact',
+    'quickSetting' => true,
     'props' => [
       'label' => 'isite::common.settings.addresses',
       'useInput' => true,
@@ -572,10 +635,11 @@ return [
     'type' => 'input',
     'groupName' => 'customSources',
     'groupTitle' => 'isite::common.settingGroups.customSources',
+    'colClass' => 'col-12 col-md-12',
     'props' => [
       'label' => 'isite::common.settings.headerCustomJs',
       'type' => 'textarea',
-      'rows' => 8,
+      'rows' => 12,
     ],
   ],
   'customCss' => [
@@ -584,10 +648,11 @@ return [
     'type' => 'input',
     'groupName' => 'customSources',
     'groupTitle' => 'isite::common.settingGroups.customSources',
+    'colClass' => 'col-12 col-md-12',
     'props' => [
       'label' => 'isite::common.settings.customCss',
       'type' => 'textarea',
-      'rows' => 8,
+      'rows' => 12,
     ],
   ],
   'customJs' => [
@@ -596,16 +661,17 @@ return [
     'type' => 'input',
     'groupName' => 'customSources',
     'groupTitle' => 'isite::common.settingGroups.customSources',
+    'colClass' => 'col-12 col-md-12',
     'props' => [
       'label' => 'isite::common.settings.customJs',
       'type' => 'textarea',
-      'rows' => 8,
+      'rows' => 12,
     ],
   ],
 
   //Client Google
   'api-client-google' => [
-    'value' => null,
+    'value' => "",
     'name' => 'isite::googleClientId',
     'type' => 'input',
     'groupName' => 'apiKeys',
@@ -616,13 +682,24 @@ return [
   ],
   //Client Facebook
   'api-client-facebook' => [
-    'value' => null,
+    'value' => "",
     'name' => 'isite::facebookClientId',
     'type' => 'input',
     'groupName' => 'apiKeys',
     'groupTitle' => 'isite::common.settingGroups.apiKeys',
     'props' => [
       'label' => 'isite::common.settings.facebookClient'
+    ]
+  ],
+  //Facebook APP ID
+  'facebookAppId' => [
+    'value' => "",
+    'name' => 'isite::facebookAppId',
+    'type' => 'input',
+    'groupName' => 'apiKeys',
+    'groupTitle' => 'isite::common.settingGroups.apiKeys',
+    'props' => [
+      'label' => 'isite::common.settings.facebookAppId'
     ]
   ],
   //Choose pdf header logo
@@ -632,7 +709,7 @@ return [
     'groupName' => 'pdf',
     'groupTitle' => 'isite::pdf.settings.pdf.group',
     'type' => 'select',
-    'columns' => 'col-6',
+    'colClass' => 'col-6',
     'props' => [
       'label' => 'isite::pdf.settings.pdf.text.Logo_header',
       'useInput' => false,
@@ -681,13 +758,14 @@ return [
     ]
   ],
   
-  
   //Roles to register
   'rolesToTenant' => [
     "onlySuperAdmin" => true,
     'name' => 'isite::rolesToTenant',
     'value' => [],
     'type' => 'select',
+    'groupName' => 'tenants',
+    'groupTitle' => 'isite::common.settingGroups.tenants',
     'props' => [
       'label' => 'isite::common.settings.rolesToTenant',
       'multiple' => true,
@@ -698,6 +776,42 @@ return [
       'select' => ['label' => 'name', 'id' => 'id']
     ]
   ],
+  
+  //Default Tenant Status
+  'defaultTenantStatus' => [
+    'value' => true,
+    'name' => 'isite::defaultTenantStatus',
+    'type' => 'select',
+    'groupName' => 'tenants',
+    'groupTitle' => 'isite::common.settingGroups.tenants',
+    'colClass' => 'col-6',
+    'props' => [
+      'label' => 'isite::pdf.settings.defaultTenantStatus',
+      'useInput' => false,
+      'useChips' => false,
+      'multiple' => false,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'Activo', 'value' => true],
+        ['label' => 'Inactivo', 'value' => false]
+      ]
+    ]
+  ],
+
+  //Tenant route alias
+  'tenantRouteAlias' => [
+    'value' => "",
+    'name' => 'isite::tenantRouteAlias',
+    "onlySuperAdmin" => true,
+    'type' => 'input',
+    'groupName' => 'tenants',
+    'groupTitle' => 'isite::common.settingGroups.tenants',
+    'props' => [
+      'label' => 'isite::common.settings.tenantRouteAlias'
+    ]
+  ],
+
   'mapInShow' => [
     "onlySuperAdmin" => true,
     'value' => 'openStreet',
@@ -712,5 +826,172 @@ return [
         ['label' => 'GoogleMaps', 'value' => 'googleMaps'],
       ]
     ]
+  ],
+
+  'statusModalVerifier' => [
+    'value' => '0',
+    'name' => 'isite::statusModalVerifier',
+    'type' => 'checkbox',
+    'groupName' => 'modalVerifier',
+    'groupTitle' => 'isite::common.settingGroups.modalVerifier',
+    'props' => [
+      'trueValue' => "1",
+      'falseValue' => "0",
+      'label' => 'isite::isite.verifier.active'
+    ]
+  ],
+  'titleModalVerifier' => [
+    'value' => '',
+    'name' => 'isite::titleModalVerifier',
+    'type' => 'input',
+    'colClass' => "col-12",
+    'groupName' => 'modalVerifier',
+    'groupTitle' => 'isite::common.settingGroups.modalVerifier',
+    'props' => [
+      'label' => 'isite::isite.verifier.title'
+    ]
+  ],
+  'contentModalVerifier' => [
+    'value' => '',
+    'name' => 'isite::contentModalVerifier',
+    'type' => 'html',
+    'colClass' => "col-12",
+    'groupName' => 'modalVerifier',
+    'groupTitle' => 'isite::common.settingGroups.modalVerifier',
+    'props' => [
+      'label' => 'isite::isite.verifier.content'
+    ]
+  ],
+  'buttonLabelModalVerifier' => [
+    'value' => '',
+    'name' => 'isite::buttonLabelModalVerifier',
+    'type' => 'input',
+    'colClass' => "col-12",
+    'groupName' => 'modalVerifier',
+    'groupTitle' => 'isite::common.settingGroups.modalVerifier',
+    'props' => [
+      'label' => 'isite::isite.verifier.buttonLabel'
+    ]
+  ],
+  //Choose header layout
+  'headerLayout' => [
+    'value' => "header-layout-1",
+    'name' => 'isite::headerLayout',
+    "onlySuperAdmin" => true,
+    'type' => 'select',
+    'colClass' => 'col-6',
+    'props' => [
+      'label' => 'isite::common.settings.headerLayout',
+      'useInput' => false,
+      'useChips' => false,
+      'multiple' => false,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'Header Layout 1', 'value' => "header-layout-1"],
+        ['label' => 'Header Layout 2', 'value' => "header-layout-2"],
+        ['label' => 'Header Layout 3', 'value' => "header-layout-3"],
+      ]
+    ]
+  ], //Choose footer layout
+  'footerLayout' => [
+    'value' => "footer-layout-1",
+    'name' => 'isite::footerLayout',
+    "onlySuperAdmin" => true,
+    'type' => 'select',
+    'colClass' => 'col-6',
+    'props' => [
+      'label' => 'isite::common.settings.footerLayout',
+      'useInput' => false,
+      'useChips' => false,
+      'multiple' => false,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'Footer Layout 1', 'value' => "footer-layout-1"],
+        ['label' => 'Footer Layout 2', 'value' => "footer-layout-2"],
+        ['label' => 'Footer Layout 3', 'value' => "footer-layout-3"],
+      ]
+    ]
+  ],
+  //Components
+  'itemsTabs' => [
+    'value' => ['Item-1', 'Item-2'],
+    'name' => 'isite::itemsTabs',
+    'type' => 'select',
+    'groupName' => 'components',
+    'groupTitle' => 'isite::common.settingGroups.components',
+    'props' => [
+      'label' => 'isite::common.settings.itemsTabs',
+      'useInput' => true,
+      'useChips' => true,
+      'multiple' => true,
+      'hideDropdownIcon' => true,
+      'hint' => 'isite::common.settingHints.itemsTabs',
+      'newValueMode' => 'add-unique'
+    ]
+  ],
+  'locationSite' => [
+    'value' => '',
+    'name' => 'isite::locationSite',
+    'type' => 'positionMarkerMap',
+    'colClass' => "col-12",
+    'groupName' => 'maps',
+    'groupTitle' => 'isite::common.maps.groupMaps',
+    'props' => [
+      'label' => 'isite::common.maps.labelLocationSite'
+    ]
+  ],
+  'tenantWithCentralData' => [
+    'value' => [],
+    'name' => 'isite::tenantWithCentralData',
+    'groupName' => 'tenants',
+    'groupTitle' => 'isite::common.settings.tenant.group',
+    "onlySuperAdmin" => true,
+    'type' => 'select',
+    'columns' => 'col-6',
+    'props' => [
+      'label' => 'isite::common.settings.tenant.tenantWithCentralData',
+      'useInput' => false,
+      'useChips' => true,
+      'multiple' => true,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'isite::common.settings.tenant.entities.setting', 'value' => 'setting'],
+        ['label' => 'isite::common.settings.tenant.entities.page', 'value' => 'page'],
+        ['label' => 'isite::common.settings.tenant.entities.slider', 'value' => 'slider'],
+        ['label' => 'isite::common.settings.tenant.entities.slide', 'value' => 'slide'],
+      ]
+    ]
+  ],
+  //CMS
+  'legacyStructureCMS' => [
+    'name' => 'isite::legacyStructureCMS',
+    'value' => '0',
+    'type' => 'select',
+    'groupName' => 'cms',
+    'groupTitle' => 'isite::common.settingGroups.cms',
+    'props' => [
+      'label' => 'isite::common.settings.cms.legacyStructureCMS',
+      'options' => [
+        ['label' => 'isite::common.yes', 'value' => '1'],
+        ['label' => 'isite::common.no', 'value' => '0'],
+      ]
+    ],
+  ],
+  'iadminTheme' => [
+    'name' => 'isite::iadminTheme',
+    'value' => '1',
+    'type' => 'select',
+    'groupName' => 'cms',
+    'groupTitle' => 'isite::common.settingGroups.cms',
+    'props' => [
+      'label' => 'isite::common.settings.cms.iadminTheme.title',
+      'options' => [
+        ['label' => 'isite::common.settings.cms.iadminTheme.theme1', 'value' => '1'],
+        ['label' => 'isite::common.settings.cms.iadminTheme.theme2', 'value' => '2'],
+      ]
+    ],
   ],
 ];

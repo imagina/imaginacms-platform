@@ -6,6 +6,7 @@ return [
     "allowedFileTypes" => "Extensiones de archivo permitidas",
     "allowedVideoTypes" => "Extensiones de video permitidas",
     "allowedAudioTypes" => "Extensiones de audio permitidas",
+    "allowedRatios" => "Proporciones disponibles",
     "maxFileSize" => "Tamaño máximo permitido por archivo (Mb)",
     "maxTotalSize" => "Tamaño máximo de todo el media (Bytes)",
     "defaultImageSize" => "Redimensión por defecto de imagen",

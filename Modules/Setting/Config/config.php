@@ -35,6 +35,7 @@ return [
       'isite::logo2' => 'single',
       'isite::logo3' => 'single',
       'isite::favicon' => 'single',
+      'setting::mainimage' => 'single',
     ],
   
   ],

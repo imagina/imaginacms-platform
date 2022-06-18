@@ -29,7 +29,7 @@ class NotificationServiceProvider extends ServiceProvider
    * @var bool
    */
   protected $defer = false;
-  
+
   /**
    * Register the service provider.
    *
@@ -39,25 +39,36 @@ class NotificationServiceProvider extends ServiceProvider
   {
     $this->registerBindings();
     $this->registerViewComposers();
-  
-    
+
+
     $this->app['events']->listen(
       BuildingSidebar::class,
       $this->getSidebarClassForModule('blog', RegisterNotificationSidebar::class)
     );
-    
-  
+
+    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+      $event->load('notifications', Arr::dot(trans('notification::notifications')));
+
+      // append translations
+
+
+    });
+
   }
-  
+
   public function boot()
   {
     $this->publishConfig('notification', 'config');
     $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'permissions'), "asgard.notification.permissions");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'settings'), "asgard.notification.settings");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'settings-fields'), "asgard.notification.settings-fields");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'cmsPages'), "asgard.notification.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'cmsSidebar'), "asgard.notification.cmsSidebar");
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
-    
+
   }
-  
+
   /**
    * Get the services provided by the provider.
    *
@@ -67,18 +78,18 @@ class NotificationServiceProvider extends ServiceProvider
   {
     return array();
   }
-  
+
   private function registerBindings()
   {
     $this->app->bind(
       NotificationRepository::class,
       function () {
         $repository = new EloquentNotificationRepository(new Notification());
-        
+
         if (!config('app.cache')) {
           return $repository;
         }
-        
+
         return new CacheNotificationDecorator($repository);
       }
     );
@@ -112,21 +123,21 @@ class NotificationServiceProvider extends ServiceProvider
         return new \Modules\Notification\Repositories\Cache\CacheTemplateDecorator($repository);
       }
     );
-    
+
     $this->app->bind(\Modules\Notification\Services\Notification::class, function ($app) {
       return new AsgardNotification($app[NotificationRepository::class], $app[Authentication::class]);
     });
-    
+
     $this->app->bind(\Modules\Notification\Services\Inotification::class, function ($app) {
       return new ImaginaNotification($app[NotificationRepository::class], $app[ProviderRepository::class], $app[Authentication::class]);
     });
   }
-  
+
   private function registerViewComposers()
   {
     view()->composer('partials.top-nav', NotificationViewComposer::class);
   }
-  
- 
+
+
 
 }

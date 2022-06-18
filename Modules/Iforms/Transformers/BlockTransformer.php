@@ -13,6 +13,7 @@ class BlockTransformer extends JsonResource
     $data = [
       'id' => $this->when($this->id, $this->id),
       'title' => $this->when($this->title, $this->title),
+      'name' => $this->when($this->name, $this->name),
       'description' => $this->when($this->description, $this->description),
       'options' => $this->when($this->options, $this->options),
       'sortOrder' => $this->when($this->sort_order, $this->sort_order),

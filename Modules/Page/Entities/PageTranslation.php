@@ -20,6 +20,7 @@ class PageTranslation extends Model
         'og_description',
         'og_image',
         'og_type',
+        'content',
     ];
 
     protected $casts = [

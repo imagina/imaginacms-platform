@@ -7,32 +7,105 @@ use Modules\User\Entities\Sentinel\User;
 use Modules\Iblog\Entities\Status;
 
 if (!function_exists('get_posts')) {
+  
+  function get_posts($options = array())
+  {
+    
+    $default_options = array(
+      'categories' => null,// categoria o categorias que desee llamar, se envia como arreglo ['categories'=>[1,2,3]]
+      'users' => array(), //usuario o usuarios que desea llamar, se envia como arreglo ['users'=>[1,2,3]]
+      'include' => array(),//id de post a para incluir en una consulta, se envia como arreglo ['id'=>[1,2,3]]
+      'exclude' => array(),// post, categorias o usuarios, que desee excluir de una consulta metodo de llmado category=>'', posts=>'' , users=>''
+      'exclude_categories' => array(),// categoria o categorias que desee Excluir, se envia como arreglo ['exclude_categories'=>[1,2,3]]
+      'exclude_users' => array(), //usuario o usuarios que desea Excluir, se envia como arreglo ['users'=>[1,2,3]]
+      'date' =>null, //['from'=>date('Y-m-d H:i:s'), 'to' => date('Y-m-d H:i:s')],
+      'take' => 5, //Numero de posts a obtener,
+      'skip' => 0, //Omitir Cuantos post a llamar
+      'order' => ['field'=>'created_at','way'=>'desc'],//orden de llamado
+      'status' => 2
+    );
+    
+    $options = array_merge($default_options, $options);
+    
+    $post=app('Modules\Iblog\Repositories\PostRepository');
+    $params=json_decode(json_encode(["filter"=>$options,'include'=>['user', 'categories', 'category'],'take'=>$options['take'],'skip'=>$options['skip']]));
+    
+    return $post->getItemsBy($params);
+    
+  }
+}
 
-    function get_posts($options = array())
-    {
-
-        $default_options = array(
-            'categories' => null,// categoria o categorias que desee llamar, se envia como arreglo ['categories'=>[1,2,3]]
-            'users' => array(), //usuario o usuarios que desea llamar, se envia como arreglo ['users'=>[1,2,3]]
-            'include' => array(),//id de post a para incluir en una consulta, se envia como arreglo ['id'=>[1,2,3]]
-            'exclude' => array(),// post, categorias o usuarios, que desee excluir de una consulta metodo de llmado category=>'', posts=>'' , users=>''
-            'exclude_categories' => array(),// categoria o categorias que desee Excluir, se envia como arreglo ['exclude_categories'=>[1,2,3]]
-            'exclude_users' => array(), //usuario o usuarios que desea Excluir, se envia como arreglo ['users'=>[1,2,3]]
-            'date' =>null, //['from'=>date('Y-m-d H:i:s'), 'to' => date('Y-m-d H:i:s')],
-            'take' => 5, //Numero de posts a obtener,
-            'skip' => 0, //Omitir Cuantos post a llamar
-            'order' => ['field'=>'created_at','way'=>'desc'],//orden de llamado
-            'status' => 2
-        );
-
-        $options = array_merge($default_options, $options);
-
-        $post=app('Modules\Iblog\Repositories\PostRepository');
-        $params=json_decode(json_encode(["filter"=>$options,'include'=>['user', 'categories', 'category'],'take'=>$options['take'],'skip'=>$options['skip']]));
-
-        return $post->getItemsBy($params);
-
+if (!function_exists('reorderCategories')) {
+  
+  function reorderCategories($options = array())
+  {
+    
+    $default_options = array(
+      'categories' => null,// categoria o categorias que desee llamar, se envia como arreglo ['categories'=>[1,2,3]]
+      'users' => array(), //usuario o usuarios que desea llamar, se envia como arreglo ['users'=>[1,2,3]]
+      'include' => array(),//id de post a para incluir en una consulta, se envia como arreglo ['id'=>[1,2,3]]
+      'exclude' => array(),// post, categorias o usuarios, que desee excluir de una consulta metodo de llmado category=>'', posts=>'' , users=>''
+      'exclude_categories' => array(),// categoria o categorias que desee Excluir, se envia como arreglo ['exclude_categories'=>[1,2,3]]
+      'exclude_users' => array(), //usuario o usuarios que desea Excluir, se envia como arreglo ['users'=>[1,2,3]]
+      'date' =>null, //['from'=>date('Y-m-d H:i:s'), 'to' => date('Y-m-d H:i:s')],
+      'take' => 5, //Numero de posts a obtener,
+      'skip' => 0, //Omitir Cuantos post a llamar
+      'status' => 1
+    );
+    $order = $options["order"] ?? ['field'=>'created_at','way'=>'desc'];
+    unset($options["order"]);
+    $options = array_merge($default_options, $options);
+    
+    $categoryRepository=app('Modules\Iblog\Repositories\CategoryRepository');
+    $params=json_decode(json_encode(["filter"=>$options,'take'=>$options['take'],'order'=>$order,'skip'=>$options['skip']]));
+    
+    $categories = $categoryRepository->getItemsBy($params);
+    
+    foreach ($categories as $key => $category){
+      $category->sort_order = $key;
+      $category->save();
     }
+    
+    return [
+      "ordered" => $categories->count(),
+    ];
+  }
+}
+if (!function_exists('reorderPosts')) {
+  
+  function reorderPosts($options = array())
+  {
+    
+    $default_options = array(
+      'categories' => null,// categoria o categorias que desee llamar, se envia como arreglo ['categories'=>[1,2,3]]
+      'users' => array(), //usuario o usuarios que desea llamar, se envia como arreglo ['users'=>[1,2,3]]
+      'include' => array(),//id de post a para incluir en una consulta, se envia como arreglo ['id'=>[1,2,3]]
+      'exclude' => array(),// post, categorias o usuarios, que desee excluir de una consulta metodo de llmado category=>'', posts=>'' , users=>''
+      'exclude_categories' => array(),// categoria o categorias que desee Excluir, se envia como arreglo ['exclude_categories'=>[1,2,3]]
+      'exclude_users' => array(), //usuario o usuarios que desea Excluir, se envia como arreglo ['users'=>[1,2,3]]
+      'date' =>null, //['from'=>date('Y-m-d H:i:s'), 'to' => date('Y-m-d H:i:s')],
+      'take' => 5, //Numero de posts a obtener,
+      'skip' => 0, //Omitir Cuantos post a llamar
+      'status' => 1
+    );
+    $order = $options["order"] ?? ['field'=>'created_at','way'=>'desc'];
+    unset($options["order"]);
+    $options = array_merge($default_options, $options);
+    
+    $postRepository=app('Modules\Iblog\Repositories\PostRepository');
+    $params=json_decode(json_encode(["filter"=>$options,'take'=>$options['take'],'order'=>$order,'skip'=>$options['skip']]));
+    
+    $posts = $postRepository->getItemsBy($params);
+    
+    foreach ($posts as $key => $post){
+      $post->sort_order = $key;
+      $post->save();
+    }
+    
+    return [
+      "ordered" => $post->count(),
+    ];
+  }
 }
 
 if (!function_exists('all_users_by_rol')) {

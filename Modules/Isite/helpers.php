@@ -30,10 +30,14 @@ if (!function_exists('alternate')) {
 
 if (!function_exists('getEditLink')) {
   
-  function getEditLink($repository)
+  function getEditLink($repository = null, $componentName = null)
   {
   
     switch ($repository) {
+      case 'Modules\Iad\Repositories\AdRepository':
+        $editLink = "/iadmin/#/ad/ads/update/";
+        $tooltipEditLink = trans("isite::common.editLink.tooltipAd");
+        break;
       case 'Modules\Icommerce\Repositories\ProductRepository':
         $editLink = "/iadmin/#/ecommerce/products?edit=";
         $tooltipEditLink = trans("isite::common.editLink.tooltipProduct");
@@ -63,8 +67,17 @@ if (!function_exists('getEditLink')) {
         $tooltipEditLink = trans("isite::common.editLink.tooltipPlace");
         break;
         default:
-        $editLink = "/iadmin/#/";
-        $tooltipEditLink = "";
+          switch ($componentName) {
+            case 'logo':
+              $editLink = "/iadmin/#/iplaces/places/index?edit=";
+              $tooltipEditLink = trans("isite::common.editLink.tooltipLogo");
+              break;
+              
+            default:
+              $editLink = "/iadmin/#";
+              $tooltipEditLink = trans("isite::common.editLink.tooltip");
+              breaK;
+          }
         break;
     }
     

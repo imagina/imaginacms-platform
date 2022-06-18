@@ -65,8 +65,8 @@ class EloquentDepartmentRepository extends EloquentBaseRepository implements Dep
       }
 
       //Filter by Internal
-      if (isset($filter->internal)) {
-        $query->where('internal', $filter->internal);
+      if (isset($filter->is_internal)) {
+        $query->where('isInternal', $filter->is_internal);
       }
 
       //Order by

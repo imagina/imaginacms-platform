@@ -388,7 +388,7 @@
             style="
               height: 150px;
               width: 150px;
-              background-image: url({{Setting::get('isite::logo1')}});
+              background-image: url({{ json_decode(Setting::get('notification::logoEmail'))->medias_single->{"notification::logoEmail"} ? Setting::get('notification::logoEmail') : Setting::get('isite::logo1') }});
               background-repeat: no-repeat;
               background-position: center;
               background-size: contain;

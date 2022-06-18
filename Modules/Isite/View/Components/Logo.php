@@ -12,19 +12,30 @@ class Logo extends Component
   public $to;
   public $zone;
   public $imgClasses;
+  public $linkClasses;
+  public $central;
 
   /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($name = "logo1", $to = null, $imgClasses = "")
+  public function __construct($name = "logo1", $to = null, $imgClasses = "", $linkClasses = "", $central = false)
   {
 
     $this->to = $to ?? \LaravelLocalization::localizeUrl('/');
     $this->zone = "isite::$name";
     $this->imgClasses = $imgClasses;
-    $setting = Setting::where("name", $this->zone)->with('files')->first();
+    $this->linkClasses = $linkClasses;
+    $setting = Setting::where("name", $this->zone);
+    
+    if($central)
+      $setting->withoutTenancy()
+        ->whereNull("organization_id");
+    
+    
+    $setting= $setting->with('files')->first();
+    
 
      if(isset($setting->id)){
       $this->logo = $setting;

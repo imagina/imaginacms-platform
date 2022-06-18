@@ -204,3 +204,13 @@
     }
   }
 }
+
+.lists-layout-4 {
+  .list-column-1 .card-item {
+    margin-top:0 !important;
+  }
+  .list-image-bottom {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+}

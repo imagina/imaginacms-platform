@@ -152,6 +152,7 @@ return [
       'mainimage' => 'single',
       'secondaryimage' => 'single',
       'gallery' => 'multiple',
+      'iconimage' => 'single',
       'breadcrumbimage' => 'single'
     ],
     'category' => [

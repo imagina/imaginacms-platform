@@ -14,6 +14,7 @@ return [
     'create departmentsetting' => 'Create a departmentsetting',
   ],
   'registerUsers' => 'Usuarios se pueden registrar',
+  'allowResetPassword' => 'Permitir recuperar contraseña en el login',
   'validateRegisterWithEmail' => 'Validar registro por email',
   'adminNeedsToActivateNewUsers' => 'El administrador necesita activar los usuarios',
   'registerUsersWithSocialNetworks' => 'Permitir registro con redes sociales',
@@ -25,6 +26,21 @@ return [
   'registerExtraFieldsRequired' => 'Campos extra requeridos para el registro',
   'addressesExtraFieldsActive' => 'Campos extra de dirección activos',
   'addressesExtraFieldsRequired' => 'Campos extra de dirección requeridos',
+  'authTitle' => 'Titulo',
+  'hideLogo' => 'Ocultar Logo',
+  'authLoginCaption' => 'Subtitulo para Inicio de Sesión',
+  'authRegisterCaption' => 'Subtitulo para Registro',
+  'yes' => 'Si',
+  'no' => 'No',
+  'passwordExpiredTime' => 'Tiempo de expiración para la contraseña',
+  'expiredTime' => [
+    'never' => 'Nunca',
+    '1 week' => '1 semana',
+    '1 month' => '1 mes',
+    '3 months' => '3 meses',
+    '1 year' => '1 año'
+  ],
+  'notAllowOldPassword' => 'El usuario no podra guardar contraseñas repetidas',
   'table' => [
   ],
   'form' => [
@@ -36,7 +52,7 @@ return [
   'settingGroups' => [
     'registerExtraFields' => 'Campos extra para el registro',
     'addressesExtraFields' => 'Campos extra para las direcciones',
-    'register' => 'Configuración de Autenticación',
+    'auth' => 'Autenticación',
   ],
   'settingFields' => [
     'enabled' => 'Activo',
@@ -48,5 +64,9 @@ return [
     "company" => 'Compañia',
     "zipCode" => 'Codigo Zip',
     "extraInfo" => 'Información Adicional',
+  ],
+  'logoutIdlTime' => [
+    'label' => "Cerrar sesión por inactividad (minutos)",
+    'helpText' => "Define el numero de minutos, para cerrar la sesión por inactividad. Si el valor es menor a 1, no se cerrara la sesión por inactividad"
   ]
 ];

@@ -7,6 +7,9 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Routing\Router;
 use Illuminate\Http\Request;
 
+//Controllers
+use Modules\Core\Icrud\Controllers\BaseCrudController;
+
 class RouterGenerator
 {
   private $router;
@@ -23,8 +26,27 @@ class RouterGenerator
    */
   public function apiCrud($params)
   {
-    //Instance CRUD routes
-    $crudRoutes = [
+    //Get routes
+    $crudRoutes = isset($params['staticEntity']) ? $this->getStaticApiRoutes($params) :
+      $crudRoutes = $this->getStandardApiRoutes($params);
+
+    //Generate routes
+    $this->router->group(['prefix' => $params['prefix']], function (Router $router) use ($crudRoutes) {
+      foreach ($crudRoutes as $route) {
+        $router->match($route->method, $route->path, $route->actions);
+      }
+    });
+  }
+
+  /**
+   * Return routes to standar API
+   *
+   * @param $params
+   * @return void
+   */
+  private function getStandardApiRoutes($params)
+  {
+    return [
       (object)[//Route create
         'method' => 'post',
         'path' => '/',
@@ -80,12 +102,44 @@ class RouterGenerator
         ]
       ]
     ];
+  }
 
-    //Generate routes
-    $this->router->group(['prefix' => $params['prefix']], function (Router $router) use ($crudRoutes) {
-      foreach ($crudRoutes as $route) {
-        $router->match($route->method, $route->path, $route->actions);
-      }
-    });
+  /**
+   * Return the static api routes to static entities
+   *
+   * @param $params
+   * @return void
+   */
+  private function getStaticApiRoutes($params)
+  {
+    //Instance controller
+    $controller = new BaseCrudController();
+
+    return [
+      (object)[//Route Index
+        'method' => 'get',
+        'path' => '/',
+        'actions' => function (Request $request) use ($controller, $params) {
+          //Call indexStatic method from controller
+          return $controller->indexStatic($request, [
+              "entityClass" => $params['staticEntity'],
+              "method" => isset($params['use']['index']) ? $params['use']['index'] : 'index'
+            ]
+          );
+        }
+      ],
+      (object)[//Route Show
+        'method' => 'get',
+        'path' => '/{criteria}',
+        'actions' => function ($criteria, Request $request) use ($controller, $params) {
+          //Call showStatic method from controller
+          return $controller->showStatic($criteria, $request, [
+              "entityClass" => $params['staticEntity'],
+              "method" => isset($params['use']['show']) ? $params['use']['show'] : 'show'
+            ]
+          );
+        }
+      ]
+    ];
   }
 }

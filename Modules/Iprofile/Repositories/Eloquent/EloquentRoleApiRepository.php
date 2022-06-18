@@ -6,6 +6,7 @@ use Modules\Iprofile\Repositories\RoleApiRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\User\Entities\Sentinel\User;
 use Modules\Iforms\Events\SyncFormeable;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleApiRepository
 {
@@ -15,7 +16,7 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with(['settings']);
     } else {//Especific relationships
       $includeDefault = ['settings'];//Default relationships
@@ -71,17 +72,34 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
       }
     }
 
+    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
+
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
+
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
 
     /*== REQUEST ==*/
-    if (isset($params->page) && $params->page) {
-      return $query->paginate($params->take);
-    } else {
-      $params->take ? $query->take($params->take) : false;//Take
-      return $query->get();
-    }
+    if (isset($params->onlyQuery) && $params->onlyQuery) {
+      return $query;
+    } else
+      if (isset($params->page) && $params->page) {
+        //return $query->paginate($params->take);
+        return $query->paginate($params->take, ['*'], null, $params->page);
+      } else {
+        isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
+        return $query->get();
+      }
   }
 
   public function getItem($criteria, $params = false)
@@ -90,7 +108,7 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with(['settings']);
     } else {//Especific relationships
       $includeDefault = ['settings'];//Default relationships
@@ -105,6 +123,19 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
 
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
+    }
+
+    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
+
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
     }
 
     /*== FIELDS ==*/

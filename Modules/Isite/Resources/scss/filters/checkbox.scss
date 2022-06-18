@@ -60,12 +60,12 @@
             color: #ffffff;
         }
         input[type="checkbox"]:not(:disabled):active~  label::before {
-            background-color: $primary;
-            border-color: $primary;
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
         input[type="checkbox"]:checked~  label::before {
-            background-color: $primary;
-            border-color: $primary;
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
     }
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Setting\Support;
 
+use Modules\Media\Image\Imagy;
 use Modules\Setting\Contracts\Setting;
 use Modules\Setting\Repositories\SettingRepository;
 
@@ -27,16 +28,28 @@ class Settings implements Setting
      * @param  string   $default
      * @return mixed
      */
-    public function get($name, $locale = null, $default = null)
+    public function get($name, $locale = null, $default = null, $central = false)
     {
+     
         $defaultFromConfig = $this->getDefaultFromConfigFor($name);
-
-        $setting = $this->setting->findByName($name);
-        if ($setting === null) {
+  
+      //tracking if the env DB_DATABASE not exist to avoid the query in the DB
+      if(env('DB_DATABASE', 'forge') == 'forge')
+        return is_null($default) ? $defaultFromConfig : $default;
+  
+      
+      $setting = $this->setting->findByName($name, $central);
+      
+        if (empty($setting)) {
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
         if ($setting->isMedia() && $media = $setting->files()->first()) {
+          if($media->isImage()){
+            $mediaFiles = $setting->mediaFiles();
+            
+            return $mediaFiles->{$setting->name}->extraLargeThumb ?? $mediaFiles->{'setting::mainimage'}->extraLargeThumb ?? $media->path;
+          }
             return $media->path;
         }
 

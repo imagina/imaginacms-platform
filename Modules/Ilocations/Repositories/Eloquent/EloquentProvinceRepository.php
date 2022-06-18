@@ -111,24 +111,50 @@ class EloquentProvinceRepository extends EloquentBaseRepository implements Provi
                 $orderWay = $filter->order->way ?? 'desc';//Default way
                 $query->orderBy($orderByField, $orderWay);//Add order to query
             }
+  
+          if (isset($filter->search)) {
+  
+            $query->where(function ($query) use ($filter) {
+              $query->whereHas('translations', function ($query) use ($filter) {
+                $query->where('locale', $filter->locale)
+                  ->where('name', 'like', '%' . $filter->search . '%');
+              })->orWhere('ilocations__provinces.id', 'like', '%' . $filter->search . '%')
+                ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+                ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+            });
+    
+        }
+
         }
   
   
+      $availableCountries = json_decode(setting("ilocations::availableCountries", null, "[]"));
+      /*=== SETTINGS ===*/
+      if (!empty($availableCountries) && !isset($params->filter->indexAll)) {
+        if (!isset($params->permissions['ilocations.provinces.manage']) || (!$params->permissions['ilocations.provinces.manage'])) {
+          $query->whereHas("country", function ($query) use ($availableCountries){
+            $query->whereIn("ilocations__countries.iso_2",$availableCountries);
+          });
+      
+        }
+      }
+
       $availableProvinces = json_decode(setting("ilocations::availableProvinces", null, "[]"));
 
       /*=== SETTINGS ===*/
       if (!empty($availableProvinces) && !isset($params->filter->indexAll)) {
         if (!isset($params->permissions['ilocations.provinces.manage']) || (!$params->permissions['ilocations.provinces.manage'])) {
-      
-          $query->whereIn('iso_2', $availableProvinces);
-      
+
+          $query->whereIn('ilocations__provinces.iso_2', $availableProvinces);
+
         }
       }
- 
+
         /*== FIELDS ==*/
         if (isset($params->fields) && count($params->fields))
             $query->select($params->fields);
 
+        //dd($query->toSql(),$query->getBindings());
         /*== REQUEST ==*/
         if (isset($params->page) && $params->page) {
             return $query->paginate($params->take);

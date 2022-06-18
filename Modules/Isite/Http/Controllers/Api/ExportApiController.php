@@ -72,7 +72,7 @@ class ExportApiController extends BaseApiController
    */
   public function create(Request $request)
   {
-   // try {
+    try {
       //Get Parameters from URL.
       $params = $this->getParamsRequest($request);
       $exportParams = (is_string($request->exportParams) ? json_decode($request->exportParams) : (object)$request->exportParams);
@@ -99,21 +99,14 @@ class ExportApiController extends BaseApiController
               $this->disk
             );
           }
-  
-          
           break;
       }
-   
-  
-      
-      
-
       //Response
       $response = ['Export started!'];
-  /*  } catch (\Exception $e) {
+    } catch (\Exception $e) {
       $status = $this->getStatusError($e->getCode());
       $response = ["errors" => $e->getMessage()];
-    }*/
+    }
 
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);

@@ -23,7 +23,15 @@ return [
     ],
     'validation' => [
     ],
-    'settings' => [
-        'minSearchChars' => 'Min. Search Chars'
-    ]
+  'settings' => [
+    'minSearchChars' => 'Minimum Characters for Search',
+    'search' => 'Repositories to search for content',
+    'labelListOptionsSearch' => 'Search Suggestions (Autocomplete Layout 2 only)',
+    'labelListFeaturedOptionsSearch' => 'Featured search suggestions (Autocomplete Layout 2 only)',
+  ],
+  'settingHints' => [
+    'search' => "Enter a repository and press enter",
+    'hintsOptionsSearch' => 'Enter search suggestions',
+    'hintsFeaturedOptionsSearch' => 'Enter featured search suggestions',
+  ],
 ];

@@ -17,7 +17,8 @@ class CreateOrganizationByRole
   {
     try {
       $user = $event->user;
-  
+      $data = $event->bindings;
+      
       $roles = $user->roles;
       
       $rolesToTenant = json_decode(setting("isite::rolesToTenant",null,"[]"));
@@ -27,12 +28,19 @@ class CreateOrganizationByRole
       foreach ($roles as $userRole){
         if(in_array($userRole->id,$rolesToTenant) && !$allReadyTenant){
           $allReadyTenant = true;
-          $organization = Organization::create([
+          $organization = Organization::create(array_merge([
             'user_id' => $user->id,
             'title' => $user->present()->fullname,
-          ]);
+            'status' => json_decode(setting("isite::defaultTenantStatus",null, "true"))
+          ],$data["organization"] ?? []));
   
           $organization->users()->sync([$user->id => ['role_id' => $userRole->id]]);
+          
+  
+          $organization->domains()->create([
+            'domain' => $data["organization"]["domain"] ?? $organization->slug,
+            'type' => 'default'
+          ]);
         }
       }
       

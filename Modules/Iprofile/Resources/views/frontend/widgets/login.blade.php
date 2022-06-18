@@ -41,7 +41,7 @@
 
       <div class="form-body">
         @include('isite::frontend.partials.notifications')
-        {!! Form::open(['route' => 'account.login.post', 'class' => 'form-content', 'id' => 'loginForm']) !!}
+        {!! Form::open(['url' =>  tenant_route(request()->getHost(), 'account.login.post'), 'class' => 'form-content', 'id' => 'loginForm']) !!}
 
         @if(isset($embedded))
           <input name="embedded" type="hidden" value="{{isset($route) && $route ? $route : ''}}">

@@ -38,6 +38,7 @@ return [
     'phone' => 'Phone',
     'date' => 'Date',
     'file' => 'File',
+    'treeSelect' => 'Tree Select',
   ],
   'formTypes' => [
       'normal' => 'Normal Form',

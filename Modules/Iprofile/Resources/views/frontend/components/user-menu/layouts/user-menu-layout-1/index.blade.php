@@ -12,7 +12,7 @@
 
                 @if($showLabel)
                     <span class="username text-truncate d-none d-sm-block aling-middle text-capitalize">
-                            <?php if ($userData->firstName != ' '): ?>
+                            <?php if (isset($userData->firstName) && $userData->firstName): ?>
                                 <?= $userData->firstName; ?>
                             <?php else: ?>
                                 <em>{{trans('core::core.general.complete your profile')}}.</em>
@@ -35,7 +35,7 @@
                     @endif
 
                     <span class="username text-truncate aling-middle text-capitalize">
-                    <?php if ($userData->firstName != ' '): ?>
+                    <?php if (isset($userData->firstName) && $userData->firstName): ?>
                         <?= $userData->firstName; ?>
                     <?php else: ?>
                         <em>{{trans('core::core.general.complete your profile')}}.</em>

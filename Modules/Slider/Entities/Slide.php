@@ -6,10 +6,11 @@ use Modules\Media\Support\Traits\MediaRelation;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\App;
 use Modules\Page\Entities\Page;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Slide extends Model
 {
-  use Translatable, MediaRelation;
+  use Translatable, MediaRelation, BelongsToTenant;
 
   public $translatedAttributes = [
     'title',
@@ -80,14 +81,14 @@ class Slide extends Model
       if (!empty($this->external_image_url)) {
         $this->imageUrl = $this->external_image_url;
       } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
-        $this->imageUrl = $this->filesByZone('slideimage')->first()->path_string;
+        $this->imageUrl = $this->filesByZone('slideimage')->first()->path;
       }
     }
 
     return $this->imageUrl;
   }
-
-
+  
+  
   /**
    * returns slider link URL
    * @return string|null
@@ -103,8 +104,27 @@ class Slide extends Model
         $this->linkUrl = route('page', ['uri' => $this->page->slug]);
       }
     }
-
+    
     return $this->linkUrl;
+  }
+  
+  /**
+   * returns slider link URL
+   * @return string|null
+   */
+  public function getUrlAttribute()
+  {
+    $url = "";
+      if (!empty($this->attributes["url"])) {
+        $url = $this->attributes["url"];
+      } elseif (!empty($this->uri)) {
+        $url = \LaravelLocalization::localizeUrl('/'. $this->uri);
+      } elseif (!empty($this->page)) {
+        $url = route('page', ['uri' => $this->page->slug]);
+      }
+    
+    
+    return $url;
   }
 
   protected function setOptionsAttribute($value)

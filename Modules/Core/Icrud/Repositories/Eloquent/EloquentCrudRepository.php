@@ -5,6 +5,10 @@ namespace Modules\Core\Icrud\Repositories\Eloquent;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Core\Icrud\Repositories\BaseCrudRepository;
 
+use Modules\Ihelpers\Events\CreateMedia;
+use Modules\Ihelpers\Events\DeleteMedia;
+use Modules\Ihelpers\Events\UpdateMedia;
+
 /**
  * Class EloquentCrudRepository
  *
@@ -192,7 +196,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
   public function create($data)
   {
     //Event creating model
-    $this->model->creatingCrudModel(['data' => $data]);
+    $this->dispatchesEvents(['eventName' => 'creating', 'data' => $data]);
 
     //Create model
     $model = $this->model->create($data);
@@ -204,7 +208,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     $model = $this->syncModelRelations($model, $data);
 
     //Event created model
-    $model->createdCrudModel(['data' => $data]);
+    $this->dispatchesEvents(['eventName' => 'created', 'data' => $data, 'model' => $model]);
 
     //Response
     return $model;
@@ -227,8 +231,13 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //Filter Query
     if (isset($params->filter)) {
       $filters = $params->filter;//Short data filter
-      $modelFillable = array_merge($this->model->getFillable(), ['id', 'created_at', 'updated_at']);//Instance model fillable
-      $modelRelations = ($this->model->modelRelations ?? []);//Instance model relations
+      //Instance model relations
+      $modelRelations = ($this->model->modelRelations ?? []);
+      //Instance model fillable
+      $modelFillable = array_merge(
+        $this->model->getFillable(),
+        ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
+      );
 
       //Set fiter order to params.order: TODO: to keep and don't break old version api
       if (isset($filters->order) && isset($params->order) && !$params->order) $params->order = $filters->order;
@@ -240,8 +249,9 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
           //Add fillable filter
           if (in_array($filterNameSnake, $modelFillable)) {
             $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
-          } //Add relation filter
-          else if (in_array($filterName, array_keys($modelRelations))) {
+          }
+          //Add relation filter
+          if (in_array($filterName, array_keys($modelRelations))) {
             //dd($this->model->$filterName());
             $query = $this->setFilterQuery($query, (object)[
               'where' => $modelRelations[$filterName],
@@ -260,6 +270,9 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
       //Audit filter onlyTrashed
       if (isset($filters->onlyTrashed) && $filters->onlyTrashed) $query->onlyTrashed();
 
+      //Set params into filters, to keep uploader code
+      if (is_array($filters)) $filters = (object)$filters;
+      $filters->params = $params;
       //Add model filters
       $query = $this->filterQuery($query, $filters);
     }
@@ -299,8 +312,49 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //Check field name to criteria
     if (isset($params->filter->field)) $field = $params->filter->field;
 
+    // find translatable attributes
+    $translatedAttributes = $this->model->translatedAttributes ?? [];
+
+    // filter by translatable attributes
+    if (isset($field) && in_array($field, $translatedAttributes)) {//Filter by slug
+      $filter = $params->filter;
+      $query->whereHas('translations', function ($query) use ($criteria, $filter, $field) {
+        $query->where('locale', $filter->locale ?? \App::getLocale())
+          ->where($field, $criteria);
+      });
+    } else
+      // find by specific attribute or by id
+      $query->where($field ?? 'id', $criteria);
+
+    //Filter Query
+    if (isset($params->filter)) {
+      $filters = $params->filter;//Short data filter
+      //Instance model fillable
+      $modelFillable = array_merge(
+        $this->model->getFillable(),
+        ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
+      );
+
+      //Add Requested Filters
+      foreach ($filters as $filterName => $filterValue) {
+        $filterNameSnake = camelToSnake($filterName);//Get filter name as snakeCase
+        if (!in_array($filterName, $this->replaceFilters)) {
+          //Add fillable filter
+          if (in_array($filterNameSnake, $modelFillable)) {
+            $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
+          }
+        }
+      }
+
+      //Set params into filters, to keep uploader code
+      if (is_array($filters)) $filters = (object)$filters;
+      $filters->params = $params;
+      //Add model filters
+      $query = $this->filterQuery($query, $filters);
+    }
+
     //Request
-    $response = $query->where($field ?? 'id', $criteria)->first();
+    $response = $query->first();
 
     //Response
     return $response;
@@ -317,7 +371,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
   public function updateBy($criteria, $data, $params)
   {
     //Event updating model
-    $this->model->updatingCrudModel(['data' => $data, 'params' => $params, 'criteria' => $criteria]);
+    $this->dispatchesEvents(['eventName' => 'updating', 'data' => $data, 'criteria' => $criteria]);
 
     //Instance Query
     $query = $this->model->query();
@@ -334,7 +388,12 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
       // Custom Sync model relations
       $model = $this->syncModelRelations($model, $data);
       //Event updated model
-      $model->updatedCrudModel(['data' => $data, 'params' => $params, 'criteria' => $criteria]);
+      $this->dispatchesEvents([
+        'eventName' => 'updated',
+        'data' => $data,
+        'criteria' => $criteria,
+        'model' => $model
+      ]);
     }
 
     //Response
@@ -359,8 +418,14 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //get model
     $model = $query->where($field ?? 'id', $criteria)->first();
 
+    //Event deleting model
+    $this->dispatchesEvents(['eventName' => 'deleting', 'criteria' => $criteria, 'model' => $model]);
+
     //Delete Model
     if ($model) $model->delete();
+
+    //Event deleted model
+    $this->dispatchesEvents(['eventName' => 'deleted', 'criteria' => $criteria]);
 
     //Response
     return $model;
@@ -389,5 +454,78 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
 
     //Response
     return $model;
+  }
+
+  /**
+   * Dispathes events
+   *
+   * @param $params
+   */
+  public function dispatchesEvents($params)
+  {
+    //Instance parameters
+    $eventName = $params['eventName'];
+    $data = $params['data'] ?? [];
+    $criteria = $params['criteria'] ?? null;
+    $model = $params['model'] ?? null;
+
+    //Dispath creating events
+    if ($eventName == 'creating') {
+      //Emit event creatingWithBindings
+      if (method_exists($this->model, 'creatingCrudModel'))
+        $this->model->creatingCrudModel(['data' => $data]);
+    }
+
+    //Dispath created events
+    if ($eventName == 'created') {
+      //Emit event createdWithBindings
+      if (method_exists($model, 'createdCrudModel'))
+        $model->createdCrudModel(['data' => $data]);
+      //Event to ADD media
+      if (method_exists($model, 'mediaFiles'))
+        event(new CreateMedia($model, $data));
+    }
+
+    //Dispath updating events
+    if ($eventName == 'updating') {
+      //Emit event updatingWithBindings
+      if (method_exists($this->model, 'updatingCrudModel'))
+        $this->model->updatingCrudModel(['data' => $data, 'params' => $params, 'criteria' => $criteria]);
+    }
+
+    //Dispath updated events
+    if ($eventName == 'updated') {
+      //Emit event updatedWithBindings
+      if (method_exists($model, 'updatedCrudModel'))
+        $model->updatedCrudModel(['data' => $data, 'params' => $params, 'criteria' => $criteria]);
+      //Event to Update media
+      if (method_exists($model, 'mediaFiles'))
+        event(new UpdateMedia($model, $data));
+    }
+
+    //Dispath deleting events
+    if ($eventName == 'deleting') {
+    }
+
+    //Dispath deleted events
+    if ($eventName == 'deleted') {
+    }
+
+    //Dispatches model events
+    $dispatchesEvents = $this->model->dispatchesEventsWithBindings ?? [];
+    if (isset($dispatchesEvents[$eventName]) && count($dispatchesEvents[$eventName])) {
+      //Dispath every model events from eventName
+      foreach ($dispatchesEvents[$eventName] as $event) {
+        //Get the module name from path event parameter
+        $moduleName = explode("\\", $event['path'])[1];
+        //Validate if module is enabled to dispath event
+        if (is_module_enabled($moduleName)) event(new $event['path']([
+          'data' => $data,
+          'extraData' => $event['extraData'] ?? [],
+          'criteria' => $criteria,
+          'model' => $model
+        ]));
+      }
+    }
   }
 }

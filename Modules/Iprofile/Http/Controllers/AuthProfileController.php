@@ -114,7 +114,6 @@ class AuthProfileController extends AuthController
       ];
 
       $remember = (bool) $request->get('remember_me', false);
-
       $error = $this->auth->login($credentials, $remember);
 
       if ($error) {
@@ -126,7 +125,7 @@ class AuthProfileController extends AuthController
 
 
       if (isset($data["embedded"]) && $data["embedded"]) {
-              return redirect()->route($data['embedded'])
+              return redirect(tenant_route(request()->getHost(), $data['embedded']))
                   ->withSuccess(trans('user::messages.successfully logged in'));
       }else if(!empty(request()->session()->get('url.intended'))){
           $url = request()->session()->get('url.intended');
@@ -298,7 +297,7 @@ class AuthProfileController extends AuthController
       echo $t->getMessage();
       exit();
 
-      return redirect()->route($data["embedded"] ?? 'account.profile.index')
+      return redirect(tenant_route(request()->getHost(), $data["embedded"] ?? 'account.profile.index'))
         ->withError($response['message']);
     }
 
@@ -310,7 +309,7 @@ class AuthProfileController extends AuthController
       $autn = \Sentinel::login($user);
     }
 
-    return redirect()->route($data["embedded"] ?? 'account.register')
+    return redirect(tenant_route(request()->getHost(), $data["embedded"] ?? 'account.register'))
       ->withSuccess($msj);
 
   }

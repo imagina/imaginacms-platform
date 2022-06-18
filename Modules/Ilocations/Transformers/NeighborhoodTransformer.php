@@ -16,7 +16,9 @@ class NeighborhoodTransformer extends JsonResource
         'provinceId'=> $this->when($this->province_id,$this->province_id),
         'countryId'=> $this->when($this->country_id,$this->country_id),
         'city' => new CityTransformer($this->whenLoaded('city')),
-        'geozones' => CityTransformer::collection($this->whenLoaded('geozones')),
+        'province' => new ProvinceTransformer($this->whenLoaded('province')),
+        'country' => new CountryTransformer($this->whenLoaded('country')),
+        'geozones' => GeozoneTransformer::collection($this->whenLoaded('geozones')),
         'updatedAt' => $this->when($this->updated_at, $this->updated_at),
         'createdAt' => $this->when($this->created_at, $this->created_at),
       ];

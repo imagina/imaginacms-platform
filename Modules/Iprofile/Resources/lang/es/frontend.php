@@ -29,6 +29,7 @@ return [
     'password confirmation' => 'Confirmacion de Contraseña',
     'stay connect'      => 'Mantenerme conectado a éste computador.',
     'resetPassword'      => 'Restablecer Contraseña',
+    'changePassword'     => 'Cambiar Contraseña',
   ],
 
   'form' => [
@@ -99,7 +100,11 @@ return [
 
   'messages' => [
     'account created' => 'Cuenta creada! ya puedes iniciar sesión',
-    "providerEmailEmpty" => "El correo electrónico está vacío, compruebe los permisos de su proveedor (:providerName) para obtener el campo de correo electrónico."
+    "providerEmailEmpty" => "El correo electrónico está vacío, compruebe los permisos de su proveedor (:providerName) para obtener el campo de correo electrónico.",
+    "resetPasswordModal" => 'Hola, debes cambiar la contraseña',
+    "password updated" => 'Contraseña actualizada!',
+    "You already used this password" => "Ya utilizaste esta contraseña",
+    "You must change the password" => "Debes cambiar la contraseña ya que se encuentra vencida"
   ]
 
 

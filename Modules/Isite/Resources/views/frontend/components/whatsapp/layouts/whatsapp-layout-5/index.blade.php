@@ -8,15 +8,15 @@
   @if(count($items) >= 1)
     <div class="pre-window">
       <div class="icon"><i class="fa fa-whatsapp"></i></div>
-      <div class="text">¿Hablamos?</div>
+      <div class="text">{{trans('isite::common.whatsapp.labelWhatsappLayout5')}}</div>
     </div>
 
     <div class="window animate__animated animate__bounceOutDown">
       <div class="window-header">
 
         <div class="header-close"><i class="fa fa-close"></i></div>
-        <div class="header-title"><i class="{{ $icon}}"></i> WhatsApp</div>
-        <div class="header-text">Hola, ¿En que podemos ayudarte?</div>
+        <div class="header-title"><i class="{{ $icon}}"></i> {{trans('isite::common.whatsapp.titleWhatsappLayout5')}} </div>
+        <div class="header-text">{{trans('isite::common.whatsapp.descriptionWhatsappLayout5')}}</div>
       </div>
       <div class="window-content">
         <div class="scroll">

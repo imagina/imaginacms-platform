@@ -13,24 +13,26 @@ use Modules\Iprofile\Events\Handlers\RegisterIprofileSidebar;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel as SentinelCartalyst;
 use Modules\Iprofile\Http\Middleware\AuthCan;
 use Modules\Iprofile\Http\Middleware\SettingMiddleware;
+use Modules\Iprofile\Http\Middleware\OptionalAuth;
 
 class IprofileServiceProvider extends ServiceProvider
 {
   use CanPublishConfiguration;
-  
+
   /**
    * Indicates if loading of the provider is deferred.
    *
    * @var bool
    */
   protected $defer = false;
-  
-  
+
+
   protected $middleware = [
     'setting-can' => SettingMiddleware::class,
     'auth-can' => AuthCan::class,
+    'optional-auth' => OptionalAuth::class,
   ];
-  
+
   /**
    * Register the service provider.
    *
@@ -48,7 +50,7 @@ class IprofileServiceProvider extends ServiceProvider
       $event->load('userdepartments', Arr::dot(trans('iprofile::userdepartments')));
     });
   }
-  
+
   public function boot()
   {
     $this->registerMiddleware();
@@ -56,13 +58,15 @@ class IprofileServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iprofile', 'settings'), "asgard.iprofile.settings");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iprofile', 'settings-fields'), "asgard.iprofile.settings-fields");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iprofile', 'permissions'), "asgard.iprofile.permissions");
-    
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iprofile', 'cmsPages'), "asgard.iprofile.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iprofile', 'cmsSidebar'), "asgard.iprofile.cmsSidebar");
+
     $this->publishConfig('iprofile', 'crud-fields');
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     $this->registerComponents();
     $this->registerComponentsLivewire();
   }
-  
+
   /**
    * Get the services provided by the provider.
    *
@@ -72,7 +76,7 @@ class IprofileServiceProvider extends ServiceProvider
   {
     return array();
   }
-  
+
   private function registerBindings()
   {
     $this->app->bind(
@@ -146,14 +150,14 @@ class IprofileServiceProvider extends ServiceProvider
       }
     );
   }
-  
+
   private function registerMiddleware()
   {
     foreach ($this->middleware as $name => $class) {
       $this->app['router']->aliasMiddleware($name, $class);
     }
   }
-  
+
   /**
    * Register components Livewire
    */
@@ -161,7 +165,7 @@ class IprofileServiceProvider extends ServiceProvider
   {
     Blade::componentNamespace("Modules\Iprofile\View\Components", 'iprofile');
   }
-  
+
   /**
    * Register components Livewire
    */
@@ -169,5 +173,5 @@ class IprofileServiceProvider extends ServiceProvider
   {
     Livewire::component('iprofile::address-form', \Modules\Iprofile\Http\Livewire\AddressForm::class);
   }
-  
+
 }

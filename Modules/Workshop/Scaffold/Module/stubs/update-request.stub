@@ -30,4 +30,8 @@ class Update$CLASS_NAME$Request extends BaseFormRequest
     {
         return [];
     }
+
+    public function getValidator(){
+        return $this->getValidatorInstance();
+    }
 }

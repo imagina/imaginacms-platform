@@ -9,7 +9,7 @@ return [
     'forms' => 'Form',
     'create form' => 'Create a form',
     'edit form' => 'Edit a form',
-    "newLead" => "Te han enviado un mensaje a través del formulario: <b>:formTitle</b>"
+    "newLead" => "Te han enviado un mensaje a través del formulario: :formTitle"
   ],
   'button' => [
     'create form' => 'Create a form',

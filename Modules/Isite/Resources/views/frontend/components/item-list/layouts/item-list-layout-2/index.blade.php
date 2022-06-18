@@ -1,7 +1,7 @@
 <div class="item-layout item-list-layout-2 position-relative">
-    <x-isite::edit-link link="{{$editLink}}{{$item->id}}" tooltip="{{$tooltipEditLink}}"/>
+  <x-isite::edit-link link="{{$editLink}}{{$item->id}}" tooltip="{{$tooltipEditLink}}"/>
   <div class="card card-category bg-white border-0">
-    @if(isset($item->url))
+    @if(isset($item->url) && !empty($item->url))
       <a href="{{$item->url}}">
         @endif
         <div class="row align-items-center">
@@ -16,66 +16,77 @@
             </div>
           @endif
           <div class="col item-title">
-            @if(isset($item->url))
+            @if(isset($item->url) && !empty($item->url))
               <a href="{{$item->url}}" target="{{$target}}">
                 @endif
                 <h3 class="my-4">
                   {{$item->title ?? $item->name}}
                 </h3>
-                @if(isset($item->url))
+                @if(isset($item->url) && !empty($item->url))
               </a>
             @endif
           </div>
           @if($withCreatedDate && isset($item->created_at))
             <div class="col-12 item-created-date">
-              @if(isset($item->url))
+              @if(isset($item->url) && !empty($item->url))
                 <a href="{{$item->url}}" target="{{$target}}">
                   @endif
                   <div class="date">{{ $item->created_at->format($formatCreatedDate) }}</div>
-                  @if(isset($item->url))
+                  @if(isset($item->url) && !empty($item->url))
+                </a>
+              @endif
+            </div>
+          @endif
+          @if($withUser && ( isset($item->user)))
+            <div class="col-12 item-user">
+              @if(isset($item->url) && !empty($item->url))
+                <a href="{{$item->url}}" target="{{$target}}">
+                  @endif
+                  <div class="user">Por: {{$item->user->present()->fullname()}}</div>
+                  @if(isset($item->url) && !empty($item->url))
                 </a>
               @endif
             </div>
           @endif
           @if($withCategory && isset($item->category->id))
             <div class="col item-category-title">
-              @if(isset($item->category->url))
+              @if(isset($item->category->url) && !empty($item->category->url))
                 <a href="{{$item->category->url}}" target="{{$target}}">
                   @endif
                   <h5 class="my-4">
                     {{$item->category->title ?? $item->category->name}}
                   </h5>
-                  @if(isset($item->category->url))
+                  @if(isset($item->category->url) && !empty($item->category->url))
                 </a>
               @endif
             </div>
           @endif
           @if($withSummary && ( isset($item->summary) || isset($item->description)|| isset($item->custom_html)) )
             <div class="col item-summary">
-              @if(isset($item->url))
+              @if(isset($item->url) && !empty($item->url))
                 <a href="{{$item->url}}" target="{{$target}}">
                   @endif
                   <div class="my-4">
                     {!! Str::limit($item->summary ?? $item->description ??  $item->custom_html ?? '', $numberCharactersSummary)!!}
                   </div>
-                  @if(isset($item->url))
+                  @if(isset($item->url) && !empty($item->url))
                 </a>
               @endif
             </div>
           @endif
           @if($withViewMoreButton)
             <div class="col-12 item-view-more-button">
-              @if(isset($item->url))
+              @if(isset($item->url) && !empty($item->url))
                 <a href="{{$item->url}}" class="btn" target="{{$target}}">
                   @endif
                   {{trans($viewMoreButtonLabel)}}
-                  @if(isset($item->url))
+                  @if(isset($item->url) && !empty($item->url))
                 </a>
               @endif
             </div>
           @endif
         </div>
-        @if(isset($item->url))
+        @if(isset($item->url) && !empty($item->url))
       </a>
     @endif
   </div>

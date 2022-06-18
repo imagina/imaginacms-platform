@@ -89,6 +89,7 @@ class Imagy
       $disk = $originalImage->disk;
       $organizationId = $originalImage->organization_id ?? null;
       $originalImage = $originalImage->path;
+  
     }
     
     $disk = is_null($disk) ? setting('media::filesystem', null, config("asgard.media.config.filesystem")) : $disk;
@@ -102,13 +103,11 @@ class Imagy
       if ($originalImage instanceof MediaPath) {
         return $originalImage->getUrl($disk, $organizationId ?? null);
       }
-     
-      return (new MediaPath($tenantPrefix . $originalImage, $disk))->getRelativeUrl();
+      return (new MediaPath($tenantPrefix . $originalImage, $disk,$organizationId ?? null))->getRelativeUrl();
     }
     $path = $this->getFilenameFor($originalImage, $thumbnail);
-   // dd(new MediaPath($tenantPrefix . $path, $disk),(new MediaPath($tenantPrefix . $path, $disk))->getUrl());
-  
-    return (new MediaPath($tenantPrefix . $path, $disk,$organizationId ?? null))->getUrl($disk, $organizationId ?? null);
+    
+    return (new MediaPath($tenantPrefix . $path, $disk))->getUrl($disk);
   }
   
   /**
@@ -134,7 +133,7 @@ class Imagy
       }
       
       $imageStream = $image->stream($thumbnail->format(), Arr::get($thumbnail->filters(), 'quality', 90));
-      $this->writeImage(preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename) . '.' . $thumbnail->format(), $imageStream, $disk);
+      $this->writeImage(preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename) . '.' . $thumbnail->format(), $imageStream, $disk, $path);
       $image->destroy();
     }
   }
@@ -170,17 +169,20 @@ class Imagy
    * @param string $filename
    * @param Stream $image
    */
-  private function writeImage($filename, Stream $image, $disk = null)
+  private function writeImage($filename, Stream $image, $disk = null, $path = null)
   {
     $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
-    
-    $filename = $this->getDestinationPath($filename);
+
+    $filename = $this->getDestinationPath($filename,$disk);
+
     $resource = $image->detach();
     $config = [
       'visibility' => 'public',
       'mimetype' => \GuzzleHttp\Psr7\mimetype_from_filename($filename),
     ];
-    if ($this->fileExists($filename)) {
+    
+  
+    if ($this->fileExists($filename,$disk)) {
       return $this->filesystem->disk($disk)->updateStream($filename, $resource, $config);
     }
     $this->filesystem->disk($disk)->writeStream($filename, $resource, $config);
@@ -223,14 +225,14 @@ class Imagy
    */
   public function deleteAllFor(File $file)
   {
-    
+   
     $disk = is_null($file->disk) ? $this->getConfiguredFilesystem() : $file->disk;
     
     if (!$this->isImage($file->path)) {
       return $this->filesystem->disk($disk)->delete($this->getDestinationPath($file->path->getRelativeUrl()));
     }
     
-    $paths[] = $this->getDestinationPath($file->path->getRelativeUrl());
+    $paths[] = $this->getDestinationPath($file->path->getRelativeUrl(),$disk);
     
     foreach ($this->manager->all() as $thumbnail) {
       $path = $this->getFilenameFor($file->path, $thumbnail);
@@ -263,13 +265,19 @@ class Imagy
    * @param string $path
    * @return string
    */
-  private function getDestinationPath($path)
+  private function getDestinationPath($path, $disk = null)
   {
-    if ($this->getConfiguredFilesystem() === 'local') {
-      return basename(public_path()) . $path;
-    }
     
-    return $path;
+    
+      if ($this->getConfiguredFilesystem() === 'local') {
+        return basename(public_path()) .(isset(tenant()->id) ? "organization".tenant()->id : ""). $path;
+      }
+  
+      return (isset(tenant()->id) ? "organization".tenant()->id : "").$path;
+  
+    
+    
+    
   }
   
   /**

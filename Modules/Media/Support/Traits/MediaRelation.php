@@ -14,7 +14,12 @@ trait MediaRelation
      */
     public function files()
     {
-        return $this->morphToMany(File::class, 'imageable', 'media__imageables')->withPivot('zone', 'id')->withTimestamps()->orderBy('order');
+      $tenantWithCentralData = config("asgard.media.config.tenantWithCentralData.imageable");
+      
+      if($tenantWithCentralData)
+        return $this->morphToMany(File::class, 'imageable', 'media__imageables')->with('translations')->withPivot('zone', 'id')->withTimestamps()->orderBy('order')->withoutTenancy();
+      else
+        return $this->morphToMany(File::class, 'imageable', 'media__imageables')->with('translations')->withPivot('zone', 'id')->withTimestamps()->orderBy('order');
     }
 
     /**
@@ -78,6 +83,8 @@ trait MediaRelation
                     'mediaType' => $file->media_type ?? null,
                     'createdAt' => $file->created_at ?? null,
                     'folderId' => $file->folder_id ?? null,
+                    'description' => $file->description ?? null,
+                    'alt' => $file->alt_attribute ?? null,
                     'createdBy' => $file->created_by ?? null
                 ];
                 //Add imagy

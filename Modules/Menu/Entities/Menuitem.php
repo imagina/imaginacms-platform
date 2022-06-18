@@ -14,6 +14,7 @@ class Menuitem extends Model
     protected $fillable = [
         'menu_id',
         'page_id',
+        'syste_name',
         'parent_id',
         'position',
         'target',

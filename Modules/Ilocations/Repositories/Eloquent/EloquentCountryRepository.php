@@ -126,24 +126,23 @@ class EloquentCountryRepository extends EloquentBaseRepository implements Countr
             $filter = $params->filter;//Short filter
 
             if(isset($filter->iso2)){
-              $query->where('iso_2',$filter->iso2);
+              if(is_array($filter->iso2))
+                $query->whereIn('iso_2',$filter->iso2);
+              else
+                $query->where('iso_2',$filter->iso2);
             }
             
-              if (isset($filter->search)) { //si hay que filtrar por rango de precio
-                  $criterion = $filter->search;
-                  $param = explode(' ', $criterion);
-                  $query->where(function ($query) use ($param) {
-                      foreach ($param as $index => $word) {
-                          if ($index == 0) {
-                              $query->where('name', 'like', "%" . $word . "%");
-                              $query->orWhere('full name', 'like', "%" . $word . "%");
-                          } else {
-                              $query->orWhere('title', 'like', "%" . $word . "%");
-                              $query->orWhere('sku', 'like', "%" . $word . "%");
-                          }
-                      }
-
-                  });
+              if (isset($filter->search)) {
+                $query->where(function ($query) use ($filter) {
+                  $query->whereHas('translations', function ($query) use ($filter) {
+                    $query->where('locale', $filter->locale)
+                      ->where('name', 'like', '%' . $filter->search . '%')
+                      ->orWhere('full_name', 'like', '%' . $filter->search . '%');
+                  })->orWhere('ilocations__countries.id', 'like', '%' . $filter->search . '%')
+                    ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+                    ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+                });
+              
               }
             //Filter by date
             if (isset($filter->date)) {

@@ -4,6 +4,7 @@ namespace Modules\Tag\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
@@ -61,6 +62,7 @@ class TagServiceProvider extends ServiceProvider
     $this->publishConfig('tag', 'config');
     $this->registerBladeTags();
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    $this->registerComponents();
   }
   
   /**
@@ -98,5 +100,13 @@ class TagServiceProvider extends ServiceProvider
     $this->app['blade.compiler']->directive('tags', function ($value) {
       return "<?php echo TagWidget::show([$value]); ?>";
     });
+  }
+
+  /**
+   * Register Blade components
+   */
+
+  private function registerComponents(){
+    Blade::componentNamespace("Modules\Tag\View\Components", 'tag');
   }
 }

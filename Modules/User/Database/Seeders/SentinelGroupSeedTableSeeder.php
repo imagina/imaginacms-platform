@@ -45,6 +45,8 @@ class SentinelGroupSeedTableSeeder extends Seeder
   
   
     $permissions = $this->permissions->all();
+    
+ 
   
     $this->module = app('modules');
     $modules = array_keys($this->module->allEnabled());

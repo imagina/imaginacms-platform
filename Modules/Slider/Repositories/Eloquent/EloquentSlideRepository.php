@@ -88,7 +88,7 @@ class EloquentSlideRepository extends EloquentBaseRepository implements SlideRep
     
     /*== REQUEST ==*/
     if (isset($params->page) && $params->page) {
-      return $query->paginate($params->take);
+      return $query->paginate($params->take ?? 12, ['*'], null, $params->page);
     } else {
       $params->take ? $query->take($params->take) : false;//Take
       return $query->get();

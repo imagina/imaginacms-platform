@@ -1,21 +1,22 @@
 <?php
 
 use Illuminate\Routing\Router;
-
+use Illuminate\Support\Str;
 
 $locale = LaravelLocalization::setLocale() ?: App::getLocale();
+//
+//$router->get('/', [
+//    'uses' => 'PublicController@homepage',
+//    'as' => 'homepage',
+//  'middleware' => ['universal',Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,\Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain::class]
+//]);
+//
 
-#==================================================== Partials to the Ipanel
 
-$router->get('isite/header', [
-  'as' => 'isite.header',
-  'uses' => 'PublicController@header'
-]);
-$router->get('isite/footer', [
-  'as' => 'isite.footer',
-  'uses' => 'PublicController@footer'
-]);
-$router->get('isite/pdf', [
-  'as' => 'isite.pdf',
-  'uses' => 'PublicController@pdf'
-]);
+/**
+ *
+ */
+$router->any('{uri}', [
+  'uses' => 'PublicController@uri',
+  'as' => $locale.'.site',
+])->where('uri', '.*');

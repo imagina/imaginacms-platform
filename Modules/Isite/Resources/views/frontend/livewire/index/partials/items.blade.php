@@ -2,8 +2,8 @@
 <div id="idCarousel_{{$this->id}}" class="owl-carousel">
 @endif
 
-@foreach($items as $item)
-  <div class="{{$layoutClass}} {{$itemMainClass}}" onclick="checkModal_{{$itemModal['idModal']}}({{$item->id}})" >
+@foreach($items as $key => $item)
+  <div class="{{$layoutClass[$key%count($layoutClass)]}} {{$itemMainClass}}" onclick="checkModal_{{$itemModal['idModal']}}({{$item->id}})" >
 
     <?php
     $hash = sha1($itemComponentNamespace);

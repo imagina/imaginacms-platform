@@ -4,10 +4,11 @@ namespace Modules\Media\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Zone extends CrudModel
 {
-  
+  use MediaRelation;
   
   protected $table = 'media__zones';
   public $transformer = 'Modules\Media\Transformers\ZoneTransformer';
@@ -27,6 +28,6 @@ class Zone extends CrudModel
   ];
   
   protected $casts = [
-    'options' => 'array'
+    'options' => 'object'
   ];
 }

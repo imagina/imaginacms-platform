@@ -3,7 +3,7 @@
 namespace Modules\Media\ValueObjects;
 
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 class MediaPath
 {
     /**
@@ -50,7 +50,7 @@ class MediaPath
      */
     public function getRelativeUrl()
     {
-        return ((!empty($organizationId) || !empty($this->organizationId)) ? '/organization'.($organizationId ?? $this->organizationId): '' ).$this->path;
+        return $this->path;
     }
 
     public function __toString()

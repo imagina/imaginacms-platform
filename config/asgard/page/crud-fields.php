@@ -12,6 +12,18 @@ return [
         'entity' => "Modules\Page\Entities\Page",
         'entityId' => null
       ]
+    ],
+    
+    'gallery' => [
+      'value' => (object)[],
+      'name' => 'multiple',
+      'type' => 'media',
+      'props' => [
+        'label' => 'Galería',
+        'zone' => 'gallery',
+        'entity' => "Modules\Page\Entities\Page",
+        'entityId' => null
+      ]
     ]
-  ],
+  ]
 ];

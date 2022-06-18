@@ -19,6 +19,7 @@ class Social extends Component
   public $position;
   public $size;
   public $whatsappAttributes;
+  public $central;
   
   /**
    * Create a new component instance.
@@ -26,7 +27,7 @@ class Social extends Component
    * @return void
    */
   public function __construct($layout = 'social-layout-1', $type = '', $customIcons = [], $id = 'socialComponent',
-                              $position = 'static', $whatsappAttributes = [], $size = 'lg')
+                              $position = 'static', $whatsappAttributes = [], $size = 'lg', $central = false)
   {
     $this->type = $type ?? '';
     $this->view = "isite::frontend.components.social.layouts.{$layout}.index";
@@ -34,6 +35,7 @@ class Social extends Component
     $this->id = $id ?? 'socialComponent';
     $this->position = $position ?? 'static';
     $this->size = $size ?? 'lg';
+    $this->central = $central ?? null;
     
     //validate whatsapp attributes
     $this->whatsappAttributes = is_array($whatsappAttributes) && count($whatsappAttributes) > 0 ? $whatsappAttributes : ['size' => $this->size, 'type' => $this->type];
@@ -49,7 +51,7 @@ class Social extends Component
   {
     $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
     
-    $items = json_decode(setting('isite::socialNetworks',$locale), true);
+    $items = json_decode(setting('isite::socialNetworks',$locale, null, $this->central), true);
     
     $this->items = [];
     

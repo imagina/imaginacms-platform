@@ -8,12 +8,17 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Isite\Console\GenerateSitemapCommand;
 use Modules\Isite\Events\Handlers\RegisterIsiteSidebar;
 use Modules\Isite\Http\Middleware\CaptchaMiddleware;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
+use Modules\Isite\Http\Middleware\InitializeOrganizationByRequestDataMiddleware;
 use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 use Modules\Isite\View\Components\Multilang;
+use Modules\Isite\View\Components\Categorylist;
+
+
 
 class IsiteServiceProvider extends ServiceProvider
 {
@@ -37,6 +42,7 @@ class IsiteServiceProvider extends ServiceProvider
   public function register()
   {
     $this->registerBindings();
+    $this->registerCommands();
     $this->app['events']->listen(BuildingSidebar::class, RegisterIsiteSidebar::class);
 
     $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
@@ -54,7 +60,7 @@ class IsiteServiceProvider extends ServiceProvider
             $app['config']['captcha.options']
         );
     });
-  
+
     BelongsToTenant::$tenantIdColumn = 'organization_id';
   }
 
@@ -66,6 +72,8 @@ class IsiteServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'settings-fields'), "asgard.isite.settings-fields");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'permissions'), "asgard.isite.permissions");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'deprecated-settings'), "asgard.isite.deprecated-settings");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'cmsPages'), "asgard.isite.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'cmsSidebar'), "asgard.isite.cmsSidebar");
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
     $app = $this->app;
@@ -94,27 +102,108 @@ class IsiteServiceProvider extends ServiceProvider
       'Modules\Isite\Repositories\RecommendationRepository',
       function () {
         $repository = new \Modules\Isite\Repositories\Eloquent\EloquentRecommendationRepository(new \Modules\Isite\Entities\Recommendation());
-      
+
         if (!config('app.cache')) {
           return $repository;
         }
-      
+
         return new \Modules\Isite\Repositories\Cache\CacheRecommendationDecorator($repository);
       }
     );
-  
+
     $this->app->bind(
       'Modules\Isite\Repositories\OrganizationRepository',
       function () {
         $repository = new \Modules\Isite\Repositories\Eloquent\EloquentOrganizationRepository(new \Modules\Isite\Entities\Organization());
-      
+
         if (!config('app.cache')) {
           return $repository;
         }
-      
+
         return new \Modules\Isite\Repositories\Cache\CacheOrganizationDecorator($repository);
       }
     );
+    $this->app->bind(
+      'Modules\Isite\Repositories\OrganizationFieldRepository',
+      function () {
+        $repository = new \Modules\Isite\Repositories\Eloquent\EloquentOrganizationFieldRepository(new \Modules\Isite\Entities\OrganizationField());
+
+        if (!config('app.cache')) {
+          return $repository;
+        }
+
+        return new \Modules\Isite\Repositories\Cache\CacheOrganizationFieldDecorator($repository);
+      }
+    );
+    $this->app->bind(
+      'Modules\Isite\Repositories\CategoryRepository',
+      function () {
+        $repository = new \Modules\Isite\Repositories\Eloquent\EloquentCategoryRepository(new \Modules\Isite\Entities\Category());
+
+        if (!config('app.cache')) {
+          return $repository;
+        }
+
+        return new \Modules\Isite\Repositories\Cache\CacheCategoryDecorator($repository);
+      }
+    );
+    $this->app->bind(
+      'Modules\Isite\Repositories\IcrudRepository',
+      function () {
+          $repository = new \Modules\Isite\Repositories\Eloquent\EloquentIcrudRepository(new \Modules\Isite\Entities\Icrud());
+
+          if (! config('app.cache')) {
+              return $repository;
+          }
+
+          return new \Modules\Isite\Repositories\Cache\CacheIcrudDecorator($repository);
+      }
+    );
+        $this->app->bind(
+            'Modules\Isite\Repositories\DomainRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentDomainRepository(new \Modules\Isite\Entities\Domain());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheDomainDecorator($repository);
+            }
+        );
+
+        $this->app->bind(
+            'Modules\Isite\Repositories\LayoutRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentLayoutRepository(new \Modules\Isite\Entities\Layout());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheLayoutDecorator($repository);
+            }
+        );
+        $this->app->bind(
+            'Modules\Isite\Repositories\TypeableRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentTypeableRepository(new \Modules\Isite\Entities\Typeable());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheTypeableDecorator($repository);
+            }
+        );
+// add bindings
+
+
+
+
+
+
+
 
   }
 
@@ -151,10 +240,21 @@ class IsiteServiceProvider extends ServiceProvider
     Livewire::component('isite::filter-tree', \Modules\Isite\Http\Livewire\Filters\Tree::class);
     Livewire::component('isite::filter-select', \Modules\Isite\Http\Livewire\Filters\Select::class);
     Livewire::component('isite::filter-location', \Modules\Isite\Http\Livewire\Filters\Location::class);
-
+    Livewire::component('isite::filter-text', \Modules\Isite\Http\Livewire\Filters\Text::class);
+    Livewire::component('isite::filter-autocomplete', \Modules\Isite\Http\Livewire\Filters\Autocomplete::class);
 
     Livewire::component('isite::filter-order-by', \Modules\Isite\Http\Livewire\Index\Filters\OrderBy::class);
 
+  }
+
+  /**
+   * Register the console commands
+   */
+  private function registerCommands()
+  {
+    $this->commands([
+      GenerateSitemapCommand::class,
+    ]);
   }
 
 }

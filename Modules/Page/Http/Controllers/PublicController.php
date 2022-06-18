@@ -29,28 +29,27 @@ class PublicController extends BasePublicController
   }
   
   /**
+   * DEPRECATED
    * @param $slug
    * @return \Illuminate\View\View
    */
-  public function uri($slug)
+  public function uri($page,$slug = "")
   {
-
-    $page = $this->findPageForSlug($slug);
 
     $this->throw404IfNotFound($page);
 
     $currentTranslatedPage = $page->getTranslation(locale());
     
-    if(!isset($currentTranslatedPage->slug) || $page->id == 1){
+    if(!isset($currentTranslatedPage->slug) || ($page->id == 1 && !empty($slug))){
       return redirect()->to(\LaravelLocalization::localizeUrl('/'), 301);
     }
     
-    if ($slug !== $currentTranslatedPage->slug) {
+    if ( !empty($slug) && $slug !== $currentTranslatedPage->slug) {
       return redirect()->to(\LaravelLocalization::localizeUrl("/$currentTranslatedPage->slug") , 301);
     }
     
     $template = $this->getTemplateForPage($page);
-    
+
     $this->addAlternateUrls(alternate($page));
     
     $pageContent = $this->getContentForPage($page);
@@ -62,7 +61,13 @@ class PublicController extends BasePublicController
    */
   public function homepage()
   {
+   
     $page = $this->page->findHomepage();
+
+    if(isset(tenant()->id)) {
+     if(request()->url() != tenant()->url)
+      return redirect(tenant()->url);
+    }
 
     $this->throw404IfNotFound($page);
     
@@ -71,6 +76,8 @@ class PublicController extends BasePublicController
     $this->addAlternateUrls(alternate($page));
     
     $pageContent = $this->getContentForPage($page);
+    
+ 
     
     return view($template, compact('page', 'pageContent'));
   }
@@ -100,7 +107,10 @@ class PublicController extends BasePublicController
    */
   private function getTemplateForPage($page)
   {
-    return (view()->exists($page->template)) ? $page->template : 'default';
+    return (!empty($page->template) && view()->exists($page->template)) ? $page->template :
+      (view()->exists('default') ? 'default' :
+        (view()->exists('page.templates.default') ? 'page.templates.default' :
+          'page::frontend.page.templates.default'));
   }
   
   /**
@@ -146,19 +156,26 @@ class PublicController extends BasePublicController
    */
   private function getContentForPage($page)
   {
-    $tpl = "page::frontend.default";
+    $tpl = "page::frontend.page.content.default";
     $ttpl = "pages.content.default";
     if (view()->exists($ttpl)) $tpl = $ttpl;
+    
+    $layoutPath = $page->typeable->layout_path ?? null;
+  
+    //validate if exist the layout from the typeable relation
+    if (view()->exists($layoutPath)) $tpl = $layoutPath;
+    //revalidate if exist the layout adding the page system name to the end of the path
+    elseif (view()->exists($layoutPath.".$page->system_name")) $tpl = $layoutPath.".$page->system_name";
     
     $ttpl = "pages.content.$page->id";
     if (view()->exists($ttpl)) $tpl = $ttpl;
     
     $currentLocale = \LaravelLocalization::getCurrentLocale();
-    if (\LaravelLocalization::getDefaultLocale() != $currentLocale) {
+    
       if (view()->exists('pages.content.' . $currentLocale . '.' . $page->id)){
         $tpl = "pages.content.$currentLocale.$page->id";
       }
-    }
+
     
     return $tpl;
     

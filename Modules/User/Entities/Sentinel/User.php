@@ -12,6 +12,7 @@ use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
 use Modules\User\Presenters\UserPresenter;
 use Laravel\Passport\HasApiTokens;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract
 {
@@ -23,6 +24,8 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
     'permissions',
     'first_name',
     'last_name',
+    'timezone',
+    'language',
   ];
   
   /**
@@ -35,7 +38,7 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
   public function __construct(array $attributes = [])
   {
     $this->loginNames = config('asgard.user.config.login-columns');
-    $this->fillable = config('asgard.user.config.fillable');
+
     if (config()->has('asgard.user.config.presenter')) {
       $this->presenter = config('asgard.user.config.presenter', UserPresenter::class);
     }

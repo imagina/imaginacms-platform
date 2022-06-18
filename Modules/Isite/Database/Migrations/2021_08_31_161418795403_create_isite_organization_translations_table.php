@@ -17,13 +17,12 @@ class CreateIsiteOrganizationTranslationsTable extends Migration
       $table->increments('id');
       // Your translatable fields
       
-      $table->text('title')->nullable();
+      $table->string('title')->nullable();
       $table->string('slug')->nullable();
       $table->text('description')->nullable();
       $table->string('meta_title')->nullable();
       $table->string('meta_description')->nullable();
       $table->text('translatable_options')->nullable();
-      
       $table->integer('organization_id')->unsigned();
       $table->string('locale')->index();
       $table->unique(['organization_id', 'locale']);

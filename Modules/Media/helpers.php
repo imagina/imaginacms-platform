@@ -23,3 +23,16 @@ if (!function_exists('mediaExtensionsAvailable')) {
   
   }
 }
+if (!function_exists('mediaPrivatePath')) {
+  
+  function mediaPrivatePath($file)
+  {
+    $path = "";
+    $argv = explode("/", $file->path->getRelativeUrl());
+    $fileName = end($argv);
+    foreach ($argv as $key => $str) if($key == 0) $path .= "$str"; elseif($str != $fileName) $path .= "/$str";
+    $path .= "/".$file->filename;
+  
+    return $path;
+  }
+}

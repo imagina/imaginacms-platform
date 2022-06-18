@@ -36,12 +36,12 @@
 }
 
 @mixin title-props($trans) {
-  color: $primary;
+  color: var(--primary);
   text-align: center;
   
   span {
     display: block;
-    color: $primary;
+    color: var(--primary);
     font-size: 18px;
     text-transform: #{$trans};
   }

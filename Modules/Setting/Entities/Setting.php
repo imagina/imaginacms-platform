@@ -5,10 +5,11 @@ namespace Modules\Setting\Entities;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Support\Traits\MediaRelation;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Setting extends Model
 {
-    use Translatable, MediaRelation;
+    use Translatable, MediaRelation, BelongsToTenant;
 
     public $translatedAttributes = ['value', 'description'];
     protected $fillable = ['name', 'value', 'description', 'isTranslatable', 'plainValue'];

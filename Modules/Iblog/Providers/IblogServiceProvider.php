@@ -24,14 +24,14 @@ use Modules\Iblog\View\Components\Timeline;
 class IblogServiceProvider extends ServiceProvider
 {
   use CanPublishConfiguration;
-  
+
   /**
    * Indicates if loading of the provider is deferred.
    *
    * @var bool
    */
   protected $defer = false;
-  
+
   /**
    * Register the service provider.
    *
@@ -48,22 +48,24 @@ class IblogServiceProvider extends ServiceProvider
     });
     $this->registerCommands();
   }
-  
+
   public function boot()
   {
     $this->publishConfig('iblog', 'config');
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'settings'), "asgard.iblog.settings");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'settings-fields'), "asgard.iblog.settings-fields");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'permissions'), "asgard.iblog.permissions");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'cmsPages'), "asgard.iblog.cmsPages");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'cmsSidebar'), "asgard.iblog.cmsSidebar");
     $this->publishConfig('iblog', 'crud-fields');
-    
+
     $this->app[TagManager::class]->registerNamespace(new Post());
-    
+
     $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-    
+
     $this->registerComponents();
   }
-  
+
   /**
    * Get the services provided by the provider.
    *
@@ -73,31 +75,31 @@ class IblogServiceProvider extends ServiceProvider
   {
     return array();
   }
-  
+
   private function registerBindings()
   {
     $this->app->bind(PostRepository::class, function () {
       $repository = new EloquentPostRepository(new Post());
-      
+
       if (config('app.cache') === false) {
         return $repository;
       }
-      
+
       return new CachePostDecorator($repository);
     });
-    
+
     $this->app->bind(CategoryRepository::class, function () {
       $repository = new EloquentCategoryRepository(new Category());
-      
+
       if (config('app.cache') === false) {
         return $repository;
       }
-      
+
       return new CacheCategoryDecorator($repository);
     });
-    
+
   }
-  
+
   /**
    * Register all commands for this module
    */
@@ -105,25 +107,25 @@ class IblogServiceProvider extends ServiceProvider
   {
     $this->registerMigrateIblogCommand();
   }
-  
+
   /**
    * Register the refresh thumbnails command
    */
   private function registerMigrateIblogCommand()
   {
-    
+
     $this->app['command.iblog.migrateiblog'] = $this->app->make(MigrateIblog::class);;
     $this->commands(['command.iblog.migrateiblog']);
   }
-  
-  
+
+
   /**
    * Register components
    */
-  
+
   private function registerComponents()
   {
     Blade::componentNamespace("Modules\Iblog\View\Components", 'iblog');
   }
-  
+
 }

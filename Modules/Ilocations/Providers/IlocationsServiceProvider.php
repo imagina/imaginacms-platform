@@ -43,10 +43,12 @@ class IlocationsServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishConfig('ilocations', 'permissions');
         $this->publishConfig('ilocations', 'config');
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'permissions'), "asgard.ilocations.permissions");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'settings'), "asgard.ilocations.settings");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'settings-fields'), "asgard.ilocations.settings-fields");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'cmsPages'), "asgard.ilocations.cmsPages");
+      $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'cmsSidebar'), "asgard.ilocations.cmsSidebar");
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -135,7 +137,20 @@ class IlocationsServiceProvider extends ServiceProvider
           return new \Modules\Ilocations\Repositories\Cache\CacheNeighborhoodDecorator($repository);
         }
       );
+        $this->app->bind(
+            'Modules\Ilocations\Repositories\LocalityRepository',
+            function () {
+                $repository = new \Modules\Ilocations\Repositories\Eloquent\EloquentLocalityRepository(new \Modules\Ilocations\Entities\Locality());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Ilocations\Repositories\Cache\CacheLocalityDecorator($repository);
+            }
+        );
 // add bindings
+
 
 
 

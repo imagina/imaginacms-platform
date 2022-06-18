@@ -5,10 +5,11 @@ namespace Modules\Iforms\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Entities\Sentinel\User;
 use Modules\Media\Support\Traits\MediaRelation;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Lead extends Model
 {
-  use MediaRelation;
+  use MediaRelation,BelongsToTenant;
   
   protected $table = 'iforms__leads';
   

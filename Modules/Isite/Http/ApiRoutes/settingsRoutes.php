@@ -10,7 +10,7 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
   ]);
   $router->get('/', [
     'uses' => 'SettingApiController@index',
-    'middleware' => ['auth:api']
+    //'middleware' => ['auth:api']
   ]);
   $router->get('/{criteria}', [
     'uses' => 'SettingApiController@show'

@@ -279,4 +279,20 @@ return [
     "sidebar" => "col-lg-3",
     "posts" => "col-lg-9",
   ],
+  
+  /*
+|--------------------------------------------------------------------------
+| Pagination to the index page
+|--------------------------------------------------------------------------
+*/
+  'pagination' => [
+    "show" => true,
+    /*
+  * Types of pagination:
+  *  normal
+  *  loadMore
+  *  infiniteScroll
+  */
+    "type" => "normal"
+  ],
 ];

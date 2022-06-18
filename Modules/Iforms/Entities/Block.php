@@ -4,6 +4,7 @@ namespace Modules\Iforms\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Block extends Model
 {
@@ -18,6 +19,7 @@ class Block extends Model
         'form_id',
         'sort_order',
         'options',
+        'name',
     ];
 
     protected $casts = [

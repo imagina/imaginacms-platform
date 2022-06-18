@@ -1,6 +1,8 @@
 <?php
 
 return [
+  'yes' => "Yes",
+  'no' => "No",
   'menu' => [
     'home' => 'Home'
   ],
@@ -9,16 +11,21 @@ return [
     'logo2' => 'Logo N°2',
     'logo3' => 'Logo N°3',
     'logoIadmin' => 'Logo Iadmin',
+    'logoIadmin' => 'Logo Iadmin SM',
     'favicon' => 'Favicon',
     'addressBar' => 'Address bar color',
     'brandPrimary' => 'Primary Color',
+    'primaryContrast' => 'Primary Contrast',
     'brandSecondary' => 'Secondary Color',
+    'secondaryContrast' => 'Secondary Contrast',
     'brandTertiary' => 'Tertiary Color',
     'brandPositive' => 'Positive Color',
     'brandNegative' => 'Negative Color',
     'brandFaded' => 'Faded Color',
     'brandInfo' => 'Information Color',
     'brandWarning' => 'Warning Color',
+    'headerLayout' => 'Header Layout',
+    'headerLayout' => 'Footer Layout',
     'brandDark' => 'Dark Color',
     'brandLight' => 'Light Color',
     'brandAccent' => 'Accent Color',
@@ -38,41 +45,103 @@ return [
     'customCss' => 'Custom Body CSS',
     'customJs' => 'Custom Body JS',
     'headerCustomJs' => 'Custom Head JS',
-    "whatsapp" =>[
-        "callingCode" => "CountryCode",
-        "number" => "Whatsapp number",
-        "message" => "Default Message",
-        "label" => "Label",
-        "icon-label" => "Icon",
+    'tenantRouteAlias' => 'Route Alias to the tenant lading page',
+    "whatsapp" => [
+      "callingCode" => "CountryCode",
+      "number" => "Whatsapp number",
+      "message" => "Default Message",
+      "label" => "Label",
+      "icon-label" => "Icon",
+    ],
+    'tenant' => [
+      'group' => 'Tenants',
+      'tenantWithCentralData' => 'Entities with central data',
+      'entities' => [
+        'setting' => 'Settings',
+        'page' => 'Pages',
+        'slider' => 'Sliders',
+        'slide' => 'Slides',
+      ],
     ],
     'googleClient' => 'Google Client',
-    'facebookClient' => 'Facebook Client'
+    'facebookClient' => 'Facebook Client',
+    'facebookAppId' => 'Facebook App Id',
+    'cms' => [
+      'legacyStructureCMS' => 'Use Legacy Structure CMS',
+      'iadminTheme' => [
+        "title" => "Iadmin Theme",
+        "theme1" => "Theme 1",
+        "theme2" => "Theme 2"
+      ]
+    ]
   ],
   'settingHints' => [
-     'phones' => "Type a phone number and press enter key",
-     'addresses' => "Type an address and press enter key",
-     'emails' => "Type an email and press enter key",
+    'phones' => "Type a phone number and press enter key",
+    'addresses' => "Type an address and press enter key",
+    'emails' => "Type an email and press enter key",
   ],
   'settingGroups' => [
-    'media' => 'Media',
-    'colors' => 'Colors',
-    'socialNetworks' => 'Social Networks',
-    'apiKeys' => "API Keys",
-    'contact' => 'Contact',
-    'customSources' => 'Custom Sources',
+    'media' => [
+      'title' => 'Media',
+      'description' => 'Media'
+    ],
+    'general' => [
+      'title' => 'General',
+      'description' => 'General'
+    ],
+    'colors' => [
+      'title' => 'Colors',
+      'description' => 'Custom your colors'
+    ],
+    'socialNetworks' => [
+      'title' => 'Social Networks',
+      'description' => 'Social Networks'
+    ],
+    'apiKeys' => [
+      'title' => 'API Keys',
+      'description' => 'API Keys'
+    ],
+    'contact' => [
+      'title' => 'Contact',
+      'description' => 'Contact'
+    ],
+    'customSources' => [
+      'title' => 'Custom Sources',
+      'description' => 'Custom Sources'
+    ],
+    'tenants' => [
+      'title' => 'Tenants',
+      'description' => 'Tenants'
+    ],
+    'modalVerifier' => [
+      'title' => 'Verifier Modal',
+      'description' => 'Verifier Modal'
+    ],
+    'pdf' => [
+      'title' => 'PDF',
+      'description' => 'PDF'
+    ],
+    'maps' => [
+      'title' => 'Maps',
+      'description' => 'Maps'
+    ],
+    'cms' => [
+      'title' => 'CMS',
+      'description' => 'CMS Settings'
+    ],
   ],
   'messages' => [
     'no items' => 'Not Information available'
   ],
   'sort' => [
-        'title' => 'Order',
-        'all' => 'All',
-        'name_a_z' => 'Name (A - Z)',
-        'name_z_a' => 'Name (Z - A)',
-        'price_low_high' => 'Price: low to high',
-        'price_high_low' => 'Price: high to low',
-        'recently' => 'More Recently',
-    ],
+    'title' => 'Order',
+    'all' => 'All',
+    'name_a_z' => 'Name (A - Z)',
+    'name_z_a' => 'Name (Z - A)',
+    'price_low_high' => 'Price: low to high',
+    'price_high_low' => 'Price: high to low',
+    'recently' => 'More Recently',
+  ],
   'editLink' => [
     'tooltip' => 'Edit this section',
     'tooltipCategory' => 'Edit this category',
@@ -87,10 +156,21 @@ return [
     'tooltipWhatsapp' => 'Edit whatsapp',
     'tooltipAddress' => 'Edit address',
     'tooltipEmail' => 'Edit Email',
-    'tooltipPhone' => 'Edit Phone'
+    'tooltipPhone' => 'Edit Phone',
+    'tooltipLogo' => 'Edit Logo',
+    'tooltipAd' => 'Editar Ad',
   ],
   'maps' => [
     'groupMaps' => 'Maps',
     'mapsLabel' => 'Maps in the site'
-  ]
+  ],
+  'feeds' => [
+    'titlePosts' => 'All new posts on ',
+    'titleProducts' => 'All new products in',
+  ],
+  'whatsapp' => [
+    'labelWhatsappLayout5' => 'Talk later?',
+    'titleWhatsappLayout5' => 'WhatsApp',
+    'descriptionWhatsappLayout5' => 'Hi, how can we help you?',
+  ],
 ];

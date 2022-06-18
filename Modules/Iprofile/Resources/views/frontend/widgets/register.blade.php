@@ -31,9 +31,10 @@
 
             <hr class="border-top-dotted">
 
-            {!! Form::open(['route' => 'account.register.post', 'class' => 'form-content','autocomplete' => 'off', 'id' => 'registerForm']) !!}
+            {!! Form::open(['url' => tenant_route(request()->getHost(), 'account.register.post'), 'class' => 'form-content','autocomplete' => 'off', 'id' => 'registerForm']) !!}
 
             @if(isset($embedded))
+
                 <input name="embedded" type="hidden" value="{{isset($route) && $route ? $route : ''}}">
             @endif
             <div class="px-2 px-sm-0">
@@ -191,14 +192,6 @@
                                 </label>
                             </div>
                         @endif
-
-                        <div class="custom-control custom-radio red mb-3">
-                            <input type="radio" class="custom-control-input"
-                                   id="customradio-select2" name="remember_me">
-                            <label class="custom-control-label" for="customradio-select2">
-                                {{trans('iprofile::frontend.title.stay connect')}}
-                            </label>
-                        </div>
                     </div>
                     <x-isite::captcha formId="registerForm" />
                     <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} pt-4 pt-lg-0">

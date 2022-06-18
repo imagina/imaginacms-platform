@@ -19,6 +19,6 @@ $router->group(['prefix' => '/site'/*,'middleware' => ['auth:api']*/], function 
   $router->post('/cache-clear', [
     'as' => 'api.isite.cache.clear',
     'uses' => 'SiteApiController@cacheClear',
-    'middleware' => ['auth:api']
+    //'middleware' => ['auth:api']
   ]);
 });

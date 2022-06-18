@@ -13,15 +13,17 @@ class Newsletter extends Component
     public $form;
     public $title;
     public $description;
+    public $postDescription;
     public $submitLabel;
     public $view;
 
-    public function __construct($layout = 'newsletter-layout-1', $title = '', $description = '', $submitLabel = '')
+    public function __construct($layout = 'newsletter-layout-1', $title = '', $description = '', $submitLabel = '', $postDescription = "")
     {
         $this->layout = $layout ?? 'newsletter-layout-1';
         $this->view = "iforms::frontend.components.newsletter.layouts.{$this->layout}.index";
         $this->title = $title ?? '';
         $this->description = $description;
+        $this->postDescription = $postDescription;
         $this->submitLabel = $submitLabel ?? trans('iforms::forms.button.subscribe');
         $this->getOrAddForm();
     }

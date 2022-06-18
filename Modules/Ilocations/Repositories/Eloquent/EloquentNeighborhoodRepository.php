@@ -25,10 +25,36 @@ class EloquentNeighborhoodRepository extends EloquentBaseRepository implements N
         /*== FILTERS ==*/
         if (isset($params->filter)) {
             $filter = $params->filter;//Short filter
-
+  
+          if (isset($filter->search)) {
+            $query->where(function ($query) use ($filter) {
+              $query->whereHas('translations', function ($query) use ($filter) {
+                $query->where('locale', $filter->locale)
+                  ->where('name', 'like', '%' . $filter->search . '%');
+              })->orWhere('ilocations__neighborhoods.id', 'like', '%' . $filter->search . '%')
+                ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+                ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+            });
+    
+          }
 
             if (isset($filter->city))
                 $query->where("city_id", $filter->city);
+            
+            if (isset($filter->cityId)){
+              !is_array($filter->cityId) ? $filter->cityId = [$filter->cityId] : false;
+              $query->whereIn("city_id", $filter->cityId);
+            }
+            
+            if (isset($filter->provinceId)){
+              !is_array($filter->provinceId) ? $filter->provinceId = [$filter->provinceId] : false;
+              $query->whereIn("province_id", $filter->provinceId);
+            }
+            
+            if (isset($filter->countryId)){
+              !is_array($filter->countryId) ? $filter->countryId = [$filter->countryId] : false;
+              $query->whereIn("country_id", $filter->countryId);
+            }
 
 
             //Filter by date
@@ -48,6 +74,43 @@ class EloquentNeighborhoodRepository extends EloquentBaseRepository implements N
                 $query->orderBy($orderByField, $orderWay);//Add order to query
             }
         }
+  
+  
+  
+      $availableCountries = json_decode(setting("ilocations::availableCountries", null, "[]"));
+      /*=== SETTINGS ===*/
+      if (!empty($availableCountries) && !isset($params->filter->indexAll)) {
+        if (!isset($params->permissions['ilocations.neighborhoods.manage']) || (!$params->permissions['ilocations.neighborhoods.manage'])) {
+          $query->whereHas("country", function ($query) use ($availableCountries){
+            $query->whereIn("ilocations__countries.iso_2",$availableCountries);
+          });
+      
+        }
+      }
+  
+      $availableProvinces = json_decode(setting("ilocations::availableProvinces", null, "[]"));
+  
+      /*=== SETTINGS ===*/
+      if (!empty($availableProvinces) && !isset($params->filter->indexAll)) {
+        if (!isset($params->permissions['ilocations.neighborhoods.manage']) || (!$params->permissions['ilocations.neighborhoods.manage'])) {
+          $query->whereHas("province", function ($query) use ($availableProvinces){
+            $query->whereIn("ilocations__provinces.iso_2",$availableProvinces);
+          });
+      
+        }
+      }
+  
+  
+      $availableCities = json_decode(setting("ilocations::availableCities", null, "[]"));
+  
+      /*=== SETTINGS ===*/
+      if (!empty($availableCities) && !isset($params->filter->indexAll)) {
+        if (!isset($params->permissions['ilocations.neighborhoods.manage']) || (!$params->permissions['ilocations.neighborhoods.manage'])) {
+      
+          $query->whereIn('ilocations__neighborhoods.city_id', $availableCities);
+      
+        }
+      }
 
         /*== FIELDS ==*/
         if (isset($params->fields) && count($params->fields))

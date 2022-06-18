@@ -1,6 +1,8 @@
 <?php
 
 return [
+  'yes' => "Si",
+  'no' => "No",
   'menu' => [
     'home' => 'Inicio',
     'viewMore' => "Ver más"
@@ -10,10 +12,13 @@ return [
     'logo2' => 'Logo N°2',
     'logo3' => 'Logo N°3',
     'logoIadmin' => 'Logo Iadmin',
+    'logoIadminSM' => 'Logo Iadmin SM',
     'favicon' => 'Favicon',
     'addressBar' => 'Color de la barra de direcciones',
     'brandPrimary' => 'Color Primario',
+    'primaryContrast' => 'Contraste Primario',
     'brandSecondary' => 'Color Secundario',
+    'secondaryContrast' => 'Contraste Secundario',
     'brandTertiary' => 'Color Terciario',
     'brandPositive' => 'Color Positivo',
     'brandNegative' => 'Color Negativo',
@@ -23,6 +28,8 @@ return [
     'brandDark' => 'Color Oscuro',
     'brandLight' => 'Color Claro',
     'brandAccent' => 'Color Acento',
+    'headerLayout' => 'Layout para la Cabecera del sitio',
+    'footerLayout' => 'Layout para el Pié del sitio',
     'phones' => 'Teléfonos',
     'addresses' => 'Direcciones',
     'emails' => 'Correos',
@@ -39,6 +46,8 @@ return [
     'customCss' => 'CSS Personalizado para el Body',
     'customJs' => 'JS Personalizado para el Body',
     'headerCustomJs' => 'JS Personalizado para el Head',
+    'tenantRouteAlias' => 'Alias de la ruta de aterrizaje para los Inquilinos',
+    'itemsTabs' => 'Ingresa Titulos para los tabs',
     "whatsapp" => [
       "callingCode" => "Cód del país",
       "number" => "Número del whatsapp",
@@ -47,12 +56,32 @@ return [
       "icon-label" => "Icono",
     ],
     'googleClient' => 'Cliente Google',
-    'facebookClient' => 'Cliente Facebook'
+    'facebookClient' => 'Cliente Facebook',
+    'facebookAppId' => 'App Id Facebook',
+    'tenant' => [
+      'group' => 'Inquilinos',
+      'tenantWithCentralData' => 'Entidades con data central',
+      'entities' => [
+        'setting' => 'Settings',
+        'page' => 'Páginas',
+        'slider' => 'Sliders',
+        'slide' => 'Slides',
+      ],
+    ],
+    'cms' => [
+      'legacyStructureCMS' => 'Usar Estructura heredada CMS',
+      'iadminTheme' => [
+        "title" => "Tema Iadmin",
+        "theme1" => "Tema 1",
+        "theme2" => "Tema 2"
+      ]
+    ]
   ],
   'settingHints' => [
     'phones' => "Ingresa un número telefónico y presiona enter",
     'addresses' => "Ingresa una dirección y presiona enter",
     'emails' => "Ingresa un correo electrónico y presiona enter",
+    'itemsTabs' => "Ingresa un titulo para identificar los tabs",
   ],
   'settingGroups' => [
     'media' => 'Media',
@@ -61,6 +90,62 @@ return [
     'apiKeys' => "Llaves API",
     'contact' => 'Contacto',
     'customSources' => 'Fuentes Personalizadas',
+    'tenants' => 'Inquilinos',
+    'modalVerifier' => 'Modal Verificador',
+    'components' => 'Componentes',
+    'title' => 'Agrega tu logo',
+    'media' => [
+      'title' => 'Agrega tu Imagen',
+      'description' => 'Agregar el logo de tu empresa'
+    ],
+    'general' => [
+      'title' => 'Datos Principales',
+      'description' => 'Personaliza los datos principales de tu sitio'
+    ],
+    'colors' => [
+      'title' => 'Personaliza los colores',
+      'description' => 'Dale personalidad a tu página web con tus colores corpoativos'
+    ],
+    'socialNetworks' => [
+      'title' => 'Redes sociales',
+      'description' => 'Enlaza las redes sociales de tu empresa con tu sitio web'
+    ],
+    'apiKeys' => [
+      'title' => 'Llaves API',
+      'description' => 'Llaves API'
+    ],
+    'contact' => [
+      'title' => 'Datos de contacto',
+      'description' => 'Ingresa los datos de contacto de tu sitio web'
+    ],
+    'customSources' => [
+      'title' => 'Fuentes Personalizadas',
+      'description' => 'Fuentes Personalizadas'
+    ],
+    'tenants' => [
+      'title' => 'Inquilinos',
+      'description' => 'Inquilinos'
+    ],
+    'modalVerifier' => [
+      'title' => 'Modal Verificador',
+      'description' => 'Modal Verificador'
+    ],
+    'pdf' => [
+      'title' => 'PDF',
+      'description' => 'PDF'
+    ],
+    'pdf' => [
+      'title' => 'PDF',
+      'description' => 'PDF'
+    ],
+    'maps' => [
+      'title' => 'Mapas',
+      'description' => 'Mapas'
+    ],
+    'cms' => [
+      'title' => 'CMS',
+      'description' => 'Configuraciones de CMS'
+    ],
   ],
   'messages' => [
     'no items' => 'No existe información disponible'
@@ -93,10 +178,22 @@ return [
     'tooltipWhatsapp' => 'Editar whatsapp',
     'tooltipAddress' => 'Editar direccion',
     'tooltipEmail' => 'Editar correo electronico',
-    'tooltipPhone' => 'Editar telefono'
+    'tooltipPhone' => 'Editar telefono',
+    'tooltipLogo' => 'Editar este logo',
+    'tooltipAd' => 'Editar este anuncio',
   ],
   'maps' => [
     'groupMaps' => 'Mapas',
-    'mapsLabel' => 'Mapas en el sitio'
-  ]
+    'mapsLabel' => 'Mapas en el sitio',
+    'labelLocationSite' => 'Ubicación Sede Principal'
+  ],
+  'feeds' => [
+    'titlePosts' => 'Todas las nuevas publicaciones en ',
+    'titleProducts' => 'Todos los nuevos productos en ',
+  ],
+  'whatsapp' => [
+    'labelWhatsappLayout5' => '¿Hablamos?',
+    'titleWhatsappLayout5' => 'WhatsApp',
+    'descriptionWhatsappLayout5' => 'Hola, ¿En que podemos ayudarte?',
+  ],
 ];

@@ -17,10 +17,10 @@ class CreatePostRequest extends BaseFormRequest
     public function translationRules()
     {
         return [
-            'title' => 'required|min:2',
-            'summary'=>'required|min:2',
-          'slug' => ["required",new UniqueSlugRule("iblog__post_translations"),"min:2"],
-            'description' => 'required|min:2',
+            'title' => 'required|min:1',
+            'summary'=>'required|min:1',
+          'slug' => ["required",new UniqueSlugRule("iblog__post_translations"),"min:1"],
+            'description' => 'required|min:1',
         ];
     }
 
@@ -38,14 +38,14 @@ class CreatePostRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('iblog::common.messages.title is required'),
-            'title.min:2'=> trans('iblog::common.messages.title min 2 '),
+            'title.min:1'=> trans('iblog::common.messages.title min 2 '),
             'summary.required'=> trans('iblog::common.messages.summary is required'),
-            'summary.min:2'=> trans('iblog::common.messages.summary min 2 '),
+            'summary.min:1'=> trans('iblog::common.messages.summary min 2 '),
             'description.required'=> trans('iblog::common.messages.description is required'),
-            'description.min:2'=> trans('iblog::common.messages.description min 2 '),
+            'description.min:1'=> trans('iblog::common.messages.description min 2 '),
           // slug
           'slug.required' => trans('iblog::common.messages.field required'),
-          'slug.min:2' => trans('iblog::common.messages.min 2 characters'),
+          'slug.min:1' => trans('iblog::common.messages.min 2 characters'),
 
         ];
     }

@@ -2,6 +2,7 @@
 
 
 namespace Modules\Iforms\Transformers;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FieldTransformer extends JsonResource
@@ -42,31 +43,77 @@ class FieldTransformer extends JsonResource
       }
     }
 
-    $formType = $this->present()->type;
-
+    //simplifying the type value variable
+    $fieldType = $this->present()->type["value"] ?? "";
+    
+    /**
+     * creating the dynamic field to the iadmin
+     * values correlations
+     * type ($fieldType):
+     *    ['text', 'textarea', 'number', 'email', 'phone'] => "input"
+     *    'file' => 'media'
+     *    'selectmultiple' => 'select'
+     *    default => $fieldType
+     *
+     * name ($fieldType):
+     *    'file' => 'mediasSingle'
+     *    default => $this->name // field name
+     *
+     * value ($fieldType): // default value
+     *    ['selectmultiple','radio'] => []
+     *    ['checkbox'] => false
+     *
+     * props.type ($fieldType):
+     *    'phone' => 'tel'
+     *    'file' => 'media'
+     *    default => $fieldType
+     *
+     * props.multiple ($fieldType):
+     *    'selectmultiple' => true
+     *    default => false
+     */
     $data['dynamicField'] = [
-        'type' => in_array($formType['value'],['text', 'textarea', 'number', 'email', 'phone']) ? 'input' : ($formType['value'] === 'file' ? 'media' : $formType['value'] ),
-        'name' => $this->name,
-        'required' => $this->required ? true : false,
-        'props' => [
-            'type' => $formType['value'] === 'phone' ? 'tel' :($formType['value'] === 'file' ? 'media' : $formType['value'] ),
-            'label' => $this->label,
-        ]
+      'type' => in_array($fieldType, ['text', 'textarea', 'number', 'email', 'phone']) ? 'input' :
+        ( $fieldType === 'file' ? 'media' :
+          ( $fieldType == 'selectmultiple' ? 'select' : $fieldType )
+        ),
+      'name' => $fieldType === 'file' ? "mediasSingle" : $this->name,
+      'required' => $this->required ? true : false,
+      "value" => in_array($fieldType, ['selectmultiple','radio']) ? [] :
+        ( in_array($fieldType, ['checkbox']) ? false : "" ),
+      'colClass' => "col-12 col-sm-".( $field->width ?? '12' ),
+      'props' => [
+        'type' => $fieldType === 'phone' ? 'tel' :
+          ( $fieldType === 'file' ? 'media' : $fieldType ),
+        'label' => $this->label,
+        'entity' => $this->options["entity"] ?? "",
+        'multiple' => $fieldType === 'selectmultiple' ? true : false
+      ]
     ];
+    
+    //Options for ['selectmultiple', 'select', 'radio', 'treeSelect'] field types
+    if (in_array($fieldType, ['selectmultiple', 'select', 'radio', 'treeSelect'])) {
 
-    $formType['value'] === 'selectmultiple' ? $data['dynamicField']['props']['multiple'] = true : null;
+      // getting the options from the selectable attribute for old sites created with the Iform before Dec, 2021
+      $options = json_decode($this->selectable) ?? [];
 
-    if(in_array($formType['value'], ['selectmultiple' ,'select', 'radio'])) {
-        $options = json_decode($this->selectable) ?? [];
+      //if already exist the loadOptions saved in DB
+      if (isset($this->options["loadOptions"]) && !empty($this->options["loadOptions"])) {
+        $data['dynamicField']['loadOptions'] = $this->options["loadOptions"];
+      }
+
+      //getting the fieldOptions saved in DB for old sites created with the Iform before Dec, 2021
+      if (empty($options) && isset($this->options["fieldOptions"]) && !empty($this->options["fieldOptions"])) {
+
         $data['dynamicField']['props']['options'] = [];
-        
-        if(empty($options) && isset($this->options->fieldOptions) && !empty($this->options->fieldOptions)){
-          $options = $this->options->fieldOptions;
-        }
 
-        foreach($options as $option){
-            $data['dynamicField']['props']['options'][] = ["label" => $option->name ?? $option, "value" => $option->name ?? $option];
-        }
+        $options = $this->options["fieldOptions"];
+      }
+
+      //Added options in the format label: value, expected for the frontend standard
+      foreach ($options as $option) {
+        $data['dynamicField']['props']['options'][] = ["label" => $option->name ?? $option, "value" => $option->name ?? $option];
+      }
 
     }
     return $data;

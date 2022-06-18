@@ -12,6 +12,17 @@ return [
         'entity' => "Modules\Page\Entities\Page",
         'entityId' => null
       ]
+    ],
+    'galleryimage' => [
+      'value' => (object)[],
+      'name' => 'medias_multi',
+      'type' => 'media',
+      'props' => [
+        'label' => 'page::common.labelGallery',
+        'zone' => 'gallery',
+        'entity' => "Modules\Page\Entities\Page",
+        'entityId' => null
+      ]
     ]
   ],
 ];

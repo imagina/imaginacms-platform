@@ -13,64 +13,65 @@ use Modules\Isearch\Repositories\SearchRepository;
 
 class IsearchServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
+  use CanPublishConfiguration;
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerBindings();
-    }
+  /**
+   * Indicates if loading of the provider is deferred.
+   *
+   * @var bool
+   */
+  protected $defer = false;
 
-    public function boot()
-    {
+  /**
+   * Register the service provider.
+   *
+   * @return void
+   */
+  public function register()
+  {
+    $this->registerBindings();
+  }
 
-        $this->publishConfig('isearch', 'config');
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings'), "asgard.isearch.settings");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings-fields'), "asgard.isearch.settings-fields");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'permissions'), "asgard.isearch.permissions");
-        $this->registerComponentsLivewire();
-    }
+  public function boot()
+  {
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array();
-    }
+    $this->publishConfig('isearch', 'config');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings'), "asgard.isearch.settings");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings-fields'), "asgard.isearch.settings-fields");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'permissions'), "asgard.isearch.permissions");
+    $this->registerComponentsLivewire();
+  }
 
-    private function registerBindings()
-    {
+  /**
+   * Get the services provided by the provider.
+   *
+   * @return array
+   */
+  public function provides()
+  {
+    return array();
+  }
 
-       /* $this->app->bind(SearchRepository::class, function () {
-            $repository = new EloquentSearchRepository(new Post());
+  private function registerBindings()
+  {
 
-            if (config('app.cache') === false) {
-                return $repository;
-            }
+    $this->app->bind(SearchRepository::class, function () {
+      $repository = new EloquentSearchRepository(new Post());
 
-            return new CacheSearchDecorator($repository);
-        });
-*/
-    }
+      if (config('app.cache') === false) {
+        return $repository;
+      }
 
-    /**
-     * Register components Livewire
-     */
-    private function registerComponentsLivewire()
-    {
-        Livewire::component('isearch::search', \Modules\Isearch\Http\Livewire\Search::class);
-    }
+      return new CacheSearchDecorator($repository);
+    });
+
+  }
+
+  /**
+   * Register components Livewire
+   */
+  private function registerComponentsLivewire()
+  {
+    Livewire::component('isearch::search', \Modules\Isearch\Http\Livewire\Search::class);
+  }
 }

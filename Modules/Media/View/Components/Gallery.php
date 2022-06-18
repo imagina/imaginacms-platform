@@ -3,6 +3,7 @@
 namespace Modules\Media\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 
 class Gallery extends Component
 {
@@ -13,13 +14,24 @@ class Gallery extends Component
   public $responsiveClass;
   public $autoplay;
   public $autoplayHoverPause;
-  public $loop;
+  public $loopGallery;
   public $dots;
   public $nav;
   public $responsive;
   public $gallery;
   public $dataFancybox;
   public $view;
+  public $columnMasonry;
+  public $navText;
+  public $maxImages;
+  public $autoplayVideo;
+  public $mutedVideo;
+  public $loopVideo;
+  public $stagePadding;
+  public $autoplayTimeout;
+  public $aspectRatio;
+  public $marginItems;
+
 
 
   /**
@@ -28,9 +40,13 @@ class Gallery extends Component
    * @return void
    */
 
-  public function __construct($id = "gallery", $zones = ["gallery"], $mediaFiles, $margin = 10, $responsiveClass = true, $autoplay = true,
-                              $autoplayHoverPause = true, $loop = true, $dots = true, $nav = true, $responsive = null, $dataFancybox = 'gallery',
-                              $layout = "gallery-layout-1")
+  public function __construct($id = "gallery", $zones = ["gallery"], $mediaFiles, $margin = 10, $responsiveClass = true,
+                              $autoplay = true, $autoplayHoverPause = true, $loopGallery = true, $dots = true, $nav = true,
+                              $responsive = null, $dataFancybox = 'gallery', $layout = "gallery-layout-1",
+                              $columnMasonry = 3, $navText = "", $maxImages = null, $onlyVideos = false,
+                              $onlyImages = false, $autoplayVideo = false, $mutedVideo = false, $loopVideo = false,
+                              $stagePadding = 0, $autoplayTimeout = 5000, $aspectRatio = "1-1", $marginItems = 0)
+
   {
     $this->id = $id;
     $this->view = "media::frontend.components.gallery.layouts.$layout.index";
@@ -40,26 +56,41 @@ class Gallery extends Component
     $this->responsiveClass = $responsiveClass;
     $this->autoplay = $autoplay;
     $this->autoplayHoverPause = $autoplayHoverPause;
-    $this->loop = $loop;
+    $this->loopGallery = $loopGallery;
     $this->dots = $dots;
     $this->nav = $nav;
     $this->responsive = json_encode($responsive ?? [0 => ["items" => 1], 640 => ["items" => 2], 992 => ["items" => 4]]);
-    $this->dataFancybox = $dataFancybox;
+    $this->dataFancybox = $dataFancybox ? $dataFancybox . Str::uuid() : null;
     $this->gallery = [];
+    $this->columnMasonry = $columnMasonry;
+    $this->navText = json_encode($navText);
+    $this->maxImages = $maxImages;
+    $this->autoplayVideo = $autoplayVideo;
+    $this->mutedVideo = $mutedVideo;
+    $this->loopVideo = $loopVideo;
+    $this->stagePadding = $stagePadding;
+    $this->autoplayTimeout = $autoplayTimeout;
+    $this->aspectRatio = $aspectRatio;
+    $this->marginItems = $marginItems;
 
+    if (!empty($mediaFiles)) {
+      $countImages = 0;
+      foreach ($zones as $zone) {
+        !is_array($mediaFiles->{$zone}) ? $mediaFiles->{$zone} = [$mediaFiles->{$zone}] : false;
+        foreach ($mediaFiles->{$zone} as $itemImage) {
+          if (empty($maxImages) || $countImages < $maxImages) {
+            if (($onlyImages && $itemImage->isImage) || ($onlyVideos && $itemImage->isVideo) || (!$onlyVideos && !$onlyImages)) {
+              $countImages++;
+              array_push($this->gallery, $itemImage);
+            }
 
-    if(!empty($mediaFiles)){
-      foreach ($zones as $zone){
-        if(is_array($mediaFiles->{$zone})){
-          foreach ($mediaFiles->{$zone} as $itemImage){
-            array_push($this->gallery,$itemImage);
           }
-        }else{
-          array_push($this->gallery,$mediaFiles->{$zone});
         }
+
       }
     }
   }
+
   /**
    * Get the view / contents that represent the component.
    *
@@ -71,5 +102,3 @@ class Gallery extends Component
     return view($this->view);
   }
 }
-
-

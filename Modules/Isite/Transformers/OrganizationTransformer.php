@@ -13,6 +13,11 @@ class OrganizationTransformer extends CrudResource
   */
   public function modelAttributes($request)
   {
-    return [];
+
+    return [
+      "url" => $this->url,
+      'status' => $this->status ? '1' : '0',
+      'featured' => $this->featured ? '1' : '0'
+    ];
   }
 }

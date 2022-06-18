@@ -1,61 +1,44 @@
 <div id="{{ $slider->system_name }}"
      class="owl-carousel owl-theme owl-slider-layout-3 {{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }} position-relative">
-  @foreach($slider->slides as $index => $slide)
-    <div class="card-owl">
-      <x-isite::edit-link link="{{$editLink}}{{$slider->id}}/?edit={{$slide->id}}"
-                          tooltip="{{$tooltipEditLink}}"/>
-      <div class="bg-image">
-        <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
-                               :title="$slide->title ?? Setting::get('core::site-name')"
-                               :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
-                               imgClasses="h-100 d-block  slider-img__{{$imgObjectFit}}"
-                               width="100%"
-                               :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
-      </div>
-      @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
-        <div class="card-owl-body">
-          @if(!empty($slide->title))
-            <a href="{{ $slide->url ?? $slide->uri }}">
-              <h3 class="title h1">
-                {{$slide->title}}
-              </h3>
-            </a>
-          @endif
-
-          @if(!empty($slide->custom_html))
-            <div class="custom-html">
-              {!! $slide->custom_html !!}
-            </div>
-          @endif
-
-          <div class="d-block">
-            <a class="btn btn-primary"
-               href="{{ $slide->url ?? $slide->uri }}">{{ $slide->caption ?? trans('isite::common.menu.viewMore') }}</a>
+  @foreach($slides as $index => $slide)
+    @if($slide->active)
+      <div class="card card-item border-0">
+        <div class="row align-items-center">
+          <x-isite::edit-link link="{{$editLink}}{{$slider->id}}/?edit={{$slide->id}}"
+                              tooltip="{{$tooltipEditLink}}"/>
+          <div class="col-12 bg-image {{$orderClasses["photo"] ?? 'order-0'}} item-image">
+            <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
+                                   :title="$slide->title ?? Setting::get('core::site-name')"
+                                   :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                   imgClasses="h-100 d-block  slider-img__{{$imgObjectFit}}"
+                                   width="100%"
+                                   :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
           </div>
-
+          @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
+            @if(!empty($slide->title))
+              <div class="col-12 item-title {{$orderClasses["title"] ?? 'order-1'}}">
+                <a href="{{ $slide->url ?? $slide->uri }}">
+                  <h3 class="title h1">
+                    {{$slide->title}}
+                  </h3>
+                </a>
+              </div>
+            @endif
+            @if(!empty($slide->custom_html))
+              <div class="col-12 custom-html {{$orderClasses["summary"] ?? 'order-2'}} item-summary">
+                {!! $slide->custom_html !!}
+              </div>
+            @endif
+            @if(!empty($slide->url)  || !empty($slide->uri))
+              <div class="col-12 d-block {{$orderClasses["viewMoreButton"] ?? 'order-3'}}  item-view-more-button">
+                <a class="btn btn-primary view-more-button"
+                   href="{{ $slide->url ?? $slide->uri }}">{{ $slide->caption ?? trans('isite::common.menu.viewMore') }}</a>
+              </div>
+            @endif
+          @endif
         </div>
-      @endif
-    </div>
+      </div>
+    @endif
   @endforeach
 </div>
-@section('scripts-owl')
-  @parent
-  <script>
-    $(document).ready(function () {
-      $('#{{ $slider->system_name }}').owlCarousel({
-        items: 1,
-        dots: {!! $dots ? 'true' : 'false' !!},
-        loop: {!! $loop ? 'true' : 'false' !!},
-        lazyLoad: true,
-        margin: {!! $margin !!},
-        nav: {!! $nav ? 'true' : 'false' !!},
-        autoplay: {!! $autoplay ? 'true' : 'false' !!},
-        autoplayHoverPause: {!! $autoplayHoverPause ? 'true' : 'false' !!},
-        responsiveClass: {!! $responsiveClass ? 'true' : 'false' !!},
-        responsive: {!! $responsive!!},
-        autoplayTimeout: {{$autoplayTimeout}},
-        {!! !empty($navText) ? 'navText: '.$navText."," : "" !!}
-      });
-    });
-  </script>
-@stop
+@include("slider::frontend.components.slider.owl.script")

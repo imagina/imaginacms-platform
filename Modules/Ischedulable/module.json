@@ -1,0 +1,17 @@
+{
+  "name": "Ischedulable",
+  "alias": "ischedulable",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "active": 1,
+  "priority": 0,
+  "providers": [
+    "Modules\\Ischedulable\\Providers\\IschedulableServiceProvider",
+    "Modules\\Ischedulable\\Providers\\EventServiceProvider",
+    "Modules\\Ischedulable\\Providers\\RouteServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

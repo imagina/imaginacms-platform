@@ -11,13 +11,15 @@ class Type extends Model
   const NUMBER = 3;
   const EMAIL = 4;
   const SELECT = 5;
-  const SELECTMULTIPLE = 6;
+  const SELECT_MULTIPLE = 6;
   const CHECKBOX = 7;
   const RADIO = 8;
   const LOCATION = 9;
   const PHONE = 10;
   const DATE = 11;
   const FILE = 12;
+  const TREE_SELECT = 13;
+  const HIDDEN = 14;
 
   /**
    * @var array
@@ -53,7 +55,7 @@ class Type extends Model
         'value' => 'select'
       ],
       [
-        'id' => self::SELECTMULTIPLE,
+        'id' => self::SELECT_MULTIPLE,
         'name' => trans('iforms::common.types.selectmultiple'),
         'value' => 'selectmultiple'
       ],
@@ -87,6 +89,16 @@ class Type extends Model
         'name' => trans('iforms::common.types.file'),
         'value' => 'file'
       ],
+      [
+        'id' => self::TREE_SELECT,
+        'name' => trans('iforms::common.types.treeSelect'),
+        'value' => 'treeSelect'
+      ],
+      [
+        'id' => self::HIDDEN,
+        'name' => trans('iforms::common.types.hidden'),
+        'value' => 'hidden'
+      ],
     ];
   }
 
@@ -106,7 +118,7 @@ class Type extends Model
    */
   public function get($id)
   {
-    $id --;
+    $id--;
     if (isset($this->types[$id])) {
       return $this->types[$id];
     }

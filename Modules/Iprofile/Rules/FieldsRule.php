@@ -28,13 +28,14 @@ class FieldsRule implements Rule
     public function passes($attribute, $value)
     {
       
-      foreach ($value as $field){
-        if($this->setting->get('iprofile::registerUserWithPoliticsOfPrivacy'))
-          if($field["name"] == "confirmPolytics" && !$field["value"]){
+      foreach ($value as $fieldName => $fieldValue){
+        if($this->setting->get('iprofile::registerUserWithPoliticsOfPrivacy')){
+          if($fieldName == "confirmPolytics" && !$fieldValue){
             return false;
           }
-        
-    }
+        }
+      }
+
       return true;
     }
 

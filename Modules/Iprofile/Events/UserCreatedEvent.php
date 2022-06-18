@@ -8,9 +8,13 @@ class UserCreatedEvent
 {
   use SerializesModels;
   public $user;
+  public $bindings;
 
-  public function __construct($user)
+  public function __construct($user, $bindings)
   {
+   
     $this->user = $user;
+    $this->bindings = $bindings;
+
   }
 }

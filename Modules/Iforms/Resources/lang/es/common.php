@@ -39,6 +39,7 @@ return [
     'phone' => 'Teléfono',
     'date' => 'Fecha',
     'file' => 'Archivo',
+    'treeSelect' => 'Tree Select',
   ],
   'formTypes' => [
       'normal' => 'Formulario normal',
@@ -84,5 +85,14 @@ return [
   'settingHints' => [
     'emails' => 'Ingresa el correo y presiona enter',
     'usersToNotify' => 'Usuarios para enviar notificaciones',
+  ],
+  'settings' => [
+    'tenant' => [
+      'group' => 'Inquilinos',
+      'tenantWithCentralData'=> 'Entidades con data central',
+      'entities' => [
+        'forms' => 'Formularios'
+      ]
+    ]
   ]
 ];

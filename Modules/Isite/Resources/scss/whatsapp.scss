@@ -135,7 +135,7 @@
       padding: 8px 20px;
       margin-left: 25px;
       border-radius: 10px;
-      color: $primary;
+      color: var(--primary);
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -177,7 +177,7 @@
     display: block;
     border-radius: 20px;
     .window-header {
-      background-color: $primary;
+      background-color: var(--primary);
       color: #fff;
       padding: 26px;
       position: relative;
@@ -227,7 +227,7 @@
           .icon {
             height: 55px;
             width: 55px;
-            background-color: $primary;
+            background-color: var(--primary);
             color: white;
             display: flex;
             justify-content: center;

@@ -9,7 +9,7 @@ use Modules\Ihelpers\Events\UpdateMedia;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Repositories\SlideApiRepository;
 use Modules\Slider\Events\SlideWasCreated;
-
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 class EloquentSlideApiRepository extends EloquentBaseRepository implements SlideApiRepository
 {
   
@@ -19,7 +19,7 @@ class EloquentSlideApiRepository extends EloquentBaseRepository implements Slide
       $query = $this->model->query();
   
       /*== RELATIONSHIPS ==*/
-      if(in_array('*',$params->include)){//If Request all relationships
+      if(in_array('*',$params->include ?? [])){//If Request all relationships
         $query->with([]);
       }else{//Especific relationships
         $includeDefault = [];//Default relationships
@@ -65,15 +65,30 @@ class EloquentSlideApiRepository extends EloquentBaseRepository implements Slide
         }
       }
   
+      $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData",null,"[]"));
+      $tenantWithCentralData = in_array("slide",$entitiesWithCentralData);
+  
+      if ($tenantWithCentralData && isset(tenant()->id)) {
+        $model = $this->model;
+    
+        $query->withoutTenancy();
+        $query->where(function ($query) use ($model) {
+          $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+            ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+        });
+      }
+  
+      
       /*== FIELDS ==*/
       if (isset($params->fields) && count($params->fields))
         $query->select($params->fields);
   
       /*== REQUEST ==*/
       if (isset($params->page) && $params->page) {
-        return $query->paginate($params->take);
+        //return $query->paginate($params->take);
+        return $query->paginate($params->take, ['*'], null, $params->page);
       } else {
-        $params->take ? $query->take($params->take) : false;//Take
+        isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
         return $query->get();
       }
     }

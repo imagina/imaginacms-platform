@@ -2,5 +2,12 @@
 
 return [
   "name" => "Sitio",
-  "icustom" => "Personalizaciones"
+  "icustom" => "Personalizaciones",
+  
+  "verifier" => [
+    "title" => "Título",
+    "content" => "Contenido",
+    "active" => "Activar",
+    "buttonLabel" => "Texto del botón",
+  ]
 ];
