@@ -44,10 +44,10 @@ class ModuleMigrator implements SetupScript
     
     foreach ($this->modules as $module) {
       if ($command->option('verbose')) {
-        $command->call('module:migrate');
+        $command->call('module:migrate', ['module' => $module]);
         continue;
       }
-      $command->callSilent('module:migrate');
+      $command->callSilent('module:migrate', ['module' => $module]);
     }
   }
 }

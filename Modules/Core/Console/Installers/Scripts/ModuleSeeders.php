@@ -37,10 +37,10 @@ class ModuleSeeders implements SetupScript
     
     foreach ($this->modules as $module) {
       if ($command->option('verbose')) {
-        $command->call('module:seed');
+        $command->call('module:seed', ['module' => $module]);
         continue;
       }
-      $command->callSilent('module:seed');
+      $command->callSilent('module:seed', ['module' => $module]);
     }
   }
 }
