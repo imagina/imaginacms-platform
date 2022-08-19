@@ -11,6 +11,9 @@ class ModuleSeeders implements SetupScript
    * @var array
    */
   protected $modules = [
+    'Isite',
+    'Ifillable',
+    'Ischedulable',
     'Setting',
     'Page',
     'Ibanners',
