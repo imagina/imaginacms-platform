@@ -31,13 +31,13 @@ class ModuleSeeders implements SetupScript
         if ($command->option('verbose')) {
             $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
         }
-
-        foreach ($this->modules as $module) {
+      $command->call('module:seed');
+      /*  foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
-                $command->call('module:seed', ['module' => $module]);
+                $command->call('module:seed');
                 continue;
             }
-            $command->callSilent('module:seed', ['module' => $module]);
-        }
+            $command->callSilent('module:seed');
+        }*/
     }
 }

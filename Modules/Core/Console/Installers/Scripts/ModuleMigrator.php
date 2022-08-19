@@ -11,6 +11,9 @@ class ModuleMigrator implements SetupScript
      * @var array
      */
     protected $modules = [
+        'Isite',
+        'Ifillable',
+        'Ischedulable',
         'Setting',
         'Menu',
         'Media',
@@ -38,13 +41,15 @@ class ModuleMigrator implements SetupScript
         if ($command->option('verbose')) {
             $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
         }
-
-        foreach ($this->modules as $module) {
+  
+      $command->call('module:migrate');
+        
+        /*foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
-                $command->call('module:migrate', ['module' => $module]);
+                $command->call('module:migrate');
                 continue;
             }
-            $command->callSilent('module:migrate', ['module' => $module]);
-        }
+            $command->callSilent('module:migrate');
+        }*/
     }
 }
