@@ -71,7 +71,7 @@ interface NotificationRepository extends BaseRepository
      * @param array $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params);
+    public function getItem($criteria, $params = false);
 
     /**
      * Update the notifications for the given ids

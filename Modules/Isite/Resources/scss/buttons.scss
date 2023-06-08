@@ -22,7 +22,15 @@
   }
 }
 
-
+@function contrast($color, $value) {
+  $colorNew: $value;
+  @if $color == 'primary' {
+    $colorNew: var(--primary-contrast);
+  } @else if $color == 'secondary' {
+    $colorNew: var(--secondary-contrast);
+  }
+  @return $colorNew;
+}
 
 @function darken-button($color, $porcentaje) {
   @return unquote('darken('+ $color +', '+ $porcentaje +')');
@@ -35,14 +43,6 @@
     border-width: 1px;
     border-style: solid;
     border-color: $value;
-    /*&:hover, &:active, &:focus, &:visited,
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    .show > &.dropdown-toggle {
-      color: #ffffff;
-      background-color: darken-button($value,30%);
-      border-color: darken-button($value,30%);
-    }*/
     &:hover, &:active, &:focus,
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
@@ -59,11 +59,6 @@
     background-color: transparent;
     border-width: 1px;
     border-style: solid;
-    /*&:hover, &:active, &:focus, &:visited {
-      background-color: $value;
-      border-color: $value;
-      color: #ffffff;
-    }*/
     &:hover, &:active, &:focus,
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
@@ -120,7 +115,7 @@
     background-color: transparent !important;
     color: var(--dark) !important;
   }
-  + .button-line-side {
+  + .button-line-side, + style + .button-line-side {
     border-right:0;
     margin-left: -4px;
   }
@@ -154,4 +149,36 @@
 
 .button-base span,.button-base i {
   pointer-events: none;
+}
+
+.button-white {
+  color: #444;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
+  &:hover, &:active, &:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: #444;
+    background-color: var(--light);
+    border-color: var(--light);
+  }
+}
+
+.button-outline-white {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  &:hover, &:active, &:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: #ffffff;;
+    border-color: #ffffff;
+    color: #444;
+  }
 }

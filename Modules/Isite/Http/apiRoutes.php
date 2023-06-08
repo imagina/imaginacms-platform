@@ -20,8 +20,9 @@ $router->group(['prefix' => '/isite/v1'], function (Router $router) {
     'module' => 'isite',
     'prefix' => 'organizations',
     'controller' => 'OrganizationApiController',
+    'middleware' =>['update' => ['checkIp']]
   ]);
-  
+
   $router->apiCrud([
     'module' => 'isite',
     'prefix' => 'categories',
@@ -52,7 +53,20 @@ $router->group(['prefix' => '/isite/v1'], function (Router $router) {
       'controller' => 'TypeableApiController',
       //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
+    $router->apiCrud([
+      'module' => 'isite',
+      'prefix' => 'modules',
+      'controller' => 'ModuleApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    ]);
+    $router->apiCrud([
+      'module' => 'isite',
+      'prefix' => 'revisions',
+      'controller' => 'RevisionApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    ]);
 // append
+
 
 
 

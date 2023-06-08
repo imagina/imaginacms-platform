@@ -43,7 +43,7 @@ $theme-color: map-merge(
   .btn-outline-#{$color} {
     color: $value !important;
     border-color: $value;
-    background-color: #ffffff;
+    background-color: transparent;
     /*&:hover, &:active, &:focus, &:visited {
       background-color: $value;
       border-color: $value;
@@ -55,7 +55,7 @@ $theme-color: map-merge(
     .show > &.dropdown-toggle {
       background-color: $value;
       border-color: $value;
-      color: #ffffff !important;
+      color: #fff;
     }
   }
 
@@ -63,7 +63,7 @@ $theme-color: map-merge(
     color: $value !important;
   }
 
-  a.text-#{$color} {
+  a.text-#{$color}, a.text-#{$color}:hover {
     color: $value !important;
   }
 

@@ -46,7 +46,7 @@ class IfillableServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'settings-fields'), "asgard.ifillable.settings-fields");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'permissions'), "asgard.ifillable.permissions");
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

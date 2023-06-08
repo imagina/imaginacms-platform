@@ -11,12 +11,20 @@ use Modules\Tag\Traits\TaggableTrait;
 use Modules\Isite\Traits\Typeable;
 use Modules\Core\Icrud\Traits\hasEventsWithBindings;
 use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Ifillable\Traits\isFillable;
+use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Isite\Traits\RevisionableTrait;
 
 class Page extends Model implements TaggableInterface
 {
-  use Translatable, TaggableTrait, NamespacedEntity, MediaRelation, hasEventsWithBindings, Typeable, BelongsToTenant;
-  
+  use Translatable, TaggableTrait, NamespacedEntity, MediaRelation, hasEventsWithBindings,
+    Typeable, BelongsToTenant, isFillable, AuditTrait, RevisionableTrait;
+
+  public $transformer = 'Modules\Page\Transformers\PageTransformer';
+  public $entity = 'Modules\Page\Entities\Page';
+  public $repository = 'Modules\Page\Repositories\PageRepository';
   protected $table = 'page__pages';
+
   public $translatedAttributes = [
     'page_id',
     'title',
@@ -34,6 +42,7 @@ class Page extends Model implements TaggableInterface
   protected $fillable = [
     'is_home',
     'template',
+    'organization_id',
     // Translatable fields
     'page_id',
     'record_type',
@@ -42,9 +51,14 @@ class Page extends Model implements TaggableInterface
     'internal',
     'options',
   ];
+  
   protected $casts = [
     'is_home' => 'boolean',
     'options' => 'array',
+  ];
+  
+  protected $with = [
+    'fields'
   ];
   protected static $entityNamespace = 'asgardcms/page';
   
@@ -89,9 +103,15 @@ class Page extends Model implements TaggableInterface
     return $thumbnail;
   }
   
-  public function getUrlAttribute()
+  public function getUrlAttribute($locale=null)
   {
-    return \LaravelLocalization::localizeUrl( '/' . $this->slug);
+    
+    $currentLocale = $locale ?? locale();
+    if(!is_null($locale)){
+       $this->slug = $this->getTranslation($locale)->slug;
+    }
+
+    return \LaravelLocalization::localizeUrl( '/' . $this->slug,$currentLocale);
   }
   
   public function getOptionsAttribute($value)
@@ -102,4 +122,10 @@ class Page extends Model implements TaggableInterface
       return json_decode($value);
     }
   }
+
+  public function setSystemNameAttribute($value)
+  {
+    $this->attributes['system_name'] = !empty($value) ? $value : \Str::slug($this->title, '-');
+  }
+
 }

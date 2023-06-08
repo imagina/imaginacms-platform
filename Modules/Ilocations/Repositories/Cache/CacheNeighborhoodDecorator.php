@@ -37,7 +37,7 @@ class CacheNeighborhoodDecorator extends BaseCacheDecorator implements Neighborh
      * @param array $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params)
+    public function getItem($criteria, $params = false)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

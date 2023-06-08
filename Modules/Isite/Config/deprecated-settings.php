@@ -1,6 +1,5 @@
 <?php
 
 return [
-  "iprofile::registerExtraFields",
-  "iprofile::userAddressesExtraFields",
+  "iprofile::registerExtraFields"
 ];

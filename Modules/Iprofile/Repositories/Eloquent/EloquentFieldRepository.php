@@ -74,12 +74,12 @@ class EloquentFieldRepository extends EloquentBaseRepository implements FieldRep
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with([]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
       if (isset($params->include))//merge relations with default relationships
-        $includeDefault = array_merge($includeDefault, $params->include);
+        $includeDefault = array_merge($includeDefault, $params->include ?? []);
       $query->with($includeDefault);//Add Relationships to query
     }
 
@@ -89,6 +89,13 @@ class EloquentFieldRepository extends EloquentBaseRepository implements FieldRep
 
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
+      
+      if(isset($filter->userId)){
+        $query->where("user_id",$filter->userId);
+      }
+      if(isset($filter->name)){
+        $query->where("name",$filter->name);
+      }
     }
 
     /*== FIELDS ==*/
@@ -161,7 +168,7 @@ class EloquentFieldRepository extends EloquentBaseRepository implements FieldRep
   }
 
   //Get users birthday
-  public function usersBirthday($params)
+  public function usersBirthday($params = false)
   {
     $birthdayFields = $this->model->where('name', 'birthday')->get();
     $futureBirthdayUsersId = [];

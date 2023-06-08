@@ -1,0 +1,18 @@
+{
+    "name": "Icommerceepayco",
+    "alias": "icommerceepayco",
+    "description": "Epayco- PaymentMethod Module to Icommerce",
+    "keywords": [],
+    "version": "1.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommerceepayco\\Providers\\IcommerceepaycoServiceProvider",
+        "Modules\\Icommerceepayco\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "helpers.php"
+    ],
+    "requires": []
+}

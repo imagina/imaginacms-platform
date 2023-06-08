@@ -1,0 +1,18 @@
+{
+    "name": "Icommercepaypal",
+    "alias": "icommercepaypal",
+    "description": "Paypal - PaymentMethod Module to Icommerce",
+    "keywords": [],
+    "version": "2.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommercepaypal\\Providers\\IcommercepaypalServiceProvider",
+        "Modules\\Icommercepaypal\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "helpers.php"
+    ],
+    "requires": []
+}

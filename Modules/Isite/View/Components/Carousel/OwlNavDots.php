@@ -97,7 +97,7 @@ class OwlNavDots extends Component
                                 $owlTextAlign = "text-left",
                                 $navPosition = "bottom",
                                 $navSizeLabel = "20",
-                                $dotsStyle = "linear",
+                                $dotsStyle = "dots-linear",
                                 $navColor = "primary",
                                 $navSizeButton = "",
                                 $navStyleButton = "",
@@ -125,7 +125,7 @@ class OwlNavDots extends Component
 
         $this->emptyItems = false;
         $this->loop = $loop;
-        $this->id = $id;
+        $this->id = $id ?? uniqid('owlc');
         $this->dots = $dots;
         $this->nav = $nav;
         $this->center = $center;

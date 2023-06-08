@@ -1,0 +1,17 @@
+.wishlist{
+  position: relative;
+    .quantity {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      border-radius: 50%;
+      right: -4px;
+      top: -4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: bold;
+      background: #e4e0e2;
+    }
+}

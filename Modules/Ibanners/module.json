@@ -4,7 +4,7 @@
     "description": "A banner module with categories",
     "keywords": [],
     "version": "4.0.1",
-    "active": 1,
+    "active": 0,
     "priority": 1,
     "providers": [
         "Modules\\Ibanners\\Providers\\IbannersServiceProvider",

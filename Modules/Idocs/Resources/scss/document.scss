@@ -1,0 +1,35 @@
+#idocsDocumentItemLayout1{
+  .item{
+    border: 1px solid #eee;
+    @media (max-width: 991.98px)  {
+      margin-bottom: 10px;
+    }
+  
+  }
+  .category-title{
+    font-size: 10px;
+  }
+  .title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .description{
+    font-size: 10px;
+  }
+  .download{
+    .download-link{
+      font-size: 33px;
+    }
+  }
+  .title-description, .size, .downloaded, .download{
+    padding: 15px;
+    
+  }
+  .title-description, .size, .downloaded{
+    border-right: 1px solid #eee;
+  }
+  .size, .downloaded, .download{
+    text-align: center;
+  }
+}

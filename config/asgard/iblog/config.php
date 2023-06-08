@@ -33,7 +33,7 @@ return [
       ],
     ],
     'post' => [
-      'secondaryImage' => false,
+      'secondaryImage' => true,
       'partials' => [
         'translatable' => [
           'create' => [],
@@ -165,6 +165,12 @@ return [
     ]
   ],
   
+  /*
+ |--------------------------------------------------------------------------
+ | Define routes to sites with old routes
+ |--------------------------------------------------------------------------
+ */
+  'useOldRoutes' => false,
 
   /*
   |--------------------------------------------------------------------------
@@ -233,7 +239,7 @@ return [
       'repository' => 'Modules\Iblog\Repositories\CategoryRepository',
       'entityClass' => 'Modules\Iblog\Entities\Category',
       'params' => ['filter' => ['internal' => false]],
-      'emitTo' => null,
+      'emitTo' => false,
       'repoAction' => null,
       'repoAttribute' => null,
       'listener' => null,

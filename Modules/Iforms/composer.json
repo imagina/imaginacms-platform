@@ -41,14 +41,7 @@
     "prefer-stable": true,
     
     "extra": {
-        "laravel": {
-            "providers": [
-                "Modules\\Iforms\\Providers\\IformsServiceProvider"
-            ],
-            "aliases": {
-            
-            }
-        },
+    
         "branch-alias": {
             "dev-master": "4.0.x-dev",
             "dev-v8.x": "8.0.x-dev"

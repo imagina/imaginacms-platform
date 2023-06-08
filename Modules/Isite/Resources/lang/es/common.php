@@ -8,6 +8,7 @@ return [
     'viewMore' => "Ver más"
   ],
   'settings' => [
+    'wizardTenantType' => "Tipo de Wizard",
     'logo1' => 'Logo N°1',
     'logo2' => 'Logo N°2',
     'logo3' => 'Logo N°3',
@@ -58,6 +59,12 @@ return [
     'googleClient' => 'Cliente Google',
     'facebookClient' => 'Cliente Facebook',
     'facebookAppId' => 'App Id Facebook',
+    'microsoftClientId' => 'Cliente Microsoft',
+    'labelTimeExpiredToken' => 'Tiempo caducidad Tokens Descarga (Dias)',
+    'enableDynamicFieldsCache' => 'Activar caché de dynamic fields en frontend',
+    'usersToNotify' => 'Usuarios Para Notificar Cambios En La Aplicación',
+    'emailsToNotify' => 'Correos Electrónicos Para Notificar Cambios En La Aplicación',
+    'groupNameNotifyChanges' => 'Notificar Cambios En La Aplicación',
     'tenant' => [
       'group' => 'Inquilinos',
       'tenantWithCentralData' => 'Entidades con data central',
@@ -66,22 +73,29 @@ return [
         'page' => 'Páginas',
         'slider' => 'Sliders',
         'slide' => 'Slides',
+        'menu' => 'Menus',
+        'menuitem' => 'Menus Items',
       ],
+      'defaultTenantStatus' => 'Default Tenant Status'
     ],
     'cms' => [
       'legacyStructureCMS' => 'Usar Estructura heredada CMS',
+      'offline' => 'Offline Activado',
       'iadminTheme' => [
         "title" => "Tema Iadmin",
         "theme1" => "Tema 1",
         "theme2" => "Tema 2"
-      ]
-    ]
+      ],
+      'showGoToSiteButton' => 'Mostrar boton "Ver Sitio"'
+    ],
+    'defaultLayout' => 'Plantilla por defecto'
   ],
   'settingHints' => [
     'phones' => "Ingresa un número telefónico y presiona enter",
     'addresses' => "Ingresa una dirección y presiona enter",
     'emails' => "Ingresa un correo electrónico y presiona enter",
     'itemsTabs' => "Ingresa un titulo para identificar los tabs",
+    'defaultLayout' => "Se asignara cuando se cree una organización",
   ],
   'settingGroups' => [
     'media' => 'Media',
@@ -93,7 +107,9 @@ return [
     'tenants' => 'Inquilinos',
     'modalVerifier' => 'Modal Verificador',
     'components' => 'Componentes',
+    'sitemap' => 'Mapa Del Sitio',
     'title' => 'Agrega tu logo',
+    'groupNameTimeToken' => 'Tokens',
     'media' => [
       'title' => 'Agrega tu Imagen',
       'description' => 'Agregar el logo de tu empresa'
@@ -145,10 +161,11 @@ return [
     'cms' => [
       'title' => 'CMS',
       'description' => 'Configuraciones de CMS'
-    ],
+    ]
   ],
   'messages' => [
-    'no items' => 'No existe información disponible'
+    'no items' => 'No existe información disponible',
+    'tokensValidate' => 'El token a expirado'
   ],
   'form' => [
     'validations' => [
@@ -185,7 +202,8 @@ return [
   'maps' => [
     'groupMaps' => 'Mapas',
     'mapsLabel' => 'Mapas en el sitio',
-    'labelLocationSite' => 'Ubicación Sede Principal'
+    'labelLocationSite' => 'Ubicación Sede Principal',
+    'labelLocationName' => 'Nombre Sede Principal',
   ],
   'feeds' => [
     'titlePosts' => 'Todas las nuevas publicaciones en ',
@@ -196,4 +214,15 @@ return [
     'titleWhatsappLayout5' => 'WhatsApp',
     'descriptionWhatsappLayout5' => 'Hola, ¿En que podemos ayudarte?',
   ],
+  'sitemap' => [
+    'labelSitemapDepth' => 'Profundidad Del Mapa Del Sitio',
+    'labelUserAgentRobots' => 'Agentes De Busqueda Para El Archivo Robots.txt',
+    'labelActiveGenerateRobotsFile' => 'Sitemap Con Archivo Robots.txt',
+  ],
+  'infoContact' => [
+    'title' => 'Datos de contacto',
+    'titlePhone' => 'Teléfono',
+    'titleAddress' => 'Dirección',
+    'titleEmail' => 'Correo Electrónico',
+  ]
 ];

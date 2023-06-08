@@ -22,6 +22,7 @@ class UniqueSlugRule implements Rule
       $this->id = $id;
       $this->columnId = $columnId;
       $this->message = !empty($message) ? $message : 'There are another register with the same slug-locale.';
+
     }
 
     /**
@@ -33,12 +34,12 @@ class UniqueSlugRule implements Rule
      */
     public function passes($attribute, $value)
     {
-  
+
       $explodeAttributes = explode(".",$attribute);
-      $slugs = \DB::connection(env('DB_CONNECTION', 'mysql'))->table($this->table)
+      $slugs = \DB::table($this->table)
         ->where($explodeAttributes[1],$value)
         ->where('locale',$explodeAttributes[0]);
-      
+
       if($this->id){
         $slugs = $slugs->where($this->columnId, "!=", $this->id);
       }

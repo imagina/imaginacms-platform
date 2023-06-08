@@ -27,6 +27,34 @@
     </div>
   </div>
 </div>
+@section('scripts')
+  @parent
+  <style>
+    .searchLayout4 .btn {
+      color: #444444;
+      font-size: 22px;
+      padding: 0 15px 0 0;
+      border-radius: 0 !important;
+    }
+    .searchLayout4 .btn:focus {
+      box-shadow: none;
+    }
+    .searchLayout4 .form-control {
+      border-width: 0 0 2px 0;
+      color: #444444;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    .searchLayout4 .form-control:focus {
+      color: #444444;
+      background-color: transparent;
+      border-color: #444444;
+      outline: 0;
+      box-shadow: none;
+    }
+
+  </style>
+@stop
 
 
 

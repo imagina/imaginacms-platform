@@ -35,12 +35,16 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     public function create($data)
     {
+      $disk = Arr::get($data,'disk');
+      $settingDisk = setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+      if($disk == "publicmedia" && $settingDisk == "s3") $disk = $settingDisk;
+
         $data = [
             'filename' => Arr::get($data, 'name') ?? Arr::get($data, 'filename'),
             'path' => $this->getPath($data),
             'is_folder' => true,
             'folder_id' => Arr::get($data, 'parent_id') ?? 0,
-            'disk' => Arr::get($data,'disk')
+            'disk' => $disk
         ];
         event($event = new FolderIsCreating($data));
         $folder = $this->model->create($event->getAttributes());
@@ -180,7 +184,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with(["createdBy"]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
@@ -296,7 +300,7 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         $query = $this->model->query();
   
       /*== RELATIONSHIPS ==*/
-      if(in_array('*',$params->include)){//If Request all relationships
+      if(in_array('*',$params->include ?? [])){//If Request all relationships
         $query->with([]);
       }else{//Especific relationships
         $includeDefault = [];//Default relationships

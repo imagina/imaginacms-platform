@@ -22,9 +22,9 @@ return [
   | Specify all the allowed file extensions a user can upload on the server
   |--------------------------------------------------------------------------
   */
-  'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg',
-  'allowedImageTypes' => json_encode(["jpg", "png", "jpeg", "svg"]),
-  'allowedFileTypes' => json_encode(["pdf", "doc", "docx", "xls", "xlsx"]),
+  'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg,webp',
+  'allowedImageTypes' => json_encode(["jpg", "png", "jpeg", "webp"]),
+  'allowedFileTypes' => json_encode(["pdf", "doc", "docx", "xls", "xlsx", "svg"]),
   'allowedVideoTypes' => json_encode(["mp4", "webm", "ogg"]),
   'allowedAudioTypes' => json_encode(["mp3", "avi"]),
   /*
@@ -32,7 +32,7 @@ return [
   | Specify all the allowed ratios to user can crop an images
   |--------------------------------------------------------------------------
   */
-  'allowedRatios' => ['16:9','4:3','1:1','2:3','free'],
+  'allowedRatios' => ['16:9', '4:3', '1:1', '2:3', 'free'],
   /*
   |--------------------------------------------------------------------------
   | Determine the max file size upload rate
@@ -145,4 +145,8 @@ return [
 
   ],
 
+  'documentation' => [
+    'medias' => "media::cms.documentation.medias",
+    'zones' => "media::cms.documentation.zones",
+  ]
 ];

@@ -50,6 +50,7 @@ class MediaTransformer extends JsonResource
       'largeThumb' => $this->imagy->getThumbnail($this->resource, 'largeThumb'),
       'extraLargeThumb' => $this->imagy->getThumbnail($this->resource, 'extraLargeThumb'),
       'createdBy' => $this->created_by,
+      'url' => $this->url ?? '#',
 
     ];
 

@@ -17,6 +17,7 @@ class Owl extends Component
   public $dots;
   public $dotsPosition;
   public $dotsStyle;
+  public $dotsStyleColor;
   public $nav;
   public $navText;
   public $autoplay;
@@ -33,6 +34,16 @@ class Owl extends Component
   public $stagePadding;
   public $container;
   public $slides;
+  public $itemComponentAttributes;
+  public $itemComponentNamespace;
+  public $itemComponent;
+  public $navPosition;
+  public $mouseDrag;
+  public $touchDrag;
+  public $isMobile;
+  public $navLateralLeftRight;
+  public $navLateralTop;
+  public $dotsBottom;
 
   /**
    * Create a new component instance.
@@ -41,9 +52,13 @@ class Owl extends Component
    */
   public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = true, $margin = 0,
                               $autoplayHoverPause = true, $loop = true, $dots = true, $dotsPosition = 'center',
-                              $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000, $imgObjectFit = "cover",
+                              $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 10000, $imgObjectFit = "cover",
                               $responsiveClass = false, $responsive = null, $orderClasses = [], $withViewMoreButton = true,
-                              $container="container", $stagePadding = 0, $view = null)
+                              $container="container", $stagePadding = 0, $view = null, $itemComponentAttributes = [],
+                              $itemComponentNamespace = null, $itemComponent = null, $navPosition = 'lateral',
+                              $mouseDrag = true, $touchDrag = true, $navLateralTop = 50, $navLateralLeftRight = '15px',
+                              $dotsStyleColor = '#fff', $dotsBottom = 0
+  )
   {
     $this->id = $id;
     $this->layout = $layout ?? 'slider-owl-layout-1';
@@ -52,12 +67,13 @@ class Owl extends Component
     $this->dots = $dots ?? true;
     $this->dotsPosition = $dotsPosition ?? 'center';
     $this->dotsStyle = $dotsStyle ?? 'line';
+    $this->dotsStyleColor = $dotsStyleColor;
     $this->nav = $nav ?? true;
     $this->navText = json_encode($navText);
     $this->loopOwl = $loop ?? true;
     $this->autoplay = $autoplay ?? true;
     $this->autoplayHoverPause = $autoplayHoverPause ?? true;
-    $this->autoplayTimeout = $autoplayTimeout ?? 5000;
+    $this->autoplayTimeout = $autoplayTimeout ?? 10000;
     $this->imgObjectFit = $imgObjectFit ?? "cover";
     $this->responsive = json_encode($responsive ?? [0 => ["items" => 1]]);
     $this->responsiveClass = $responsiveClass;
@@ -68,7 +84,18 @@ class Owl extends Component
     $this->container = $container;
     $this->view = $view ?? "slider::frontend.components.slider.owl.layouts.{$this->layout}.index";
     $this->getItem();
+    $this->itemComponent = $itemComponent ?? "isite::item-list";
+    $this->itemComponentNamespace =  $itemComponentNamespace ?? "Modules\Isite\View\Components\ItemList";
+    $this->itemComponentAttributes = count($itemComponentAttributes) ? $itemComponentAttributes : config('asgard.slider.config.indexItemListAttributes');
+    $this->navPosition = $navPosition ?? 'lateral';
+    $this->mouseDrag = $mouseDrag;
+    $this->touchDrag = $touchDrag;
+    $this->navLateralLeftRight = $navLateralLeftRight;
+    $this->navLateralTop = explode(",",$navLateralTop);
+    $this->dotsBottom = $dotsBottom;
+    $this->isMobile = isMobileDevice();
   }
+
   
   public function getItem()
   {
@@ -92,7 +119,8 @@ class Owl extends Component
     ];
   
     $this->slides = app('Modules\\Slider\\Repositories\\SlideApiRepository')->getItemsBy(json_decode(json_encode($params)));
-  
+
+
   }
   
   /**
@@ -102,6 +130,8 @@ class Owl extends Component
    */
   public function render()
   {
+    if(!isset($this->slider->id))
+      return view("slider::frontend.components.slider.owl.invalid-slider");
     return view($this->view);
   }
 }

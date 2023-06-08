@@ -10,4 +10,6 @@ interface SearchRepository extends BaseRepository
 
   public function getItemsBy($params);
 
+  public function getRepositoriesFromSetting($params);
+
 }

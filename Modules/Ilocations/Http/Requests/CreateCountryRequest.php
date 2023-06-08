@@ -9,8 +9,6 @@ class CreateCountryRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'name' => 'required',
-          'full_name' => 'required',
           'currency' => 'required',
           'currency_symbol' => 'required',
           'currency_code' => 'required',
@@ -27,7 +25,10 @@ class CreateCountryRequest extends BaseFormRequest
 
     public function translationRules()
     {
-        return [];
+      return [
+        'name' => 'required|min:2',
+        'full_name' => 'required|min:2',
+      ];
     }
 
     public function authorize()

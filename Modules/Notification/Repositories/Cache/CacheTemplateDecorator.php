@@ -21,21 +21,21 @@ class CacheTemplateDecorator extends BaseCacheDecorator implements TemplateRepos
         });
     }
 
-    public function getItem($criteria, $params)
+    public function getItem($criteria, $params = false)
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);
         });
     }
 
-    public function updateBy($criteria, $data, $params)
+    public function updateBy($criteria, $data, $params = false)
     {
         $this->clearCache();
 
         return $this->repository->updateBy($criteria, $data, $params);
     }
 
-    public function deleteBy($criteria, $params)
+    public function deleteBy($criteria, $params = false)
     {
         $this->clearCache();
 

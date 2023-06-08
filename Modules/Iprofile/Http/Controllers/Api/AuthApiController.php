@@ -64,7 +64,7 @@ class AuthApiController extends BaseApiController
   {
     try {
       $credentials = [ //Get credentials
-        'email' => $request->input('username'),
+        'login' => $request->input('username'),
         'password' => $request->input('password')
       ];
       
@@ -162,7 +162,7 @@ class AuthApiController extends BaseApiController
    */
   public function authAttempt($credentials)
   {
-    
+
     try {
       $credentials = (object)$credentials;
       
@@ -170,7 +170,7 @@ class AuthApiController extends BaseApiController
         //Find email in users fields
         $field = $this->validateResponseApi(
           $this->fieldApiController->show(
-            json_encode($credentials->email),
+            json_encode($credentials->login),
             new Request([
               'filter' => json_encode(['field' => 'value']),
               'include' => 'user'
@@ -179,7 +179,7 @@ class AuthApiController extends BaseApiController
         );
         
         //If exist email in users fields, change email of credentials
-        if (isset($field->user)) $credentials->email = $field->user->email;
+        if (isset($field->user)) $credentials->login = $field->user->email;
       } catch (Exception $e) {
       }
       

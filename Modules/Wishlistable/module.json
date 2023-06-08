@@ -1,0 +1,17 @@
+{
+    "name": "Wishlistable",
+    "alias": "wishlistable",
+    "version": "1.0.0",
+	"description": "",
+    "keywords": [],
+    "priority": 1,
+    "active": 1,
+    "providers": [
+        "Modules\\Wishlistable\\Providers\\WishlistableServiceProvider",
+        "Modules\\Wishlistable\\Providers\\EventServiceProvider",
+        "Modules\\Wishlistable\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

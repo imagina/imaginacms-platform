@@ -39,4 +39,107 @@
       @endforeach
     </div>
   </div>
+    <style>
+        .lists-layout-3 .first-category {
+            padding-bottom: 40px;
+            border-bottom: solid 1px #b4b4b4;
+            margin-bottom: 40px;
+        }
+        @media (min-width: 991.98px) {
+            .lists-layout-3 .first-category {
+                padding-bottom: 20px;
+                border-bottom: solid 1px #b4b4b4;
+                margin-bottom: 20px;
+            }
+        }
+        .lists-layout-3 .first-category .items {
+            height: 880px;
+        }
+        @media (min-width: 991.98px) {
+            .lists-layout-3 .first-category .items {
+                height: 400px;
+            }
+        }
+        .lists-layout-3 .other-category .items {
+            height: 400px;
+        }
+        .lists-layout-3 .other-category:first-child {
+            padding-bottom: 40px;
+            border-bottom: solid 1px #b4b4b4;
+            margin-bottom: 40px;
+        }
+        @media (min-width: 991.98px) {
+            .lists-layout-3 .other-category:first-child {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+        }
+        .lists-layout-3 .items {
+            position: relative;
+        }
+        .lists-layout-3 .items .imagen {
+            overflow: hidden;
+        }
+        .lists-layout-3 .items .imagen img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transform: scale(1);
+            transition: all 500ms ease-in-out;
+        }
+        .lists-layout-3 .items:after {
+            content: '';
+            background-color: rgba(60, 60, 59, 0.5);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .lists-layout-3 .items:nth-of-type(2):before {
+            content: '';
+            border-bottom: 1px solid #b4b4b4;
+            position: absolute;
+            bottom: -40px;
+            display: block;
+            height: 100%;
+            z-index: 99;
+            width: 100%;
+        }
+        .lists-layout-3 .items .card-img-overlay {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #fff;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .lists-layout-3 .items h3 {
+            font-size: 3.75rem;
+            font-weight: bold;
+        }
+        .lists-layout-3 .items .btn {
+            font-size: 0.938rem;
+            border-radius: 0;
+            color: #0A0808;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .lists-layout-3 .items:hover img {
+            transform: scale(1.1);
+        }
+        @media (max-width: 769px) {
+            .lists-layout-3 .items h3 {
+                font-size: 1.875rem;
+            }
+            .lists-layout-3 .items:nth-of-type(1):before, .lists-layout-3 .items:nth-of-type(2):before {
+                border-bottom: 1px solid #b4b4b4;
+                bottom: -20px;
+            }
+        }
+
+    </style>
 </section>

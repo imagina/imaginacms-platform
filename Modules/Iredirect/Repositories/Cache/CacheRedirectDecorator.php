@@ -65,7 +65,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
    *
    * @return object
    */
-  public function getItem($criteria, $params)
+  public function getItem($criteria, $params = false)
   {
     return $this->remember(function () use ($criteria, $params) {
       return $this->repository->getItem($criteria, $params);
@@ -89,7 +89,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
    *
    * @return mixed
    */
-  public function updateBy($criteria, $data, $params)
+  public function updateBy($criteria, $data, $params = false)
   {
     $this->clearCache();
     
@@ -102,7 +102,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
    *
    * @return mixed
    */
-  public function deleteBy($criteria, $params)
+  public function deleteBy($criteria, $params = false)
   {
     $this->clearCache();
     

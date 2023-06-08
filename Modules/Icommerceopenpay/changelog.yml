@@ -1,0 +1,5 @@
+url: https://github.com/imagina/imaginacms-icommerceopenpay
+versions:
+  "1.0.0":
+    added:
+      - Inital Version Icommerce Openpay - Payment Method

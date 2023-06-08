@@ -21,6 +21,7 @@
     @if(Setting::has('isite::facebookAppId'))
         <meta property="fb:app_id" content="{{Setting::get('isite::facebookAppId') }}">
     @endif
+    
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="{{ Setting::get('core::site-name') }}">

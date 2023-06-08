@@ -1,0 +1,28 @@
+@import "modules/idocs/category";
+@import "modules/idocs/document";
+
+#privateDocumentsAll{
+  .head{
+    border: 1px solid #eee;
+    .title-description, .size, .downloaded, .download{
+      padding: 15px;
+    }
+    .title-description, .size, .downloaded{
+      border-right: 1px solid #eee;
+    }
+    .size, .downloaded, .download{
+      
+      text-align: center;
+    }
+  }
+  .document-list{
+    width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+#publicDocumentsAll{
+  .no-items{
+    display: none;
+  }
+}

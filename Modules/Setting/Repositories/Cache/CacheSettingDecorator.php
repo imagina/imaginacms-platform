@@ -33,7 +33,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      * @param $settingName
      * @return mixed
      */
-    public function findByName($settingName)
+    public function findByName($settingName, $central = false, $organizationId = null)
     {
         $settingValue = $this->remember(function () use ($settingName) {
             return $this->repository->findByName($settingName) ?? $settingName.'___NULL';
@@ -52,9 +52,9 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      */
     public function moduleSettings($modules)
     {
-        return $this->remember(function () use ($modules) {
+       // return $this->remember(function () use ($modules) {
             return $this->repository->moduleSettings($modules);
-        });
+        //});
     }
 
     /**

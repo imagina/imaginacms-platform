@@ -4,6 +4,7 @@ namespace Modules\Ihelpers\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Isite\Jobs\ProcessSeeds;
 
 class IhelpersDatabaseSeeder extends Seeder
 {
@@ -15,7 +16,9 @@ class IhelpersDatabaseSeeder extends Seeder
 	public function run()
 	{
 		Model::unguard();
-
-		// $this->call("OthersTableSeeder");
+    ProcessSeeds::dispatch([
+      "baseClass" => "\Modules\Ihelpers\Database\Seeders",
+      "seeds" => ["IhelpersModuleTableSeeder"]
+    ]);
 	}
 }

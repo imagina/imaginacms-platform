@@ -67,7 +67,7 @@ class DashboardServiceProvider extends ServiceProvider
       $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'permissions'), "asgard.dashboard.permissions");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'settings'), "asgard.dashboard.settings");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('dashboard', 'settings-fields'), "asgard.dashboard.settings-fields");
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

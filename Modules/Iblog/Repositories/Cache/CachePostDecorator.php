@@ -2,19 +2,18 @@
 
 namespace Modules\Iblog\Repositories\Cache;
 
+use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
 use Modules\Iblog\Repositories\Collection;
 use Modules\Iblog\Repositories\PostRepository;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
-class CachePostDecorator extends BaseCacheDecorator implements PostRepository
+class CachePostDecorator extends BaseCacheCrudDecorator implements PostRepository
 {
   public function __construct(PostRepository $post)
   {
     parent::__construct();
-    $this->entityName = 'posts';
+    $this->entityName = 'iblog.posts';
     $this->repository = $post;
   }
-  
   
   /**
    * @param object $id
@@ -43,7 +42,7 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
    * @param $params
    * @return mixed
    */
-  public function getItem($criteria, $params)
+  public function getItem($criteria, $params = false)
   {
     return $this->remember(function () use ($criteria, $params) {
       return $this->repository->getItem($criteria, $params);
@@ -66,7 +65,7 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
    *
    * @return mixed
    */
-  public function deleteBy($criteria, $params)
+  public function deleteBy($criteria, $params = false)
   {
     $this->clearCache();
     
@@ -79,7 +78,7 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
    *
    * @return mixed
    */
-  public function updateBy($criteria, $data, $params)
+  public function updateBy($criteria, $data, $params = false)
   {
     $this->clearCache();
     

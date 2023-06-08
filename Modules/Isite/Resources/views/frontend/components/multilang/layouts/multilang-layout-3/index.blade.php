@@ -1,85 +1,143 @@
-<div id="multilanglayout3" class="multilang">
+<div id="multiLangLayout3" class="multi-lang">
+  <div class="dropdown">
+    @if($showButton)
+      <?php
+      $hash = sha1($butonComponentNamespace);
+      if (isset($component)) {
+        $__componentOriginal{$hash} = $component;
+      }
+      $component = $__env->getContainer()->make($butonComponentNamespace, array_merge([
+        'idButton' => 'buttonDropdownMultilang',
+        'label' => $longText ? config('available-locales')[LaravelLocalization::getCurrentLocale()]['native'] : LaravelLocalization::getCurrentLocale(),
+        'withLabel' => true,
+        'buttonClasses' => 'btn btn-sm dropdown-toggle border-0 text-capitalize text-bold',
+      ], $buttonComponentAtributtes ?? []));
 
-    <form action="">
-        <div class="selectbox">
-            <div class="select" id="select">
-                <div class="contenido-select">
-                    <h4 class="titulo">Selecciona tu Idioma</h4>
-                </div>
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-      
+      $component->withName($butonComponent);
+      if ($component->shouldRender()):
+        $__env->startComponent($component->resolveView(), $component->data());
+        if (isset($__componentOriginal{$hash})):
+          $component = $__componentOriginal{$hash};
+          unset($__componentOriginal{$hash});
+        endif;
+        echo $__env->renderComponent();
+      endif;
+      ?>
+    @endif
+    
+    <div id="imageDropdownMultilang" data-toggle="dropdown">
+      @if($showImage)
+        <?php
+        $hash = sha1($imageComponentNamespace);
+        if (isset($component)) {
+          $__componentOriginal{$hash} = $component;
+        }
+        $component = $__env->getContainer()->make($imageComponentNamespace, array_merge([
+          'src' => url('modules/isite/img/locales/' . LaravelLocalization::getCurrentLocale() . '.jpg'),
+          'imgStyles' => '  width: 35px; height: 33px; object-fit: cover;',
+          'imgClasses' => 'rounded-circle mx-2',
+          'url' => LaravelLocalization::getCurrentLocale(),
+        ], $imageComponentAtributtes ?? []));
+        $component->withName($imageComponent);
+        if ($component->shouldRender()):
+          $__env->startComponent($component->resolveView(), $component->data());
+          if (isset($__componentOriginal{$hash})):
+            $component = $__componentOriginal{$hash};
+            unset($__componentOriginal{$hash});
+          endif;
+          echo $__env->renderComponent();
+        endif;
+        ?>
+      @endif
+    </div>
+    
+    <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="{{$component->idButton}}">
+      @foreach($locales as $locale)
+        <div class="item-dropdown py-3">
+          @if($showImage)
+            <?php
+            $hash = sha1($imageComponentNamespace);
+            if (isset($component)) {
+              $__componentOriginal{$hash} = $component;
+            }
+            $component = $__env->getContainer()->make($imageComponentNamespace, array_merge([
+              'src' => url('modules/isite/img/locales/' . $locale . '.jpg'),
+              'imgStyles' => 'width: 30px; height: 30px; object-fit:cover',
+              'imgClasses' => 'rounded-circle ml-3 mr-2',
+              'href' => url($locale),
+            ], $imageComponentAtributtes ?? []));
+            $component->withName($imageComponent);
+            if ($component->shouldRender()):
+              $__env->startComponent($component->resolveView(), $component->data());
+              if (isset($__componentOriginal{$hash})):
+                $component = $__componentOriginal{$hash};
+                unset($__componentOriginal{$hash});
+              endif;
+              echo $__env->renderComponent();
+            endif;
+            ?>
+          @endif
+          
+          @if($showButton)
+            <?php
+            $hash = sha1($butonComponentNamespace);
+            if (isset($component)) {
+              $__componentOriginal{$hash} = $component;
+            }
+            $component = $__env->getContainer()->make($butonComponentNamespace, array_merge([
+              'label' => $longTextDrop ? config('available-locales')[$locale]['native'] : $locale,
+              'href' => setLocaleInUrl($locale),
+              'withLabel' => true,
+              'buttonClasses' => 'text-white text-left btn-lg border-0 text-capitalize text-bold',
+              'style' => 'outline'
+            ], $buttonDropDownItemComponentAtributtes ?? []));
+            $component->withName($butonComponent);
+            if ($component->shouldRender()):
+              $__env->startComponent($component->resolveView(), $component->data());
+              if (isset($__componentOriginal{$hash})):
+                $component = $__componentOriginal{$hash};
+                unset($__componentOriginal{$hash});
+              endif;
+              echo $__env->renderComponent();
+            endif;
+            ?>
+          @endif
             </div>
-      
-            <div class="opciones" id="opciones">
-            
-      <a href="#" class="opcion"value="es">
-        
-                    <div class="contenido-opcion">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPK_QCwe-IppY2_cLHpqbDoorQga-wVE4TUw&usqp=CAU" alt="">
-                        <div class="textos">
-                            <h4 class="titulo">Spanish</h4>
-                        </div>
-                    </div>
-        
-                </a>
-      <hr>
-                <a href="#" class="opcion"value="en">
-                    <div class="contenido-opcion">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1200px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" alt="">
-                        <div class="textos">
-                            <h4 class="titulo">English</h4>
-                        </div>
-                    </div>
-                </a>
-      <hr>
-                <a href="#" class="opcion">
-                    <div class="contenido-opcion" value="al">
-                        <img src="https://media.istockphoto.com/vectors/germany-flag-vector-id166012239?k=20&m=166012239&s=612x612&w=0&h=yA820ncZYE7wNzPWlwuA1gFynXokkO2qdDVl8SXJx1M=" alt="">
-                        <div class="textos">
-                            <h4 class="titulo">German</h4>
-                        </div>
-                    </div>
-        
-                </a>
-      <hr>
-                <a href="#" class="opcion">
-        
-                    <div class="contenido-opcion" value="ca">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/1200px-Flag_of_Catalonia.svg.png" alt="">
-                        <div class="textos">
-                            <h4 class="titulo">Catalan</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <input type="hidden" name="pais" id="inputSelect" value="">
-    </form>
-
+      @endforeach
+    </div>
+  </div>
 </div>
+<style>
+    #multiLangLayout3 .dropdown {
+        display: flex;
+    }
+    #multiLangLayout3 .dropdown-menu {
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 24px 46px, rgba(0, 0, 0, 0.28) 0px 3px 10px;
+        border: 0;
+        top: 26px !important;
+        border-radius: 7px;
+    }
+    #multiLangLayout3 .dropdown-menu:before {
+        content: " ";
+        position: absolute;
+        background: white;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        height: 12px;
+        width: 22px;
+        right: 12px;
+        top: -11px;
+    }
+    #multiLangLayout3 .dropdown-menu .item-dropdown {
+        border-bottom: 0.1px solid #0000004d;
+    }
+    #multiLangLayout3 .dropdown-menu .item-dropdown:last-child {
+        border-bottom: 0;
+    }
 
-@section('scripts')
-    @parent
-    <script type="text/javascript">
-       const select = document.querySelector('#select');
-const opciones = document.querySelector('#opciones');
-const contenidoSelect = document.querySelector('#select .contenido-select');
-const hiddenInput = document.querySelector('#inputSelect');
+</style>
+<script defer type="text/javascript">
+  $(document).ready(function () {
+    $("#{{$component->idButton}}").attr('data-toggle', 'dropdown');
+  })
+</script>
 
-document.querySelectorAll('#opciones > .opcion').forEach((opcion) => {
-	opcion.addEventListener('click', (e) => {
-		e.preventDefault();
-		contenidoSelect.innerHTML = e.currentTarget.innerHTML;
-		select.classList.toggle('active');
-		opciones.classList.toggle('active');
-		hiddenInput.value = e.currentTarget.querySelector('.titulo').innerText;
-	});
-});
-
-select.addEventListener('click', () => {
-	select.classList.toggle('active');
-	opciones.classList.toggle('active');
-});
-    </script>
-@stop

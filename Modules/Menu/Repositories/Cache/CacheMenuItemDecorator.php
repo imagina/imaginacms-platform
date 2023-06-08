@@ -100,7 +100,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
      * @param $params
      * @return mixed
      */
-    public function getItem($criteria, $params)
+    public function getItem($criteria, $params = false)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -117,7 +117,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
      * @param $params
      * @return mixed
      */
-    public function updateBy($criteria, $data, $params)
+    public function updateBy($criteria, $data, $params = false)
     {
         $this->cache->tags($this->entityName)->flush();
         return $this->cache
@@ -149,7 +149,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
      * @param $params
      * @return mixed
      */
-    public function deleteBy($criteria, $params)
+    public function deleteBy($criteria, $params = false)
     {
         $this->cache->tags($this->entityName)->flush();
         return $this->cache

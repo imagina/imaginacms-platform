@@ -38,7 +38,7 @@ final class MenuDirective
         if ($this->presenter === null && $customPresenter !== null) {
             $this->presenter = $customPresenter;
         }
-
+    
         return app('menus')->get($this->name, $this->presenter, $this->bindings);
     }
 

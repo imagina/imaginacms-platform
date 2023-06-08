@@ -10,6 +10,7 @@ class Typeable extends CrudModel
     
     protected $table = 'isite__typeables';
     public $transformer = 'Modules\Isite\Transformers\TypeableTransformer';
+    public $repository = 'Modules\Isite\Repositories\TypeableRepository';
     public $requestValidation = [
         'create' => 'Modules\Isite\Http\Requests\CreateTypeableRequest',
         'update' => 'Modules\Isite\Http\Requests\UpdateTypeableRequest',

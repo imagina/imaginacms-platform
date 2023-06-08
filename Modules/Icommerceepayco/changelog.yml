@@ -1,0 +1,5 @@
+url: https://github.com/imagina/asgardcms-icommerceepayco
+versions:
+  "1.0.0":
+    added:
+      - Inital Version Icommerce Epayco Payment Method

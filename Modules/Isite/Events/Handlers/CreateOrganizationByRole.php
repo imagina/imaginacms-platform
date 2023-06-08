@@ -2,8 +2,10 @@
 
 namespace Modules\Isite\Events\Handlers;
 
-
 use Modules\Isite\Entities\Organization;
+
+// Events
+use Modules\Isite\Events\OrganizationWasCreated;
 
 class CreateOrganizationByRole
 {
@@ -17,6 +19,7 @@ class CreateOrganizationByRole
   {
     try {
       $user = $event->user;
+      
       $data = $event->bindings;
       
       $roles = $user->roles;
@@ -31,16 +34,22 @@ class CreateOrganizationByRole
           $organization = Organization::create(array_merge([
             'user_id' => $user->id,
             'title' => $user->present()->fullname,
-            'status' => json_decode(setting("isite::defaultTenantStatus",null, "true"))
+            'status' => json_decode(setting("isite::defaultTenantStatus",null, "true")),
+            'layout_id' => json_decode(setting("isite::defaultLayout",null, null)),
+            'category_id' => $data["organization"]["category_id"] ?? null
           ],$data["organization"] ?? []));
-  
+          
           $organization->users()->sync([$user->id => ['role_id' => $userRole->id]]);
           
-  
           $organization->domains()->create([
-            'domain' => $data["organization"]["domain"] ?? $organization->slug,
+            'domain' => $data["organization"]["domain"] ?? $data["domain"] ?? $organization->slug.'.'.parse_url(config('app.url'),PHP_URL_HOST),
             'type' => 'default'
           ]);
+
+          tenancy()->initialize($organization->id);
+
+          event(new OrganizationWasCreated($organization));
+
         }
       }
       

@@ -80,9 +80,19 @@ return [
    * Layout Tags - Attributes
    */
   "indexItemListAttributes" => [
+    'layout' => 'item-list-layout-6',
     'withCreatedDate' => false,
     'withViewMoreButton' => true,
     'withSummary' => false,
+    'buttonSize' => 'button-small',
+    'buttonLayout' => 'rounded',
+    'buttonTextSize' => 14,
+    'titleTextTransform' => 'text-uppercase',
+    'titleTextWeight' => 'font-weight-normal',
+    'titleHeight' => 50,
+    'titleMarginB' => 'mb-2',
+    'titleAlignVertical' => 'align-items-start',
+    'numberCharactersTitle' => 40,
   ],
   /*
    * Define repositories by Entities

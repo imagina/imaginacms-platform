@@ -72,18 +72,8 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
       }
     }
 
-    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
-    $tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
-
-    if ($tenantWithCentralData && isset(tenant()->id)) {
-      $model = $this->model;
-
-      $query->withoutTenancy();
-      $query->where(function ($query) use ($model) {
-        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
-          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
-      });
-    }
+    $this->defaultPreFilters($query,$params);
+    
 
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
@@ -125,18 +115,7 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
         $field = $filter->field;
     }
 
-    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
-    $tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
-
-    if ($tenantWithCentralData && isset(tenant()->id)) {
-      $model = $this->model;
-
-      $query->withoutTenancy();
-      $query->where(function ($query) use ($model) {
-        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
-          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
-      });
-    }
+    $this->defaultPreFilters($query,$params);
 
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
@@ -207,4 +186,23 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
     }
   }
 
+  private function defaultPreFilters($query, $params){
+  
+    $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]",true));
+    $tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
+  
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+    
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
+  
+    if(isset($params->settings) && !empty($params->settings["assignedRoles"])){
+      $query->whereIn("roles.id",$params->settings["assignedRoles"]);
+    }
+  }
 }

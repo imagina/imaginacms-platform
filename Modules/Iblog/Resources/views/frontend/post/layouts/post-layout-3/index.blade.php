@@ -8,62 +8,54 @@
   {{ $post->title }} | @parent
 @stop
 @section('content')
-  <section id="layout3"
-           class="  {{isset($category->id) ? 'iblog-index-category iblog-index-category-'.$category->id.' blog-category-'.$category->id : ''}} py-2">
-    <div id="content_index_blog"
-         class="  {{isset($category->id) ? 'iblog-index-category iblog-index-category-'.$category->id.' blog-category-'.$category->id : ''}} py-2">
-      <div class="container">
+  <div id="postLayout3" class="page blog single single-{{$category->slug}} single-{{$category->id}}">
+    @include('iblog::frontend.partials.breadcrumb')
+    <div class="container">
         <div class="row">
-          @include('iblog::frontend.partials.breadcrumb')
+          <div class="col-12 col-md-8 col-lg-9 pr-md-5">
+            <h1 class="title h3">{{ $post->title }}</h1>
+          </div>
         </div>
-      </div>
-      <div class="page blog single single-{{$category->slug}} single-{{$category->id}}">
-        <div class="container">
-          <div class="row">
-            <div class="col-9">
-              <h3 class="title">{{ $post->title }}</h3>
+        <div class="row">
+          {{-- article --}}
+          <div class="col-12 col-md-8 col-lg-9 pr-md-5">
+            <div class="my-1">
+              <x-media::single-image imgClasses=""
+                                     :mediaFiles="$post->mediaFiles()"
+                                     :isMedia="true" :alt="$post->title"/>
+            </div>
+            <div class="create-date my-4">
+              {{ $post->created_at->format('d/M/Y')}}
+            </div>
+            <div class="page-body description my-4 text-justify">
+              {!! $post->description !!}
+            </div>
+            <div class="social-share d-flex justify-content-start align-items-center my-5">
+              <div class="mr-2">{{trans('iblog::common.social.share')}}:</div>
+              <div class="sharethis-inline-share-buttons"></div>
             </div>
           </div>
-          <div class="row">
-            {{-- article --}}
-            <div class="col-12 col-md-9">
-              <div class="my-1">
-                <x-media::single-image imgClasses=""
-                                       :mediaFiles="$post->mediaFiles()"
-                                       :isMedia="true" :alt="$post->title"/>
-              </div>
-              <div class="create-date my-4">
-                {{ $post->created_at->format('d/M/Y')}}
-              </div>
-              <div class="page-body description my-4 text-justify">
-                {!! $post->description !!}
-              </div>
-              <div class="social-share d-flex justify-content-start align-items-center my-5">
-                <div class="mr-2">{{trans('iblog::common.social.share')}}:</div>
-                <div class="sharethis-inline-share-buttons"></div>
-              </div>
-            </div>
-            {{--sidebar--}}
-            <div class="col-12 col-md-3 px-4 px-md-0">
-              <div class="mb-4">
-                <h4 class="ml-3 mb-2">{{trans('icustom::common.post.titleArticles')}}</h4>
-                <livewire:isite::items-list
-                  moduleName="Iblog"
-                  itemComponentName="isite::item-list"
-                  itemComponentNamespace="Modules\Isite\View\Components\ItemList"
-                  :configLayoutIndex="['default' => 'one',
+          {{--sidebar--}}
+          <div class="col-12 col-md-4 col-lg-3 px-md-0">
+            <div class="blog-recent mb-4">
+              <h4 class="mb-2">{{trans('iblog::common.layouts.titlePostRecent')}}</h4>
+              <livewire:isite::items-list
+                moduleName="Iblog"
+                itemComponentName="isite::item-list"
+                itemComponentNamespace="Modules\Isite\View\Components\ItemList"
+                :configLayoutIndex="['default' => 'one',
                                                             'options' => [
                                                                 'one' => [
                                                                     'name' => 'one',
-                                                                    'class' => 'col-12 my-2  pl-md-5',
+                                                                    'class' => 'col-6 col-md-12 my-2',
                                                                     'icon' => 'fa fa-align-justify',
                                                                     'status' => true],
                                                         ],
                                                         ]"
-                  :itemComponentAttributes="[
+                :itemComponentAttributes="[
                                         'withViewMoreButton'=>false,
                                         'withCategory'=>false,
-                                        'withSummary'=>false,
+                                        'withSummary'=>true,
                                         'withCreatedDate'=>false,
                                         'layout'=>'item-list-layout-7',
                                         'imageAspect'=>'4/3',
@@ -80,9 +72,9 @@
                                         'titleTextTransform'=>'',
                                         'formatCreatedDate'=>'d/m/Y',
                                         'summaryAlign'=>'text-left',
-                                        'summaryTextSize'=>'16',
+                                        'summaryTextSize'=>'13',
                                         'summaryTextWeight'=>'font-weight-normal',
-                                        'numberCharactersSummary'=>'100',
+                                        'numberCharactersSummary'=>'60',
                                         'categoryAlign'=>'text-left',
                                         'categoryTextSize'=>'18',
                                         'categoryTextWeight'=>'font-weight-normal',
@@ -94,10 +86,10 @@
                                         'buttonIcon'=>'',
                                         'buttonIconLR'=>'left',
                                         'buttonColor'=>'primary',
-                                        'viewMoreButtonLabel'=>'isite::common.menu.viewMore',
+                                        'viewMoreButtonLabel'=>'iblog::common.layouts.viewMore',
                                         'withImageOpacity'=>false,
-                                        'imageOpacityColor'=>'opacity-dark',
-                                        'imageOpacityDirection'=>'opacity-all',
+                                        'imageOpacityColor'=>'',
+                                        'imageOpacityDirection'=>' ',
                                         'orderClasses'=>[
                                         'photo'=>'order-0',
                                         'title'=>'order-1',
@@ -107,8 +99,8 @@
                                         'viewMoreButton'=>'order-5'
                                         ],
                                         'imagePosition'=>'2',
-                                        'imagePositionVertical'=>'align-self-star',
-                                        'contentPositionVertical'=>'align-self-star',
+                                        'imagePositionVertical'=>'align-self-start',
+                                        'contentPositionVertical'=>'align-self-start',
                                         'contentPadding'=>'0',
                                         'contentBorder'=>'0',
                                         'contentBorderColor'=>'#dddddd',
@@ -120,8 +112,8 @@
                                         'summaryColor'=>'text-dark',
                                         'categoryColor'=>'text-primary',
                                         'createdDateColor'=>'text-dark',
-                                        'titleMarginT'=>'mt-1',
-                                        'titleMarginB'=>'mb-0 mb-md-2',
+                                        'titleMarginT'=>'mt-2 mt-sm-0',
+                                        'titleMarginB'=>'mb-1 mb-md-2',
                                         'summaryMarginT'=>'mt-0',
                                         'summaryMarginB'=>'mb-2',
                                         'categoryMarginT'=>'mt-0',
@@ -143,20 +135,22 @@
                                         'buttonTextSize'=>'16',
                                         'itemBackgroundColor'=>'#ffffff',
                                         'itemBackgroundColorHover'=>'#ffffff',
-                                        'titleHeight'=>60,
-                                        'summaryHeight'=>100,
-                                            ]"
-                  entityName="Post"
-                  :showTitle="false"
-                  :pagination="['show'=>false]"
-                  :params="['take'=>4,'filter' => ['category' => $category->id ?? null]]"
-                  :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
-                />
-              </div>
+                                        'summaryHeight'=>'auto',
+                                        'numberCharactersTitle'=>30,
+                                        'summaryLineHeight'=>14,
+                                        'columnLeft'=>'col-sm-5',
+                                        'columnRight'=>'col-sm-7 px-0 pr-sm-0 pl-sm-2',
+                                        'titleTextSizeMobile'=>'13',
+                                        ]"
+                entityName="Post"
+                :showTitle="false"
+                :pagination="['show'=>false]"
+                :params="['take'=>4,'filter' => ['category' => $category->id ?? null]]"
+                :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
+              />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+  </div>
 @stop

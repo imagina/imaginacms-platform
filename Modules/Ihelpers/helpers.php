@@ -4,6 +4,10 @@ use Illuminate\Support\Str;
 if(! function_exists('canonical_url')) {
 
     function canonical_url() {
+   
+      if(isset(tenant()->id)){
+        return str_replace(URL::to(''),tenant()->url,URL::current());
+      }
         return str_replace(URL::to(''),config('app.url'),URL::current());
     }
 

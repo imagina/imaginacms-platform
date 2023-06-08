@@ -159,4 +159,37 @@
       }
     });
   </script>
+  <style>
+    #indexProfile .overlay.active {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 900;
+      transition: opacity 0.3s ease-out;
+    }
+    #indexProfile .profile-section-title {
+      margin-top: 22px;
+    }
+    #indexProfile label[for=extraFieldmainImage] {
+      display: none;
+    }
+    #indexProfile #imgProfile {
+      text-align: center;
+    }
+    #indexProfile #imgProfile img {
+      height: 250px;
+      width: 250px;
+      object-fit: cover;
+    }
+    @media (max-width: 767.98px) {
+      #indexProfile .profile-content {
+        padding-left: 45px;
+      }
+      #indexProfile #breadcrumbSection {
+        margin-left: 40px;
+      }
+    }
+
+  </style>
 @stop

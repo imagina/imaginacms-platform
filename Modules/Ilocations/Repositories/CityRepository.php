@@ -9,5 +9,5 @@ interface CityRepository extends BaseRepository
   public function whereByCountry($id);
   public function index($page, $take, $filter, $include, $fields);
   public function getItemsBy($params);
-  public function getItem($criteria, $params);
+  public function getItem($criteria, $params = false);
 }

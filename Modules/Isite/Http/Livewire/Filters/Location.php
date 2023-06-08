@@ -26,6 +26,7 @@ class Location extends Component
     public $params;
     public $radio;
     public $startGeolocation;
+    public $findByLngLat;
    
     /*
     * Attributes
@@ -38,6 +39,7 @@ class Location extends Component
     public $countryCode;
     public $province;
     public $city;
+    public $neighborhood;
 
     /*
     * Attributes To Type "location-2"
@@ -51,7 +53,7 @@ class Location extends Component
     * Runs once, immediately after the component is instantiated,
     * but before render() is called
     */
-	public function mount($title,$name,$status=true,$isExpanded=true,$type="location",$repository,$emitTo,$repoAction,$repoAttribute,$listener,$repoMethod='getItemsBy',$layout='location-layout-1',$classes='col-12', $params = [], $radio = [], $startGeolocation=false){
+	public function mount($title,$name,$status=true,$isExpanded=true,$type="location",$repository,$emitTo,$repoAction,$repoAttribute,$listener,$repoMethod='getItemsBy',$layout='location-layout-1',$classes='col-12', $params = [], $radio = [], $startGeolocation=false,$findByLngLat=false){
 		
         $this->title = trans($title);
         $this->name = $name;
@@ -69,6 +71,7 @@ class Location extends Component
         $this->params = $params;
         $this->radio = $radio;
         $this->startGeolocation = $startGeolocation;
+        $this->findByLngLat = $findByLngLat;
         
         $this->initValues();
         
@@ -172,11 +175,14 @@ class Location extends Component
             $emitInfor['country'] = $this->country;
             $emitInfor['province'] = $this->province;
             $emitInfor['city'] = $this->city;
+            $emitInfor['neighborhood'] = $this->neighborhood;
             $emitInfor['radio'] = $this->selectedRadio;
             $emitInfor['lat'] = $this->lat;
-            $emitInfor['lng'] = $this->lng;  
-
+            $emitInfor['lng'] = $this->lng;
+            $emitInfor['findByLngLat'] = $this->findByLngLat;
         }
+
+        
         
         // Emit To (config file - parent filter or items list)
         $this->emit($this->emitTo,[

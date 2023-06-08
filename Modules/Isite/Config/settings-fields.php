@@ -252,6 +252,16 @@ return [
     'groupTitle' => 'isite::common.settingGroups.socialNetworks',
     'props' => ['label' => 'Instagram']
   ],
+  'tiktok' => [
+    'value' => null,
+    'name' => 'tiktok',
+    'fakeFieldName' => 'isite::socialNetworks',
+    'type' => 'input',
+    'isTranslatable' => true,
+    'groupName' => 'socialNetworks',
+    'groupTitle' => 'isite::common.settingGroups.socialNetworks',
+    'props' => ['label' => 'TikTok']
+  ],
   'Linkedin' => [
     'value' => null,
     'name' => 'linkedin',
@@ -757,7 +767,7 @@ return [
       'label' => 'isite::pdf.settings.pdf.text.Information_content',
     ]
   ],
-  
+
   //Roles to register
   'rolesToTenant' => [
     "onlySuperAdmin" => true,
@@ -776,7 +786,7 @@ return [
       'select' => ['label' => 'name', 'id' => 'id']
     ]
   ],
-  
+
   //Default Tenant Status
   'defaultTenantStatus' => [
     'value' => true,
@@ -786,7 +796,7 @@ return [
     'groupTitle' => 'isite::common.settingGroups.tenants',
     'colClass' => 'col-6',
     'props' => [
-      'label' => 'isite::pdf.settings.defaultTenantStatus',
+      'label' => 'isite::common.settings.tenant.defaultTenantStatus',
       'useInput' => false,
       'useChips' => false,
       'multiple' => false,
@@ -801,7 +811,7 @@ return [
 
   //Tenant route alias
   'tenantRouteAlias' => [
-    'value' => "",
+    'value' => "homepage",
     'name' => 'isite::tenantRouteAlias',
     "onlySuperAdmin" => true,
     'type' => 'input',
@@ -810,6 +820,21 @@ return [
     'props' => [
       'label' => 'isite::common.settings.tenantRouteAlias'
     ]
+  ],
+  'wizardTenantType' => [
+    "onlySuperAdmin" => true,
+    'name' => 'isite::wizardTenantType',
+    'value' => "local",
+    'type' => 'select',
+    'groupName' => 'tenants',
+    'groupTitle' => 'isite::common.settingGroups.tenants',
+    'props' => [
+      'label' => 'isite::common.settings.wizardTenantType',
+      'options' => [
+        ["label" => "Weygo", "value" => "weygo"],
+        ["label" => "Local", "value" => "local"],
+      ]
+    ],
   ],
 
   'mapInShow' => [
@@ -931,8 +956,18 @@ return [
       'newValueMode' => 'add-unique'
     ]
   ],
+  'locationName' => [
+    'name' => 'isite::locationName',
+    'value' => null,
+    'type' => 'input',
+    'groupName' => 'maps',
+    'groupTitle' => 'isite::common.maps.groupMaps',
+    'props' => [
+      'label' => 'isite::common.maps.labelLocationName'
+    ],
+  ],
   'locationSite' => [
-    'value' => '',
+    'value' => '{"title" : "Ubicación", "lat" : 4.646920449476433, "lng" : -74.07857977257274}',
     'name' => 'isite::locationSite',
     'type' => 'positionMarkerMap',
     'colClass' => "col-12",
@@ -962,6 +997,8 @@ return [
         ['label' => 'isite::common.settings.tenant.entities.page', 'value' => 'page'],
         ['label' => 'isite::common.settings.tenant.entities.slider', 'value' => 'slider'],
         ['label' => 'isite::common.settings.tenant.entities.slide', 'value' => 'slide'],
+        ['label' => 'isite::common.settings.tenant.entities.menu', 'value' => 'menu'],
+        ['label' => 'isite::common.settings.tenant.entities.menuitem', 'value' => 'menuitem'],
       ]
     ]
   ],
@@ -993,5 +1030,186 @@ return [
         ['label' => 'isite::common.settings.cms.iadminTheme.theme2', 'value' => '2'],
       ]
     ],
+  ],
+  'sitemapDepth' => [
+    'value' => 5,
+    'name' => 'isite::sitemapDepth',
+    'type' => 'input',
+    'colClass' => "col-12",
+    'groupName' => 'sitemap',
+    'groupTitle' => 'isite::common.settingGroups.sitemap',
+    'props' => [
+      'label' => 'isite::common.sitemap.labelSitemapDepth'
+    ],
+  ],
+  'showGoToSiteButton' => [
+    'name' => 'isite::showGoToSiteButton',
+    'value' => '1',
+    'type' => 'select',
+    'groupName' => 'cms',
+    'groupTitle' => 'isite::common.settingGroups.cms',
+    'props' => [
+      'label' => 'isite::common.settings.cms.showGoToSiteButton',
+      'options' => [
+        ['label' => 'isite::common.yes', 'value' => '1'],
+        ['label' => 'isite::common.no', 'value' => '0'],
+      ]
+    ],
+  ],
+  'userAgentRobots' => [
+    'value' => '*',
+    'name' => 'isite::userAgentRobots',
+    'type' => 'input',
+    'colClass' => "col-12",
+    'groupName' => 'sitemap',
+    'groupTitle' => 'isite::common.settingGroups.sitemap',
+    'props' => [
+      'label' => 'isite::common.sitemap.labelUserAgentRobots'
+    ]
+  ],
+  'activeGenerateRobotsFile' => [
+    'value' => "0",
+    'name' => 'isite::activeGenerateRobotsFile',
+    'type' => 'checkbox',
+    'groupName' => 'sitemap',
+    'groupTitle' => 'isite::common.settingGroups.sitemap',
+    'props' => [
+      'label' => 'isite::common.sitemap.labelActiveGenerateRobotsFile',
+      'trueValue' => "1",
+      'falseValue' => "0",
+    ]
+  ],
+  'enableDynamicFieldsCache' => [
+    'value' => "0",
+    'name' => 'isite::enableDynamicFieldsCache',
+    "onlySuperAdmin" => true,
+    'type' => 'checkbox',
+    'props' => [
+      'label' => 'isite::common.settings.enableDynamicFieldsCache',
+      'trueValue' => "1",
+      'falseValue' => "0",
+    ]
+  ],
+  'defaultLayout' => [
+    'value' => null,
+    'name' => 'isite::defaultLayout',
+    "onlySuperAdmin" => true,
+    'type' => 'select',
+    'colClass' => 'col-6',
+    'props' => [
+      'label' => 'isite::common.settings.defaultLayout',
+      'hint' => 'isite::common.settingHints.defaultLayout',
+      'useInput' => false,
+      'useChips' => false,
+      'multiple' => false,
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'options' => [
+        ['label' => 'Layout Tienda 1', 'value' => 1],
+      ]
+      // OJO falta que monten el crud en Frontend
+      /*
+      'loadOptions' => [
+          'apiRoute' => 'apiRoutes.qsite.layouts', //apiRoute to request
+          'select' => ['label' => 'title', 'id' => 'id'], //Define fields to config select
+      ]
+      */
+    ]
+  ],
+  //Microsoft APP ID
+  'microsoftClientId' => [
+    'value' => "",
+    'name' => 'isite::microsoftClientId',
+    'type' => 'input',
+    'groupName' => 'apiKeys',
+    'groupTitle' => 'isite::common.settingGroups.apiKeys',
+    'props' => [
+      'label' => 'isite::common.settings.microsoftClientId'
+    ]
+  ],
+  'timeExpiredToken' => [
+    'value' => 1,
+    'name' => 'isite::timeExpiredToken',
+    'type' => 'input',
+    'groupName' => 'tokens',
+    'groupTitle' => 'isite::common.settingGroups.groupNameTimeToken',
+    'props' => [
+      'label' => 'isite::common.settings.labelTimeExpiredToken'
+    ]
+  ],
+  //N8N
+  'n8nUrl' => [
+    "onlySuperAdmin" => true,
+    'name' => 'isite::n8nUrl',
+    'value' => "https://nflow.imaginacolombia.com",
+    'type' => 'input',
+    'groupName' => 'N8N',
+    'groupTitle' => 'N8N',
+    'columns' => 'col-12 col-md-6',
+    'help' => [
+      "description" => "URL for N8N node, it will be used for send action through this platform"
+    ],
+    'props' => [
+      'label' => 'N8N Url'
+    ]
+  ],
+  'offline' => [
+    'name' => 'isite::offline',
+    'value' => '0',
+    'type' => 'select',
+    'groupName' => 'cms',
+    'groupTitle' => 'isite::common.settingGroups.cms',
+    'props' => [
+      'label' => 'isite::common.settings.cms.offline',
+      'options' => [
+        ['label' => 'isite::common.yes', 'value' => '1'],
+        ['label' => 'isite::common.no', 'value' => '0'],
+      ]
+    ],
+  ],
+  'usersToNotify' => [
+    'name' => 'isite::usersToNotify',
+    'value' => [],
+    'type' => 'select',
+    "onlySuperAdmin" => true,
+    'columns' => 'col-12 col-md-6',
+    'groupName' => 'notificationsChanges',
+    'groupTitle' => 'isite::common.settings.groupNameNotifyChanges',
+    'loadOptions' => [
+      'apiRoute' => 'apiRoutes.quser.users',
+      'select' => ['label' => 'email', 'id' => 'id'],
+    ],
+    'props' => [
+      'label' => 'isite::common.settings.usersToNotify',
+      'multiple' => true,
+      'clearable' => true,
+    ],
+  ],
+  'emailsToNotify' => [
+    'name' => 'isite::emailsToNotify',
+    'value' => [],
+    'type' => 'select',
+    "onlySuperAdmin" => true,
+    'groupName' => 'notificationsChanges',
+    'groupTitle' => 'isite::common.settings.groupNameNotifyChanges',
+    'props' => [
+      'useInput' => true,
+      'useChips' => true,
+      'multiple' => true,
+      'hint' => 'iforms::common.settingHints.emails',
+      'hideDropdownIcon' => true,
+      'newValueMode' => 'add-unique',
+      'label' => 'isite::common.settings.emailsToNotify'
+    ],
+  ],
+  //Centralize brand
+  'centralizedBrand' => [
+    'value' => null,
+    'name' => 'isite::centralizedBrand',
+    'type' => 'input',
+    "onlySuperAdmin" => true,
+    'props' => [
+      'label' => 'isite::isite.centralizedBrand'
+    ]
   ],
 ];

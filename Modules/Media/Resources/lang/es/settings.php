@@ -8,6 +8,7 @@ return [
     "allowedAudioTypes" => "Extensiones de audio permitidas",
     "allowedRatios" => "Proporciones disponibles",
     "maxFileSize" => "Tamaño máximo permitido por archivo (Mb)",
+    "activateCheckOfDirSize" => "Activar chequeo de tamaño de Directorio al guardar un Archivo",
     "maxTotalSize" => "Tamaño máximo de todo el media (Bytes)",
     "defaultImageSize" => "Redimensión por defecto de imagen",
     "filesystem" => "File System",

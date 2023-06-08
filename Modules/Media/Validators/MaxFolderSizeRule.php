@@ -19,10 +19,13 @@ class MaxFolderSizeRule implements Rule
   public function passes($attribute, $value)
   {
     //check if the tenant its initialized and the folder size must be calculated of the organization folder
-    $organization = tenant();
-    $mediaPath = public_path((isset($organization->id) ? "/organization$organization->id" : "").config('asgard.media.config.files-path'));
-    $folderSize = $this->getDirSize($mediaPath);
-  
+    $tenantPrefix = mediaOrganizationPrefix(null,"/");
+    $mediaPath = public_path(($tenantPrefix).config('asgard.media.config.files-path'));
+    
+    $activateCheckOfDirSize = json_decode(setting('media::activateCheckOfDirSize',null,"1"));
+ 
+    $folderSize = $activateCheckOfDirSize ? $this->getDirSize($mediaPath) : "0";
+    
     preg_match('/([0-9]+)/', $folderSize, $match);
    
     return ($match[0] + $value->getSize()) < setting('media::maxTotalSize', null, config("asgard.media.config.max-total-size"));

@@ -29,6 +29,11 @@ class EloquentUserApiRepository extends EloquentBaseRepository implements UserAp
     if (isset($params->filter)) {
       $filter = $params->filter;//Short filter
 
+      //filter by Id
+      if (isset($filter->id)) {
+        $query->whereIn('id', (array)$filter->id);
+      }
+
       //Filter by date
       if (isset($filter->date)) {
         $date = $filter->date;//Short filter date

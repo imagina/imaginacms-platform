@@ -11,4 +11,6 @@ class CityTranslation extends Model
     'name'
   ];
   protected $table = 'ilocations__city_translations';
+  
+
 }

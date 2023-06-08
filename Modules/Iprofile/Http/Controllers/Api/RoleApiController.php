@@ -119,7 +119,7 @@ class RoleApiController extends BaseApiController
       $role = $this->role->updateBy($criteria, $data, $params);
 
       //Create or Update Settings
-      if (isset($data["settings"]))
+      if (isset($data["settings"]) && (isset($params->permissions["profile.settings.edit"]) && $params->permissions["profile.settings.edit"]))
         foreach ($data["settings"] as $settingName => $setting) {
           $this->profileSetting->updateOrCreate(
             ['related_id' => $role->id, 'entity_name' => 'role', 'name' => $settingName],
@@ -163,7 +163,7 @@ class RoleApiController extends BaseApiController
       $role = $this->role->create($data);
 
       //Create or Update Settings
-      if (isset($data["settings"]))
+      if (isset($data["settings"]) && (isset($params->permissions["profile.settings.create"]) && $params->permissions["profile.settings.create"]))
         foreach ($data["settings"] as $settingName => $setting) {
           $this->validateResponseApi(
             $this->setting->create(new Request(['attributes' =>

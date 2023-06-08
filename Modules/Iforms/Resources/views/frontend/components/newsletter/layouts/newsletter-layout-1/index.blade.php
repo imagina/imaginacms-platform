@@ -1,25 +1,25 @@
 <div class="newsletter form-content-{{ $form->system_name }} mb-4 position-relative">
     <x-isite::edit-link link="/iadmin/#/form/fields/{{$form->id}}"
                         :tooltip="trans('iforms::common.editLink.tooltipForm')"/>
-  <h4 class="mb-0">{{ $title ?? $form->title }}</h4>
+  <h4 class="title {{$titleClasses}}">{{ $title ?? $form->title }}</h4>
   @if(!empty($description))
-  <p class="description mb-3">{{ $description }}</p>
+  <p class="description {{$descriptionClasses}}">{{ $description }}</p>
   @endif
   <form id="form{{ $form->system_name }}" method="post" action="{{ route('api.iforms.leads.create') }}">
     <input type="hidden" name="form_id" value="{{ $form->id }}" required="">
     <div class="input-group">
-      <input type="text" class="form-control bg-transparent"
+      <input type="text" class="form-control {{$inputClasses}}"
              placeholder="{{ trans('iforms::fields.form.email.placeholder') }}"
              name="{{ trans('iforms::fields.form.email.name') }}" required
              aria-label="{{ trans('iforms::fields.form.email.label') }}">
       <div class="input-group-append">
-        <button class="btn btn-primary  px-3 " type="submit">
+        <button class="{{$buttonClasses}}" type="submit">
           {{ $submitLabel }}
         </button>
       </div>
     </div>
     @if(!empty($postDescription))
-      <p class="post-description mb-3">{{ $postDescription }}</p>
+      <p class="post-description {{$postDescriptionClasses}}">{{ $postDescription }}</p>
     @endif
     <x-isite::captcha formId="{{'form'.$form->system_name }}"/>
   </form>

@@ -22,7 +22,7 @@
         @else
           <i class="{{ $icon }} fa-{{ $size }}"></i>
         @endif
-        <a href="https://wa.me/{{ $item->callingCode }}{{ $item->number }}?text={{ $item->message }}" target="_blank">
+        <a aria-label="whatsapp" href="https://wa.me/{{ $item->callingCode }}{{ $item->number }}?text={{ $item->message }}" target="_blank">
           {{ isset($item->label) ? $item->label.': ' : '' }} {{ $item->formattedNumber }}
         </a>
       </div>

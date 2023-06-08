@@ -51,6 +51,13 @@ interface RoleRepository
      * @return mixed
      */
     public function findByName($name);
+    
+    /**
+     * Find a role by its slug
+     * @param  string $slug
+     * @return mixed
+     */
+    public function findBySlug($slug);
 
     /**
      * Paginating, ordering and searching through pages for server side index table

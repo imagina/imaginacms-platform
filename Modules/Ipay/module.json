@@ -1,0 +1,16 @@
+{
+    "name": "Ipay",
+    "alias": "ipay",
+    "description": "Boton de pago Payu",
+    "keywords": [],
+    "active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Ipay\\Providers\\IpayServiceProvider",
+        "Modules\\Ipay\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "helpers.php"
+    ]
+}

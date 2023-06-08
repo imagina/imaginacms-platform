@@ -4,6 +4,7 @@ namespace Modules\Ilocations\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class City extends Model
 {
@@ -18,8 +19,14 @@ class City extends Model
         'province_id',
         'country_id'
     ];
-
-    public function country()
+  
+  public function __construct(array $attributes = [])
+  {
+   
+    parent::__construct($attributes);
+  }
+  
+  public function country()
     {
         return $this->belongsTo(Country::class);
     }
@@ -33,7 +40,23 @@ class City extends Model
     {
         return $this->morphToMany(Geozones::class, 'geozonable');
     }
-
+  
+  public function getNameAttribute(){
+    
+    $currentTranslations = $this->getTranslation(locale());
+    
+    if (empty($currentTranslations) || empty($currentTranslations->toArray()["name"])) {
+      
+      $model = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
+      
+      if(empty($model)) return "";
+      return $model->toArray()["name"] ?? "";
+    }
+    
+    return $currentTranslations->toArray()["name"];
+    
+  }
+    
     public function __call($method, $parameters)
     {
         #i: Convert array to dot notation

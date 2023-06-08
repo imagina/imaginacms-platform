@@ -33,7 +33,7 @@ class OwlCarousel extends Component
     public $owlBlockStyle;
     public $editLink;
     public $tooltipEditLink;
-
+    public $autoplayTimeout;
     public $navIcon;
     public $navSizeLabel;
     public $dotsStyle;
@@ -42,7 +42,6 @@ class OwlCarousel extends Component
     public $navSizeButton;
     public $navStyleButton;
     public $navColor;
-
     public $owlTextPosition; // 1 -> solo titulo 2 -> titulo con subtitulo debajo 3 -> titulo con subtitilo arria
     public $owlTitleMarginT;
     public $owlTitleMarginB;
@@ -53,7 +52,6 @@ class OwlCarousel extends Component
     public $owlTitleWeight;
     public $owlTitleTransform;
     public $owlTitleLetterSpacing;
-
     public $owlSubtitleMarginT;
     public $owlSubtitleMarginB;
     public $owlSubtitleColor;
@@ -61,13 +59,18 @@ class OwlCarousel extends Component
     public $owlSubtitleWeight;
     public $owlSubtitleTransform;
     public $owlSubtitleLetterSpacing;
-
     public $itemComponentAttributes;
     public $itemComponentNamespace;
     public $stagePadding;
-
     public $owlTitleUrl;
     public $owlTitleTarget;
+    public $mouseDrag;
+    public $touchDrag;
+    public $navOld;
+    public $owlWithLineTitle;
+    public $owlLineTitleConfig;
+    public $owlTitleClasses;
+    public $owlSubtitleClasses;
 
     /**
      * Create a new component instance.
@@ -75,7 +78,7 @@ class OwlCarousel extends Component
      * @return void
      */
     public function __construct($repository,
-                                $id,
+                                $id = null,
                                 $view = null,
                                 $params = [],
                                 $margin = 10,
@@ -99,7 +102,7 @@ class OwlCarousel extends Component
                                 $owlTextAlign = "text-left",
                                 $navPosition = "bottom",
                                 $navSizeLabel = "20",
-                                $dotsStyle = "linear",
+                                $dotsStyle = "dots-linear",
                                 $navColor = "primary",
                                 $navSizeButton = "",
                                 $navStyleButton = "",
@@ -124,13 +127,21 @@ class OwlCarousel extends Component
                                 $itemComponentNamespace = null,
                                 $stagePadding = 0,
                                 $owlTitleUrl = null,
-                                $owlTitleTarget = "_self"
+                                $owlTitleTarget = "_self",
+                                $autoplayTimeout = 5000,
+                                $mouseDrag = true,
+                                $touchDrag = true,
+                                $navOld = false,
+                                $owlWithLineTitle = 0,
+                                $owlLineTitleConfig = [],
+                                $owlTitleClasses = "",
+                                $owlSubtitleClasses = ""
     )
     {
 
         $this->emptyItems = false;
         $this->loop = $loop;
-        $this->id = $id;
+        $this->id = $id ?? uniqid('owlc');
         $this->dots = $dots;
         $this->nav = $nav;
         $this->center = $center;
@@ -140,10 +151,11 @@ class OwlCarousel extends Component
         $this->responsiveClass = $responsiveClass;
         $this->autoplay = $autoplay;
         $this->autoplayHoverPause = $autoplayHoverPause;
-        
+        $this->autoplayTimeout = $autoplayTimeout;
+
         $this->repository = $repository;
         $this->params = $params;
-        $this->itemLayout = $itemLayout;
+        $this->itemLayout = $itemLayout ?? $itemComponentAttributes["itemLayout"] ?? null;
         $this->title = $title;
         $this->itemsBySlide = $itemsBySlide;
         $this->subTitle = $subTitle;
@@ -152,7 +164,6 @@ class OwlCarousel extends Component
         $this->itemComponent = $itemComponent ?? "isite::item-list";
         $this->view = $view ?? "isite::frontend.components.owl.carousel";
         $this->itemComponentNamespace =  $itemComponentNamespace ?? "Modules\Isite\View\Components\ItemList";
-        $this->getItems();
 
         $this->navIcon = $navIcon;
         $this->navSizeLabel = $navSizeLabel;
@@ -183,12 +194,24 @@ class OwlCarousel extends Component
         $this->stagePadding = $stagePadding;
         $this->owlTitleUrl = $owlTitleUrl;
         $this->owlTitleTarget = $owlTitleTarget;
-        
+        $this->mouseDrag = $mouseDrag;
+        $this->touchDrag = $touchDrag;
         $this->itemComponentAttributes = $itemComponentAttributes;
-
-
-
+        $this->navOld = $navOld;
+        $this->owlTitleClasses = $owlTitleClasses;
+        $this->owlSubtitleClasses = $owlSubtitleClasses;
+        $this->owlWithLineTitle = $owlWithLineTitle;
+        $this->owlLineTitleConfig = !empty($owlLineTitleConfig) ? $owlLineTitleConfig : [
+            "background" => "var(--primary)",
+            "height" => "2px",
+            "width" => "10%",
+            "margin" => "0 auto"];
+        $this->getItems();
         list($this->editLink, $this->tooltipEditLink) = getEditLink($this->repository);
+        if($nav && $navText!="") {
+            $this->navOld = true;
+            $this->nav = false;
+        }
     }
 
     private
@@ -209,7 +232,6 @@ class OwlCarousel extends Component
     {
 
         $this->items = app($this->repository)->getItemsBy(json_decode(json_encode($this->makeParamsFunction())));
-
         switch ($this->repository) {
             case 'Modules\Icommerce\Repositories\ProductRepository':
                 !$this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
@@ -217,9 +239,16 @@ class OwlCarousel extends Component
                     $this->itemComponent = "icommerce::product-list-item";
                     $this->itemComponentNamespace = "Modules\Icommerce\View\Components\ProductListItem";
                     $this->itemComponentAttributes["layout"]="product-list-item-layout-1";
-                  
+
                 }
                 break;
+        }
+
+        if(count($this->items)==1) {
+            $this->mouseDrag = false;
+            $this->touchDrag = false;
+            $this->dots = false;
+            $this->nav = false;
         }
 
         if ($this->items->isEmpty()) {

@@ -12,6 +12,8 @@
     "Modules\\Ifillable\\Providers\\RouteServiceProvider"
   ],
   "aliases": {},
-  "files": [],
+  "files": [
+    "helpers.php"
+  ],
   "requires": []
 }

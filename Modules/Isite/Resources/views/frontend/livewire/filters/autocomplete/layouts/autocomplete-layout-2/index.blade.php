@@ -35,7 +35,6 @@
 
   <a id="tagHelper" data-toggle="collapse" href="#entityS" role="button" aria-expanded="false" aria-controls="entityS"
      class="collapsed d-none"></a>
-
   <div class=" collapse {{$collapsable}} multi-collapse position-absolute bg-white" id="entityS" style="     top: 110%;
     left: 0;
     min-width: 100%;
@@ -63,6 +62,40 @@
 
 @section('scripts')
   @parent
+  <style>
+    #autocompleteLayout2 .row {
+      align-items: start !important;
+    }
+    #autocompleteLayout2 .collapse {
+      width: 49vw !important;
+      position: absolute;
+      max-height: 20em;
+      border: 0 none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      scroll-behavior: inherit;
+    }
+    #autocompleteLayout2 .collapse::-webkit-scrollbar {
+      width: 8px;
+    }
+    #autocompleteLayout2 .collapse::-webkit-scrollbar-thumb {
+      background: #5a5a5a4f;
+    }
+    #autocompleteLayout2 .collapse #word {
+      font-size: 0.8em;
+      padding: 0.3em 1em;
+      background-color: #ffffff;
+      cursor: pointer;
+      width: 100%;
+      /* option active styles */
+    }
+    #autocompleteLayout2 .collapse #word:hover, #autocompleteLayout2 .collapse #word:focus {
+      color: #ffffff;
+      background-color: var(--primary);
+      outline: 0 none;
+    }
+
+  </style>
   <script>
 
     $(document).ready(function () {

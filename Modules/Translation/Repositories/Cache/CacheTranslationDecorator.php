@@ -113,7 +113,7 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
             );
     }
 
-    public function deleteBy($criteria, $params)
+    public function deleteBy($criteria, $params = false)
     {
         app('cache')->driver('translations')->flush();
         return $this->repository->deleteBy($criteria, $params);

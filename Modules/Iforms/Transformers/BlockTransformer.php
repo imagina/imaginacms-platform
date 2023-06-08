@@ -4,6 +4,7 @@
 namespace Modules\Iforms\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Isite\Transformers\RevisionTransformer;
 
 class BlockTransformer extends JsonResource
 {
@@ -21,6 +22,7 @@ class BlockTransformer extends JsonResource
       'form' => new FormTransformer($this->whenLoaded('form')),
       'createdAt' => $this->when($this->created_at, $this->created_at),
       'updatedAt' => $this->when($this->updated_at, $this->updated_at),
+      'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
     ];
 
     $filter = json_decode($request->filter);

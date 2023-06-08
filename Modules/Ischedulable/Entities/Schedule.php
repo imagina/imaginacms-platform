@@ -9,6 +9,7 @@ use Carbon\Carbon as Time;
 class Schedule extends CrudModel
 {
   public $transformer = 'Modules\Ischedulable\Transformers\ScheduleTransformer';
+  public $repository = 'Modules\Ischedulable\Repositories\ScheduleRepository';
   public $requestValidation = [
     'create' => 'Modules\Ischedulable\Http\Requests\CreateScheduleRequest',
     'update' => 'Modules\Ischedulable\Http\Requests\UpdateScheduleRequest',

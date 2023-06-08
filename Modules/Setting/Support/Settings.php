@@ -44,7 +44,7 @@ class Settings implements Setting
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
-        if ($setting->isMedia() && $media = $setting->files()->first()) {
+        if ($setting->isMedia() && $media = $setting->files->first()) {
           if($media->isImage()){
             $mediaFiles = $setting->mediaFiles();
             
@@ -54,8 +54,9 @@ class Settings implements Setting
         }
 
         if ($setting->isTranslatable) {
-            if ($setting->hasTranslation($locale)) {
-                return trim($setting->translate($locale)->value) === '' ? $defaultFromConfig : $setting->translate($locale)->value;
+            if ($setting->ownHasTranslation($locale)) {
+              $value = trim($setting->getValueByLocale($locale));
+              return $value === '' ? $defaultFromConfig : $value;
             }
         } else {
             return trim($setting->plainValue) === '' ? $defaultFromConfig : $setting->plainValue;

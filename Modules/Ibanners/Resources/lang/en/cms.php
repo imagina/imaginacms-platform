@@ -13,6 +13,10 @@ return [
   "label" => [
     "codeAds" => "Code ADS",
     "showAsPopup" => "Show as Popup"
+  ],
+  'documentation' => [
+    'banners' => "Banners are static elements in defined locations within the WEB site that display a
+     normally large advertising content",
   ]
 ];
 

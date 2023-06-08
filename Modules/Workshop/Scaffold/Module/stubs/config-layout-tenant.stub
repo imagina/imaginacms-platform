@@ -1,0 +1,10 @@
+    "$SYSTEM_NAME$"=>[
+      "organizationId" => $ORGANIZATION_ID$,
+      "email"=> "$EMAIL$",
+      "plan"=> "$PLAN$",
+      "title"=> "$TITLE$",
+      "password"=> "$PASSWORD$",
+      "url"=> "$URL$",
+      "supassword"=> "$SUPASSWORD$"
+    ],
+//append-config-layout

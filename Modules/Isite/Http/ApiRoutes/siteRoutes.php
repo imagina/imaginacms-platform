@@ -21,4 +21,25 @@ $router->group(['prefix' => '/site'/*,'middleware' => ['auth:api']*/], function 
     'uses' => 'SiteApiController@cacheClear',
     //'middleware' => ['auth:api']
   ]);
+
+  //Tenant Routes
+  $router->group(['prefix' => '/tenant'], function (Router $router) {
+    $router->post('/', [
+      'as' => 'api.isite.create',
+      'uses' => 'SiteApiController@create',
+      //'middleware' => ['auth:api']
+    ]);
+    $router->post('/activate-module', [
+      'as' => 'api.isite.activate-module',
+      'uses' => 'SiteApiController@activateModule',
+      //'middleware' => ['auth:api']
+    ]);
+    $router->put('/update', [
+      'as' => 'api.isite.tenant.update',
+      'uses' => 'SiteApiController@tenantUpdate',
+    ]); 
+  });
+
+
+
 });

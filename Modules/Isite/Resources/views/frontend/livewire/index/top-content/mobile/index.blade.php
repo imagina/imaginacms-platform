@@ -53,7 +53,7 @@
          });
 
          $itemModalClose.click(function () {
-            $(this).parent().toggleClass('show');
+            $(this).parent().parent().toggleClass('show');
             body.classList.toggle('overflow-hidden');
          });
 

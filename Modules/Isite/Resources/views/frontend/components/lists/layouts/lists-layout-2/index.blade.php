@@ -32,4 +32,54 @@
    @endif
   @endforeach
   </div>
+  <style>
+    .lists-layout-2 {
+      padding-top: 45px;
+      padding-bottom: 30px;
+    }
+    .lists-layout-2 h3 {
+      text-transform: uppercase;
+      margin-bottom: 41px;
+    }
+    .lists-layout-2 .category-list-2__item {
+      margin-bottom: 22px;
+    }
+    .lists-layout-2 .category-list-2__item figure {
+      position: relative;
+      height: 395px;
+      margin: 0;
+      overflow: hidden;
+    }
+    .lists-layout-2 .category-list-2__item figure:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: rgba(104, 77, 52, 0.32);
+      z-index: 1;
+    }
+    .lists-layout-2 .category-list-2__item figure img {
+      transition: all 0.5s;
+    }
+    .lists-layout-2 .category-list-2__item figure figcaption {
+      position: absolute;
+      left: 27px;
+      bottom: 31px;
+      z-index: 2;
+    }
+    .lists-layout-2 .category-list-2__item figure figcaption h2 {
+      margin-bottom: 20px;
+    }
+    .lists-layout-2 .category-list-2__item figure figcaption .btn-custom {
+      font-size: 1.125rem;
+      margin-left: 15px;
+    }
+    .lists-layout-2 .category-list-2__item figure figcaption .btn-custom i {
+      font-size: 1.25rem;
+    }
+    .lists-layout-2 .category-list-2__item figure:hover img, .lists-layout-2 .category-list-2__item figure:focus img {
+      transform: scale(1.1);
+    }
+
+  </style>
 </section>

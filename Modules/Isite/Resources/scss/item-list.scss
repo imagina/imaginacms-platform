@@ -1,20 +1,3 @@
-
-.opacity-light, .opacity-dark, .opacity-primary {
-  picture {
-    position: relative;
-    display: block !important;
-    overflow: hidden;
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-    }
-  }
-}
-
 @mixin opacity-background($color) {
   &.opacity-left picture:before {
     background: linear-gradient(270deg,transparent,$color);
@@ -30,27 +13,43 @@
   }
 }
 
-.opacity-light  {
-  @include opacity-background(hsla(0,0%,96.1%,.9));
-  &.opacity-all picture:before{
+.opacity-without-hover {
+  .opacity-light, .opacity-dark, .opacity-primary {
+    picture {
+      position: relative;
+      display: block !important;
+      overflow: hidden;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .opacity-light  {
+    @include opacity-background(hsla(0,0%,96.1%,.9));
+    &.opacity-all picture:before{
       background: hsla(0,0%,96.1%,.9);
+    }
+  }
+  .opacity-dark {
+    @include opacity-background(#000);
+    &.opacity-all picture:before{
+      background: hsl(0deg 0% 0% / 47%);
+    }
+  }
+  .opacity-primary {
+    @include opacity-background(var(--primary));
+  }
+  .opacity-secondary {
+    @include opacity-background(var(--secondary));
   }
 }
-
-.opacity-dark {
-  @include opacity-background(#000);
-  &.opacity-all picture:before{
-    background: hsl(0deg 0% 0% / 47%);
-  }
-}
-
-.opacity-primary {
-  @include opacity-background(var(--primary));
-}
-.opacity-secondary {
-  @include opacity-background(var(--secondary));
-}
-
 
 .image-overlay {
   position: absolute;
@@ -75,5 +74,39 @@
   }
 }
 
-
+.opacity-with-hover:hover {
+  .opacity-light, .opacity-dark, .opacity-primary {
+    picture {
+      position: relative;
+      display: block !important;
+      overflow: hidden;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+  .opacity-light  {
+    @include opacity-background(hsla(0,0%,96.1%,.9));
+    &.opacity-all picture:before{
+      background: hsla(0,0%,96.1%,.9);
+    }
+  }
+  .opacity-dark {
+    @include opacity-background(#000);
+    &.opacity-all picture:before{
+      background: hsl(0deg 0% 0% / 47%);
+    }
+  }
+  .opacity-primary {
+    @include opacity-background(var(--primary));
+  }
+  .opacity-secondary {
+    @include opacity-background(var(--secondary));
+  }
+}
 

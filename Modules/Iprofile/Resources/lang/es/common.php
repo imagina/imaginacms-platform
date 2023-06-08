@@ -43,5 +43,10 @@ return [
     'register' => 'Registrarse',
   ],
 
-
+  'crudFields' => [
+    'labelJobTitle' => 'Título Profesional',
+    'labelJobRole' => 'Cargo Profesional',
+    'labelJobEmail' => 'Correo Electronico Corporativo',
+    'labelJobMobile' => 'Telefono Corporativo',
+  ],
 ];

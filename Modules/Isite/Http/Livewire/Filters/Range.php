@@ -42,7 +42,7 @@ class Range extends Component
     */
   public function mount($title, $name, $status = true, $isExpanded = true, $type, $repository, $emitTo, $repoAction,
                         $repoAttribute, $listener, $repoMethod = 'getItemsBy', $layout = 'range-layout-1',
-                        $classes = 'col-12', $params = [], $step = null)
+                        $classes = 'col-12', $params = [], $step = null, $stepSetting = null)
   {
     
     $this->title = trans($title);
@@ -59,8 +59,13 @@ class Range extends Component
     $this->layout = $layout;
     $this->classes = $classes;
     $this->params = $params;
+
+    //Older sites send it directly through the config
     $this->step = $step ?? 10000;
-    
+
+    if(!is_null($stepSetting))
+      $this->step =  setting($stepSetting, null, "10000") ?? 10000;
+   
     $this->valueMin = 0;
     $this->valueMax = 1;
     $this->selValueMin = 0;
@@ -186,7 +191,7 @@ class Range extends Component
     $range = $this->getRepository()->{$this->repoMethod}(json_decode(json_encode($params)));
     
     //Getting the new price range
-    $this->valueMin = round($range->minPrice);
+    $this->valueMin = floor($range->minPrice);
     $this->valueMax = round($range->maxPrice);
     
     //Validating if the user had selected prices

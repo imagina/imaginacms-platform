@@ -17,6 +17,11 @@ abstract class BaseCacheDecorator implements BaseRepository
      * @var Repository
      */
     protected $cache;
+  
+  /**
+   * @var integer cache timing in seconds
+   */
+    protected $cacheTime;
     /**
      * @var string The entity name
      */
@@ -30,6 +35,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     {
         $this->cache = app(Repository::class);
         $this->locale = app()->getLocale();
+        $this->cacheTime = app(ConfigRepository::class)->get('cache.time', 2592000);
     }
 
     /**
@@ -151,16 +157,22 @@ abstract class BaseCacheDecorator implements BaseRepository
             return $this->repository->findByMany($ids);
         });
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function clearCache()
+  
+  /**
+   * @param mixed $tags
+   * @return bool
+   */
+    public function clearCache($tags = null)
     {
         $store = $this->cache;
-
+      
         if (method_exists($this->cache->getStore(), 'tags')) {
-            $store = $store->tags($this->entityName);
+  
+          if(!empty($tags)){
+            !is_array($tags) ? $tags = [$tags] : false;
+          }
+          $tags = array_merge($tags ?? [],[$this->entityName]);
+          $store = $store->tags($tags);
         }
 
         return $store->flush();
@@ -183,7 +195,7 @@ abstract class BaseCacheDecorator implements BaseRepository
         }
 
         // If no $time is passed, just use the default from config
-        $cacheTime = $time ?? app(ConfigRepository::class)->get('cache.time', 60);
+        $cacheTime = $time ?? $this->cacheTime;
 
         return $store->remember($cacheKey, $cacheTime, $callback);
     }

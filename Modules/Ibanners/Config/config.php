@@ -1,12 +1,15 @@
 <?php
 
 return [
-    'name' => 'Ibanners',
+  'name' => 'Ibanners',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Array of middleware that will be applied on the page module front end routes
-    |--------------------------------------------------------------------------
-    */
-    'middleware' => [],
+  /*
+  |--------------------------------------------------------------------------
+  | Array of middleware that will be applied on the page module front end routes
+  |--------------------------------------------------------------------------
+  */
+  'middleware' => [],
+  'documentation' => [
+    'positions' => "ibanners::cms.documentation.banners",
+  ]
 ];

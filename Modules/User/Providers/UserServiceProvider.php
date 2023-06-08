@@ -79,7 +79,7 @@ class UserServiceProvider extends ServiceProvider
       GrantModulePermissionsCommand::class,
       RemoveModulePermissionsCommand::class,
     ]);
-
+    
     app('router')->bind('role', function ($id) {
       return app(RoleRepository::class)->find($id);
     });
@@ -104,7 +104,7 @@ class UserServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('user', 'permissions'), "asgard.user.permissions");
     $this->publishConfig('user', 'config');
 
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
     Auth::extend('sentinel-guard', function () {
       return new Sentinel();

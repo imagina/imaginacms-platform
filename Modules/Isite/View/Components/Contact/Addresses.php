@@ -4,25 +4,34 @@ namespace Modules\Isite\View\Components\Contact;
 
 use Illuminate\View\Component;
 
+use Modules\Setting\Entities\Setting;
+
 class Addresses extends Component
 {
   public $addresses;
   public $icon;
   public $showIcon;
+  public $central;
+  public $classes;
+  public $withHyphen;
 
   /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($icon = "fa fa-map-marker", $showIcon = true, $addresses = null)
+  public function __construct($icon = "fa fa-map-marker", $showIcon = true, $addresses = null,
+                              $central = false, $classes = null, $withHyphen = true)
   {
     $this->icon = $icon;
     $this->showIcon = $showIcon;
-    if(!empty($addresses)){
+    $this->classes = $classes ?? "";
+    $this->withHyphen = $withHyphen;
+    if (!empty($addresses)) {
       $this->addresses = !is_array($addresses) ? [$addresses] : $addresses;
-    }else
-      $this->addresses = json_decode(setting("isite::addresses", null, "[]"));
+    } else {
+      $this->addresses = json_decode(setting('isite::addresses', null, "[]", $central));
+    }
 
   }
 

@@ -163,15 +163,15 @@ class Tree extends Component
     if (isset($this->itemSelected->id) && $this->renderMode) {
       switch ($this->renderMode) {
         case 'allFamilyOfTheSelectedNode':
-          $ancestors = $this->entityClass::ancestorsAndSelf($this->itemSelected->id);
+          $ancestors = $this->entityClass::ancestorsAndSelf($this->itemSelected->id)->where("status",1);
           $rootItem = $ancestors->whereNull('parent_id')->first();
-          $this->items = $this->entityClass::descendantsAndSelf($rootItem->id);
+          $this->items = $this->entityClass::descendantsAndSelf($rootItem->id)->where("status",1);
           break;
         
         case 'onlyLeftAndRightOfTheSelectedNode':
-          $ancestors = $this->entityClass::ancestorsOf($this->itemSelected->id);
-          $descendants = $result = $this->entityClass::descendantsAndSelf($this->itemSelected->id);
-          $siblings = $this->itemSelected->getSiblings();
+          $ancestors = $this->entityClass::ancestorsOf($this->itemSelected->id)->where("status",1);
+          $descendants = $result = $this->entityClass::descendantsAndSelf($this->itemSelected->id)->where("status",1);
+          $siblings = $this->itemSelected->getSiblings()->where("status",1);
           $this->items = $ancestors->merge($descendants)->merge($siblings);
           break;
 

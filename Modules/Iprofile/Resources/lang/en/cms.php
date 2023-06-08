@@ -70,6 +70,17 @@ return [
   ],
   "quickCard" => [
     "lastUsers" => "Users - Last registered users"
+  ],
+  "documentation" => [
+    "user" => "Users are the way a person has access to your application through a username/email
+     and password. Each user can have one or several Roles which define the permissions to the functionalities of the
+     application. Thanks to the users, the application can identify who performs each action, such as who
+     created a certain record or who updated it.",
+    "departments" => "In this way it is possible to group several Users, with this functionality it is possible to filter,
+     limit or assign certain functionalities to users in a faster and easier way.",
+    "role" => "With the roles it is possible to assign permissions to the users with which they will be given access to each functionality
+     of the application. You can also link a Form to each role, with this it is possible to capture more data
+     when a user registers with this role"
   ]
 ];
 

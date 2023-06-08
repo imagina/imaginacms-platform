@@ -1,0 +1,19 @@
+{
+    "name": "Idocs",
+    "alias": "idocs",
+    "description": "",
+    "keywords": [],
+    "version": "1.0.4",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Idocs\\Providers\\IdocsServiceProvider",
+        "Modules\\Idocs\\Providers\\RouteServiceProvider",
+        "Modules\\Idocs\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+       "helpers.php"
+    ],
+    "requires": []
+}

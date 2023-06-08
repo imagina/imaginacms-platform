@@ -2,9 +2,9 @@
 $fields = $form->fields;
 ?>
 {{ csrf_field() }}
-<div class="form-group row">
+<div class="form-group row mb-0">
   @foreach($fields as $field)
-    <div class="col-12 col-sm-{{ $field->width ?? '12' }} py-1 px-1">
+    <div class="col-12 col-sm-{{ $field->width ?? '12' }} col-style">
       @switch($field->present()->type['value'])
         @case('text')
         @if(!empty($field->prefix) || !empty($field->suffix))
@@ -26,7 +26,7 @@ $fields = $form->fields;
               @endif
               @endif
               <input type="text"
-                     class="form-control-file bg-transparent {{ isset($fieldsParams[$field->name]) ? $fieldsParams[$field->name]['class'] ?? '' :'' }} {{ !empty($field->prefix) ? !empty($field->prefix->value) ? 'border-left-0' : '' : '' }} {{ !empty($field->suffix) ? !empty($field->suffix->value) ? 'border-right-0' : '' : '' }}"
+                     class="form-control bg-transparent {{ isset($fieldsParams[$field->name]) ? $fieldsParams[$field->name]['class'] ?? '' :'' }} {{ !empty($field->prefix) ? !empty($field->prefix->value) ? 'border-left-0' : '' : '' }} {{ !empty($field->suffix) ? !empty($field->suffix->value) ? 'border-right-0' : '' : '' }}"
                      name="{{$field->name}}"
                      value="{{ isset($fieldsParams[$field->name]) ? ($fieldsParams[$field->name]['value']) ?? '' : '' }}"
                      @if(isset($fieldsParams[$field->name]) && isset($fieldsParams[$field->name]['disabled'])) disabled

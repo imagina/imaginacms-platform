@@ -26,6 +26,11 @@ return [
     "internal" => "Página Interna",
     "external" => "Página Externa",
     "frontend" => "Página de frontend"
+  ],
+  'documentation' => [
+    'menus' => "Tu sitio WEB cuenta con uno o varios menos que ayudan con la navegación
+    está funcionalidad te permite administrar estos menus, modificando posiciones, elementos y textos 
+    de cada menu",
   ]
 ];
 

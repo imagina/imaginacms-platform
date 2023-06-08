@@ -5,6 +5,8 @@ namespace Modules\Media\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Str;
 
+use Modules\Setting\Entities\Setting;
+
 class SingleImage extends Component
 {
   /**
@@ -40,6 +42,9 @@ class SingleImage extends Component
   public $autoplayVideo;
   public $mutedVideo;
   public $loopVideo;
+  public $withVideoControls;
+  public $fetchPriority;
+  public $isSVG;
 
 
   public function __construct($src = '', $alt = '', $title = null, $url = null, $isMedia = false, $mediaFiles = null,
@@ -47,7 +52,8 @@ class SingleImage extends Component
                               $smallSrc = null, $fallback = null, $imgClasses = '', $linkClasses = '', $linkRel = '',
                               $defaultLinkClasses = 'image-link w-100', $imgStyles = '', $width = "300px",
                               $dataFancybox = null, $dataTarget = null, $dataSlideTo = null, $dataCaption = null,
-                              $target = "_self", $setting = '', $autoplayVideo = true, $loopVideo = true, $mutedVideo = true)
+                              $target = "_self", $setting = '', $autoplayVideo = false, $loopVideo = true,
+                              $mutedVideo = true, $central = false, $withVideoControls = false, $fetchPriority = "low")
   {
     $this->src = $src;
     $this->alt = !empty($alt) ? $alt : $mediaFiles->{$zone}->alt ?? $mediaFiles->alt ?? "";
@@ -68,12 +74,18 @@ class SingleImage extends Component
     $this->autoplayVideo = $autoplayVideo;
     $this->loopVideo = $loopVideo;
     $this->mutedVideo = $mutedVideo;
+    $this->withVideoControls = $withVideoControls;
+    $this->isSVG = false;
+    if (isset($mediaFiles->{$zone}->mimeType) && $mediaFiles->{$zone}->mimeType == "image/svg+xml" ||
+      isset($mediaFiles->mimeType) && $mediaFiles->mimeType == "image/svg+xml") {
+      $this->isSVG = true;
+    }
+    $this->fetchPriority = $fetchPriority;
     if (!empty($setting)) {
-
+      
       $settingRepository = app("Modules\Setting\Repositories\SettingRepository");
-
-      $setting = $settingRepository->findByName($setting);
-
+      $setting = $settingRepository->findByName($setting, $central);
+      
       if (isset($setting->id)) {
         $isMedia = true;
         $zone = "setting::mainimage";
@@ -92,6 +104,9 @@ class SingleImage extends Component
       $this->mediaFiles = $mediaFiles;
       $this->zone = $zone ?? "mainimage";
       $this->src = $mediaFiles->{$zone}->extraLargeThumb ?? $mediaFiles->extraLargeThumb;
+      if ($this->isSVG) {
+        $this->src = $mediaFiles->{$zone}->path ?? $mediaFiles->path;
+      }
       $this->fallback = $mediaFiles->{$zone}->path ?? $mediaFiles->path;
       $this->extraLargeSrc = $mediaFiles->{$zone}->extraLargeThumb ?? $mediaFiles->extraLargeThumb;
       $this->largeSrc = $mediaFiles->{$zone}->largeThumb ?? $mediaFiles->largeThumb;

@@ -8,6 +8,7 @@ class Icrud extends CrudModel
 {
   protected $table = 'isite__icruds';
   public $transformer = 'Modules\Isite\Transformers\IcrudTransformer';
+  public $repository = 'Modules\Isite\Repositories\IcrudRepository';
   public $requestValidation = [
     'create' => 'Modules\Isite\Http\Requests\CreateIcrudRequest',
     'update' => 'Modules\Isite\Http\Requests\UpdateIcrudRequest',

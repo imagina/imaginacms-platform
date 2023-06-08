@@ -64,9 +64,9 @@ class EloquentCityRepository extends EloquentBaseRepository implements CityRepos
 
     /*== RELATIONSHIPS ==*/
     if (in_array('*', $params->include ?? [])) {//If Request all relationships
-      $query->with(['province', 'country']);
+      $query->with(['province', 'country','translations']);
     } else {//Especific relationships
-      $includeDefault = [];//Default relationships
+      $includeDefault = ['translations'];//Default relationships
       if (isset($params->include))//merge relations with default relationships
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
@@ -75,6 +75,11 @@ class EloquentCityRepository extends EloquentBaseRepository implements CityRepos
     /*== FILTERS ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;//Short filter
+
+      //filter by Id
+      if (isset($filter->id)) {
+        $query->whereIn('id', (array)$filter->id);
+      }
 
       //add filter by search
       if (isset($filter->search)) {
@@ -114,11 +119,20 @@ class EloquentCityRepository extends EloquentBaseRepository implements CityRepos
           $query->whereDate($date->field, '<=', $date->to);
       }
 
-      //Order by
-      if (isset($filter->order)) {
-        $orderByField = $filter->order->field ?? 'created_at';//Default field
-        $orderWay = $filter->order->way ?? 'desc';//Default way
-        $query->orderBy($orderByField, $orderWay);//Add order to query
+      // ORDER
+      if (isset($filter->order) && $filter->order) {
+
+        $order = is_array($filter->order) ? $filter->order : [$filter->order];
+
+        foreach ($order as $orderObject) {
+          if (isset($orderObject->field) && isset($orderObject->way)) {
+            if (in_array($orderObject->field, $this->model->translatedAttributes)) {
+              $query->orderByTranslation($orderObject->field, $orderObject->way);
+            } else
+              $query->orderBy($orderObject->field, $orderObject->way);
+          }
+
+        }
       }
     }
 
@@ -129,22 +143,22 @@ class EloquentCityRepository extends EloquentBaseRepository implements CityRepos
         $query->whereHas("country", function ($query) use ($availableCountries){
           $query->whereIn("ilocations__countries.iso_2",$availableCountries);
         });
-      
+
       }
     }
-  
+
     $availableProvinces = json_decode(setting("ilocations::availableProvinces", null, "[]"));
-  
+
     /*=== SETTINGS ===*/
     if (!empty($availableProvinces) && !isset($params->filter->indexAll)) {
       if (!isset($params->permissions['ilocations.cities.manage']) || (!$params->permissions['ilocations.cities.manage'])) {
         $query->whereHas("province", function ($query) use ($availableProvinces){
           $query->whereIn("ilocations__provinces.iso_2",$availableProvinces);
         });
-    
+
       }
     }
-    
+
 
     $availableCities = json_decode(setting("ilocations::availableCities", null, "[]"));
 
@@ -175,37 +189,37 @@ class EloquentCityRepository extends EloquentBaseRepository implements CityRepos
   {
     //Initialize query
     $query = $this->model->query();
-    
+
     /*== RELATIONSHIPS ==*/
     if (in_array('*', $params->include)) {//If Request all relationships
-      $query->with(['province', 'country']);
+      $query->with(['province', 'country','translations']);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
       if (isset($params->include))//merge relations with default relationships
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
     }
-    
+
     /*== FILTER ==*/
     if (isset($params->filter)) {
       $filter = $params->filter;
-      
+
       if (isset($filter->field))//Filter by specific field
         $field = $filter->field;
     }
-    
+
     /*== FIELDS ==*/
     if (isset($params->fields) && count($params->fields))
       $query->select($params->fields);
-    
+
     /*== REQUEST ==*/
     return $query->where($field ?? 'id', $criteria)->first();
   }
-  
+
   public function whereByCountry($id)
   {
-    
+
     return $this->model->where('country_id', $id)->get();
   }
-  
+
 }

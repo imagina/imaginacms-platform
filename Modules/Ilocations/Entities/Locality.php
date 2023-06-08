@@ -11,6 +11,7 @@ class Locality extends CrudModel
 
   protected $table = 'ilocations__localities';
   public $transformer = 'Modules\Ilocations\Transformers\LocalityTransformer';
+  public $repository = 'Modules\Ilocations\Repositories\LocalityRepository';
   public $requestValidation = [
     'create' => 'Modules\Ilocations\Http\Requests\CreateLocalityRequest',
     'update' => 'Modules\Ilocations\Http\Requests\UpdateLocalityRequest',

@@ -31,7 +31,7 @@ class CacheRuleDecorator extends BaseCacheDecorator implements RuleRepository
    *
    * @return object
    */
-  public function getItem($criteria, $params)
+  public function getItem($criteria, $params = false)
   {
     return $this->remember(function () use ($criteria, $params) {
       return $this->repository->getItem($criteria, $params);
@@ -54,7 +54,7 @@ class CacheRuleDecorator extends BaseCacheDecorator implements RuleRepository
    *
    * @return mixed
    */
-  public function updateBy($criteria, $data, $params)
+  public function updateBy($criteria, $data, $params = false)
   {
     $this->clearCache();
     
@@ -66,7 +66,7 @@ class CacheRuleDecorator extends BaseCacheDecorator implements RuleRepository
    *
    * @return mixed
    */
-  public function deleteBy($criteria, $params)
+  public function deleteBy($criteria, $params = false)
   {
     $this->clearCache();
     

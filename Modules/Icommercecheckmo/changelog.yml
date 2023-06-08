@@ -1,0 +1,8 @@
+url: https://github.com/imagina/asgardcms-icommercecheckmo
+versions:
+  "1.0.1":
+    Changed:
+      - Add 'attributes' to order and transaction
+  "1.0.0":
+    added:
+      - Inital Version Icommerce Checkmo Payment Method

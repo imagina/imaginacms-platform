@@ -9,7 +9,6 @@ class CreateProvinceRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'name' => 'required',
           'iso_2' => 'required',
           'country_id' => 'required',
         ];
@@ -17,7 +16,9 @@ class CreateProvinceRequest extends BaseFormRequest
 
     public function translationRules()
     {
-        return [];
+      return [
+        'name' => 'required|min:2'
+      ];
     }
 
     public function authorize()

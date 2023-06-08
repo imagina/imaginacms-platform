@@ -11,6 +11,7 @@ class Field extends CrudModel
 
   protected $table = 'ifillable__fields';
   public $transformer = 'Modules\Ifillable\Transformers\FieldTransformer';
+  public $repository = 'Modules\Ifillable\Repositories\FieldRepository';
   public $requestValidation = [
     'create' => 'Modules\Ifillable\Http\Requests\CreateFieldRequest',
     'update' => 'Modules\Ifillable\Http\Requests\UpdateFieldRequest',

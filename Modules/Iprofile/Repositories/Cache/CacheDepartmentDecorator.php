@@ -31,7 +31,7 @@ class CacheDepartmentDecorator extends BaseCacheDecorator implements DepartmentR
    *
    * @return object
    */
-  public function getItem($criteria, $params)
+  public function getItem($criteria, $params = false)
   {
     return $this->remember(function () use ($criteria, $params) {
       return $this->repository->getItem($criteria, $params);
@@ -56,7 +56,7 @@ class CacheDepartmentDecorator extends BaseCacheDecorator implements DepartmentR
    *
    * @return mixed
    */
-  public function updateBy($criteria, $data, $params)
+  public function updateBy($criteria, $data, $params = false)
   {
     $this->clearCache();
     return $this->repository->updateBy($criteria, $data, $params);
@@ -67,7 +67,7 @@ class CacheDepartmentDecorator extends BaseCacheDecorator implements DepartmentR
    *
    * @return mixed
    */
-  public function deleteBy($criteria, $params)
+  public function deleteBy($criteria, $params = false)
   {
     $this->clearCache();
     return $this->repository->deleteBy($criteria, $params);

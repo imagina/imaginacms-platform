@@ -100,6 +100,15 @@ class RouterGenerator
           'uses' => $params['controller'] . "@restore",
           'middleware' => isset($params['middleware']['restore']) ? $params['middleware']['restore'] : ['auth:api']
         ]
+      ],
+      (object)[//Route bulk order
+        'method' => 'put',
+        'path' => '/bulk/order',
+        'actions' => [
+          'as' => "api.{$params['module']}.{$params['prefix']}.bulk-order",
+          'uses' => $params['controller'] . "@bulkOrder",
+          'middleware' => isset($params['middleware']['order']) ? $params['middleware']['order'] : ['auth:api']
+        ]
       ]
     ];
   }

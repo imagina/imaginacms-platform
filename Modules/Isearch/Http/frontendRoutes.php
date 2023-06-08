@@ -2,13 +2,15 @@
 
 use Illuminate\Routing\Router;
 
+
+$locale = LaravelLocalization::setLocale() ?: App::getLocale();
+
 /** @var Router $router */
-$router->group(['prefix' => trans('isearch::common.url')], function (Router $router) {
+$router->group(['middleware' => ['localize']], function (Router $router) use ($locale) {
+  
 
-    $locale = LaravelLocalization::setLocale() ?: App::getLocale();
-
-    $router->get('/', [
-        'as' => $locale.'.isearch.search',
+    $router->get(trans('isearch::routes.url',[],$locale), [
+        'as' => 'isearch.search',
         'uses' => 'PublicController@search'
     ]);
 	

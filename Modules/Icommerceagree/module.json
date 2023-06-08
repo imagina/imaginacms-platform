@@ -1,0 +1,18 @@
+{
+    "name": "Icommerceagree",
+    "alias": "icommerceagree",
+    "description": "I Agree - ShippingMethod Module to Icommerce",
+    "keywords": [],
+    "version": "2.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommerceagree\\Providers\\IcommerceagreeServiceProvider",
+        "Modules\\Icommerceagree\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

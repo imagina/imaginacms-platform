@@ -4,11 +4,11 @@ $fields = $form->fields;
 {{ csrf_field() }}
 <div class="form-group row">
   @foreach($fields as $index => $field)
-    <div class="col-12 col-sm-{{ $field->width ?? '12' }} py-1 px-1 {{$field->name}}">
+    <div class="col-12 col-sm-{{ $field->width ?? '12' }} col-style {{$field->name}}">
       @switch($field->present()->type['value'])
         @case('text')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="text"
@@ -27,8 +27,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('textarea')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <textarea
@@ -47,8 +47,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('number')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="number"
@@ -67,8 +67,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('email')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="email"
@@ -88,8 +88,8 @@ $fields = $form->fields;
         @break
         @case('select')
         @case('selectmultiple')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             @php
@@ -116,8 +116,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('radio')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           @php
             $options = $field->options->fieldOptions ?? json_decode($field->selectable)
           @endphp
@@ -131,8 +131,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('phone')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="phone"
@@ -151,8 +151,8 @@ $fields = $form->fields;
         </div>
         @break
         @case('date')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="date"
@@ -171,10 +171,10 @@ $fields = $form->fields;
         </div>
         @break
         @case('file')
-        <label for="input{{$field->name}}" class="col-12 py-1 px-1 col-form-label">{{$field->label}}
+        <label for="input{{$field->name}}" class="py-1 px-0 col-form-label">{{$field->label}}
           {{!empty($field->rule_accept) ? "(".$field->rule_accept.")" : "" }}
         </label>
-        <div class="col-12 py-1 px-1">
+        <div class="input-frame">
           <div class="input-group flex-nowrap">
             @include('iforms::frontend.partials.xfix',["xfix" => $field->prefix,"type"=>"pre"])
             <input type="file"
@@ -189,8 +189,8 @@ $fields = $form->fields;
         </div>
         @break
         @default
-        <label class="col-12 py-1 px-1 col-form-label">{{$field->label}}</label>
-        <div class="col-12 py-1 px-1">
+        <label class="py-1 px-0 col-form-label">{{$field->label}}</label>
+        <div class="input-frame">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="input{{$field->name}}"
                    value="{{ isset($fieldsParams[$field->name]) ? ($fieldsParams[$field->name]['value'] ?? '') : '' }}"

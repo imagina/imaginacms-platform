@@ -27,6 +27,7 @@ class SendEmail
     $lead = $event->entity;
     $form = $event->data['form'];
     $reply = $event->data['reply'];
+
     $sender = $this->setting->get('core::site-name');
   
     //Emails from setting iforms::from-email
@@ -57,7 +58,7 @@ class SendEmail
   
     //send notification by email, broadcast and push -- by default only send by email
     $this->notificationService->to([
-      "email" => $emailsTo                    ,
+      "email" => $emailsTo,
       "broadcast" => $users->pluck('id')->toArray(),
       "push" => $users->pluck('id')->toArray(),
     ])->push(
@@ -67,6 +68,7 @@ class SendEmail
         "icon_class" => "fas fa-clipboard-list",
         "link" => env("APP_URL")."/iadmin/#/form/lead/?viewLead=$lead->id",
         "content" => "iforms::emails.textform",
+        "replyTo" => $reply,
         "setting" => [
           "saveInDatabase" => 1 // now, the notifications with type broadcast need to be save in database to really send the notification
         ],

@@ -4,6 +4,8 @@ namespace Modules\Isite\View\Components;
 
 use Illuminate\View\Component;
 
+use Modules\Setting\Entities\Setting;
+
 class Whatsapp extends Component
 {
 
@@ -29,6 +31,15 @@ class Whatsapp extends Component
   public $numbers;
   public $editButton;
   public $notNumber;
+  public $central;
+  private $country;
+  public $titleInternal;
+  public $summaryInternal;
+  public $infoTitleColor;
+  public $infoSubtitleColor;
+  public $dropdownTextAlign;
+  public $alignmentMsn;
+  public $alignmentWin;
   /**
    * Create a new component instance.
    *
@@ -37,8 +48,10 @@ class Whatsapp extends Component
   public function __construct(
     $layout = 'whatsapp-layout-1', $title = '', $id = 'whatsappComponent', $mask = 1,
     $icon = 'fa fa-whatsapp', $alignment = 'dropleft', $parentAttributes = [],
-    $top = '50%', $bottom = null, $right = null, $left= null, $type = '', $size = 'lg', $iconLabel = '',
-    $notNumber = true, $numbers = [], $editButton = true
+    $top = null, $bottom = null, $right = null, $left= null, $type = '', $size = 'lg', $iconLabel = '',
+    $notNumber = true, $numbers = [], $editButton = true, $central = false, $titleInternal = '',
+    $summaryInternal = '', $infoTitleColor = null, $infoSubtitleColor = null,
+    $dropdownTextAlign = 'text-center', $alignmentMsn = '', $alignmentWin = ''
   )
   {
     $this->layout = $layout ?? 'whatsapp-layout-1';
@@ -50,16 +63,25 @@ class Whatsapp extends Component
     $this->size = $size ?? 'lg';
     $this->type = $type ?? '';
     $this->view = "isite::frontend.components.whatsapp.layouts.{$this->layout}.index";
-    $this->top = $top ?? '50%';
-    $this->bottom = $bottom ?? 'unset';
-    $this->right = $right ?? ($layout == 'whatsapp-layout-4' ? '10px' : 'unset');
-    $this->left = $left ?? ($layout == 'whatsapp-layout-3' ? '0px' : 'unset');
+    $this->top = $top;
+    $this->bottom = $bottom;
+    $this->right = $right;
+    $this->left = $left;
     $this->setParentAttributes($parentAttributes);
     $this->iconLabel = $iconLabel ?? '';
     $this->notNumber = $notNumber ?? true;
     $this->numbers = $numbers ?? null;
     $this->editButton = $editButton ?? true;
- 
+    $this->central = $central;
+    $this->titleInternal = $titleInternal;
+    $this->summaryInternal = $summaryInternal;
+    $this->infoTitleColor = $infoTitleColor ?? ($layout == 'whatsapp-layout-5' ? 'var(--primary)' : 'var(--dark)');
+    $this->infoSubtitleColor = $infoSubtitleColor ?? 'var(--dark)';
+    $this->dropdownTextAlign = $dropdownTextAlign;
+    $this->alignmentMsn = $alignmentMsn;
+    $this->alignmentWin = $alignmentWin;
+
+    //dd($this->central,$central);
   }
 
   private function setParentAttributes($parentAttributes)
@@ -78,23 +100,29 @@ class Whatsapp extends Component
     {
         $items = [];
         $countryParams = [
-          'include' => ['*'],
+          'include' => [],
           'filter' => [
               'field' => 'calling_code'
           ]
         ];
         
         for($i=0;$i<3;$i++) {
-          if(empty($this->numbers))
-            $item = json_decode(setting('isite::whatsapp'.($i+1)));
-          else
+          if(empty($this->numbers)){
+           
+            $item = json_decode(setting('isite::whatsapp'.($i+1),null,'',$this->central));
+          }else
             $item = (object)($this->numbers[$i] ?? []);
           
             if(!empty($item->callingCode) && !empty($item->number)){
-                $item->country = app('Modules\\Ilocations\\Repositories\\CountryRepository')
+                if(!empty($this->country) && $this->country->calling_code == $item->callingCode) $item->country = $this->country;
+                else{
+                  $item->country = $this->country = app('Modules\\Ilocations\\Repositories\\CountryRepository')
                     ->getItem($item->callingCode,json_decode(json_encode($countryParams)));
+                }
+                
                 $item->formattedNumber =  "({$item->country->iso_2}) ".$this->formatNumber($item->number, $this->mask);
                 $items[] = $item;
+                
             }
         }
 

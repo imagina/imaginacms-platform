@@ -28,6 +28,7 @@ class IcustomServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfig('icustom', 'permissions');
+        $this->publishConfig('icustom', 'config');
     }
 
     /**

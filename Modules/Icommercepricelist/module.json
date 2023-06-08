@@ -1,0 +1,16 @@
+{
+    "name": "Icommercepricelist",
+    "alias": "icommercepricelist",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommercepricelist\\Providers\\EventServiceProvider",
+        "Modules\\Icommercepricelist\\Providers\\IcommercepricelistServiceProvider",
+        "Modules\\Icommercepricelist\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

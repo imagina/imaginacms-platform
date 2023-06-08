@@ -71,5 +71,30 @@ return [
     'group_name' => 'Plantillas',
     'label_posts' => 'Plantilla para Entradas De Blog',
     'label_categories' => 'Plantilla para Categorías De Blog',
-  ]
+    'titlePostRecent' => 'Artículos recientes',
+    'viewMore' => 'Ver más',
+    'titleRelatedPosts' => 'Artículos relacionados',
+    'titleArticles' => 'Artículos',
+    'labelArrayItemComponentsAttributesBlog' => 'Configuración Del Item Para Plantillas Del Blog (Array)',
+    'posts' => [
+      'layout6' => [
+        'titleCarousel' => 'Artículos Relacionados',
+      ]
+    ]
+  ],
+  "groups" => [
+    "searcher" => "Motor de búsqueda"
+  ],
+  "settings" => [
+    "searcherOrder" => "Ordenamiento de búsqueda",
+    "searchFields" => "Campos de búsqueda para artículos",
+    "options" => [
+      "title" => "Título del artículo",
+      "summary" => "Resumen del artículo",
+      "description" => "Descripción del artículo",
+    ]
+  ],
+  'crudFields' => [
+    'labelValueIdFieldTimeLine' => 'Valor Campo Identificador Para Artículos De Linea De Tiempo',
+  ],
 ];

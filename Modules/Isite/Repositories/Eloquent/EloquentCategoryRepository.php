@@ -5,6 +5,8 @@ namespace Modules\Isite\Repositories\Eloquent;
 use Modules\Isite\Repositories\CategoryRepository;
 use Modules\Core\Icrud\Repositories\Eloquent\EloquentCrudRepository;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class EloquentCategoryRepository extends EloquentCrudRepository implements CategoryRepository
 {
   /**
@@ -24,9 +26,10 @@ class EloquentCategoryRepository extends EloquentCrudRepository implements Categ
    *
    * @param $query
    * @param $filter
+   * @param $params
    * @return mixed
    */
-  public function filterQuery($query, $filter)
+  public function filterQuery($query, $filter, $params)
   {
     /**
      * Note: Add filter name to replaceFilters attribute before replace it
@@ -35,6 +38,14 @@ class EloquentCategoryRepository extends EloquentCrudRepository implements Categ
      * if (isset($filter->status)) $query->where('status', $filter->status);
      *
      */
+
+    if (isset($filter->search)) { //si hay que filtrar por rango de precio
+      $query->where(function ($query) use ($filter) {
+        $query->whereHas('translations', function (Builder $q) use ($filter) {
+          $q->where('title', 'like', "%{$filter->search}%");
+        });
+      })->orWhere('id', 'like', '%' . $filter->search . '%');
+    }
 
     //Response
     return $query;
@@ -64,4 +75,39 @@ class EloquentCategoryRepository extends EloquentCrudRepository implements Categ
     //Response
     return $model;
   }
+
+  /**
+   * Find a resource by the given slug
+   *
+   * @param string $slug
+   * @return object
+   */
+  public function findBySlug($slug)
+  {
+    if (method_exists($this->model, 'translations')) {
+
+
+      $query = $this->model->whereHas('translations', function (Builder $q) use ($slug) {
+        $q->where('slug', $slug);
+      })->with('translations', 'parent', 'children');
+
+    } else
+      $query = $this->model->where('slug', $slug)->with('translations', 'parent', 'children');
+
+    $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData",null,"[]"));
+    $tenantWithCentralData = in_array("categories",$entitiesWithCentralData);
+
+    if ($tenantWithCentralData && isset(tenant()->id)) {
+      $model = $this->model;
+
+      $query->withoutTenancy();
+      $query->where(function ($query) use ($model) {
+        $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
+          ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
+      });
+    }
+
+    return $query->first();
+  }
+
 }

@@ -58,7 +58,7 @@ class IbannersServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('ibanners', 'cmsSidebar'), "asgard.ibanners.cmsSidebar");
 
     $this->registerPositions();
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'ibanners');
   }
 

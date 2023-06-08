@@ -146,7 +146,7 @@ class IformOrganizationDefaultRegisterTableSeeder extends Seeder
 
         $fieldRepository->create([
           "form_id" => $form->id,
-          "block_id" => $fieldsBlock->id,
+          "block_id" => $organizationBlock->id,
           "es" => [
             "label" => trans("isite::forms.organizationDefaultRegister.organization.category", [], "es"),
           ],

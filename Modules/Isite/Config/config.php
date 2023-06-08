@@ -80,7 +80,7 @@ return [
       ],
     ]
   ],
-  
+
   /*Layout Posts itemTabs - Index */
   'layoutIndexItemTabs' => [
     'default' => 'three',
@@ -121,6 +121,10 @@ return [
     'organization' => [
       'mainimage' => 'single',
       'secondaryimage' => 'single',
+      'gallery' => 'multiple',
+    ],
+    'layout' => [
+      'mainimage' => 'single',
       'gallery' => 'multiple',
     ],
   ],
@@ -188,28 +192,109 @@ return [
   | Define config to list layout 4
   |--------------------------------------------------------------------------
   */
-    "indexItemListAttributesMain" => [
-        'withCreatedDate' => true,
-        'withSummary'=> false,
-        'layout' => 'item-list-layout-6',
-        'imageAspect' => '4/3',
-        'titleColor'=>'text-dark',
-        'createdDateColor'=>'text-light',
-        'formatCreatedDate'=>'d \d\e M, Y',
-        'titleHeight' => 'auto',
+  "indexItemListAttributesMain" => [
+    'withCreatedDate' => true,
+    'withSummary' => false,
+    'layout' => 'item-list-layout-6',
+    'imageAspect' => '4/3',
+    'titleColor' => 'text-dark',
+    'createdDateColor' => 'text-light',
+    'formatCreatedDate' => 'd \d\e M, Y',
+    'titleHeight' => 'auto',
+  ],
+  "indexItemListAttributesList" => [
+    'withCreatedDate' => true,
+    'withSummary' => false,
+    'layout' => 'item-list-layout-7',
+    'imageAspect' => '16/9',
+    'imagePosition' => '3',
+    'summaryTextSize' => '14',
+    'titleHeight' => 'auto',
+    'titleColor' => 'text-dark',
+    'createdDateColor' => 'text-light',
+    'formatCreatedDate' => 'd \d\e M, Y',
+    'titleTextSize' => 18,
+    'contentPositionVertical' => 'align-self-start'
+  ],
+
+  /*
+  |--------------------------------------------------------------------------
+  | Define config to organizations
+  |--------------------------------------------------------------------------
+  */
+
+  'organizations' => [
+
+    'layoutIndex' => [
+      'default' => 'three',
+      'options' => [
+        'four' => [
+          'name' => 'four',
+          'class' => 'col-6 col-md-4 col-lg-3',
+          'icon' => 'fa fa-th-large',
+          'status' => true
+        ],
+        'three' => [
+          'name' => 'three',
+          'class' => 'col-6 col-md-4 col-lg-4',
+          'icon' => 'fa fa-square-o',
+          'status' => true
+        ],
+        'one' => [
+          'name' => 'one',
+          'class' => 'col-12',
+          'icon' => 'fa fa-align-justify',
+          'status' => true
+        ],
+      ]
     ],
-    "indexItemListAttributesList" => [
-        'withCreatedDate' => true,
-        'withSummary'=> false,
-        'layout' => 'item-list-layout-7',
-        'imageAspect' => '16/9',
-        'imagePosition' => '3',
-        'summaryTextSize' => '14',
-        'titleHeight' => 'auto',
-        'titleColor'=>'text-dark',
-        'createdDateColor'=>'text-light',
-        'formatCreatedDate'=>'d \d\e M, Y',
-        'titleTextSize'=>18,
-        'contentPositionVertical' => 'align-self-start'
-    ],
+
+    "indexItemListAttributes" => [
+      'withViewMoreButton' => false,
+      'withCategory' => false,
+      'withSummary' => false,
+      'withCreatedDate' => false,
+      'layout' => 'item-list-layout-6'
+    ]
+
+  ],
+
+
+  /*
+   |--------------------------------------------------------------------------
+   | Define format money
+   |--------------------------------------------------------------------------
+   */
+  'siteFormatmoney' => [
+    'decimals' => 0,
+    'dec_point' => '',
+    'housands_sep' => '.'
+  ],
+
+  /*
+  |--------------------------------------------------------------------------
+  | Define ips allowed to middleware CheckIp
+  |--------------------------------------------------------------------------
+  */
+  'ipsAllowed' => [
+    //'xxx.xx.xx.xx'
+  ],
+  'documentation' => [
+    'settings' => "isite::cms.documentation.settings",
+  ],
+
+  /*
+   |--------------------------------------------------------------------------
+   | Define format money to the money in sites without icommerce
+   |--------------------------------------------------------------------------
+   */
+  'isiteFormatMoney' => [
+    'symbol_left' => '$',
+    'symbol_right' => '',
+    'decimals' => 0,
+    'decimal_separator' => '.',
+    'thousands_separator' => ',',
+    'code' => 'USD',
+    'value' => 1
+  ],
 ];

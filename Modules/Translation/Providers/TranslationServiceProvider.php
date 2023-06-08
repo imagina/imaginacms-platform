@@ -72,7 +72,7 @@ class TranslationServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'cmsSidebar'), "asgard.translation.cmsSidebar");
 
     $this->registerValidators();
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
     if ($this->app->runningInConsole() === true) {
       return;

@@ -10,6 +10,7 @@ use Carbon\Carbon as Time;
 class WorkTime extends CrudModel
 {
   public $transformer = 'Modules\Ischedulable\Transformers\WorkTimeTransformer';
+  public $repository = 'Modules\Ischedulable\Repositories\WorkTimeRepository';
   public $requestValidation = [
     'create' => 'Modules\Ischedulable\Http\Requests\CreateWorkTimeRequest',
     'update' => 'Modules\Ischedulable\Http\Requests\UpdateWorkTimeRequest',

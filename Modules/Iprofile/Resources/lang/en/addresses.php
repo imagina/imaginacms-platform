@@ -27,7 +27,7 @@ return [
     "address" => "Address",
     "phone" => "Phone",
     "city" => "City",
-    "state" => "Province",
+    "state" => "Province/State",
     "country" => "Country",
     "select_country" => "Select a country",
     "select_province" => "Select a province",
@@ -42,6 +42,9 @@ return [
     'documentType' => 'Document Type',
     'documentNumber' => 'Document Number',
     'extraInfo' => 'Extra Info',
+    'cantFindMyCity' => 'I can\'t find my city',
+    'customCityPlaceholder' => 'Type your city here',
+    'email' => 'Email'
   ],
   'messages' => [
     "created" => "Address created successfully"
@@ -64,6 +67,10 @@ return [
     "telephone" => [
       "min" => "5 digits minimum",
       "max" => "10 digits maximum",
+    ],
+    'alerts' => [
+      'invalid_data' => 'invalid information',
+      'missing_fields' => 'Required fields are missing, fill out and send again',
     ],
   ],
 ];

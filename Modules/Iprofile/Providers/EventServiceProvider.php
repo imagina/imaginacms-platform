@@ -7,18 +7,27 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 //Events
 use Modules\Iprofile\Events\UserCreatedEvent;
 use Modules\Iprofile\Events\UserUpdatedEvent;
+use Modules\User\Events\UserWasCreated;
 
 //Handlers
 use Modules\Iprofile\Events\Handlers\CreateUserPasswordHistory;
+use Modules\Iprofile\Events\Handlers\CreateQrByDepartments;
+use Modules\Iprofile\Events\Handlers\NotificationUserCreatedToAdmins;
 
 class EventServiceProvider extends ServiceProvider
 {
-    protected $listen = [
-        UserCreatedEvent::class => [
-            CreateUserPasswordHistory::class
-        ],
-        UserUpdatedEvent::class => [
-            CreateUserPasswordHistory::class
-        ]
-    ];
+  protected $listen = [
+    UserCreatedEvent::class => [
+      CreateUserPasswordHistory::class,
+      CreateQrByDepartments::class,
+      NotificationUserCreatedToAdmins::class
+    ],
+    UserUpdatedEvent::class => [
+      CreateUserPasswordHistory::class,
+      CreateQrByDepartments::class
+    ],
+    UserWasCreated::class => [
+      NotificationUserCreatedToAdmins::class
+    ],
+  ];
 }

@@ -49,7 +49,7 @@ class IlocationsServiceProvider extends ServiceProvider
       $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'settings-fields'), "asgard.ilocations.settings-fields");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'cmsPages'), "asgard.ilocations.cmsPages");
       $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'cmsSidebar'), "asgard.ilocations.cmsSidebar");
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

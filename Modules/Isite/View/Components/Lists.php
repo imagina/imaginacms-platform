@@ -42,6 +42,21 @@ class Lists extends Component
     public $itemComponentNamespace;
     public $titleUrl;
     public $titleTarget;
+    public $itemComponentAttributes;
+    public $titleClasses;
+    public $subtitle;
+    public $subtitleSize;
+    public $subtitleColor;
+    public $subtitleWeight;
+    public $subtitleTransform;
+    public $subtitleLetterSpacing;
+    public $subtitleClasses;
+    public $textPosition;
+    public $textAlign;
+    public $columnLayout;
+    public $columns;
+    public $withLineTitle;
+    public $lineTitleConfig;
 
 
     /**
@@ -78,7 +93,22 @@ class Lists extends Component
                                 $itemComponentAttributesList = [],
                                 $itemComponentNamespace = null,
                                 $titleUrl = null,
-                                $titleTarget = "_self"
+                                $titleTarget = "_self",
+                                $itemLayout = null,
+                                $itemComponentAttributes = [],
+                                $subtitle = "",
+                                $subtitleSize = null,
+                                $subtitleWeight = "font-weight-normal",
+                                $subtitleTransform = null,
+                                $subtitleLetterSpacing = 0,
+                                $textPosition = 2,
+                                $textAlign = "",
+                                $subtitleColor = null,
+                                $titleClasses = "",
+                                $subtitleClasses = "",
+                                $columns = "",
+                                $withLineTitle = 0,
+                                $lineTitleConfig = []
     )
     {
 
@@ -92,10 +122,9 @@ class Lists extends Component
         $this->class = $class;
         $this->buttonTitle = $buttonTitle ?? 'Ver más';
 
+        $this->itemLayout = $itemLayout ?? $itemComponentAttributes["itemLayout"] ?? null;
+        $this->itemComponent = $itemComponent ?? "isite::item-list";
         $this->view = "isite::frontend.components.lists.layouts.{$this->layout}.index";
-
-        $this->getItems();
-
         $this->emptyItems = false;
         $this->columnLeft = $columnLeft;
         $this->columnRight = $columnRight;
@@ -111,12 +140,33 @@ class Lists extends Component
         $this->titleWeight = $titleWeight;
         $this->titleTransform = $titleTransform;
         $this->titleLetterSpacing = $titleLetterSpacing;
-        $this->itemComponent = $itemComponent ?? "isite::item-list";
         $this->itemComponentNamespace =  $itemComponentNamespace ?? "Modules\Isite\View\Components\ItemList";
         $this->itemComponentAttributesMain = count($itemComponentAttributesMain) ? $itemComponentAttributesMain : config('asgard.isite.config.indexItemListAttributesMain');
         $this->itemComponentAttributesList = count($itemComponentAttributesList) ? $itemComponentAttributesList : config('asgard.isite.config.indexItemListAttributesList');
+        $this->itemComponentAttributes = $itemComponentAttributes;
         $this->titleUrl = $titleUrl;
         $this->titleTarget = $titleTarget;
+        $this->subtitle = $subtitle;
+        $this->subtitleSize = $subtitleSize;
+        $this->subtitleWeight = $subtitleWeight;
+        $this->subtitleTransform = $subtitleTransform;
+        $this->subtitleLetterSpacing = $subtitleLetterSpacing;
+        $this->textPosition = $textPosition;
+        $this->textAlign = $textAlign;
+        $this->subtitleColor = $subtitleColor;
+        $this->titleClasses = $titleClasses;
+        $this->subtitleClasses = $subtitleClasses;
+        $this->columnLayout = explode(",",$columns);
+        if($layout=="lists-layout-5" && empty($columns)) {
+            $this->columnLayout = [$columnLeft];
+        }
+        $this->withLineTitle = $withLineTitle;
+        $this->lineTitleConfig = !empty($lineTitleConfig) ? $lineTitleConfig : [
+            "background" => "var(--primary)",
+            "height" => "2px",
+            "width" => "10%",
+            "margin" => "0 auto"];
+        $this->getItems();
     }
 
     private
@@ -137,7 +187,19 @@ class Lists extends Component
     {
 
         $this->items = app($this->repository)->getItemsBy(json_decode(json_encode($this->makeParamsFunction())));
-
+        switch ($this->repository) {
+            case 'Modules\Icommerce\Repositories\ProductRepository':
+                !$this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
+                if (is_module_enabled("Icommerce") && $this->itemComponent == "isite::item-list") {
+                    $this->itemComponent = "icommerce::product-list-item";
+                    $this->itemComponentNamespace = "Modules\Icommerce\View\Components\ProductListItem";
+                    $this->itemComponentAttributes["layout"]="product-list-item-layout-1";
+                }
+                break;
+        }
+        if ($this->items->isEmpty()) {
+            $this->emptyItems = true;
+        }
     }
 
     /**

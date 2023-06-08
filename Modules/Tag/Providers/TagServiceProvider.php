@@ -61,7 +61,7 @@ class TagServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('tag', 'permissions'), "asgard.tag.permissions");
     $this->publishConfig('tag', 'config');
     $this->registerBladeTags();
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     $this->registerComponents();
   }
   

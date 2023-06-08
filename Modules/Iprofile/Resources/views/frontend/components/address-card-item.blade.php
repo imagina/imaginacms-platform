@@ -1,57 +1,58 @@
 @if(isset($address->id))
-<div id="billingAddressResume" class="card p-2" style="font-size: 12px">
+  <div id="{{$address->type}}AddressResume" class="card p-2 mb-3" style="font-size: 12px">
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.name")}}
-            :</b> {{$address->first_name}} {{ $address->last_name }}</p>
+        :</b> {{$address->first_name}} {{ $address->last_name }}</p>
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.phone")}}
-            :</b> {{$address->telephone}}</p>
+        :</b> {{$address->telephone}}</p>
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.address")}}
-            :</b> {{$address->address_1}} {{ $address->address_2 ?  ", ".$address->address_2 : ""}}
+        :</b> {{$address->address_1}} @if(isset($address->address_2)) {{ $address->address_2 ?  ", ".$address->address_2 : ""}}@endif
     </p>
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.city")}}
-            :</b> {{$address->city}}</p>
+        :</b> {{$address->city}}</p>
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.state")}}
-            :</b> {{$address->state}}</p>
+        :</b> {{$address->state}}</p>
     <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.country")}}
-            :</b> {{$address->country}}</p>
+        :</b> {{$address->country}}</p>
+    <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.extraInfo")}}
+        :</b> {{$address->options->extraInfo ?? ""}}</p>
     @if(isset($address->options) && !empty($address->options))
-        <div>
+      <div>
 
-            @foreach($addressesExtraFields as $extraField)
-                @if($extraField->active)
-                    @if($extraField->type == "documentType")
-                        @if(isset($address->options) && isset($address->options->documentType))
-                            <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.identification")}}
-                                    :</b> {{$address->options->documentType ?? '-'}}</p>
-                        @endif
-                        @if(isset($address->options) && isset($address->options->documentNumber))
-                            <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.documentNumber")}}
-                                    :</b> {{$address->options->documentNumber ?? '-'}}</p>
-                        @endif
-                    @elseif(isset($address->options) && isset($address->options->{$extraField->field}))
-                        <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.$extraField->field")}}
-                                :</b> {{$address->options->{$extraField->field} ?? '-'}}</p>
-                    @endif
+        @foreach($addressesExtraFields as $extraField)
+          @if($extraField->active)
+            @if($extraField->type == "documentType")
+              @if(isset($address->options) && isset($address->options->documentType))
+                <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.identification")}}
+                    :</b> {{$address->options->documentType ?? '-'}}</p>
+              @endif
+              @if(isset($address->options) && isset($address->options->documentNumber))
+                <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.documentNumber")}}
+                    :</b> {{$address->options->documentNumber ?? '-'}}</p>
+              @endif
+            @elseif(isset($address->options) && isset($address->options->{$extraField->field}))
+              <p class="card-text m-0"><b>{{trans("iprofile::addresses.form.$extraField->field")}}
+                  :</b> {{$address->options->{$extraField->field} ?? '-'}}</p>
+            @endif
 
-                @endif
-            @endforeach
-        </div>
+          @endif
+        @endforeach
+      </div>
     @endif
 
     @if($address->default)
-    <p class="card-text m-0" v-if="billingAddress.default">
+      <p class="card-text m-0" v-if="billingAddress.default">
         {{trans("iprofile::addresses.form.default")}}
         @if($address->type == 'billing')
-            <span>({{trans("iprofile::addresses.form.billing")}})</span>
+          <span>({{trans("iprofile::addresses.form.billing")}})</span>
         @endif
         @if($address->type == 'shipping')
-            <span>({{trans("iprofile::addresses.form.shipping")}})</span>
+          <span>({{trans("iprofile::addresses.form.shipping")}})</span>
         @endif
-    </p>
-        @endif
-</div>
-@else
-    <div id="billingAddressResume" class="card p-2" style="font-size: 12px">
-        No valid address
-    </div>
-
+      </p>
     @endif
+  </div>
+@else
+  <div id="{{$address->type}}AddressResume" class="card p-2" style="font-size: 12px">
+    No valid address
+  </div>
+@endif

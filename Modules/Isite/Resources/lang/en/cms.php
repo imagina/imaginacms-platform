@@ -8,10 +8,15 @@ return [
     "adminGroup" => "Site",
     "adminIndex" => "Settings",
     "adminDynamicForm" => "Dynamic Form",
-    "adminOrganization" => "Organizations List",
+    "adminOrganizationAll" => "Sites List",
+    "adminOrganizationWizard" => "New Organization",
+    "adminOrganization" => "Mi Site",
     "adminCategories" => "Categories",
     "adminIcruds" => "Icruds",
-    "adminOrganizationForm" => "Form"
+    "adminOrganizationForm" => "Form",
+    "adminBlocks" => "Blocks",
+    "adminLayouts" => "Layouts",
+    "oagStations" => "OAG Stations"
   ],
   "crud" => [
     "message" => [
@@ -20,6 +25,10 @@ return [
       "showAsCard" => "Show as card"
     ]
   ],
+  "newBlock" => "New Block",
+  "updateBlock" => "Update Block",
+  "newLayout" => "New Layout",
+  "updateLayout" => "Update Layout",
   "newRecommendation" => "New Recommendation",
   "updateRecommendation" => "Update Recomendation",
   "deleteRecommendation" => "Delete Recommendation",
@@ -30,6 +39,7 @@ return [
     "duplicateLang" => 'Replace <b class="text-primary">{lang}</b> with...',
     "maintenancePage" => "System maintenance",
     "copyToClipboard" => "Your information is on clipboard",
+    "copyDisclosureLink" => "The disclosure link is on clipboard",
     "failedCopyToClipboard" => "Could no possible use clipboard",
     "lastReport" => "Last Report",
     "newReport" => "New Report",
@@ -46,8 +56,40 @@ return [
   "quickSettings" => "Quick Settings",
   "perzonalizationTitle" => "Welcome to the editor of your website",
   "perzonalizationDescription" => "Easily change the logo, colors and the main information of your website",
-
   "label" => [
+    "trial" => "Trial",
+    "activity" => "Activity | Activities",
+    "top" => "Top",
+    "bottom" => "Bottom",
+    "left" => "Left",
+    "right" => "Right",
+    "backgroundImage" => "Background Image",
+    "copyEmbedHtml" => "Copy HTML",
+    "faq" => "Frequent Questions",
+    "helpCenter" => "Help Center",
+    "advanceOptions" => "Advance Options",
+    "refreshAtOnce" => "Refresh",
+    "refreshEveryMinutes" => "Refresh every {min} minutes",
+    "apply" => "Apply",
+    "responsive" => "Responsive",
+    "mobile" => "Mobile",
+    "template" => "Template | Templates",
+    "path" => "Path",
+    "recipient" => "Recipient | Recipients",
+    "when" => "When",
+    "run" => "Run",
+    "currentTime" => "Current Time",
+    "exactTime" => "Exact time",
+    "inBefore" => "In Before",
+    "inAfter" => "In After",
+    "attribute" => "Attribute | Attributes",
+    "content" => "Content | Contents",
+    "component" => "Component",
+    "continueWith" => "Continue with",
+    "facebook" => "Facebook",
+    "google" => "Google",
+    "microsoft" => "Microsoft",
+    "copyDisclosureLink" => "Copy disclosure link",
     "delete" => "Delete",
     "cancel" => "Cancel",
     "cancelled" => "Cancelled",
@@ -349,6 +391,10 @@ return [
     "format" => "Format | Formats"
   ],
   "message" => [
+    "editFormProduct" => "In this form you can edit your product in a simple way, if you want to edit your product with more advanced options, click on the following button to go to the advanced form.",
+    "createFormProduct" => "In this form you can create a new product in a simple way, if you want to create your product with more advanced options, click on the following button to go to the advanced form.",
+    "advanceEdit" => "Advanced Edit",
+    "descriptionHelpCenter" => "Choose the option you want to solve your doubts",
     "notFound" => "Sorry, nothing here",
     "goToHome" => "Go to home",
     "deleteRecord" => "Are you sure, you want to delete this record?",
@@ -388,7 +434,7 @@ return [
     "preview" => "Preview",
     "showMore" => "Show more",
     "showLess" => "Show less",
-    "request" => "Request | Request",
+    "request" => "Request | Requests",
     "accept" => "Accept",
     "reject" => "Reject",
     "rejected" => "Rejected",
@@ -406,12 +452,14 @@ return [
     "rateYour" => "Rate your <b>{name}</b>",
     "withoutIcon" => "Without Icon",
     "mustContainAlphanumeric" => "Must contain only alphanumeric",
-    "hintUseChips" => "Ingrese el valor y presione enter",
+    "hintUseChips" => "Type a value and press enter key",
     "finishRegister" => "There is little left to finish your registration...",
     "ready" => "Ready",
     "noRegistered" => "You are not registered yet",
     "hintFilterByQuery" => "Type 3 or more characters to search for options",
-    "invalidFormat" => "Invalid format"
+    "invalidFormat" => "Invalid format",
+    "specialCharactersAreNotAllowed" => "Special characters are not allowed",
+    "configureThisSection" => "configure This section"
   ],
   "form" => [
     "id" => "ID",
@@ -543,6 +591,11 @@ return [
   "right" => "Right",
   "bottomLeft" => "Bottom-Left",
   "bottom" => "Bottom",
-  "bottomRight" => "Bottom-Right"
+  "bottomRight" => "Bottom-Right",
+  "selectedRows" => "{num} selected rows",
+  'documentation' => [
+    'settings' => "Some modules of your application have some extra global settings. These
+     settings allow you to edit some features like color, name, logos, etc...",
+  ]
 ];
 

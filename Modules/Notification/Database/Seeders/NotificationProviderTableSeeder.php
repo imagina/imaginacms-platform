@@ -32,5 +32,24 @@ class NotificationProviderTableSeeder extends Seeder
       
       }
       
-  }
+      $providers = config("asgard.notification.config.providers");
+
+      foreach ($providers as $provider){
+
+				$databaseProvider = DB::table('notification__providers')->where("system_name",$provider["systemName"])->first();
+				if(!isset($databaseProvider->id)){
+		
+						Provider::create([
+							"name" => $provider["name"],
+							"system_name" => $provider["systemName"],
+							"status" => 0,
+							"default" => 0,
+							"type" => $provider["type"],
+							"fields" => $provider["fields"]
+						]);
+			
+		
+				}
+			}
+	}
 }

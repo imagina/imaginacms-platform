@@ -5,6 +5,7 @@ namespace Modules\Ischedulable\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Ischedulable\Database\Seeders\DaysDatabaseSeeder;
+use Modules\Isite\Jobs\ProcessSeeds;
 
 class IschedulableDatabaseSeeder extends Seeder
 {
@@ -15,6 +16,10 @@ class IschedulableDatabaseSeeder extends Seeder
    */
   public function run()
   {
-    $this->call(DaysDatabaseSeeder::class);
+    Model::unguard();
+    ProcessSeeds::dispatch([
+      "baseClass" => "\Modules\Ischedulable\Database\Seeders",
+      "seeds" => ["IschedulableModuleTableSeeder", "DaysDatabaseSeeder"]
+    ]);
   }
 }

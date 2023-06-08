@@ -15,7 +15,8 @@ return [
   "newBlock" => "Nuevo Bloque",
   "updateBlock" => "Actualizar bloque",
   "deleteBlock" => "Eliminar bloque",
-  "replyTo" => "Campo para responder",
+  "replyTo" => "Email para responder",
+  "replyToName" => "Nombre para responder",
   "form" => [
     "label" => "Etiqueta",
     "placeholder" => "Placeholder",
@@ -37,6 +38,13 @@ return [
   ],
   "message" => [
     "helpToOptionsField" => "Escribe la opción y preciona enter..."
+  ],
+  "documentation" => [
+    'forms' => "Los formularios permiten capturar información de diferentes tipos, puedes crear formularios y configurar
+    cada campo de el, nombres, tipos... los formularios pueden ser usados por otros módulos como relaciones para 
+    permitir capturar más información que la estándar en cada caso.",
+    'leads' => "Los Lead son la información capturada de los formularios, puedes listar, filtrar y exportar está 
+    información, al igual que identificar desde que formulario ingreso está información.",
   ]
 ];
 

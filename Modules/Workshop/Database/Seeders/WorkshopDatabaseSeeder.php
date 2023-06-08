@@ -15,5 +15,7 @@ class WorkshopDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        
+        $this->call(WorkshopModuleTableSeeder::class);
     }
 }

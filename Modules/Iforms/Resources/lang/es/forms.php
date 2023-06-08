@@ -19,8 +19,9 @@ return [
   ],
   'form' => [
     'submit' => 'Enviar',
-    'accept' => "Acepto los ",
-    'termsAndsConditions' => 'Términos y Condiciones.',
+    'termsAndConditions' => 'Acepto los
+            <a href=":urlTermsAndConditions" target="_blank" class="h6">
+            Términos y Condiciones.</a>',
     'customLeadPDFTemplate' => 'Plantilla PDF Personalizada (sólo editable por super-admin)',
   ],
   'messages' => [

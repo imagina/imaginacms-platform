@@ -37,7 +37,7 @@
       }
     }
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: 767.98px)  {
       padding-left: 0;
       .title {
         font-size: 30px;
@@ -64,7 +64,7 @@
       color: #bebebe;
     }
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: 767.98px)  {
       margin-top: -40px !important;
     }
   }
@@ -189,7 +189,7 @@
       .title {
         font-size: 2.375rem;
         margin: 0;
-        color: $white;
+        color: #fff;
         text-transform: uppercase;
         font-weight: 300;
       }
@@ -225,7 +225,7 @@
 
     .title {
       font-size: 45px;
-      color: $dark;
+      color: var(--dark);
       font-weight: 300;
       padding-bottom: 8px;
       margin-bottom: 15px;
@@ -238,20 +238,20 @@
         left: 50%;
         transform: translateX(-50%);;
         width: 30px;
-        background-color: $dark;
+        background-color: var(--dark);
         height: 2px;
       }
     }
 
     .subtitle {
       font-size: 18px;
-      color: $dark;
+      color: var(--dark);
       position: relative;
       margin-bottom: 0;
       font-weight: 300;
     }
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: 767.98px)  {
       .title {
         font-size: 30px;
 
@@ -303,16 +303,16 @@
 
       .view-more-button {
         font-size: 14px;
-        color: $dark;
+        color: var(--dark);
         margin: 10px;
         padding: 5px 30px 5px 20px;
         position: relative;
         border-radius: 50rem;
-        border: 1px solid $dark;
+        border: 1px solid var(--dark);
 
         &:hover {
-          background-color: $dark;
-          color: $white;
+          background-color: var(--dark);
+          color: #fff;
         }
 
         &:focus {
@@ -372,7 +372,7 @@
       }
     }
 
-    @include media-breakpoint-down(lg) {
+    @media (max-width: 1200px)  {
       .image-link {
         height: 350px;
         width: 350px !important;
@@ -384,7 +384,7 @@
       }
 
     }
-    @include media-breakpoint-down(md) {
+    @media (max-width: 991.98px)  {
       .image-link {
         height: 300px;
         width: 300px !important;
@@ -395,7 +395,7 @@
         }
       }
     }
-    @include media-breakpoint-down(sm) {
+    @media (max-width: 767.98px)  {
       .image-link {
         height: 250px;
         width: 250px !important;
@@ -444,7 +444,7 @@
       position: absolute;
       left: -50px;
 
-      @include media-breakpoint-up(lg) {
+      @media (min-width: 992px) {
         left: -70px;
       }
 
@@ -466,7 +466,7 @@
       position: absolute;
       right: -50px;
 
-      @include media-breakpoint-up(lg) {
+      @media (min-width: 992px) {
         right: -70px;
       }
 
@@ -513,7 +513,7 @@
 
     .subtitle {
       font-size: 18px;
-      color: $dark;
+      color: var(--dark);
     }
   }
 
@@ -537,7 +537,7 @@
         border-radius: 50%;
       }
 
-      @include media-breakpoint-down(md) {
+      @media (max-width: 991.98px)  {
         width: 250px !important;
         height: 250px;
         img {
@@ -555,7 +555,7 @@
     }
 
     .summary {
-      color: $dark;
+      color: var(--dark);
       font-size: 16px;
       margin-bottom: 1.5rem;
     }
@@ -641,7 +641,7 @@
   }
 
   /***** Media Queries *****/
-  @include media-breakpoint-up(md) {
+  @media (min-width: 768px) {
     .row-left {
       position: absolute;
       top: 0;
@@ -661,7 +661,7 @@
     }
   }
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 767.98px)  {
     margin-bottom: 23px;
 
     .col-left {

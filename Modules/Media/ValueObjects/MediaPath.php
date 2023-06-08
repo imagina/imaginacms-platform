@@ -15,13 +15,17 @@ class MediaPath
    * @var string
    */
   private $disk;
+  /**
+   * @var string
+   */
+  private $file;
   
   /**
    * @var int
    */
   private $organizationId;
 
-    public function __construct($path, $disk = null, $organizationId = null)
+    public function __construct($path, $disk = null, $organizationId = null, $file = null)
     {
         if (! is_string($path)) {
             throw new \InvalidArgumentException('The path must be a string');
@@ -31,6 +35,8 @@ class MediaPath
         $this->disk = $disk;
         
         $this->organizationId = $organizationId;
+        
+        $this->file = $file;
     }
 
     /**
@@ -42,7 +48,8 @@ class MediaPath
     {
         $path = ltrim($this->path, '/');
         $disk = is_null($disk)? is_null($this->disk)? setting('media::filesystem', null, config("asgard.media.config.filesystem")) : $this->disk : $disk;
-        return Storage::disk($disk)->url(((!empty($organizationId) || !empty($this->organizationId)) ? 'organization'.($organizationId ?? $this->organizationId).'/' : '' ).$path);
+        $organizationPrefix = mediaOrganizationPrefix($this->file,"","/", $organizationId,true);
+        return Storage::disk($disk)->url(($organizationPrefix).$path);
     }
 
     /**

@@ -66,8 +66,10 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     if (method_exists($this->model, 'creatingCrudModel'))
       $this->model->creatingCrudModel(['data' => $data]);
 
+    //force it into the system name setter
+    $data["system_name"] = $data["system_name"] ?? "";
 
-    $page = $this->model->create($event->getAttributes());
+    $page = $this->model->create($data);
 
     //Event created model
     if (method_exists($page, 'createdCrudModel'))
@@ -236,11 +238,12 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
   public function getItemsBy($params = false)
   {
+
     /*== initialize query ==*/
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (isset($params->include) && in_array('*', $params->include)) {//If Request all relationships
       $query->with([]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
@@ -248,6 +251,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         $includeDefault = array_merge($includeDefault, $params->include);
       $query->with($includeDefault);//Add Relationships to query
     }
+
 
     /*== FILTERS ==*/
     if (isset($params->filter)) {
@@ -304,15 +308,33 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
       if (isset($filter->type)) {
         $query->where('type', $filter->type);//Add order to query
       }
+
+      // It is important because if the one who makes the change is the administrator, you must change the data of the organization and not those of the admin
+      if (isset($filter->organizationId) && !empty($filter->organizationId)) {
+        $query->where("organization_id", $filter->organizationId);
+      }
+
+      if (isset($filter->id)) {
+        !is_array($filter->id) ? $filter->id = [$filter->id] : false;
+        $query->where('id', $filter->id);
+      }
+
     }
 
-    $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData", null, "[]"));
+    $entitiesWithCentralData = json_decode(setting("isite::tenantWithCentralData", null, "[]",true));
     $tenantWithCentralData = in_array("page", $entitiesWithCentralData);
+  
 
     if ($tenantWithCentralData && isset(tenant()->id)) {
       $model = $this->model;
+      
+      //If an organization is in the Iadmin, just show them their information
+      //For the administrator does not apply because he has no organization
+      // filter->type=="cms" - When they reload the iadmin they make a request looking for the cms types
+      if ((isset($params->setting) && isset($params->setting->fromAdmin) && $params->setting->fromAdmin==false) || (isset($filter->type) && $filter->type=="cms") ) {
+        $query->withoutTenancy();
+      }
 
-      $query->withoutTenancy();
       $query->where(function ($query) use ($model) {
         $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
           ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
@@ -333,7 +355,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     if (isset($params->page) && $params->page) {
       return $query->paginate($params->take, ['*'], null, $params->page);
     } else {
-      $params->take ? $query->take($params->take) : false;//Take
+      isset($params->take) && $params->take ? $query->take($params->take) : false;//Take
       return $query->get();
     }
   }
@@ -345,7 +367,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with([]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
@@ -399,7 +421,12 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
       }
 
       event($event = new PageIsUpdating($model, $data));
-      $model->update($event->getAttributes());
+
+      //force it into the system name setter
+      if(empty($data["system_name"]))
+        $data["system_name"] = $model->system_name;
+      
+      $model->update($data);
 
       //Event updated model
       if (method_exists($model, 'updatedCrudModel'))

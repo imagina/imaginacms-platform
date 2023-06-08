@@ -18,7 +18,7 @@ return [
   //add: custom user includes (if they are empty iprofile module will be using default includes) (slim)
   'customUserIncludes' => [],
   //end custom includes and transformers
-  
+
   'registerExtraFields' => [
     "cellularPhone",
     "birthday",
@@ -27,7 +27,7 @@ return [
     "documentNumber",
     "mainImage"
   ],
-  
+
   'addressesExtraFields' => [
     "company",
     "zipCode",
@@ -35,14 +35,14 @@ return [
     "documentNumber",
     "extraInfo",
   ],
-  
+
   'modules-to-manage-permissions' => [
     "Iprofile",
   ],
   'imagesize' => ['width' => 800, 'height' => 800],
   'mediumthumbsize' => ['width' => 400, 'height' => 400],
   'smallthumbsize' => ['width' => 100, 'height' => 100],
-  
+
   'file_remove' => [
     'rut' => ' ',
     'camaracomercio' => ' ',
@@ -52,8 +52,8 @@ return [
     'other_revenue' => '',
     'concept_other_revenue' => '',
   ],
-  
-  
+
+
   'iprofile' => [
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +72,7 @@ return [
         'edit' => [],
       ],
     ],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Dynamic relations
@@ -85,8 +85,8 @@ return [
       //        }
     ],
   ],
-  
-  
+
+
   /*
    |--------------------------------------------------------------------------
    | Define the options to the user menu component
@@ -117,15 +117,15 @@ return [
       //'dispatchModal' => "#userRegisterModal"
     ]
   ],
-  
+
   /*
    |--------------------------------------------------------------------------
    | Use Blade Panel or Quasar Ipanel
    |--------------------------------------------------------------------------
    | options: blade | quasar
    */
-  'panel' => 'blade',
-  
+  'panel' => 'quasar',
+
   /*
 |--------------------------------------------------------------------------
 | Define all the exportable available
@@ -139,5 +139,11 @@ return [
       'headings' => ['id', 'Nombre', 'Apellido', 'Email', 'Fecha Ultima Sesión', 'Fecha de Creación', 'Fecha Ultima Actualización'],
       'repositoryName' => "UserApiRepository"
     ]
+  ],
+  /*Translate keys of each entity. Based on the permission string*/
+  'documentation' => [
+    'user' => "iprofile::cms.documentation.user",
+    'departments' => "iprofile::cms.documentation.departments",
+    'role' => "iprofile::cms.documentation.role",
   ]
 ];

@@ -8,6 +8,7 @@
         "composer/installers": "~1.0",
         "imagina/core-module": "v8.x-dev",
         "imagina/ihelpers-module": "v8.x-dev",
+        "imagina/igamification-module": "v8.x-dev",
         "livewire/livewire": "^2.3",
         "jantinnerezo/livewire-alert": "^2.0",
         "imagina/laravel-responsecache": "^6.6",
@@ -18,7 +19,8 @@
         "barryvdh/laravel-dompdf": "^0.9.0",
         "imagina/ischedulable-module": "^v8.x-dev",
         "imagina/ifillable-module": "^v8.x-dev",
-        "spatie/laravel-sitemap": "^5.8"
+        "spatie/laravel-sitemap": "^5.8",
+        "spatie/robots-txt": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
@@ -45,14 +47,6 @@
 
     },
     "extra": {
-        "laravel": {
-            "providers": [
-                "Modules\\Isite\\Providers\\IsiteServiceProvider"
-            ],
-            "aliases": {
-
-            }
-        },
         "branch-alias": {
             "dev-master": "4.0.x-dev",
             "dev-v8.x": "8.0.x-dev"

@@ -24,9 +24,10 @@ class EloquentLayoutRepository extends EloquentCrudRepository implements LayoutR
    *
    * @param $query
    * @param $filter
+   * @param $params
    * @return mixed
    */
-  public function filterQuery($query, $filter)
+  public function filterQuery($query, $filter, $params)
   {
 
     /**
@@ -36,7 +37,14 @@ class EloquentLayoutRepository extends EloquentCrudRepository implements LayoutR
      * if (isset($filter->status)) $query->where('status', $filter->status);
      *
      */
-
+    /*
+        * Se aplica para que el layout se pueda encontrar a pesar
+        de ser "internal"
+        */
+   
+   
+      $query->where("is_internal", 0);
+   
     //Response
     return $query;
   }

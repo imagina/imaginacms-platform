@@ -1,0 +1,17 @@
+{
+    "name": "Igamification",
+    "alias": "igamification",
+    "version": "1.0.0",
+	"description": "",
+    "keywords": [],
+    "priority": 1,
+    "active": 1,
+    "providers": [
+        "Modules\\Igamification\\Providers\\IgamificationServiceProvider",
+        "Modules\\Igamification\\Providers\\EventServiceProvider",
+        "Modules\\Igamification\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

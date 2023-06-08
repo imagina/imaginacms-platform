@@ -23,6 +23,12 @@ if (! function_exists('locale')) {
 if (! function_exists('is_module_enabled')) {
     function is_module_enabled($module)
     {
+      $activatorClass = get_class(app(config("modules.activators.file.class")));
+      if($activatorClass == "Modules\Isite\Activators\ModuleActivator"){
+        $activator = app($activatorClass);
+        return array_key_exists($module,array_intersect_key($activator->modulesStatuses,app('modules')->allEnabled()));
+      }
+      
         return array_key_exists($module, app('modules')->allEnabled());
     }
 }

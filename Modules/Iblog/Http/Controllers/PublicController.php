@@ -16,6 +16,8 @@ use Route;
 use Modules\Page\Http\Controllers\PublicController as PageController;
 use Illuminate\Support\Str;
 
+use Modules\Page\Repositories\PageRepository;
+
 class PublicController extends BasePublicController
 {
   /**
@@ -24,18 +26,30 @@ class PublicController extends BasePublicController
   private $post;
   private $category;
   private $tag;
+  private $pageRepository;
 
-  public function __construct(PostRepository $post, CategoryRepository $category, TagRepository $tag)
-  {
+  public function __construct(
+    PostRepository $post, 
+    CategoryRepository $category, 
+    TagRepository $tag,
+    PageRepository $pageRepository
+    ){
     parent::__construct();
     $this->post = $post;
     $this->category = $category;
     $this->tag = $tag;
+    $this->pageRepository = $pageRepository;
   }
 
-  public function index($category)
+  public function index($category,$request)
   {
 
+    //Validation with lang from URL
+    $result = validateLocaleFromUrl($request,['entity' => $category]);
+    if(isset($result["reedirect"]))
+      return redirect()->to($result["url"]);
+    
+    
     //Default Template
     $tpl = 'iblog::frontend.index';
     $ttpl = 'iblog.index';
@@ -86,14 +100,27 @@ class PublicController extends BasePublicController
 
     config(["asgard.iblog.config.filters" => $configFilters]);
 
-    return view($tpl, compact('posts', 'category', 'categoryBreadcrumb'));
+    // Get organization
+    $organization = null;
+    if (isset(tenant()->id)) {
+      $organization = tenant();
+    }
+
+    return view($tpl, compact('posts', 'category', 'categoryBreadcrumb','organization'));
 
   }
 
-  public function show($post)
+  public function show($post,$request)
   {
 
     $category = $post->category;
+
+    //Validation with lang from URL
+    $result = validateLocaleFromUrl($request,['entity' => $post]);
+    if(isset($result["reedirect"]))
+      return redirect()->to($result["url"]);
+    
+   
 
     $tpl = 'iblog::frontend.show';
     $ttpl = 'iblog.show';
@@ -131,8 +158,18 @@ class PublicController extends BasePublicController
     if (view()->exists($ctpl)) $tpl = $ctpl;
 
     $this->addAlternateUrls(alternate($post));
+    
+    //meta keywords
+    $metaKeywords = (implode("," ,$post->meta_keywords ?? [])).
+      join(",", $post->tags->pluck('name')->toArray());
 
-    return view($tpl, compact('post', 'category', 'tags', 'categoryBreadcrumb'));
+    // Get organization
+    $organization = null;
+    if (isset(tenant()->id)) {
+      $organization = tenant();
+    }
+
+    return view($tpl, compact('post', 'category', 'tags', 'categoryBreadcrumb','metaKeywords','organization'));
 
 
   }

@@ -1,0 +1,19 @@
+{
+    "name": "Icommercexpay",
+    "alias": "icommercexpay",
+    "description": "xPay - PaymentMethod Module to Icommerce",
+    "keywords": [],
+    "version": "1.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommercexpay\\Providers\\IcommercexpayServiceProvider",
+        "Modules\\Icommercexpay\\Providers\\RouteServiceProvider",
+        "Modules\\Icommercexpay\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "helpers.php"
+    ],
+    "requires": []
+}

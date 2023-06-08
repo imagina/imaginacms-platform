@@ -21,3 +21,38 @@
     </div>
   </div>
 </div>
+@section('scripts')
+  @parent
+  <style>
+    .searchLayout3 .modal-dialog {
+      max-width: 100%;
+      margin: 0;
+    }
+    .searchLayout3 .btn {
+      color: #444444;
+      font-size: 22px;
+      padding: 0 15px;
+      border-radius: 0 !important;
+    }
+    .searchLayout3 .btn:focus {
+      box-shadow: none;
+    }
+    .searchLayout3 .form-control {
+      border-width: 0 0 2px 0;
+      color: #444444;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    .searchLayout3 .form-control:focus {
+      color: #444444;
+      background-color: transparent;
+      border-color: #444444;
+      outline: 0;
+      box-shadow: none;
+    }
+    .searchLayout3 .form-control::placeholder {
+      color: #555555;
+    }
+
+  </style>
+@stop

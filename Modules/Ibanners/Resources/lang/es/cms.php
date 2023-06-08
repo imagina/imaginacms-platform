@@ -13,5 +13,9 @@ return [
   "label" => [
     "codeAds" => "Codigo ADS",
     "showAsPopup" => "Mostrar como ventana emergente"
+  ],
+  'documentation' => [
+    'banners' => "Los banners son elementos estáticos en ubicaciones definidas dentro del sitio WEB que muestran un 
+    contenido normalmente publicitario de gran tamaño",
   ]
 ];

@@ -12,10 +12,17 @@
     @endif
     <link rel="shortcut icon" href="@setting('isite::favicon')">
     <link rel="canonical" href="{{canonical_url()}}"/>
-    {!! Theme::style('css/app.css?v='.setting('isite::appVersion')) !!}
     
-    {!! Theme::script('js/app.js?v='.setting('isite::appVersion')) !!}
+    @if(isset(tenant()->id))
+        <link rel="stylesheet" as="style"  href="{{tenant()->url.'/themes/'.strtolower(setting('core::template', null, 'ImaginaTheme')).'/'.'css/app.css?v='.setting('isite::appVersion')}}" />
+        
+        <script src="{{tenant()->url.'/themes/'.strtolower(setting('core::template', null, 'ImaginaTheme')).'/'.'js/app.js?v='.setting('isite::appVersion')}}" ></script>
+    @else
+        {!! Theme::style('css/app.css?v='.setting('isite::appVersion')) !!}
+        
+        {!! Theme::script('js/app.js?v='.setting('isite::appVersion')) !!}
     
+    @endif
     @stack('css-stack')
     @livewireStyles
     
@@ -27,16 +34,36 @@
 <body>
 
 <div id="page-wrapper">
-    @include('partials.variables')
-    @include('partials.header')
+    @php
+        $header = "partials.header";
+        if(isset($page->id)){
+          $layoutHeader = ($page->typeable->layout_path ?? null).".partials.header";
+          if(view()->exists($layoutHeader)) $header = $layoutHeader;
+        }
+    @endphp
+    @include($header)
     @yield('content')
-    @include('partials.footer')
+    @php
+        $footer = "partials.footer";
+        if(isset($page->id)){
+          $layoutFooter = ($page->typeable->layout_path ?? null).".partials.footer";
+          if(view()->exists($layoutFooter)) $footer = $layoutFooter;
+        }
+    @endphp
+    @include($footer)
 </div>
 
+@if(isset(tenant()->id))
+    <link href="{{tenant()->url.'/themes/'.strtolower(setting('core::template', null, 'ImaginaTheme')).'/'.'css/secondary.css?v='.setting('isite::appVersion')}}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <script src="{{tenant()->url.'/themes/'.strtolower(setting('core::template', null, 'ImaginaTheme')).'/'.'js/secondary.js?v='.setting('isite::appVersion')}}" defer="true"></script>
 
-{!! Theme::style('css/secondary.css?v='.setting('isite::appVersion'),["rel" => "preload", "as" => "style", "onload" => "this.onload=null;this.rel='stylesheet'"]) !!}
-{!! Theme::script('js/secondary.js?v='.setting('isite::appVersion'),["defer" => true]) !!}
+@else
+    
+    {!! Theme::style('css/secondary.css?v='.setting('isite::appVersion'),["rel" => "preload", "as" => "style", "onload" => "this.onload=null;this.rel='stylesheet'"]) !!}
+    {!! Theme::script('js/secondary.js?v='.setting('isite::appVersion'),["defer" => true]) !!}
 
+@endif
 @livewireScripts
 <x-livewire-alert::scripts />
 

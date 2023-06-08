@@ -14,6 +14,7 @@ class HandleMediaStorage
   
   public function handle($event = null, $data = [])
   {
+
     $this->fileService = app("Modules\Media\Services\FileService");
     if ($event instanceof StoringMedia) {
       $this->handleMultiMedia($event);

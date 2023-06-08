@@ -10,7 +10,7 @@ class ProviderTransformer extends JsonResource
 {
   public function toArray($request)
   {
- 
+ //if($this->system_name == "firebase") dd($this);
     $data = [
       'id' => $this->when($this->id, $this->id),
       'name' => $this->when($this->name, $this->name),

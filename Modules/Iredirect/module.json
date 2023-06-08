@@ -5,7 +5,7 @@
     "keywords": [],
     "version": "3.0.5",
     "active": 1,
-    "priority": 1,
+    "priority": 0,
     "providers": [
         "Modules\\Iredirect\\Providers\\IredirectServiceProvider",
         "Modules\\Iredirect\\Providers\\RouteServiceProvider"

@@ -8,10 +8,15 @@ return [
     "adminGroup" => "Sitio",
     "adminIndex" => "Ajustes",
     "adminDynamicForm" => "Formulario Dinámico",
-    "adminOrganization" => "Lista de Organizaciónes",
+    "adminOrganizationAll" => "Lista de Sitios",
+    "adminOrganizationWizard" => "Nueva Organización",
+    "adminOrganization" => "Mi Sitio",
     "adminCategories" => "Categorias",
     "adminIcruds" => "Icruds",
-    "adminOrganizationForm" => "Formulario"
+    "adminOrganizationForm" => "Formulario",
+    "adminBlocks" => "Bloques",
+    "adminLayouts" => "Layouts",
+    "oagStations" => "OAG staciones",
   ],
   "crud" => [
     "message" => [
@@ -20,6 +25,10 @@ return [
       "showAsCard" => "Ver como tarjetas"
     ]
   ],
+  "newBlock" => "Nuevo Bloque",
+  "updateBlock" => "Actualizar Bloque",
+  "newLayout" => "Nuevo Layout",
+  "updateLayout" => "Actualizar Layout",
   "newRecommendation" => "Nueva Recomendación",
   "updateRecommendation" => "Actualizar Recomendación",
   "deleteRecommendation" => "Eliminar Recomendación",
@@ -30,6 +39,7 @@ return [
     "duplicateLang" => 'Reemplazar <b class="text-primary">{lang}</b> con...',
     "maintenancePage" => "Sitio en mantenimiento",
     "copyToClipboard" => "Tu información se guardó en el portapapeles",
+    "copyDisclosureLink" => "El enlace de divulgación se ha copiado en el portapapeles",
     "failedCopyToClipboard" => "No fue posible usar el portapapeles",
     "lastReport" => "Ultimo reporte",
     "newReport" => "Nuevo reporte",
@@ -47,6 +57,40 @@ return [
   "perzonalizationTitle" => "Bienvenid@ al editor de tu sitio web",
   "perzonalizationDescription" => "De manera fácil, cambia el logo, colores y la información principal de tu página web",
   "label" => [
+    "trial" => "Versión de prueba",
+    "activity" => "Actividad | Actividades",
+    "top" => "Arriba",
+    "bottom" => "Abajo",
+    "left" => "Izquierda",
+    "right" => "Derecha",
+    "backgroundImage" => "Imagen de fondo",
+    "copyEmbedHtml" => "Copiar HTML",
+    "faq" => "Preguntas Frecuentes",
+    "helpCenter" => "Centro de Ayuda",
+    "advanceOptions" => "Opciones Avanzadas",
+    "discardChanges" => "Descartar Cambios",
+    "refreshAtOnce" => "Refrescar de una vez",
+    "refreshEveryMinutes" => "Refrescar cada {min} minutos",
+    "apply" => "Aplicar",
+    "responsive" => "Responsivo",
+    "mobile" => "Movíl",
+    "template" => "Plantilla | Plantillas",
+    "path" => "Path",
+    "recipient" => "Destinatario | Destinatarios",
+    "when" => "Cuando",
+    "run" => "Ejecutar",
+    "currentTime" => "Tiempo Actual",
+    "exactTime" => "Tiempo Exacto",
+    "inBefore" => "Antes de",
+    "inAfter" => "Despues de",
+    "attribute" => "Atributo | Atributos",
+    "content" => "Contenido | Contenidos",
+    "component" => "Componente",
+    "continueWith" => "Continuar con",
+    "facebook" => "Facebook",
+    "google" => "Google",
+    "microsoft" => "Microsoft",
+    "copyDisclosureLink" => "Copiar enlace",
     "delete" => "Eliminar",
     "cancel" => "Cancelar",
     "cancelled" => "Cancelado",
@@ -336,7 +380,7 @@ return [
     "winner" => "Ganador | Ganadores",
     "creator" => "Creador | Creadores",
     "inverse" => "Inversa | Inversas",
-    "provider" => "Proveedor | Preveedores",
+    "provider" => "Proveedor | Proveedores",
     "chart" => "Grafica | Graficas",
     "subtitle" => "Subtitulo | Subtitulos",
     "currentPlan" => "Plan actual",
@@ -353,6 +397,10 @@ return [
     "format" => "Formato | Formatos"
   ],
   "message" => [
+    "advanceEdit" => "Edición Avanzada",
+    "descriptionHelpCenter" => "Elige la opción que deseas para resolver tus dudas",
+    "editFormProduct" => "En este formulario podrás editar tu producto de manera sencilla, si quieres editar tu producto con opciones más avanzadas, da click en el siguiente botón para ir a el formulario avanzado.",
+    "createFormProduct" => "En este formulario podrás crear un nuevo producto de manera sencilla, si quieres crear tu producto con opciones más avanzadas, da click en el siguiente botón para ir a el formulario avanzado.",
     "notFound" => "Lo sentimos, no hay nada aquí",
     "goToHome" => "Volver al inicio",
     "deleteRecord" => "¿Estás seguro que quieres eliminar este registro?",
@@ -410,7 +458,9 @@ return [
     "ready" => "Todo está listo",
     "noRegistered" => "Aún no estás registrado",
     "hintFilterByQuery" => "Escribe 3 o más caracteres para buscar opciones",
-    "invalidFormat" => "Formato invalido"
+    "invalidFormat" => "Formato invalido",
+    "specialCharactersAreNotAllowed" => "No se permiten caracteres especiales",
+    "configureThisSection" => "Configura esta sección"
   ],
   "form" => [
     "id" => "ID",
@@ -542,6 +592,11 @@ return [
   "right" => "Derecha",
   "bottomLeft" => "Abajo-Izquierda",
   "bottom" => "Abajo",
-  "bottomRight" => "Abajo-Derecha"
+  "bottomRight" => "Abajo-Derecha",
+  "selectedRows" => "{num} Filas seleccionadas",
+  'documentation' => [
+    'settings' => "Algunos módulos de tu aplicación cuentan con configuraciones globales extra. Estas 
+    configuraciones te permiten editar algunas características como el color, nombre, logos, etc...",
+  ]
 ];
 

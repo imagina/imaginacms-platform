@@ -24,9 +24,10 @@ class EloquentFieldRepository extends EloquentCrudRepository implements FieldRep
    *
    * @param $query
    * @param $filter
+   * @param $params
    * @return mixed
    */
-  public function filterQuery($query, $filter)
+  public function filterQuery($query, $filter, $params)
   {
 
     /**

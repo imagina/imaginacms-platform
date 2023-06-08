@@ -47,6 +47,9 @@ return [
     'documentType' => 'Tipo de Documento',
     'documentNumber' => 'Número de Documento',
     'extraInfo' => 'Información Extra',
+    'cantFindMyCity' => 'No encuentro mi ciudad',
+    'customCityPlaceholder' => 'Escribe tu ciudad aquí',
+    'email' => 'Correo Electronico'
   ],
   'messages' => [
     "created" => "Dirección creada exitosamente"
@@ -69,6 +72,10 @@ return [
     "telephone" => [
       "min" => "Mínimo 6 dígitos permitidos",
       "max" => "Máximo 10 dígitos permitidos"
-    ]
+    ],
+    'alerts' => [
+      'invalid_data' => 'Información inválida',
+      'missing_fields' => 'Faltan campos obligatorios, llena y envía nuevamente',
+    ],
   ],
 ];

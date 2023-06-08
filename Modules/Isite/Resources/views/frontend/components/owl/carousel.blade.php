@@ -4,13 +4,13 @@
 
       <div class="row align-items-center @if($navPosition=='top-right') justify-content-end @endif @if(($navPosition=="top-right" || $navPosition=="top-left") && $owlTextAlign=="text-center") my-3 @endif">
 
-        <div class="col px-0 {{ $navPosition=="top-left" ? 'order-1':'' }}"  @if(($navPosition=="top-right" || $navPosition=="top-left") && $owlTextAlign=="text-center") style="position: absolute; left: 0;" @endif>
-          <div class="title-section {{$owlTextAlign}}" @if($owlTextPosition==3) style="display: flex; flex-direction: column;" @endif>
+        <div class="col px-0 {{ $navPosition=="top-left" ? 'order-1':'' }} @if(($navPosition=="top-right" || $navPosition=="top-left") && $owlTextAlign=="text-center") position-absolute-left @endif">
+          <div class="title-section {{$owlTextAlign}} @if($owlTextPosition==3) d-flex flex-column @endif ">
             @if($title!=="")
               @if($owlTitleUrl)
-              <a href="{{$owlTitleUrl}}" target="{{$owlTitleTarget}}" style="text-decoration: none;">
+              <a href="{{$owlTitleUrl}}" target="{{$owlTitleTarget}}" class="text-decoration-none">
               @endif
-              <h2 class="title {{ $owlTextPosition==3 ? 'order-1':'' }} {{$owlTitleColor}} {{$owlTitleWeight}} {{$owlTitleTransform}} {{$owlTitleMarginT}} {{$owlTitleMarginB}}" style="font-size: {{$owlTitleSize}}px;">
+              <h2 class="title {{$owlTitleClasses}} {{ $owlTextPosition==3 ? 'order-1':'' }} {{$owlTitleColor}} {{$owlTitleWeight}} {{$owlTitleTransform}} {{$owlTitleMarginT}} {{$owlTitleMarginB}}">
                 @if($owlTitleVineta) <i class="{{$owlTitleVineta}} {{$owlTitleVinetaColor}} mr-1"></i>  @endif
                 <span> {!! $title !!}</span>
               </h2>
@@ -19,9 +19,9 @@
               @endif
             @endif
             @if($subTitle!=="" && $owlTextPosition!=1)
-              <h6 class="subtitle {{$owlSubtitleColor}} {{$owlSubtitleWeight}} {{$owlSubtitleTransform}} {{$owlSubtitleMarginT}} {{$owlSubtitleMarginB}}" style="font-size: {{$owlSubtitleSize}}px;">
+              <h3 class="subtitle {{$owlSubtitleClasses}} {{$owlSubtitleColor}} {{$owlSubtitleWeight}} {{$owlSubtitleTransform}} {{$owlSubtitleMarginT}} {{$owlSubtitleMarginB}}">
                 {!! $subTitle !!}
-              </h6>
+              </h3>
             @endif
           </div>
         </div>
@@ -36,6 +36,7 @@
                              :withLabel="false"
                              :color="$navColor"
                              :sizeLabel="$navSizeLabel"
+                             :label="trans('slider::frontend.previous')"
             />
 
             <x-isite::button :style="$navStyleButton"
@@ -45,6 +46,7 @@
                              :withLabel="false"
                              :color="$navColor"
                              :sizeLabel="$navSizeLabel"
+                             :label="trans('slider::frontend.next')"
             />
           </div>
         @endif
@@ -61,6 +63,7 @@
                            :withLabel="false"
                            :color="$navColor"
                            :sizeLabel="$navSizeLabel"
+                           :label="trans('slider::frontend.previous')"
           />
 
           <x-isite::button :style="$navStyleButton"
@@ -70,6 +73,7 @@
                            :withLabel="false"
                            :color="$navColor"
                            :sizeLabel="$navSizeLabel"
+                           :label="trans('slider::frontend.next')"
           />
 
 
@@ -89,12 +93,13 @@
                              :withLabel="false"
                              :color="$navColor"
                              :sizeLabel="$navSizeLabel"
+                             :label="trans('slider::frontend.previous')"
             />
           </div>
 
           @endif
 
-          <div class=" @if($navPosition!="center") row  py-3 @endif">
+          <div class="@if($navPosition!="center" || ($nav==false && $navPosition=="center")) row py-3 @endif">
             <div id="{{$id}}Carousel" class="owl-carousel owl-theme {{$dotsStyle}}">
               @php($x = 0) {{-- iterador de items --}}
               @php($j = 0) {{-- iterador de itemsBySlide --}}
@@ -128,6 +133,7 @@
                                :withLabel="false"
                                :color="$navColor"
                                :sizeLabel="$navSizeLabel"
+                               :label="trans('slider::frontend.next')"
               />
 
             </div>
@@ -145,6 +151,7 @@
                            :withLabel="false"
                            :color="$navColor"
                            :sizeLabel="$navSizeLabel"
+                           :label="trans('slider::frontend.previous')"
           />
 
           <x-isite::button :style="$navStyleButton"
@@ -154,6 +161,7 @@
                            :withLabel="false"
                            :color="$navColor"
                            :sizeLabel="$navSizeLabel"
+                           :label="trans('slider::frontend.next')"
           />
 
 
@@ -175,11 +183,14 @@
         dots: {!! $dots ? 'true' : 'false' !!},
         responsiveClass: {!! $responsiveClass ? 'true' : 'false' !!},
         autoplay: {!! $autoplay ? 'true' : 'false' !!},
-        nav: {!! $nav ? 'true' : 'false' !!},
+        nav: {!! $navOld ? 'true' : 'false' !!},
         autoplayHoverPause: {!! $autoplayHoverPause ? 'true' : 'false' !!},
         center: {!! $center ? 'true' : 'false' !!},
         responsive: {!! $responsive !!},
         stagePadding: {!!$stagePadding!!},
+        autoplayTimeout: {{$autoplayTimeout}},
+        mouseDrag: {!! $mouseDrag ? 'true' : 'false' !!},
+        touchDrag: {!! $touchDrag ? 'true' : 'false' !!},
         {!! !empty($navText) ? 'navText: '.$navText."," : "" !!}
       });
 
@@ -190,6 +201,10 @@
         owl.trigger('prev.owl.carousel', [300]);
       });
       owl.trigger('refresh.owl.carousel');
+
+      owl.find('.owl-dot').each(function(index) {
+        $(this).attr('aria-label', index + 1);
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -198,11 +213,10 @@
 
           createOWL{{$id}}();
       
-          let sizeButton = document.querySelector('#{{$id}} .prevBtn');
-          let width = sizeButton.offsetWidth;
-      
-          let wrapper = document.querySelector('#{{$id}} .wrapper');
-          let w = (width)*2 +20;
+          let sizeButton = document.querySelector('[id="{{$id}}"] .prevBtn');
+          let width = (sizeButton.offsetWidth) + 2;
+          let wrapper = document.querySelector('[id="{{$id}}"] .wrapper');
+          let w = (width)*2 + 9;
           if(wrapper != null) {
             wrapper.style.cssText = 'grid-template-columns: '+width+'px calc(100% - '+w+'px) '+width+'px';
           }
@@ -227,7 +241,7 @@
       display: grid;
       align-items: center;
       grid-gap: 5px;
-      margin-right: -25px;
+      margin-right: -15px;
       margin-left: -15px;
     }
     @media (max-width: 768px) {
@@ -258,9 +272,45 @@
        outline: 0 !important;
      }
     @endif
+    @if($navOld)
+    #{{$id}} .owl-nav [class*=owl-]:hover,
+    #{{$id}} .owl-nav [class*=owl-]:focus {
+        background: transparent;
+        outline: 0;
+    }
+    @endif
+
+    #{{$id}} .title-section .title {
+       font-size: {{$owlTitleSize}}px;
+       letter-spacing: {{$owlTitleLetterSpacing}}px;
+    }
+    #{{$id}} .title-section .subtitle {
+      font-size: {{$owlSubtitleSize}}px;
+      letter-spacing: {{$owlSubtitleLetterSpacing}}px;
+    }
+
+    @if($owlWithLineTitle==1)
+    #{{$id}} .title-section .title:after {
+        content: '';
+        display: block;
+        @foreach($owlLineTitleConfig as $key => $line)
+        {{$key}}: {{$line}};
+        @endforeach
+    }
+    @endif
+    @if($owlWithLineTitle==2)
+    #{{$id}} .title-section .subtitle:after {
+         content: '';
+         display: block;
+         @foreach($owlLineTitleConfig as $key => $line)
+        {{$key}}: {{$line}};
+         @endforeach
+    }
+    @endif
+
+    #{{$id}} .position-absolute-left {
+        position: absolute; left: 0;
+    }
 
   </style>
-
-
-
 @endif

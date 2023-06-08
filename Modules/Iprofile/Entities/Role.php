@@ -19,13 +19,10 @@ class Role extends EloquentRole
   ];
 
   public $tenantWithCentralData = false;
-
+  
   public function __construct(array $attributes = [])
   {
-//    try{
-//      $entitiesWithCentralData = json_decode(setting("iprofile::tenantWithCentralData",null,"[]"));
-//      $this->tenantWithCentralData = in_array("roles",$entitiesWithCentralData);
-//    }catch(\Exception $e){}
+
     parent::__construct($attributes);
 
   }

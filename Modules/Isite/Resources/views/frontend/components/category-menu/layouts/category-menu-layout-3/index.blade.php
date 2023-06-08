@@ -57,3 +57,5 @@
   @endif
 </nav>
 
+@include('isite::frontend.components.category-menu.partials.style')
+

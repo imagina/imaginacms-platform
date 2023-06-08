@@ -66,7 +66,7 @@ class SettingServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('setting', 'permissions'), "asgard.setting.permissions");
     $this->publishConfig('setting', 'config');
     $this->registerBladeTags();
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
   }
   
   /**

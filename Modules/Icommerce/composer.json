@@ -1,0 +1,46 @@
+{
+    "name": "imagina/icommerce-module",
+    "description": "Completely customizable eCommerce platform for entrepreneurs worldwide",
+    "type": "asgard-module",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.2.0",
+        "composer/installers": "~1.0",
+        "imagina/core-module": "v8.x-dev",
+        "imagina/ihelpers-module": "v8.x-dev",
+        "imagina/notification-module": "v8.x-dev",
+        "imagina/icurrency-module": "v8.x-dev",
+        "imagina/icommercecheckmo-module": "v8.x-dev",
+        "imagina/icommerceagree-module": "v8.x-dev",
+        "imagina/wishlistable-module": "v8.x-dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "3.5.*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Icommerce\\": ".",
+            "Modules\\": "Modules/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Soporte Imagina",
+            "email": "soporte@imaginacolombia.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.0.x-dev",
+            "dev-v8.x": "8.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Icommerce\\": ""
+        }
+    }
+}

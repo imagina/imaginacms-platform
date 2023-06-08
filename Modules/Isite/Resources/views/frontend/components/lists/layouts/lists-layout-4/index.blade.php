@@ -46,3 +46,13 @@
         </div>
     </div>
 </div>
+<style>
+    .lists-layout-4 .list-column-1 .card-item {
+        margin-top: 0 !important;
+    }
+    .lists-layout-4 .list-image-bottom {
+        aspect-ratio: 1.3333333333;
+        object-fit: cover;
+    }
+
+</style>

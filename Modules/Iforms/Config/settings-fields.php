@@ -61,4 +61,13 @@ return [
       ]
     ]
   ],
+  'formFileTokenExpirationTime' => [
+    'name' => 'iforms::formFileTokenExpirationTime',
+    'value' => 10*365,
+    'type' => 'input',
+    'columns' => 'col-12 col-md-6',
+    'props' => [
+      'label' => 'iforms::common.setting.labelFormFileTokenExpirationTime'
+    ],
+  ],
 ];

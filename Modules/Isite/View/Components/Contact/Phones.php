@@ -10,20 +10,25 @@ class Phones extends Component
   public $phonesReplaced;
   public $icon;
   public $showIcon;
+  public $classes;
+  public $withHyphen;
 
   /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($icon = "fa fa-phone", $showIcon = true, $phones = null)
+  public function __construct($icon = "fa fa-phone", $showIcon = true, $phones = null, $classes = null,
+                              $withHyphen = true)
   {
     $this->icon = $icon;
-    if(!empty($phones)){
+    $this->classes = $classes ?? "";
+    $this->withHyphen = $withHyphen;
+    if (!empty($phones)) {
       $this->phones = !is_array($phones) ? [$phones] : $phones;
-    }else
+    } else
       $this->phones = json_decode(setting("isite::phones", null, "[]"));
-    
+
     $this->showIcon = $showIcon;
     foreach ($this->phones as $key => $phone) {
       $this->phonesReplaced[] = preg_replace('/[^0-9]/', '', $phone);

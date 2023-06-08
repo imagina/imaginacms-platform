@@ -18,7 +18,7 @@ interface PositionRepository extends BaseRepository
      * @param array $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params);
+    public function getItem($criteria, $params = false);
 
     /**
      * Get all online sliders

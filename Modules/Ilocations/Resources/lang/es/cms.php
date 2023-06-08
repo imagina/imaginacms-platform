@@ -56,9 +56,23 @@ return [
     "countryCode" => "Código del País",
     "iso2" => "Cód. ISO 2",
     "iso3" => "Cód. ISO 3",
-    "code" => "Código",
+    "code" => "Código Postal",
     "points" => "Puntos",
     "geozone" => "Geo zona"
+  ],
+  'documentation' => [
+    'countries' => "Para diferentes funcionalidades dentro de tu aplicación y sitio WEB es necesario disponer de una 
+    lista de países, aquí encontraras una extensa lista que te brindamos y también puedes agregar nuevos de ser necesario.",
+    'provinces' => "Para diferentes funcionalidades dentro de tu aplicación y sitio WEB es necesario disponer de una 
+    lista de provincias/departamentos/estados, aquí encontraras una extensa lista que te brindamos y también puedes 
+    agregar nuevos de ser necesario.",
+    'cities' => "Para diferentes funcionalidades dentro de tu aplicación y sitio WEB es necesario disponer de una 
+    lista de ciudades, aquí encontraras una extensa lista que te brindamos y también puedes agregar nuevos de ser necesario.",
+    'neighborhoods' => "Para diferentes funcionalidades dentro de tu aplicación y sitio WEB es necesario disponer de una 
+    lista de barrios, aquí encontraras una extensa lista que te brindamos y también puedes agregar nuevos de ser necesario.",
+    'polygons' => "Para diferentes funcionalidades es necesario definir un area limite dentro de un mapa, para brindar 
+    información. Estas areas las llamamos polígonos.",
+    'geozones' => "Las geoZonas son usadas para agrupar varios polígonos",
   ]
 ];
 

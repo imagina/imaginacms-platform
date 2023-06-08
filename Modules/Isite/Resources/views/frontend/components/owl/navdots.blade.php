@@ -73,7 +73,7 @@
 
 
       @if($nav && $navPosition=="center")
-        <div class="wrapper">
+        <div class="row wrapper">
           <div>
 
             <x-isite::button :style="$navStyleButton"
@@ -208,11 +208,11 @@
     $(document).ready(function () {
       createOWL{{$id}}();
 
-      let sizeButton = document.querySelector('#{{$id}} .prevBtn');
+      let sizeButton = document.querySelector('[id="{{$id}}"] .prevBtn');
       let width = sizeButton.offsetWidth;
-      let wrapper = document.querySelector('#{{$id}} .wrapper');
+      let wrapper = document.querySelector('[id="{{$id}}"] .wrapper');
       console.log(width);
-      let w = (width)*2 + 20;
+      let w = (width)*2;
       if(wrapper != null) {
         wrapper.style.cssText = 'grid-template-columns: '+width+'px calc(100% - '+w+'px) '+width+'px';
       }
@@ -225,9 +225,7 @@
     #{{$id}} .wrapper {
       display: grid;
       align-items: center;
-      grid-gap: 5px;
-      margin-right: -25px;
-      margin-left: -15px;
+      grid-gap: 10px;
     }
     @media (max-width: 768px) {
     #{{$id}} .wrapper {

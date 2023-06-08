@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Isite\Activators\ModuleActivator;
 use Nwidart\Modules\Activators\FileActivator;
 
 return [
@@ -202,7 +203,7 @@ return [
     */
     'activators' => [
         'file' => [
-            'class' => FileActivator::class,
+      'class' => ModuleActivator::class,
             'statuses-file' => base_path('modules_statuses.json'),
             'cache-key' => 'activator.installed',
             'cache-lifetime' => 604800,

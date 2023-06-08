@@ -13,7 +13,7 @@
   <div id="{{ $id }}contentToMove">
     <nav id="{{$id}}nav" class="navbar d-none d-lg-block navbar-expand-lg navbar-category-2 p-0 {{$collapsed ? "d-none" : ""}}">
       @if($menuBefore)
-        @menu($menuBefore,'imagina-navbar')
+        @menu($menuBefore,'imagina-navbar',['organization_id' => tenant()->id ?? null])
       @endif
       
       <ul id="{{ $id }}navbarUl" class="navbar-nav">
@@ -66,7 +66,7 @@
       </ul>
       
       @if($menuAfter)
-        @menu($menuAfter,'imagina-navbar')
+        @menu($menuAfter,'imagina-navbar',['organization_id' => tenant()->id ?? null])
       @endif
     </nav>
   
@@ -93,7 +93,7 @@
     </div>
   </div>
 </div>
-
+@include('isite::frontend.components.category-menu.partials.style')
 @section('scripts-owl')
   @parent
   <script>

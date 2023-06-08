@@ -28,6 +28,17 @@ return [
   ],
   //Extra field to crud post
   'posts' => [
+    'secondaryimage' => [
+      'value' => (object)[],
+      'name' => 'mediasSingle',
+      'type' => 'media',
+      'props' => [
+        'label' => 'Imagen Secondaria',
+        'zone' => 'secondaryimage',
+        'entity' => "Modules\Iblog\Entities\Post",
+        'entityId' => null
+      ]
+    ],
     'breadcrumbimage' => [
       'value' => (object)[],
       'name' => 'mediasSingle',

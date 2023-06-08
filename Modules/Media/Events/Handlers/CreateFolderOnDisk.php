@@ -21,9 +21,9 @@ class CreateFolderOnDisk
     {
         $disk = is_null($event->folder->disk)? $this->getConfiguredFilesystem() : $event->folder->disk;
       
-        $organizationId = $event->folder->organization_id ?? null;
+        $organizationPrefix = mediaOrganizationPrefix($event->folder,"/");
         
-        $this->filesystem->disk($disk)->makeDirectory(($organizationId ? "/organization$organizationId" : "").$this->getDestinationPath($event->folder->path->getRelativeUrl()));
+        $this->filesystem->disk($disk)->makeDirectory(($organizationPrefix).$this->getDestinationPath($event->folder->path->getRelativeUrl()));
     }
 
     private function getDestinationPath($path)

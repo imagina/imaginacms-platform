@@ -12,6 +12,7 @@ class Zone extends CrudModel
   
   protected $table = 'media__zones';
   public $transformer = 'Modules\Media\Transformers\ZoneTransformer';
+  public $repository = 'Modules\Media\Repositories\ZoneRepository';
   public $requestValidation = [
     'create' => 'Modules\Media\Http\Requests\CreateZoneRequest',
     'update' => 'Modules\Media\Http\Requests\UpdateZoneRequest',

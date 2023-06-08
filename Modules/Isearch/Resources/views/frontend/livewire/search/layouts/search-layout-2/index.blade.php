@@ -52,3 +52,24 @@
     </div>
   @endif
 </div>
+
+@section('scripts')
+  @parent
+  <style>
+    #searchLayout1 .cover-img, #searchLayout2 .cover-img {
+      object-fit: cover;
+      max-height: 70px;
+    }
+    #searchLayout1 .search-logo, #searchLayout2 .search-logo {
+      max-height: 100px;
+      min-height: 100px;
+      width: auto !important;
+    }
+    @media (max-width: 991.98px) {
+      #searchLayout1 .search-logo, #searchLayout2 .search-logo {
+        min-height: 40px;
+      }
+    }
+
+  </style>
+@stop

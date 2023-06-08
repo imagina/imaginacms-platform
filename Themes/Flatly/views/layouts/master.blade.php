@@ -2,6 +2,7 @@
 <html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 <head>
     <meta charset="UTF-8">
+    @yield('meta')
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@section('title')@setting('core::site-name')@show</title>
@@ -19,10 +20,14 @@
     @stack('css-stack')
     @livewireStyles
 
-    {{-- Custom JS --}}
+    {{-- Custom Head JS --}}
     @if(Setting::has('isite::headerCustomJs'))
-        <script> {!! Setting::get('isite::headerCustomJs') !!} </script>
+       {!! Setting::get('isite::headerCustomJs') !!}
     @endif
+
+    {{--Fontawesome--}}
+    <script src="https://kit.fontawesome.com/56d3d5dce0.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/v4-shims.min.js" integrity="sha512-pd9YFLsGdZIRG1ChLLdpxgGT+xR7rVjsHqm6RP0toUadPB4XZZ7LlqzX3IhnpMd2Cb8b2s8yVFwY21epgr84qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -40,7 +45,6 @@
 @livewireScripts
 <x-livewire-alert::scripts />
 
-<script defer type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fd9384eb64d610011fa8357&product=inline-share-buttons" async="async"></script>
 @yield('scripts-owl')
 @yield('scripts-header')
 @yield('scripts')

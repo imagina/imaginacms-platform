@@ -4,6 +4,7 @@ namespace Modules\Slider\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\User\Transformers\UserProfileTransformer;
+use Modules\Isite\Transformers\RevisionTransformer;
 
 class SlideApiTransformer extends JsonResource
 {
@@ -23,9 +24,11 @@ class SlideApiTransformer extends JsonResource
       'customHtml' => $this->custom_html ? $this->custom_html : '',
       'externalImageUrl' => $this->external_image_url,
       'target' => $this->target,
+      'responsive' => $this->responsive,
       'options' => $this->when($this->options, $this->options),
       'imageUrl' => $this->getImageUrl(),
       'mediaFiles' => $this->mediaFiles(),
+      'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
     ];
 
     $filter = json_decode($request->filter);

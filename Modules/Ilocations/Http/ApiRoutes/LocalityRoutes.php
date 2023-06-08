@@ -32,7 +32,7 @@ $router->group(['prefix' => '/localities'], function (Router $router) {
 
   //Route delete
   $router->delete('/{criteria}', [
-    'as' => 'api.ilocations.cities.delete',
+    'as' => 'api.ilocations.localities.delete',
     'uses' => 'LocalityApiController@delete',
     'middleware' => ['auth:api']
   ]);

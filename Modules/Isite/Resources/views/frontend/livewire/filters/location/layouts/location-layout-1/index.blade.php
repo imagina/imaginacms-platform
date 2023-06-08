@@ -11,24 +11,31 @@
             value="{{$inputSearchLocation}}"
             wire:ignore>
 
-	    <div id="locate" class="locate" title="{{trans('isite::frontend.filter-location.title-nearme')}}">
-	        <div class="locate-icon-wrapper d-flex justify-content-center align-items-center">
+        <!--
+        Important: For the search with "radio" it is necessary to save the map data (lng,lat) in each ad (entity)
+        -->
+        @if($findByLngLat)  
+    	    <div id="locate" class="locate" title="{{trans('isite::frontend.filter-location.title-nearme')}}">
+    	        <div class="locate-icon-wrapper d-flex justify-content-center align-items-center">
 
-                <i id="locate-near-icon" class="fa fa-dot-circle-o text-primary cursor-pointer" aria-hidden="true"></i>
+                    <i id="locate-near-icon" class="fa fa-dot-circle-o text-primary cursor-pointer" aria-hidden="true"></i>
 
-	        </div>
-	    </div>
+    	        </div>
+    	    </div>
 
-	  	@if(!empty($radio))
-		    <div class="search-location-radius">
-		        <select id="select-radius" wire:model="selectedRadio">
-                    <option value="all">Todo</option>
-		        	@foreach($radio['values'] as $key => $value)
-			            <option value="{{$value}}">{{$value}} {{$radio['measure']}}</option>
-			        @endforeach
-		        </select>
-		    </div>
-		@endif
+        
+    	  	@if(!empty($radio))
+    		    <div class="search-location-radius">
+    		        <select id="select-radius" wire:model="selectedRadio">
+                        <option value="all">Todo</option>
+    		        	@foreach($radio['values'] as $key => $value)
+    			            <option value="{{$value}}">{{$value}} {{$radio['measure']}}</option>
+    			        @endforeach
+    		        </select>
+    		    </div>
+    		@endif
+
+        @endif
 
 
 	</div>
@@ -115,6 +122,9 @@
                     country: 'country',
                     locality: 'locality',
                     administrative_area_level_1 : 'administrative_area_level_1',
+                    administrative_area_level_2 : 'administrative_area_level_2',
+                    route : 'route',
+                    sublocality_level_1: 'sublocality_level_1'
                 };
 
                 for(var i = 0; i < placeAC.length; i++){
@@ -123,14 +133,33 @@
 
                         var component_type = types[j];
                         if(componentMap.hasOwnProperty(component_type)){
-                            if(component_type=="locality")
-                                inforPlace[0] = placeAC[i]['short_name']
+                            console.log(placeAC[i])
 
-                            if(component_type=="administrative_area_level_1")
+                            //neighborhood
+                            if(component_type=="locality"){
+                                inforPlace[0] = placeAC[i]['short_name']
+                            }else{
+                                if(component_type=="route"){
+                                inforPlace[0] = placeAC[i]['short_name']
+                                }
+                            }
+
+                            //neighborhood - extra para prioridad
+                            if(component_type=="sublocality_level_1"){
+                                inforPlace[4] = placeAC[i]['short_name']
+                            }
+
+                            //City
+                            if(component_type=="administrative_area_level_2")
                                 inforPlace[1] = placeAC[i]['short_name']
 
-                            if(component_type=="country")
+                            //Department
+                            if(component_type=="administrative_area_level_1")
                                 inforPlace[2] = placeAC[i]['short_name']
+
+                            if(component_type=="country")
+                                inforPlace[3] = placeAC[i]['short_name']
+
                         }
                     }
                 }
@@ -141,10 +170,12 @@
 
             /**
             * Event Click Locate Near Icon
+            * 
             */
-            const el = document.getElementById("locate-near-icon");
-            el.addEventListener("click", initGeolocation, false);
-
+            @if($findByLngLat)
+                const el = document.getElementById("locate-near-icon");
+                el.addEventListener("click", initGeolocation, false);
+            @endif
 
             // Google Maps Places INIT
             var searchInputLocation = 'input-search-location';
@@ -169,9 +200,22 @@
 
                 placeInformation = getPlaceInfor(near_place.address_components)
 
-                @this.city = placeInformation[0]
-                @this.province = placeInformation[1]
-                @this.country = placeInformation[2]
+                console.warn(placeInformation)
+
+                //Para que tome locality or route
+                var neighb = placeInformation[0]
+
+                //Pero a veces lo retorna asi
+                //Validando por si es sublocality_level_1
+                if (typeof placeInformation[4] !== 'undefined') {
+                    neighb = placeInformation[4]
+                }
+
+                @this.neighborhood = neighb
+
+                @this.city = placeInformation[1]
+                @this.province = placeInformation[2] //Department
+                @this.country = placeInformation[3]
 
                 @this.lat = near_place.geometry.location.lat();
                 @this.lng = near_place.geometry.location.lng();

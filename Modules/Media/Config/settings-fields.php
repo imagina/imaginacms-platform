@@ -228,4 +228,15 @@ return [
       'label' => 'media::settings.label.awsEndpoint'
     ]
   ],
+  'activateCheckOfDirSize' => [
+    "onlySuperAdmin" => true,
+    'value' => "1",
+    'name' => 'media::activateCheckOfDirSize',
+    'type' => 'checkbox',
+    'props' => [
+      'label' => 'media::settings.label.activateCheckOfDirSize',
+      'trueValue' => "1",
+      'falseValue' => "0",
+    ]
+  ],
 ];

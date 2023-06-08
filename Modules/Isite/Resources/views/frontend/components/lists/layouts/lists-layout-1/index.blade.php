@@ -14,4 +14,24 @@
         @endforeach
     </div>
   </div>
+    <style>
+        .lists-layout-1 .card a {
+            height: calc(100vh *.72) !important;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .lists-layout-1 .card h3 {
+            font-size: 2.375rem;
+        }
+        .lists-layout-1 .card:hover {
+            box-shadow: 0px 0px 9px 0px #949393;
+            z-index: 9;
+        }
+        @media (min-width: 767.98px) {
+            .lists-layout-1 .card h3 {
+                font-size: 1.125rem;
+            }
+        }
+
+    </style>
 </section>

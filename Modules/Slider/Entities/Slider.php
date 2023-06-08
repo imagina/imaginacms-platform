@@ -1,12 +1,21 @@
-<?php namespace Modules\Slider\Entities;
+<?php
+
+namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Isite\Traits\RevisionableTrait;
+
+use Modules\Core\Support\Traits\AuditTrait;
 
 class Slider extends Model
 {
   
-  use BelongsToTenant;
+  use BelongsToTenant, AuditTrait, RevisionableTrait;
+
+  public $transformer = 'Modules\Slider\Transformers\SliderApiTransformer';
+  public $entity = 'Modules\Slider\Entities\Slider';
+  public $repository = 'Modules\Slider\Repositories\SliderApiRepository';
   
   protected $fillable = [
     'name',

@@ -63,6 +63,7 @@ return [
     'isite.layouts' => [
         'manage' => 'isite::layouts.manage resource',
         'index' => 'isite::layouts.list resource',
+        'index-all' => 'isite::layouts.list all resource',
         'create' => 'isite::layouts.create resource',
         'edit' => 'isite::layouts.edit resource',
         'destroy' => 'isite::layouts.destroy resource',
@@ -76,7 +77,16 @@ return [
         'destroy' => 'isite::typeables.destroy resource',
         'restore' => 'isite::typeables.restore resource',
     ],
+    'isite.modules' => [
+        'manage' => 'isite::modules.manage resource',
+        'index' => 'isite::modules.list resource',
+        'create' => 'isite::modules.create resource',
+        'edit' => 'isite::modules.edit resource',
+        'destroy' => 'isite::modules.destroy resource',
+        'restore' => 'isite::modules.restore resource',
+    ],
 // append
+
 
 
 

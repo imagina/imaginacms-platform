@@ -225,7 +225,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with(["createdBy"]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships
@@ -342,16 +342,24 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
       }
     }
 
+    $settingFilesystem = setting('media::filesystem', null, config("asgard.media.config.filesystem"));
     //Getting the disk name
-    $filterDisk = isset($params->filter) && isset($params->filter->disk) ? $params->filter->disk : setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    $filterDisk = isset($params->filter) && isset($params->filter->disk) ? $params->filter->disk : $settingFilesystem;
 
     //Validate disk name
-    $filterDisk = in_array($filterDisk, array_keys(config('filesystems.disks'))) ? $filterDisk : setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    $filterDisk = in_array($filterDisk, array_keys(config('filesystems.disks'))) ? $filterDisk : $settingFilesystem;
 
+    //verify if the frontend send publicmedia and the default disk is s3 automatically do switch to s3
+    //esto porque Michael pidió una solución rápida para no afectar front fuertemente en una primera versión
+    if($filterDisk == "publicmedia" && $settingFilesystem == "s3") $filterDisk = $settingFilesystem;
+  
+    //igualmente para privatemedia
+    if($filterDisk == "privatemedia" && $settingFilesystem == "s3") $filterDisk = $settingFilesystem;
+  
     //Filter by disk name
-    if ($filterDisk == setting('media::filesystem', null, config("asgard.media.config.filesystem"))) {
-      $query->where(function ($q) {
-        $q->where("disk", setting('media::filesystem', null, config("asgard.media.config.filesystem")))
+    if ($filterDisk == $settingFilesystem) {
+      $query->where(function ($q) use($filterDisk) {
+        $q->where("disk", $filterDisk)
           ->orWhereNull("disk");
       });
     } else {
@@ -395,7 +403,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     $query = $this->model->query();
 
     /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
+    if (in_array('*', $params->include ?? [])) {//If Request all relationships
       $query->with([]);
     } else {//Especific relationships
       $includeDefault = [];//Default relationships

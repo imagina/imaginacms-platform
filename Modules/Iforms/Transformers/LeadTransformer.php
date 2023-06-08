@@ -6,6 +6,7 @@ namespace Modules\Iforms\Transformers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 use Modules\Iprofile\Transformers\UserTransformer;
+use Modules\Isite\Transformers\RevisionTransformer;
 use Modules\Media\Transformers\NewTransformers\MediaTransformer;
 class LeadTransformer extends JsonResource
 {
@@ -22,7 +23,8 @@ class LeadTransformer extends JsonResource
         'createdAt' => $this->when($this->created_at, $this->created_at),
         'updatedAt' => $this->when($this->updated_at, $this->updated_at),
         'assignedTo' => new UserTransformer($this->whenLoaded('assignedTo')),
-        "files" => MediaTransformer::collection($this->whenLoaded('files'))
+        "files" => MediaTransformer::collection($this->whenLoaded('files')),
+        'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
       ];
       
       $form = $this->form;
@@ -30,7 +32,7 @@ class LeadTransformer extends JsonResource
       
       foreach($fields as $field){
         if($field->type == 12) { //FILE
-          $data["values"][$field->name] = url($data["values"][$field->name]);
+          $data["values"][$field->name] = url($data["values"][$field->name] ?? '');
         }
       }
   

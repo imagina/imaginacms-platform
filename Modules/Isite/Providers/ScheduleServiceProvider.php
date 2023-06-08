@@ -14,7 +14,6 @@ class ScheduleServiceProvider extends ServiceProvider
       $schedule = $this->app->make(Schedule::class);
       $schedule->call(function () {
         Artisan::call('sitemap:generate');
-        \Log::info('Sitemap Generate successfully');
       })->dailyAt('01:00');
     });
   }

@@ -39,3 +39,7 @@
     </div>
   @endif
 </div>
+
+@once
+    @include('isite::frontend.livewire.filters.checkbox.partials.style')
+@endonce

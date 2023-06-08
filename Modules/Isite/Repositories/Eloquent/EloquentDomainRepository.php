@@ -24,9 +24,10 @@ class EloquentDomainRepository extends EloquentCrudRepository implements DomainR
    *
    * @param $query
    * @param $filter
+   * @param $params
    * @return mixed
    */
-  public function filterQuery($query, $filter)
+  public function filterQuery($query, $filter, $params)
   {
 
     /**

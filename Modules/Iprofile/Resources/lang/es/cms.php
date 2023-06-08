@@ -72,6 +72,17 @@ return [
   ],
   "quickCard" => [
     "lastUsers" => "Usuarios - Ultimos usuarios registrados"
+  ],
+  "documentation" => [
+    "user" => "Los usuarios son la manera en que una persona tiene acceso a tu aplicación por medio de un usuario/email
+    y contraseña. Cada usuario puede tener uno o varios Roles los cuales definen los permisos a las funcionalidades de la 
+    aplicación. Gracias a los usuarios la aplicación puede identificar quien realiza cada acción como por ejemplo quien 
+    creo cierto registro o quien lo actualizó.",
+    "departments" => "De esta manera es posible agrupar varios Usuarios, con está funcionalidad es posible filtrar, 
+    limitar o asignar ciertas funcionalidades para usuarios de una manera más rápida y sencilla.",
+    "role" => "Con los roles es posible asignar permisos a los usuarios con los que se le dará acceso a cada funcionalidad
+    de la aplicación. También puede vincular un Formulario a cada rol, con esto es posible capturar más datos 
+    al momento de que un usuario se registre con este rol"
   ]
 ];
 

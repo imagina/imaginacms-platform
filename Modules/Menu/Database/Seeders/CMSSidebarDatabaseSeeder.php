@@ -147,6 +147,8 @@ class CMSSidebarDatabaseSeeder extends Seeder
       } else if (!$menuItem->page_id && $page) {
         $itemData = $this->mergeItemPageData($itemData, $page);
       }
+      //Add icon
+      if(!isset($itemData["icon"])) $itemData["icon"] = $page->options->icon ?? 'fas fa-circle';
       //Update itemData
       $menuItem->update($itemData);
     }

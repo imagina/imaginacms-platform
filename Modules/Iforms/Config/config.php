@@ -8,7 +8,7 @@ return [
 |--------------------------------------------------------------------------
 */
   'requiredFieldLabel' => ' * ',
-  
+
   /*
 |--------------------------------------------------------------------------
 | Define all the exportable available
@@ -47,6 +47,12 @@ return [
       //'fields' => ['id', 'first_name', 'last_name', 'email', 'last_login', 'created_at', 'updated_at'],
       //'headings' => ['id', 'Nombre', 'Apellido', 'Email', 'Fecha Ultima Sesión', 'Fecha de Creación', 'Fecha Ultima Actualización']
     ],
-    
+
+  ],
+
+  /*Translate keys of each entity. Based on the permission string*/
+  'documentation' => [
+    'forms' => "iforms::cms.documentation.forms",
+    'leads' => "iforms::cms.documentation.leads",
   ]
 ];

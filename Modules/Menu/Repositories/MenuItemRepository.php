@@ -55,7 +55,7 @@ interface MenuItemRepository extends BaseRepository
      * @param $params
      * @return mixed
      */
-    public function getItem($criteria, $params);
+    public function getItem($criteria, $params = false);
 
     /**
      * @param $criteria
@@ -63,7 +63,7 @@ interface MenuItemRepository extends BaseRepository
      * @param $params
      * @return mixed
      */
-    public function updateBy($criteria, $data, $params);
+    public function updateBy($criteria, $data, $params = false);
 
     /**
      * @param $params
@@ -76,7 +76,7 @@ interface MenuItemRepository extends BaseRepository
      * @param $params
      * @return mixed
      */
-    public function deleteBy($criteria, $params);
+    public function deleteBy($criteria, $params = false);
 
     /**
      * Update the Menu Items for the given ids

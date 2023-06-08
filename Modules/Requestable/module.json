@@ -1,0 +1,19 @@
+{
+    "name": "Requestable",
+    "alias": "requestable",
+    "description": "",
+    "keywords": [],
+    "version": "1.0.0",
+	"active": 1,
+    "priority": 100,
+    "providers": [
+        "Modules\\Requestable\\Providers\\RequestableServiceProvider",
+        "Modules\\Requestable\\Providers\\RouteServiceProvider",
+        "Modules\\Requestable\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

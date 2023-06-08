@@ -1,18 +1,22 @@
 <?php
 
 namespace Modules\Menu\Transformers;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Ihelpers\Transformers\BaseApiTransformer;
+use Illuminate\Support\Facades\Cache;
+use Modules\Isite\Transformers\RevisionTransformer;
 
 class MenuitemTransformer extends BaseApiTransformer
 {
   public function toArray($request)
   {
+   
     $data = [
       'id'  => $this->when($this->id, $this->id),
       'menuId' => $this->when($this->menu_id, $this->menu_id),
       'menu' => new MenuTransformer($this->whenLoaded('menu')),
-      'menuName' => $this->when($this->menu_id, $this->menu->name),
+      'menuName' => $this->when(isset($this->menu), $this->menu->name ?? ""),
       'pageId' => $this->when($this->page_id, $this->page_id),
       'systemName' => $this->when($this->system_name, $this->system_name),
       'parent' => new MenuitemTransformer ($this->whenLoaded('parent')),
@@ -32,6 +36,7 @@ class MenuitemTransformer extends BaseApiTransformer
       'class' => $this->when($this->class, $this->class),
       'createdAt' => $this->when($this->created_at, $this->created_at),
       'updatedAt' => $this->when($this->updated_at, $this->updated_at),
+      'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
     ];
 
     $filter = json_decode($request->filter);
@@ -49,4 +54,27 @@ class MenuitemTransformer extends BaseApiTransformer
 
     return $data;
   }
+
+  /*
+  * Integration with tenant - menu
+  */
+  public function getMenuName(){
+  
+  
+    return Cache::store('array')->remember('menu_' . $this->menu_id, 60, function () {
+    
+      $params = [
+      "include" => []
+    ];
+
+    $menu = app('Modules\Menu\Repositories\MenuRepository')->getItem($this->menu_id,json_decode(json_encode($params)));
+
+    if(!empty($menu))
+      return $menu->name;
+      return '';
+    });
+  
+
+  }
+
 }

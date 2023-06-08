@@ -1,0 +1,7526 @@
+{
+  "1": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35020",
+    "name": "Bessemer"
+  },
+  "2": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35055",
+    "name": "Cullman"
+  },
+  "3": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35201",
+    "name": "Birmingham"
+  },
+  "4": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35401",
+    "name": "Tuscaloosa"
+  },
+  "5": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35473",
+    "name": "Northport"
+  },
+  "6": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35501",
+    "name": "Jasper"
+  },
+  "7": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35601",
+    "name": "Decatur"
+  },
+  "8": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35611",
+    "name": "Athens"
+  },
+  "9": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35630",
+    "name": "Florence"
+  },
+  "10": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35756",
+    "name": "Madison"
+  },
+  "11": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35801",
+    "name": "Huntsville"
+  },
+  "12": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "35901",
+    "name": "Gadsden"
+  },
+  "13": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36066",
+    "name": "Prattville"
+  },
+  "14": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36079",
+    "name": "Troy"
+  },
+  "15": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36083",
+    "name": "Tuskegee"
+  },
+  "16": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36101",
+    "name": "Montgomery"
+  },
+  "17": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36201",
+    "name": "Anniston"
+  },
+  "18": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36301",
+    "name": "Dothan"
+  },
+  "19": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36502",
+    "name": "Atmore"
+  },
+  "20": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36601",
+    "name": "Mobile"
+  },
+  "21": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36695",
+    "name": "C and M Mobile Home Park"
+  },
+  "22": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36610",
+    "name": "Prichard"
+  },
+  "23": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36701",
+    "name": "Selma"
+  },
+  "24": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36801",
+    "name": "Opelika"
+  },
+  "25": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36830",
+    "name": "Auburn"
+  },
+  "26": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AL",
+    "code": "36867",
+    "name": "Phenix City"
+  },
+  "27": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AK",
+    "code": "99501",
+    "name": "Anchorage"
+  },
+  "28": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AK",
+    "code": "99707",
+    "name": "Fairbanks"
+  },
+  "29": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85001",
+    "name": "Phoenix"
+  },
+  "30": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85015",
+    "name": "Alhambra"
+  },
+  "31": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85039",
+    "name": "Laveen"
+  },
+  "32": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85117",
+    "name": "Apache Junction"
+  },
+  "33": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85201",
+    "name": "Mesa"
+  },
+  "34": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85224",
+    "name": "Chandler"
+  },
+  "35": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85233",
+    "name": "Gilbert"
+  },
+  "36": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85240",
+    "name": "Queen Creek"
+  },
+  "37": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85250",
+    "name": "Scottsdale"
+  },
+  "38": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85280",
+    "name": "Tempe"
+  },
+  "39": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85301",
+    "name": "Glendale"
+  },
+  "40": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85364",
+    "name": "Yuma"
+  },
+  "41": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85380",
+    "name": "Peoria"
+  },
+  "42": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85546",
+    "name": "Safford"
+  },
+  "43": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "85701",
+    "name": "Tucson"
+  },
+  "44": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "86301",
+    "name": "Prescott"
+  },
+  "45": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "86312",
+    "name": "Prescott Valley"
+  },
+  "46": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "86339",
+    "name": "Sedona"
+  },
+  "47": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "86403",
+    "name": "Lake Havasu City"
+  },
+  "48": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AZ",
+    "code": "86409",
+    "name": "Kingman"
+  },
+  "49": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "71601",
+    "name": "Pine Bluff"
+  },
+  "50": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "71901",
+    "name": "Hot Springs National Park"
+  },
+  "51": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72032",
+    "name": "Conway"
+  },
+  "52": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72114",
+    "name": "North Little Rock"
+  },
+  "53": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72143",
+    "name": "Searcy"
+  },
+  "54": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72201",
+    "name": "Little Rock"
+  },
+  "55": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72315",
+    "name": "Blytheville"
+  },
+  "56": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72401",
+    "name": "Jonesboro"
+  },
+  "57": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72543",
+    "name": "Heber Springs"
+  },
+  "58": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72701",
+    "name": "Fayetteville"
+  },
+  "59": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72756",
+    "name": "Rogers"
+  },
+  "60": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72762",
+    "name": "Springdale"
+  },
+  "61": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72801",
+    "name": "Russellville"
+  },
+  "62": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AR",
+    "code": "72901",
+    "name": "Fort Smith"
+  },
+  "63": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90001",
+    "name": "Florence"
+  },
+  "64": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90004",
+    "name": "Los Ángeles"
+  },
+  "65": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90209",
+    "name": "Beverly Hills"
+  },
+  "66": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90220",
+    "name": "Compton"
+  },
+  "67": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90230",
+    "name": "Culver City"
+  },
+  "68": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90239",
+    "name": "Downey"
+  },
+  "69": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90247",
+    "name": "Gardena"
+  },
+  "70": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90301",
+    "name": "Inglewood"
+  },
+  "71": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90401",
+    "name": "Santa Mónica"
+  },
+  "72": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90501",
+    "name": "Torrance"
+  },
+  "73": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90601",
+    "name": "Whittier"
+  },
+  "74": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90620",
+    "name": "Buena Park"
+  },
+  "75": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90631",
+    "name": "La Habra"
+  },
+  "76": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90637",
+    "name": "La Mirada"
+  },
+  "77": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90650",
+    "name": "Norwalk"
+  },
+  "78": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90660",
+    "name": "Pico Rivera"
+  },
+  "79": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90711",
+    "name": "Lakewood"
+  },
+  "80": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90740",
+    "name": "Seal Beach"
+  },
+  "81": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90745",
+    "name": "Carson"
+  },
+  "82": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "90801",
+    "name": "Long Beach"
+  },
+  "83": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91008",
+    "name": "Duarte"
+  },
+  "84": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91041",
+    "name": "Tujunga"
+  },
+  "85": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91101",
+    "name": "Pasadena"
+  },
+  "86": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91106",
+    "name": "South Pasadena"
+  },
+  "87": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91201",
+    "name": "Glendale"
+  },
+  "88": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91303",
+    "name": "Canoga Park"
+  },
+  "89": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91324",
+    "name": "Northridge"
+  },
+  "90": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91331",
+    "name": "Pacoima"
+  },
+  "91": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91358",
+    "name": "Thousand Oaks"
+  },
+  "92": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91364",
+    "name": "Woodland Hills"
+  },
+  "93": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91380",
+    "name": "Santa Clarita"
+  },
+  "94": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91404",
+    "name": "Van Nuys"
+  },
+  "95": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91413",
+    "name": "Sherman Oaks"
+  },
+  "96": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91416",
+    "name": "Encino"
+  },
+  "97": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91505",
+    "name": "Universal City"
+  },
+  "98": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91601",
+    "name": "North Hollywood"
+  },
+  "99": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91701",
+    "name": "Rancho Cucamonga"
+  },
+  "100": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91708",
+    "name": "Chino"
+  },
+  "101": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91714",
+    "name": "Industry"
+  },
+  "102": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91722",
+    "name": "Covina"
+  },
+  "103": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91731",
+    "name": "El Monte"
+  },
+  "104": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91744",
+    "name": "La Puente"
+  },
+  "105": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91754",
+    "name": "Monterey Park"
+  },
+  "106": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91758",
+    "name": "Ontario"
+  },
+  "107": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91766",
+    "name": "Pomona"
+  },
+  "108": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91770",
+    "name": "Rosemead"
+  },
+  "109": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91775",
+    "name": "San Gabriel"
+  },
+  "110": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91784",
+    "name": "Upland"
+  },
+  "111": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91790",
+    "name": "West Covina"
+  },
+  "112": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91801",
+    "name": "Alhambra"
+  },
+  "113": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91901",
+    "name": "Alpine"
+  },
+  "114": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91909",
+    "name": "Chula Vista"
+  },
+  "115": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91941",
+    "name": "La Mesa"
+  },
+  "116": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "91976",
+    "name": "Spring Valley"
+  },
+  "117": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92008",
+    "name": "Carlsbad"
+  },
+  "118": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92012",
+    "name": "Del Mar"
+  },
+  "119": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92020",
+    "name": "El Cajón"
+  },
+  "120": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92025",
+    "name": "San Pasqual"
+  },
+  "121": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92025",
+    "name": "Escondido"
+  },
+  "122": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92035",
+    "name": "La Jolla"
+  },
+  "123": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92049",
+    "name": "Oceanside"
+  },
+  "124": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92081",
+    "name": "Vista"
+  },
+  "125": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92092",
+    "name": "San Diego"
+  },
+  "126": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92201",
+    "name": "Indio"
+  },
+  "127": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92262",
+    "name": "Palm Springs"
+  },
+  "128": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92284",
+    "name": "Yucca Valley"
+  },
+  "129": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92334",
+    "name": "Fontana"
+  },
+  "130": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92350",
+    "name": "Loma Linda"
+  },
+  "131": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92373",
+    "name": "Redlands"
+  },
+  "132": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92392",
+    "name": "Victorville"
+  },
+  "133": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92401",
+    "name": "San Bernardino"
+  },
+  "134": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92501",
+    "name": "Riverside"
+  },
+  "135": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92530",
+    "name": "Lake Elsinore"
+  },
+  "136": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92543",
+    "name": "Hemet"
+  },
+  "137": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92551",
+    "name": "Moreno Valley"
+  },
+  "138": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92562",
+    "name": "Murrieta"
+  },
+  "139": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92570",
+    "name": "Perris"
+  },
+  "140": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92581",
+    "name": "San Jacinto"
+  },
+  "141": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92584",
+    "name": "Menifee"
+  },
+  "142": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92589",
+    "name": "Temecula"
+  },
+  "143": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92602",
+    "name": "Irvine"
+  },
+  "145": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92626",
+    "name": "Costa Mesa"
+  },
+  "146": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92646",
+    "name": "Huntington Beach"
+  },
+  "147": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92657",
+    "name": "Newport Beach"
+  },
+  "148": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92672",
+    "name": "San Clemente"
+  },
+  "149": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92683",
+    "name": "Westminster"
+  },
+  "150": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92690",
+    "name": "Mission Viejo"
+  },
+  "151": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92701",
+    "name": "Santa Ana"
+  },
+  "152": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92780",
+    "name": "Tustin"
+  },
+  "153": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92801",
+    "name": "Anaheim"
+  },
+  "154": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92821",
+    "name": "Brea"
+  },
+  "155": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92831",
+    "name": "Fullerton"
+  },
+  "156": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92840",
+    "name": "Garden Grove"
+  },
+  "157": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92856",
+    "name": "Orange"
+  },
+  "158": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92877",
+    "name": "Corona"
+  },
+  "159": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "92885",
+    "name": "Yorba Linda"
+  },
+  "160": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93001",
+    "name": "Ventura"
+  },
+  "161": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93010",
+    "name": "Camarillo"
+  },
+  "162": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93030",
+    "name": "Oxnard"
+  },
+  "163": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93041",
+    "name": "Port Hueneme"
+  },
+  "164": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93062",
+    "name": "Simi Valley"
+  },
+  "165": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93101",
+    "name": "Santa Bárbara"
+  },
+  "166": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93116",
+    "name": "Goleta"
+  },
+  "167": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93277",
+    "name": "Visalia"
+  },
+  "168": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93301",
+    "name": "Bakersfield"
+  },
+  "169": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93401",
+    "name": "San Luis Obispo"
+  },
+  "170": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93436",
+    "name": "Lompoc"
+  },
+  "171": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93454",
+    "name": "Santa María"
+  },
+  "172": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93534",
+    "name": "Lancaster"
+  },
+  "173": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93550",
+    "name": "Palmdale"
+  },
+  "174": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93611",
+    "name": "Clovis"
+  },
+  "175": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93636",
+    "name": "Madera"
+  },
+  "176": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93701",
+    "name": "Fresno"
+  },
+  "177": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93901",
+    "name": "Salinas"
+  },
+  "178": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93921",
+    "name": "Carmel-by-the-Sea"
+  },
+  "179": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "93940",
+    "name": "Monterrey"
+  },
+  "180": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94013",
+    "name": "Daly City"
+  },
+  "181": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94022",
+    "name": "Los Altos"
+  },
+  "182": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94025",
+    "name": "Atherton"
+  },
+  "183": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94061",
+    "name": "Redwood City"
+  },
+  "184": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94085",
+    "name": "Sunnyvale"
+  },
+  "185": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94101",
+    "name": "San Francisco"
+  },
+  "186": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94137",
+    "name": "South of Market"
+  },
+  "187": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94160",
+    "name": "Civic Center"
+  },
+  "188": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94203",
+    "name": "Sacramento"
+  },
+  "189": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94301",
+    "name": "Palo Alto"
+  },
+  "190": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94305",
+    "name": "Stanford"
+  },
+  "191": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94401",
+    "name": "San Mateo"
+  },
+  "192": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94518",
+    "name": "Concord"
+  },
+  "193": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94536",
+    "name": "Fremont"
+  },
+  "194": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94540",
+    "name": "Hayward"
+  },
+  "195": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94577",
+    "name": "San Leandro"
+  },
+  "196": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94589",
+    "name": "Vallejo"
+  },
+  "198": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94595",
+    "name": "Walnut Creek"
+  },
+  "199": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94601",
+    "name": "Oakland"
+  },
+  "200": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94701",
+    "name": "Berkeley"
+  },
+  "201": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94801",
+    "name": "Richmond"
+  },
+  "202": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94901",
+    "name": "San Rafael"
+  },
+  "203": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94926",
+    "name": "Rohnert Park"
+  },
+  "204": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94945",
+    "name": "Novato"
+  },
+  "205": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "94952",
+    "name": "Petaluma"
+  },
+  "206": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95001",
+    "name": "Aptos"
+  },
+  "207": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95005",
+    "name": "Brookdale"
+  },
+  "208": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95008",
+    "name": "Campbell"
+  },
+  "209": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95026",
+    "name": "Lexington Hills"
+  },
+  "210": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95030",
+    "name": "Los Gatos"
+  },
+  "211": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95050",
+    "name": "Santa Clara"
+  },
+  "212": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95060",
+    "name": "Santa Cruz"
+  },
+  "213": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95106",
+    "name": "San José"
+  },
+  "214": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95201",
+    "name": "Stockton"
+  },
+  "215": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95240",
+    "name": "Lodi"
+  },
+  "216": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95340",
+    "name": "Merced"
+  },
+  "217": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95350",
+    "name": "Modesto"
+  },
+  "218": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95370",
+    "name": "East Sonora"
+  },
+  "219": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95376",
+    "name": "Tracy"
+  },
+  "220": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95380",
+    "name": "Turlock"
+  },
+  "221": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95401",
+    "name": "Santa Rosa"
+  },
+  "222": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95422",
+    "name": "Clearlake"
+  },
+  "223": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95501",
+    "name": "Eureka"
+  },
+  "224": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95518",
+    "name": "Arcata"
+  },
+  "225": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95616",
+    "name": "Davis"
+  },
+  "226": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95813",
+    "name": "North Sacramento"
+  },
+  "227": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95967",
+    "name": "Paradise"
+  },
+  "228": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "95991",
+    "name": "Yuba City"
+  },
+  "229": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "96001",
+    "name": "Redding"
+  },
+  "230": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CA",
+    "code": "96160",
+    "name": "Truckee"
+  },
+  "231": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27094",
+    "name": "Rural Hall"
+  },
+  "232": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27101",
+    "name": "Winston-Salem"
+  },
+  "233": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27203",
+    "name": "Asheboro"
+  },
+  "234": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27215",
+    "name": "Burlington"
+  },
+  "235": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27260",
+    "name": "High Point"
+  },
+  "236": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27292",
+    "name": "Lexington"
+  },
+  "237": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27330",
+    "name": "Sanford"
+  },
+  "238": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27511",
+    "name": "Cary"
+  },
+  "239": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27514",
+    "name": "Chapel Hill"
+  },
+  "240": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27530",
+    "name": "Goldsboro"
+  },
+  "241": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27601",
+    "name": "Raleigh"
+  },
+  "242": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27701",
+    "name": "Durham"
+  },
+  "243": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27801",
+    "name": "Rocky Mount"
+  },
+  "244": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27833",
+    "name": "Greenville"
+  },
+  "245": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27893",
+    "name": "Wilson"
+  },
+  "246": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "27906",
+    "name": "Elizabeth City"
+  },
+  "247": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28025",
+    "name": "Concord"
+  },
+  "248": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28052",
+    "name": "Gastonia"
+  },
+  "249": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28081",
+    "name": "Kannapolis"
+  },
+  "250": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28104",
+    "name": "Matthews"
+  },
+  "251": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28110",
+    "name": "Monroe"
+  },
+  "252": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28144",
+    "name": "Salisbury"
+  },
+  "253": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28150",
+    "name": "Shelby"
+  },
+  "254": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28201",
+    "name": "Charlotte"
+  },
+  "255": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28301",
+    "name": "Fayetteville"
+  },
+  "256": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28358",
+    "name": "Lumberton"
+  },
+  "257": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28401",
+    "name": "Wilmington"
+  },
+  "258": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28408",
+    "name": "Silver Lake"
+  },
+  "259": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28501",
+    "name": "Kinston"
+  },
+  "260": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28540",
+    "name": "Jacksonville"
+  },
+  "261": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28560",
+    "name": "New Bern"
+  },
+  "262": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28601",
+    "name": "Hickory"
+  },
+  "263": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28791",
+    "name": "Hendersonville"
+  },
+  "264": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NC",
+    "code": "28801",
+    "name": "Asheville"
+  },
+  "265": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29071",
+    "name": "Lexington"
+  },
+  "266": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29115",
+    "name": "Orangeburg"
+  },
+  "267": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29150",
+    "name": "Sumter"
+  },
+  "268": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29169",
+    "name": "West Columbia"
+  },
+  "269": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29201",
+    "name": "Columbia"
+  },
+  "270": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29301",
+    "name": "Spartanburg"
+  },
+  "271": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29340",
+    "name": "Gaffney"
+  },
+  "272": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29401",
+    "name": "Charleston"
+  },
+  "273": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29415",
+    "name": "North Charleston"
+  },
+  "274": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29483",
+    "name": "Summerville"
+  },
+  "275": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29501",
+    "name": "Florence"
+  },
+  "276": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29526",
+    "name": "Conway"
+  },
+  "278": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29532",
+    "name": "Darlington"
+  },
+  "279": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29572",
+    "name": "Myrtle Beach"
+  },
+  "280": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29601",
+    "name": "Greenville"
+  },
+  "281": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29621",
+    "name": "Anderson"
+  },
+  "282": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29631",
+    "name": "Clemson"
+  },
+  "283": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29640",
+    "name": "Easley"
+  },
+  "284": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29646",
+    "name": "Greenwood"
+  },
+  "285": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29650",
+    "name": "Greer"
+  },
+  "286": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29720",
+    "name": "Lancaster"
+  },
+  "287": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29730",
+    "name": "Rock Hill"
+  },
+  "288": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29801",
+    "name": "Aiken"
+  },
+  "289": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29901",
+    "name": "Beaufort"
+  },
+  "290": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SC",
+    "code": "29925",
+    "name": "Hilton Head Island"
+  },
+  "291": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80001",
+    "name": "Arvada"
+  },
+  "292": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80010",
+    "name": "Aurora"
+  },
+  "293": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80021",
+    "name": "Westminster"
+  },
+  "294": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80110",
+    "name": "Englewood"
+  },
+  "295": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80120",
+    "name": "Littleton"
+  },
+  "296": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80155",
+    "name": "Centennial"
+  },
+  "297": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80201",
+    "name": "Denver"
+  },
+  "298": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80225",
+    "name": "Lakewood"
+  },
+  "299": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80301",
+    "name": "Boulder"
+  },
+  "300": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80401",
+    "name": "Golden"
+  },
+  "301": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80437",
+    "name": "Evergreen"
+  },
+  "302": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80501",
+    "name": "Longmont"
+  },
+  "303": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80521",
+    "name": "Fort Collins"
+  },
+  "304": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80537",
+    "name": "Loveland"
+  },
+  "305": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80601",
+    "name": "Brighton"
+  },
+  "306": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80631",
+    "name": "Greeley"
+  },
+  "307": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80826",
+    "name": "Limón"
+  },
+  "308": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80863",
+    "name": "Woodland Park"
+  },
+  "309": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "80901",
+    "name": "Colorado Springs"
+  },
+  "310": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "81001",
+    "name": "Pueblo"
+  },
+  "311": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "81301",
+    "name": "Durango"
+  },
+  "312": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "81401",
+    "name": "Montrose"
+  },
+  "313": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CO",
+    "code": "81501",
+    "name": "Grand Junction"
+  },
+  "314": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "",
+    "name": ""
+  },
+  "315": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06030",
+    "name": "Farmington"
+  },
+  "316": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06050",
+    "name": "New Britain"
+  },
+  "317": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06075",
+    "name": "Staffordville"
+  },
+  "318": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06493",
+    "name": "Wallingford"
+  },
+  "319": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06501",
+    "name": "New Haven"
+  },
+  "320": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06601",
+    "name": "Bridgeport"
+  },
+  "321": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06701",
+    "name": "Waterbury"
+  },
+  "322": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06790",
+    "name": "Torrington"
+  },
+  "323": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06810",
+    "name": "Danbury"
+  },
+  "324": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06830",
+    "name": "Greenwich"
+  },
+  "325": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06850",
+    "name": "Norwalk"
+  },
+  "326": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06880",
+    "name": "Westport"
+  },
+  "327": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-CT",
+    "code": "06901",
+    "name": "Stamford"
+  },
+  "328": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58074",
+    "name": "Wahpeton"
+  },
+  "329": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58102",
+    "name": "Fargo"
+  },
+  "330": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58201",
+    "name": "Grand Forks"
+  },
+  "331": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58401",
+    "name": "Jamestown"
+  },
+  "332": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58501",
+    "name": "Bismarck"
+  },
+  "333": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58701",
+    "name": "Minot"
+  },
+  "334": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ND",
+    "code": "58801",
+    "name": "Williston"
+  },
+  "335": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SD",
+    "code": "57101",
+    "name": "Sioux Falls"
+  },
+  "336": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-SD",
+    "code": "57701",
+    "name": "Rapid City"
+  },
+  "337": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DE",
+    "code": "19711",
+    "name": "Newark"
+  },
+  "338": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DE",
+    "code": "19720",
+    "name": "New Castle"
+  },
+  "339": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DE",
+    "code": "19801",
+    "name": "Wilmington"
+  },
+  "340": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DE",
+    "code": "19901",
+    "name": "Dover"
+  },
+  "341": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32003",
+    "name": "Fleming Island"
+  },
+  "342": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32065",
+    "name": "Orange Park"
+  },
+  "343": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32084",
+    "name": "San Agustín"
+  },
+  "344": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32114",
+    "name": "Daytona Beach"
+  },
+  "345": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32119",
+    "name": "South Daytona"
+  },
+  "346": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32135",
+    "name": "Palm Coast"
+  },
+  "347": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32168",
+    "name": "New Smyrna Beach"
+  },
+  "348": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32173",
+    "name": "Ormond Beach"
+  },
+  "349": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32201",
+    "name": "Jacksonville"
+  },
+  "350": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32301",
+    "name": "Tallahassee"
+  },
+  "351": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32351",
+    "name": "Quincy"
+  },
+  "352": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32401",
+    "name": "Panama City"
+  },
+  "353": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32433",
+    "name": "DeFuniak Springs"
+  },
+  "354": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32446",
+    "name": "Marianna"
+  },
+  "355": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32501",
+    "name": "Pensacola"
+  },
+  "356": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32547",
+    "name": "Fort Walton Beach"
+  },
+  "357": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32570",
+    "name": "Milton"
+  },
+  "358": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32601",
+    "name": "Gainesville"
+  },
+  "359": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32714",
+    "name": "Altamonte Springs"
+  },
+  "360": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32720",
+    "name": "DeLand"
+  },
+  "361": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32750",
+    "name": "Longwood"
+  },
+  "362": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32771",
+    "name": "Sanford"
+  },
+  "363": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32780",
+    "name": "Titusville"
+  },
+  "364": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32789",
+    "name": "Winter Park"
+  },
+  "365": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32801",
+    "name": "Orlando"
+  },
+  "366": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32901",
+    "name": "Melbourne"
+  },
+  "367": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32905",
+    "name": "Palm Bay"
+  },
+  "368": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32922",
+    "name": "Cocoa"
+  },
+  "369": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32952",
+    "name": "Merritt"
+  },
+  "370": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "32960",
+    "name": "Vero Beach"
+  },
+  "371": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33010",
+    "name": "Hialeah"
+  },
+  "372": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33015",
+    "name": "Country Club"
+  },
+  "373": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33019",
+    "name": "Hollywood"
+  },
+  "374": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33023",
+    "name": "Miramar"
+  },
+  "375": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33030",
+    "name": "Homestead"
+  },
+  "376": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33050",
+    "name": "Marathon Shores"
+  },
+  "377": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33060",
+    "name": "Pompano Beach"
+  },
+  "378": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33075",
+    "name": "Coral Springs"
+  },
+  "379": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33101",
+    "name": "Miami"
+  },
+  "380": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33139",
+    "name": "Miami Beach"
+  },
+  "381": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33147",
+    "name": "West Little River"
+  },
+  "382": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33160",
+    "name": "North Miami Beach"
+  },
+  "383": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33172",
+    "name": "Sweetwater"
+  },
+  "384": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33183",
+    "name": "Westwood Lake"
+  },
+  "385": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33301",
+    "name": "Fort Lauderdale"
+  },
+  "386": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33319",
+    "name": "Tamarac"
+  },
+  "387": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33401",
+    "name": "West Palm Beach"
+  },
+  "389": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33418",
+    "name": "Palm Beach Gardens"
+  },
+  "390": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33427",
+    "name": "Boca Ratón"
+  },
+  "391": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33441",
+    "name": "Deerfield Beach"
+  },
+  "392": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33444",
+    "name": "Delray Beach"
+  },
+  "393": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33460",
+    "name": "Lake Worth"
+  },
+  "394": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33508",
+    "name": "Brandon"
+  },
+  "395": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33523",
+    "name": "Dade City"
+  },
+  "396": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33539",
+    "name": "Zephyrhills"
+  },
+  "397": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33543",
+    "name": "Wesley Chapel"
+  },
+  "398": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33563",
+    "name": "Plant City"
+  },
+  "399": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33594",
+    "name": "Valrico"
+  },
+  "400": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33601",
+    "name": "Tampa"
+  },
+  "401": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33701",
+    "name": "San Petersburgo"
+  },
+  "402": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33755",
+    "name": "Clearwater"
+  },
+  "403": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33770",
+    "name": "Largo"
+  },
+  "404": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33775",
+    "name": "Seminole"
+  },
+  "405": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33780",
+    "name": "Pinellas Park"
+  },
+  "406": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33801",
+    "name": "Lakeland"
+  },
+  "407": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33870",
+    "name": "Sebring"
+  },
+  "408": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33880",
+    "name": "Winter Haven"
+  },
+  "409": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33905",
+    "name": "Fort Myers"
+  },
+  "410": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33952",
+    "name": "Port Charlotte"
+  },
+  "411": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33970",
+    "name": "Lehigh Acres"
+  },
+  "412": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "33990",
+    "name": "Cabo Coral"
+  },
+  "413": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34101",
+    "name": "Naples"
+  },
+  "414": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34133",
+    "name": "Bonita Springs"
+  },
+  "415": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34201",
+    "name": "Bradenton"
+  },
+  "416": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34230",
+    "name": "Sarasota"
+  },
+  "417": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34286",
+    "name": "North Port"
+  },
+  "418": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34423",
+    "name": "Crystal River"
+  },
+  "419": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34430",
+    "name": "Dunnellon"
+  },
+  "420": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34446",
+    "name": "Homosassa"
+  },
+  "421": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34450",
+    "name": "Inverness"
+  },
+  "422": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34470",
+    "name": "Ocala"
+  },
+  "423": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34601",
+    "name": "Brooksville"
+  },
+  "424": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34606",
+    "name": "Spring Hill"
+  },
+  "425": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34637",
+    "name": "Land O' Lakes"
+  },
+  "426": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34652",
+    "name": "New Port Richey"
+  },
+  "427": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34667",
+    "name": "Hudson"
+  },
+  "428": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34668",
+    "name": "Port Richey"
+  },
+  "429": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34681",
+    "name": "Palm Harbor"
+  },
+  "430": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34690",
+    "name": "Holiday"
+  },
+  "431": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34711",
+    "name": "Clermont"
+  },
+  "432": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34741",
+    "name": "Kissimmee"
+  },
+  "433": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34769",
+    "name": "St. Cloud"
+  },
+  "434": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34945",
+    "name": "Fort Pierce"
+  },
+  "435": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34983",
+    "name": "Port St. Lucie"
+  },
+  "436": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FL",
+    "code": "34994",
+    "name": "Stuart"
+  },
+  "437": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30014",
+    "name": "Covington"
+  },
+  "438": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30030",
+    "name": "Decatur"
+  },
+  "439": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30042",
+    "name": "Lawrenceville"
+  },
+  "440": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30075",
+    "name": "Roswell"
+  },
+  "441": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30080",
+    "name": "Smyrna"
+  },
+  "442": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30086",
+    "name": "Stone Mountain"
+  },
+  "443": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30091",
+    "name": "Norcross"
+  },
+  "444": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30095",
+    "name": "Duluth"
+  },
+  "445": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30116",
+    "name": "Carrollton"
+  },
+  "446": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30133",
+    "name": "Douglasville"
+  },
+  "447": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30156",
+    "name": "Kennesaw"
+  },
+  "448": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30161",
+    "name": "Rome"
+  },
+  "449": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30236",
+    "name": "Jonesboro"
+  },
+  "450": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30301",
+    "name": "Atlanta"
+  },
+  "451": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30360",
+    "name": "Dunwoody"
+  },
+  "452": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30414",
+    "name": "Claxton"
+  },
+  "453": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30458",
+    "name": "Statesboro"
+  },
+  "454": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30501",
+    "name": "Gainesville"
+  },
+  "455": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30512",
+    "name": "Blairsville"
+  },
+  "456": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30601",
+    "name": "Athens"
+  },
+  "457": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30719",
+    "name": "Dalton"
+  },
+  "458": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "30901",
+    "name": "Augusta"
+  },
+  "459": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31024",
+    "name": "Eatonton"
+  },
+  "460": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31059",
+    "name": "Milledgeville"
+  },
+  "461": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31093",
+    "name": "Warner Robins"
+  },
+  "462": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31201",
+    "name": "Macon"
+  },
+  "463": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31310",
+    "name": "Hinesville"
+  },
+  "464": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31401",
+    "name": "Savannah"
+  },
+  "465": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31501",
+    "name": "Waycross"
+  },
+  "466": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31520",
+    "name": "Brunswick"
+  },
+  "467": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31533",
+    "name": "Douglas"
+  },
+  "468": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31601",
+    "name": "Valdosta"
+  },
+  "469": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31701",
+    "name": "Albany"
+  },
+  "470": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "31901",
+    "name": "Columbus"
+  },
+  "471": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GA",
+    "code": "39817",
+    "name": "Bainbridge"
+  },
+  "472": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-HI",
+    "code": "96707",
+    "name": "Kapolei"
+  },
+  "473": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-HI",
+    "code": "96801",
+    "name": "Honolulu"
+  },
+  "474": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83201",
+    "name": "Pocatello"
+  },
+  "475": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83301",
+    "name": "Twin Falls"
+  },
+  "476": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83401",
+    "name": "Idaho Falls"
+  },
+  "477": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83605",
+    "name": "Caldwell"
+  },
+  "478": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83651",
+    "name": "Nampa"
+  },
+  "479": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83701",
+    "name": "Boise"
+  },
+  "480": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ID",
+    "code": "83814",
+    "name": "Coeur d'Alene"
+  },
+  "481": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60004",
+    "name": "Arlington Heights"
+  },
+  "482": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60007",
+    "name": "Elk Grove Village"
+  },
+  "483": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60012",
+    "name": "Crystal Lake"
+  },
+  "484": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60016",
+    "name": "Des Plaines"
+  },
+  "485": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60062",
+    "name": "Northbrook"
+  },
+  "486": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60085",
+    "name": "Waukegan"
+  },
+  "487": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60086",
+    "name": "North Chicago"
+  },
+  "488": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60120",
+    "name": "Elgin"
+  },
+  "489": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60187",
+    "name": "Wheaton"
+  },
+  "490": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60193",
+    "name": "Schaumburg"
+  },
+  "491": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60201",
+    "name": "Evanston"
+  },
+  "492": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60301",
+    "name": "Oak Park"
+  },
+  "493": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60502",
+    "name": "Aurora"
+  },
+  "494": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60564",
+    "name": "Naperville"
+  },
+  "495": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "60601",
+    "name": "Chicago"
+  },
+  "496": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61101",
+    "name": "Rockford"
+  },
+  "497": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61130",
+    "name": "Loves Park"
+  },
+  "498": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61554",
+    "name": "Pekin"
+  },
+  "499": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61601",
+    "name": "Peoria"
+  },
+  "500": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61701",
+    "name": "Bloomington"
+  },
+  "501": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61801",
+    "name": "Urbana"
+  },
+  "502": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61820",
+    "name": "Champaign"
+  },
+  "503": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "61832",
+    "name": "Danville"
+  },
+  "504": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62201",
+    "name": "East St. Louis"
+  },
+  "505": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62220",
+    "name": "Belleville"
+  },
+  "506": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62301",
+    "name": "Adams"
+  },
+  "507": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62521",
+    "name": "Decatur"
+  },
+  "508": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62701",
+    "name": "Springfield"
+  },
+  "509": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IL",
+    "code": "62901",
+    "name": "Carbondale"
+  },
+  "510": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46011",
+    "name": "Anderson"
+  },
+  "511": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46201",
+    "name": "Indianápolis"
+  },
+  "512": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46274",
+    "name": "Woodruff Place"
+  },
+  "513": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46323",
+    "name": "Hammond"
+  },
+  "514": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46383",
+    "name": "Valparaíso"
+  },
+  "515": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46401",
+    "name": "Gary"
+  },
+  "516": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46514",
+    "name": "Elkhart"
+  },
+  "517": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46526",
+    "name": "Goshen"
+  },
+  "518": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46544",
+    "name": "Mishawaka"
+  },
+  "519": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46580",
+    "name": "Warsaw"
+  },
+  "520": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46601",
+    "name": "South Bend"
+  },
+  "521": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46801",
+    "name": "Fort Wayne"
+  },
+  "522": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "46901",
+    "name": "Kokomo"
+  },
+  "523": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47130",
+    "name": "Jeffersonville"
+  },
+  "524": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47146",
+    "name": "New Albany"
+  },
+  "525": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47201",
+    "name": "Columbus"
+  },
+  "526": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47302",
+    "name": "Muncie"
+  },
+  "527": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47401",
+    "name": "Bloomington"
+  },
+  "528": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47546",
+    "name": "Jasper"
+  },
+  "529": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47701",
+    "name": "Evansville"
+  },
+  "530": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47801",
+    "name": "Terre Haute"
+  },
+  "531": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IN",
+    "code": "47901",
+    "name": "Lafayette"
+  },
+  "532": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "50010",
+    "name": "Ames"
+  },
+  "533": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "50301",
+    "name": "Des Moines"
+  },
+  "534": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "50701",
+    "name": "Waterloo"
+  },
+  "535": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "51101",
+    "name": "Sioux City"
+  },
+  "536": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "51501",
+    "name": "Council Bluffs"
+  },
+  "537": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "52001",
+    "name": "Dubuque"
+  },
+  "538": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "52240",
+    "name": "Iowa City"
+  },
+  "539": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "52401",
+    "name": "Cedar Rapids"
+  },
+  "540": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "52732",
+    "name": "Clinton"
+  },
+  "541": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-IA",
+    "code": "52801",
+    "name": "Davenport"
+  },
+  "542": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "66044",
+    "name": "Lawrence"
+  },
+  "543": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "66209",
+    "name": "Leawood"
+  },
+  "544": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "66216",
+    "name": "Shawnee"
+  },
+  "545": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "66503",
+    "name": "Manhattan"
+  },
+  "546": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "66601",
+    "name": "Topeka"
+  },
+  "547": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "67201",
+    "name": "Wichita"
+  },
+  "548": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KS",
+    "code": "67501",
+    "name": "Hutchinson"
+  },
+  "549": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40201",
+    "name": "Louisville"
+  },
+  "550": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40281",
+    "name": "Watterson Park"
+  },
+  "551": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40444",
+    "name": "Lancaster"
+  },
+  "552": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40502",
+    "name": "Lexington"
+  },
+  "553": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40601",
+    "name": "Frankfort"
+  },
+  "554": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "40741",
+    "name": "London"
+  },
+  "555": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "41011",
+    "name": "Covington"
+  },
+  "556": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "41101",
+    "name": "Ashland"
+  },
+  "557": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "41527",
+    "name": "Belfry"
+  },
+  "558": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "41739",
+    "name": "Fisty"
+  },
+  "559": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "41834",
+    "name": "Spider"
+  },
+  "560": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "42001",
+    "name": "Paducah"
+  },
+  "561": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "42101",
+    "name": "Bowling Green"
+  },
+  "562": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "42301",
+    "name": "Owensboro"
+  },
+  "563": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-KY",
+    "code": "42501",
+    "name": "Somerset"
+  },
+  "564": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70053",
+    "name": "Gretna"
+  },
+  "565": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70062",
+    "name": "Kenner"
+  },
+  "566": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70112",
+    "name": "Nueva Orleans"
+  },
+  "567": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70142",
+    "name": "Storyville"
+  },
+  "568": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70181",
+    "name": "Elmwood"
+  },
+  "569": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70301",
+    "name": "Thibodaux"
+  },
+  "570": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70360",
+    "name": "Houma"
+  },
+  "571": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70401",
+    "name": "Hammond"
+  },
+  "572": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70433",
+    "name": "Covington"
+  },
+  "573": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70458",
+    "name": "Slidell"
+  },
+  "574": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70501",
+    "name": "Lafayette"
+  },
+  "575": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70560",
+    "name": "Nueva Iberia"
+  },
+  "576": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70601",
+    "name": "Lake Charles"
+  },
+  "577": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70663",
+    "name": "Sulphur"
+  },
+  "578": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "70801",
+    "name": "Baton Rouge"
+  },
+  "579": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71101",
+    "name": "Shreveport"
+  },
+  "580": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71111",
+    "name": "Bossier City"
+  },
+  "581": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71201",
+    "name": "Monroe"
+  },
+  "582": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71270",
+    "name": "Ruston"
+  },
+  "583": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71291",
+    "name": "West Monroe"
+  },
+  "584": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71301",
+    "name": "Alexandria"
+  },
+  "585": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-LA",
+    "code": "71359",
+    "name": "Pineville"
+  },
+  "586": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04005",
+    "name": "Biddeford"
+  },
+  "587": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04032",
+    "name": "Freeport"
+  },
+  "588": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04101",
+    "name": "Portland"
+  },
+  "589": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04210",
+    "name": "Auburn"
+  },
+  "590": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04240",
+    "name": "Lewiston"
+  },
+  "591": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04330",
+    "name": "Augusta"
+  },
+  "592": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-ME",
+    "code": "04841",
+    "name": "Rockland"
+  },
+  "593": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20601",
+    "name": "Waldorf"
+  },
+  "594": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20707",
+    "name": "Laurel"
+  },
+  "595": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20715",
+    "name": "Bowie"
+  },
+  "596": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20740",
+    "name": "College Park"
+  },
+  "597": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20768",
+    "name": "Greenbelt"
+  },
+  "598": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20772",
+    "name": "Upper Marlboro"
+  },
+  "599": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20781",
+    "name": "Hyattsville"
+  },
+  "600": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20810",
+    "name": "Bethesda"
+  },
+  "601": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20847",
+    "name": "Rockville"
+  },
+  "602": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20877",
+    "name": "Gaithersburg"
+  },
+  "603": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20901",
+    "name": "Silver Spring"
+  },
+  "604": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "20906",
+    "name": "Aspen Hill"
+  },
+  "605": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21041",
+    "name": "Ellicott City"
+  },
+  "606": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21044",
+    "name": "Columbia"
+  },
+  "607": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21060",
+    "name": "Glen Burnie"
+  },
+  "608": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21201",
+    "name": "Baltimore"
+  },
+  "609": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21284",
+    "name": "Towson"
+  },
+  "610": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21284",
+    "name": "Hampton"
+  },
+  "611": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21401",
+    "name": "Annapolis"
+  },
+  "612": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21501",
+    "name": "Cumberland"
+  },
+  "613": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21701",
+    "name": "Frederick"
+  },
+  "614": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21740",
+    "name": "Hagerstown"
+  },
+  "615": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MD",
+    "code": "21801",
+    "name": "Salisbury"
+  },
+  "616": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01002",
+    "name": "Amherst"
+  },
+  "617": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01013",
+    "name": "Chicopee"
+  },
+  "618": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01060",
+    "name": "Northampton"
+  },
+  "619": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01101",
+    "name": "Springfield"
+  },
+  "620": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01201",
+    "name": "Pittsfield"
+  },
+  "621": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01601",
+    "name": "Worcester"
+  },
+  "622": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01701",
+    "name": "Framingham"
+  },
+  "623": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01830",
+    "name": "Haverhill"
+  },
+  "624": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01840",
+    "name": "Lawrence"
+  },
+  "625": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01850",
+    "name": "Lowell"
+  },
+  "626": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01850",
+    "name": "Manchester-by-the-Sea"
+  },
+  "627": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "01901",
+    "name": "Lynn"
+  },
+  "628": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02047",
+    "name": "Humarock"
+  },
+  "629": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02101",
+    "name": "Boston"
+  },
+  "630": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02119",
+    "name": "Roxbury"
+  },
+  "631": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02138",
+    "name": "Cambridge"
+  },
+  "632": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02143",
+    "name": "Somerville"
+  },
+  "633": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02153",
+    "name": "Medford"
+  },
+  "634": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02169",
+    "name": "Quincy"
+  },
+  "635": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02301",
+    "name": "Brockton"
+  },
+  "636": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02344",
+    "name": "Middleborough"
+  },
+  "637": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02445",
+    "name": "Brookline"
+  },
+  "638": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02451",
+    "name": "Waltham"
+  },
+  "639": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02456",
+    "name": "Newton"
+  },
+  "640": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02474",
+    "name": "Arlington"
+  },
+  "641": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02492",
+    "name": "Needham"
+  },
+  "642": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02601",
+    "name": "Barnstable"
+  },
+  "643": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02632",
+    "name": "Centerville"
+  },
+  "644": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02720",
+    "name": "Fall River"
+  },
+  "645": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MA",
+    "code": "02740",
+    "name": "New Bedford"
+  },
+  "646": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48035",
+    "name": "Municipio de Clinton"
+  },
+  "647": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48080",
+    "name": "St. Clair Shores"
+  },
+  "648": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48083",
+    "name": "Troy"
+  },
+  "649": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48088",
+    "name": "Warren"
+  },
+  "650": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48103",
+    "name": "Ann Arbor"
+  },
+  "651": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48120",
+    "name": "Dearborn"
+  },
+  "652": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48125",
+    "name": "Dearborn Heights"
+  },
+  "653": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48150",
+    "name": "Livonia"
+  },
+  "654": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48201",
+    "name": "Detroit"
+  },
+  "655": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48301",
+    "name": "Bloomfield"
+  },
+  "656": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48306",
+    "name": "Rochester"
+  },
+  "657": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48307",
+    "name": "Rochester Hills"
+  },
+  "658": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48310",
+    "name": "Sterling Heights"
+  },
+  "659": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48315",
+    "name": "Utica"
+  },
+  "660": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48322",
+    "name": "Municipio de West Bloomfield"
+  },
+  "661": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48328",
+    "name": "Drayton Plains"
+  },
+  "662": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48336",
+    "name": "Farmington Hills"
+  },
+  "663": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48331",
+    "name": "Farmington"
+  },
+  "664": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48340",
+    "name": "Pontiac"
+  },
+  "665": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48359",
+    "name": "Lake Orion"
+  },
+  "666": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48374",
+    "name": "Novi"
+  },
+  "667": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48501",
+    "name": "Flint"
+  },
+  "668": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48509",
+    "name": "Burton"
+  },
+  "669": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48602",
+    "name": "Saginaw"
+  },
+  "670": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48640",
+    "name": "Midland"
+  },
+  "671": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48706",
+    "name": "Bay City"
+  },
+  "672": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48823",
+    "name": "East Lansing"
+  },
+  "673": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48909",
+    "name": "Municipio de White Oak"
+  },
+  "674": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "48910",
+    "name": "Lansing"
+  },
+  "675": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49001",
+    "name": "Kalamazoo"
+  },
+  "676": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49014",
+    "name": "Battle Creek"
+  },
+  "677": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49201",
+    "name": "Jackson"
+  },
+  "678": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49440",
+    "name": "Muskegon"
+  },
+  "679": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49501",
+    "name": "Grand Rapids"
+  },
+  "680": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MI",
+    "code": "49684",
+    "name": "Traverse City"
+  },
+  "681": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55101",
+    "name": "Saint Paul"
+  },
+  "682": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55118",
+    "name": "South St. Paul"
+  },
+  "683": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55121",
+    "name": "Eagan"
+  },
+  "684": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55344",
+    "name": "Eden Prairie"
+  },
+  "685": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55401",
+    "name": "Minneapolis"
+  },
+  "686": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55443",
+    "name": "Brooklyn Park"
+  },
+  "687": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55550",
+    "name": "Norwood Young America"
+  },
+  "688": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55570",
+    "name": "Plymouth"
+  },
+  "689": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55574",
+    "name": "Maple Plain"
+  },
+  "690": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55595",
+    "name": "Loretto"
+  },
+  "691": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55802",
+    "name": "Duluth"
+  },
+  "692": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55811",
+    "name": "Hermantown"
+  },
+  "693": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "55901",
+    "name": "Rochester"
+  },
+  "694": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "56002",
+    "name": "Mankato"
+  },
+  "695": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "56393",
+    "name": "St. Cloud"
+  },
+  "696": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MN",
+    "code": "56560",
+    "name": "Moorhead"
+  },
+  "697": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "38701",
+    "name": "Greenville"
+  },
+  "698": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "38801",
+    "name": "Tupelo"
+  },
+  "699": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39056",
+    "name": "Clinton"
+  },
+  "700": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39120",
+    "name": "Natchez"
+  },
+  "701": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39180",
+    "name": "Vicksburg"
+  },
+  "702": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39201",
+    "name": "Jackson"
+  },
+  "703": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39301",
+    "name": "Meridian"
+  },
+  "704": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39401",
+    "name": "Hattiesburg"
+  },
+  "705": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39440",
+    "name": "Laurel"
+  },
+  "706": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39501",
+    "name": "Gulfport"
+  },
+  "707": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39520",
+    "name": "Bay St. Louis"
+  },
+  "708": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39530",
+    "name": "Biloxi"
+  },
+  "709": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39564",
+    "name": "Ocean Springs"
+  },
+  "710": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39567",
+    "name": "Pascagoula"
+  },
+  "711": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39601",
+    "name": "Brookhaven"
+  },
+  "712": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MS",
+    "code": "39701",
+    "name": "Columbus"
+  },
+  "713": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63021",
+    "name": "Ballwin"
+  },
+  "714": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63031",
+    "name": "Florissant"
+  },
+  "715": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63038",
+    "name": "Wildwood"
+  },
+  "716": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63101",
+    "name": "San Luis"
+  },
+  "717": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63301",
+    "name": "St. Charles"
+  },
+  "718": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63366",
+    "name": "O'Fallon"
+  },
+  "719": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "63701",
+    "name": "Cape Girardeau"
+  },
+  "720": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64013",
+    "name": "Blue Springs"
+  },
+  "721": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64050",
+    "name": "Independence"
+  },
+  "722": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64101",
+    "name": "Kansas City"
+  },
+  "723": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64116",
+    "name": "North Kansas City"
+  },
+  "724": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64501",
+    "name": "St. Joseph"
+  },
+  "725": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "64801",
+    "name": "Joplin"
+  },
+  "726": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "65101",
+    "name": "Jefferson City"
+  },
+  "727": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "65203",
+    "name": "Columbia"
+  },
+  "728": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MO",
+    "code": "65801",
+    "name": "Springfield"
+  },
+  "729": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59101",
+    "name": "Billings"
+  },
+  "730": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59401",
+    "name": "Great Falls"
+  },
+  "731": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59604",
+    "name": "Helena"
+  },
+  "732": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59702",
+    "name": "Butte"
+  },
+  "733": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59715",
+    "name": "Bozeman"
+  },
+  "734": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59801",
+    "name": "Missoula"
+  },
+  "735": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MT",
+    "code": "59835",
+    "name": "Hamilton"
+  },
+  "736": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NE",
+    "code": "68101",
+    "name": "Omaha"
+  },
+  "737": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NE",
+    "code": "68501",
+    "name": "Lincoln"
+  },
+  "738": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NE",
+    "code": "68801",
+    "name": "Grand Island"
+  },
+  "739": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NE",
+    "code": "68845",
+    "name": "Kearney"
+  },
+  "740": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NE",
+    "code": "69160",
+    "name": "Sidney"
+  },
+  "741": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89009",
+    "name": "Henderson"
+  },
+  "742": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89030",
+    "name": "North Las Vegas"
+  },
+  "743": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89101",
+    "name": "Las Vegas"
+  },
+  "744": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89139",
+    "name": "Enterprise"
+  },
+  "745": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89431",
+    "name": "Sparks"
+  },
+  "746": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89450",
+    "name": "Incline Village-Crystal Bay"
+  },
+  "747": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89501",
+    "name": "Reno"
+  },
+  "748": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NV",
+    "code": "89701",
+    "name": "Carson City"
+  },
+  "749": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07011",
+    "name": "Clifton"
+  },
+  "750": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07017",
+    "name": "East Orange"
+  },
+  "751": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07060",
+    "name": "Plainfield"
+  },
+  "752": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07094",
+    "name": "Secaucus"
+  },
+  "753": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07101",
+    "name": "Newark"
+  },
+  "754": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07206",
+    "name": "Elizabeth"
+  },
+  "755": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07302",
+    "name": "Jersey City"
+  },
+  "756": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07435",
+    "name": "Green Pond"
+  },
+  "757": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07501",
+    "name": "Paterson"
+  },
+  "758": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07850",
+    "name": "Ledgewood"
+  },
+  "759": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "07960",
+    "name": "Morristown"
+  },
+  "760": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08101",
+    "name": "Camden"
+  },
+  "761": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08360",
+    "name": "Vineland"
+  },
+  "762": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08541",
+    "name": "Princeton"
+  },
+  "763": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08601",
+    "name": "Trenton"
+  },
+  "764": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08753",
+    "name": "Toms River"
+  },
+  "765": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NJ",
+    "code": "08901",
+    "name": "Nuevo Brunswick"
+  },
+  "766": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10000",
+    "name": "Nueva York"
+  },
+  "767": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10035",
+    "name": "Harlem del Este"
+  },
+  "768": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10065",
+    "name": "Upper East Side"
+  },
+  "769": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10116",
+    "name": "Chelsea"
+  },
+  "770": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10280",
+    "name": "Battery Park City"
+  },
+  "771": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10301",
+    "name": "Staten Island"
+  },
+  "772": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10451",
+    "name": "Bronx"
+  },
+  "773": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10550",
+    "name": "Mount Vernon"
+  },
+  "774": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10601",
+    "name": "White Plains"
+  },
+  "775": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10701",
+    "name": "Yonkers"
+  },
+  "776": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "10801",
+    "name": "Nueva Rochelle"
+  },
+  "777": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11001",
+    "name": "Floral Park"
+  },
+  "778": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11020",
+    "name": "Great Neck"
+  },
+  "779": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11051",
+    "name": "Westbury"
+  },
+  "780": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11101",
+    "name": "Long Island City"
+  },
+  "781": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11102",
+    "name": "Astoria"
+  },
+  "782": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11351",
+    "name": "Flushing"
+  },
+  "783": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11352",
+    "name": "Borough of Queens"
+  },
+  "784": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11359",
+    "name": "Bayside"
+  },
+  "785": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11430",
+    "name": "Jamaica"
+  },
+  "786": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11553",
+    "name": "Uniondale"
+  },
+  "787": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11580",
+    "name": "Valley Stream"
+  },
+  "788": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "11690",
+    "name": "Far Rockaway"
+  },
+  "789": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12061",
+    "name": "East Schodack"
+  },
+  "790": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12180",
+    "name": "Troy"
+  },
+  "791": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12201",
+    "name": "Albany"
+  },
+  "792": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12301",
+    "name": "Schenectady"
+  },
+  "793": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12504",
+    "name": "Annandale-on-Hudson"
+  },
+  "794": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12601",
+    "name": "Poughkeepsie"
+  },
+  "795": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "12952",
+    "name": "Lyon Mountain"
+  },
+  "796": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13021",
+    "name": "Auburn"
+  },
+  "797": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13088",
+    "name": "Liverpool"
+  },
+  "798": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13201",
+    "name": "Siracusa"
+  },
+  "799": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13440",
+    "name": "Rome"
+  },
+  "800": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13501",
+    "name": "Utica"
+  },
+  "801": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13601",
+    "name": "Watertown"
+  },
+  "802": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13760",
+    "name": "Endicott"
+  },
+  "803": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "13901",
+    "name": "Binghamton"
+  },
+  "804": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14201",
+    "name": "Búfalo"
+  },
+  "805": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14225",
+    "name": "Cheektowaga"
+  },
+  "806": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14301",
+    "name": "Niagara Falls"
+  },
+  "807": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14602",
+    "name": "Rochester"
+  },
+  "808": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14850",
+    "name": "Ithaca"
+  },
+  "809": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NY",
+    "code": "14902",
+    "name": "Elmira"
+  },
+  "810": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03052",
+    "name": "Litchfield"
+  },
+  "811": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03060",
+    "name": "Nashua"
+  },
+  "812": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03101",
+    "name": "Manchester"
+  },
+  "813": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03301",
+    "name": "Concord"
+  },
+  "814": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03756",
+    "name": "Lebanon"
+  },
+  "815": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03801",
+    "name": "Portsmouth"
+  },
+  "816": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03820",
+    "name": "Madbury"
+  },
+  "817": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NH",
+    "code": "03866",
+    "name": "Rochester"
+  },
+  "818": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NM",
+    "code": "87101",
+    "name": "Albuquerque"
+  },
+  "819": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NM",
+    "code": "87301",
+    "name": "Gallup"
+  },
+  "820": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NM",
+    "code": "87501",
+    "name": "Santa Fe"
+  },
+  "821": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NM",
+    "code": "88001",
+    "name": "Las Cruces"
+  },
+  "822": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-NM",
+    "code": "88241",
+    "name": "Hobbs"
+  },
+  "823": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "43055",
+    "name": "Newark"
+  },
+  "824": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "43201",
+    "name": "Columbus"
+  },
+  "825": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "43601",
+    "name": "Toledo"
+  },
+  "829": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44052",
+    "name": "Lorain"
+  },
+  "830": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44094",
+    "name": "Willoughby"
+  },
+  "831": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44094",
+    "name": "Waite Hill"
+  },
+  "832": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44095",
+    "name": "Eastlake"
+  },
+  "833": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44101",
+    "name": "Cleveland"
+  },
+  "834": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44221",
+    "name": "Cuyahoga Falls"
+  },
+  "835": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44240",
+    "name": "Kent"
+  },
+  "836": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44301",
+    "name": "Akron"
+  },
+  "837": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44481",
+    "name": "Warren"
+  },
+  "838": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44501",
+    "name": "Youngstown"
+  },
+  "839": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44646",
+    "name": "Massillon"
+  },
+  "840": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44701",
+    "name": "Canton"
+  },
+  "841": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44701",
+    "name": "Municipio de Lexington"
+  },
+  "842": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44888",
+    "name": "Willard"
+  },
+  "845": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "44901",
+    "name": "Mansfield"
+  },
+  "846": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45011",
+    "name": "Hamilton"
+  },
+  "847": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45014",
+    "name": "Fairfield"
+  },
+  "848": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45201",
+    "name": "Cincinnati"
+  },
+  "849": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45401",
+    "name": "Dayton"
+  },
+  "850": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45430",
+    "name": "Beavercreek"
+  },
+  "851": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45501",
+    "name": "Springfield"
+  },
+  "852": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OH",
+    "code": "45801",
+    "name": "Lima"
+  },
+  "853": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73069",
+    "name": "Norman"
+  },
+  "854": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73101",
+    "name": "Oklahoma City"
+  },
+  "855": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73401",
+    "name": "Ardmore"
+  },
+  "856": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73501",
+    "name": "Lawton"
+  },
+  "857": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73521",
+    "name": "Altus"
+  },
+  "858": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73533",
+    "name": "Duncan"
+  },
+  "859": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "73701",
+    "name": "Enid"
+  },
+  "860": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74003",
+    "name": "Bartlesville"
+  },
+  "861": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74011",
+    "name": "Broken Arrow"
+  },
+  "862": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74017",
+    "name": "Claremore"
+  },
+  "863": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74074",
+    "name": "Stillwater"
+  },
+  "864": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74101",
+    "name": "Tulsa"
+  },
+  "865": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74401",
+    "name": "Muskogee"
+  },
+  "866": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74601",
+    "name": "Ponca City"
+  },
+  "867": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OK",
+    "code": "74801",
+    "name": "Shawnee"
+  },
+  "868": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97003",
+    "name": "Beaverton"
+  },
+  "869": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97201",
+    "name": "Portland"
+  },
+  "870": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97301",
+    "name": "Salem"
+  },
+  "871": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97330",
+    "name": "Corvallis"
+  },
+  "872": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97401",
+    "name": "Eugene"
+  },
+  "873": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97475",
+    "name": "Springfield"
+  },
+  "874": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97526",
+    "name": "Grants Pass"
+  },
+  "875": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97701",
+    "name": "Bend"
+  },
+  "876": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-OR",
+    "code": "97752",
+    "name": "Post"
+  },
+  "877": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15131",
+    "name": "McKeesport"
+  },
+  "878": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15201",
+    "name": "Pittsburgh"
+  },
+  "879": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15252",
+    "name": "Duquesne Heights"
+  },
+  "880": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15544",
+    "name": "Jenners"
+  },
+  "881": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15601",
+    "name": "Greensburg "
+  },
+  "882": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "15901",
+    "name": "Johnstown"
+  },
+  "883": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16001",
+    "name": "Butler"
+  },
+  "884": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16016",
+    "name": "Boyers"
+  },
+  "885": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16365",
+    "name": "Warren"
+  },
+  "886": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16501",
+    "name": "Erie"
+  },
+  "887": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16601",
+    "name": "Altoona"
+  },
+  "888": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "16801",
+    "name": "State College"
+  },
+  "889": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17013",
+    "name": "Carlisle"
+  },
+  "890": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17101",
+    "name": "Harrisburg"
+  },
+  "891": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17333",
+    "name": "Bittinger"
+  },
+  "892": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17404",
+    "name": "York"
+  },
+  "893": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17547",
+    "name": "Maytown"
+  },
+  "894": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17601",
+    "name": "Lancaster"
+  },
+  "895": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17701",
+    "name": "Williamsport"
+  },
+  "896": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "17946",
+    "name": "Mahanoy Plane"
+  },
+  "897": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18015",
+    "name": "Bethlehem"
+  },
+  "898": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18040",
+    "name": "Easton"
+  },
+  "899": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18101",
+    "name": "Allentown"
+  },
+  "900": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18221",
+    "name": "Japan"
+  },
+  "901": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18249",
+    "name": "Sybertsville"
+  },
+  "902": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18437",
+    "name": "Lake Como"
+  },
+  "903": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18501",
+    "name": "Scranton"
+  },
+  "904": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "18701",
+    "name": "Wilkes-Barre"
+  },
+  "905": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19047",
+    "name": "Langhorne"
+  },
+  "906": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19054",
+    "name": "Levittown"
+  },
+  "907": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19063",
+    "name": "Media"
+  },
+  "908": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19099",
+    "name": "Filadelfia"
+  },
+  "909": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19380",
+    "name": "West Chester"
+  },
+  "910": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19401",
+    "name": "Norristown"
+  },
+  "911": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19408",
+    "name": "Eagleville"
+  },
+  "912": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19422",
+    "name": "Blue Bell"
+  },
+  "913": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19438",
+    "name": "Harleysville"
+  },
+  "914": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19481",
+    "name": "King of Prussia"
+  },
+  "915": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PA",
+    "code": "19493",
+    "name": "Valley Forge"
+  },
+  "916": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-RI",
+    "code": "02860",
+    "name": "Pawtucket"
+  },
+  "917": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-RI",
+    "code": "02886",
+    "name": "Warwick"
+  },
+  "918": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-RI",
+    "code": "02901",
+    "name": "Providence"
+  },
+  "919": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-RI",
+    "code": "02914",
+    "name": "East Providence"
+  },
+  "920": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "24201",
+    "name": "Bristol"
+  },
+  "921": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37040",
+    "name": "Clarksville"
+  },
+  "922": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37064",
+    "name": "Franklin"
+  },
+  "923": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37070",
+    "name": "Goodlettsville"
+  },
+  "924": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37075",
+    "name": "Hendersonville"
+  },
+  "925": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37087",
+    "name": "Lebanon"
+  },
+  "926": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37127",
+    "name": "Murfreesboro"
+  },
+  "927": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37160",
+    "name": "Shelbyville"
+  },
+  "928": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37201",
+    "name": "Nashville"
+  },
+  "929": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37401",
+    "name": "Chattanooga"
+  },
+  "930": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37601",
+    "name": "Johnson City"
+  },
+  "931": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37660",
+    "name": "Kingsport"
+  },
+  "932": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37743",
+    "name": "Greeneville"
+  },
+  "933": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37813",
+    "name": "Morristown"
+  },
+  "934": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37862",
+    "name": "Sevierville"
+  },
+  "935": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "37901",
+    "name": "Knoxville"
+  },
+  "936": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38016",
+    "name": "Cordova"
+  },
+  "937": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38053",
+    "name": "Millington"
+  },
+  "938": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38101",
+    "name": "Memphis"
+  },
+  "939": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38133",
+    "name": "Bartlett"
+  },
+  "940": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38301",
+    "name": "Jackson"
+  },
+  "941": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38501",
+    "name": "Cookeville"
+  },
+  "942": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TN",
+    "code": "38555",
+    "name": "Crossville "
+  },
+  "943": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75006",
+    "name": "Carrollton"
+  },
+  "944": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75014",
+    "name": "Irving"
+  },
+  "945": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75023",
+    "name": "Plano"
+  },
+  "946": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75027",
+    "name": "Lewisville"
+  },
+  "947": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75033",
+    "name": "Frisco"
+  },
+  "948": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75040",
+    "name": "Garland"
+  },
+  "949": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75050",
+    "name": "Grand Prairie"
+  },
+  "950": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75069",
+    "name": "McKinney"
+  },
+  "951": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75080",
+    "name": "Richardson"
+  },
+  "952": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75104",
+    "name": "Cedar Hill"
+  },
+  "953": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75165",
+    "name": "Waxahachie"
+  },
+  "954": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75181",
+    "name": "Mesquite"
+  },
+  "955": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75201",
+    "name": "Dallas"
+  },
+  "956": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75460",
+    "name": "Paris"
+  },
+  "957": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75601",
+    "name": "Longview"
+  },
+  "958": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75652",
+    "name": "Henderson"
+  },
+  "959": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75670",
+    "name": "Marshall"
+  },
+  "960": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75682",
+    "name": "New London"
+  },
+  "961": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75701",
+    "name": "Tyler"
+  },
+  "962": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75801",
+    "name": "Palestine"
+  },
+  "963": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75880",
+    "name": "Tennessee Colony"
+  },
+  "964": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75901",
+    "name": "Lufkin"
+  },
+  "965": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75961",
+    "name": "Nacogdoches"
+  },
+  "966": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "75979",
+    "name": "Woodville"
+  },
+  "967": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76001",
+    "name": "Arlington"
+  },
+  "968": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76085",
+    "name": "Weatherford"
+  },
+  "969": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76101",
+    "name": "Fort Worth"
+  },
+  "970": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76180",
+    "name": "North Richland Hills"
+  },
+  "971": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76201",
+    "name": "Denton"
+  },
+  "972": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76301",
+    "name": "Wichita Falls"
+  },
+  "973": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76502",
+    "name": "Temple"
+  },
+  "974": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76540",
+    "name": "Killeen"
+  },
+  "975": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76596",
+    "name": "Gatesville"
+  },
+  "976": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76701",
+    "name": "Waco"
+  },
+  "977": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "76901",
+    "name": "San Angelo"
+  },
+  "978": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77001",
+    "name": "Houston"
+  },
+  "979": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77301",
+    "name": "Conroe"
+  },
+  "980": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77340",
+    "name": "Huntsville"
+  },
+  "981": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77353",
+    "name": "Magnolia"
+  },
+  "982": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77375",
+    "name": "Tomball"
+  },
+  "983": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77388",
+    "name": "Spring"
+  },
+  "984": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77491",
+    "name": "Katy"
+  },
+  "985": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77496",
+    "name": "Sugar Land"
+  },
+  "986": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77501",
+    "name": "Pasadena"
+  },
+  "987": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77520",
+    "name": "Baytown"
+  },
+  "988": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77546",
+    "name": "Friendswood"
+  },
+  "989": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77550",
+    "name": "Galveston"
+  },
+  "990": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77590",
+    "name": "Texas City"
+  },
+  "991": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77630",
+    "name": "Orange"
+  },
+  "992": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77640",
+    "name": "Port Arthur"
+  },
+  "993": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77701",
+    "name": "Beaumont"
+  },
+  "994": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77801",
+    "name": "Bryan"
+  },
+  "995": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77840",
+    "name": "College Station"
+  },
+  "996": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "77901",
+    "name": "Victoria"
+  },
+  "997": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78040",
+    "name": "Laredo"
+  },
+  "998": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78130",
+    "name": "New Braunfels"
+  },
+  "999": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78201",
+    "name": "San Antonio"
+  },
+  "1000": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78401",
+    "name": "Corpus Christi"
+  },
+  "1001": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78501",
+    "name": "McAllen"
+  },
+  "1002": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78520",
+    "name": "Brownsville"
+  },
+  "1003": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78539",
+    "name": "Edinburg"
+  },
+  "1004": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78550",
+    "name": "Harlingen"
+  },
+  "1005": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78572",
+    "name": "Mission"
+  },
+  "1006": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78626",
+    "name": "Georgetown"
+  },
+  "1007": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78680",
+    "name": "Round Rock"
+  },
+  "1008": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "78701",
+    "name": "Austin"
+  },
+  "1009": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79101",
+    "name": "Amarillo"
+  },
+  "1010": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79401",
+    "name": "Lubbock"
+  },
+  "1011": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79602",
+    "name": "Abilene"
+  },
+  "1012": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79701",
+    "name": "Midland"
+  },
+  "1013": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79760",
+    "name": "Odessa"
+  },
+  "1014": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79901",
+    "name": "El Paso"
+  },
+  "1015": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-TX",
+    "code": "79916",
+    "name": "Fort Bliss"
+  },
+  "1016": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84057",
+    "name": "Orem"
+  },
+  "1017": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84090",
+    "name": "Sandy"
+  },
+  "1018": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84101",
+    "name": "Salt Lake City"
+  },
+  "1019": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84125",
+    "name": "West Valley City"
+  },
+  "1020": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84133",
+    "name": "Clark Learning Office Center"
+  },
+  "1021": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84321",
+    "name": "Logan"
+  },
+  "1022": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84401",
+    "name": "Ogden"
+  },
+  "1023": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UT",
+    "code": "84601",
+    "name": "Provo"
+  },
+  "1024": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VT",
+    "code": "05070",
+    "name": "Strafford"
+  },
+  "1025": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VT",
+    "code": "05302",
+    "name": "Brattleboro"
+  },
+  "1026": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VT",
+    "code": "05405",
+    "name": "Burlington"
+  },
+  "1027": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VT",
+    "code": "05601",
+    "name": "Montpelier"
+  },
+  "1028": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20101",
+    "name": "Dulles Town Center"
+  },
+  "1029": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20108",
+    "name": "Manassas"
+  },
+  "1030": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20146",
+    "name": "Ashburn"
+  },
+  "1031": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20151",
+    "name": "Chantilly"
+  },
+  "1032": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20170",
+    "name": "Herndon"
+  },
+  "1033": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20186",
+    "name": "Warrenton"
+  },
+  "1034": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "20190",
+    "name": "Reston"
+  },
+  "1035": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22030",
+    "name": "Fairfax Station"
+  },
+  "1036": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22101",
+    "name": "McLean"
+  },
+  "1037": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22116",
+    "name": "Merrifield"
+  },
+  "1038": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22180",
+    "name": "Vienna"
+  },
+  "1039": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22191",
+    "name": "Woodbridge"
+  },
+  "1040": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22201",
+    "name": "Arlington"
+  },
+  "1041": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22215",
+    "name": "Ballston"
+  },
+  "1042": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22216",
+    "name": "Rosslyn"
+  },
+  "1043": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22301",
+    "name": "Alexandria"
+  },
+  "1044": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22401",
+    "name": "Fredericksburg"
+  },
+  "1045": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22551",
+    "name": "Spotsylvania"
+  },
+  "1046": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22601",
+    "name": "Winchester"
+  },
+  "1047": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22645",
+    "name": "Middletown"
+  },
+  "1048": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22801",
+    "name": "Harrisonburg"
+  },
+  "1049": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "22905",
+    "name": "Charlottesville"
+  },
+  "1050": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23064",
+    "name": "Gwynn"
+  },
+  "1051": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23218",
+    "name": "Richmond"
+  },
+  "1052": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23320",
+    "name": "23320"
+  },
+  "1053": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23458",
+    "name": "Virginia Beach"
+  },
+  "1054": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23501",
+    "name": "Norfolk"
+  },
+  "1055": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23601",
+    "name": "Newport News"
+  },
+  "1056": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23630",
+    "name": "Fox Hill"
+  },
+  "1058": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23630",
+    "name": "Hampton"
+  },
+  "1059": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23690",
+    "name": "Yorktown"
+  },
+  "1060": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23701",
+    "name": "Portsmouth"
+  },
+  "1061": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23804",
+    "name": "Petersburg"
+  },
+  "1062": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "23867",
+    "name": "Jarratt"
+  },
+  "1063": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24001",
+    "name": "Roanoke"
+  },
+  "1064": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24060",
+    "name": "Blacksburg"
+  },
+  "1065": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24113",
+    "name": "Martinsville"
+  },
+  "1066": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24141",
+    "name": "Radford"
+  },
+  "1067": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24201",
+    "name": "Bristol"
+  },
+  "1068": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24210",
+    "name": "Abingdon"
+  },
+  "1069": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24501",
+    "name": "Lynchburg"
+  },
+  "1070": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VA",
+    "code": "24540",
+    "name": "Danville"
+  },
+  "1071": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "25317",
+    "name": "Charleston"
+  },
+  "1072": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "25401",
+    "name": "Martinsburg"
+  },
+  "1073": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "25701",
+    "name": "Freeman Estates"
+  },
+  "1074": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "25706",
+    "name": "Huntington"
+  },
+  "1075": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "25774",
+    "name": "Barboursville"
+  },
+  "1076": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "26101",
+    "name": "Parkersburg"
+  },
+  "1077": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "26301",
+    "name": "Clarksburg"
+  },
+  "1078": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WV",
+    "code": "26501",
+    "name": "Morgantown"
+  },
+  "1079": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "",
+    "name": ""
+  },
+  "1080": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "20001",
+    "name": "Washington D. C."
+  },
+  "1081": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "20429",
+    "name": "Foggy Bottom"
+  },
+  "1082": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "20540",
+    "name": "Capitolio de los Estados Unidos"
+  },
+  "1083": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "56901",
+    "name": "Franklin McPherson Square"
+  },
+  "1084": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98004",
+    "name": "Bellevue"
+  },
+  "1085": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98027",
+    "name": "Issaquah"
+  },
+  "1086": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98030",
+    "name": "Kent"
+  },
+  "1087": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98055",
+    "name": "Renton"
+  },
+  "1088": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98101",
+    "name": "Seattle"
+  },
+  "1089": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98201",
+    "name": "Everett"
+  },
+  "1090": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98225",
+    "name": "Bellingham"
+  },
+  "1091": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98310",
+    "name": "Bremerton"
+  },
+  "1092": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98332",
+    "name": "Gig Harbor"
+  },
+  "1093": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98371",
+    "name": "Puyallup"
+  },
+  "1094": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98384",
+    "name": "Southworth"
+  },
+  "1095": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98401",
+    "name": "Tacoma"
+  },
+  "1096": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98501",
+    "name": "Olympia"
+  },
+  "1097": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98660",
+    "name": "Vancouver"
+  },
+  "1098": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98801",
+    "name": "Wenatchee"
+  },
+  "1099": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "98901",
+    "name": "Yakima"
+  },
+  "1100": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "99201",
+    "name": "Spokane"
+  },
+  "1101": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "99212",
+    "name": "Spokane Valley"
+  },
+  "1102": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "99336",
+    "name": "Kennewick"
+  },
+  "1103": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WA",
+    "code": "99352",
+    "name": "Richland"
+  },
+  "1104": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53081",
+    "name": "Sheboygan"
+  },
+  "1105": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53140",
+    "name": "Kenosha"
+  },
+  "1106": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53186",
+    "name": "Waukesha"
+  },
+  "1107": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53201",
+    "name": "Milwaukee"
+  },
+  "1108": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53401",
+    "name": "Racine"
+  },
+  "1109": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "53701",
+    "name": "Madison"
+  },
+  "1110": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54301",
+    "name": "Green Bay"
+  },
+  "1111": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54601",
+    "name": "La Crosse"
+  },
+  "1112": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54701",
+    "name": "Eau Claire"
+  },
+  "1113": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54901",
+    "name": "Oshkosh"
+  },
+  "1114": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54911",
+    "name": "Freedom"
+  },
+  "1115": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WI",
+    "code": "54935",
+    "name": "Fond du Lac"
+  },
+  "1117": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WY",
+    "code": "82001",
+    "name": "Cheyenne"
+  },
+  "1118": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-WY",
+    "code": "82070",
+    "name": "Laramie"
+  },
+  "1119": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-AS",
+    "code": "96799",
+    "name": "Pago Pago"
+  },
+  "1120": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DC",
+    "code": "20001",
+    "name": "Washington"
+  },
+  "1121": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DC",
+    "code": "20373",
+    "name": "Naval Anacost Annex"
+  },
+  "1122": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DC",
+    "code": "20374",
+    "name": "Washington Navy Yard"
+  },
+  "1123": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-DC",
+    "code": "56901",
+    "name": "Parcel Return Service"
+  },
+  "1124": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FM",
+    "code": "96941",
+    "name": "Pohnpei"
+  },
+  "1125": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FM",
+    "code": "96942",
+    "name": "Chuuk"
+  },
+  "1126": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FM",
+    "code": "96943",
+    "name": "Yap"
+  },
+  "1127": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-FM",
+    "code": "96944",
+    "name": "Kosae"
+  },
+  "1128": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96910",
+    "name": "Hagatna"
+  },
+  "1129": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96912",
+    "name": "Dededo"
+  },
+  "1130": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96913",
+    "name": "Harmon"
+  },
+  "1131": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96915",
+    "name": "Santa Rita"
+  },
+  "1132": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96916",
+    "name": "Merizo"
+  },
+  "1133": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96917",
+    "name": "Inarajan"
+  },
+  "1134": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96919",
+    "name": "Agana Heights"
+  },
+  "1135": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96921",
+    "name": "Barrigada"
+  },
+  "1136": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96923",
+    "name": "Mangilao"
+  },
+  "1137": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96928",
+    "name": "Agat"
+  },
+  "1138": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96929",
+    "name": "Yigo"
+  },
+  "1139": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96931",
+    "name": "Tamuning"
+  },
+  "1140": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-GU",
+    "code": "96932",
+    "name": "Hagatna"
+  },
+  "1141": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MH",
+    "code": "96960",
+    "name": "Majuro"
+  },
+  "1142": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MH",
+    "code": "96970",
+    "name": "Ebeye"
+  },
+  "1143": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MP",
+    "code": "96951",
+    "name": "Rota"
+  },
+  "1144": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MP",
+    "code": "96950",
+    "name": "Saipan"
+  },
+  "1145": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-MP",
+    "code": "96952",
+    "name": "Tinian"
+  },
+  "1146": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PW",
+    "code": "96939",
+    "name": "Ngerulmud"
+  },
+  "1147": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PW",
+    "code": "96940",
+    "name": "Koror"
+  },
+  "1148": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00601",
+    "name": "Adjuntas"
+  },
+  "1149": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00602",
+    "name": "Aguada"
+  },
+  "1150": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00603",
+    "name": "Bda Caban"
+  },
+  "1151": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00604",
+    "name": "Ramey"
+  },
+  "1152": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00605",
+    "name": "Aguadilla"
+  },
+  "1153": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00606",
+    "name": "Maricao"
+  },
+  "1154": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00610",
+    "name": "Anasco"
+  },
+  "1155": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00611",
+    "name": "Angeles"
+  },
+  "1156": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00612",
+    "name": "Alt De Juncos"
+  },
+  "1157": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00613",
+    "name": "Arecibo"
+  },
+  "1158": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00616",
+    "name": "Bajadero"
+  },
+  "1159": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00617",
+    "name": "Barceloneta"
+  },
+  "1160": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00622",
+    "name": "Boqueron"
+  },
+  "1161": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00623",
+    "name": "Cabo Rojo"
+  },
+  "1162": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00624",
+    "name": "Penuelas"
+  },
+  "1163": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00627",
+    "name": "Camuy"
+  },
+  "1164": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00631",
+    "name": "Castaner"
+  },
+  "1165": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00636",
+    "name": "Rosario"
+  },
+  "1166": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00637",
+    "name": "Sabana Grande"
+  },
+  "1167": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00638",
+    "name": "Ciales"
+  },
+  "1168": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00641",
+    "name": "Utuado"
+  },
+  "1169": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00646",
+    "name": "Dorado"
+  },
+  "1170": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00647",
+    "name": "Ensenada"
+  },
+  "1171": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00650",
+    "name": "Florida"
+  },
+  "1172": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00652",
+    "name": "Garrochales"
+  },
+  "1173": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00653",
+    "name": "Guanica"
+  },
+  "1174": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00656",
+    "name": "Guayanilla"
+  },
+  "1175": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00659",
+    "name": "Hatillo"
+  },
+  "1176": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00660",
+    "name": "Hormigueros"
+  },
+  "1177": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00662",
+    "name": "Isabela"
+  },
+  "1178": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00664",
+    "name": "Jayuya"
+  },
+  "1179": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00667",
+    "name": "Lajas"
+  },
+  "1180": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00669",
+    "name": "Lares"
+  },
+  "1181": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00670",
+    "name": "Las Marias"
+  },
+  "1182": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00674",
+    "name": "Manati"
+  },
+  "1183": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00676",
+    "name": "Moca"
+  },
+  "1184": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00677",
+    "name": "Rincon"
+  },
+  "1185": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00678",
+    "name": "Quebradillas"
+  },
+  "1186": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00680",
+    "name": "Mayaguez"
+  },
+  "1187": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00683",
+    "name": "San German"
+  },
+  "1188": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00685",
+    "name": "San Sebastian"
+  },
+  "1189": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00687",
+    "name": "Morovis"
+  },
+  "1190": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00688",
+    "name": "Sabana Hoyos"
+  },
+  "1191": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00690",
+    "name": "San Antonio"
+  },
+  "1192": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00692",
+    "name": "Vega Alta"
+  },
+  "1193": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00693",
+    "name": "Vega Baja"
+  },
+  "1194": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00698",
+    "name": "Yauco"
+  },
+  "1195": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00703",
+    "name": "Aguas Buenas"
+  },
+  "1196": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00704",
+    "name": "Aguirre"
+  },
+  "1197": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00705",
+    "name": "Aibonito"
+  },
+  "1198": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00707",
+    "name": "Maunabo"
+  },
+  "1199": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00714",
+    "name": "Arroyo"
+  },
+  "1200": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00715",
+    "name": "Mercedita"
+  },
+  "1201": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00716",
+    "name": "Ponce"
+  },
+  "1202": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00718",
+    "name": "Naguabo"
+  },
+  "1203": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00719",
+    "name": "Naranjito"
+  },
+  "1204": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00720",
+    "name": "Orocovis"
+  },
+  "1205": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00721",
+    "name": "Palmer"
+  },
+  "1206": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00723",
+    "name": "Patillas"
+  },
+  "1207": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00725",
+    "name": "Caguas"
+  },
+  "1208": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00728",
+    "name": "Ponce"
+  },
+  "1209": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00729",
+    "name": "Canovanas"
+  },
+  "1210": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00735",
+    "name": "Ceiba"
+  },
+  "1211": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00736",
+    "name": "Cayey"
+  },
+  "1212": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00738",
+    "name": "Fajardo"
+  },
+  "1213": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00739",
+    "name": "Cidra"
+  },
+  "1214": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00740",
+    "name": "Puerto Real"
+  },
+  "1215": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00741",
+    "name": "Punta Santiago"
+  },
+  "1216": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00742",
+    "name": "Roosevelt Roads"
+  },
+  "1217": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00744",
+    "name": "Rio Blanco"
+  },
+  "1218": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00745",
+    "name": "Rio Grande"
+  },
+  "1219": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00751",
+    "name": "Salinas"
+  },
+  "1220": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00754",
+    "name": "San Lorenzo"
+  },
+  "1221": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00757",
+    "name": "Santa Isabel"
+  },
+  "1222": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00765",
+    "name": "Vieques"
+  },
+  "1223": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00766",
+    "name": "Villalba"
+  },
+  "1224": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00767",
+    "name": "Yabucoa"
+  },
+  "1225": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00769",
+    "name": "Coamo"
+  },
+  "1226": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00771",
+    "name": "Las Piedras"
+  },
+  "1227": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00772",
+    "name": "Loiza"
+  },
+  "1228": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00773",
+    "name": "Luquillo"
+  },
+  "1229": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00775",
+    "name": "Culebra"
+  },
+  "1230": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00777",
+    "name": "Juncos"
+  },
+  "1231": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00778",
+    "name": "Gurabo"
+  },
+  "1232": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00780",
+    "name": "Coto Laurel"
+  },
+  "1233": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00782",
+    "name": "Comerio"
+  },
+  "1234": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00783",
+    "name": "Corozal"
+  },
+  "1235": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00784",
+    "name": "Guayama"
+  },
+  "1236": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00786",
+    "name": "La Plata"
+  },
+  "1237": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00791",
+    "name": "Humacao"
+  },
+  "1238": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00794",
+    "name": "Barranquitas"
+  },
+  "1239": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00795",
+    "name": "Juana Diaz"
+  },
+  "1240": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00901",
+    "name": "San Juan"
+  },
+  "1241": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00926",
+    "name": "Cupey"
+  },
+  "1242": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00934",
+    "name": "Fort Buchanan"
+  },
+  "1243": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00949",
+    "name": "Toa Baja"
+  },
+  "1244": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00952",
+    "name": "Sabana Seca"
+  },
+  "1245": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00953",
+    "name": "Toa Alta"
+  },
+  "1246": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00956",
+    "name": "Bayamon"
+  },
+  "1247": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00962",
+    "name": "CATANO"
+  },
+  "1248": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00965",
+    "name": "Guaynabo"
+  },
+  "1249": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00976",
+    "name": "Trujillo Alto"
+  },
+  "1250": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00978",
+    "name": "Saint Just"
+  },
+  "1251": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-PR",
+    "code": "00979",
+    "name": "Carolina"
+  },
+  "1252": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VI",
+    "code": "00801",
+    "name": "St Thomas"
+  },
+  "1253": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VI",
+    "code": "00820",
+    "name": "Christiansted"
+  },
+  "1254": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VI",
+    "code": "00830",
+    "name": "St John"
+  },
+  "1255": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VI",
+    "code": "00840",
+    "name": "Frederiksted"
+  },
+  "1256": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-VI",
+    "code": "00850",
+    "name": "Kingshill"
+  },
+  "1257": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74300",
+    "name": "Midway Atoll"
+  },
+  "1258": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74450",
+    "name": "Wake Island"
+  },
+  "1259": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74200",
+    "name": "Johnston Atoll"
+  },
+  "1260": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74250",
+    "name": "Kingman Reef"
+  },
+  "1261": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74400",
+    "name": "Palmyra Atoll"
+  },
+  "1262": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74100",
+    "name": "Howland Island"
+  },
+  "1263": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74050",
+    "name": "Baker Island"
+  },
+  "1264": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74150",
+    "name": "Jarvis Island"
+  },
+  "1265": {
+    "country_iso_2": "US",
+    "province_iso_2": "US-UM",
+    "code": "74350",
+    "name": "Navassa Island"
+  }
+}

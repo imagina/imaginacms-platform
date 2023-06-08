@@ -1,0 +1,5 @@
+url: https://github.com/imagina/imaginacms-imeeting
+versions:
+  "1.0.0":
+    added:
+      - Inital Version Imeeting Provider

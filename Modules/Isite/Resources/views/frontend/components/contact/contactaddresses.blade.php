@@ -1,5 +1,5 @@
 @if(!empty($addresses))
-  <div id="componentContactAddresses" class="position-relative">
+  <div id="componentContactAddresses" class="position-relative {{$classes}}">
     <x-isite::edit-link
       link="/iadmin/#/site/settings?module=isite&settings=addresses"
       :tooltip="trans('isite::common.editLink.tooltipAddress')"/>
@@ -10,7 +10,7 @@
       <div class="content-address">
         @foreach($addresses as $key => $addresses)
           <a href="https://google.com.co/maps/search/{{$addresses}}" target="_blank">
-            @if($key > 0)&nbsp;-&nbsp;@endif
+            @if($withHyphen) @if($key > 0)<span> - </span>@endif @endif
             <div class="d-inline-block">{{$addresses}}</div>
           </a>
         @endforeach

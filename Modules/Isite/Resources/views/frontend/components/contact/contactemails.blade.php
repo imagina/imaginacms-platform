@@ -1,6 +1,6 @@
 @if(!empty($emails))
   <!--emails content-->
-  <div id="componentContactEmails" class="position-relative">
+  <div id="componentContactEmails" class="position-relative {{$classes}}">
     <x-isite::edit-link
       link="/iadmin/#/site/settings?module=isite&settings=emails"
       :tooltip="trans('isite::common.editLink.tooltipEmail')"/>
@@ -11,7 +11,7 @@
       @endif
       <div class="content-email">
         @foreach($emails as $key => $email)
-          @if($key > 0) - @endif
+          @if($withHyphen) @if($key > 0)<span> - </span>@endif @endif
         <!--email-->
           <a class="d-inline-block" href="mailto:{{$email}}">{{$email}}</a>
         @endforeach

@@ -2,26 +2,17 @@
 
 namespace Modules\Isite\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Core\Icrud\Transformers\CrudResource;
 
-class ModuleTransformer extends JsonResource
+class ModuleTransformer extends CrudResource
 {
   /**
   * Method to merge values with response
   *
   * @return array
   */
-  public function toArray($request)
+  public function modelAttributes($request)
   {
-    $title = $this->getName() == "Icustom" ? trans("isite::isite.icustom") : trans($this->getAlias()."::".$this->getAlias().".name");
-    
-    $data = [
-      "name" => $this->getName(),
-      "enabled" => $this->isEnabled(),
-      "title" => $title,
-      "alias" => $this->getAlias()
-    ];
-
-    return $data;
+    return [];
   }
 }

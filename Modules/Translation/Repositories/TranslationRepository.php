@@ -51,5 +51,5 @@ interface TranslationRepository extends BaseRepository
 
     public function getTranslationsForGroupAndNamespace($locale, $group, $namespace);
 
-    public function deleteBy($criteria, $params);
+    public function deleteBy($criteria, $params = false);
 }

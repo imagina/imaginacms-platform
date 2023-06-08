@@ -11,6 +11,7 @@ class ItemTabs extends Component
   public $settingTabs;
   public $title;
   public $subtitle;
+  public $categories;
 
   public $componentParams;
   public $componentResponsive;
@@ -28,6 +29,7 @@ class ItemTabs extends Component
   public $componentNameSpace;
   public $componentFilter;
   public $componentUse;
+  public $componentCategoryRepository;
 
   /**
    * Create a new component instance.
@@ -74,6 +76,71 @@ class ItemTabs extends Component
     $this->componentName = $componentName;
     $this->componentNameSpace = $componentNameSpace;
 
+    $this->componentCategoryRepository = "Modules\\" . ucfirst($this->componentModuleName) . "\Repositories\CategoryRepository";
+
+  }
+
+  /*
+  * Get Category Repository App
+  *
+  */
+  private function getCategoryRepository()
+  {
+    return app($this->componentCategoryRepository);
+  }
+
+  /*
+  * Categories Featured from Repository
+  */
+  public function getFeaturedCategories(){
+
+    $params = [
+      "filter" => [
+        "featured" => true,
+      ]
+    ];
+    
+    $categories = $this->getCategoryRepository()->getItemsBy(json_decode(json_encode($params)));
+
+    if(!is_null($categories))
+      return $categories;
+    else
+      return null;
+   
+  }
+
+  /*
+  * Get Categories General
+  */
+  public function getCategories(){
+
+    $categories = [];
+
+    // Categories Ids from Setting
+    if(!empty($this->settingTabs)){
+      
+      $categoriesId = json_decode(setting($this->settingTabs,null,null));
+      
+      if(!is_null($categoriesId)){
+
+        foreach ($categoriesId as $key => $id) {
+          $params = ["filter" => []];
+          $category = $this->getCategoryRepository()->getItem($id,json_decode(json_encode($params)));
+
+          array_push($categories, $category);
+        }
+
+      }else{
+        // Setting exist but is null
+        $categories = $this->getFeaturedCategories();
+      }
+    }else{
+      // Not setting - get from repository
+      $categories = $this->getFeaturedCategories();
+    }
+
+    $this->categories = $categories;
+
   }
 
   /**
@@ -81,9 +148,11 @@ class ItemTabs extends Component
    *
    * @return \Illuminate\View\View|string
    */
-  public
-  function render()
+  public function render()
   {
+
+    $this->getCategories();
+
     return view("isite::frontend.components.item-tabs.layouts.item-tabs-layout-1.item-tabs-layout-1");
   }
 }

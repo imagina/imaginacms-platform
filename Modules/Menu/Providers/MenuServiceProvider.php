@@ -76,7 +76,7 @@ class MenuServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsPages'), "asgard.menu.cmsPages");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsSidebar'), "asgard.menu.cmsSidebar");
     $this->publishConfig('menu', 'config');
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
   }
 
   /**
@@ -128,6 +128,8 @@ class MenuServiceProvider extends ServiceProvider
         $item->items,
         $menu,
         [
+          'id' => $item->id,
+          'organization_id' => $item->organization_id,
           'icon' => $item->icon,
           'target' => $item->target,
           'class' => $item->class,
@@ -141,6 +143,8 @@ class MenuServiceProvider extends ServiceProvider
         $target,
         $item->title,
         [
+          'id' => $item->id,
+          'organization_id' => $item->organization_id,
           'target' => $item->target,
           'icon' => $item->icon,
           'class' => $item->class,
@@ -205,14 +209,19 @@ class MenuServiceProvider extends ServiceProvider
 
     $menu = $this->app->make(MenuRepository::class);
     $menuItem = $this->app->make(MenuItemRepository::class);
+ 
     foreach ($menu->allOnline() as $menu) {
+    
       $menuTree = $menuItem->getTreeForMenu($menu->id);
+      
       MenuFacade::create($menu->name, function (Builder $menu) use ($menuTree) {
         foreach ($menuTree as $menuItem) {
           $this->addItemToMenu($menuItem, $menu);
         }
       });
     }
+    
+
   }
 
   /**

@@ -11,6 +11,7 @@ use Modules\Core\Services\Composer;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
+use Cartalyst\Sentinel\Roles\EloquentRole;
 
 abstract class ProviderInstaller implements SetupScript
 {

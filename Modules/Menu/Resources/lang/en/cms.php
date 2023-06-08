@@ -26,6 +26,11 @@ return [
     "internal" => "Page Internal",
     "external" => "Page External",
     "frontend" => "Frontend Page"
+  ],
+  'documentation' => [
+    'menus' => "Your WEB site has one or more minuses that help navigate your WEB site
+     This functionality allows you to manage these menus, modifying positions, elements and texts
+     of each menu",
   ]
 ];
 

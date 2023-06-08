@@ -1,0 +1,17 @@
+{
+  "name": "Ibuilder",
+  "alias": "ibuilder",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "active": 1,
+  "priority": 1,
+  "providers": [
+    "Modules\\Ibuilder\\Providers\\IbuilderServiceProvider",
+    "Modules\\Ibuilder\\Providers\\EventServiceProvider",
+    "Modules\\Ibuilder\\Providers\\RouteServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

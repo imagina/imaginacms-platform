@@ -9,6 +9,8 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Isite\Console\GenerateSitemapCommand;
+use Modules\Isite\Console\TenantModuleMigrateCommand;
+use Modules\Isite\Console\TenantsScheduleCommand;
 use Modules\Isite\Events\Handlers\RegisterIsiteSidebar;
 use Modules\Isite\Http\Middleware\CaptchaMiddleware;
 use Illuminate\Support\Facades\Blade;
@@ -18,7 +20,7 @@ use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 use Modules\Isite\View\Components\Multilang;
 use Modules\Isite\View\Components\Categorylist;
 
-
+use Modules\Isite\Http\Middleware\CheckIp;
 
 class IsiteServiceProvider extends ServiceProvider
 {
@@ -31,7 +33,8 @@ class IsiteServiceProvider extends ServiceProvider
   protected $defer = false;
 
   protected $middleware = [
-    'captcha' => CaptchaMiddleware::class
+    'captcha' => CaptchaMiddleware::class,
+    'checkIp' => CheckIp::class,
   ];
 
   /**
@@ -62,6 +65,38 @@ class IsiteServiceProvider extends ServiceProvider
     });
 
     BelongsToTenant::$tenantIdColumn = 'organization_id';
+
+    /*
+    * JOB EVENTS
+    */
+    $this->app['events']->listen(\Illuminate\Queue\Events\JobProcessing ::class, function ($event) {
+    
+      //Checking jobs without tenant_id
+      if(!is_null($event->job->payload()) && !isset($event->job->payload()['tenant_id'])) {
+        
+        $dbName = \DB::connection()->getDatabaseName();
+        //\Log::info("ENV DATABASE: ".env("DB_DATABASE")." | Connection: ".$dbName);
+        
+        //Only if is not the same current connection
+        if($dbName!=env("DB_DATABASE"))
+          \Config::set('database.default', 'mysql');
+        
+      }
+
+    });
+
+    //Not include all cases when create a tenant
+    /*
+    $this->app['events']->listen(\Illuminate\Queue\Events\JobProcessed ::class, function ($event) {
+      //Only with tenant
+      if( !is_null($event->job->payload()) && isset($event->job->payload()['tenant_id'])) {
+        \Config::set('database.default', 'mysql');
+        \DB::disconnect('newConnectionTenant');
+      }
+    });
+    */
+
+
   }
 
   public function boot()
@@ -74,7 +109,10 @@ class IsiteServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'deprecated-settings'), "asgard.isite.deprecated-settings");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'cmsPages'), "asgard.isite.cmsPages");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'cmsSidebar'), "asgard.isite.cmsSidebar");
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'standardValuesForBlocksAttributes'), "asgard.isite.standardValuesForBlocksAttributes");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'blocks'), "asgard.isite.blocks");
+    $this->mergeConfigFrom($this->getModuleConfigFilePath('isite', 'gamification'), "asgard.isite.gamification");
 
     $app = $this->app;
 
@@ -196,7 +234,32 @@ class IsiteServiceProvider extends ServiceProvider
                 return new \Modules\Isite\Repositories\Cache\CacheTypeableDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\Isite\Repositories\ModuleRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentModuleRepository(new \Modules\Isite\Entities\Module());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheModuleDecorator($repository);
+            }
+        );
+        $this->app->bind(
+            'Modules\Isite\Repositories\RevisionRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentRevisionRepository(new \Modules\Isite\Entities\Revision());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheRevisionDecorator($repository);
+            }
+        );
 // add bindings
+
 
 
 
@@ -254,6 +317,8 @@ class IsiteServiceProvider extends ServiceProvider
   {
     $this->commands([
       GenerateSitemapCommand::class,
+      TenantModuleMigrateCommand::class,
+      TenantsScheduleCommand::class,
     ]);
   }
 

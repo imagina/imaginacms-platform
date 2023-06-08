@@ -36,6 +36,11 @@ return [
   "updateZone" => "Actualizar Zona",
   "maxFileSize" => "Tamaño maximo por archivo (MB)",
   "maxFiles" => "Cantidad maxima de archivos seleccionados",
-  "directUpload" => "Subida directa"
+  "directUpload" => "Subida directa",
+  'documentation' => [
+    'medias' => "Aquí se almacenan todos los archivos que se cargan en tu aplicación, y se ordenan por carpetas",
+    'zones' => "La aplicación identifica los archivos relacionados con otros módulos por zonas, estas zonas definen
+    cuantos archivos y de que manera seleccionarlo en relación",
+  ]
 ];
 

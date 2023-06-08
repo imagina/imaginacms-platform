@@ -1,0 +1,19 @@
+{
+    "name": "Icurrency",
+    "alias": "icurrency",
+    "description": "",
+    "keywords": [],
+    "version": "1.0.6",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icurrency\\Providers\\IcurrencyServiceProvider",
+        "Modules\\Icurrency\\Providers\\RouteServiceProvider",
+        "Modules\\Icurrency\\Providers\\CurrencyServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+
+    ],
+    "requires": []
+}

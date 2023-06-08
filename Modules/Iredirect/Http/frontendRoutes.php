@@ -2,17 +2,18 @@
 
 use Illuminate\Routing\Router;
 use Modules\Iredirect\Entities\Redirect as Redirect;
-
+use Illuminate\Support\Str;
 
 try{
     $uri = Request::path();
 
-    $redirect = Redirect::where('from', urldecode($uri))->first();
+    $redirect = Redirect::where("from", urldecode($uri))
+      ->orWhere("from", '/'.urldecode($uri))->first();
+    
     if (isset($redirect->from) && !empty($redirect->from)) {
-
-        Route::redirect($redirect->from, '/'.$redirect->to, $redirect->redirect_type);
-
+        Route::redirect($redirect->from,Str::start($redirect->to, '/'), $redirect->redirect_type);
     }
+    
     Route::any('find-redirect/{url}', function ($url) {
         $redirect = Redirect::where('from', urldecode($url))->first();
 

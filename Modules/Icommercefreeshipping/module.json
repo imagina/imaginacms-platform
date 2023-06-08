@@ -1,0 +1,18 @@
+{
+    "name": "Icommercefreeshipping",
+    "alias": "icommercefreeshipping",
+    "description": "Freeshipping - ShippingMethod Module to Icommerce",
+    "keywords": [],
+    "version": "2.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommercefreeshipping\\Providers\\IcommercefreeshippingServiceProvider",
+        "Modules\\Icommercefreeshipping\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

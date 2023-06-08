@@ -11,7 +11,7 @@ class CategoryTranslation extends Model
 
     public $timestamps = false;
     protected $table = 'iblog__category_translations';
-    protected $fillable = ['title', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'translatable_options'];
+    protected $fillable = ['title', 'description', 'status', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'translatable_options'];
 
     protected $casts = [
         'translatable_options' => 'array'

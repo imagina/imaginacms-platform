@@ -23,7 +23,11 @@ class CountryTableSeeder extends Seeder
         $path = base_path('/Modules/Ilocations/Assets/js/countries.json');
         $countries = json_decode(file_get_contents($path), true);
 
-        foreach ($countries as $key => $country)
-            Country::create($country);
+        foreach ($countries as $key => $country){
+          $currentCountry = Country::where("iso_3",$country["iso_3"])->first();
+          
+          if(!isset($currentCountry->id)) Country::create($country);
+        }
+        
     }
 }

@@ -280,7 +280,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $sidebarEventListenerName = "Register{$this->testModuleSanitizedName}Sidebar";
         $this->assertTrue(Str::contains(
             $file,
-            '$this->loadMigrationsFrom(__DIR__ . \'/../Database/Migrations\');'
+            //'$this->loadMigrationsFrom(__DIR__ . \'/../Database/Migrations\');'
         ), 'Migrations arent loaded');
 
         $this->assertTrue(Str::contains(

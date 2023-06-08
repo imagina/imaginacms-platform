@@ -115,16 +115,26 @@ class SentinelRoleRepository implements RoleRepository
 
         return $role->delete();
     }
-
-    /**
-     * Find a role by its name
-     * @param  string $name
-     * @return mixed
-     */
-    public function findByName($name)
-    {
-        return Sentinel::findRoleByName($name);
-    }
+  
+  /**
+   * Find a role by its name
+   * @param  string $name
+   * @return mixed
+   */
+  public function findByName($name)
+  {
+    return Sentinel::findRoleByName($name);
+  }
+  
+  /**
+   * Find a role by its slug
+   * @param  string $slug
+   * @return mixed
+   */
+  public function findBySlug($slug)
+  {
+    return Sentinel::findRoleBySlug($slug);
+  }
 
     /**
      * @inheritdoc

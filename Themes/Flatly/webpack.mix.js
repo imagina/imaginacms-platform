@@ -33,10 +33,6 @@ let scssfilestomerge = [];
 // reordering of modules leaving Isite first
 modules.sort(function(x,y){ return x == "Isite" ? -1 : y == "Isite" ? 1 : 0; });
 modules.forEach(function(mname) {
-  let pfile = '../../Modules/'+mname+'/Resources/views/vue/components.js';
-  if(fs.existsSync(pfile)) {
-    jsfilestomerge.push(pfile);
-  }
 
   let scssfile = '../../Modules/'+mname+'/Resources/scss/main.scss';
   if(fs.existsSync(scssfile)) {
@@ -51,18 +47,6 @@ modules.forEach(function(mname) {
     mix.copy(
       scssPath,
       './resources/scss/modules/'+mname.toLowerCase()
-    );
-  }
-
-  /**
-   * Copy Modules Source Resources
-   */
-  let path = '../../Modules/'+mname+'/Resources/views/vue/components/'
-
-  if(fs.existsSync(path)) {
-    mix.copy(
-      path,
-      './resources/js/components/'+mname.toLowerCase()
     );
   }
 });

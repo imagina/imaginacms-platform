@@ -7,6 +7,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Iblog\Transformers\CategoryTransformer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\Media\Transformers\NewTransformers\MediaTransformer;
+use  Modules\Isite\Transformers\RevisionTransformer;
 
 class CrudResource extends JsonResource
 {
@@ -31,7 +33,7 @@ class CrudResource extends JsonResource
     $translatableAttributes = $this->translatedAttributes ?? [];//Get translatable attributes
     $filter = json_decode($request->filter);//Get request Filters
     $languages = \LaravelLocalization::getSupportedLocales();// Get site languages
-    $excludeRelations = ['translations', 'files'];//No self-load this relations
+    $excludeRelations = ['translations'];//No self-load this relations
 
     //Add attributes
     foreach (array_keys($this->getAttributes()) as $fieldName) {
@@ -61,6 +63,11 @@ class CrudResource extends JsonResource
     //Add media Files relation
     if (method_exists($this->resource, 'mediaFiles')) $response['mediaFiles'] = $this->mediaFiles();
 
+    //Add Revision relation
+    if (method_exists($this->resource, 'revisions')) {
+      $response['revisions'] = RevisionTransformer::collection($this->whenLoaded('revisions'));
+    }
+
     //Transform relations.
     foreach ($this->getRelations() as $relationName => $relation) {
       if (!in_array($relationName, $excludeRelations)) {
@@ -73,6 +80,11 @@ class CrudResource extends JsonResource
           //Merge fillable to main level of response
           $response = array_merge_recursive($response, $this->formatFillableToModel($fillableData));
         }
+        //Format files relations
+        if (($relationName == 'files') && method_exists($this->resource, 'mediaFiles')) {
+          $response["files"] = MediaTransformer::collection($this->files);
+        }
+
       }
     }
 

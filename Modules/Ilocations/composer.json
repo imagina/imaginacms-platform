@@ -37,14 +37,6 @@
         ]
     },
     "extra": {
-        "laravel": {
-            "providers": [
-                "Modules\\Ilocations\\Providers\\IlocationsServiceProvider"
-            ],
-            "aliases": {
-                
-            }
-        },
         "branch-alias": {
             "dev-master": "4.0.x-dev",
             "dev-v8.x": "8.0.x-dev"

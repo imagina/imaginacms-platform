@@ -4,6 +4,7 @@
 namespace Modules\Iforms\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Isite\Transformers\RevisionTransformer;
 
 class FieldTransformer extends JsonResource
 {
@@ -29,6 +30,7 @@ class FieldTransformer extends JsonResource
       'rules' => $this->rules,
       'form' => new FormTransformer($this->whenLoaded('form')),
       'block' => new BlockTransformer($this->whenLoaded('block')),
+      'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
     ];
 
     $filter = json_decode($request->filter);
@@ -45,7 +47,7 @@ class FieldTransformer extends JsonResource
 
     //simplifying the type value variable
     $fieldType = $this->present()->type["value"] ?? "";
-    
+
     /**
      * creating the dynamic field to the iadmin
      * values correlations
@@ -74,23 +76,25 @@ class FieldTransformer extends JsonResource
      */
     $data['dynamicField'] = [
       'type' => in_array($fieldType, ['text', 'textarea', 'number', 'email', 'phone']) ? 'input' :
-        ( $fieldType === 'file' ? 'media' :
-          ( $fieldType == 'selectmultiple' ? 'select' : $fieldType )
+        ($fieldType === 'file' ? 'media' :
+          ($fieldType == 'selectmultiple' ? 'select' : $fieldType)
         ),
       'name' => $fieldType === 'file' ? "mediasSingle" : $this->name,
       'required' => $this->required ? true : false,
-      "value" => in_array($fieldType, ['selectmultiple','radio']) ? [] :
-        ( in_array($fieldType, ['checkbox']) ? false : "" ),
-      'colClass' => "col-12 col-sm-".( $field->width ?? '12' ),
+      "value" => in_array($fieldType, ['selectmultiple', 'radio']) ? [] :
+        (in_array($fieldType, ['checkbox']) ? false : ""),
+      'colClass' => "col-12 col-sm-" . ($field->width ?? '12'),
       'props' => [
-        'type' => $fieldType === 'phone' ? 'tel' :
-          ( $fieldType === 'file' ? 'media' : $fieldType ),
         'label' => $this->label,
         'entity' => $this->options["entity"] ?? "",
         'multiple' => $fieldType === 'selectmultiple' ? true : false
       ]
     ];
-    
+
+    //props type
+    $availableTypes = ["number", "email"];
+    (in_array($fieldType, $availableTypes)) ? $data['dynamicField']['props']['type'] = $fieldType : false;
+
     //Options for ['selectmultiple', 'select', 'radio', 'treeSelect'] field types
     if (in_array($fieldType, ['selectmultiple', 'select', 'radio', 'treeSelect'])) {
 
@@ -116,6 +120,13 @@ class FieldTransformer extends JsonResource
       }
 
     }
+
+    //Add options for texare
+    if ($fieldType == "textarea") {
+      $data['dynamicField']['props']['type'] = "textarea";
+      $data['dynamicField']['props']['rows'] = 3;
+    }
+
     return $data;
   }
 }

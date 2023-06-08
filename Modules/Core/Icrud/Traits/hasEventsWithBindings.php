@@ -55,6 +55,28 @@ trait hasEventsWithBindings
   //=== Register model events with bindings
 
   /**
+   * Register event to moel was retrieved
+   *
+   * @param $callback
+   * @return void
+   */
+  public static function retrievedIndexWithBindings($callback)
+  {
+    static::registerModelEvent('retrievedIndexWithBindings', $callback);
+  }
+
+  /**
+   * Register event to moel was retrieved
+   *
+   * @param $callback
+   * @return void
+   */
+  public static function retrievedShowWithBindings($callback)
+  {
+    static::registerModelEvent('retrievedShowWithBindings', $callback);
+  }
+
+  /**
    * Register event to before create model
    *
    * @param \Closure|string $callback
@@ -99,6 +121,30 @@ trait hasEventsWithBindings
   }
 
   //=== Event handlers with bindings
+
+  /**
+   * Method to fire event when model was retrieved
+   *
+   * @param $bindings
+   * @return void
+   */
+  public function retrievedIndexCrudModel($bindings = [])
+  {
+    // fire custom event on the model
+    $this->fireModelEvent('retrievedIndexWithBindings', false, $bindings);
+  }
+
+  /**
+   * Method to fire event when model was retrieved
+   *
+   * @param $bindings
+   * @return void
+   */
+  public function retrievedShowCrudModel($bindings = [])
+  {
+    // fire custom event on the model
+    $this->fireModelEvent('retrievedShowWithBindings', false, $bindings);
+  }
 
   /**
    * Method to fire event before create model

@@ -109,4 +109,8 @@ abstract class BaseFormRequest extends FormRequest
     {
         return rtrim($this->translationsAttributesKey, '.') . '.';
     }
+  
+  public function getValidator(){
+    return $this->getValidatorInstance();
+  }
 }

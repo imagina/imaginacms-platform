@@ -56,9 +56,23 @@ return [
     "countryCode" => "Country Code",
     "iso2" => "ISO Code 2",
     "iso3" => "ISO Code 3",
-    "code" => "Code",
+    "code" => ">Zip Code",
     "points" => "Points",
     "geozone" => "Geo zone"
+  ],
+  'documentation' => [
+    'countries' => "For different functionalities within your application and WEB site it is necessary to have a
+     list of countries, here you will find an extensive list that we provide and you can also add new ones if necessary.",
+    'provinces' => "For different functionalities within your application and WEB site it is necessary to have a
+     list of provinces/departments/states, here you will find an extensive list that we offer you and you can also
+     add new ones if necessary.",
+    'cities' => "For different functionalities within your application and WEB site it is necessary to have a
+     list of cities, here you will find an extensive list that we offer you and you can also add new ones if necessary.",
+    'neighborhoods' => "For different functionalities within your application and WEB site it is necessary to have a
+     List of neighborhoods, here you will find an extensive list that we offer you and you can also add new ones if necessary.",
+    'polygons' => "For different functionalities it is necessary to define a boundary area within a map, to provide
+     We call these areas polygons.",
+    'geozones' => "GeoZones are used to group multiple polygons",
   ]
 ];
 

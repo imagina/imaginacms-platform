@@ -4,9 +4,11 @@ return [
   'yes' => "Yes",
   'no' => "No",
   'menu' => [
-    'home' => 'Home'
+    'home' => 'Home',
+    'viewMore' => "View more"
   ],
   'settings' => [
+    'wizardTenantType' => "Wizard Type",
     'logo1' => 'Logo N°1',
     'logo2' => 'Logo N°2',
     'logo3' => 'Logo N°3',
@@ -46,6 +48,7 @@ return [
     'customJs' => 'Custom Body JS',
     'headerCustomJs' => 'Custom Head JS',
     'tenantRouteAlias' => 'Route Alias to the tenant lading page',
+    'enableDynamicFieldsCache' => 'Allow dynamic fields cache in frontend',
     "whatsapp" => [
       "callingCode" => "CountryCode",
       "number" => "Whatsapp number",
@@ -53,6 +56,9 @@ return [
       "label" => "Label",
       "icon-label" => "Icon",
     ],
+    'usersToNotify' => 'Users To Notify Changes In The Application',
+    'emailsToNotify' => 'Emails to Notify Changes in the Application',
+    'groupNameNotifyChanges' => 'Notify App Changes',
     'tenant' => [
       'group' => 'Tenants',
       'tenantWithCentralData' => 'Entities with central data',
@@ -61,19 +67,28 @@ return [
         'page' => 'Pages',
         'slider' => 'Sliders',
         'slide' => 'Slides',
+        'menu' => 'Menus',
+        'menuitem' => 'Menus Items',
       ],
+      'defaultTenantStatus' => 'Default Tenant Status'
     ],
     'googleClient' => 'Google Client',
     'facebookClient' => 'Facebook Client',
     'facebookAppId' => 'Facebook App Id',
+    'microsoftClientId' => 'Microsoft Client Id',
     'cms' => [
       'legacyStructureCMS' => 'Use Legacy Structure CMS',
+      'offline' => 'Offline Activated',
       'iadminTheme' => [
         "title" => "Iadmin Theme",
         "theme1" => "Theme 1",
         "theme2" => "Theme 2"
       ]
-    ]
+    ],
+    'showGoToSiteButton' => 'Show button "Go To site',
+    'defaultLayout' => 'Layout Default',
+    'labelTimeExpiredToken' => 'Download Tokens Expiration Time (Days)',
+    'itemsTabs' => 'Enter Titles for the tabs',
   ],
   'settingHints' => [
     'phones' => "Type a phone number and press enter key",
@@ -81,6 +96,7 @@ return [
     'emails' => "Type an email and press enter key",
   ],
   'settingGroups' => [
+    'sitemap' => 'Sitemap',
     'media' => [
       'title' => 'Media',
       'description' => 'Media'
@@ -97,6 +113,8 @@ return [
       'title' => 'Social Networks',
       'description' => 'Social Networks'
     ],
+    'components' => 'Components',
+    'groupNameTimeToken' => 'Tokens',
     'apiKeys' => [
       'title' => 'API Keys',
       'description' => 'API Keys'
@@ -128,10 +146,11 @@ return [
     'cms' => [
       'title' => 'CMS',
       'description' => 'CMS Settings'
-    ],
+    ]
   ],
   'messages' => [
-    'no items' => 'Not Information available'
+    'no items' => 'Not Information available',
+    'tokensValidate' => 'The token has expired'
   ],
   'sort' => [
     'title' => 'Order',
@@ -157,7 +176,6 @@ return [
     'tooltipAddress' => 'Edit address',
     'tooltipEmail' => 'Edit Email',
     'tooltipPhone' => 'Edit Phone',
-    'tooltipLogo' => 'Edit Logo',
     'tooltipAd' => 'Editar Ad',
   ],
   'maps' => [
@@ -173,4 +191,15 @@ return [
     'titleWhatsappLayout5' => 'WhatsApp',
     'descriptionWhatsappLayout5' => 'Hi, how can we help you?',
   ],
+  'sitemap' => [
+    'labelSitemapDepth' => 'Sitemap Depth',
+    'labelUserAgentRobots' => 'Search Agents For The Robots.txt File',
+    'labelActiveGenerateRobotsFile' => 'Sitemap With Robots.txt File',
+  ],
+  'infoContact' => [
+    'title' => 'Contact information',
+    'titlePhone' => 'Phone',
+    'titleAddress' => 'Address',
+    'titleEmail' => 'E-mail',
+  ]
 ];

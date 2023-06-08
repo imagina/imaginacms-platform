@@ -7,7 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Modules\Isite\Transformers\ModuleTransformer;
+use Modules\Isite\Services\TenantService;
+use Modules\Isite\Transformers\NwidartModuleTransformer;
 use Modules\Setting\Repositories\SettingRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -29,17 +30,20 @@ class SiteApiController extends BaseApiController
   private $permissions;
   private $themeManager;
   private $settingController;
+  private $tenantService;
 
   public function __construct(
     SettingRepository $setting,
     ThemeManager $themeManager,
-    PermissionManager $permissions)
+    PermissionManager $permissions,
+    TenantService $tenantService)
   {
     $this->module = app('modules');
     $this->setting = $setting;
     $this->themeManager = $themeManager;
     $this->permissions = $permissions;
     $this->settingController = app('Modules\Isite\Http\Controllers\Api\SettingApiController');
+    $this->tenantService = $tenantService;
   }
 
   /**
@@ -103,7 +107,7 @@ class SiteApiController extends BaseApiController
           "availableLocales" => array_values($locales),
           "availableThemes" => array_values($themes),
           "defaultLocale" => config('app.locale'),
-          "modulesEnabled" => ModuleTransformer::collection($enabledModules)
+          "modulesEnabled" => NwidartModuleTransformer::collection($enabledModules)
         ]
       ];
 
@@ -370,4 +374,68 @@ class SiteApiController extends BaseApiController
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
   }
+  
+  /**
+   * Create Site - Tenant
+   * @param Request $request
+   */
+  public function create(Request $request){
+    
+    $data = $request->input('attributes');
+    
+   // try {
+    
+    $response = $this->tenantService->createTenantInMultiDatabase($data);
+    
+    //Response
+    $response = ["data" => $response];
+    //  \DB::commit();//Commit to DataBase
+//     } catch (\Exception $e) {
+//      // \DB::rollback();//Rollback to Data Base
+//       $status = $this->getStatusError($e->getCode());
+//       $response = ["errors" => $e->getMessage()];
+//     }
+    return response()->json($response, $status ?? 200);
+  }
+  
+  public function activateModule(Request $request){
+    
+    $data = $request->input('attributes');
+    
+    try {
+    
+    $response = $this->tenantService->activateModule($data);
+    
+    //Response
+    $response = ["data" => $response];
+       \DB::commit();//Commit to DataBase
+     } catch (\Exception $e) {
+       \DB::rollback();//Rollback to Data Base
+       $status = $this->getStatusError($e->getCode());
+       $response = ["errors" => $e->getMessage()];
+     }
+    return response()->json($response, $status ?? 200);
+  }
+
+  public function tenantUpdate(Request $request){
+    
+    
+    $data = $request->input('attributes');
+    
+    try {
+    
+      $response = $this->tenantService->updateTenant($data);
+    
+      //Response
+      $response = ["data" => "Tenant Updated"];
+   
+    } catch (\Exception $e) {
+
+      $status = $this->getStatusError($e->getCode());
+      $response = ["errors" => $e->getMessage()];
+    }
+    return response()->json($response, $status ?? 200);
+  }
+
+
 }

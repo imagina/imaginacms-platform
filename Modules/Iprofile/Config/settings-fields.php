@@ -449,6 +449,24 @@ return [
       'select' => ['label' => 'name', 'id' => 'id']
     ]
   ],
+  //Roles to register
+  'rolesToRegisterInWizard' => [
+    "onlySuperAdmin" => true,
+    'name' => 'iprofile::rolesToRegisterInWizard',
+    'value' => [2],
+    'type' => 'select',
+    'groupName' => 'register',
+    'groupTitle' => 'iprofile::settings.settingGroups.auth',
+    'props' => [
+      'label' => 'iprofile::settings.rolesToRegisterInWizard',
+      'multiple' => true,
+      'useChips' => true
+    ],
+    'loadOptions' => [
+      'apiRoute' => 'apiRoutes.quser.roles',
+      'select' => ['label' => 'name', 'id' => 'id']
+    ]
+  ],
   //Password
   'passwordExpiredTime' => [
     'name' => 'iprofile::passwordExpiredTime',
@@ -503,5 +521,32 @@ return [
         ['label' => 'iprofile::common.settings.tenant.entities.settings', 'value' => 'settings'],
       ]
     ]
+  ],
+  //Allow local login
+  'allowLocalLogin' => [
+    "onlySuperAdmin" => true,
+    'name' => 'iprofile::allowLocalLogin',
+    'value' => "1",
+    'type' => 'checkbox',
+    'props' => [
+      'trueValue' => "1",
+      'falseValue' => "0",
+      'label' => 'iprofile::settings.allowLocalLogin'
+    ],
+  ],
+  'customLogin' => [
+    'name' => 'iprofile::customLogin',
+    'value' => ['email'],
+    'type' => 'select',
+    'props' => [
+      'label' => 'iprofile::settings.labelCustomLogin',
+      'multiple' => true,
+      'useChips' => true,
+      'hideDropdownIcon' => true,
+      'options' => [
+        ['label' => 'iprofile::settings.optionMailCustomLogin', 'value' => 'email'],
+        ['label' => 'iprofile::settings.optionUserNameCustomLogin', 'value' => 'user_name']
+      ]
+    ],
   ],
 ];

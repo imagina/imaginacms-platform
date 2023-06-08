@@ -39,6 +39,8 @@ class Search extends Component
     $this->icon = isset($icon) ? $icon : 'fa-search';
     $this->placeholder = $placeholder ?? trans('isearch::common.form.search_here');
     $this->title = $title;
+
+    $this->params = $params;
     $this->minSearchChars = $minSearchChars ?? setting('isearch::minSearchChars', null, "3");
     $this->goToRouteAlias = $goToRouteAlias ?? config('asgard.isearch.config.route', 'isearch.search');
     $repos = json_decode(setting('isearch::repoSearch'));

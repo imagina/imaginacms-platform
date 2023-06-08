@@ -17,7 +17,7 @@
 
 		<div class="collapse multi-collapse {{$isExpanded ? 'show' : ''}} mb-2" id="collapse-{{$name}}">
 			
-			<input type="text" id="amount-{{$name}}" class="amount border-0 text-primary font-weight-bold mb-2" readonly>
+			<input type="text" id="amount-{{$name}}" aria-label="amount-{{$name}}" class="amount border-0 text-primary font-weight-bold mb-2" readonly>
 
 			<input type="hidden" id="valueMin" name="valueMin" wire:model="valueMin">
 			<input type="hidden" id="valueMax" name="valueMax" wire:model="valueMax">
@@ -68,15 +68,15 @@
 		      	step: step,
 		      	values: [selNewPriceMin, selNewPriceMax],
 		      	slide: function( event, ui ) {
-		        	$( "#amount-{{$name}}" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+		        	$( "#amount-{{$name}}" ).val( "$" + ui.values[ 0 ].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&.").toString().slice(0,-3) + " - $" + ui.values[ 1 ].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&.").toString().slice(0,-3) );
 
 		        	$( "#selValueMin-{{$name}}" ).val(ui.values[ 0 ]);
 		        	$( "#selValueMax-{{$name}}" ).val(ui.values[ 1 ]);
 		      	}
 		    });
 
-		    $( "#amount-{{$name}}" ).val( "$" + $( "#slider-range-{{$name}}" ).slider( "values", 0 ) +
-	      " - $" + $( "#slider-range-{{$name}}" ).slider( "values", 1 ) );
+		    $( "#amount-{{$name}}" ).val( "$" + $( "#slider-range-{{$name}}" ).slider( "values", 0 ).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&.").toString().slice(0,-3) +
+	      " - $" + $( "#slider-range-{{$name}}" ).slider( "values", 1 ).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&.").toString().slice(0,-3) );
 			
 		}
 

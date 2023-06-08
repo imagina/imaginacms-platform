@@ -1,4 +1,4 @@
-<div class="bootstrap-slider-layout-3">
+<div id="{{ $slider->system_name }}-bootstrap-slider-layout-3" class="bootstrap-slider-layout-3">
 
     <div id="{{ $slider->system_name }}" class="carousel slide "
          data-ride="carousel" data-pause="{{ $pause }}">
@@ -79,3 +79,113 @@
         @endif
     </div>
 </div>
+<style>
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .icon {
+    top: 20px;
+    left: 20px;
+    z-index: 9;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .title b,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .title strong {
+    font-weight: bold;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html {
+    margin-bottom: 15px;
+    color: #fff;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html p,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h1,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h2,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h3,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h4,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h5,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h6 {
+    font-size: 23px;
+    margin-bottom: 0;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .btn {
+    font-size: 20px;
+    padding: 7px 30px;
+    border-radius: 50rem !important;
+    background-color: #53A318;
+    border-color: #53A318;
+    color: #fff;
+    font-weight: 600;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-prev,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-next {
+    z-index: 99;
+    top: auto;
+    bottom: 10px;
+    width: auto;
+    opacity: 1;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-prev i,
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-next i {
+    font-size: 25px;
+    color: #fff;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-prev {
+    left: 48%;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control-next {
+    right: 48%;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-item .carousel-caption {
+    right: 0;
+    bottom: 2%;
+    left: 0;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-item .carousel-caption .image-circle {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    background: linear-gradient(to right, #962b33 1%, #d32e34 100%);
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-item .carousel-caption .image-circle img {
+    width: 380px;
+    height: 380px;
+    margin-left: 10px;
+    border-radius: 50%;
+    margin-top: 5px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+#{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .img-fondo {
+    height: 550px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+@media (max-width: 991.98px) {
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .img-fondo {
+        height: 400px;
+    }
+}
+@media (max-width: 767.98px) {
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-control {
+        display: none;
+    }
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .title {
+        font-size: 30px;
+    }
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html p,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h1,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h2,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h3,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h4,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h5,
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .custom-html h6 {
+        font-size: 16px;
+    }
+    #{{ $slider->system_name }}-bootstrap-slider-layout-3 .carousel .carousel-item .carousel-caption {
+        right: 2%;
+        left: 2%;
+    }
+}
+</style>

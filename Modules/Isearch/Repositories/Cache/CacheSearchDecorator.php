@@ -23,4 +23,11 @@ class CacheSearchDecorator extends BaseCacheDecorator implements SearchRepositor
             ->orderBy('created_at', 'DESC')->paginate(12);
     }
 
+    public function getRepositoriesFromSetting($params)
+    {
+        return $this->remember(function () use ($params) {
+            return $this->repository->getRepositoriesFromSetting($params);
+        });
+    }
+
 }

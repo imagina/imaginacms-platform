@@ -11,6 +11,7 @@ class Day extends CrudModel
   use Translatable;
 
   public $transformer = 'Modules\Ischedulable\Transformers\DayTransformer';
+  public $repository = 'Modules\Ischedulable\Repositories\DayRepository';
   public $requestValidation = [
     'create' => 'Modules\Ischedulable\Http\Requests\CreateDayRequest',
     'update' => 'Modules\Ischedulable\Http\Requests\UpdateDayRequest',

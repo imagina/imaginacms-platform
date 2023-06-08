@@ -2,7 +2,7 @@
 
 @if(!empty($description))
 	<p class="index-description">
-		{{$description}}
+		{!! $description !!}
 	</p>
 @endif
 <hr>

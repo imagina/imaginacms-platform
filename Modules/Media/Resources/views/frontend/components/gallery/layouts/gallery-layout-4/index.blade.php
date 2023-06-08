@@ -32,3 +32,5 @@
       @endif
   </div>
 @endif
+
+@include('media::frontend.components.gallery.partials.style')

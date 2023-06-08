@@ -66,7 +66,7 @@
                     aria-expanded="false">
                 <div class="user d-inline-block">
                     @if($showLabel)
-                        <span class="d-none d-lg-inline-block"> {{ trans('iprofile::frontend.button.my_account') }}</span>
+                        <span class="d-none d-lg-inline-block"> {{ $label }}</span>
                     @endif
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>

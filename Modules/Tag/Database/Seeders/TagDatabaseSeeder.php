@@ -15,5 +15,7 @@ class TagDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        
+        $this->call(TagModuleTableSeeder::class);
     }
 }

@@ -38,6 +38,22 @@ class Province extends Model
     {
         return $this->hasMany(GeozonesCountries::class);
     }
+  
+  public function getNameAttribute(){
+    
+    $currentTranslations = $this->getTranslation(locale());
+    
+    if (empty($currentTranslations) || empty($currentTranslations->toArray()["name"])) {
+      
+      $model = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
+  
+      if(empty($model)) return "";
+      return $model->toArray()["name"] ?? "";
+    }
+    
+    return $currentTranslations->toArray()["name"];
+    
+  }
 
     public function geozones()
     {

@@ -21,13 +21,33 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * @var array
    */
   protected $replaceFilters = [];
-
+  
   /**
    * Relation name to replace
    * @var array
    */
   protected $replaceSyncModelRelations = [];
+  
+  
+  /**
+   * Query where to save the current query
+   * @var null
+   */
+  protected $query = null;
 
+  
+  public function getOrCreateQuery($params, $criteria = null){
+    $cloneParams = json_decode(json_encode($params));
+    if(!empty($params)) $cloneParams->returnAsQuery = true;
+    else $newParams = (object)["returnAsQuery" => true];
+    if(is_null($criteria))
+      $this->query = $this->getItemsBy($cloneParams);
+    else
+      $this->query = $this->getItem($criteria, $cloneParams);
+    
+    return $this->query;
+  }
+  
   /**
    * Method to include relations to query
    * @param $query
@@ -105,8 +125,9 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * Method to filter query
    * @param $query
    * @param $filter
+   * @param $params
    */
-  public function filterQuery($query, $filter)
+  public function filterQuery($query, $filter, $params)
   {
     return $query;
   }
@@ -117,9 +138,13 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * @param $query
    * @param $filter
    */
-  public function orderQuery($query, $order)
+  public function orderQuery($query, $order, $noSortOrder)
   {
-    $orderField = $order->field ?? 'created_at';//Default field
+    //Verify if the model has sort_order column and ordering by that column by default
+    $fillable = $this->model->fillable;
+    $bySortOrder = isset($fillable["sort_order"]) && !$noSortOrder;
+  
+    $orderField = $order->field ?? ($bySortOrder ? 'sort_order' : 'created_at');//Default field
     $orderWay = $order->way ?? 'desc';//Default way
 
     //Set order to query
@@ -198,6 +223,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //Event creating model
     $this->dispatchesEvents(['eventName' => 'creating', 'data' => $data]);
 
+    $this->beforeCreate($data);
     //Create model
     $model = $this->model->create($data);
 
@@ -213,7 +239,16 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //Response
     return $model;
   }
-
+  
+  /**
+   * Method to override in the child class if there need modify the data before create
+   * @param $data
+   * @return void
+   */
+  public function beforeCreate(&$data){
+  
+  }
+  
   /**
    * Method to request all data from model
    *
@@ -222,66 +257,88 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    */
   public function getItemsBy($params)
   {
-    //Instance Query
-    $query = $this->model->query();
-
-    //Include relationships
-    if (isset($params->include)) $query = $this->includeToQuery($query, $params->include);
-
-    //Filter Query
-    if (isset($params->filter)) {
-      $filters = $params->filter;//Short data filter
-      //Instance model relations
-      $modelRelations = ($this->model->modelRelations ?? []);
-      //Instance model fillable
-      $modelFillable = array_merge(
-        $this->model->getFillable(),
-        ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
-      );
-
-      //Set fiter order to params.order: TODO: to keep and don't break old version api
-      if (isset($filters->order) && isset($params->order) && !$params->order) $params->order = $filters->order;
-
-      //Add Requested Filters
-      foreach ($filters as $filterName => $filterValue) {
-        $filterNameSnake = camelToSnake($filterName);//Get filter name as snakeCase
-        if (!in_array($filterName, $this->replaceFilters)) {
-          //Add fillable filter
-          if (in_array($filterNameSnake, $modelFillable)) {
-            $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
-          }
-          //Add relation filter
-          if (in_array($filterName, array_keys($modelRelations))) {
-            //dd($this->model->$filterName());
-            $query = $this->setFilterQuery($query, (object)[
-              'where' => $modelRelations[$filterName],
-              'table' => $this->model->$filterName()->getTable(),
-              'foreignPivotKey' => $this->model->$filterName()->getForeignPivotKeyName(),
-              'relatedPivotKey' => $this->model->$filterName()->getRelatedPivotKeyName(),
-              'value' => $filterValue
-            ], $filterName);
+    //reusing query if exist
+    if(empty($this->query)) {
+      
+      //Instance Query
+      $query = $this->model->query();
+  
+      //Include relationships
+      if (isset($params->include)) $query = $this->includeToQuery($query, $params->include);
+  
+      //Filter Query
+      if (isset($params->filter)) {
+        $filters = $params->filter;//Short data filter
+        //Instance model relations
+        $modelRelations = ($this->model->modelRelations ?? []);
+        //Instance model fillable
+        $modelFillable = array_merge(
+          $this->model->getFillable(),
+          ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
+        );
+    
+        //Set fiter order to params.order: TODO: to keep and don't break old version api
+        if (isset($filters->order) && !isset($params->order)) $params->order = $filters->order;
+    
+        //Add Requested Filters
+        foreach ($filters as $filterName => $filterValue) {
+          $filterNameSnake = camelToSnake($filterName);//Get filter name as snakeCase
+          if (!in_array($filterName, $this->replaceFilters)) {
+            //Add fillable filter
+            if (in_array($filterNameSnake, $modelFillable)) {
+              //instance an own filter way when the filter name is ID
+              if ($filterNameSnake == "id") $filterValue = (object)["where" => 'in', "value" => (array)$filterValue];
+              //Set filter
+              $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
+            }
+            //Add relation filter
+            if (in_array($filterName, array_keys($modelRelations))) {
+              //dd($this->model->$filterName());
+              $query = $this->setFilterQuery($query, (object)[
+                'where' => $modelRelations[$filterName],
+                'table' => $this->model->$filterName()->getTable(),
+                'foreignPivotKey' => $this->model->$filterName()->getForeignPivotKeyName(),
+                'relatedPivotKey' => $this->model->$filterName()->getRelatedPivotKeyName(),
+                'value' => $filterValue
+              ], $filterName);
+            }
           }
         }
+        
+        //Filter by date
+        if (isset($filter->date)) {
+          $date = $filter->date;//Short filter date
+          $date->field = $date->field ?? 'created_at';
+          if (isset($date->from))//From a date
+            $query->whereDate($date->field, '>=', $date->from);
+          if (isset($date->to))//to a date
+            $query->whereDate($date->field, '<=', $date->to);
+        }
+        
+        //Audit filter withTrashed
+        if (isset($filters->withTrashed) && $filters->withTrashed) $query->withTrashed();
+    
+        //Audit filter onlyTrashed
+        if (isset($filters->onlyTrashed) && $filters->onlyTrashed) $query->onlyTrashed();
+    
+        //Set params into filters, to keep uploader code
+        if (is_array($filters)) $filters = (object)$filters;
+
+        //Add model filters
+        $query = $this->filterQuery($query, $filters, $params);
       }
-
-      //Audit filter withTrashed
-      if (isset($filters->withTrashed) && $filters->withTrashed) $query->withTrashed();
-
-      //Audit filter onlyTrashed
-      if (isset($filters->onlyTrashed) && $filters->onlyTrashed) $query->onlyTrashed();
-
-      //Set params into filters, to keep uploader code
-      if (is_array($filters)) $filters = (object)$filters;
-      $filters->params = $params;
-      //Add model filters
-      $query = $this->filterQuery($query, $filters);
+  
+      //Order Query
+      $query = $this->orderQuery($query, $params->order ?? true, $filters->noSortOrder ?? false);
+      
+    }else{
+      //reusing query if exist
+      $query = $this->query;
     }
-
-    //Order Query
-    $query = $this->orderQuery($query, $params->order ?? true);
-
+    
     //Response as query
-    if (isset($params->returnAsQuery) && $params->returnAsQuery) $response = $query;
+    if (isset($params->returnAsQuery) && $params->returnAsQuery) return $query;
+    
     //Response paginate
     else if (isset($params->page) && $params->page) $response = $query->paginate($params->take);
     //Response complete
@@ -289,6 +346,12 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
       if (isset($params->take) && $params->take) $query->take($params->take);//Take
       $response = $query->get();
     }
+
+    //Event retrived model
+    $this->dispatchesEvents(['eventName' => 'retrievedIndex', 'data' => [
+      "requestParams" => $params,
+      "response" => $response,
+    ]]);
 
     //Response
     return $response;
@@ -303,58 +366,76 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    */
   public function getItem($criteria, $params = false)
   {
-    //Instance Query
-    $query = $this->model->query();
-
-    //Include relationships
-    if (isset($params->include)) $query = $this->includeToQuery($query, $params->include);
-
-    //Check field name to criteria
-    if (isset($params->filter->field)) $field = $params->filter->field;
-
-    // find translatable attributes
-    $translatedAttributes = $this->model->translatedAttributes ?? [];
-
-    // filter by translatable attributes
-    if (isset($field) && in_array($field, $translatedAttributes)) {//Filter by slug
-      $filter = $params->filter;
-      $query->whereHas('translations', function ($query) use ($criteria, $filter, $field) {
-        $query->where('locale', $filter->locale ?? \App::getLocale())
-          ->where($field, $criteria);
-      });
-    } else
-      // find by specific attribute or by id
-      $query->where($field ?? 'id', $criteria);
-
-    //Filter Query
-    if (isset($params->filter)) {
-      $filters = $params->filter;//Short data filter
-      //Instance model fillable
-      $modelFillable = array_merge(
-        $this->model->getFillable(),
-        ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
-      );
-
-      //Add Requested Filters
-      foreach ($filters as $filterName => $filterValue) {
-        $filterNameSnake = camelToSnake($filterName);//Get filter name as snakeCase
-        if (!in_array($filterName, $this->replaceFilters)) {
-          //Add fillable filter
-          if (in_array($filterNameSnake, $modelFillable)) {
-            $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
+  
+    //reusing query if exist
+    if(empty($this->query)) {
+  
+      //Instance Query
+      $query = $this->model->query();
+  
+      //Include relationships
+      if (isset($params->include)) $query = $this->includeToQuery($query, $params->include);
+  
+      //Check field name to criteria
+      if (isset($params->filter->field)) $field = $params->filter->field;
+  
+      // find translatable attributes
+      $translatedAttributes = $this->model->translatedAttributes ?? [];
+  
+      // filter by translatable attributes
+      if (isset($field) && in_array($field, $translatedAttributes)) {//Filter by slug
+        $filter = $params->filter;
+        $query->whereHas('translations', function ($query) use ($criteria, $filter, $field) {
+          $query->where('locale', $filter->locale ?? \App::getLocale())
+            ->where($field, $criteria);
+        });
+      } else
+        // find by specific attribute or by id
+        $query->where($field ?? 'id', $criteria);
+  
+      //Filter Query
+      if (isset($params->filter)) {
+        $filters = $params->filter;//Short data filter
+        //Instance model fillable
+        $modelFillable = array_merge(
+          $this->model->getFillable(),
+          ['id', 'created_at', 'updated_at', 'created_by', 'updated_by']
+        );
+    
+        //Add Requested Filters
+        foreach ($filters as $filterName => $filterValue) {
+          $filterNameSnake = camelToSnake($filterName);//Get filter name as snakeCase
+          if (!in_array($filterName, $this->replaceFilters)) {
+            //Add fillable filter
+            if (in_array($filterNameSnake, $modelFillable)) {
+              $query = $this->setFilterQuery($query, $filterValue, $filterNameSnake);
+            }
           }
         }
+    
+        //Set params into filters, to keep uploader code
+        if (is_array($filters)) $filters = (object)$filters;
+        
+        //Add model filters
+        $query = $this->filterQuery($query, $filters, $params);
       }
-
-      //Set params into filters, to keep uploader code
-      if (is_array($filters)) $filters = (object)$filters;
-      $filters->params = $params;
-      //Add model filters
-      $query = $this->filterQuery($query, $filters);
+    }else{
+      //reusing query if exist
+      $query = $this->query;
     }
-
+    
+    //Response as query
+    if (isset($params->returnAsQuery) && $params->returnAsQuery) return $query;
+    
     //Request
     $response = $query->first();
+
+    //Event retrived model
+    $this->dispatchesEvents(['eventName' => 'retrievedShow', 'data' => [
+      "requestParams" => $params,
+      "response" => $response,
+      "criteria" => $criteria
+    ]]);
 
     //Response
     return $response;
@@ -368,7 +449,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * @param $params
    * @return mixed
    */
-  public function updateBy($criteria, $data, $params)
+  public function updateBy($criteria, $data, $params = false)
   {
     //Event updating model
     $this->dispatchesEvents(['eventName' => 'updating', 'data' => $data, 'criteria' => $criteria]);
@@ -381,6 +462,8 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
 
     //get model and update
     if ($model = $query->where($field ?? 'id', $criteria)->first()) {
+      
+      $this->beforeUpdate($data);
       //Update Model
       $model->update((array)$data);
       // Default Sync model relations
@@ -399,6 +482,33 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     //Response
     return $model;
   }
+  
+  /**
+   * Method to override in the child class if there need modify the data before update
+   * @param $data
+   * @return void
+   */
+  public function beforeUpdate(&$data){
+  
+  }
+  /**
+   * Method to do a bulk order
+   *
+   * @param $data
+   * @param $params
+   * @return mixed|void
+   */
+  public function bulkOrder($data, $params = false)
+  {
+    //Instance the orderField
+    $orderField = $params->filter->field ?? 'position';
+    //loop through data to update the position according to index data
+    foreach ($data as $key => $item) {
+      $this->model->find($item['id'])->update([$orderField => ++$key]);
+    }
+    //Response
+    return $this->model->whereIn('id', array_column($data, "id"))->get();
+  }
 
   /**
    * Method to delete model by criteria
@@ -407,7 +517,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * @param $params
    * @return mixed
    */
-  public function deleteBy($criteria, $params)
+  public function deleteBy($criteria, $params = false)
   {
     //Instance Query
     $query = $this->model->query();
@@ -438,7 +548,7 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
    * @param $params
    * @return mixed
    */
-  public function restoreBy($criteria, $params)
+  public function restoreBy($criteria, $params = false)
   {
     //Instance Query
     $query = $this->model->query();
@@ -469,14 +579,28 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
     $criteria = $params['criteria'] ?? null;
     $model = $params['model'] ?? null;
 
-    //Dispath creating events
+    //Dispatch retrieved events
+    if ($eventName == 'retrievedIndex') {
+      //Emit event retrievedWithBindings
+      if (method_exists($this->model, 'retrievedIndexCrudModel'))
+        $this->model->retrievedIndexCrudModel(['data' => $data]);
+    }
+
+    //Dispatch retrieved events
+    if ($eventName == 'retrievedShow') {
+      //Emit event retrievedWithBindings
+      if (method_exists($this->model, 'retrievedShowCrudModel'))
+        $this->model->retrievedShowCrudModel(['data' => $data]);
+    }
+
+    //Dispatch creating events
     if ($eventName == 'creating') {
       //Emit event creatingWithBindings
       if (method_exists($this->model, 'creatingCrudModel'))
         $this->model->creatingCrudModel(['data' => $data]);
     }
 
-    //Dispath created events
+    //Dispatch created events
     if ($eventName == 'created') {
       //Emit event createdWithBindings
       if (method_exists($model, 'createdCrudModel'))
@@ -486,14 +610,14 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
         event(new CreateMedia($model, $data));
     }
 
-    //Dispath updating events
+    //Dispatch updating events
     if ($eventName == 'updating') {
       //Emit event updatingWithBindings
       if (method_exists($this->model, 'updatingCrudModel'))
         $this->model->updatingCrudModel(['data' => $data, 'params' => $params, 'criteria' => $criteria]);
     }
 
-    //Dispath updated events
+    //Dispatch updated events
     if ($eventName == 'updated') {
       //Emit event updatedWithBindings
       if (method_exists($model, 'updatedCrudModel'))
@@ -503,11 +627,11 @@ abstract class EloquentCrudRepository extends EloquentBaseRepository implements 
         event(new UpdateMedia($model, $data));
     }
 
-    //Dispath deleting events
+    //Dispatch deleting events
     if ($eventName == 'deleting') {
     }
 
-    //Dispath deleted events
+    //Dispatch deleted events
     if ($eventName == 'deleted') {
     }
 

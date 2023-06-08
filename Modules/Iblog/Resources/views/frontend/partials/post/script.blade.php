@@ -1,3 +1,4 @@
+<script defer type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fd9384eb64d610011fa8357&product=inline-share-buttons" async="async"></script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/{{config('asgard.iblog.config.oglocale')}}/sdk.js#xfbml=1&version=v4.0&appId={!!Setting::get('iblog::id-facebook') !!}&autoLogAppEvents=1"></script>

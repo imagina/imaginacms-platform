@@ -142,7 +142,6 @@ class UserApiController extends BaseApiController
    */
   public function register(Request $request)
   {
-    
     //\Log::info("Iprofile:: UserApiController|Register");
 
     try {
@@ -154,53 +153,60 @@ class UserApiController extends BaseApiController
       //TODO: validate register for admin > slim
       $adminNeedsToActivateNewUsers = $this->settingAsgard->get('iprofile::adminNeedsToActivateNewUsers');
 
-      //Validate custom Request user
-      $this->validateRequestApi(new CreateUserApiRequest((array)$data));
+      $userRepository = app('Modules\Iprofile\Repositories\UserApiRepository');
+      $user = $userRepository->getItemsBy()->where('email', $data->email)->first();
 
-      // registerExtraFields
-      $registerExtraFieldsSetting = json_decode(setting('iprofile::registerExtraFields', null, "[]"));
-      
-      
-    if(isset($data->fields)){
-      foreach ($data->fields as $name => $value){
-        $fields[] = [
-          "name" => $name,
-          "value" => $value
+      if(isset($user) && $user->is_guest) {
+        $data->is_guest = 0;
+        $response = $userRepository->updateBy($user->id,$data);
+      } else {
+        //Validate custom Request user
+        $this->validateRequestApi(new CreateUserApiRequest((array)$data));
+        // registerExtraFields
+        $registerExtraFieldsSetting = json_decode(setting('iprofile::registerExtraFields', null, "[]"));
+
+
+        if(isset($data->fields)){
+          foreach ($data->fields as $name => $value){
+            $fields[] = [
+              "name" => $name,
+              "value" => $value
+            ];
+          }
+        }
+
+        //Checking Role if exist in the setting rolesToRegister
+        $rolesToRegister = json_decode(setting("iprofile::rolesToRegister",null, "[2]")); //Default role is USER, ID 2
+        if(isset($data->role_id) && in_array($data->role_id,$rolesToRegister)){
+          $role = is_array($data->role_id) ? $data->role_id : [$data->role_id];
+        }
+
+        $attributes = array_merge($request->input('attributes'),[
+          'first_name' => $data->first_name ?? '',
+          'last_name' => $data->last_name ?? '',
+          'email' => $data->email,
+          'password' => $data->password,
+          'password_confirmation' => $data->password_confirmation,
+          'departments' => [1],//Default department is USERS, ID 1
+          'roles' => $role ?? [2],//Default role is USER, ID 2
+          'fields' => $fields ?? [],
+          'is_activated' => (int)$validateEmail ? false : true
+        ]);
+        //Format dat ot create user
+        $params = [
+          'attributes' => $attributes,
+          'filter' => json_encode([
+            'checkEmail' => (int)$validateEmail ? 1 : 0,
+            'checkAdminActivate' => (int)$adminNeedsToActivateNewUsers ? 1 : 0,
+          ])
         ];
+
+        //Create user
+        $user = $this->validateResponseApi($this->create(new Request($params)));
+
+        //Response and especific if user required check email
+        $response = ["data" => ['checkEmail' => (int)$validateEmail ? true : false]];
       }
-    }
-      
-      //Checking Role if exist in the setting rolesToRegister
-      $rolesToRegister = json_decode(setting("iprofile::rolesToRegister",null, "[2]")); //Default role is USER, ID 2
-      if(isset($data->role_id) && in_array($data->role_id,$rolesToRegister)){
-        $role = is_array($data->role_id) ? $data->role_id : [$data->role_id];
-      }
-
-      $attributes = array_merge($request->input('attributes'),[
-        'first_name' => $data->first_name ?? '',
-        'last_name' => $data->last_name ?? '',
-        'email' => $data->email,
-        'password' => $data->password,
-        'password_confirmation' => $data->password_confirmation,
-        'departments' => [1],//Default department is USERS, ID 1
-        'roles' => $role ?? [2],//Default role is USER, ID 2
-        'fields' => $fields ?? [],
-        'is_activated' => (int)$validateEmail ? false : true
-      ],);
-      //Format dat ot create user
-      $params = [
-        'attributes' => $attributes,
-        'filter' => json_encode([
-          'checkEmail' => (int)$validateEmail ? 1 : 0,
-          'checkAdminActivate' => (int)$adminNeedsToActivateNewUsers ? 1 : 0,
-        ])
-      ];
-
-      //Create user
-      $user = $this->validateResponseApi($this->create(new Request($params)));
-
-      //Response and especific if user required check email
-      $response = ["data" => ['checkEmail' => (int)$validateEmail ? true : false]];
     } catch (\Exception $e) {
       \Log::error("Iprofile:: UserApiController|Register: ".$e->getMessage());
       //dd($e);

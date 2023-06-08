@@ -141,13 +141,14 @@ class EloquentProviderRepository extends EloquentBaseRepository implements Provi
     if($model){
       if (isset($data["default"]) && $data["default"]) {
         $defaultProvider = $this->findByAttributes(['type' => $data["type"], "default" => true]);
+        
         if ($defaultProvider) {
           $defaultProvider->default = false;
           $defaultProvider->save();
         }
       }
-    
-      $model->update((array)$data) ;
+      
+      $model->update($data) ;
     } else{
       return false;
     }

@@ -124,4 +124,24 @@ class Type extends Model
     }
     return $this->types[0];
   }
+
+  /*
+  * GET id by value (email,phone......)
+  */
+  public function getIdByValue($value)
+  {
+    
+    $onlyValues = array_column($this->types, 'value');
+    $key = array_search($value, $onlyValues);
+    if($key)
+      return $this->types[$key]['id'];
+
+    return null;
+        
+  }
+
+
+
+
+
 }

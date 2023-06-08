@@ -4,6 +4,7 @@ namespace Modules\Slider\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\User\Transformers\UserProfileTransformer;
+use Modules\Isite\Transformers\RevisionTransformer;
 
 class SliderApiTransformer extends JsonResource
 {
@@ -17,6 +18,7 @@ class SliderApiTransformer extends JsonResource
       'createdAt' => $this->created_at,
       'options' => $this->when($this->options, $this->options),
       'slides' => SlideApiTransformer::collection($this->slides),
+      'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
     ];
   }
 }

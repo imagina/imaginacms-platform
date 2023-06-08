@@ -1,0 +1,9 @@
+url: https://github.com/imagina/asgardcms-icommercefreeshipping
+versions:
+  "1.0.1":
+      changed:
+        - versin minimum to icommerce
+  "1.0.0":
+    added:
+      - initial version 1.0.0
+      - Change values names calculations

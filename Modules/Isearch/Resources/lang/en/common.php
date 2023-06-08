@@ -30,8 +30,14 @@ return [
     'labelListFeaturedOptionsSearch' => 'Featured search suggestions (Autocomplete Layout 2 only)',
   ],
   'settingHints' => [
-    'search' => "Enter a repository and press enter",
+    'search' => "Enter a repository and press enter (The first option will be the default)",
     'hintsOptionsSearch' => 'Enter search suggestions',
     'hintsFeaturedOptionsSearch' => 'Enter featured search suggestions',
   ],
+  'filters' => [
+    'searchRepositories' => [
+      'title' => 'Buscar en:',
+      'entity title' => 'sección'
+    ]
+  ]
 ];

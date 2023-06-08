@@ -9,7 +9,6 @@ class CreateCityRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'name' => 'required',
           'code' => 'required',
           'province_id' => 'required',
           'country_id' => 'required',
@@ -18,9 +17,9 @@ class CreateCityRequest extends BaseFormRequest
 
     public function translationRules()
     {
-        return [
-
-        ];
+      return [
+        'name' => 'required|min:2'
+      ];
     }
 
     public function authorize()

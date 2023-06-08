@@ -46,7 +46,7 @@ class IschedulableServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'settings-fields'), "asgard.ischedulable.settings-fields");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'permissions'), "asgard.ischedulable.permissions");
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

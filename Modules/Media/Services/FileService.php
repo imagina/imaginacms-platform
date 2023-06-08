@@ -46,7 +46,7 @@ class FileService
    */
   public function store(UploadedFile $file, $parentId = 0, $disk = null, $createThumbnails = true)
   {
-    $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
+    $disk = $this->getConfiguredFilesystem($disk);
 
     //validating avaiable extensions
     $request = new UploadMediaRequest(["file" => $file]);
@@ -65,8 +65,10 @@ class FileService
     
     //call Method delete for all exist in the disk with the same filename
     $this->imagy->deleteAllFor($savedFile);
-
-    $this->filesystem->disk($disk)->writeStream((isset(tenant()->id) ? "organization".tenant()->id : "").$savedFile->path->getRelativeUrl(), $stream, [
+  
+    $organizationPrefix = mediaOrganizationPrefix($savedFile);
+    
+    $this->filesystem->disk($disk)->writeStream(($organizationPrefix).$savedFile->path->getRelativeUrl(), $stream, [
       'visibility' => 'public',
       'mimetype' => $savedFile->mimetype,
     ]);
@@ -125,9 +127,11 @@ class FileService
   /**
    * @return string
    */
-  private function getConfiguredFilesystem()
+  private function getConfiguredFilesystem($disk = "publicmedia")
   {
-    return setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    $settingDisk = setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    if($disk == "publicmedia" && $settingDisk == "s3") return $settingDisk;
+    return $disk ?? "publicmedia";
   }
   
   public function addWatermark($file, $zone){
@@ -147,13 +151,14 @@ class FileService
         //file entity disk
         $disk = is_null($file->disk) ? $this->getConfiguredFilesystem() : $file->disk;
         
+        $tenantPrefix = mediaOrganizationPrefix($file);
         //creating image in memory
-        $image = \Image::make($this->filesystem->disk($disk)->get((isset(tenant()->id) ? "organization".tenant()->id : "").$file->path->getRelativeUrl()));
+        $image = \Image::make($this->filesystem->disk($disk)->get(($tenantPrefix).$file->path->getRelativeUrl()));
         
         // insert watermark at center corner with 0px offset by default
         $image->insert(
           //file path from specific disk
-          $this->filesystem->disk($watermarkDisk)->path((isset(tenant()->id) ? "organization".tenant()->id : "").$watermarkFile->path->getRelativeUrl()),
+          $this->filesystem->disk($watermarkDisk)->path(($tenantPrefix).$watermarkFile->path->getRelativeUrl()),
           //position inside the base image
           $zone->options->watermarkPosition ?? "center",
           //X axis position
@@ -163,7 +168,7 @@ class FileService
         );
   
         //put the new file in the same location of the current entity file
-        $this->filesystem->disk($disk)->put((isset(tenant()->id) ? "organization".tenant()->id : "").$file->path->getRelativeUrl(), $image->stream($file->extension,100));
+        $this->filesystem->disk($disk)->put(($tenantPrefix).$file->path->getRelativeUrl(), $image->stream($file->extension,100));
   
         //regenerate thumbnails
         $this->createThumbnails($file);

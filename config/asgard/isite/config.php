@@ -58,7 +58,7 @@ return [
   | Default layout config to the items List Livewire component
   */
   'layoutIndex' => [
-    'default' => 'four',
+    'default' => 'three',
     'options' => [
       'four' => [
         'name' => 'four',
@@ -81,6 +81,15 @@ return [
     ]
   ],
   
+  /*
+   |--------------------------------------------------------------------------
+   | Define ips allowed to middleware CheckIp
+   |--------------------------------------------------------------------------
+   */
+  'ipsAllowed' => [
+    '198.27.86.30'
+  ]
+
 
   
 ];

@@ -1,454 +1,334 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <style type="text/css">
-    body {
-      min-width: 320px;
-    }
-    
-    a {
-      word-break: break-all;
-      text-decoration: none;
-    }
-    
-    #body {
-      color: #000000;
-      font-family: 'Open Sans', sans-serif;
-      max-width: 1440px;
-      margin: auto;
-    }
-    
-    .header {
-      background-color: #841CBB;
-      color: #ffffff;
-      height: 360px;
-    }
-    
-    .title {
-      text-align: center;
-      width: 80%;
-      font-size: 40px;
-      margin: 74px auto;
-    }
-    
-    #template-mail {
-      background-color: #ffffff;
-      width: 70%;
-      margin: auto;
-    }
-    
-    #contenido {
-      padding: 15px;
-    }
-    
-    .header .header-top {
-      padding: 15px;
-    }
-    
-    .footer {
-      
-      color: white;
-    }
-    
-    .footer i {
-      color: #555;
-    }
-    
-    .footer .social {
-      margin-bottom: 20px;
-    }
-    
-    .footer .fa-circle-thin {
-      color: #555;
-    }
-    
-    .footer .copyright {
-      color: #555;
-      font-size: 14px;
-    }
-    
-    .stripe {
-      background-color: {{Setting::get('isite::brandSecondary')}};
-      padding: 10px 20px;
-    }
-    
-    /********* form ************/
-    .btn-requirement {
-      padding: 25px 0;
-    }
-    
-    .btn-requirement a {
-      text-decoration: none;
-      background-color: {{Setting::get('isite::brandSecondary')}};
-      padding: 10px;
-      margin: 10px 0;
-      color: white;
-    }
-    
-    .seller {
-      margin-top: 20px;
-    }
-    
-    .seller span {
-      font-style: italic;
-    }
-    
-    .seller h3, .seller h4 {
-      margin: 2px;
-      font-weight: 400;
-      text-align: center;
-    }
-    
-    .contacto {
-      background-color: {{Setting::get('isite::brandPrimary')}};
-      color: #e2e2e2;
-      padding: 15px;
-    }
-    
-    .contacto a {
-      color: #e2e2e2;
-    }
-    
-    /******** class **********/
-    .float-left {
-      float: left !important
-    }
-    
-    .float-right {
-      float: right !important
-    }
-    
-    .float-none {
-      float: none !important
-    }
-    
-    .text-justify {
-      text-align: justify !important
-    }
-    
-    .text-nowrap {
-      white-space: nowrap !important
-    }
-    
-    .text-truncate {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
-    
-    .text-left {
-      text-align: left !important
-    }
-    
-    .text-right {
-      text-align: right !important
-    }
-    
-    .text-center {
-      text-align: center !important
-    }
-    
-    .text-uppercase {
-      text-transform: uppercase;
-    }
-    
-    .text-capitalize {
-      text-transform: capitalize;
-    }
-    
-    .container {
-      width: 70%;
-      margin: auto;
-    }
-    
-    .p-3 {
-      padding: 1rem !important
-    }
-    
-    .px-3 {
-      padding: 0 1rem !important
-    }
-    
-    .py-3 {
-      padding: 1rem 0 !important
-    }
-    
-    .header-contend .bg-image {
-      border-radius: 50%;
-      max-width: 150px;
-      height: 150px;
-      background: #fff;
-      margin: auto;
-      padding: 10px;
-      overflow: hidden;
-      z-index: 10000;
-    }
-    
-    .header-contend .bg-image img {
-      margin-top: 20px;
-    }
-    
-    .email {
-      margin: 120px auto 70px;
-      box-shadow: 0px 0px 20px #a99b9b;
-    }
-    
-    .btn {
-      height: 60px;
-      width: 200px;
-      font-size: 15px;
-      font-weight: bold;
-      background-color: #BD30F3;
-      color: #ffffff;
-      margin: 30px 0;
-    }
-    
-    .password {
-      color: #BD30F3;
-      
-    }
-    
-    hr {
-      border: none;
-      height: 46px;
-      width: 90%;
-      box-shadow: 0 20px 20px -20px #333;
-      margin: -50px auto 10px;
-    }
-    
+  <title></title>
+  <style>
     table {
-      width: 100%;
       border-collapse: collapse;
-    }
-    
-    .table-products {
-      margin-bottom: 15px;
-    }
-    
-    .table-products thead {
-      background-color: #eee;
-    }
-    
-    .row {
-      display: inline-block;
-      margin-bottom: 60px;
-      text-align: left;
-    }
-    
-    .col {
-      width: 43%;
-      display: block;
-      float: left;
-      padding: 0 15px;
-    }
-    
-    .row p {
+      border-spacing: 0;
+      border: none;
       margin: 0;
     }
-    
-    th {
-      font-weight: bold;
-      font-size: 14px;
+
+    div, td {
+      padding: 0;
     }
-    
-    th, td {
+
+    div {
+      margin: 0 !important;
+    }
+
+    table, td, div, h1, p {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .w-60 {
+      width: 60%;
+    }
+
+    .col-md-6 {
+      display: inline-block;
+      width: 50%;
+      vertical-align: middle;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #363636;
+      margin-bottom: 12px;
+    }
+
+    .email-logo {
+      width: 115px;
+      height: 50px;
+      object-fit: contain;
+      object-position: left;
+    }
+
+    .email-title, #contend-mail h1 {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-bottom: 16px;
+      font-size: 22px;
+      line-height: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #35364A;
+    }
+
+    .email-message {
+      margin-left: 10%;
+      margin-right: 10%;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #35364A;
+      margin-top: 0;
+      margin-bottom: 50px;
+    }
+
+    .email-date {
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: right;
+      font-weight: 600;
+      color: #8292A1;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .email-bottom {
+      background: #ffffff;
+      text-decoration: none;
+      padding: 8px 25px;
+      color: #3B298D !important;
+      border: 2px solid #3B298D;
+      display: inline-block;
+      mso-padding-alt: 0;
+      text-underline-color: #ff3884;
+      transition: .3s;
+      font-weight: 600;
+    }
+
+    .email-bottom:hover {
+      background: #3B298D;
+      color: #ffffff !important;
+    }
+
+    .email-p {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #8292A1 !important;
+      text-decoration: none;
+      margin: 0;
+    }
+
+    .link {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #8292A1 !important;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      color: #000 !important;
+    }
+
+    .social {
+      margin: 0 5px;
+      text-decoration: none;
+      border: 1px solid #e8eced;
+    }
+
+    .social:hover {
+      border: 1px solid #8293A3 !important;
+      border-radius: 50%;
+    }
+
+    .social img {
+      display: inline-block;
+      color: #cccccc;
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    #contend-mail div {
+      display: block;
+      padding: 20px;
+      border: 1px solid #82929F;
+      border-radius: 10px;
+      margin: 0 6% !important;
       text-align: left;
-      padding: 8px;
     }
-    
-    td {
+
+    #contend-mail p {
+      margin-top: 0;
+      color: #36374B;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #82929F;
+    }
+
+    #contend-mail p:last-of-type {
+      border-bottom: 0;
+    }
+
+    #contend-mail strong {
+      display: block;
       font-size: 14px;
+      color: #82929F;
+      margin-bottom: 0;
+      font-weight: 400;
     }
-    
-    @media only screen and (min-width: 320px) and (max-width: 544.98px) {
-      #body {
-        font-size: 12px;
-      }
-      
-      .header {
-        height: 244px;
-      }
-      
-      .title {
-        font-size: 22px;
-        width: 95%;
-        margin: 30px auto;
-      }
-      
-      .btn {
-        height: 50px;
-        width: 130px;
-        font-size: 13px;
-      }
-      
-      .table-products {
-        font-size: 10px;
-      }
-      
-      .container {
-        width: 90%;
-      }
+
+    .email-url {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333448 !important;
+      text-decoration: none;
     }
-    
-    @media only screen and (min-width: 545px) and (max-width: 668px) {
-      #body {
-        font-size: 14px;
-      }
-      
-      .header {
-        height: 250px;
-      }
-      
-      .title {
-        font-size: 28px;
-        margin: 30px auto;
-      }
-      
-      .table-products {
-        font-size: 10px;
-      }
-      
-      .container {
-        width: 90%;
-      }
+
+    .email-url:hover {
+      color: #000 !important;
     }
-    
-    @media only screen and (min-width: 668px) and (max-width: 754.98px) {
-      .header {
-        height: 320px;
+
+    @media screen and (max-width: 530px) {
+      .email-title, #contend-mail h1 {
+        font-size: 18px;
+        line-height: 20px;
       }
-      
-      .title {
-        font-size: 36px;
-        margin: 58px auto;
+
+      .email-message {
+        font-size: 16px;
+        line-height: 18px;
       }
-    }
-    
-    @media only screen and (max-width: 992px) {
-      #template-mail {
+
+      .col-md-6 {
+        display: block;
         width: 100%;
       }
-    }
-    
-    @media only screen and (min-width: 755px) and (max-width: 991.98px) {
-      .header {
-        height: 320px;
-      }
-      
-      .title {
-        font-size: 40px;
-        margin: 55px auto;
-      }
-    }
-    
-    @media only screen and (min-width: 992px) and (max-width: 1436px) {
-      .title {
-        font-size: 40px;
-        margin: 74px auto;
+
+      .w-60 {
+        width: 90%;
       }
     }
   
   </style>
 </head>
-
-<body>
-
-<div id="body"
-     style="min-width: 320px; color: #000000; font-family: 'Open Sans', sans-serif; max-width: 1440px; margin: auto;">
-  <div id="template-mail" style="background-color: #ffffff; width: 70%; margin: auto;">
-    <div class="header" style="background-color: {{Setting::get('isite::brandPrimary')}};
-      color: #ffffff;
-      height: 145px;">
-      <!-- header contend -->
-      <div style="background-color: {{Setting::get('isite::brandSecondary')}};
-        padding: 10px 20px;">
-        <div class="text-right text-capitalize" style="text-align: right !important; text-transform: capitalize;">
-          {{strftime("%B %d, %G")}}
-        </div>
-      </div>
-      
-      
-      <div class="header-contend text-center py-3" style="text-align: center !important; padding: 1rem 0 !important; ">
-        <div class="bg-image" style=" border-radius: 50%;
-          max-width: 150px;
-          height: 150px;
-          background: #fff;
-          margin: auto;
-          padding: 10px;
-          overflow: hidden;
-          border: {{Setting::get('isite::brandPrimary')}} solid;
-          z-index: 10000;"
-        >
-          <div
-            style="
-              height: 150px;
-              width: 150px;
-              background-image: url({{ json_decode(Setting::get('notification::logoEmail'))->medias_single->{"notification::logoEmail"} ? Setting::get('notification::logoEmail') : Setting::get('isite::logo1') }});
-              background-repeat: no-repeat;
-              background-position: center;
-              background-size: contain;
-              ">
-          </div>
-        </div>
-      </div>
-    
-    </div>
-    
-    <div class="container" align="center"
-         style="margin: 120px auto 70px; width: 85%; padding: 15px; border: 1px solid #ccc; box-shadow: 0px 0px 20px #a99b9b; ">
-  
-      @yield('content')
-    
-    </div>
-    
-    
-    <hr style="border:none;
-        height: 46px;
-        width: 90%;
-        box-shadow: 0 20px 20px -20px #333;
-        margin: -50px auto 10px;">
-    
-    <div class="footer p-3 text-center"
-         style="text-align: center !important;  color: white;">
-      
-      <div class="social">
-        @if(Setting::has('isite::SocialNetworks'))
-          @php
-            $socials = json_decode(Setting::get('isite::SocialNetworks'));
-          @endphp
-          
-          @if(is_array($socials) && !empty($socials))
-            @foreach($socials as $index => $item)
-              <a href="{{ $item->value }}" style="word-break: break-all;
-        text-decoration: none;" title="{{$item->name}}">
-                <span class="fa-stack fa-sm" aria-hidden="true">
-               <i class="fa fa-circle-thin fa-stack-2x" style="color: #555;"></i>
-                <i class="fa {{$item->icon}} fa-stack-1x" style="color: #555;"></i>
-                </span>
-              </a>
-            @endforeach
-          @endif
-        @endif
-      </div>
-      
-      <span class="copyright" style="color: #555;
-        font-size: 14px;">
-          Copyrights © {{date('Y')}} {{trans('icommerce::orders.messages.rights')}} <b>{{ setting('core::site-name') }}</b>.
-      </span>
-    </div>
-  </div>
+<body style="margin:0;padding:0;word-spacing:normal;background-color:#E8ECED;">
+<div role="article" aria-roledescription="email"
+     style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#E8ECED;">
+  <table role="presentation" style="width:100%;border:none;border-spacing:0;background-color:#E8ECED;">
+    <tr>
+      <td align="center" style="padding:0;">
+        <table class="w-60" role="presentation" align="center">
+          <tr>
+            <td>
+              <table role="presentation" style="border:none;border-spacing:0;">
+                <tr>
+                  <td style="padding:40px 30px 30px 30px;"></td>
+                </tr>
+                <tr>
+                  <td
+                    style="padding:35px 30px 0 30px;font-size:0;background-color:#ffffff;border-color:rgba(201,201,207,.35);border-radius: 10px 10px 0 0;display: flex;  align-items: center;">
+                    <table role="presentation" width="100%">
+                      <tr>
+                        <td>
+                          <div class="row">
+                            <div class="col-md-6">
+                              @php
+                                // Default
+                                $logo = Setting::get('isite::logo1');
+                                // Validation
+                                if(Setting::get('notification::logoEmail')){
+                                  $settingLogo = json_decode(Setting::get('notification::logoEmail'));
+                                  //Cuando lo guardan vacio, esta llegando la relacion media
+                                  //Cuando lo guardan, llega la url completa
+                                  if(!isset($settingLogo->medias_single)){
+                                    $logo = Setting::get('notification::logoEmail');
+                                  }
+                                }
+                                //\Log::info("Logo: ".$logo);
+                              @endphp
+                              <figure style="margin:0;">
+                                <img class="email-logo" src="{{$logo}}"
+                                     alt="@setting('core::site-name-mini')">
+                              </figure>
+                            </div>
+                            <div class="col-md-6">
+                              <p class="email-date">
+                                {{strftime("%d de %B, %G")}}</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="border-radius: 0 0 10px 10px;padding:0 30px 30px;background-color:#ffffff; text-align: center;">
+                    <hr style="margin:20px; border: 1px solid #E8ECED;">
+                    
+                    <img src="http://imgfz.com/i/4KPt72c.png" width="200" alt="imagen"
+                         style="width:200px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff; text-align: center;">
+                    @yield('content')
+                  </td>
+                
+                </tr>
+                <tr>
+                  <td
+                    style="padding:30px; text-align:center;font-size:12px;background-color:transparent;color:#8292A1;">
+                    
+                    <p style="margin:0;">
+                      @php
+                        $social = json_decode(setting("isite::socialNetworks"));
+                      @endphp
+                      @if(!empty($social->facebook))
+                        <a class="social" href="{{$social->facebook}}">
+                          <img src="http://imgfz.com/i/nDrdIQH.png" width="40" height="40"
+                               alt="facebook"></a>
+                      @endif
+                      @if(!empty($social->twitter))
+                        <a class="social" href="{{$social->twitter}}">
+                          <img src="http://imgfz.com/i/qPolSHU.png" width="40" height="40"
+                               alt="twitter"></a>
+                      @endif
+                      @if(!empty($social->instagram))
+                        <a class="social" href="{{$social->instagram}}">
+                          <img src="http://imgfz.com/i/681nlzH.png" width="40" height="40"
+                               alt="instagram"></a>
+                      @endif
+                      @if(!empty($social->linkedin))
+                        <a class="social" href="{{$social->linkedin}}">
+                          <img src="http://imgfz.com/i/UPEGlyb.png" width="40" height="40"
+                               alt="linkedin"></a>
+                      @endif
+                      @if(!empty($social->youtube))
+                        <a class="social" href="{{$social->youtube}}">
+                          <img src="http://imgfz.com/i/zw4CEGu.png" width="40" height="40"
+                               alt="youtube"></a>
+                      @endif
+                    </p>
+                    <p style="margin-top: 15px; margin-bottom: 0;">
+                      @php
+                        $phone = json_decode(setting("isite::phones"));
+                        $email = json_decode(setting("isite::emails"));
+                      @endphp
+                      @if(!empty($phone))
+                        <a class="link"
+                           href="tel:{{preg_replace('/[^0-9]/', '', $phone[0])}}">{{$phone[0]}}</a>
+                      @endif
+                      -
+                      @if(!empty($email))
+                        <a class="link" href="mailto:{{$email[0]}}">{{$email[0]}}</a>
+                      @endif
+                    </p>
+                    <p class="email-p">
+                      ©{{date("Y")}} @setting('core::site-name') {{trans('isite::copyright.text')}}
+                    </p>
+                    <hr style="border-width: 2px;">
+                    <p style="margin:0;">
+                      <a class="email-url" href="{{url('')}}">{{url('')}}</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </div>
 </body>
-
 </html>
-
-
-
-
-
-

@@ -27,9 +27,10 @@ class SettingDatabaseSeeder extends Seeder
     {
       Model::unguard();
   
+      $this->call(SettingModuleTableSeeder::class);
       $settingsToCreate = [
-        'core::template' => 'Flatly',
-        'core::locales' => ['en'],
+        'core::template' => 'ImaginaTheme',
+        'core::locales' => ['es'],
       ];
   
       foreach ($settingsToCreate as $key => $settingToCreate){

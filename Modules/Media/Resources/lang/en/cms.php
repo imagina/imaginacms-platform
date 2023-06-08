@@ -36,6 +36,11 @@ return [
   "updateZone" => "Update Zone",
   "maxFileSize" => "Max file size (MB)",
   "maxFiles" => "Max files selected",
-  "directUpload" => "Direct Upload"
+  "directUpload" => "Direct Upload",
+  'documentation' => [
+    'medias' => "All the files that are loaded in your application are stored here, and they are sorted by folders",
+    'zones' => "The application identifies files related to other modules by zones, these zones define
+     how many files and how to select it in relation",
+  ]
 ];
 

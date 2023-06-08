@@ -20,15 +20,18 @@ class UserMenu extends Component
   public $openLoginInModal;
   public $openRegisterInModal;
   protected $authApiController;
+  public $label;
 
   public function __construct($layout = 'user-menu-layout-1', $showLabel = false, $id = "userMenuComponent",
                               $params = [], $openLoginInModal = true, $openRegisterInModal = false,
-                              $onlyShowInTheDropdownHeader = true, $onlyShowInTheMenuOfTheIndexProfilePage = false)
+                              $onlyShowInTheDropdownHeader = true, $onlyShowInTheMenuOfTheIndexProfilePage = false,
+                              $label = null )
   {
 
     $this->view = 'iprofile::frontend.components.user-menu.layouts.' . (isset($layout) ? $layout : 'user-menu-layout-1') . '.index';
 
     $this->showLabel = $showLabel;
+    $this->label = $label ?? trans('iprofile::frontend.button.my_account');
     $this->openLoginInModal = $openLoginInModal;
     $this->openRegisterInModal = $openRegisterInModal;
 
@@ -37,7 +40,7 @@ class UserMenu extends Component
 
     $this->moduleLinks = [];
     $this->moduleLinksWithoutSession = [];
-    $locale = LaravelLocalization::setLocale() ?: \App::getLocale();
+    $locale = locale();
     $this->panel = config("asgard.iprofile.config.panel");
     
     if($this->panel == "quasar"){
@@ -65,9 +68,9 @@ class UserMenu extends Component
               $routeWithLocale = $locale . '.' . $moduleLink['routeName'];
               if (Route::has($routeWithLocale))
                 $moduleLink['url'] = \URL::route($routeWithLocale);
-              else if($moduleLink['routeName'])
+              else if($moduleLink['routeName'] && Route::has($moduleLink['routeName']))
                 $moduleLink['url'] = \URL::route($moduleLink['routeName']);
-                else if (!Route::has($moduleLink['routeName']))
+                else
                 $moduleLink['url'] = \URL::to('/');
      
             }

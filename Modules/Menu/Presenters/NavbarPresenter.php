@@ -7,17 +7,34 @@ use Nwidart\Menus\MenuItem;
 use Nwidart\Menus\Presenters\Presenter;
 use Illuminate\Support\Str;
 
+use Modules\Isite\Entities\Organization;
+
 class NavbarPresenter extends Presenter
 {
   
   public function setLocale($item)
   {
+  
+    // Get organization
+    $organization = null;
+
+    if(isset($item->attributes["organization_id"]) && !is_null($item->attributes["organization_id"])){
+      if(isset(tenant()->id))
+        $organization = tenant();
+    }
+  
+
     if (Str::startsWith($item->url, 'http')) {
       return;
     }
     if (LaravelLocalization::hideDefaultLocaleInURL() === true) {
+      if(!is_null($organization)){
+        $item->url = $organization->url.'/'.$item->url;
+      }else{
       $item->url = \LaravelLocalization::localizeUrl($item->url);
     }
+  }
+  
   }
   
   /**

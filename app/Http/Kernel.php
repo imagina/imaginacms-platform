@@ -29,6 +29,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+            \Modules\Isite\Http\Middleware\CheckTenancyForMaintenance::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -36,7 +37,10 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \Spatie\ResponseCache\Middlewares\CacheResponse::class
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+          'universal',
+          \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
+          
         ],
 
         'api' => [
@@ -44,8 +48,12 @@ class Kernel extends HttpKernel
           \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
           \Illuminate\Session\Middleware\StartSession::class,
             'throttle:api',
+          'universal',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+          \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
+          \Modules\Isite\Http\Middleware\CheckTenancyForMaintenance::class,
         ],
+        'universal' => [],
     ];
 
     /**
@@ -66,7 +74,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
     ];
 
     /**
@@ -77,6 +85,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+        \Modules\Isite\Http\Middleware\CheckTenancyForMaintenance::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,

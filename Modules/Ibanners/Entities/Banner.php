@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\App;
 use Modules\Page\Entities\Page;
 
+use Modules\Core\Support\Traits\AuditTrait;
+
 class Banner extends Model
 {
-    use Translatable, MediaRelation;
+    use Translatable, MediaRelation, AuditTrait;
 
     public $translatedAttributes = [
         'title',

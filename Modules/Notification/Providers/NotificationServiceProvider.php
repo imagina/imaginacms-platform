@@ -64,7 +64,7 @@ class NotificationServiceProvider extends ServiceProvider
     $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'settings-fields'), "asgard.notification.settings-fields");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'cmsPages'), "asgard.notification.cmsPages");
     $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'cmsSidebar'), "asgard.notification.cmsSidebar");
-    $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
 
   }

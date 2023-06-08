@@ -9,12 +9,14 @@
 
 </div>
 
-@section('scripts-owl')
+@section('scripts')
 	@parent
 	<script type="text/javascript">
 		
 	    jQuery(document).ready(function($) {
 	    	
+	    	//console.warn("============ INITTT LOAD MORE BUTTONNNNN")
+
 	    	function htmlToElements(html) {
 			    var template = document.createElement('template');
 			    template.innerHTML = html;
@@ -48,10 +50,13 @@
 		    */
 		    if(@this.pagination['type']=="infiniteScroll"){
 
+		    	//console.warn("============ ES INFINITE")
+
 		    	let itemListPos = $(".{{$itemMainClass}}-list").offset().top;
 		    	
 			   	window.onscroll = function(ev) {
 
+			   		//console.warn("SCROLLLLLLL");
 			   		
 			   		var inputShow = $("#inputShowBtnLoadMore").val();
 			   		var inputInfinite = $("#inputInfiniteStatus").val();
@@ -78,6 +83,8 @@
 			   			//console.warn("currentHeight: "+currentHeight)
 
 				        if (currentPos >= currentHeight) {
+
+				        	//console.warn("EMIT LOAD MOREEEEEEEEE ")
 
 				        	$("#inputInfiniteStatus").val(true)
 				            window.livewire.emit('loadMoreButtonInfinite');

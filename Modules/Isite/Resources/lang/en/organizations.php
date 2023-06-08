@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'single' => 'Organization',
+    'plural' => 'Organizations',
     'list resource' => 'List organizations',
     'create resource' => 'Create organizations',
     'edit resource' => 'Edit organizations',

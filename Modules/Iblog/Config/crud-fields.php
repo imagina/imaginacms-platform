@@ -31,7 +31,7 @@ return [
       'type' => 'select',
       'loadOptions' => [
         'apiRoute' => '/isite/v1/layouts',
-        'select' => ['label' => 'title', 'id' => 'path'],
+        'select' => ['label' => 'title', 'id' => 'id'],
         'requestParams' => ['filter' => ['entity_name' => 'Category', 'module_name' => 'Iblog']],
       ],
       'props' => [
@@ -68,13 +68,24 @@ return [
         'entityId' => null
       ]
     ],
+    'secondaryimage' => [
+      'value' => (object)[],
+      'name' => 'mediasSingle',
+      'type' => 'media',
+      'props' => [
+        'label' => 'Imagen Secundaria',
+        'zone' => 'secondaryimage',
+        'entity' => "Modules\Iblog\Entities\Post",
+        'entityId' => null
+      ]
+    ],
     'layoutId' => [
       'name' => 'layoutId',
       'value' => null,
       'type' => 'select',
       'loadOptions' => [
         'apiRoute' => '/isite/v1/layouts',
-        'select' => ['label' => 'title', 'id' => 'path'],
+        'select' => ['label' => 'title', 'id' => 'id'],
         'requestParams' => ['filter' => ['entity_name' => 'Post', 'module_name' => 'Iblog']],
       ],
       'props' => [
@@ -82,5 +93,14 @@ return [
         'entityId' => null,
       ],
     ],
+//    'valueIdFieldTimeLine' => [
+//      'name' => 'valueIdFieldTimeLine',
+//      'value' => null,
+//      'type' => 'input',
+//      'isFakeField' => true,
+//      'props' => [
+//        'label' => 'iblog::common.crudFields.labelValueIdFieldTimeLine'
+//      ],
+//    ],
   ]
 ];

@@ -1,0 +1,18 @@
+{
+    "name": "Icommercecheckmo",
+    "alias": "icommercecheckmo",
+    "description": "Check or Money - PaymentMethod Module to Icommerce",
+    "keywords": [],
+    "version": "2.0.0",
+	"active": 1,
+    "priority": 1,
+    "providers": [
+        "Modules\\Icommercecheckmo\\Providers\\IcommercecheckmoServiceProvider",
+        "Modules\\Icommercecheckmo\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}
