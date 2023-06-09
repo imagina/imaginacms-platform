@@ -14,12 +14,12 @@ $router->get('auth/login', [
 
 //==================================================== Prefix account
 Route::prefix(LaravelLocalization::setLocale())->middleware('localize')->group(function (Router $router) use ($locale) {
-        $router->get(trans('iprofile::routes.account'), [
-            'as' => $locale.'.iprofile.account.index',
-            'uses' => 'ProfileController@index',
-            'middleware' => 'logged.in',
-        ]);
-    });
+    $router->get(trans('iprofile::routes.account'), [
+        'as' => $locale.'.iprofile.account.index',
+        'uses' => 'ProfileController@index',
+        'middleware' => 'logged.in',
+    ]);
+});
 
 $router->group(['prefix' => '/account'], function (Router $router) {
     $router->get('profile/', [
