@@ -2,8 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix'=>'icommercepaymentez'],function (Router $router){
-       
+$router->group(['prefix' => 'icommercepaymentez'], function (Router $router) {
     $router->get('/{eUrl}', [
         'as' => 'icommercepaymentez',
         'uses' => 'PublicController@index',
@@ -13,6 +12,4 @@ $router->group(['prefix'=>'icommercepaymentez'],function (Router $router){
         'as' => 'icommercepaymentez.confirmation',
         'uses' => 'PublicController@confirmation',
     ]);
-  
-       
 });

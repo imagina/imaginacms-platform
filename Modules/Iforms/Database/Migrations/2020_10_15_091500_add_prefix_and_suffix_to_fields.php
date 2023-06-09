@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddPrefixAndSuffixToFields extends Migration
 {
@@ -27,8 +27,8 @@ class AddPrefixAndSuffixToFields extends Migration
     public function down()
     {
         Schema::table('iforms__fields', function (Blueprint $table) {
-          $table->dropColumn('prefix');
-          $table->dropColumn('suffix');
+            $table->dropColumn('prefix');
+            $table->dropColumn('suffix');
         });
     }
 }

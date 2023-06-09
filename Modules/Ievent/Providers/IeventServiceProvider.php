@@ -2,16 +2,17 @@
 
 namespace Modules\Ievent\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ievent\Events\Handlers\RegisterIeventSidebar;
-use Illuminate\Support\Arr;
 
 class IeventServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -37,12 +38,6 @@ class IeventServiceProvider extends ServiceProvider
             $event->load('attendants', Arr::dot(trans('ievent::attendants')));
             $event->load('comments', Arr::dot(trans('ievent::comments')));
             // append translations
-
-
-
-
-
-
         });
     }
 
@@ -51,8 +46,8 @@ class IeventServiceProvider extends ServiceProvider
         $this->publishConfig('ievent', 'config');
         $this->publishConfig('ievent', 'permissions');
 
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsPages'), "asgard.ievent.cmsPages");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsSidebar'), "asgard.ievent.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsPages'), 'asgard.ievent.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsSidebar'), 'asgard.ievent.cmsSidebar');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -64,7 +59,7 @@ class IeventServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -141,12 +136,6 @@ class IeventServiceProvider extends ServiceProvider
                 return new \Modules\Ievent\Repositories\Cache\CacheCommentDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
-
+        // add bindings
     }
 }

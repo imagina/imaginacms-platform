@@ -2,21 +2,17 @@
 
 namespace Modules\Rateable\Traits;
 
-
 use Modules\Rateable\Entities\Rating;
 
 trait Rateable
 {
-
-
-	/**
+    /**
      * Returns all ratings for this model.
      */
-	public function ratings()
+    public function ratings()
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
-
 
     /**
      * BASE METHODS TO CALCULATES
@@ -40,6 +36,4 @@ trait Rateable
     {
         return $this->ratings()->max('rating');
     }
-
-
 }

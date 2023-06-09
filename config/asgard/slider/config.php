@@ -9,11 +9,11 @@ return [
     |--------------------------------------------------------------------------
     */
     'middleware' => [],
-  
-  "mediaFillable" => [
-    'slide' => [
-      'slideimage' => 'single'
+
+    'mediaFillable' => [
+        'slide' => [
+            'slideimage' => 'single',
+        ],
+
     ],
-  
-  ],
 ];

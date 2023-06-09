@@ -27,8 +27,6 @@ return [
         'destroy' => 'iauctions::bids.destroy resource',
         'restore' => 'iauctions::bids.restore resource',
     ],
-// append
-
-
+    // append
 
 ];

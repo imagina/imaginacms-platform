@@ -13,6 +13,7 @@ class ApiKeysController extends AdminBaseController
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var UserTokenRepository
      */

@@ -9,8 +9,8 @@ class CreateZoneRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          "name" => 'required',
-          "entity_type" => 'required'
+            'name' => 'required',
+            'entity_type' => 'required',
         ];
     }
 
@@ -27,8 +27,8 @@ class CreateZoneRequest extends BaseFormRequest
     public function messages()
     {
         return [
-          'name.required' => trans('media::zones.messages.nameRequired'),
-          'entity_type.required' => trans('media::zones.messages.entityTypeRequired'),
+            'name.required' => trans('media::zones.messages.nameRequired'),
+            'entity_type.required' => trans('media::zones.messages.entityTypeRequired'),
         ];
     }
 

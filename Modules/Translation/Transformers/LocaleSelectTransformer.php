@@ -10,7 +10,7 @@ class LocaleSelectTransformer extends JsonResource
     {
         return [
             'label' => $this['name'],
-            'code'  => $this['code'],
+            'code' => $this['code'],
         ];
     }
 }

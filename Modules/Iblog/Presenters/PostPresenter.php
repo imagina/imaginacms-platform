@@ -11,6 +11,7 @@ class PostPresenter extends Presenter
      * @var \Modules\Iblog\Entities\Status
      */
     protected $status;
+
     /**
      * @var \Modules\Iblog\Repositories\PostRepository
      */
@@ -25,6 +26,7 @@ class PostPresenter extends Presenter
 
     /**
      * Get the previous post of the current post
+     *
      * @return object
      */
     public function previous()
@@ -34,6 +36,7 @@ class PostPresenter extends Presenter
 
     /**
      * Get the next post of the current post
+     *
      * @return object
      */
     public function next()
@@ -43,6 +46,7 @@ class PostPresenter extends Presenter
 
     /**
      * Get the post status
+     *
      * @return string
      */
     public function status()
@@ -52,6 +56,7 @@ class PostPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
+     *
      * @return string
      */
     public function statusLabelClass()
@@ -75,10 +80,10 @@ class PostPresenter extends Presenter
         }
     }
 
-    public function mainImage($post,$thumbnail=null)
+    public function mainImage($post, $thumbnail = null)
     {
-        $item=$post->mainimage2;
-        $path=$thumbnail?:$post->path;
+        $item = $post->mainimage2;
+        $path = $thumbnail ?: $post->path;
         switch ($item->mimetype) {
             case 'image/jpg':
             case 'image/png':

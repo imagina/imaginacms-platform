@@ -10,7 +10,7 @@ return [
         'reservations' => 'Reservaciones',
         'create reservation' => 'Create a reservation',
         'edit reservation' => 'Edit a reservation',
-        'confirmation reservation'=>'Confirmación de Reserva',
+        'confirmation reservation' => 'Confirmación de Reserva',
     ],
     'button' => [
         'create reservation' => 'Crear una reservación',
@@ -29,7 +29,7 @@ return [
     'status' => [
         'pending' => 'Pendiente',
         'approved' => 'Aprobada',
-        'canceled' => 'Cancelada'
+        'canceled' => 'Cancelada',
     ],
 
 ];

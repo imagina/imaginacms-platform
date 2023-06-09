@@ -19,10 +19,12 @@ class MenuItemController extends AdminBaseController
      * @var MenuItemRepository
      */
     private $menuItem;
+
     /**
      * @var PageRepository
      */
     private $page;
+
     /**
      * @var MenuItemUriGenerator
      */
@@ -88,8 +90,6 @@ class MenuItemController extends AdminBaseController
     }
 
     /**
-     * @param  Menu $menu
-     * @param  \Illuminate\Foundation\Http\FormRequest $request
      * @return array
      */
     private function addMenuId(Menu $menu, FormRequest $request)

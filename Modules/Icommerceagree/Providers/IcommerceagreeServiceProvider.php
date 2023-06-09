@@ -4,14 +4,15 @@ namespace Modules\Icommerceagree\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceagree\Events\Handlers\RegisterIcommerceagreeSidebar;
 
 class IcommerceagreeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommerceagreeServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceagrees', Arr::dot(trans('icommerceagree::icommerceagrees')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommerceagreeServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommerceagreeServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceagree\Repositories\Cache\CacheIcommerceAgreeDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

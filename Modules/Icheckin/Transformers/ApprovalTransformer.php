@@ -3,25 +3,22 @@
 namespace Modules\Icheckin\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Icheckin\Entities\Approvals;
-use Modules\Iprofile\Transformers\UserTransformer;
 
 class ApprovalTransformer extends JsonResource
 {
-  public function toArray($request)
-  {
+    public function toArray($request)
+    {
+        $item = [
 
-    $item =  [
+            'id' => $this->id,
+            'dateForApprove' => $this->date,
+            'userId' => $this->user_id,
+            'approvedById' => $this->approved_by,
+            'periodApproved' => $this->period_approved,
+            'hoursApproved' => $this->period_approved / 3600,
 
-      'id' => $this->id,
-      'dateForApprove' => $this->date,
-      'userId' => $this->user_id,
-      'approvedById' => $this->approved_by,
-      'periodApproved' => $this->period_approved,
-      'hoursApproved' => $this->period_approved / 3600,
+        ];
 
-    ];
-
-    return $item;
-  }
+        return $item;
+    }
 }

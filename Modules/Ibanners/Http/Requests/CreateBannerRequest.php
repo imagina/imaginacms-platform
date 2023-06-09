@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Http\Requests;
+<?php
+
+namespace Modules\Ibanners\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

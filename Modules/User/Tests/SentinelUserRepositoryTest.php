@@ -20,6 +20,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
      * @var RoleRepository
      */
     private $role;
+
     /**
      * @var UserRepository
      */
@@ -105,7 +106,7 @@ class SentinelUserRepositoryTest extends BaseUserTestCase
         ]);
 
         Event::assertDispatched(UserIsCreating::class, function ($e) {
-            return $e->getOriginal('email')=== 'n.widart@gmail.com';
+            return $e->getOriginal('email') === 'n.widart@gmail.com';
         });
     }
 

@@ -2,16 +2,17 @@
 
 namespace Modules\Icommerceepayco\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Arr;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceepayco\Events\Handlers\RegisterIcommerceepaycoSidebar;
 
 class IcommerceepaycoServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceepaycos', Arr::dot(trans('icommerceepayco::icommerceepaycos')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceepayco\Repositories\Cache\CacheIcommerceEpaycoDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed'   => 'Nem megfelő e-mail cím vagy jelszó.',
+    'failed' => 'Nem megfelő e-mail cím vagy jelszó.',
     'throttle' => 'Túl sok próbálkozás. Kérjük próbálja újra :seconds másodperc múlva.',
 
 ];

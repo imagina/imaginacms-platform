@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IblogAddExternalIdInCategoryAndPostTable extends Migration
 {
@@ -13,12 +13,12 @@ class IblogAddExternalIdInCategoryAndPostTable extends Migration
      */
     public function up()
     {
-      Schema::table('iblog__categories', function (Blueprint $table) {
-        $table->string("external_id")->nullable()->after("options");
-      });
-      Schema::table('iblog__posts', function (Blueprint $table) {
-        $table->string("external_id")->nullable()->after("user_id");
-      });
+        Schema::table('iblog__categories', function (Blueprint $table) {
+            $table->string('external_id')->nullable()->after('options');
+        });
+        Schema::table('iblog__posts', function (Blueprint $table) {
+            $table->string('external_id')->nullable()->after('user_id');
+        });
     }
 
     /**

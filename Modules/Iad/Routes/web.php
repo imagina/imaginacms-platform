@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('iad')->group(function() {
+Route::prefix('iad')->group(function () {
     Route::get('/', 'IadController@index');
 });

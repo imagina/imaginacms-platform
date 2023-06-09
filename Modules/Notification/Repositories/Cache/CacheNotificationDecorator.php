@@ -15,7 +15,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     }
 
     /**
-     * @param int $userId
+     * @param  int  $userId
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function latestForUser($userId)
@@ -33,7 +33,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Mark the given notification id as "read"
-     * @param int $notificationId
+     *
+     * @param  int  $notificationId
      * @return bool
      */
     public function markNotificationAsRead($notificationId)
@@ -45,7 +46,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Get all the notifications for the given user id
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allForUser($userId)
@@ -63,7 +65,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Get all the read notifications for the given user id
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allReadForUser($userId)
@@ -81,7 +84,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Get all the unread notifications for the given user id
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allUnreadForUser($userId)
@@ -99,7 +103,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Delete all the notifications for the given user
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return bool
      */
     public function deleteAllForUser($userId)
@@ -111,7 +116,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Mark all the notifications for the given user as read
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return bool
      */
     public function markAllAsReadForUser($userId)
@@ -123,7 +129,8 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Get all the read notifications for the given filters
-     * @param array $params
+     *
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItemsBy($params)
@@ -141,8 +148,9 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Get the read notification for the given filters
-     * @param string $criteria
-     * @param array $params
+     *
+     * @param  string  $criteria
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItem($criteria, $params = false)
@@ -160,8 +168,9 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Update the notifications for the given ids
-     * @param array $criterias
-     * @param array $data
+     *
+     * @param  array  $criterias
+     * @param  array  $data
      * @return bool
      */
     public function updateItems($criterias, $data)
@@ -173,13 +182,14 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
 
     /**
      * Delete the notifications for the given ids
-     * @param array $criterias
+     *
+     * @param  array  $criterias
      * @return bool
      */
     public function deleteItems($criterias)
     {
         $this->cache->tags($this->entityName)->flush();
 
-        return $this->repository-> deleteItems($criterias);
+        return $this->repository->deleteItems($criterias);
     }
 }

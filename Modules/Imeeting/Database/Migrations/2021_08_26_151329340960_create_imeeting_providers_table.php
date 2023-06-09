@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateImeetingProvidersTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateImeetingProvidersTable extends Migration
         Schema::create('imeeting__providers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            
+
             // Your fields
             $table->string('name');
             $table->integer('status')->unsigned();
@@ -23,7 +23,6 @@ class CreateImeetingProvidersTable extends Migration
 
             $table->timestamps();
             $table->auditStamps();
-
         });
     }
 

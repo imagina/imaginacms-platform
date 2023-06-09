@@ -9,12 +9,13 @@ use Modules\Requestable\Repositories\CategoryRuleRepository;
 
 class CategoryRuleApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(CategoryRule $model, CategoryRuleRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(CategoryRule $model, CategoryRuleRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

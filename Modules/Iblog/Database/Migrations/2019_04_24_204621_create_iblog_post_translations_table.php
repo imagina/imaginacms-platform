@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIblogPostTranslationsTable extends Migration
 {
@@ -29,8 +29,6 @@ class CreateIblogPostTranslationsTable extends Migration
             $table->unique(['post_id', 'locale']);
             $table->foreign('post_id')->references('id')->on('iblog__posts')->onDelete('cascade');
         });
-
-
     }
 
     /**

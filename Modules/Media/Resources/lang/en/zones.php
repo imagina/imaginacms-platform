@@ -18,8 +18,8 @@ return [
     'form' => [
     ],
     'messages' => [
-      'nameRequired' => 'The field <strong>name</strong> it\'s required',
-      'entityTypeRequired' => 'The field <strong>entity_type</strong> it\'s required',
+        'nameRequired' => 'The field <strong>name</strong> it\'s required',
+        'entityTypeRequired' => 'The field <strong>entity_type</strong> it\'s required',
     ],
     'validation' => [
     ],

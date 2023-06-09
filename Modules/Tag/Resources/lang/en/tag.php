@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'name' => "Tags",
+    'name' => 'Tags',
     'single' => 'Tag',
     'plural' => 'Tags',
     'uri' => 'tag',

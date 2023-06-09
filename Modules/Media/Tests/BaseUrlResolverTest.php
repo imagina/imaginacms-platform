@@ -14,7 +14,7 @@ class BaseUrlResolverTest extends MediaTestCase
         $resolver = new BaseUrlResolver();
         $resolvedPath = $resolver->resolve('/assets/media/my_image.png');
 
-        $this->assertEquals(config('app.url') . '/assets/media/my_image.png', $resolvedPath);
+        $this->assertEquals(config('app.url').'/assets/media/my_image.png', $resolvedPath);
     }
 
     public function it_returns_correct_aws_s3_uri()

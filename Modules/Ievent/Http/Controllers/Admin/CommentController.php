@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Comment;
 use Modules\Ievent\Http\Requests\CreateCommentRequest;
 use Modules\Ievent\Http\Requests\UpdateCommentRequest;
 use Modules\Ievent\Repositories\CommentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CommentController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CommentController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCommentRequest $request
      * @return Response
      */
     public function store(CreateCommentRequest $request)
@@ -63,7 +61,6 @@ class CommentController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Comment $comment
      * @return Response
      */
     public function edit(Comment $comment)
@@ -74,8 +71,6 @@ class CommentController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Comment $comment
-     * @param  UpdateCommentRequest $request
      * @return Response
      */
     public function update(Comment $comment, UpdateCommentRequest $request)
@@ -89,7 +84,6 @@ class CommentController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Comment $comment
      * @return Response
      */
     public function destroy(Comment $comment)

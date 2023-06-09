@@ -97,24 +97,22 @@ $router->group(['middleware' => 'api.token'], function (Router $router) {
     ]);
 });
 
-
 /**
  * IMAGINA API V1 ROUTES
  */
 $router->group(['prefix' => '/imedia/v1'], function (Router $router) {
+    //======  FILES
+    require 'ApiRoutes/fileRoutes.php';
 
-//======  FILES
-  require('ApiRoutes/fileRoutes.php');
+    //======  FOLDERS
+    require 'ApiRoutes/folderRoutes.php';
 
-//======  FOLDERS
-  require('ApiRoutes/folderRoutes.php');
+    //======  BATCHS
+    require 'ApiRoutes/batchRoutes.php';
 
-//======  BATCHS
-  require('ApiRoutes/batchRoutes.php');
-  
-  $router->apiCrud([
-    'module' => 'imedia',
-    'prefix' => 'zones',
-    'controller' => 'ZoneApiController',
-  ]);
+    $router->apiCrud([
+        'module' => 'imedia',
+        'prefix' => 'zones',
+        'controller' => 'ZoneApiController',
+    ]);
 });

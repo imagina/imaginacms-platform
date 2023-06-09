@@ -2,85 +2,80 @@
 
 namespace Modules\Ibooking\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Icrud\Entities\CrudModel;
-
 use Modules\Ibooking\Traits\WithMeeting;
-
-use Modules\Ibooking\Entities\Status;
 use Modules\Ifillable\Traits\isFillable;
 
 class ReservationItem extends CrudModel
 {
-  use WithMeeting, isFillable;
+    use WithMeeting, isFillable;
 
-  public $transformer = 'Modules\Ibooking\Transformers\ReservationItemTransformer';
-  public $repository = 'Modules\Ibooking\Repositories\ReservationItemRepository';
-  public $requestValidation = [
-    'create' => 'Modules\Ibooking\Http\Requests\CreateReservationItemRequest',
-    'update' => 'Modules\Ibooking\Http\Requests\UpdateReservationItemRequest',
-  ];
+    public $transformer = 'Modules\Ibooking\Transformers\ReservationItemTransformer';
 
+    public $repository = 'Modules\Ibooking\Repositories\ReservationItemRepository';
 
-  public $modelRelations = [
-    'reservation' => 'belongsTo',
-    'service' => 'belongsTo',
-    'resource' => 'belongsTo'
-  ];
+    public $requestValidation = [
+        'create' => 'Modules\Ibooking\Http\Requests\CreateReservationItemRequest',
+        'update' => 'Modules\Ibooking\Http\Requests\UpdateReservationItemRequest',
+    ];
 
-  protected $table = 'ibooking__reservation_items';
+    public $modelRelations = [
+        'reservation' => 'belongsTo',
+        'service' => 'belongsTo',
+        'resource' => 'belongsTo',
+    ];
 
-  protected $fillable = [
-    'reservation_id',
-    'service_id',
-    'resource_id',
-    'category_id',
-    'category_title',
-    'service_title',
-    'resource_title',
-    'price',
-    'start_date',
-    'end_date',
-    'customer_id',
-    'entity_type',
-    'entity_id',
-    'status'
-  ];
+    protected $table = 'ibooking__reservation_items';
 
-  protected $with = ["fields"];
+    protected $fillable = [
+        'reservation_id',
+        'service_id',
+        'resource_id',
+        'category_id',
+        'category_title',
+        'service_title',
+        'resource_title',
+        'price',
+        'start_date',
+        'end_date',
+        'customer_id',
+        'entity_type',
+        'entity_id',
+        'status',
+    ];
 
-//============== RELATIONS ==============//
+    protected $with = ['fields'];
 
-  public function reservation()
-  {
-    return $this->belongsTo(Reservation::class);
-  }
+    //============== RELATIONS ==============//
 
-  public function service()
-  {
-    return $this->belongsTo(Service::class);
-  }
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 
-  public function resource()
-  {
-    return $this->belongsTo(Resource::class);
-  }
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 
-  public function customer()
-  {
-    $driver = config('asgard.user.config.driver');
+    public function resource()
+    {
+        return $this->belongsTo(Resource::class);
+    }
 
-    return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'customer_id');
-  }
+    public function customer()
+    {
+        $driver = config('asgard.user.config.driver');
 
-  //============== MUTATORS / ACCESORS ==============//
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'customer_id');
+    }
 
-  public function getStatusNameAttribute()
-  {
+    //============== MUTATORS / ACCESORS ==============//
 
-    $status = new Status();
-    return $status->get($this->status);
+    public function getStatusNameAttribute()
+    {
+        $status = new Status();
 
-  }
-
+        return $status->get($this->status);
+    }
 }

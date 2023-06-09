@@ -350,8 +350,8 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
     {
         return File::create([
             'filename' => $fileName,
-            'path' => config('asgard.media.config.files-path') . $fileName,
-            'extension' => substr(strrchr($fileName, "."), 1),
+            'path' => config('asgard.media.config.files-path').$fileName,
+            'extension' => substr(strrchr($fileName, '.'), 1),
             'mimetype' => 'image/jpg',
             'filesize' => '1024',
             'folder_id' => 0,

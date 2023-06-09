@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Schedule;
 use Modules\Iad\Http\Requests\CreateScheduleRequest;
 use Modules\Iad\Http\Requests\UpdateScheduleRequest;
 use Modules\Iad\Repositories\ScheduleRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ScheduleController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class ScheduleController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateScheduleRequest $request
      * @return Response
      */
     public function store(CreateScheduleRequest $request)
@@ -63,7 +61,6 @@ class ScheduleController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Schedule $schedule
      * @return Response
      */
     public function edit(Schedule $schedule)
@@ -74,8 +71,6 @@ class ScheduleController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Schedule $schedule
-     * @param  UpdateScheduleRequest $request
      * @return Response
      */
     public function update(Schedule $schedule, UpdateScheduleRequest $request)
@@ -89,7 +84,6 @@ class ScheduleController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Schedule $schedule
      * @return Response
      */
     public function destroy(Schedule $schedule)

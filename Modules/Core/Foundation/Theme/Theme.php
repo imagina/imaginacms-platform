@@ -8,6 +8,7 @@ class Theme
      * @var string the theme name
      */
     private $name;
+
     /**
      * @var string the theme path
      */

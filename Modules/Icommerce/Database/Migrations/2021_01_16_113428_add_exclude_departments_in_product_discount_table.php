@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddExcludeDepartmentsInProductDiscountTable extends Migration
 {
@@ -14,8 +14,8 @@ class AddExcludeDepartmentsInProductDiscountTable extends Migration
     public function up()
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
-          $table->text('exclude_departments')->nullable();
-          $table->text('include_departments')->nullable();
+            $table->text('exclude_departments')->nullable();
+            $table->text('include_departments')->nullable();
         });
     }
 
@@ -27,7 +27,7 @@ class AddExcludeDepartmentsInProductDiscountTable extends Migration
     public function down()
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
-          $table->dropColumn('exclude_departments');
+            $table->dropColumn('exclude_departments');
         });
     }
 }

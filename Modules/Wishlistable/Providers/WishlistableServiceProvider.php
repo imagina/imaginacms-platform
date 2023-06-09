@@ -2,17 +2,17 @@
 
 namespace Modules\Wishlistable\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Livewire\Livewire;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Wishlistable\Listeners\RegisterWishlistableSidebar;
-use Livewire\Livewire;
 
 class WishlistableServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -33,10 +33,7 @@ class WishlistableServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('wishlistables', Arr::dot(trans('wishlistable::wishlistables')));
             // append translations
-
         });
-
-
     }
 
     public function boot()
@@ -45,8 +42,8 @@ class WishlistableServiceProvider extends ServiceProvider
         $this->publishConfig('wishlistable', 'config');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-  
-      $this->registerComponentsLivewire();
+
+        $this->registerComponentsLivewire();
     }
 
     /**
@@ -56,7 +53,7 @@ class WishlistableServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -73,18 +70,15 @@ class WishlistableServiceProvider extends ServiceProvider
                 return new \Modules\Wishlistable\Repositories\Cache\CacheWishlistableDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-  
-  
+
   /**
    * Register components Livewire
    */
   private function registerComponentsLivewire()
   {
-    Livewire::component('wishlistable::wishlist', \Modules\Wishlistable\Http\Livewire\Wishlist::class);
-    Livewire::component('wishlistable::wishlistable', \Modules\Wishlistable\Http\Livewire\WishlistTable::class);
+      Livewire::component('wishlistable::wishlist', \Modules\Wishlistable\Http\Livewire\Wishlist::class);
+      Livewire::component('wishlistable::wishlistable', \Modules\Wishlistable\Http\Livewire\WishlistTable::class);
   }
-
 }

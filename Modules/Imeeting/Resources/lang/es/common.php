@@ -27,5 +27,5 @@ return [
     'title' => 'Titulo',
     'description' => 'Descripcion',
     'status' => 'Status',
-    
+
 ];

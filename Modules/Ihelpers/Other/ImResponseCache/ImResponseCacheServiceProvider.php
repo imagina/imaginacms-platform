@@ -4,9 +4,9 @@ namespace Modules\Ihelpers\Other\ImResponseCache;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Modules\Ihelpers\Other\ImResponseCache\Middlewares\ImResponseCacheMiddleware as ResponseCacheMiddleware;
 use Spatie\ResponseCache\CacheProfiles\CacheProfile;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponseMiddleware;
-use Modules\Ihelpers\Other\ImResponseCache\Middlewares\ImResponseCacheMiddleware as ResponseCacheMiddleware;
 
 class ImResponseCacheServiceProvider extends ServiceProvider
 {
@@ -31,8 +31,6 @@ class ImResponseCacheServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-
         $this->mergeConfigFrom(__DIR__.'/resources/config/laravel-responsecache.php', 'laravel-responsecache');
 
         $this->app[\Illuminate\Contracts\Http\Kernel::class]->prependMiddleware(ResponseCacheMiddleware::class);

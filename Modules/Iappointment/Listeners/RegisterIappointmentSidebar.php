@@ -16,8 +16,6 @@ class RegisterIappointmentSidebar implements \Maatwebsite\Sidebar\SidebarExtende
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIappointmentSidebar implements \Maatwebsite\Sidebar\SidebarExtende
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIappointmentSidebar implements \Maatwebsite\Sidebar\SidebarExtende
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('iappointment::appointments.title.appointments'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -97,13 +94,7 @@ class RegisterIappointmentSidebar implements \Maatwebsite\Sidebar\SidebarExtende
                         $this->auth->hasAccess('iappointment.providers.index')
                     );
                 });
-// append
-
-
-
-
-
-
+                // append
             });
         });
 

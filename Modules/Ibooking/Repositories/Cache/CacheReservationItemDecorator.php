@@ -2,8 +2,8 @@
 
 namespace Modules\Ibooking\Repositories\Cache;
 
-use Modules\Ibooking\Repositories\ReservationItemRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Ibooking\Repositories\ReservationItemRepository;
 
 class CacheReservationItemDecorator extends BaseCacheDecorator implements ReservationItemRepository
 {

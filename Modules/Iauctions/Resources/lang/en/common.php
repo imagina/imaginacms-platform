@@ -1,11 +1,11 @@
 <?php
 
 return [
-    
+
     'title' => [
     ],
     'button' => [
-        
+
     ],
     'table' => [
     ],

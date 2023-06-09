@@ -2,8 +2,8 @@
 
 namespace Modules\Ibooking\Repositories\Cache;
 
-use Modules\Ibooking\Repositories\ResourceRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ibooking\Repositories\ResourceRepository;
 
 class CacheResourceDecorator extends BaseCacheCrudDecorator implements ResourceRepository
 {

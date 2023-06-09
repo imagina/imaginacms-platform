@@ -6,7 +6,7 @@ return [
         'module' => 'Módulo',
         'target' => 'Destino',
         'same tab' => 'Mismo tab',
-        'new tab' => 'Nuevo tab'
+        'new tab' => 'Nuevo tab',
     ],
     'link-type' => [
         'link type' => 'Tipo de enlace',
@@ -18,6 +18,6 @@ return [
     'create resource' => 'Crear Banner',
     'edit resource' => 'Editar Banner',
     'destroy resource' => 'Eliminar Banner',
-    'store resource'=>'Guardar Banner',
-    'update resource'=>'Actualizar Banner'
+    'store resource' => 'Guardar Banner',
+    'update resource' => 'Actualizar Banner',
 ];

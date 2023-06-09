@@ -17,21 +17,21 @@ return [
         'create category' => 'Create Category',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'no post'=> 'quantity of Posts'
+        'id' => 'Id',
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'no post' => 'quantity of Posts',
     ],
     'form' => [
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'description'=>'Description',
-        'parent category'=>'Parent Category',
-        'secondary image'=>'Secondary Image',
-        'image'=>'Main Image'
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'description' => 'Description',
+        'parent category' => 'Parent Category',
+        'secondary image' => 'Secondary Image',
+        'image' => 'Main Image',
     ],
     'messages' => [
-      "sameSlug" => "The Slug: ':slug' belongs to another category"
+        'sameSlug' => "The Slug: ':slug' belongs to another category",
     ],
     'validation' => [
     ],

@@ -39,6 +39,6 @@ class ThemeTest extends BaseTestCase
 
     private function getPath()
     {
-        return __DIR__ . '/Fixture/Themes/demo';
+        return __DIR__.'/Fixture/Themes/demo';
     }
 }

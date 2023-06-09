@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Providers;
+<?php
+
+namespace Modules\Ibanners\Providers;
 
 use Modules\Core\Providers\RoutingServiceProvider as CoreRoutingServiceProvider;
 
@@ -6,6 +8,7 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
 {
     /**
      * The root namespace to assume when generating URLs to actions.
+     *
      * @var string
      */
     protected $namespace = 'Modules\Ibanners\Http\Controllers';
@@ -23,7 +26,7 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getBackendRoute()
     {
-        return __DIR__ . '/../Http/backendRoutes.php';
+        return __DIR__.'/../Http/backendRoutes.php';
     }
 
     /**
@@ -31,6 +34,6 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getApiRoute()
     {
-        return __DIR__ . '/../Http/apiRoutes.php';
+        return __DIR__.'/../Http/apiRoutes.php';
     }
 }

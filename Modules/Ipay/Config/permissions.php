@@ -1,7 +1,7 @@
 <?php
 
 return [
-     'ipay.config' => [
+    'ipay.config' => [
         'index' => 'ipay::config.list',
         'create' => 'ipay::config.create',
         'edit' => 'ipay::config.edit',

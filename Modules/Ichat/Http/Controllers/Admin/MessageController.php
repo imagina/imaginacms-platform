@@ -2,13 +2,12 @@
 
 namespace Modules\Ichat\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ichat\Entities\Message;
 use Modules\Ichat\Http\Requests\CreateMessageRequest;
 use Modules\Ichat\Http\Requests\UpdateMessageRequest;
 use Modules\Ichat\Repositories\MessageRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class MessageController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class MessageController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateMessageRequest $request
      * @return Response
      */
     public function store(CreateMessageRequest $request)
@@ -63,7 +61,6 @@ class MessageController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Message $message
      * @return Response
      */
     public function edit(Message $message)
@@ -74,8 +71,6 @@ class MessageController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Message $message
-     * @param  UpdateMessageRequest $request
      * @return Response
      */
     public function update(Message $message, UpdateMessageRequest $request)
@@ -89,7 +84,6 @@ class MessageController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Message $message
      * @return Response
      */
     public function destroy(Message $message)

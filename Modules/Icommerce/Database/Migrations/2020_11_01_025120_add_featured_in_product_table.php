@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddFeaturedInProductTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddFeaturedInProductTable extends Migration
     public function up()
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
-					$table->boolean('featured')->default(false);
+            $table->boolean('featured')->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddFeaturedInProductTable extends Migration
     public function down()
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
-					$table->dropColumn('featured');
+            $table->dropColumn('featured');
         });
     }
 }

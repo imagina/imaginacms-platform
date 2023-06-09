@@ -25,10 +25,10 @@ class IpayRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            'title'             => 'required|min:1|max:255',
-            'merchantid'        => 'numeric',
-            'accountid'         => 'numeric',
-            'apikey'            => 'required|min:1|max:255',
+            'title' => 'required|min:1|max:255',
+            'merchantid' => 'numeric',
+            'accountid' => 'numeric',
+            'apikey' => 'required|min:1|max:255',
         ];
     }
 

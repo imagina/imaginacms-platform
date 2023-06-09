@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddStatusInCategoryTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddStatusInCategoryTable extends Migration
     public function up()
     {
         Schema::table('icommerce__categories', function (Blueprint $table) {
-					$table->tinyInteger('status')->default(1)->unsigned();
+            $table->tinyInteger('status')->default(1)->unsigned();
         });
     }
 
@@ -26,9 +26,9 @@ class AddStatusInCategoryTable extends Migration
     public function down()
     {
         Schema::table('icommerce__categories', function (Blueprint $table) {
-          if(Schema::hasColumn('icommerce__categories','status')) {
-            $table->dropColumn('status');
-          }
+            if (Schema::hasColumn('icommerce__categories', 'status')) {
+                $table->dropColumn('status');
+            }
         });
     }
 }

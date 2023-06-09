@@ -2,13 +2,9 @@
 
 namespace Modules\Imeeting\Repositories\Eloquent;
 
-use Illuminate\Support\Str;
-use Modules\Imeeting\Repositories\MeetingRepository;
 use Modules\Core\Icrud\Repositories\Eloquent\EloquentCrudRepository;
+use Modules\Imeeting\Repositories\MeetingRepository;
 
 class EloquentMeetingRepository extends EloquentCrudRepository implements MeetingRepository
 {
-
-   
-
 }

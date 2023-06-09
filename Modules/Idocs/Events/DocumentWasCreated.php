@@ -2,7 +2,6 @@
 
 namespace Modules\Idocs\Events;
 
-use Modules\Idocs\Entities\Document;
 use Modules\Media\Contracts\StoringMedia;
 
 class DocumentWasCreated implements StoringMedia
@@ -11,6 +10,7 @@ class DocumentWasCreated implements StoringMedia
      * @var array
      */
     public $data;
+
     /**
      * @var Post
      */
@@ -24,6 +24,7 @@ class DocumentWasCreated implements StoringMedia
 
     /**
      * Return the entity
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntity()
@@ -33,6 +34,7 @@ class DocumentWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
+     *
      * @return array
      */
     public function getSubmissionData()

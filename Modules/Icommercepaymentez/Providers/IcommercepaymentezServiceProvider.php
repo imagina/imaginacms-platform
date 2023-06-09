@@ -4,14 +4,15 @@ namespace Modules\Icommercepaymentez\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercepaymentez\Events\Handlers\RegisterIcommercepaymentezSidebar;
 
 class IcommercepaymentezServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercepaymentezServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercepaymentezs', Arr::dot(trans('icommercepaymentez::icommercepaymentezs')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercepaymentezServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,9 +69,6 @@ class IcommercepaymentezServiceProvider extends ServiceProvider
                 return new \Modules\Icommercepaymentez\Repositories\Cache\CacheIcommercePaymentezDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-    
 }

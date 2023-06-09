@@ -4,137 +4,138 @@ namespace Modules\Idocs\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Traits\NamespacedEntity;
-use Modules\Media\Entities\File;
-use Modules\Media\Support\Traits\MediaRelation;
 use Kalnoy\Nestedset\NodeTrait;
-use Modules\Isite\Traits\RevisionableTrait;
-
 use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Core\Traits\NamespacedEntity;
+use Modules\Isite\Traits\RevisionableTrait;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Category extends Model
 {
-  use Translatable, MediaRelation, NamespacedEntity, NodeTrait, AuditTrait, RevisionableTrait;
+    use Translatable, MediaRelation, NamespacedEntity, NodeTrait, AuditTrait, RevisionableTrait;
 
-  public $transformer = 'Modules\Idocs\Transformers\CategoryTransformer';
-  public $entity = 'Modules\Idocs\Entities\Category';
-  public $repository = 'Modules\Idocs\Repositories\CategoryRepository';
+    public $transformer = 'Modules\Idocs\Transformers\CategoryTransformer';
 
-  protected $table = 'idocs__categories';
+    public $entity = 'Modules\Idocs\Entities\Category';
 
-  public $translatedAttributes = [
-    'title',
-    'description',
-    'slug',
-    'meta_title',
-    'meta_description',
-    'meta_keywords',
-    'translatable_options'
-  ];
-  protected $fillable = [
-    'parent_id',
-    'options',
-    'private'
-  ];
+    public $repository = 'Modules\Idocs\Repositories\CategoryRepository';
 
-  /**
-   * The attributes that should be casted to native types.
-   *
-   * @var array
-   */
-  protected $casts = [
-    'options' => 'array',
-    'private' => 'boolean'
-  ];
+    protected $table = 'idocs__categories';
 
+    public $translatedAttributes = [
+        'title',
+        'description',
+        'slug',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'translatable_options',
+    ];
 
-  /**
-   * Relation with category parent
-   * @return mixed
-   */
-  public function parent()
-  {
-    return $this->belongsTo(Category::class, 'parent_id');
-  }
+    protected $fillable = [
+        'parent_id',
+        'options',
+        'private',
+    ];
 
-  /**
-   * Relation with categories children
-   * @return mixed
-   */
-  public function children()
-  {
-    return $this->hasMany(Category::class, 'parent_id');
-  }
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'options' => 'array',
+        'private' => 'boolean',
+    ];
 
-  /**
-   * Relation with documents
-   * @return mixed
-   */
-  public function documents()
-  {
-    return $this->belongsToMany(Document::class, 'idocs__document_category');
-  }
+    /**
+     * Relation with category parent
+     *
+     * @return mixed
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 
-  /**
-   * @param $value
-   * @return mixed
-   */
-  public function getOptionsAttribute($value)
-  {
-    return json_decode($value);
-  }
+    /**
+     * Relation with categories children
+     *
+     * @return mixed
+     */
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 
-  /**
-   * @return mixed
-   */
-  public function getUrlAttribute()
-  {
-    if ($this->private)
-      return \URL::route(\LaravelLocalization::getCurrentLocale() . '.idocs.index.private.category', [$this->slug]);
-    else
-      return \URL::route(\LaravelLocalization::getCurrentLocale() . '.idocs.index.public.category', [$this->slug]);
+    /**
+     * Relation with documents
+     *
+     * @return mixed
+     */
+    public function documents()
+    {
+        return $this->belongsToMany(Document::class, 'idocs__document_category');
+    }
 
-  }
+    /**
+     * @return mixed
+     */
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value);
+    }
 
-  /*
-  |--------------------------------------------------------------------------
-  | SCOPES
-  |--------------------------------------------------------------------------
-  */
-  /**
-   * @param $query
-   * @return mixed
-   */
-  public function scopeFirstLevelItems($query)
-  {
-    return $query->where('depth', '1')
-      ->orWhere('depth', null)
-      ->orderBy('lft', 'ASC');
-  }
+    /**
+     * @return mixed
+     */
+    public function getUrlAttribute()
+    {
+        if ($this->private) {
+            return \URL::route(\LaravelLocalization::getCurrentLocale().'.idocs.index.private.category', [$this->slug]);
+        } else {
+            return \URL::route(\LaravelLocalization::getCurrentLocale().'.idocs.index.public.category', [$this->slug]);
+        }
+    }
 
-  public function getLftName()
-  {
-    return 'lft';
-  }
+    /*
+    |--------------------------------------------------------------------------
+    | SCOPES
+    |--------------------------------------------------------------------------
+    */
+    /**
+     * @return mixed
+     */
+    public function scopeFirstLevelItems($query)
+    {
+        return $query->where('depth', '1')
+          ->orWhere('depth', null)
+          ->orderBy('lft', 'ASC');
+    }
 
-  public function getRgtName()
-  {
-    return 'rgt';
-  }
+    public function getLftName()
+    {
+        return 'lft';
+    }
 
-  public function getDepthName()
-  {
-    return 'depth';
-  }
+    public function getRgtName()
+    {
+        return 'rgt';
+    }
 
-  public function getParentIdName()
-  {
-    return 'parent_id';
-  }
+    public function getDepthName()
+    {
+        return 'depth';
+    }
 
-  // Specify parent id attribute mutator
-  public function setParentAttribute($value)
-  {
-    $this->setParentIdAttribute($value);
-  }
+    public function getParentIdName()
+    {
+        return 'parent_id';
+    }
+
+    // Specify parent id attribute mutator
+    public function setParentAttribute($value)
+    {
+        $this->setParentIdAttribute($value);
+    }
 }

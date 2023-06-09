@@ -2,18 +2,12 @@
 
 namespace Modules\Ihelpers\Console;
 
-use Illuminate\Console\Command;
-use Modules\Media\Jobs\RebuildThumbnails;
-use Modules\Media\Repositories\FileRepository;
-
 use Illuminate\Cache\CacheManager;
-
+use Illuminate\Console\Command;
 use Modules\Ihelpers\Other\ImResponseCache\ImResponseCache;
-
 
 class ClearPageCache extends Command
 {
-
     protected $signature = 'pagecache:clear';
 
     /**
@@ -22,7 +16,6 @@ class ClearPageCache extends Command
      * @var string
      */
     protected $description = 'Clear the Full Page Cache.';
-
 
     public function __construct()
     {
@@ -46,5 +39,4 @@ class ClearPageCache extends Command
         //$storeName = config('laravel-responsecache.cacheStore');
         //app(CacheManager::class)->store($storeName)->flush();
     }
-
 }

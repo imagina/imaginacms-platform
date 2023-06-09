@@ -2,16 +2,16 @@
 
 namespace Modules\Ifeed\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ifeed\Listeners\RegisterIfeedSidebar;
 
 class IfeedServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,19 +32,16 @@ class IfeedServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
     public function boot()
     {
-       
         $this->publishConfig('ifeed', 'config');
         $this->publishConfig('ifeed', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'settings'), "asgard.ifeed.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'settings-fields'), "asgard.ifeed.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'permissions'), "asgard.ifeed.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'settings'), 'asgard.ifeed.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'settings-fields'), 'asgard.ifeed.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'permissions'), 'asgard.ifeed.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -56,7 +53,7 @@ class IfeedServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -73,9 +70,6 @@ class IfeedServiceProvider extends ServiceProvider
                 return new \Modules\Ifeed\Repositories\Cache\CacheFeedDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-
 }

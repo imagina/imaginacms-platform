@@ -9,7 +9,7 @@ class CurrencyTranslation extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'name'
+        'name',
     ];
 
     protected $table = 'icurrency__currency_translations';

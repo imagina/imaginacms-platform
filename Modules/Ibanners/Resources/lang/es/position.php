@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'  => 'Ubicación',
+    'title' => 'Ubicación',
     'titles' => [
         'position' => 'Administración de la Ubicación',
         'create position' => 'Crear un ubicación',
@@ -23,7 +23,7 @@ return [
     'table' => [
         'name' => 'Nombre',
         'title' => 'Título',
-        'system name' => 'Nombre de sistema'
+        'system name' => 'Nombre de sistema',
     ],
     'form' => [
         'title' => 'Título',
@@ -35,17 +35,17 @@ return [
         'url' => 'URL',
         'external image url' => 'URL de imagen externa',
         'placeholder' => [
-            'external image url' => 'http://www.example.com/link/to/image.jpg'
-        ]
+            'external image url' => 'http://www.example.com/link/to/image.jpg',
+        ],
 
     ],
     'navigation' => [
-        'back to index' => 'Volver al índice del ubicación'
+        'back to index' => 'Volver al índice del ubicación',
     ],
     'list resource' => 'Listar Ubicación',
     'create resource' => 'Crear Ubicación',
     'edit resource' => 'Editar Ubicación',
     'destroy resource' => 'Eliminar Ubicación',
-    'store resource'=>'Guardar Ubicación',
-    'update resource'=>'Actualizar Ubicación'
+    'store resource' => 'Guardar Ubicación',
+    'update resource' => 'Actualizar Ubicación',
 ];

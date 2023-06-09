@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'icommercecheckmo'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercecheckmo.api.checkmo.init',
         'uses' => 'IcommerceCheckmoApiController@init',
@@ -13,5 +12,4 @@ $router->group(['prefix' => 'icommercecheckmo'], function (Router $router) {
         'as' => 'icommercecheckmo.api.checkmo.response',
         'uses' => 'IcommerceCheckmoApiController@response',
     ]);
-
 });

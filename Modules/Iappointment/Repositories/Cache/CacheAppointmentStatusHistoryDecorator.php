@@ -2,8 +2,8 @@
 
 namespace Modules\Iappointment\Repositories\Cache;
 
-use Modules\Iappointment\Repositories\AppointmentStatusHistoryRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iappointment\Repositories\AppointmentStatusHistoryRepository;
 
 class CacheAppointmentStatusHistoryDecorator extends BaseCacheDecorator implements AppointmentStatusHistoryRepository
 {
@@ -13,6 +13,7 @@ class CacheAppointmentStatusHistoryDecorator extends BaseCacheDecorator implemen
         $this->entityName = 'iappointment.appointmentstatushistories';
         $this->repository = $appointmentstatushistory;
     }
+
     /**
      * List or resources
      *

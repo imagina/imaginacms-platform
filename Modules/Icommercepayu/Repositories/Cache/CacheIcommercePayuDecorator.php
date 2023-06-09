@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercepayu\Repositories\Cache;
 
-use Modules\Icommercepayu\Repositories\IcommercePayuRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercepayu\Repositories\IcommercePayuRepository;
 
 class CacheIcommercePayuDecorator extends BaseCacheDecorator implements IcommercePayuRepository
 {
@@ -14,10 +14,9 @@ class CacheIcommercePayuDecorator extends BaseCacheDecorator implements Icommerc
         $this->repository = $icommercepayu;
     }
 
-
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
@@ -27,15 +26,14 @@ class CacheIcommercePayuDecorator extends BaseCacheDecorator implements Icommerc
      *
      * @return mixed
      */
-    public function encriptUrl($orderID,$transactionID,$currencyID)
+    public function encriptUrl($orderID, $transactionID, $currencyID)
     {
-        return $this->remember(function () use ($orderID,$transactionID,$currencyID) {
-            return $this->repository->encriptUrl($orderID,$transactionID,$currencyID);
+        return $this->remember(function () use ($orderID, $transactionID, $currencyID) {
+            return $this->repository->encriptUrl($orderID, $transactionID, $currencyID);
         });
     }
 
-
-     /**
+    /**
      * List or resources
      *
      * @return mixed
@@ -46,5 +44,4 @@ class CacheIcommercePayuDecorator extends BaseCacheDecorator implements Icommerc
             return $this->repository->decriptUrl($eUrl);
         });
     }
-    
 }

@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Entities;
+<?php
+
+namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 

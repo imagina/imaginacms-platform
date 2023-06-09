@@ -1,14 +1,14 @@
 <?php
 
 return [
-  "name" => "Sitio",
-  "icustom" => "Personalizaciones",
+    'name' => 'Sitio',
+    'icustom' => 'Personalizaciones',
 
-  "verifier" => [
-    "title" => "Título",
-    "content" => "Contenido",
-    "active" => "Activar",
-    "buttonLabel" => "Texto del botón",
-  ],
-  "centralizedBrand" => "Marca Centralizada"
+    'verifier' => [
+        'title' => 'Título',
+        'content' => 'Contenido',
+        'active' => 'Activar',
+        'buttonLabel' => 'Texto del botón',
+    ],
+    'centralizedBrand' => 'Marca Centralizada',
 ];

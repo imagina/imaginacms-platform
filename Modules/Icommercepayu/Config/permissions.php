@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercepayu::icommercepayus.edit resource',
         'destroy' => 'icommercepayu::icommercepayus.destroy resource',
     ],
-// append
+    // append
 
 ];

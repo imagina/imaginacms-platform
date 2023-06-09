@@ -3,9 +3,6 @@
 namespace Modules\Ibooking\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
-
 use Modules\Ibooking\Entities\Reservation;
 
 class CheckStatusReservations extends Command
@@ -41,42 +38,34 @@ class CheckStatusReservations extends Command
      */
     public function handle()
     {
-        
         //Log::info("Ibooking: Jobs|CheckStatusReservation");
 
         $nowDateComplete = date('Y-m-d H:i:s');
         $nowDate = date('Y-m-d');
-        
-        $waitingTime = setting('ibooking::waitingTimeToCancelReservation',null, 10);
+
+        $waitingTime = setting('ibooking::waitingTimeToCancelReservation', null, 10);
 
         //Fix times to query search
         $timeStart = '00:'.$waitingTime.':00';
-        $timeEnd = '00:'.($waitingTime+2).':00'; //Limit 2min
-        
+        $timeEnd = '00:'.($waitingTime + 2).':00'; //Limit 2min
+
         $results = Reservation::select(
             \DB::raw("TIMEDIFF('$nowDateComplete',created_at) as time_passed"),
-            "id","status","created_at")
-        ->where("status", 0) // Pending
-        ->whereDate("created_at", $nowDate)// Reservations Today
+            'id', 'status', 'created_at')
+        ->where('status', 0) // Pending
+        ->whereDate('created_at', $nowDate)// Reservations Today
         ->whereRaw(\DB::raw("TIMEDIFF('$nowDateComplete',created_at) >= '$timeStart'"))
-        ->whereRaw(\DB::raw("TIMEDIFF('$nowDateComplete',created_at) <= '$timeEnd'")) 
+        ->whereRaw(\DB::raw("TIMEDIFF('$nowDateComplete',created_at) <= '$timeEnd'"))
         ->get();
 
-        \Log::info("results ".json_encode($results));
+        \Log::info('results '.json_encode($results));
 
-        if(count($results) > 0) {
+        if (count($results) > 0) {
             foreach ($results as $item) {
                 $reservation = Reservation::find($item->id);
                 $reservation->status = 2; // Canceled
                 $reservation->save();
             }
         }
-        
-        
     }
-
-   
-
-  
-
 }

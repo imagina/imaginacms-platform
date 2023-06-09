@@ -2,13 +2,12 @@
 
 namespace Modules\Notification\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Notification\Entities\Rule;
 use Modules\Notification\Http\Requests\CreateRuleRequest;
 use Modules\Notification\Http\Requests\UpdateRuleRequest;
 use Modules\Notification\Repositories\RuleRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RuleController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class RuleController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRuleRequest $request
      * @return Response
      */
     public function store(CreateRuleRequest $request)
@@ -63,7 +61,6 @@ class RuleController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Rule $rule
      * @return Response
      */
     public function edit(Rule $rule)
@@ -74,8 +71,6 @@ class RuleController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Rule $rule
-     * @param  UpdateRuleRequest $request
      * @return Response
      */
     public function update(Rule $rule, UpdateRuleRequest $request)
@@ -89,7 +84,6 @@ class RuleController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Rule $rule
      * @return Response
      */
     public function destroy(Rule $rule)

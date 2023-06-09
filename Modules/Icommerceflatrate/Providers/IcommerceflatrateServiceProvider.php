@@ -4,14 +4,15 @@ namespace Modules\Icommerceflatrate\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceflatrate\Events\Handlers\RegisterIcommerceflatrateSidebar;
 
 class IcommerceflatrateServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,13 +33,12 @@ class IcommerceflatrateServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceflatrates', Arr::dot(trans('icommerceflatrate::icommerceflatrates')));
             // append translations
-
         });
     }
 
     public function boot()
     {
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('icommerceflatrate', 'permissions'), "asgard.icommerceflatrate.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommerceflatrate', 'permissions'), 'asgard.icommerceflatrate.permissions');
         $this->publishConfig('icommerceflatrate', 'config');
         $this->publishConfig('icommerceflatrate', 'crud-fields');
 
@@ -52,7 +52,7 @@ class IcommerceflatrateServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommerceflatrateServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceflatrate\Repositories\Cache\CacheIcommerceFlatrateDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

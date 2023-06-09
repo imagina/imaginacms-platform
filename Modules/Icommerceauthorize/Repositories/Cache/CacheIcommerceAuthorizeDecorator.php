@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerceauthorize\Repositories\Cache;
 
-use Modules\Icommerceauthorize\Repositories\IcommerceAuthorizeRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerceauthorize\Repositories\IcommerceAuthorizeRepository;
 
 class CacheIcommerceAuthorizeDecorator extends BaseCacheDecorator implements IcommerceAuthorizeRepository
 {
@@ -14,15 +14,14 @@ class CacheIcommerceAuthorizeDecorator extends BaseCacheDecorator implements Ico
         $this->repository = $icommerceauthorize;
     }
 
-    
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
-     /**
+
+    /**
      * List or resources
      *
      * @return mixed
@@ -33,6 +32,4 @@ class CacheIcommerceAuthorizeDecorator extends BaseCacheDecorator implements Ico
             return $this->repository->decriptUrl($eUrl);
         });
     }
-
-
 }

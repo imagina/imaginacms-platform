@@ -9,35 +9,35 @@ return [
         'places' => 'Lugar',
         'create place' => 'Crear un lugar',
         'edit place' => 'Editar un lugar',
-        'categories'=>'Categorias',
+        'categories' => 'Categorias',
         'extra-fields' => 'Campos Extras',
-        'other-places' => '..Otros lugares que te pueden interesar...'
+        'other-places' => '..Otros lugares que te pueden interesar...',
     ],
     'button' => [
         'create place' => 'Crear un lugar',
     ],
     'table' => [
-        'id'=> 'Id',
-        'title'=>'Titulo',
-        'slug'=>'Slug',
-        'status'=>'Status',
-        'categories'=>'Categorias'
+        'id' => 'Id',
+        'title' => 'Titulo',
+        'slug' => 'Slug',
+        'status' => 'Status',
+        'categories' => 'Categorias',
 
     ],
     'form' => [
-        'title'=>'Titulo',
-        'description'=>'Descripcion',
-        'slug'=>'Slug',
-        'summary'=>'Sumario',
-        'select photo'=>'Seleccionar Foto',
-        'address'=>'Direccion',
-        'principal'=>'Principal',
-        'metatitle'=>'MetaTitle',
-        'metadescription'=>'MetaDescription',
-        'metakeywords'=>'Metakeywords',
-        'metadata'=>'Meta Data',
-        'gama'=>'Gama',
-        'person'=>'Cantidad de Personas',
+        'title' => 'Titulo',
+        'description' => 'Descripcion',
+        'slug' => 'Slug',
+        'summary' => 'Sumario',
+        'select photo' => 'Seleccionar Foto',
+        'address' => 'Direccion',
+        'principal' => 'Principal',
+        'metatitle' => 'MetaTitle',
+        'metadescription' => 'MetaDescription',
+        'metakeywords' => 'Metakeywords',
+        'metadata' => 'Meta Data',
+        'gama' => 'Gama',
+        'person' => 'Cantidad de Personas',
         'weather' => 'Clima',
         'housing' => 'Alojamiento',
         'transport' => 'Transporte',
@@ -46,7 +46,7 @@ return [
     'gama' => [
         'exclusive' => 'La mas exclusiva',
         'high' => 'Alta',
-        'low' => 'Baja'
+        'low' => 'Baja',
     ],
 
     'weather' => [
@@ -64,7 +64,7 @@ return [
         'slug is min 2' => 'Slug is min 2',
         'category is required' => 'Category is required',
         'address is required' => 'Address is required',
-        'notfound' => 'No hay lugares con esta(s) categoría(s) <i class="fa fa-frown-o"></i>'
+        'notfound' => 'No hay lugares con esta(s) categoría(s) <i class="fa fa-frown-o"></i>',
     ],
     'validation' => [
     ],

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcommerceCouponOrderHistoryTable extends Migration
 {
@@ -16,18 +16,18 @@ class CreateIcommerceCouponOrderHistoryTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your fields
-          $table->integer('coupon_id')->unsigned();
-          $table->foreign('coupon_id')->references('id')->on('icommerce__coupons')->onDelete('restrict');
-  
-          $table->integer('order_id')->unsigned();
-          $table->foreign('order_id')->references('id')->on('icommerce__orders')->onDelete('restrict');
-  
-          $table->integer('customer_id')->unsigned();
-          $table->foreign('customer_id')->references('id')->on(config('auth.table', 'users'))->onDelete('restrict');
-  
-          $table->float('amount', 8, 2);
-  
-          $table->timestamps();
+            $table->integer('coupon_id')->unsigned();
+            $table->foreign('coupon_id')->references('id')->on('icommerce__coupons')->onDelete('restrict');
+
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('icommerce__orders')->onDelete('restrict');
+
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on(config('auth.table', 'users'))->onDelete('restrict');
+
+            $table->float('amount', 8, 2);
+
+            $table->timestamps();
         });
     }
 

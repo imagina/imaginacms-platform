@@ -2,16 +2,16 @@
 
 namespace Modules\Ipoint\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ipoint\Listeners\RegisterIpointSidebar;
 
 class IpointServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,19 +32,16 @@ class IpointServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
     public function boot()
     {
-       
         $this->publishConfig('ipoint', 'config');
         $this->publishConfig('ipoint', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'settings'), "asgard.ipoint.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'settings-fields'), "asgard.ipoint.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'permissions'), "asgard.ipoint.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'settings'), 'asgard.ipoint.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'settings-fields'), 'asgard.ipoint.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ipoint', 'permissions'), 'asgard.ipoint.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -56,7 +53,7 @@ class IpointServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -73,9 +70,6 @@ class IpointServiceProvider extends ServiceProvider
                 return new \Modules\Ipoint\Repositories\Cache\CachePointDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-
 }

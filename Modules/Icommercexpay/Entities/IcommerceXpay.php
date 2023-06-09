@@ -10,6 +10,8 @@ class IcommerceXpay extends Model
     use Translatable;
 
     protected $table = 'icommercexpay__icommercexpays';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

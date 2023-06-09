@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIauctionsCategoriesTable extends Migration
 {
@@ -26,7 +26,6 @@ class CreateIauctionsCategoriesTable extends Migration
             $table->integer('bid_form_id')->unsigned()->nullable();
             $table->foreign('bid_form_id')->references('id')->on('iforms__forms')->onDelete('restrict');
 
-            
             // Audit fields
             $table->timestamps();
             $table->auditStamps();

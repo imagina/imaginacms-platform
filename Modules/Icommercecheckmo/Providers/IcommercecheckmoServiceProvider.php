@@ -4,14 +4,15 @@ namespace Modules\Icommercecheckmo\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercecheckmo\Events\Handlers\RegisterIcommercecheckmoSidebar;
 
 class IcommercecheckmoServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercecheckmos', Arr::dot(trans('icommercecheckmo::icommercecheckmos')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
                 return new \Modules\Icommercecheckmo\Repositories\Cache\CacheIcommerceCheckmoDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

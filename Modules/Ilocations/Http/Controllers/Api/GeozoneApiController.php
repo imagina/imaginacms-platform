@@ -1,26 +1,20 @@
 <?php
 
-
 namespace Modules\Ilocations\Http\Controllers\Api;
 
 // Libs
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 // Custom Requests
 use Modules\Ilocations\Http\Requests\CreateGeozonesRequest;
 use Modules\Ilocations\Http\Requests\UpdateGeozonesRequest;
-
 // Transformers
-use Modules\Ilocations\Transformers\GeozoneTransformer;
-
-// Repositories
 use Modules\Ilocations\Repositories\GeozonesRepository;
+// Repositories
+use Modules\Ilocations\Transformers\GeozoneTransformer;
 
 class GeozoneApiController extends BaseApiController
 {
-
     private $dataEntity;
 
     public function __construct(GeozonesRepository $dataEntity)
@@ -29,7 +23,6 @@ class GeozoneApiController extends BaseApiController
     }
 
     /**
-     * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
@@ -41,15 +34,12 @@ class GeozoneApiController extends BaseApiController
 
             $response = ['data' => GeozoneTransformer::collection($geozones)];
 
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($geozones)] : false;
-
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($geozones)] : false;
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
-
         }
 
         return response()->json($response, $status ?? 200);
@@ -62,18 +52,17 @@ class GeozoneApiController extends BaseApiController
 
             $dataEntity = $this->geozone->getItem($criteria, $params);
 
-            if (!$dataEntity) throw new \Exception('Item not found', 404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             $response = ['data' => new GeozoneTransformer($dataEntity)];
-
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
-
         }
 
         return response()->json($response, $status ?? 200);
@@ -89,7 +78,7 @@ class GeozoneApiController extends BaseApiController
 
             $dataEntity = $this->geozone->create($data);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
@@ -98,6 +87,7 @@ class GeozoneApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -105,7 +95,6 @@ class GeozoneApiController extends BaseApiController
     {
         \DB::beginTransaction();
         try {
-
             $data = $request->input('attributes') ?? [];
 
             $this->validateRequestApi(new UpdateGeozonesRequest($data));
@@ -114,11 +103,10 @@ class GeozoneApiController extends BaseApiController
 
             $dataEntity = $this->geozone->update($criteria, $data, $params);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -126,8 +114,8 @@ class GeozoneApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
-
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -139,15 +127,16 @@ class GeozoneApiController extends BaseApiController
 
             $dataEntity = $this->geozone->getItem($criteria, $params);
 
-            if(!$dataEntity) throw new \Exception('Item not found',404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             $this->geozone->destroy($dataEntity);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -155,9 +144,8 @@ class GeozoneApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
-
         }
+
         return response()->json($response, $status ?? 200);
     }
-
 }

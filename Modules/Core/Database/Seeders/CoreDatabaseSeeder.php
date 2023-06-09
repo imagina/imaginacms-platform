@@ -8,17 +8,17 @@ use Modules\Isite\Jobs\ProcessSeeds;
 
 class CoreDatabaseSeeder extends Seeder
 {
-  /**
-   * Run the database seeds.
-   *
-   * @return void
-   */
-  public function run()
-  {
-    Model::unguard();
-    ProcessSeeds::dispatch([
-      "baseClass" => "\Modules\Core\Database\Seeders",
-      "seeds" => ["CoreModuleTableSeeder"]
-    ]);
-  }
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Model::unguard();
+        ProcessSeeds::dispatch([
+            'baseClass' => "\Modules\Core\Database\Seeders",
+            'seeds' => ['CoreModuleTableSeeder'],
+        ]);
+    }
 }

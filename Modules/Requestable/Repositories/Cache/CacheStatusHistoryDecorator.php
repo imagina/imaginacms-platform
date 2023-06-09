@@ -2,8 +2,8 @@
 
 namespace Modules\Requestable\Repositories\Cache;
 
-use Modules\Requestable\Repositories\StatusHistoryRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Requestable\Repositories\StatusHistoryRepository;
 
 class CacheStatusHistoryDecorator extends BaseCacheCrudDecorator implements StatusHistoryRepository
 {

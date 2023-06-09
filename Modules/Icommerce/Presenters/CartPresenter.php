@@ -5,14 +5,12 @@ namespace Modules\Icommerce\Presenters;
 use Laracasts\Presenter\Presenter;
 use Modules\Icommerce\Entities\CartStatus;
 
-
 class CartPresenter extends Presenter
 {
     /**
      * @var \Modules\Icommerce\Entities\CartStatus
      */
     protected $status;
-
 
     public function __construct($entity)
     {
@@ -27,6 +25,7 @@ class CartPresenter extends Presenter
 
     /**
      * Get the post status
+     *
      * @return string
      */
     public function status()
@@ -36,6 +35,7 @@ class CartPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
+     *
      * @return string
      */
     public function statusLabelClass()
@@ -55,5 +55,4 @@ class CartPresenter extends Presenter
                 break;
         }
     }
-
 }

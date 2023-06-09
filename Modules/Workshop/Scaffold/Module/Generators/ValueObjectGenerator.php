@@ -7,7 +7,6 @@ class ValueObjectGenerator extends Generator
     /**
      * Generate the given files
      *
-     * @param  array $valueObjects
      * @return void
      */
     public function generate(array $valueObjects)

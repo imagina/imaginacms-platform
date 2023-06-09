@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ifillable')->group(function() {
+Route::prefix('ifillable')->group(function () {
     Route::get('/', 'IfillableController@index');
 });

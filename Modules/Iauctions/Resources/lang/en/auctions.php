@@ -52,6 +52,6 @@ return [
     ],
     'types' => [
         'inverse' => 'Inversa',
-        'open' => 'Abierto'
-    ]
+        'open' => 'Abierto',
+    ],
 ];

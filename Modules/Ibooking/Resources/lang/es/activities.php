@@ -2,12 +2,12 @@
 
 return [
     'availability-organize' => [
-        'title' => 'Organiza tu disponibilidad'
+        'title' => 'Organiza tu disponibilidad',
     ],
     'availability-reservations' => [
-      'title' => 'Ver mi agenda'
+        'title' => 'Ver mi agenda',
     ],
     'availability-new-reservation' => [
-      'title' => 'Crea una reservación'
+        'title' => 'Crea una reservación',
     ],
 ];

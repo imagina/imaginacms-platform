@@ -14,21 +14,21 @@ return [
         'create category' => 'Create a category',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Title',
-        'slug'=>'Slug',
+        'id' => 'Id',
+        'title' => 'Title',
+        'slug' => 'Slug',
     ],
     'form' => [
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'description'=>'Description',
-        'parent category'=>'Parent Category',
-        'secondary image'=>'Secondary Image',
-        'image'=>'Main Image',
-        'private'=>'Private'
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'description' => 'Description',
+        'parent category' => 'Parent Category',
+        'secondary image' => 'Secondary Image',
+        'image' => 'Main Image',
+        'private' => 'Private',
     ],
     'messages' => [
-        'resource error'=>'Resource error'
+        'resource error' => 'Resource error',
     ],
     'validation' => [
     ],

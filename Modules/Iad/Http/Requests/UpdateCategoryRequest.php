@@ -10,9 +10,9 @@ class UpdateCategoryRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'title' => 'min:2',
-          'slug' => [new UniqueSlugRule("iad__category_translations", $this->id, "category_id") ,"min:2"],
-          'description' => 'min:2',
+            'title' => 'min:2',
+            'slug' => [new UniqueSlugRule('iad__category_translations', $this->id, 'category_id'), 'min:2'],
+            'description' => 'min:2',
         ];
     }
 
@@ -33,18 +33,18 @@ class UpdateCategoryRequest extends BaseFormRequest
 
     public function translationMessages()
     {
-      return [
-        // title
-        'title.required' => trans('iad::common.messages.field required'),
-        'title.min:2' => trans('iad::common.messages.min 2 characters'),
-    
-        // slug
-        'slug.required' => trans('iad::common.messages.field required'),
-        'slug.min:2' => trans('iad::common.messages.min 2 characters'),
-    
-        // description
-        'description.required' => trans('iad::common.messages.field required'),
-        'description.min:2' => trans('iad::common.messages.min 2 characters'),
-      ];
+        return [
+            // title
+            'title.required' => trans('iad::common.messages.field required'),
+            'title.min:2' => trans('iad::common.messages.min 2 characters'),
+
+            // slug
+            'slug.required' => trans('iad::common.messages.field required'),
+            'slug.min:2' => trans('iad::common.messages.min 2 characters'),
+
+            // description
+            'description.required' => trans('iad::common.messages.field required'),
+            'description.min:2' => trans('iad::common.messages.min 2 characters'),
+        ];
     }
 }

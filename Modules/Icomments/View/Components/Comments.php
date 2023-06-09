@@ -6,49 +6,50 @@ use Illuminate\View\Component;
 
 class Comments extends Component
 {
+    public $view;
 
+    public $items;
 
-  public $view;
-  public $items;
-  public $params;
-  public $model;
-  public $approved;
-  public $showRating;
+    public $params;
 
-  /**
-   * Create a new component instance.
-   *
-   * @return void
-   */
-  public function __construct($layout = "comments-layout-1", $model, $approved = false, $showRating = true, $params = [])
-  {
+    public $model;
 
-    $this->view = "icomments::frontend.components.comments.layouts.$layout.index";
-    $this->model = $model;
-    $this->approved = $approved;
-    $this->params = $params;
-    $this->showRating = $showRating;
+    public $approved;
 
-    $this->getItems();
-    
-  }
+    public $showRating;
 
-  private function getItems(){
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function __construct($layout, $model, $approved = false, $showRating = true, $params = [])
+    {
+        $this->view = "icomments::frontend.components.comments.layouts.$layout.index";
+        $this->model = $model;
+        $this->approved = $approved;
+        $this->params = $params;
+        $this->showRating = $showRating;
 
-    if($this->approved)
-      $this->items = $this->model->approvedComments;
-    else
-      $this->items = $this->model->comments;
+        $this->getItems();
+    }
 
-  }
-  /**
-   * Get the view / contents that represent the component.
-   *
-   * @return \Illuminate\Contracts\View\View|string
-   */
-  public function render()
-  {
-    return view($this->view);
-  }
+    private function getItems()
+    {
+        if ($this->approved) {
+            $this->items = $this->model->approvedComments;
+        } else {
+            $this->items = $this->model->comments;
+        }
+    }
 
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|string
+     */
+    public function render()
+    {
+        return view($this->view);
+    }
 }

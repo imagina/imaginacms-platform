@@ -14,21 +14,21 @@ return [
         'create category' => 'Crea una categoría',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Titulo',
-        'slug'=>'URL amigable',
+        'id' => 'Id',
+        'title' => 'Titulo',
+        'slug' => 'URL amigable',
     ],
     'form' => [
-        'title'=>'Titulo',
-        'slug'=>'URL amigable',
-        'description'=>'Descripción',
-        'parent category'=>'Categoría Padre',
-        'secondary image'=>'Imagen secundaria',
-        'image'=>'Imagen principal',
-        'private'=>'Categoría Privada'
+        'title' => 'Titulo',
+        'slug' => 'URL amigable',
+        'description' => 'Descripción',
+        'parent category' => 'Categoría Padre',
+        'secondary image' => 'Imagen secundaria',
+        'image' => 'Imagen principal',
+        'private' => 'Categoría Privada',
     ],
     'messages' => [
-        'resource error'=>'Error de recursos'
+        'resource error' => 'Error de recursos',
     ],
     'validation' => [
     ],

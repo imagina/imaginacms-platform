@@ -10,7 +10,6 @@ use Modules\Core\Sidebar\AbstractAdminSidebar;
 class RegisterDashboardSidebar extends AbstractAdminSidebar
 {
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)

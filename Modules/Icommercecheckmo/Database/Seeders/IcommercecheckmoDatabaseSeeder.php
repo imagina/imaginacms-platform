@@ -3,7 +3,6 @@
 namespace Modules\Icommercecheckmo\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Isite\Jobs\ProcessSeeds;
 
 class IcommercecheckmoDatabaseSeeder extends Seeder
@@ -15,12 +14,9 @@ class IcommercecheckmoDatabaseSeeder extends Seeder
      */
     public function run()
     {
-       
         ProcessSeeds::dispatch([
-            "baseClass" => "\Modules\Icommercecheckmo\Database\Seeders",
-            "seeds" => ["IcommercecheckmoModuleTableSeeder", "IcommercecheckmoSeeder"]
+            'baseClass' => "\Modules\Icommercecheckmo\Database\Seeders",
+            'seeds' => ['IcommercecheckmoModuleTableSeeder', 'IcommercecheckmoSeeder'],
         ]);
- 
     }
-
 }

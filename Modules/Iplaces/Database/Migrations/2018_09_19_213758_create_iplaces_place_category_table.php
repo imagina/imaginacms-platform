@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIplacesPlaceCategoryTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateIplacesPlaceCategoryTable extends Migration
             $table->integer('place_id')->unsigned();
             $table->integer('category_id')->unsigned();
 
-           // $table->timestamps();
+            // $table->timestamps();
         });
     }
 

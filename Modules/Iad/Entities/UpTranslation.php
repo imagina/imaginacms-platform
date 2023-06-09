@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class UpTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
-      'title',
-      'description',
+        'title',
+        'description',
     ];
+
     protected $table = 'iad__ups_translations';
 }

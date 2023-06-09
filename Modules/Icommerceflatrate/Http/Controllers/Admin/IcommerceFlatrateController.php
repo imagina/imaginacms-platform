@@ -2,13 +2,12 @@
 
 namespace Modules\Icommerceflatrate\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommerceflatrate\Entities\IcommerceFlatrate;
 use Modules\Icommerceflatrate\Http\Requests\CreateIcommerceFlatrateRequest;
 use Modules\Icommerceflatrate\Http\Requests\UpdateIcommerceFlatrateRequest;
 use Modules\Icommerceflatrate\Repositories\IcommerceFlatrateRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceFlatrateController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class IcommerceFlatrateController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceFlatrateRequest $request
      * @return Response
      */
     public function store(CreateIcommerceFlatrateRequest $request)
@@ -63,7 +61,6 @@ class IcommerceFlatrateController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceFlatrate $icommerceflatrate
      * @return Response
      */
     public function edit(IcommerceFlatrate $icommerceflatrate)
@@ -74,8 +71,6 @@ class IcommerceFlatrateController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceFlatrate $icommerceflatrate
-     * @param  UpdateIcommerceFlatrateRequest $request
      * @return Response
      */
     public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request)
@@ -89,7 +84,6 @@ class IcommerceFlatrateController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceFlatrate $icommerceflatrate
      * @return Response
      */
     public function destroy(IcommerceFlatrate $icommerceflatrate)

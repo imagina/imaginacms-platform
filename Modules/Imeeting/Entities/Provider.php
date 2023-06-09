@@ -8,10 +8,10 @@ use Modules\Media\Support\Traits\MediaRelation;
 
 class Provider extends CrudModel
 {
-
     use Translatable, MediaRelation;
 
     public $transformer = 'Modules\Imeeting\Transformers\ProviderTransformer';
+
     public $requestValidation = [
         'create' => 'Modules\Imeeting\Http\Requests\CreateProviderRequest',
         'update' => 'Modules\Imeeting\Http\Requests\UpdateProviderRequest',
@@ -19,7 +19,7 @@ class Provider extends CrudModel
 
     public $translatedAttributes = [
         'title',
-        'description'
+        'description',
     ];
 
     protected $table = 'imeeting__providers';
@@ -27,13 +27,12 @@ class Provider extends CrudModel
     protected $fillable = [
         'status',
         'name',
-        'options'
+        'options',
     ];
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
-
 
     public function getOptionsAttribute($value)
     {
@@ -44,5 +43,4 @@ class Provider extends CrudModel
     {
         $this->attributes['options'] = json_encode($value);
     }
-
 }

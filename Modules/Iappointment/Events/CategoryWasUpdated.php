@@ -2,22 +2,19 @@
 
 namespace Modules\Iappointment\Events;
 
-
 class CategoryWasUpdated
 {
     public $entity;
-    public  $data;
+
+    public $data;
 
     /**
      * Create a new event instance.
-     *
-     * @param $entity
-     * @param array $data
      */
-    public function __construct($entity,array $data)
+    public function __construct($entity, array $data)
     {
-      $this->data=$data;
-      $this->entity=$entity;
+        $this->data = $data;
+        $this->entity = $entity;
     }
 
     public function getEntity()
@@ -27,12 +24,11 @@ class CategoryWasUpdated
 
     /**
      * Return the ALL data sent
+     *
      * @return array
      */
-
     public function getSubmissionData()
     {
         return $this->data;
     }
-
 }

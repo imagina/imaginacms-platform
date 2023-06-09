@@ -5,10 +5,10 @@ return [
     'shippingName' => 'icommercefreeshipping',
 
     /**
-	*	Calcule Types
-	*	- minimumTotalOrder
-	*	- minimumTotalNotFreeshipping
-    */
+     *	Calcule Types
+     *	- minimumTotalOrder
+     *	- minimumTotalNotFreeshipping
+     */
     'calculeType' => 'minimumTotalOrder',
- 
+
 ];

@@ -5,17 +5,13 @@ namespace Modules\Isite\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 // Base Api
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
 //Auth
 use Modules\Isite\Http\Requests\CreateRecommendationRequest;
 use Modules\Isite\Http\Requests\UpdateRecommendationRequest;
 use Modules\Isite\Repositories\RecommendationRepository;
 use Modules\Isite\Transformers\RecommendationTransformer;
-use Modules\User\Contracts\Authentication;
-
 
 class RecommendationApiController extends BaseApiController
 {
@@ -25,7 +21,6 @@ class RecommendationApiController extends BaseApiController
     {
         $this->recommendation = $recommendation;
     }
-
 
     /**
      * GET ITEMS
@@ -43,15 +38,15 @@ class RecommendationApiController extends BaseApiController
 
             //Response
             $response = [
-                "data" => RecommendationTransformer::collection($dataEntity)
+                'data' => RecommendationTransformer::collection($dataEntity),
             ];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($dataEntity)] : false;
         } catch (\Exception $e) {
-          \Log::error($e->getMessage());
+            \Log::error($e->getMessage());
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
@@ -61,7 +56,6 @@ class RecommendationApiController extends BaseApiController
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -74,15 +68,16 @@ class RecommendationApiController extends BaseApiController
             $dataEntity = $this->recommendation->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$dataEntity) throw new \Exception('Item not found', 404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new RecommendationTransformer($dataEntity)];
-
+            $response = ['data' => new RecommendationTransformer($dataEntity)];
         } catch (\Exception $e) {
-          \Log::error($e->getMessage());
+            \Log::error($e->getMessage());
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
@@ -92,31 +87,29 @@ class RecommendationApiController extends BaseApiController
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
     {
-
         \DB::beginTransaction();
         try {
             //Get data
             $data = $request->input('attributes');
 
             //Validate Request
-            $this->validateRequestApi(new CreateRecommendationRequest((array)$data));
-            
+            $this->validateRequestApi(new CreateRecommendationRequest((array) $data));
+
             //Create item
             $recommendation = $this->recommendation->create($data);
 
             //Response
-            $response = ["data" =>  new RecommendationTransformer($recommendation)];
+            $response = ['data' => new RecommendationTransformer($recommendation)];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-          \Log::error($e->getMessage());
-            \DB::rollback();//Rollback to Data Base
+            \Log::error($e->getMessage());
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
         return response()->json($response, $status ?? 200);
@@ -125,8 +118,6 @@ class RecommendationApiController extends BaseApiController
     /**
      * UPDATE ITEM
      *
-     * @param $criteria
-     * @param Request $request
      * @return mixed
      */
     public function update($criteria, Request $request)
@@ -137,7 +128,7 @@ class RecommendationApiController extends BaseApiController
             $data = $request->input('attributes');
 
             //Validate Request
-            $this->validateRequestApi(new UpdateRecommendationRequest((array)$data));
+            $this->validateRequestApi(new UpdateRecommendationRequest((array) $data));
 
             //Get Parameters from URL.
             $params = $this->getParamsRequest($request);
@@ -146,13 +137,13 @@ class RecommendationApiController extends BaseApiController
             $this->recommendation->updateBy($criteria, $data, $params);
 
             //Response
-            $response = ["data" => 'Item Updated'];
-            \DB::commit();//Commit to DataBase
+            $response = ['data' => 'Item Updated'];
+            \DB::commit(); //Commit to DataBase
         } catch (\Exception $e) {
-          \Log::error($e->getMessage());
-            \DB::rollback();//Rollback to Data Base
+            \Log::error($e->getMessage());
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
@@ -162,7 +153,6 @@ class RecommendationApiController extends BaseApiController
     /**
      * DELETE A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function delete($criteria, Request $request)
@@ -176,18 +166,16 @@ class RecommendationApiController extends BaseApiController
             $this->recommendation->deleteBy($criteria, $params);
 
             //Response
-            $response = ["data" => ""];
-            \DB::commit();//Commit to Data Base
+            $response = ['data' => ''];
+            \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-          \Log::error($e->getMessage());
-            \DB::rollback();//Rollback to Data Base
+            \Log::error($e->getMessage());
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
         return response()->json($response, $status ?? 200);
     }
-
-
 }

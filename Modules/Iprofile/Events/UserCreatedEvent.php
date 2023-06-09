@@ -6,15 +6,15 @@ use Illuminate\Queue\SerializesModels;
 
 class UserCreatedEvent
 {
-  use SerializesModels;
-  public $user;
-  public $bindings;
+    use SerializesModels;
 
-  public function __construct($user, $bindings)
-  {
-   
-    $this->user = $user;
-    $this->bindings = $bindings;
+    public $user;
 
-  }
+    public $bindings;
+
+    public function __construct($user, $bindings)
+    {
+        $this->user = $user;
+        $this->bindings = $bindings;
+    }
 }

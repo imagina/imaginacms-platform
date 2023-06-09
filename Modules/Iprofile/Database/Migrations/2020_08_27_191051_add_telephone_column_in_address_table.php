@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddTelephoneColumnInAddressTable extends Migration
 {
@@ -13,11 +13,9 @@ class AddTelephoneColumnInAddressTable extends Migration
      */
     public function up()
     {
-      Schema::table('iprofile__addresses', function (Blueprint $table) {
-        
-        $table->string('telephone')->nullable();
-    
-      });
+        Schema::table('iprofile__addresses', function (Blueprint $table) {
+            $table->string('telephone')->nullable();
+        });
     }
 
     /**
@@ -27,8 +25,8 @@ class AddTelephoneColumnInAddressTable extends Migration
      */
     public function down()
     {
-      Schema::table('iprofile__addresses', function($table) {
-        $table->dropColumn('telephone');
-      });
+        Schema::table('iprofile__addresses', function ($table) {
+            $table->dropColumn('telephone');
+        });
     }
 }

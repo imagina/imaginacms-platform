@@ -2,8 +2,8 @@
 
 return [
 
-//Roles to register
-/*
+    //Roles to register
+    /*
   'rolesToTenantBlog' => [
     "onlySuperAdmin" => true,
     'name' => 'icustom::roleToTenantBlog',

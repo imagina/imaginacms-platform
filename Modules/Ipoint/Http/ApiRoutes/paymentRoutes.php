@@ -14,6 +14,4 @@ $router->group(['prefix' => '/payment'], function (Router $router) {
         'as' => 'ipoint.api.payment.processPayment',
         'uses' => 'PaymentApiController@processPayment',
     ]);
-   
-
 });

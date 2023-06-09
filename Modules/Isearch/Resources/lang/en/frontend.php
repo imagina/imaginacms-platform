@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "index"=>[
-    "items" => "Results"
-  ]
+    'index' => [
+        'items' => 'Results',
+    ],
 ];

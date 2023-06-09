@@ -3,26 +3,21 @@
 namespace Modules\Igamification\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Igamification\Entities\Activity;
 //Repositories
 use Modules\Igamification\Repositories\ActivityRepository;
-
 // Entities
-use Modules\Igamification\Entities\Activity;
-
-//Transformer
 use Modules\Igamification\Transformers\ActivityTransformer;
+//Transformer
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class ActivityUserApiController extends BaseApiController
 {
-
     public $activity;
 
     public function __construct(
         ActivityRepository $activity
-    ){
+    ) {
         parent::__construct();
         $this->activity = $activity;
     }
@@ -39,21 +34,22 @@ class ActivityUserApiController extends BaseApiController
             $params = $this->getParamsRequest($request);
 
             //Filter params
-            $paramsFilters = (array)$params->filter;
+            $paramsFilters = (array) $params->filter;
 
             //Filter default
-            $defaultFilters = ["status" => 1]; // Only Actives
+            $defaultFilters = ['status' => 1]; // Only Actives
 
             //Merge filters
-            $filters = array_merge($paramsFilters,$defaultFilters);
-            $params->filter = (object)($filters);
+            $filters = array_merge($paramsFilters, $defaultFilters);
+            $params->filter = (object) ($filters);
 
             // Get activities
             $activities = $this->activity->getItemsBy(json_decode(json_encode($params)));
             //$activities = Activity::with('translations')->where('status',1)->get();
 
-            if(count($activities)==0)
+            if (count($activities) == 0) {
                 throw new \Exception(trans('igamification::activities.validation.not actives'), 500);
+            }
 
             //Get User Logged - Middleware Auth
             $userId = \Auth::user()->id;
@@ -61,15 +57,16 @@ class ActivityUserApiController extends BaseApiController
             //Get activities completed for this User
             $response = [];
             foreach ($activities as &$activity) {
-                $user = $activity->users->where('id',$userId)->first();
+                $user = $activity->users->where('id', $userId)->first();
                 $activity = json_decode(json_encode(new ActivityTransformer($activity)));
 
                 $activity->userId = $userId;
 
-                if(!is_null($user))
+                if (! is_null($user)) {
                     $activity->userCompleted = true;
-                else
+                } else {
                     $activity->userCompleted = false;
+                }
 
                 // To clean result data
                 unset($activity->users);
@@ -80,19 +77,16 @@ class ActivityUserApiController extends BaseApiController
                 Response Collection activities with 2 extra attributes:
                     user_id and user_completed
             */
-            $response = ["data" => collect($response)];
+            $response = ['data' => collect($response)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($models)] : false;
-
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($models)] : false;
         } catch (\Exception $e) {
             \Log::Error($e);
-            $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+            $response = ['messages' => [['message' => $e->getMessage(), 'type' => 'error']]];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
-
-
 }

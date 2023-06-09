@@ -3,7 +3,6 @@
 namespace Modules\Icredit\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
-use Modules\Ihelpers\Rules\UniqueSlugRule;
 
 class CreateCreditRequest extends BaseFormRequest
 {
@@ -14,7 +13,6 @@ class CreateCreditRequest extends BaseFormRequest
 
     public function translationRules()
     {
-
         return [
             'description' => 'required|min:2',
         ];
@@ -40,7 +38,8 @@ class CreateCreditRequest extends BaseFormRequest
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
 }

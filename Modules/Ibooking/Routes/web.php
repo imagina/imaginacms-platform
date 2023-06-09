@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ibooking')->group(function() {
+Route::prefix('ibooking')->group(function () {
     Route::get('/', 'IbookingController@index');
 });

@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Attendant;
 use Modules\Ievent\Http\Requests\CreateAttendantRequest;
 use Modules\Ievent\Http\Requests\UpdateAttendantRequest;
 use Modules\Ievent\Repositories\AttendantRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AttendantController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class AttendantController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateAttendantRequest $request
      * @return Response
      */
     public function store(CreateAttendantRequest $request)
@@ -63,7 +61,6 @@ class AttendantController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Attendant $attendant
      * @return Response
      */
     public function edit(Attendant $attendant)
@@ -74,8 +71,6 @@ class AttendantController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Attendant $attendant
-     * @param  UpdateAttendantRequest $request
      * @return Response
      */
     public function update(Attendant $attendant, UpdateAttendantRequest $request)
@@ -89,7 +84,6 @@ class AttendantController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Attendant $attendant
      * @return Response
      */
     public function destroy(Attendant $attendant)

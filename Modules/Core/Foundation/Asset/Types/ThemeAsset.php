@@ -7,9 +7,6 @@ use Illuminate\Support\Arr;
 
 class ThemeAsset implements AssetType
 {
-    /**
-     * @var
-     */
     private $path;
 
     public function __construct($path)
@@ -19,6 +16,7 @@ class ThemeAsset implements AssetType
 
     /**
      * Get the URL
+     *
      * @return string
      */
     public function url()

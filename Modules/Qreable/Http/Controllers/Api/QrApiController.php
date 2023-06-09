@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Modules\Qreable\Http\Controllers\Api;
-
 
 use Illuminate\Http\Request;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
@@ -20,10 +18,9 @@ class QrApiController extends BaseApiController
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
-    public function show($criteria,Request $request)
+    public function show($criteria, Request $request)
     {
         try {
             //Get Parameters from URL.
@@ -33,14 +30,16 @@ class QrApiController extends BaseApiController
             $qr = $this->qr->getItem($criteria, $params);
 
             //Break if no found item
-            if(!$qr) throw new \Exception('Item not found',404);
+            if (! $qr) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Redirect to
             return redirect()->to($qr->redirect);
-
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
+
             return response()->json($response, $status ?? 200);
         }
     }

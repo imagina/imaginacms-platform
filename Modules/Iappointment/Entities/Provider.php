@@ -12,7 +12,7 @@ class Provider extends Model
 
     public $translatedAttributes = [
         'title',
-        'description'
+        'description',
     ];
 
     protected $table = 'iappointment__providers';
@@ -20,13 +20,12 @@ class Provider extends Model
     protected $fillable = [
         'status',
         'name',
-        'options'
+        'options',
     ];
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
-
 
     public function getOptionsAttribute($value)
     {
@@ -37,5 +36,4 @@ class Provider extends Model
     {
         $this->attributes['options'] = json_encode($value);
     }
-
 }

@@ -13,7 +13,7 @@ return [
     | Location where your themes are located
     |--------------------------------------------------------------------------
     */
-    'themes_path' => base_path() . '/Themes',
+    'themes_path' => base_path().'/Themes',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,8 +70,8 @@ return [
         ],
         'api' => [
             'api',
-          'universal',
-          \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class
+            'universal',
+            \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
         ],
     ],
 

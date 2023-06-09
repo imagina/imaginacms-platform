@@ -1,12 +1,11 @@
 <?php
 
-
 namespace Modules\Icommerce\Events;
-
 
 class CouponWasUpdated
 {
     public $model;
+
     public $data;
 
     public function __construct($model, array $data)
@@ -17,6 +16,7 @@ class CouponWasUpdated
 
     /**
      * Return the entity
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntity()
@@ -26,11 +26,11 @@ class CouponWasUpdated
 
     /**
      * Return the ALL data sent
+     *
      * @return array
      */
     public function getSubmissionData()
     {
         return $this->data;
     }
-    
 }

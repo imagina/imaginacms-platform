@@ -6,19 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class IcommerceOrderFieldInProductOptonTable extends Migration
 {
+    public function up()
+    {
+        Schema::table('icommerce__product_option', function (Blueprint $table) {
+            $table->integer('sort_order')->unsigned()->nullable();
+        });
+    }
 
-  public function up()
-  {
-      Schema::table('icommerce__product_option', function (Blueprint $table) {
-          $table->integer('sort_order')->unsigned()->nullable();
-      });
-
-  }
-
-  public function down()
-  {
-    Schema::table('icommerce__product_option', function (Blueprint $table) {
-      $table->dropColumn('sort_order');
-    });
-  }
+    public function down()
+    {
+        Schema::table('icommerce__product_option', function (Blueprint $table) {
+            $table->dropColumn('sort_order');
+        });
+    }
 }

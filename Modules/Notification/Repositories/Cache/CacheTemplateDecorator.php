@@ -2,8 +2,8 @@
 
 namespace Modules\Notification\Repositories\Cache;
 
-use Modules\Notification\Repositories\TemplateRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Notification\Repositories\TemplateRepository;
 
 class CacheTemplateDecorator extends BaseCacheDecorator implements TemplateRepository
 {

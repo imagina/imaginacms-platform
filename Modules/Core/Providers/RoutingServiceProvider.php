@@ -43,7 +43,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
     public function map(Router $router)
@@ -62,9 +61,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * @param Router $router
-     */
     private function loadFrontendRoutes(Router $router)
     {
         $frontend = $this->getFrontendRoute();
@@ -78,9 +74,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * @param Router $router
-     */
     private function loadBackendRoutes(Router $router)
     {
         $backend = $this->getBackendRoute();
@@ -96,9 +89,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * @param Router $router
-     */
     private function loadApiRoutes(Router $router)
     {
         $api = $this->getApiRoute();
@@ -106,7 +96,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         if ($api && file_exists($api)) {
             $router->group([
                 'namespace' => 'Api',
-                'prefix' => LaravelLocalization::setLocale() . '/api',
+                'prefix' => LaravelLocalization::setLocale().'/api',
                 'middleware' => config('asgard.core.core.middleware.api', []),
             ], function (Router $router) use ($api) {
                 require $api;

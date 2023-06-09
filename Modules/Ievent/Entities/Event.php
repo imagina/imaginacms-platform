@@ -2,107 +2,108 @@
 
 namespace Modules\Ievent\Entities;
 
-use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Iplaces\Entities\Place;
-use Modules\Iplaces\Entities\Route;
 use Modules\Iprofile\Entities\Department;
 use Modules\Media\Support\Traits\MediaRelation;
-use Modules\Media\Entities\File;
-use Modules\User\Entities\Sentinel\User;
-use Modules\Ievent\Transformers\ServiceCategoryTransformer;
 
 class Event extends Model
 {
-  use MediaRelation;
+    use MediaRelation;
 
-  protected $table = 'ievent__events';
-  protected $fillable = [
-    "title",
-    "slug",
-    "status",
-    "date",
-    "hour",
-    "is_public",
-    "description",
-    "category_id",
-    "place_id",
-    "user_id",
-    "department_id",
-    "options"
-  ];
+    protected $table = 'ievent__events';
 
-  protected $fakeColumns = ['options'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'status',
+        'date',
+        'hour',
+        'is_public',
+        'description',
+        'category_id',
+        'place_id',
+        'user_id',
+        'department_id',
+        'options',
+    ];
 
-  protected $casts = [
-    'options' => 'array'
-  ];
-  protected $width = [
-    'team'
-  ];
+    protected $fakeColumns = ['options'];
 
-  public function user()
-  {
-    $driver = config('asgard.user.config.driver');
-    return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User");
-  }
+    protected $casts = [
+        'options' => 'array',
+    ];
 
-  public function category()
-  {
-    return $this->belongsTo(Category::class);
-  }
+    protected $width = [
+        'team',
+    ];
 
-  public function attendants()
-  {
-    return $this->hasMany(Attendant::class);
-  }
+    public function user()
+    {
+        $driver = config('asgard.user.config.driver');
 
-  public function place()
-  {
-    return $this->belongsTo(Place::class)->with(['city', 'category']);
-  }
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User");
+    }
 
-  public function department()
-  {
-    return $this->belongsTo(Department::class);
-  }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-  public function getAttendantsCountAttribute()
-  {
-    return $this->attendants->count();
-  }
+    public function attendants()
+    {
+        return $this->hasMany(Attendant::class);
+    }
 
-  public function getLastAttendantsAttribute()
-  {
-    return $this->attendants()->orderBy("id", "desc")->take(3)->get();
-  }
+    public function place()
+    {
+        return $this->belongsTo(Place::class)->with(['city', 'category']);
+    }
 
-  public function getStatusNameAttribute()
-  {
-    return (new Status())->get($this->status);
-  }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 
-  public function getOptionsAttribute($value)
-  {
-    $options = json_decode($value);
+    public function getAttendantsCountAttribute()
+    {
+        return $this->attendants->count();
+    }
 
-    if (isset($options->mainImage))
-      $options->mainImage = url($options->mainImage);
-    if (isset($options->secondaryImage))
-      $options->secondaryImage = url($options->secondaryImage);
+    public function getLastAttendantsAttribute()
+    {
+        return $this->attendants()->orderBy('id', 'desc')->take(3)->get();
+    }
 
-    return $options;
-  }
+    public function getStatusNameAttribute()
+    {
+        return (new Status())->get($this->status);
+    }
 
-  public function setOptionsAttribute($value)
-  {
-    $this->attributes['options'] = json_encode($value);
-  }
+    public function getOptionsAttribute($value)
+    {
+        $options = json_decode($value);
 
-  public function setUpdatedAtAttribute($value)
-  {
-    $this->attributes['updated_at'] = $value;
-    if (isset($this->id))
-      $this->save();
-  }
+        if (isset($options->mainImage)) {
+            $options->mainImage = url($options->mainImage);
+        }
+        if (isset($options->secondaryImage)) {
+            $options->secondaryImage = url($options->secondaryImage);
+        }
+
+        return $options;
+    }
+
+    public function setOptionsAttribute($value)
+    {
+        $this->attributes['options'] = json_encode($value);
+    }
+
+    public function setUpdatedAtAttribute($value)
+    {
+        $this->attributes['updated_at'] = $value;
+        if (isset($this->id)) {
+            $this->save();
+        }
+    }
 }

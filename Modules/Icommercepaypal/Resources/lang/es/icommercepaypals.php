@@ -19,7 +19,7 @@ return [
         'clientId' => 'Client ID',
         'clientSecret' => 'Client Secret',
         'mode' => 'Mode',
-        'currency' => 'Currency'
+        'currency' => 'Currency',
     ],
     'form' => [
     ],

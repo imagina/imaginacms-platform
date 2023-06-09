@@ -1,6 +1,5 @@
 <?php
 
 return [
-  "name" => "Pages"
+    'name' => 'Pages',
 ];
-

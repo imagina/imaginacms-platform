@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'icommercexpay'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercexpay.api.xpay.init',
         'uses' => 'IcommerceXpayApiController@init',
@@ -28,5 +27,4 @@ $router->group(['prefix' => 'icommercexpay'], function (Router $router) {
         'as' => 'icommercexpay.api.xpay.response',
         'uses' => 'IcommerceXpayApiController@response',
     ]);
-
 });

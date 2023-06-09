@@ -4,14 +4,15 @@ namespace Modules\Icommercebraintree\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercebraintree\Events\Handlers\RegisterIcommercebraintreeSidebar;
 
 class IcommercebraintreeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercebraintreeServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercebraintrees', Arr::dot(trans('icommercebraintree::icommercebraintrees')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercebraintreeServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommercebraintreeServiceProvider extends ServiceProvider
                 return new \Modules\Icommercebraintree\Repositories\Cache\CacheIcommerceBraintreeDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

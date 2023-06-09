@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeDateStartToDateTypeInCouponsTable extends Migration
 {
@@ -13,12 +13,10 @@ class ChangeDateStartToDateTypeInCouponsTable extends Migration
      */
     public function up()
     {
-      Schema::table('icommerce__coupons', function (Blueprint $table) {
-  
-        $table->date('date_start')->default(null)->change();
-        $table->date('date_end')->default(null)->change();
-    
-      });
+        Schema::table('icommerce__coupons', function (Blueprint $table) {
+            $table->date('date_start')->default(null)->change();
+            $table->date('date_end')->default(null)->change();
+        });
     }
 
     /**

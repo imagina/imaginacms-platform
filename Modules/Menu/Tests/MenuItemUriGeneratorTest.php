@@ -11,6 +11,7 @@ class MenuItemUriGeneratorTest extends BaseMenuTest
      * @var PageRepository
      */
     private $page;
+
     /**
      * @var MenuItemUriGenerator
      */

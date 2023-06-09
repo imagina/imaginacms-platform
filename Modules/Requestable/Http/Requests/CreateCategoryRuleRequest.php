@@ -14,7 +14,7 @@ class CreateCategoryRuleRequest extends BaseFormRequest
     public function translationRules()
     {
         return [
-            'title' => 'required'
+            'title' => 'required',
         ];
     }
 
@@ -25,7 +25,7 @@ class CreateCategoryRuleRequest extends BaseFormRequest
 
     public function messages()
     {
-        return [ ];
+        return [];
     }
 
     public function translationMessages()
@@ -35,8 +35,8 @@ class CreateCategoryRuleRequest extends BaseFormRequest
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
-    
 }

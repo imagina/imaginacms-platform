@@ -12,17 +12,19 @@ class UniqueSlugRule implements Rule
      * @return void
      */
     public $table;
-    public $id;
-    public $columnId;
-    public $message;
-    
-    public function __construct($table, $id = null, $columnId = "", $message = "")
-    {
-      $this->table = $table;
-      $this->id = $id;
-      $this->columnId = $columnId;
-      $this->message = !empty($message) ? $message : 'There are another register with the same slug-locale.';
 
+    public $id;
+
+    public $columnId;
+
+    public $message;
+
+    public function __construct($table, $id = null, $columnId = '', $message = '')
+    {
+        $this->table = $table;
+        $this->id = $id;
+        $this->columnId = $columnId;
+        $this->message = ! empty($message) ? $message : 'There are another register with the same slug-locale.';
     }
 
     /**
@@ -34,18 +36,18 @@ class UniqueSlugRule implements Rule
      */
     public function passes($attribute, $value)
     {
+        $explodeAttributes = explode('.', $attribute);
+        $slugs = \DB::table($this->table)
+          ->where($explodeAttributes[1], $value)
+          ->where('locale', $explodeAttributes[0]);
 
-      $explodeAttributes = explode(".",$attribute);
-      $slugs = \DB::table($this->table)
-        ->where($explodeAttributes[1],$value)
-        ->where('locale',$explodeAttributes[0]);
+        if ($this->id) {
+            $slugs = $slugs->where($this->columnId, '!=', $this->id);
+        }
 
-      if($this->id){
-        $slugs = $slugs->where($this->columnId, "!=", $this->id);
-      }
+        $slugs = $slugs->first();
 
-      $slugs = $slugs->first();
-      return !$slugs;
+        return ! $slugs;
     }
 
     /**
@@ -55,6 +57,6 @@ class UniqueSlugRule implements Rule
      */
     public function message()
     {
-      return $this->message;
+        return $this->message;
     }
 }

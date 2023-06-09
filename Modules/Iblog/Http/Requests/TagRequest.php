@@ -25,7 +25,7 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2'
+            'title' => 'required|min:2',
 
         ];
     }
@@ -51,7 +51,7 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     {
         return [
             'title.required' => trans('iblog::common.messages.title is required'),
-            'title.min:2'=> trans('iblog::common.messages.title min 2 ')
+            'title.min:2' => trans('iblog::common.messages.title min 2 '),
         ];
     }
 }

@@ -4,7 +4,6 @@ namespace Modules\Iplaces\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
-
 class ZonePresenter extends Presenter
 {
     private $zone;
@@ -13,7 +12,5 @@ class ZonePresenter extends Presenter
     {
         parent::__construct($entity);
         $this->zone = app('Modules\Iplaces\Repositories\ZoneRepository');
-
     }
-
 }

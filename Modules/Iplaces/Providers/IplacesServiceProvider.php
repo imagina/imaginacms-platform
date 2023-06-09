@@ -4,15 +4,15 @@ namespace Modules\Iplaces\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Iplaces\Events\Handlers\RegisterIplacesSidebar;
-use Illuminate\Support\Facades\Blade;
 
 class IplacesServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -28,7 +28,7 @@ class IplacesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
-          $this->app['events']->listen(BuildingSidebar::class, RegisterIplacesSidebar::class);
+        $this->app['events']->listen(BuildingSidebar::class, RegisterIplacesSidebar::class);
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('places', Arr::dot(trans('iplaces::places')));
             $event->load('categories', Arr::dot(trans('iplaces::categories')));
@@ -45,8 +45,8 @@ class IplacesServiceProvider extends ServiceProvider
         $this->publishConfig('iplaces', 'settings');
         $this->publishConfig('iplaces', 'config');
         $this->publishConfig('iplaces', 'crud-fields');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplaces', 'cmsPages'), "asgard.iplaces.cmsPages");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplaces', 'cmsSidebar'), "asgard.iplaces.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplaces', 'cmsPages'), 'asgard.iplaces.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplaces', 'cmsSidebar'), 'asgard.iplaces.cmsSidebar');
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -57,7 +57,7 @@ class IplacesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -147,11 +147,6 @@ class IplacesServiceProvider extends ServiceProvider
                 return new \Modules\Iplaces\Repositories\Cache\CacheCityDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
+        // add bindings
     }
 }

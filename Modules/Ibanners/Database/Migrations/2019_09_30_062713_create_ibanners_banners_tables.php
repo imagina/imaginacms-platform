@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbannersBannersTables extends Migration {
-
+class CreateIbannersBannersTables extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,8 +12,7 @@ class CreateIbannersBannersTables extends Migration {
      */
     public function up()
     {
-        Schema::create('ibanners__banners', function(Blueprint $table)
-        {
+        Schema::create('ibanners__banners', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order')->unsigned()->default(0);
             $table->string('type')->default('')->nullable();
@@ -34,5 +33,4 @@ class CreateIbannersBannersTables extends Migration {
     {
         Schema::drop('ibanners__banners');
     }
-
 }

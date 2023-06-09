@@ -3,25 +3,26 @@
 namespace Modules\Iplaces\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Log;
-use Mockery\CountValidator\Exception;
 use Modules\Core\Http\Controllers\BasePublicController;
+use Modules\Ilocations\Repositories\CityRepository;
 use Modules\Iplaces\Repositories\CategoryRepository;
 use Modules\Iplaces\Repositories\PlaceRepository;
 use Modules\Iplaces\Repositories\ScheduleRepository;
 use Modules\Iplaces\Repositories\ServiceRepository;
 use Modules\Iplaces\Repositories\ZoneRepository;
-use Modules\Ilocations\Repositories\CityRepository;
-use Route;
 
 class OldPublicController extends BasePublicController
 {
-
     public $place;
+
     public $category;
+
     public $service;
+
     public $zone;
+
     public $schedule;
+
     public $city;
 
     public function __construct(PlaceRepository $place, CategoryRepository $category, CityRepository $city, ServiceRepository $service, ZoneRepository $zone, ScheduleRepository $schedule)
@@ -32,11 +33,10 @@ class OldPublicController extends BasePublicController
         $this->service = $service;
         $this->zone = $zone;
         $this->schedule = $schedule;
-        $this->city=$city;
+        $this->city = $city;
     }
 
     /**
-     * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
@@ -45,11 +45,11 @@ class OldPublicController extends BasePublicController
         $oldServ = null;
         $oldZone = null;
         $oldSche = null;
-        if ((isset($request->categories) && !empty($request->categories)) ||
-            (isset($request->services) && !empty($request->services)) ||
-            (isset($request->zones) && !empty($request->zones)) ||
-            (isset($request->schedules) && !empty($request->schedules)) || (isset($request->gama) && !empty($request->gama))|| (isset($request->cities) && !empty($request->cities))|| (isset($request->quantity_persons) && !empty($request->quantity_persons))) {
-            $filter = ['categories' => $request->categories, 'gama' => $request->gama, 'quantity_persons' => $request->quantity_persons, "services" => $request->services, "zones" => $request->zones, "schedules" => $request->schedules,'cities' => $request->cities];
+        if ((isset($request->categories) && ! empty($request->categories)) ||
+            (isset($request->services) && ! empty($request->services)) ||
+            (isset($request->zones) && ! empty($request->zones)) ||
+            (isset($request->schedules) && ! empty($request->schedules)) || (isset($request->gama) && ! empty($request->gama)) || (isset($request->cities) && ! empty($request->cities)) || (isset($request->quantity_persons) && ! empty($request->quantity_persons))) {
+            $filter = ['categories' => $request->categories, 'gama' => $request->gama, 'quantity_persons' => $request->quantity_persons, 'services' => $request->services, 'zones' => $request->zones, 'schedules' => $request->schedules, 'cities' => $request->cities];
 
             $places = $this->place->wherebyFilter($request->page ?? 1, $take = 12, json_decode(json_encode($filter)), $include = null);
             $oldCat = $request->categories;
@@ -66,19 +66,19 @@ class OldPublicController extends BasePublicController
         $zones = $this->zone->all();
         $schedules = $this->schedule->all();
         $categories = $this->category->all();
-        $cities=$this->city->all();
+        $cities = $this->city->all();
         $tpl = 'iplaces::frontend.index';
         $ttpl = 'iplaces.index';
 
-        if (view()->exists($ttpl)) $tpl = $ttpl;
+        if (view()->exists($ttpl)) {
+            $tpl = $ttpl;
+        }
 
-        Return view($tpl, compact('places', 'categories', 'zones', 'services', 'cities','schedules', 'oldCat', 'oldCity', 'oldZone', 'oldSche', 'oldGama', 'oldQuan'));
-
+        return view($tpl, compact('places', 'categories', 'zones', 'services', 'cities', 'schedules', 'oldCat', 'oldCity', 'oldZone', 'oldSche', 'oldGama', 'oldQuan'));
     }
 
     public function category($slugCategory)
     {
-
         $category = $this->category->findBySlug($slugCategory);
         $places = $this->place->whereCategory($category->id);
         $services = $this->service->all();
@@ -88,15 +88,15 @@ class OldPublicController extends BasePublicController
         $tpl = 'iplaces::frontend.index';
         $ttpl = 'iplaces.index';
 
-        if (view()->exists($ttpl)) $tpl = $ttpl;
+        if (view()->exists($ttpl)) {
+            $tpl = $ttpl;
+        }
 
-        Return view($tpl, compact('places', 'category', 'zones', 'services', 'categories', 'schedules'));
-
+        return view($tpl, compact('places', 'category', 'zones', 'services', 'categories', 'schedules'));
     }
 
     public function show($slugCategory, $slugPlace)
     {
-
         $category = $this->category->findBySlug($slugCategory);
         $place = $this->place->findBySlug($slugPlace);
         if ($place->category->id == $category->id) {
@@ -107,13 +107,13 @@ class OldPublicController extends BasePublicController
             $tpl = 'iplaces::frontend.show';
             $ttpl = 'iplaces.show';
 
-            if (view()->exists($ttpl)) $tpl = $ttpl;
+            if (view()->exists($ttpl)) {
+                $tpl = $ttpl;
+            }
 
-            Return view($tpl, compact('place', 'category', 'zones', 'services', 'categories', 'schedules'));
+            return view($tpl, compact('place', 'category', 'zones', 'services', 'categories', 'schedules'));
         }
 
         return abort(404);
-
-
     }
 }

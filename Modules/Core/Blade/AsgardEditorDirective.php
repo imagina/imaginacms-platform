@@ -7,8 +7,11 @@ use Illuminate\Support\Arr;
 class AsgardEditorDirective
 {
     private $content;
+
     private $lang;
+
     private $fieldName;
+
     private $labelName;
 
     public function show($arguments)
@@ -24,7 +27,6 @@ class AsgardEditorDirective
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {

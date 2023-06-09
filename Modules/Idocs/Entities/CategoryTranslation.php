@@ -2,19 +2,21 @@
 
 namespace Modules\Idocs\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryTranslation extends Model
 {
     use Sluggable;
 
     public $timestamps = false;
+
     protected $fillable = ['title', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'translatable_options'];
+
     protected $table = 'idocs__category_translations';
 
     protected $casts = [
-        'translatable_options' => 'array'
+        'translatable_options' => 'array',
     ];
 
     /**
@@ -26,23 +28,19 @@ class CategoryTranslation extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
-            ]
+                'source' => 'title',
+            ],
         ];
     }
 
     public function getMetaDescriptionAttribute()
     {
-
         return $this->meta_description ?? substr(strip_tags($this->description ?? ''), 0, 150);
     }
 
     public function getTranslatableOptionAttribute($value)
     {
-
         return json_decode($value);
-
-
     }
 
     /**
@@ -50,9 +48,6 @@ class CategoryTranslation extends Model
      */
     public function getMetaTitleAttribute()
     {
-
         return $this->meta_title ?? $this->title;
     }
-
-
 }

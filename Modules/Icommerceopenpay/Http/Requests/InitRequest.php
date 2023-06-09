@@ -9,7 +9,7 @@ class InitRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'orderId' => 'required'
+            'orderId' => 'required',
         ];
     }
 
@@ -26,15 +26,15 @@ class InitRequest extends BaseFormRequest
     public function messages()
     {
         return [
-            'orderId.required' => "Order Id Requerido", 
-            
+            'orderId.required' => 'Order Id Requerido',
+
         ];
     }
 
     public function translationMessages()
     {
         return [
-            'orderId.required' => "Order Id Requerido", 
+            'orderId.required' => 'Order Id Requerido',
         ];
     }
 }

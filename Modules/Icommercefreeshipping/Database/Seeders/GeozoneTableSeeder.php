@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercefreeshipping\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 use Modules\Ilocations\Entities\Geozones;
 
 class GeozoneTableSeeder extends Seeder
@@ -17,18 +17,16 @@ class GeozoneTableSeeder extends Seeder
     {
         Model::unguard();
 
-        $params = array(
-            'name' => "freeshipping",
-            'description' => "geozone with freeshipping"
-        );
+        $params = [
+            'name' => 'freeshipping',
+            'description' => 'geozone with freeshipping',
+        ];
 
         $newGeozone = Geozones::create($params);
-        
-        $newData["icommercefreeshipping::geozone"] = $newGeozone->id;
+
+        $newData['icommercefreeshipping::geozone'] = $newGeozone->id;
 
         $setting = app('Modules\Setting\Repositories\SettingRepository');
         $setting->createOrUpdate($newData);
-       
-
     }
 }

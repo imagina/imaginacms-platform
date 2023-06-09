@@ -1,26 +1,20 @@
 <?php
 
-
 namespace Modules\Ilocations\Http\Controllers\Api;
 
 // Libs
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 // Custom Requests
 use Modules\Ilocations\Http\Requests\CreatePolygonRequest;
 use Modules\Ilocations\Http\Requests\UpdatePolygonRequest;
-
 // Transformers
-use Modules\Ilocations\Transformers\PolygonTransformer;
-
-// Repositories
 use Modules\Ilocations\Repositories\PolygonRepository;
+// Repositories
+use Modules\Ilocations\Transformers\PolygonTransformer;
 
 class PolygonApiController extends BaseApiController
 {
-
     private $polygon;
 
     public function __construct(PolygonRepository $polygon)
@@ -37,14 +31,13 @@ class PolygonApiController extends BaseApiController
 
             $response = ['data' => PolygonTransformer::collection($polygons)];
 
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($polygons)] : false;
-
-
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($polygons)] : false;
         } catch (\Exception $exception) {
             \Log::Error($exception);
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -55,18 +48,19 @@ class PolygonApiController extends BaseApiController
 
             $dataEntity = $this->polygon->getItem($criteria, $params);
 
-            if (!$dataEntity) throw new \Exception('Item not found', 404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             $response = ['data' => new PolygonTransformer($dataEntity)];
-
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -80,11 +74,10 @@ class PolygonApiController extends BaseApiController
 
             $dataEntity = $this->polygon->create($data);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -92,8 +85,8 @@ class PolygonApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
-
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -109,15 +102,16 @@ class PolygonApiController extends BaseApiController
 
             $dataEntity = $this->polygon->getItem($criteria, $params);
 
-            if (!$dataEntity) throw new \Exception('Item not found', 404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             $this->polygon->update($dataEntity, $data);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -126,6 +120,7 @@ class PolygonApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -136,15 +131,16 @@ class PolygonApiController extends BaseApiController
             $params = $this->getParamsRequest($request);
 
             $dataEntity = $this->polygon->getItem($criteria, $params);
-            if(!$dataEntity) throw new \Exception('Item not found',404);
+            if (! $dataEntity) {
+                throw new \Exception('Item not found', 404);
+            }
 
             $this->polygon->destroy($dataEntity);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -153,7 +149,7 @@ class PolygonApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
-
 }

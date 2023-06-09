@@ -72,7 +72,7 @@ abstract class BaseTestCase extends TestCase
             'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English'],
             'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français'],
         ]);
-        $app['config']->set('modules.paths.modules', realpath(__DIR__ . '/../Modules'));
+        $app['config']->set('modules.paths.modules', realpath(__DIR__.'/../Modules'));
         $app['config']->set('stylist.themes.paths', [base_path('Themes')]);
         $app['config']->set('asgard.core.core.themes_path', base_path('Themes'));
     }

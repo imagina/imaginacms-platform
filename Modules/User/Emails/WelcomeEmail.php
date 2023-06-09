@@ -17,9 +17,6 @@ class WelcomeEmail extends Mailable implements ShouldQueue
      */
     public $user;
 
-    /**
-     * @var
-     */
     public $activationCode;
 
     public function __construct(UserInterface $user, $activationCode)

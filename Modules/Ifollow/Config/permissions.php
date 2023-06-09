@@ -9,6 +9,6 @@ return [
         'destroy' => 'ifollow::followers.destroy resource',
         'restore' => 'ifollow::followers.restore resource',
     ],
-// append
+    // append
 
 ];

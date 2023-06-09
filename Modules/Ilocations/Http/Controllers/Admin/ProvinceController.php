@@ -2,13 +2,12 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Province;
 use Modules\Ilocations\Http\Requests\CreateProvinceRequest;
 use Modules\Ilocations\Http\Requests\UpdateProvinceRequest;
 use Modules\Ilocations\Repositories\ProvinceRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ProvinceController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class ProvinceController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateProvinceRequest $request
      * @return Response
      */
     public function store(CreateProvinceRequest $request)
@@ -63,7 +61,6 @@ class ProvinceController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Province $province
      * @return Response
      */
     public function edit(Province $province)
@@ -74,8 +71,6 @@ class ProvinceController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Province $province
-     * @param  UpdateProvinceRequest $request
      * @return Response
      */
     public function update(Province $province, UpdateProvinceRequest $request)
@@ -89,7 +84,6 @@ class ProvinceController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Province $province
      * @return Response
      */
     public function destroy(Province $province)

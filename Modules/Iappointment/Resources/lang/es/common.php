@@ -1,4 +1,5 @@
 <?php
+
 return [
     'buttons' => [
         'continue' => 'Continuar',
@@ -6,5 +7,5 @@ return [
     ],
     'messages' => [
         'empty_plans' => 'No hay planes en esta categoría',
-    ]
+    ],
 ];

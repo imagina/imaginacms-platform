@@ -3,7 +3,6 @@
 namespace Modules\Isearch\Sidebar;
 
 use Maatwebsite\Sidebar\Group;
-use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\User\Contracts\Authentication;
 
@@ -15,8 +14,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -25,17 +22,11 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     }
 
     /**
-     * @param Menu $menu
-     *
      * @return Menu
      */
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-
-
-
-
         });
 
         return $menu;

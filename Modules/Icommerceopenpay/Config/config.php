@@ -9,9 +9,9 @@ return [
    | Configuration payment Modes
    |--------------------------------------------------------------------------
     */
-    'paymentModes'=> [
-        ['label' => 'Tarjeta de Debito o Credito','value' => 'cards'],
-        ['label' => 'PSE','value' => 'pse']
+    'paymentModes' => [
+        ['label' => 'Tarjeta de Debito o Credito', 'value' => 'cards'],
+        ['label' => 'PSE', 'value' => 'pse'],
     ],
-    
+
 ];

@@ -5,21 +5,16 @@ namespace Modules\Iappointment\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 // Base Api
-use Modules\Iappointment\Entities\Appointment;
 use Modules\Iappointment\Http\Requests\CreateAppointmentLeadRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentLeadRequest;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Iappointment\Repositories\AppointmentLeadRepository;
 // Transformers
 use Modules\Iappointment\Transformers\AppointmentLeadTransformer;
-
 // Entities
-use Modules\Iappointment\Entities\AppointmentLead;
 
 // Repositories
-use Modules\Iappointment\Repositories\AppointmentLeadRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class AppointmentLeadApiController extends BaseApiController
 {
@@ -45,23 +40,22 @@ class AppointmentLeadApiController extends BaseApiController
             $categories = $this->appointmentLead->getItemsBy($params);
 
             //Response
-            $response = ["data" => AppointmentLeadTransformer::collection($categories)];
+            $response = ['data' => AppointmentLeadTransformer::collection($categories)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($categories)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($categories)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -74,35 +68,35 @@ class AppointmentLeadApiController extends BaseApiController
             $appointmentLead = $this->appointmentLead->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$appointmentLead) throw new \Exception('Item not found', 404);
+            if (! $appointmentLead) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new AppointmentLeadTransformer($appointmentLead)];
+            $response = ['data' => new AppointmentLeadTransformer($appointmentLead)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($appointmentLead)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($appointmentLead)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
     {
-
         \DB::beginTransaction();
-        
+
         try {
-            $data = $request->input('attributes') ?? [];//Get data
+            $data = $request->input('attributes') ?? []; //Get data
             //Validate Request
 
             $this->validateRequestApi(new CreateAppointmentLeadRequest($data));
@@ -111,26 +105,24 @@ class AppointmentLeadApiController extends BaseApiController
             $this->appointmentLead->create($data);
 
             //Response
-            $response = ["data" => ""];
+            $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
+     *
      * @return Response
      */
     public function update($criteria, Request $request)
     {
-
-
         \DB::beginTransaction();
         try {
             $params = $this->getParamsRequest($request);
@@ -140,21 +132,23 @@ class AppointmentLeadApiController extends BaseApiController
             $this->validateRequestApi(new UpdateAppointmentLeadRequest($data));
 
             //Update data
-            $appointmentLead = $this->appointmentLead->updateBy($criteria, $data,$params);
+            $appointmentLead = $this->appointmentLead->updateBy($criteria, $data, $params);
 
             //Response
             $response = ['data' => 'Item Updated'];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
     /**
      * Remove the specified resource from storage.
+     *
      * @return Response
      */
     public function delete($criteria, Request $request)
@@ -171,10 +165,11 @@ class AppointmentLeadApiController extends BaseApiController
             $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 }

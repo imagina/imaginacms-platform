@@ -3,14 +3,15 @@
 namespace Modules\Icommercepaypal\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercepaypal\Events\Handlers\RegisterIcommercepaypalSidebar;
 
 class IcommercepaypalServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -31,7 +32,6 @@ class IcommercepaypalServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercepaypals', array_dot(trans('icommercepaypal::icommercepaypals')));
             // append translations
-
         });
     }
 
@@ -51,7 +51,7 @@ class IcommercepaypalServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -68,7 +68,6 @@ class IcommercepaypalServiceProvider extends ServiceProvider
                 return new \Modules\Icommercepaypal\Repositories\Cache\CacheIcommercePaypalDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

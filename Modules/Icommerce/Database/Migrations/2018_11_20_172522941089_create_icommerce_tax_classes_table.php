@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcommerceTaxClassesTable extends Migration
 {
@@ -32,10 +32,10 @@ class CreateIcommerceTaxClassesTable extends Migration
      */
     public function down()
     {
-      Schema::table('icommerce__tax_rates', function (Blueprint $table) {
-          //$table->dropForeign(['tax_class_id']);
-      });
+        Schema::table('icommerce__tax_rates', function (Blueprint $table) {
+            //$table->dropForeign(['tax_class_id']);
+        });
 
-      Schema::dropIfExists('icommerce__tax_classes');
+        Schema::dropIfExists('icommerce__tax_classes');
     }
 }

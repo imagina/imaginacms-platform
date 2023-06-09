@@ -2,8 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix'=>'icommercestripe'],function (Router $router){
-       
+$router->group(['prefix' => 'icommercestripe'], function (Router $router) {
     $router->get('/{eUrl}', [
         'as' => 'icommercestripe',
         'uses' => 'PublicController@index',
@@ -11,8 +10,7 @@ $router->group(['prefix'=>'icommercestripe'],function (Router $router){
 
     $router->get('connect/refresh/url', [
         'as' => 'icommercestripe.connect.refresh.url',
-        'uses' => 'PublicController@connectRefreshUrl'
+        'uses' => 'PublicController@connectRefreshUrl',
         //'middleware' => ['auth']
     ]);
-       
 });

@@ -3,21 +3,17 @@
 namespace Modules\Iauctions\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
 use Modules\Iauctions\Entities\StatusBid;
-use Modules\Iauctions\Transformers\StatusBidTransformer;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class StatusBidApiController extends BaseApiController
 {
-   
     public $model;
+
     public function __construct(StatusBid $model)
     {
         parent::__construct();
         $this->model = $model;
-        
     }
 
     /**
@@ -35,26 +31,16 @@ class StatusBidApiController extends BaseApiController
             $models = $this->model->getAllStatus();
 
             //Response
-            $response = ["data" => $models];
+            $response = ['data' => $models];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($models)] : false;
-
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($models)] : false;
         } catch (\Exception $e) {
             \Log::Error($e);
-            $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+            $response = ['messages' => [['message' => $e->getMessage(), 'type' => 'error']]];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
-
-  
-
-   
-
-   
-
-    
-
 }

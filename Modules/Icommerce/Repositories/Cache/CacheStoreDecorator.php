@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerce\Repositories\Cache;
 
-use Modules\Icommerce\Repositories\StoreRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerce\Repositories\StoreRepository;
 
 class CacheStoreDecorator extends BaseCacheDecorator implements StoreRepository
 {
@@ -37,7 +37,7 @@ class CacheStoreDecorator extends BaseCacheDecorator implements StoreRepository
             return $this->repository->getItem($criteria, $params);
         });
     }
-    
+
     /**
      * create a resource
      *
@@ -73,6 +73,4 @@ class CacheStoreDecorator extends BaseCacheDecorator implements StoreRepository
 
         return $this->repository->deleteBy($criteria, $params);
     }
-
-
 }

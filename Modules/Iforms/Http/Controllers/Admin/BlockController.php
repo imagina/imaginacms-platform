@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Block;
 use Modules\Iforms\Http\Requests\CreateBlockRequest;
 use Modules\Iforms\Http\Requests\UpdateBlockRequest;
 use Modules\Iforms\Repositories\BlockRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class BlockController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class BlockController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateBlockRequest $request
      * @return Response
      */
     public function store(CreateBlockRequest $request)
@@ -63,7 +61,6 @@ class BlockController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Block $block
      * @return Response
      */
     public function edit(Block $block)
@@ -74,8 +71,6 @@ class BlockController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Block $block
-     * @param  UpdateBlockRequest $request
      * @return Response
      */
     public function update(Block $block, UpdateBlockRequest $request)
@@ -89,7 +84,6 @@ class BlockController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Block $block
      * @return Response
      */
     public function destroy(Block $block)

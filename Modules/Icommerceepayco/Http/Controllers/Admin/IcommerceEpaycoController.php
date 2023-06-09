@@ -4,12 +4,12 @@ namespace Modules\Icommerceepayco\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Icommerce\Repositories\PaymentMethodRepository;
 use Modules\Icommerceepayco\Entities\IcommerceEpayco;
 use Modules\Icommerceepayco\Http\Requests\CreateIcommerceEpaycoRequest;
 use Modules\Icommerceepayco\Http\Requests\UpdateIcommerceEpaycoRequest;
 use Modules\Icommerceepayco\Repositories\IcommerceEpaycoRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Icommerce\Repositories\PaymentMethodRepository;
 
 class IcommerceEpaycoController extends AdminBaseController
 {
@@ -17,12 +17,13 @@ class IcommerceEpaycoController extends AdminBaseController
      * @var IcommerceEpaycoRepository
      */
     private $icommerceepayco;
+
     private $paymentMethod;
 
     public function __construct(
         IcommerceEpaycoRepository $icommerceepayco,
         PaymentMethodRepository $paymentMethod
-    ){
+    ) {
         parent::__construct();
 
         $this->icommerceepayco = $icommerceepayco;
@@ -54,7 +55,6 @@ class IcommerceEpaycoController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceEpaycoRequest $request
      * @return Response
      */
     public function store(CreateIcommerceEpaycoRequest $request)
@@ -68,7 +68,6 @@ class IcommerceEpaycoController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceEpayco $icommerceepayco
      * @return Response
      */
     public function edit(IcommerceEpayco $icommerceepayco)
@@ -79,33 +78,30 @@ class IcommerceEpaycoController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceEpayco $icommerceepayco
-     * @param  UpdateIcommerceEpaycoRequest $request
+     * @param  IcommerceEpayco  $icommerceepayco
      * @return Response
      */
     public function update($id, UpdateIcommerceEpaycoRequest $request)
     {
-
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
 
         //Add status request
-        if($request->status=='on')
-            $request['status'] = "1";
-        else
-            $request['status'] = "0";
+        if ($request->status == 'on') {
+            $request['status'] = '1';
+        } else {
+            $request['status'] = '0';
+        }
 
-        $this->icommerceepayco->update($paymentMethod,$request->all());
+        $this->icommerceepayco->update($paymentMethod, $request->all());
 
         return redirect()->route('admin.icommerce.paymentmethod.index')
             ->withSuccess(trans('core::core.messages.resource updated', ['name' => trans('icommerceepayco::icommerceepaycos.single')]));
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceEpayco $icommerceepayco
      * @return Response
      */
     public function destroy(IcommerceEpayco $icommerceepayco)

@@ -11,6 +11,7 @@ final class AsgardAssetManager implements AssetManager
      * @var array
      */
     protected $css = [];
+
     /**
      * @var array
      */
@@ -24,7 +25,7 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Add an array of possible assets
-     * @param array $assets
+     *
      * @return void
      */
     public function addAssets(array $assets)
@@ -36,8 +37,9 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Add a possible asset
-     * @param string $dependency
-     * @param string $path
+     *
+     * @param  string  $dependency
+     * @param  string  $path
      * @return void
      */
     public function addAsset($dependency, $path)
@@ -52,6 +54,7 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Return all css files to include
+     *
      * @return \Illuminate\Support\Collection
      */
     public function allCss()
@@ -61,6 +64,7 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Return all js files to include
+     *
      * @return \Illuminate\Support\Collection
      */
     public function allJs()
@@ -70,7 +74,8 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Check if the given path is a javascript file
-     * @param string $path
+     *
+     * @param  string  $path
      * @return bool
      */
     private function isJs($path)
@@ -80,7 +85,8 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * Check if the given path is a css file
-     * @param string $path
+     *
+     * @param  string  $path
      * @return bool
      */
     private function isCss($path)
@@ -89,7 +95,7 @@ final class AsgardAssetManager implements AssetManager
     }
 
     /**
-     * @param string $dependency
+     * @param  string  $dependency
      * @return string
      */
     public function getJs($dependency)
@@ -102,7 +108,7 @@ final class AsgardAssetManager implements AssetManager
     }
 
     /**
-     * @param string $dependency
+     * @param  string  $dependency
      * @return string
      */
     public function getCss($dependency)
@@ -116,7 +122,9 @@ final class AsgardAssetManager implements AssetManager
 
     /**
      * If asset was not found, throw an exception
-     * @param string $assetPath
+     *
+     * @param  string  $assetPath
+     *
      * @throws AssetNotFoundException
      */
     private function guardForAssetNotFound($assetPath)

@@ -3,11 +3,10 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => '/appointment-statuses'], function (Router $router) {
-
     $router->post('/', [
         'as' => 'api.iappointment.appointmentStatuses.create',
         'uses' => 'AppointmentStatusApiController@create',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->get('/', [
         'as' => 'api.iappointment.appointmentStatuses.index',
@@ -20,12 +19,11 @@ $router->group(['prefix' => '/appointment-statuses'], function (Router $router) 
     $router->put('/{criteria}', [
         'as' => 'api.iappointment.appointmentStatuses.update',
         'uses' => 'AppointmentStatusApiController@update',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->delete('/{criteria}', [
         'as' => 'api.iappointment.appointmentStatuses.delete',
         'uses' => 'AppointmentStatusApiController@delete',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
-
 });

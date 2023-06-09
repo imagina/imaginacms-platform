@@ -6,65 +6,109 @@ use Illuminate\View\Component;
 
 class OwlCarousel extends Component
 {
-
-
     public $items;
+
     public $emptyItems;
+
     public $itemsBySlide;
+
     public $view;
+
     public $itemLayout;
+
     public $loop;
+
     public $dots;
+
     public $nav;
+
     public $center;
+
     public $navText;
+
     public $id;
+
     public $repository;
+
     public $title;
+
     public $subTitle;
+
     public $params;
+
     public $responsive;
+
     public $margin;
+
     public $responsiveClass;
+
     public $autoplay;
+
     public $autoplayHoverPause;
+
     public $containerFluid;
+
     public $itemComponent;
+
     public $owlBlockStyle;
+
     public $editLink;
+
     public $tooltipEditLink;
 
     public $navIcon;
+
     public $navSizeLabel;
+
     public $dotsStyle;
+
     public $navPosition;
+
     public $owlTextAlign;
+
     public $navSizeButton;
+
     public $navStyleButton;
+
     public $navColor;
 
     public $owlTextPosition; // 1 -> solo titulo 2 -> titulo con subtitulo debajo 3 -> titulo con subtitilo arria
+
     public $owlTitleMarginT;
+
     public $owlTitleMarginB;
+
     public $owlTitleColor;
+
     public $owlTitleVineta;
+
     public $owlTitleVinetaColor;
+
     public $owlTitleSize;
+
     public $owlTitleWeight;
+
     public $owlTitleTransform;
+
     public $owlTitleLetterSpacing;
 
     public $owlSubtitleMarginT;
+
     public $owlSubtitleMarginB;
+
     public $owlSubtitleColor;
+
     public $owlSubtitleSize;
+
     public $owlSubtitleWeight;
+
     public $owlSubtitleTransform;
+
     public $owlSubtitleLetterSpacing;
 
     public $componentItemAttributes;
-    public $stagePadding;
 
+    public $stagePadding;
 
     /**
      * Create a new component instance.
@@ -85,42 +129,41 @@ class OwlCarousel extends Component
                                 $center = false,
                                 $responsive = null,
                                 $itemLayout = null,
-                                $title = "",
-                                $subTitle = "",
+                                $title = '',
+                                $subTitle = '',
                                 $itemsBySlide = 1,
-                                $navText = "",
+                                $navText = '',
                                 $containerFluid = false,
                                 $itemComponent = null,
                                 $owlBlockStyle = null,
-                                $navIcon = "arrow",
-                                $owlTextAlign = "text-left",
-                                $navPosition = "bottom",
-                                $navSizeLabel = "20",
-                                $dotsStyle = "linear",
-                                $navColor = "primary",
-                                $navSizeButton = "",
-                                $navStyleButton = "",
+                                $navIcon = 'arrow',
+                                $owlTextAlign = 'text-left',
+                                $navPosition = 'bottom',
+                                $navSizeLabel = '20',
+                                $dotsStyle = 'linear',
+                                $navColor = 'primary',
+                                $navSizeButton = '',
+                                $navStyleButton = '',
                                 $owlTextPosition = 1,
-                                $owlTitleMarginT = "mt-0",
-                                $owlTitleMarginB = "mb-0",
+                                $owlTitleMarginT = 'mt-0',
+                                $owlTitleMarginB = 'mb-0',
                                 $owlTitleColor = null,
                                 $owlTitleVineta = null,
                                 $owlTitleVinetaColor = null,
                                 $owlTitleSize = null,
-                                $owlTitleWeight = "font-weight-normal",
+                                $owlTitleWeight = 'font-weight-normal',
                                 $owlTitleTransform = null,
                                 $owlTitleLetterSpacing = 0,
-                                $owlSubtitleMarginT = "mt-0",
-                                $owlSubtitleMarginB = "mb-0",
+                                $owlSubtitleMarginT = 'mt-0',
+                                $owlSubtitleMarginB = 'mb-0',
                                 $owlSubtitleColor = null,
                                 $owlSubtitleSize = null,
-                                $owlSubtitleWeight = "font-weight-normal",
+                                $owlSubtitleWeight = 'font-weight-normal',
                                 $owlSubtitleTransform = null,
                                 $owlSubtitleLetterSpacing = 0,
                                 $componentItemAttributes = [],
-                                $stagePadding = 0 )
+                                $stagePadding = 0)
     {
-
         $this->emptyItems = false;
         $this->loop = $loop;
         $this->id = $id;
@@ -128,7 +171,7 @@ class OwlCarousel extends Component
         $this->nav = $nav;
         $this->center = $center;
         $this->navText = json_encode($navText);
-        $this->responsive = json_encode($responsive ?? [0 => ["items" => 1], 640 => ["items" => 2], 992 => ["items" => 4]]);
+        $this->responsive = json_encode($responsive ?? [0 => ['items' => 1], 640 => ['items' => 2], 992 => ['items' => 4]]);
         $this->margin = $margin;
         $this->responsiveClass = $responsiveClass;
         $this->autoplay = $autoplay;
@@ -141,8 +184,8 @@ class OwlCarousel extends Component
         $this->subTitle = $subTitle;
         $this->containerFluid = $containerFluid;
         $this->owlBlockStyle = $owlBlockStyle;
-        $this->itemComponent = $itemComponent ?? "isite::item-list";
-        $this->view = $view ?? "isite::frontend.components.owl.navdots";
+        $this->itemComponent = $itemComponent ?? 'isite::item-list';
+        $this->view = $view ?? 'isite::frontend.components.owl.navdots';
         $this->getItems();
 
         $this->navIcon = $navIcon;
@@ -175,34 +218,29 @@ class OwlCarousel extends Component
 
         $this->componentItemAttributes = count($componentItemAttributes) ? $componentItemAttributes : config('asgard.isite.config.indexItemListAttributesCarousel');
 
-
-        list($this->editLink, $this->tooltipEditLink) = getEditLink($this->repository);
+        [$this->editLink, $this->tooltipEditLink] = getEditLink($this->repository);
     }
 
-    private
-    function makeParamsFunction()
+    private function makeParamsFunction()
     {
-
         return [
-            "include" => $this->params["include"] ?? [],
-            "take" => $this->params["take"] ?? 12,
-            "page" => $this->params["page"] ?? 1,
-            "filter" => $this->params["filter"] ?? [],
-            "order" => $this->params["order"] ?? null
+            'include' => $this->params['include'] ?? [],
+            'take' => $this->params['take'] ?? 12,
+            'page' => $this->params['page'] ?? 1,
+            'filter' => $this->params['filter'] ?? [],
+            'order' => $this->params['order'] ?? null,
         ];
     }
 
-    private
-    function getItems()
+    private function getItems()
     {
-
         $this->items = app($this->repository)->getItemsBy(json_decode(json_encode($this->makeParamsFunction())));
 
         switch ($this->repository) {
             case 'Modules\Icommerce\Repositories\ProductRepository':
-                !$this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
-                if (is_module_enabled("Icommerce") && $this->itemComponent == "isite::item-list") {
-                    $this->itemComponent = "icommerce::product-list-item";
+                ! $this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
+                if (is_module_enabled('Icommerce') && $this->itemComponent == 'isite::item-list') {
+                    $this->itemComponent = 'icommerce::product-list-item';
                 }
                 break;
         }
@@ -217,8 +255,7 @@ class OwlCarousel extends Component
      *
      * @return \Illuminate\Contracts\View\View|string
      */
-    public
-    function render()
+    public function render()
     {
         return view($this->view);
     }

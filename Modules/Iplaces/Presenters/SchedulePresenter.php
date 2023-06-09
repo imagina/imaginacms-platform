@@ -4,7 +4,6 @@ namespace Modules\Iplaces\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
-
 class SchedulePresenter extends Presenter
 {
     private $schedule;
@@ -13,7 +12,5 @@ class SchedulePresenter extends Presenter
     {
         parent::__construct($entity);
         $this->schedule = app('Modules\Iplaces\Repositories\ScheduleRepository');
-
     }
-
 }

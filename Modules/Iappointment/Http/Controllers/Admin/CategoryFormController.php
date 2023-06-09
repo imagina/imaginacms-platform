@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\CategoryForm;
 use Modules\Iappointment\Http\Requests\CreateCategoryFormRequest;
 use Modules\Iappointment\Http\Requests\UpdateCategoryFormRequest;
 use Modules\Iappointment\Repositories\CategoryFormRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CategoryFormController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CategoryFormController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCategoryFormRequest $request
      * @return Response
      */
     public function store(CreateCategoryFormRequest $request)
@@ -63,7 +61,6 @@ class CategoryFormController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  CategoryForm $categoryform
      * @return Response
      */
     public function edit(CategoryForm $categoryform)
@@ -74,8 +71,6 @@ class CategoryFormController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  CategoryForm $categoryform
-     * @param  UpdateCategoryFormRequest $request
      * @return Response
      */
     public function update(CategoryForm $categoryform, UpdateCategoryFormRequest $request)
@@ -89,7 +84,6 @@ class CategoryFormController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  CategoryForm $categoryform
      * @return Response
      */
     public function destroy(CategoryForm $categoryform)

@@ -2,13 +2,12 @@
 
 namespace Modules\Icheckin\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Approvals;
 use Modules\Icheckin\Http\Requests\CreateApprovalRequest;
 use Modules\Icheckin\Http\Requests\UpdateApprovalRequest;
 use Modules\Icheckin\Repositories\ApprovalRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ApprovalController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class ApprovalController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateApprovalRequest $request
      * @return Response
      */
     public function store(CreateApprovalRequest $request)
@@ -63,7 +61,6 @@ class ApprovalController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Approvals $approval
      * @return Response
      */
     public function edit(Approvals $approval)
@@ -74,8 +71,6 @@ class ApprovalController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Approvals $approval
-     * @param  UpdateApprovalRequest $request
      * @return Response
      */
     public function update(Approvals $approval, UpdateApprovalRequest $request)
@@ -89,7 +84,6 @@ class ApprovalController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Approvals $approval
      * @return Response
      */
     public function destroy(Approvals $approval)

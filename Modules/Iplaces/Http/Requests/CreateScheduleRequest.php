@@ -14,7 +14,7 @@ class CreateScheduleRequest extends BaseFormRequest
     public function translationRules()
     {
         return [
-            'title'=>'required:min2'
+            'title' => 'required:min2',
         ];
     }
 
@@ -32,7 +32,7 @@ class CreateScheduleRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('iplaces::messages.name is required'),
-            'title.min2'=>trans('iplaces::messages.name is min 2')
+            'title.min2' => trans('iplaces::messages.name is min 2'),
 
         ];
     }

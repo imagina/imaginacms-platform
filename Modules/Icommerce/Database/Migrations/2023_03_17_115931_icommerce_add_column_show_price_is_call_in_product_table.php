@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IcommerceAddColumnShowPriceIsCallInProductTable extends Migration
 {
@@ -15,7 +15,6 @@ class IcommerceAddColumnShowPriceIsCallInProductTable extends Migration
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->boolean('show_price_is_call')->default(false)->after('entity_type');
-
         });
     }
 

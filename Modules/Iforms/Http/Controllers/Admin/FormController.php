@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Form;
 use Modules\Iforms\Http\Requests\CreateFormRequest;
 use Modules\Iforms\Http\Requests\UpdateFormRequest;
 use Modules\Iforms\Repositories\FormRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class FormController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class FormController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateFormRequest $request
      * @return Response
      */
     public function store(CreateFormRequest $request)
@@ -63,7 +61,6 @@ class FormController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Form $form
      * @return Response
      */
     public function edit(Form $form)
@@ -74,8 +71,6 @@ class FormController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Form $form
-     * @param  UpdateFormRequest $request
      * @return Response
      */
     public function update(Form $form, UpdateFormRequest $request)
@@ -89,7 +84,6 @@ class FormController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Form $form
      * @return Response
      */
     public function destroy(Form $form)

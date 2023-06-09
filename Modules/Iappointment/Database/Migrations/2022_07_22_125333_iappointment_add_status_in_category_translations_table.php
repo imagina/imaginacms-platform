@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IappointmentAddStatusInCategoryTranslationsTable extends Migration
 {
@@ -13,11 +13,9 @@ class IappointmentAddStatusInCategoryTranslationsTable extends Migration
      */
     public function up()
     {
-      Schema::table('iappointment__category_translations', function (Blueprint $table) {
-        
-        $table->boolean('status')->default(true);
-        
-      });
+        Schema::table('iappointment__category_translations', function (Blueprint $table) {
+            $table->boolean('status')->default(true);
+        });
     }
 
     /**

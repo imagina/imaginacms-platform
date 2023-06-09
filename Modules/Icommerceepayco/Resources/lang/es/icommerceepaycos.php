@@ -27,7 +27,7 @@ return [
     'form' => [
     ],
     'messages' => [
-        'minimum' => 'El TOTAL de la orden no cumple con el monto minimo'
+        'minimum' => 'El TOTAL de la orden no cumple con el monto minimo',
     ],
     'validation' => [
     ],

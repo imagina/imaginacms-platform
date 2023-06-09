@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Category;
 use Modules\Iad\Http\Requests\CreateCategoryRequest;
 use Modules\Iad\Http\Requests\UpdateCategoryRequest;
 use Modules\Iad\Repositories\CategoryRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CategoryController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CategoryController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCategoryRequest $request
      * @return Response
      */
     public function store(CreateCategoryRequest $request)
@@ -63,7 +61,6 @@ class CategoryController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Category $category
      * @return Response
      */
     public function edit(Category $category)
@@ -74,8 +71,6 @@ class CategoryController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Category $category
-     * @param  UpdateCategoryRequest $request
      * @return Response
      */
     public function update(Category $category, UpdateCategoryRequest $request)
@@ -89,7 +84,6 @@ class CategoryController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Category $category
      * @return Response
      */
     public function destroy(Category $category)

@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercecoordinadora::icommercecoordinadoras.edit resource',
         'destroy' => 'icommercecoordinadora::icommercecoordinadoras.destroy resource',
     ],
-// append
+    // append
 
 ];

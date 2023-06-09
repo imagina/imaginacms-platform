@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ibinnacle')->group(function() {
+Route::prefix('ibinnacle')->group(function () {
     Route::get('/', 'IbinnacleController@index');
 });

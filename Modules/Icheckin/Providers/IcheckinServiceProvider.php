@@ -3,15 +3,16 @@
 namespace Modules\Icheckin\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icheckin\Events\Handlers\RegisterIcheckinSidebar;
 use Modules\Icheckin\Http\Middleware\CanCheckout;
 
 class IcheckinServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -19,10 +20,10 @@ class IcheckinServiceProvider extends ServiceProvider
      */
     protected $defer = false;
 
+    protected $middleware = [
+        'checkout-can' => CanCheckout::class,
+    ];
 
-  protected $middleware = [
-    'checkout-can' => CanCheckout::class,
-  ];
     /**
      * Register the service provider.
      *
@@ -40,21 +41,16 @@ class IcheckinServiceProvider extends ServiceProvider
 
             $event->load('approvals', array_dot(trans('icheckin::approvals')));
             // append translations
-
-
-
-
-
         });
     }
 
     public function boot()
     {
-      $this->registerMiddleware();
-      $this->publishConfig('icheckin', 'permissions');
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('icheckin', 'cmsPages'), "asgard.icheckin.cmsPages");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('icheckin', 'cmsSidebar'), "asgard.icheckin.cmsSidebar");
-      //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->registerMiddleware();
+        $this->publishConfig('icheckin', 'permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icheckin', 'cmsPages'), 'asgard.icheckin.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icheckin', 'cmsSidebar'), 'asgard.icheckin.cmsSidebar');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
@@ -64,7 +60,7 @@ class IcheckinServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -118,17 +114,13 @@ class IcheckinServiceProvider extends ServiceProvider
                 return new \Modules\Icheckin\Repositories\Cache\CacheApprovalDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
+        // add bindings
     }
+
   private function registerMiddleware()
   {
-    foreach ($this->middleware as $name => $class) {
-      $this->app['router']->aliasMiddleware($name, $class);
-    }
+      foreach ($this->middleware as $name => $class) {
+          $this->app['router']->aliasMiddleware($name, $class);
+      }
   }
 }

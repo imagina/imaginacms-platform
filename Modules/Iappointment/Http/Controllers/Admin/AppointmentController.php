@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\Appointment;
 use Modules\Iappointment\Http\Requests\CreateAppointmentRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentRequest;
 use Modules\Iappointment\Repositories\AppointmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AppointmentController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class AppointmentController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateAppointmentRequest $request
      * @return Response
      */
     public function store(CreateAppointmentRequest $request)
@@ -63,7 +61,6 @@ class AppointmentController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Appointment $appointment
      * @return Response
      */
     public function edit(Appointment $appointment)
@@ -74,8 +71,6 @@ class AppointmentController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Appointment $appointment
-     * @param  UpdateAppointmentRequest $request
      * @return Response
      */
     public function update(Appointment $appointment, UpdateAppointmentRequest $request)
@@ -89,7 +84,6 @@ class AppointmentController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Appointment $appointment
      * @return Response
      */
     public function destroy(Appointment $appointment)

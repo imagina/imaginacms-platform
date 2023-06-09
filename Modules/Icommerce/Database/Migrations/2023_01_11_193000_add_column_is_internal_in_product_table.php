@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddColumnIsInternalInProductTable extends Migration
 {
@@ -13,10 +13,9 @@ class AddColumnIsInternalInProductTable extends Migration
      */
     public function up()
     {
-      Schema::table('icommerce__products', function (Blueprint $table) {
-        $table->boolean('is_internal')->default(false)->after('entity_type');
-     
-      });
+        Schema::table('icommerce__products', function (Blueprint $table) {
+            $table->boolean('is_internal')->default(false)->after('entity_type');
+        });
     }
 
     /**
@@ -27,7 +26,7 @@ class AddColumnIsInternalInProductTable extends Migration
     public function down()
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
-          $table->dropColumn('is_internal');
+            $table->dropColumn('is_internal');
         });
     }
 }

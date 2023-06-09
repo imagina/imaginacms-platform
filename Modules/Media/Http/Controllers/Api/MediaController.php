@@ -18,7 +18,6 @@ use Modules\Media\Repositories\FileRepository;
 use Modules\Media\Services\FileService;
 use Modules\Media\Transformers\MediaTransformer;
 use Yajra\DataTables\Facades\DataTables;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MediaController extends Controller
 {
@@ -54,10 +53,10 @@ class MediaController extends Controller
                     return '<i class="fa fa-folder" style="font-size: 20px;"></i>';
                 }
                 if ($file->isImage()) {
-                    return '<img src="' . $this->imagy->getThumbnail($file, 'smallThumb') . '"/>';
+                    return '<img src="'.$this->imagy->getThumbnail($file, 'smallThumb').'"/>';
                 }
 
-                return '<i class="fa ' . FileHelper::getFaIcon($file->media_type) . '" style="font-size: 20px;"></i>';
+                return '<i class="fa '.FileHelper::getFaIcon($file->media_type).'" style="font-size: 20px;"></i>';
             })
             ->rawColumns(['thumbnail'])
             ->toJson();
@@ -97,12 +96,11 @@ class MediaController extends Controller
     /**
      * Get a media collection by zone and entity object. Require some params that were passed to request: entity (Full class name of entity), entity_id and zone
      *
-     * @param Request $request
      * @return JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getByZoneEntity(Request $request)
     {
-        $entityName = (string)$request->get('entity');
+        $entityName = (string) $request->get('entity');
         $entityModel = new $entityName;
         $entity = $entityModel::find($request->get('entity_id'));
         if ($entity && in_array('Modules\Media\Support\Traits\MediaRelation', class_uses($entity)) && $entity->files()->count()) {
@@ -116,14 +114,10 @@ class MediaController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param UploadMediaRequest $request
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UploadMediaRequest $request) : JsonResponse
+    public function store(UploadMediaRequest $request): JsonResponse
     {
-
-        $disk = (in_array($request->get('disk'),array_keys(config('filesystems.disks'))))? $request->get('disk') : null;
+        $disk = (in_array($request->get('disk'), array_keys(config('filesystems.disks')))) ? $request->get('disk') : null;
 
         $file = $request->file('file');
         $extension = $file->extension();
@@ -142,9 +136,9 @@ class MediaController extends Controller
         return response()->json($savedFile->toArray());
     }
 
-    public function storeDropzone(UploadDropzoneMediaRequest $request) : JsonResponse
+    public function storeDropzone(UploadDropzoneMediaRequest $request): JsonResponse
     {
-        $disk = (in_array($request->get('disk'),config('filesystems.disks')))? $request->get('disk') : null;
+        $disk = (in_array($request->get('disk'), config('filesystems.disks'))) ? $request->get('disk') : null;
         $savedFile = $this->fileService->store($request->file('file'), null, $disk);
 
         if (is_string($savedFile)) {
@@ -172,10 +166,8 @@ class MediaController extends Controller
 
     /**
      * Link the given entity with a media file
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function linkMedia(Request $request) : JsonResponse
+    public function linkMedia(Request $request): JsonResponse
     {
         $mediaId = $request->get('mediaId');
         $entityClass = $request->get('entityClass');
@@ -215,10 +207,8 @@ class MediaController extends Controller
 
     /**
      * Remove the record in the media__imageables table for the given id
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function unlinkMedia(Request $request) : JsonResponse
+    public function unlinkMedia(Request $request): JsonResponse
     {
         $imageableId = $request->get('imageableId');
         $deleted = DB::table('media__imageables')->whereId($imageableId)->delete();
@@ -239,10 +229,8 @@ class MediaController extends Controller
 
     /**
      * Sort the record in the media__imageables table for the given array
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function sortMedia(Request $request) : JsonResponse
+    public function sortMedia(Request $request): JsonResponse
     {
         $imageableIdArray = $request->get('sortable');
 
@@ -269,11 +257,10 @@ class MediaController extends Controller
 
     /**
      * Get the path for the given file and type
-     * @param string $mediaType
-     * @param File $file
-     * @return string
+     *
+     * @param  string  $mediaType
      */
-    private function getThumbnailPathFor($mediaType, File $file) : string
+    private function getThumbnailPathFor($mediaType, File $file): string
     {
         if ($mediaType === 'image') {
             return $this->imagy->getThumbnail($file, 'mediumThumb');

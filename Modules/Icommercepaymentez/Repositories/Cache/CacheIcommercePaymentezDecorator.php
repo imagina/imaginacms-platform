@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercepaymentez\Repositories\Cache;
 
-use Modules\Icommercepaymentez\Repositories\IcommercePaymentezRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercepaymentez\Repositories\IcommercePaymentezRepository;
 
 class CacheIcommercePaymentezDecorator extends BaseCacheDecorator implements IcommercePaymentezRepository
 {
@@ -14,11 +14,10 @@ class CacheIcommercePaymentezDecorator extends BaseCacheDecorator implements Ico
         $this->repository = $icommercepaymentez;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

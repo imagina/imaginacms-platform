@@ -2,8 +2,8 @@
 
 namespace Modules\Ischedulable\Repositories\Cache;
 
-use Modules\Ischedulable\Repositories\WorkTimeRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ischedulable\Repositories\WorkTimeRepository;
 
 class CacheWorkTimeDecorator extends BaseCacheCrudDecorator implements WorkTimeRepository
 {

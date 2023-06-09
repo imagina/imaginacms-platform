@@ -3,7 +3,6 @@
 return [
     'ipay' => 'Pago Payo',
 
-
     'title' => [
         'products' => 'Product',
         'create product' => 'Create a product',

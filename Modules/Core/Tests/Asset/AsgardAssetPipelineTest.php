@@ -11,14 +11,12 @@ class AsgardAssetPipelineTest extends BaseTestCase
      * @var \Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline
      */
     private $assetPipeline;
+
     /**
      * @var \Modules\Core\Foundation\Asset\Manager\AsgardAssetManager
      */
     private $assetManager;
 
-    /**
-     *
-     */
     public function setUp(): void
     {
         parent::__construct();

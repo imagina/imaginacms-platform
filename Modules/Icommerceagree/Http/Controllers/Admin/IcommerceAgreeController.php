@@ -2,13 +2,12 @@
 
 namespace Modules\Icommerceagree\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommerceagree\Entities\IcommerceAgree;
 use Modules\Icommerceagree\Http\Requests\CreateIcommerceAgreeRequest;
 use Modules\Icommerceagree\Http\Requests\UpdateIcommerceAgreeRequest;
 use Modules\Icommerceagree\Repositories\IcommerceAgreeRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceAgreeController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class IcommerceAgreeController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceAgreeRequest $request
      * @return Response
      */
     public function store(CreateIcommerceAgreeRequest $request)
@@ -63,7 +61,6 @@ class IcommerceAgreeController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceAgree $icommerceagree
      * @return Response
      */
     public function edit(IcommerceAgree $icommerceagree)
@@ -74,8 +71,6 @@ class IcommerceAgreeController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceAgree $icommerceagree
-     * @param  UpdateIcommerceAgreeRequest $request
      * @return Response
      */
     public function update(IcommerceAgree $icommerceagree, UpdateIcommerceAgreeRequest $request)
@@ -89,7 +84,6 @@ class IcommerceAgreeController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceAgree $icommerceagree
      * @return Response
      */
     public function destroy(IcommerceAgree $icommerceagree)

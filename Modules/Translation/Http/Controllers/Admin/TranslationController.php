@@ -18,6 +18,7 @@ class TranslationController extends AdminBaseController
      * @var TranslationsService
      */
     private $translationsService;
+
     /**
      * @var TranslationRepository
      */

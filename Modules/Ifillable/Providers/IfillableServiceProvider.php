@@ -2,16 +2,16 @@
 
 namespace Modules\Ifillable\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ifillable\Listeners\RegisterIfillableSidebar;
 
 class IfillableServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,19 +32,16 @@ class IfillableServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
     public function boot()
     {
-       
         $this->publishConfig('ifillable', 'config');
         $this->publishConfig('ifillable', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'settings'), "asgard.ifillable.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'settings-fields'), "asgard.ifillable.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'permissions'), "asgard.ifillable.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'settings'), 'asgard.ifillable.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'settings-fields'), 'asgard.ifillable.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifillable', 'permissions'), 'asgard.ifillable.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -56,7 +53,7 @@ class IfillableServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -73,9 +70,6 @@ class IfillableServiceProvider extends ServiceProvider
                 return new \Modules\Ifillable\Repositories\Cache\CacheFieldDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-
 }

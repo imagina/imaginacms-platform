@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Modules\Icomments\Traits;
-
 
 use Modules\Icomments\Entities\Comment;
 

@@ -2,8 +2,8 @@
 
 namespace Modules\Wishlistable\Repositories\Cache;
 
-use Modules\Wishlistable\Repositories\WishlistableRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Wishlistable\Repositories\WishlistableRepository;
 
 class CacheWishlistableDecorator extends BaseCacheDecorator implements WishlistableRepository
 {

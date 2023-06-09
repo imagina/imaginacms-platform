@@ -3,15 +3,17 @@
 namespace Modules\Ifollow\Http\Livewire;
 
 use Livewire\Component;
-use Modules\Media\Entities\File;
-use Modules\Setting\Entities\Setting;
 
 class Followers extends Component
 {
     public $followableId;
+
     public $followableType;
+
     public $totalFollowers;
+
     public $followerLabel;
+
     protected $listeners = ['updateFollowers' => 'getFollowers'];
 
     public function mount($followableId, $followableType)
@@ -23,22 +25,20 @@ class Followers extends Component
 
     public function getFollowers()
     {
-
         $repository = app("Modules\Ifollow\Repositories\FollowerRepository");
 
         $params = [
-            "filter" => [
-                "followableId" => $this->followableId,
-                "followableType" => $this->followableType
-            ]
+            'filter' => [
+                'followableId' => $this->followableId,
+                'followableType' => $this->followableType,
+            ],
         ];
 
         $followers = $repository->getItemsBy(json_decode(json_encode($params)));
 
         $this->totalFollowers = $followers->count();
 
-        $this->followerLabel = "Seguidor" . ($this->totalFollowers == 1 ? "" : "es");
-
+        $this->followerLabel = 'Seguidor'.($this->totalFollowers == 1 ? '' : 'es');
     }
 
     /*
@@ -47,7 +47,7 @@ class Followers extends Component
     */
     public function render()
     {
-        $view='ifollow::frontend.livewire.followersCount';
+        $view = 'ifollow::frontend.livewire.followersCount';
 
         return view($view);
     }

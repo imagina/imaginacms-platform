@@ -9,8 +9,8 @@ class CreateScheduleRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'entity_id' => 'required',
-          'entity_type' => 'required',
+            'entity_id' => 'required',
+            'entity_type' => 'required',
         ];
     }
 

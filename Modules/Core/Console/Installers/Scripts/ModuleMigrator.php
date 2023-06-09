@@ -28,12 +28,12 @@ class ModuleMigrator implements SetupScript
         'Iforms',
         'Iprofile',
         'Ilocations',
-        'Iredirect'
+        'Iredirect',
     ];
 
     /**
      * Fire the install script
-     * @param  Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -41,10 +41,11 @@ class ModuleMigrator implements SetupScript
         if ($command->option('verbose')) {
             $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
         }
-        
+
         foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:migrate', ['module' => $module]);
+
                 continue;
             }
             $command->callSilent('module:migrate', ['module' => $module]);

@@ -1,6 +1,6 @@
 <?php
 
 return [
-    "follower" => "Follower",
-    "followers" => "Followers"
+    'follower' => 'Follower',
+    'followers' => 'Followers',
 ];

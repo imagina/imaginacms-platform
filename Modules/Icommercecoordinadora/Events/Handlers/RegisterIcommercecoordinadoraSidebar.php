@@ -16,8 +16,6 @@ class RegisterIcommercecoordinadoraSidebar implements \Maatwebsite\Sidebar\Sideb
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIcommercecoordinadoraSidebar implements \Maatwebsite\Sidebar\Sideb
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIcommercecoordinadoraSidebar implements \Maatwebsite\Sidebar\Sideb
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercecoordinadora::icommercecoordinadoras.title.icommercecoordinadoras'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterIcommercecoordinadoraSidebar implements \Maatwebsite\Sidebar\Sideb
                         $this->auth->hasAccess('icommercecoordinadora.icommercecoordinadoras.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

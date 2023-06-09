@@ -2,7 +2,6 @@
 
 namespace Modules\Setting\Support;
 
-use Modules\Media\Image\Imagy;
 use Modules\Setting\Contracts\Setting;
 use Modules\Setting\Repositories\SettingRepository;
 
@@ -13,9 +12,6 @@ class Settings implements Setting
      */
     private $setting;
 
-    /**
-     * @param SettingRepository $setting
-     */
     public function __construct(SettingRepository $setting)
     {
         $this->setting = $setting;
@@ -23,40 +19,42 @@ class Settings implements Setting
 
     /**
      * Getting the setting
-     * @param  string $name
-     * @param  string   $locale
-     * @param  string   $default
+     *
+     * @param  string  $name
+     * @param  string  $locale
+     * @param  string  $default
      * @return mixed
      */
     public function get($name, $locale = null, $default = null, $central = false)
     {
-     
         $defaultFromConfig = $this->getDefaultFromConfigFor($name);
-  
-      //tracking if the env DB_DATABASE not exist to avoid the query in the DB
-      if(env('DB_DATABASE', 'forge') == 'forge')
-        return is_null($default) ? $defaultFromConfig : $default;
-  
-      
-      $setting = $this->setting->findByName($name, $central);
-      
+
+        //tracking if the env DB_DATABASE not exist to avoid the query in the DB
+        if (env('DB_DATABASE', 'forge') == 'forge') {
+            return is_null($default) ? $defaultFromConfig : $default;
+        }
+
+        $setting = $this->setting->findByName($name, $central);
+
         if (empty($setting)) {
             return is_null($default) ? $defaultFromConfig : $default;
         }
 
         if ($setting->isMedia() && $media = $setting->files->first()) {
-          if($media->isImage()){
-            $mediaFiles = $setting->mediaFiles();
-            
-            return $mediaFiles->{$setting->name}->extraLargeThumb ?? $mediaFiles->{'setting::mainimage'}->extraLargeThumb ?? $media->path;
-          }
+            if ($media->isImage()) {
+                $mediaFiles = $setting->mediaFiles();
+
+                return $mediaFiles->{$setting->name}->extraLargeThumb ?? $mediaFiles->{'setting::mainimage'}->extraLargeThumb ?? $media->path;
+            }
+
             return $media->path;
         }
 
         if ($setting->isTranslatable) {
             if ($setting->ownHasTranslation($locale)) {
-              $value = trim($setting->getValueByLocale($locale));
-              return $value === '' ? $defaultFromConfig : $value;
+                $value = trim($setting->getValueByLocale($locale));
+
+                return $value === '' ? $defaultFromConfig : $value;
             }
         } else {
             return trim($setting->plainValue) === '' ? $defaultFromConfig : $setting->plainValue;
@@ -68,7 +66,7 @@ class Settings implements Setting
     /**
      * Determine if the given configuration value exists.
      *
-     * @param  string $name
+     * @param  string  $name
      * @return bool
      */
     public function has($name)
@@ -81,7 +79,7 @@ class Settings implements Setting
     /**
      * Set a given configuration value.
      *
-     * @param  string $key
+     * @param  string  $key
      * @param  mixed  $value
      * @return \Modules\Setting\Entities\Setting
      */
@@ -96,12 +94,13 @@ class Settings implements Setting
     /**
      * Get the default value from the settings configuration file,
      * for the given setting name.
-     * @param string $name
+     *
+     * @param  string  $name
      * @return string
      */
     private function getDefaultFromConfigFor($name)
     {
-        list($module, $settingName) = explode('::', $name);
+        [$module, $settingName] = explode('::', $name);
 
         return config("asgard.$module.settings.$settingName.default", '');
     }

@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercepaypal\Repositories\Cache;
 
-use Modules\Icommercepaypal\Repositories\IcommercePaypalRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercepaypal\Repositories\IcommercePaypalRepository;
 
 class CacheIcommercePaypalDecorator extends BaseCacheDecorator implements IcommercePaypalRepository
 {
@@ -14,11 +14,10 @@ class CacheIcommercePaypalDecorator extends BaseCacheDecorator implements Icomme
         $this->repository = $icommercepaypal;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

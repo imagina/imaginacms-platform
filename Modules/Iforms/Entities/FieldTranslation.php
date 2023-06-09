@@ -9,9 +9,9 @@ class FieldTranslation extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'label',
-      'placeholder',
-      'description',
+        'label',
+        'placeholder',
+        'description',
     ];
 
     protected $table = 'iforms__field_translations';

@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ibuilder')->group(function() {
+Route::prefix('ibuilder')->group(function () {
     Route::get('/', 'IbuilderController@index');
 });

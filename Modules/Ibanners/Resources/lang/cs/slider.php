@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'  => 'Slider',
+    'title' => 'Slider',
     'titles' => [
         'slider' => 'Správa slideru',
         'create slider' => 'Vytvořit slider',
@@ -23,7 +23,7 @@ return [
     'table' => [
         'name' => 'Název',
         'title' => 'Titulek',
-        'system name' => 'Systémové jméno'
+        'system name' => 'Systémové jméno',
     ],
     'form' => [
         'title' => 'Titulek',
@@ -35,11 +35,11 @@ return [
         'url' => 'URL',
         'external image url' => 'URL externího obrázku',
         'placeholder' => [
-            'external image url' => 'http://www.example.com/link/to/image.jpg'
-        ]
+            'external image url' => 'http://www.example.com/link/to/image.jpg',
+        ],
 
     ],
     'navigation' => [
-        'back to index' => 'Zpět na přehled sliderů'
-    ]
+        'back to index' => 'Zpět na přehled sliderů',
+    ],
 ];

@@ -6,8 +6,7 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface ProviderRepository extends BaseRepository
 {
-
-	public function getItemsBy($params);
+    public function getItemsBy($params);
 
     public function getItem($criteria, $params = false);
 
@@ -16,5 +15,4 @@ interface ProviderRepository extends BaseRepository
     public function updateBy($criteria, $data, $params = false);
 
     public function deleteBy($criteria, $params = false);
-    
 }

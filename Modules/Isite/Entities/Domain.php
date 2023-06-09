@@ -7,18 +7,23 @@ use Modules\Core\Icrud\Entities\CrudModel;
 
 class Domain extends CrudModel
 {
-  use Translatable;
+    use Translatable;
 
-  protected $table = 'isite__domains';
-  public $transformer = 'Modules\Isite\Transformers\DomainTransformer';
-  public $repository = 'Modules\Isite\Repositories\DomainRepository';
-  public $requestValidation = [
-    'create' => 'Modules\Isite\Http\Requests\CreateDomainRequest',
-    'update' => 'Modules\Isite\Http\Requests\UpdateDomainRequest',
-  ];
-  public $translatedAttributes = [];
-  protected $fillable = [
-    'domain',
-    'organization_id'
-  ];
+    protected $table = 'isite__domains';
+
+    public $transformer = 'Modules\Isite\Transformers\DomainTransformer';
+
+    public $repository = 'Modules\Isite\Repositories\DomainRepository';
+
+    public $requestValidation = [
+        'create' => 'Modules\Isite\Http\Requests\CreateDomainRequest',
+        'update' => 'Modules\Isite\Http\Requests\UpdateDomainRequest',
+    ];
+
+    public $translatedAttributes = [];
+
+    protected $fillable = [
+        'domain',
+        'organization_id',
+    ];
 }

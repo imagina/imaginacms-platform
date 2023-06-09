@@ -15,18 +15,22 @@ class AdminMiddleware
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var SessionManager
      */
     private $session;
+
     /**
      * @var Request
      */
     private $request;
+
     /**
      * @var Redirector
      */
     private $redirect;
+
     /**
      * @var Application
      */
@@ -44,14 +48,13 @@ class AdminMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function handle($request, \Closure $next)
     {
         // Check if the user is logged in
-        if (!$this->auth->check()) {
+        if (! $this->auth->check()) {
             if ($request->ajax()) {
                 return response('Unauthenticated.', Response::HTTP_UNAUTHORIZED);
             }

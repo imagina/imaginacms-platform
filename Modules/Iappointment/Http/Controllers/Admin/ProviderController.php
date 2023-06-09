@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\Provider;
 use Modules\Iappointment\Http\Requests\CreateProviderRequest;
 use Modules\Iappointment\Http\Requests\UpdateProviderRequest;
 use Modules\Iappointment\Repositories\ProviderRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ProviderController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class ProviderController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateProviderRequest $request
      * @return Response
      */
     public function store(CreateProviderRequest $request)
@@ -63,7 +61,6 @@ class ProviderController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Provider $provider
      * @return Response
      */
     public function edit(Provider $provider)
@@ -74,8 +71,6 @@ class ProviderController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Provider $provider
-     * @param  UpdateProviderRequest $request
      * @return Response
      */
     public function update(Provider $provider, UpdateProviderRequest $request)
@@ -89,7 +84,6 @@ class ProviderController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Provider $provider
      * @return Response
      */
     public function destroy(Provider $provider)

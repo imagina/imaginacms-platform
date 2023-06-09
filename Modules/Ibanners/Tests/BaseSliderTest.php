@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Tests;
+<?php
+
+namespace Modules\Ibanners\Tests;
 
 use Faker\Factory;
 use Illuminate\Contracts\Console\Kernel;
@@ -8,8 +10,8 @@ use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Core\Providers\CoreServiceProvider;
-use Modules\Ibanners\Entities\Slide;
 use Modules\Ibanners\Entities\Position;
+use Modules\Ibanners\Entities\Slide;
 use Modules\Ibanners\Providers\SliderServiceProvider;
 use Modules\Ibanners\Repositories\SlideRepository;
 use Modules\Ibanners\Repositories\SliderRepository;
@@ -33,9 +35,6 @@ abstract class BaseSliderTest extends TestCase
      */
     protected $faker;
 
-    /**
-     *
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -68,13 +67,13 @@ abstract class BaseSliderTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = __DIR__ . '/..';
+        $app['path.base'] = __DIR__.'/..';
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
+        $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ));
+        ]);
         $app['config']->set('translatable.locales', ['en', 'fr']);
     }
 
@@ -86,7 +85,7 @@ abstract class BaseSliderTest extends TestCase
         // Makes sure the migrations table is created
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path'     => $migrationsPath,
+            '--path' => $migrationsPath,
         ]);
         // We empty all tables
         $artisan->call('migrate:reset', [
@@ -95,13 +94,13 @@ abstract class BaseSliderTest extends TestCase
         // Migrate
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path'     => $migrationsPath,
+            '--path' => $migrationsPath,
         ]);
     }
 
     /**
-     * @param string $name
-     * @param string $systemName
+     * @param  string  $name
+     * @param  string  $systemName
      * @return Ibanners
      */
     public function createSlider($name = 'Homepage Ibanners', $systemName = 'homepage')
@@ -109,16 +108,16 @@ abstract class BaseSliderTest extends TestCase
         $data = [
             'name' => $name,
             'system_name' => $systemName,
-            'active' => true
+            'active' => true,
         ];
 
         return $this->sliderRepository->create($data);
     }
 
     /**
-     * @param string $name
-     * @param string $systemName
-     * @param int $slides number of slides to be created
+     * @param  string  $name
+     * @param  string  $systemName
+     * @param  int  $slides number of slides to be created
      * @return Ibanners
      */
     public function createSliderWithSlides($name = 'Homepage Ibanners', $systemName = 'homepage', $slides = 2)
@@ -135,8 +134,8 @@ abstract class BaseSliderTest extends TestCase
     /**
      * Create a slide for the given Ibanners and position
      *
-     * @param int $sliderId
-     * @param int $position
+     * @param  int  $sliderId
+     * @param  int  $position
      * @return Slide
      */
     protected function createSlideForSlider($sliderId, $position)
@@ -145,8 +144,8 @@ abstract class BaseSliderTest extends TestCase
     }
 
     /**
-     * @param int|null $sliderId
-     * @param int $position
+     * @param  int|null  $sliderId
+     * @param  int  $position
      * @return array
      */
     protected function getSlideData($sliderId = null, $position = 1)
@@ -158,7 +157,7 @@ abstract class BaseSliderTest extends TestCase
         return [
             'slider_id' => $sliderId,
             'position' => $position,
-            'external_image_url' => sprintf("https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200", $title),
+            'external_image_url' => sprintf('https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200', $title),
             'en' => [
                 'title' => $title,
                 'caption' => $caption,

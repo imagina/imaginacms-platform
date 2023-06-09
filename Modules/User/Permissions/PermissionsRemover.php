@@ -11,10 +11,12 @@ class PermissionsRemover
      * @var string
      */
     private $moduleName;
+
     /**
      * @var RoleRepository
      */
     private $role;
+
     /**
      * @var UserRepository
      */
@@ -54,7 +56,7 @@ class PermissionsRemover
      */
     private function buildPermissionList()
     {
-        $permissionsConfig = config('asgard.' . strtolower($this->moduleName) . '.permissions');
+        $permissionsConfig = config('asgard.'.strtolower($this->moduleName).'.permissions');
         $list = [];
 
         if ($permissionsConfig === null) {
@@ -63,7 +65,7 @@ class PermissionsRemover
 
         foreach ($permissionsConfig as $mainKey => $subPermissions) {
             foreach ($subPermissions as $key => $description) {
-                $list[] = $mainKey . '.' . $key;
+                $list[] = $mainKey.'.'.$key;
             }
         }
 

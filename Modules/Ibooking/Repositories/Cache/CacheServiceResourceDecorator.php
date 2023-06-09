@@ -2,8 +2,8 @@
 
 namespace Modules\Ibooking\Repositories\Cache;
 
-use Modules\Ibooking\Repositories\ServiceResourceRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Ibooking\Repositories\ServiceResourceRepository;
 
 class CacheServiceResourceDecorator extends BaseCacheDecorator implements ServiceResourceRepository
 {

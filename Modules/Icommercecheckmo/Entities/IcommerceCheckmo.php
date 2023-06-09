@@ -10,6 +10,8 @@ class IcommerceCheckmo extends Model
     use Translatable;
 
     protected $table = 'icommercecheckmo__icommercecheckmos';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

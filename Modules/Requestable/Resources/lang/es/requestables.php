@@ -25,12 +25,12 @@ return [
         'date' => 'Fecha y Hora',
         'hour' => 'Hora del cambio',
         'id' => 'Petición ID',
-        'history created by' => 'Cambio realizado por'
+        'history created by' => 'Cambio realizado por',
     ],
     'form' => [
     ],
     'messages' => [
-      "creatingSameRequestError" => "Ya hay una solicitud en proceso, para realizar otra solicitud debe esperar a que culmine la solicitud actual"
+        'creatingSameRequestError' => 'Ya hay una solicitud en proceso, para realizar otra solicitud debe esperar a que culmine la solicitud actual',
     ],
     'validation' => [
     ],

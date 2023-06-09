@@ -13,6 +13,7 @@ final class FolderMoverTest extends MediaTestCase
      * @var FolderMover
      */
     private $mover;
+
     /**
      * @var FolderRepository
      */
@@ -146,7 +147,7 @@ final class FolderMoverTest extends MediaTestCase
         $this->assertEquals('/assets/media/child-folder', $folderTwo->path->getRelativeUrl());
     }
 
-    private function makeRootFolder() : File
+    private function makeRootFolder(): File
     {
         return new File([
             'id' => 0,

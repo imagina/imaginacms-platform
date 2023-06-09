@@ -16,8 +16,6 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercecredibanco::icommercecredibancos.title.icommercecredibancos'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -61,9 +58,7 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
                         $this->auth->hasAccess('icommercecredibanco.transactions.index')
                     );
                 });
-// append
-
-
+                // append
             });
         });
 

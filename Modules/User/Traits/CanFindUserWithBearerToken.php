@@ -8,7 +8,7 @@ use Modules\User\Repositories\UserTokenRepository;
 trait CanFindUserWithBearerToken
 {
     /**
-     * @param string $token
+     * @param  string  $token
      * @return UserInterface|null
      */
     public function findUserWithBearerToken($token)

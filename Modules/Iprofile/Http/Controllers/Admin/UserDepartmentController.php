@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\UserDepartment;
 use Modules\Iprofile\Http\Requests\CreateUserDepartmentRequest;
 use Modules\Iprofile\Http\Requests\UpdateUserDepartmentRequest;
 use Modules\Iprofile\Repositories\UserDepartmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UserDepartmentController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class UserDepartmentController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateUserDepartmentRequest $request
      * @return Response
      */
     public function store(CreateUserDepartmentRequest $request)
@@ -63,7 +61,6 @@ class UserDepartmentController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  UserDepartment $userdepartment
      * @return Response
      */
     public function edit(UserDepartment $userdepartment)
@@ -74,8 +71,6 @@ class UserDepartmentController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserDepartment $userdepartment
-     * @param  UpdateUserDepartmentRequest $request
      * @return Response
      */
     public function update(UserDepartment $userdepartment, UpdateUserDepartmentRequest $request)
@@ -89,7 +84,6 @@ class UserDepartmentController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  UserDepartment $userdepartment
      * @return Response
      */
     public function destroy(UserDepartment $userdepartment)

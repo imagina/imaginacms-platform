@@ -2,8 +2,8 @@
 
 namespace Modules\Iforms\Repositories\Cache;
 
-use Modules\Iforms\Repositories\BlockRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iforms\Repositories\BlockRepository;
 
 class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
 {
@@ -73,5 +73,4 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
 
         return $this->repository->deleteBy($criteria, $params);
     }
-
 }

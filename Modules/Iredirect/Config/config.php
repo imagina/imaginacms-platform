@@ -1,8 +1,8 @@
 <?php
 
 return [
-  'name' => 'Iredirect',
-  'documentation' => [
-    'redirects' => "iredirect::cms.documentation.redirects",
-  ]
+    'name' => 'Iredirect',
+    'documentation' => [
+        'redirects' => 'iredirect::cms.documentation.redirects',
+    ],
 ];

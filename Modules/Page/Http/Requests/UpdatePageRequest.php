@@ -11,7 +11,7 @@ class UpdatePageRequest extends BaseFormRequest
     public function rules()
     {
         return [
-           // 'template' => 'required',
+            // 'template' => 'required',
         ];
     }
 

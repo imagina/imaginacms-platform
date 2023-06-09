@@ -1,29 +1,42 @@
 <?php
 
-
 namespace Modules\Slider\View\Components\Slider;
+
 use Illuminate\View\Component;
 
 class Bootstrap extends Component
 {
-
     public $id;
-    public $layout;
-    public $slider;
-    public $view;
-    public $height;
-    public $dots;
-    public $dotsPosition;
-    public $dotsStyle;
-    public $arrows;
-    public $interval;
-    public $ride;
-    public $pause;
-    public $keyboard;
-    public $wrap;
-    public $touch;
-    public $backgroundImg;
 
+    public $layout;
+
+    public $slider;
+
+    public $view;
+
+    public $height;
+
+    public $dots;
+
+    public $dotsPosition;
+
+    public $dotsStyle;
+
+    public $arrows;
+
+    public $interval;
+
+    public $ride;
+
+    public $pause;
+
+    public $keyboard;
+
+    public $wrap;
+
+    public $touch;
+
+    public $backgroundImg;
 
     /**
      * Create a new component instance.
@@ -33,7 +46,7 @@ class Bootstrap extends Component
     public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px', $dots = true,
                                 $dotsPosition = 'center', $dotsStyle = 'line', $arrows = true, $ride = false,
                                 $pause = 'hover', $keyboard = true, $wrap = true, $touch = true, $interval = 5000,
-                                $backgroundImg = '' )
+                                $backgroundImg = '')
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-bootstrap-layout-1';
@@ -54,16 +67,17 @@ class Bootstrap extends Component
         $this->getItem();
     }
 
-    public function getItem(){
+    public function getItem()
+    {
         $params = [
             'filter' => [
                 'field' => 'id',
             ],
-            'include' => ['slides']
+            'include' => ['slides'],
         ];
 
         $this->slider = app('Modules\\Slider\\Repositories\\SliderApiRepository')->getItem($this->id, json_decode(json_encode($params)));
-        if(!$this->slider){
+        if (! $this->slider) {
             $params['filter']['field'] = 'system_name';
             $this->slider = app('Modules\\Slider\\Repositories\\SliderApiRepository')->getItem($this->id, json_decode(json_encode($params)));
         }

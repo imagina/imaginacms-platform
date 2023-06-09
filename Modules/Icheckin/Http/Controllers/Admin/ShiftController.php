@@ -2,13 +2,12 @@
 
 namespace Modules\Icheckin\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Shift;
 use Modules\Icheckin\Http\Requests\CreateShiftRequest;
 use Modules\Icheckin\Http\Requests\UpdateShiftRequest;
 use Modules\Icheckin\Repositories\ShiftRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ShiftController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class ShiftController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateShiftRequest $request
      * @return Response
      */
     public function store(CreateShiftRequest $request)
@@ -63,7 +61,6 @@ class ShiftController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Shift $shift
      * @return Response
      */
     public function edit(Shift $shift)
@@ -74,8 +71,6 @@ class ShiftController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Shift $shift
-     * @param  UpdateShiftRequest $request
      * @return Response
      */
     public function update(Shift $shift, UpdateShiftRequest $request)
@@ -89,7 +84,6 @@ class ShiftController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Shift $shift
      * @return Response
      */
     public function destroy(Shift $shift)

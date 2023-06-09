@@ -4,84 +4,78 @@ namespace Modules\Requestable\Exports\Reports;
 
 class detailedReport
 {
- 
-  private $requestableExport;
+    private $requestableExport;
 
-  public function __construct($requestableExport)
-  {
-    $this->requestableExport = $requestableExport;
-  }
-
-   /*
-  * Get Last comment and add to item
-  */
-  public function addLastCommentToItem($item,$baseItem)
-  {
-
-    $formatComment = "--";
-
-    if(count($item->comments)>0){
-
-      $lastComment = $item->comments->last();
-      $formatComment = $lastComment->comment." | Fecha: ".$lastComment->created_at->format('d-m-Y');
+    public function __construct($requestableExport)
+    {
+        $this->requestableExport = $requestableExport;
     }
 
-    array_push($baseItem, $formatComment);
+     /*
+    * Get Last comment and add to item
+    */
+    public function addLastCommentToItem($item, $baseItem)
+    {
+        $formatComment = '--';
 
-    return $baseItem;
+        if (count($item->comments) > 0) {
+            $lastComment = $item->comments->last();
+            $formatComment = $lastComment->comment.' | Fecha: '.$lastComment->created_at->format('d-m-Y');
+        }
 
-  }
+        array_push($baseItem, $formatComment);
 
-  /**
-   * Heading to Report
-   */
-  public function getHeading()
-  {
+        return $baseItem;
+    }
 
-    $headingFields = [
-        'ID',
-        trans('requestable::requestables.table.category'),
-        trans('requestable::requestables.table.status'),
-        trans('requestable::requestables.table.type'),
-        trans('requestable::requestables.table.requested by'),
-        trans('requestable::requestables.table.created by')
-    ];
+    /**
+     * Heading to Report
+     */
+    public function getHeading()
+    {
+        $headingFields = [
+            'ID',
+            trans('requestable::requestables.table.category'),
+            trans('requestable::requestables.table.status'),
+            trans('requestable::requestables.table.type'),
+            trans('requestable::requestables.table.requested by'),
+            trans('requestable::requestables.table.created by'),
+        ];
 
-    //Add Extra Fields
-    if($this->requestableExport->showExtraFields)
-      $headingFields = $this->requestableExport->addFieldsToHeading($headingFields);
-    
-    //Add only last comment
-    array_push($headingFields, trans('requestable::requestables.table.last comment'));
-     
-    
-    return $headingFields;
+        //Add Extra Fields
+        if ($this->requestableExport->showExtraFields) {
+            $headingFields = $this->requestableExport->addFieldsToHeading($headingFields);
+        }
 
-  }
+        //Add only last comment
+        array_push($headingFields, trans('requestable::requestables.table.last comment'));
 
-  /**
-   * Map (Row) to Report
-   */ 
-  public function getMap($item)
-  {
-     // Base Item Fields
-     $baseItem = [
-      $item->id ?? null,
-      $item->category->title ?? null,
-      $item->status->title ?? null,
-      $item->type ?? null,
-      $item->requestedBy ? $item->requestedBy->present()->fullname: null,
-      $item->createdByUser->present()->fullname ?? null
-    ];
+        return $headingFields;
+    }
 
-    //Add Extra Fields
-    if($this->requestableExport->showExtraFields)
-      $baseItem = $this->requestableExport->addFieldsToItem($item,$baseItem);
+    /**
+     * Map (Row) to Report
+     */
+    public function getMap($item)
+    {
+        // Base Item Fields
+        $baseItem = [
+            $item->id ?? null,
+            $item->category->title ?? null,
+            $item->status->title ?? null,
+            $item->type ?? null,
+            $item->requestedBy ? $item->requestedBy->present()->fullname : null,
+            $item->createdByUser->present()->fullname ?? null,
+        ];
 
-    //Last Comment
-    $baseItem = $this->addLastCommentToItem($item,$baseItem);
+        //Add Extra Fields
+        if ($this->requestableExport->showExtraFields) {
+            $baseItem = $this->requestableExport->addFieldsToItem($item, $baseItem);
+        }
 
-    return $baseItem;
-  }
+        //Last Comment
+        $baseItem = $this->addLastCommentToItem($item, $baseItem);
 
+        return $baseItem;
+    }
 }

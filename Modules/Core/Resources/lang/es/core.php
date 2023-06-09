@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "name" => "Núcleo",
+    'name' => 'Núcleo',
     'modal' => [
         'title' => 'Confirmación',
         'confirmation-message' => '¿Estás seguro que quieres eliminar este registro?',

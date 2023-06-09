@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddAssignedToIntoLeadTable extends Migration
 {
@@ -14,8 +14,8 @@ class AddAssignedToIntoLeadTable extends Migration
     public function up()
     {
         Schema::table('iforms__leads', function (Blueprint $table) {
-          $table->integer('assigned_to_id')->unsigned()->nullable();
-          $table->foreign('assigned_to_id')->references('id')->on(config('auth.table', 'users'))->onDelete('cascade');
+            $table->integer('assigned_to_id')->unsigned()->nullable();
+            $table->foreign('assigned_to_id')->references('id')->on(config('auth.table', 'users'))->onDelete('cascade');
         });
     }
 
@@ -27,8 +27,8 @@ class AddAssignedToIntoLeadTable extends Migration
     public function down()
     {
         Schema::table('iforms__leads', function (Blueprint $table) {
-          $table->dropForeign(['assigned_to_id']);
-          $table->dropColumn('assigned_to_id');
+            $table->dropForeign(['assigned_to_id']);
+            $table->dropColumn('assigned_to_id');
         });
     }
 }

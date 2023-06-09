@@ -19,9 +19,6 @@ class ImResponseCacheMiddleware
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     *
      * @return Request
      */
     public function handle(Request $request, Closure $next)

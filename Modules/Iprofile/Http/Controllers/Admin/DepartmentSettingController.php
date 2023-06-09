@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Setting;
 use Modules\Iprofile\Http\Requests\CreateSettingRequest;
 use Modules\Iprofile\Http\Requests\UpdateSettingRequest;
 use Modules\Iprofile\Repositories\SettingRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class DepartmentSettingController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class DepartmentSettingController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateSettingRequest $request
      * @return Response
      */
     public function store(CreateSettingRequest $request)
@@ -63,7 +61,6 @@ class DepartmentSettingController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Setting $departmentsetting
      * @return Response
      */
     public function edit(Setting $departmentsetting)
@@ -74,8 +71,6 @@ class DepartmentSettingController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Setting $departmentsetting
-     * @param  UpdateSettingRequest $request
      * @return Response
      */
     public function update(Setting $departmentsetting, UpdateSettingRequest $request)
@@ -89,7 +84,6 @@ class DepartmentSettingController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Setting $departmentsetting
      * @return Response
      */
     public function destroy(Setting $departmentsetting)

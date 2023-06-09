@@ -10,6 +10,8 @@ class IcommerceFreeshipping extends Model
     use Translatable;
 
     protected $table = 'icommercefreeshipping__icommercefreeshippings';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

@@ -1,7 +1,7 @@
 <?php
 
-
 namespace Modules\Iad\Events;
+
 use Modules\Iad\Entities\Ad;
 
 class AdIsCreating

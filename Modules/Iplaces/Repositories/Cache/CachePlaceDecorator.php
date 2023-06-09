@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\PlaceRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\PlaceRepository;
 
 class CachePlaceDecorator extends BaseCacheDecorator implements PlaceRepository
 {
@@ -41,7 +41,6 @@ class CachePlaceDecorator extends BaseCacheDecorator implements PlaceRepository
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

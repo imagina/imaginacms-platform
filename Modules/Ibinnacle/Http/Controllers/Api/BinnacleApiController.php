@@ -9,12 +9,13 @@ use Modules\Ibinnacle\Repositories\BinnacleRepository;
 
 class BinnacleApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(Binnacle $model, BinnacleRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(Binnacle $model, BinnacleRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

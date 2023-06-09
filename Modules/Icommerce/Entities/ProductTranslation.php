@@ -2,22 +2,25 @@
 
 namespace Modules\Icommerce\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductTranslation extends Model
 {
     use Sluggable;
+
     public $timestamps = false;
+
     protected $fillable = [
-      'name',
-      'description',
-      'summary',
-      'slug',
-      'meta_title',
-      'meta_description',
-      'advanced_summary'
+        'name',
+        'description',
+        'summary',
+        'slug',
+        'meta_title',
+        'meta_description',
+        'advanced_summary',
     ];
+
     protected $table = 'icommerce__product_translations';
 
     /**
@@ -29,10 +32,8 @@ class ProductTranslation extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
-
-
 }

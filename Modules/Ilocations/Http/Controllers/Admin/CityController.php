@@ -2,13 +2,12 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\City;
 use Modules\Ilocations\Http\Requests\CreateCityRequest;
 use Modules\Ilocations\Http\Requests\UpdateCityRequest;
 use Modules\Ilocations\Repositories\CityRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CityController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CityController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCityRequest $request
      * @return Response
      */
     public function store(CreateCityRequest $request)
@@ -63,7 +61,6 @@ class CityController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  City $city
      * @return Response
      */
     public function edit(City $city)
@@ -74,8 +71,6 @@ class CityController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  City $city
-     * @param  UpdateCityRequest $request
      * @return Response
      */
     public function update(City $city, UpdateCityRequest $request)
@@ -89,7 +84,6 @@ class CityController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  City $city
      * @return Response
      */
     public function destroy(City $city)

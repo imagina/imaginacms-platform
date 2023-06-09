@@ -2,13 +2,12 @@
 
 namespace Modules\Requestable\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Requestable\Entities\Requestable;
 use Modules\Requestable\Http\Requests\CreateRequestableRequest;
 use Modules\Requestable\Http\Requests\UpdateRequestableRequest;
 use Modules\Requestable\Repositories\RequestableRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RequestableController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class RequestableController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRequestableRequest $request
      * @return Response
      */
     public function store(CreateRequestableRequest $request)
@@ -63,7 +61,6 @@ class RequestableController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Requestable $requestable
      * @return Response
      */
     public function edit(Requestable $requestable)
@@ -74,8 +71,6 @@ class RequestableController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Requestable $requestable
-     * @param  UpdateRequestableRequest $request
      * @return Response
      */
     public function update(Requestable $requestable, UpdateRequestableRequest $request)
@@ -89,7 +84,6 @@ class RequestableController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Requestable $requestable
      * @return Response
      */
     public function destroy(Requestable $requestable)

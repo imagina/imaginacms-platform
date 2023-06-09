@@ -10,7 +10,6 @@ return [
         'destroy' => 'ibuilder::blocks.destroy resource',
         'restore' => 'ibuilder::blocks.restore resource',
     ],
-// append
-
+    // append
 
 ];

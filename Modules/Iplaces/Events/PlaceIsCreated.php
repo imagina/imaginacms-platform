@@ -8,29 +8,20 @@
 
 namespace Modules\Iplaces\Events;
 
-use Modules\Iplaces\Entities\Place;
 use Modules\Core\Events\AbstractEntityHook;
-
 
 class PlaceIsCreated extends AbstractEntityHook
 {
     public $entity;
-    public  $data;
+
+    public $data;
 
     /**
      * Create a new event instance.
-     *
-     * @param $entity
-     * @param array $data
      */
-    public function __construct($entity,array $data)
-    { 
-        $this->data=$data;
-        $this->entity=$entity;
+    public function __construct($entity, array $data)
+    {
+        $this->data = $data;
+        $this->entity = $entity;
     }
-
-
-
-
-
 }

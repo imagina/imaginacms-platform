@@ -16,8 +16,6 @@ class RegisterIcommerceflatrateSidebar implements \Maatwebsite\Sidebar\SidebarEx
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIcommerceflatrateSidebar implements \Maatwebsite\Sidebar\SidebarEx
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIcommerceflatrateSidebar implements \Maatwebsite\Sidebar\SidebarEx
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommerceflatrate::icommerceflatrates.title.icommerceflatrates'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterIcommerceflatrateSidebar implements \Maatwebsite\Sidebar\SidebarEx
                         $this->auth->hasAccess('icommerceflatrate.icommerceflatrates.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

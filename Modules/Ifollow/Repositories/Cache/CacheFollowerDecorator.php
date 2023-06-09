@@ -2,8 +2,8 @@
 
 namespace Modules\Ifollow\Repositories\Cache;
 
-use Modules\Ifollow\Repositories\FollowerRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ifollow\Repositories\FollowerRepository;
 
 class CacheFollowerDecorator extends BaseCacheCrudDecorator implements FollowerRepository
 {

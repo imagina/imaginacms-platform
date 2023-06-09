@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "name" => "Media",
+    'name' => 'Media',
     'title' => [
         'media' => 'Multimedia',
         'edit media' => 'Editar multimedia',

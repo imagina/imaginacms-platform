@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercepaypal::icommercepaypals.edit resource',
         'destroy' => 'icommercepaypal::icommercepaypals.destroy resource',
     ],
-// append
+    // append
 
 ];

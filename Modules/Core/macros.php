@@ -22,7 +22,7 @@ use Illuminate\Support\ViewErrorBag;
 Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => 'form-control', 'placeholder' => $title], $options);
 
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
 
     if (is_object($object)) {
@@ -53,7 +53,7 @@ Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $
 Form::macro('i18nInputOfType', function ($type, $name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => 'form-control', 'placeholder' => $title], $options);
 
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
 
     if (is_object($object)) {
@@ -83,7 +83,7 @@ Form::macro('i18nInputOfType', function ($type, $name, $title, ViewErrorBag $err
 Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
 
     if (is_object($object)) {
@@ -111,12 +111,12 @@ Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang
  * @return HtmlString
  */
 Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang, $object = null) {
-    $string = "<div class='checkbox" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='checkbox".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= "<label for='{$lang}[{$name}]'>";
     $string .= "<input id='{$lang}[{$name}]' name='{$lang}[{$name}]' type='checkbox' class='flat-blue'";
 
     if (is_object($object)) {
-        $currentData = $object->hasTranslation($lang) ? (bool)$object->translate($lang)->{$name} : '';
+        $currentData = $object->hasTranslation($lang) ? (bool) $object->translate($lang)->{$name} : '';
     } else {
         $currentData = false;
     }
@@ -150,7 +150,7 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
         $nameForm = "{$lang}[$name]";
     }
 
-    $string = "<div class='form-group dropdown" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group dropdown".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= "<label for='$nameForm'>$title</label>";
 
     if (is_object($object)) {
@@ -163,7 +163,7 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
     $array_option = ['class' => 'form-control'];
 
     if (array_key_exists('class', $options)) {
-        $array_option = ['class' => $array_option['class'] . ' ' . $options['class']];
+        $array_option = ['class' => $array_option['class'].' '.$options['class']];
         unset($options['class']);
     }
 
@@ -185,7 +185,7 @@ Form::macro('i18nFile', function ($name, $title, ViewErrorBag $errors, $lang, $o
 
     $options = array_merge(['class' => 'form-control'], $options);
 
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($lang.'.'.$name) ? ' has-error' : '')."'>";
     $string .= "<label for='$nameForm'>$title</label>";
 
     if (is_object($object)) {
@@ -220,7 +220,7 @@ Form::macro('i18nFile', function ($name, $title, ViewErrorBag $errors, $lang, $o
 Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'form-control', 'placeholder' => $title], $options);
 
-    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= Form::label($name, $title);
 
     if (is_object($object)) {
@@ -250,7 +250,7 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
 Form::macro('normalInputOfType', function ($type, $name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'form-control', 'placeholder' => $title], $options);
 
-    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= Form::label($name, $title);
 
     if (is_object($object)) {
@@ -280,7 +280,7 @@ Form::macro('normalInputOfType', function ($type, $name, $title, ViewErrorBag $e
 Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
-    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= Form::label($name, $title);
 
     if (is_object($object)) {
@@ -307,13 +307,13 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
  * @return HtmlString
  */
 Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $object = null) {
-    $string = "<div class='checkbox" . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='checkbox".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= "<input type='hidden' value='0' name='{$name}'/>";
     $string .= "<label for='$name'>";
     $string .= "<input id='$name' name='$name' type='checkbox' class='flat-blue'";
 
     if (is_object($object)) {
-        $currentData = isset($object->$name) && (bool)$object->$name ? 'checked' : '';
+        $currentData = isset($object->$name) && (bool) $object->$name ? 'checked' : '';
     } else {
         $currentData = false;
     }
@@ -341,12 +341,12 @@ Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $ob
  */
 Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array $choice, $object = null, array $options = []) {
     if (array_key_exists('multiple', $options)) {
-        $nameForm = $name . '[]';
+        $nameForm = $name.'[]';
     } else {
         $nameForm = $name;
     }
 
-    $string = "<div class='form-group dropdown" . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group dropdown".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= "<label for='$nameForm'>$title</label>";
 
     if (is_object($object)) {
@@ -359,7 +359,7 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
     $array_option = ['class' => 'form-control'];
 
     if (array_key_exists('class', $options)) {
-        $array_option = ['class' => $array_option['class'] . ' ' . $options['class']];
+        $array_option = ['class' => $array_option['class'].' '.$options['class']];
         unset($options['class']);
     }
 
@@ -373,9 +373,9 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
 });
 
 Form::macro('normalFile', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
-    $options = array_merge(['class' => 'form-control', 'placeholder' => $title,'multiple'=>'multiple'], $options);
+    $options = array_merge(['class' => 'form-control', 'placeholder' => $title, 'multiple' => 'multiple'], $options);
 
-    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string = "<div class='form-group ".($errors->has($name) ? ' has-error' : '')."'>";
     $string .= Form::label($name, $title);
 
     if (is_object($object)) {

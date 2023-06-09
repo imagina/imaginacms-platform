@@ -10,6 +10,8 @@ class IcommerceFlatrate extends Model
     use Translatable;
 
     protected $table = 'icommerceflatrate__icommerceflatrates';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

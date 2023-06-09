@@ -18,6 +18,7 @@ class RoleController extends Controller
      * @var RoleRepository
      */
     private $role;
+
     /**
      * @var PermissionManager
      */
@@ -84,7 +85,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return array
      */
     private function mergeRequestWithPermissions(Request $request)

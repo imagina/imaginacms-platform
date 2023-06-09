@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddIeventAuditstampsInTables extends Migration
 {
@@ -13,18 +13,18 @@ class AddIeventAuditstampsInTables extends Migration
      */
     public function up()
     {
-      Schema::table('ievent__attendants', function (Blueprint $table) {
-        $table->auditStamps();
-      });
-      Schema::table('ievent__categories', function (Blueprint $table) {
-        $table->auditStamps();
-      });
-      Schema::table('ievent__comments', function (Blueprint $table) {
-        $table->auditStamps();
-      });
-      Schema::table('ievent__recurrences', function (Blueprint $table) {
-        $table->auditStamps();
-      });
+        Schema::table('ievent__attendants', function (Blueprint $table) {
+            $table->auditStamps();
+        });
+        Schema::table('ievent__categories', function (Blueprint $table) {
+            $table->auditStamps();
+        });
+        Schema::table('ievent__comments', function (Blueprint $table) {
+            $table->auditStamps();
+        });
+        Schema::table('ievent__recurrences', function (Blueprint $table) {
+            $table->auditStamps();
+        });
     }
 
     /**

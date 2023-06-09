@@ -27,10 +27,10 @@ class RebuildThumbnails implements ShouldQueue
 
         foreach ($this->paths as $path) {
             try {
-              app('log')->info('Generating thumbnails for path: ' . $path);
-              $imagy->createAll($path);
+                app('log')->info('Generating thumbnails for path: '.$path);
+                $imagy->createAll($path);
             } catch (\Exception $e) {
-                app('log')->warning('File not found: ' . $path);
+                app('log')->warning('File not found: '.$path);
             }
         }
     }

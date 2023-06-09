@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercecredibanco\Repositories\Cache;
 
-use Modules\Icommercecredibanco\Repositories\TransactionRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercecredibanco\Repositories\TransactionRepository;
 
 class CacheTransactionDecorator extends BaseCacheDecorator implements TransactionRepository
 {

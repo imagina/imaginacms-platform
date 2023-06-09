@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Modules\Isite\Traits;
-
 
 trait WithComments
 {
@@ -13,7 +11,7 @@ trait WithComments
      */
     protected static function WithComments()
     {
-        static::deleted(function($model) {
+        static::deleted(function ($model) {
             foreach ($model->comments as $comment) {
                 $comment->delete();
             }

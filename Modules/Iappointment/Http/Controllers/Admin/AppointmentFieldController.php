@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\AppointmentField;
 use Modules\Iappointment\Http\Requests\CreateAppointmentFieldRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentFieldRequest;
 use Modules\Iappointment\Repositories\AppointmentFieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AppointmentFieldController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class AppointmentFieldController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateAppointmentFieldRequest $request
      * @return Response
      */
     public function store(CreateAppointmentFieldRequest $request)
@@ -63,7 +61,6 @@ class AppointmentFieldController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  AppointmentField $appointmentfield
      * @return Response
      */
     public function edit(AppointmentField $appointmentfield)
@@ -74,8 +71,6 @@ class AppointmentFieldController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  AppointmentField $appointmentfield
-     * @param  UpdateAppointmentFieldRequest $request
      * @return Response
      */
     public function update(AppointmentField $appointmentfield, UpdateAppointmentFieldRequest $request)
@@ -89,7 +84,6 @@ class AppointmentFieldController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  AppointmentField $appointmentfield
      * @return Response
      */
     public function destroy(AppointmentField $appointmentfield)

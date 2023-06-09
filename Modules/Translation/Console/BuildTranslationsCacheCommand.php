@@ -11,10 +11,9 @@ class BuildTranslationsCacheCommand extends Command
     use DispatchesJobs;
 
     protected $name = 'asgard:build:translations';
+
     protected $description = 'Build the translations cache';
-    /**
-     * @var
-     */
+
     private $translation;
 
     public function __construct(TranslationRepository $translation)

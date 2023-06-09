@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerceopenpay\Repositories\Cache;
 
-use Modules\Icommerceopenpay\Repositories\IcommerceOpenpayRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerceopenpay\Repositories\IcommerceOpenpayRepository;
 
 class CacheIcommerceOpenpayDecorator extends BaseCacheDecorator implements IcommerceOpenpayRepository
 {
@@ -14,11 +14,10 @@ class CacheIcommerceOpenpayDecorator extends BaseCacheDecorator implements Icomm
         $this->repository = $icommerceopenpay;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

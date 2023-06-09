@@ -26,11 +26,11 @@ return [
     'methods' => [
         'agree' => [
             'title' => 'A convenir',
-            'description' => 'La descripcion del Modulo'
+            'description' => 'La descripcion del Modulo',
         ],
         'pickup' => [
             'title' => 'Retiro en tienda',
-            'description' => 'La descripcion del Modulo'
-        ]
-    ]
+            'description' => 'La descripcion del Modulo',
+        ],
+    ],
 ];

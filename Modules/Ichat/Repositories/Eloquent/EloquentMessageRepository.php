@@ -2,183 +2,186 @@
 
 namespace Modules\Ichat\Repositories\Eloquent;
 
+use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Ichat\Events\MessageWasRetrieved;
 use Modules\Ichat\Events\MessageWasSaved;
 use Modules\Ichat\Repositories\MessageRepository;
-use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
-use Illuminate\Support\Facades\Auth;
-use Modules\Ichat\Events\MessageWasCreated;
-use Modules\Ichat\Events\NewMessageInConversation;
-use Modules\Ichat\Events\ConversationUserWasUpdated;
-use Modules\Ichat\Events\MessageWasRetrieved;
 use Modules\Ihelpers\Events\CreateMedia;
 use Modules\Ihelpers\Events\DeleteMedia;
 use Modules\Ihelpers\Events\UpdateMedia;
 
 class EloquentMessageRepository extends EloquentBaseRepository implements MessageRepository
 {
-  public function getItemsBy($params)
-  {
-    // INITIALIZE QUERY
-    $query = $this->model->query();
-    /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
-      $query->with(['files']);
-    } else {//Especific relationships
-      $includeDefault = ['files'];//Default relationships
-      if (isset($params->include))//merge relations with default relationships
-        $includeDefault = array_merge($includeDefault, $params->include);
-      $query->with($includeDefault);//Add Relationships to query
-    }
+    public function getItemsBy($params)
+    {
+        // INITIALIZE QUERY
+        $query = $this->model->query();
+        /*== RELATIONSHIPS ==*/
+        if (in_array('*', $params->include)) {//If Request all relationships
+            $query->with(['files']);
+        } else {//Especific relationships
+            $includeDefault = ['files']; //Default relationships
+            if (isset($params->include)) {//merge relations with default relationships
+                $includeDefault = array_merge($includeDefault, $params->include);
+            }
+            $query->with($includeDefault); //Add Relationships to query
+        }
 
-    // FILTERS
-    if ($params->filter) {
-      $filter = $params->filter;
+        // FILTERS
+        if ($params->filter) {
+            $filter = $params->filter;
 
-      //Filter by date
-      if (isset($filter->date)) {
-        $date = $filter->date;//Short filter date
-        $date->field = $date->field ?? 'created_at';
-        if (isset($date->from))//From a date
-          $query->whereDate($date->field, '>=', $date->from);
-        if (isset($date->to))//to a date
-          $query->whereDate($date->field, '<=', $date->to);
-      }
+            //Filter by date
+            if (isset($filter->date)) {
+                $date = $filter->date; //Short filter date
+                $date->field = $date->field ?? 'created_at';
+                if (isset($date->from)) {//From a date
+                    $query->whereDate($date->field, '>=', $date->from);
+                }
+                if (isset($date->to)) {//to a date
+                    $query->whereDate($date->field, '<=', $date->to);
+                }
+            }
 
-      // Filter by conversation
-      if (isset($filter->conversationId)) {
-        $query->where('conversation_id', $filter->conversationId);
-      }
+            // Filter by conversation
+            if (isset($filter->conversationId)) {
+                $query->where('conversation_id', $filter->conversationId);
+            }
 
-      // Filter by user
-      if (isset($filter->user)) {
-        $query->where('user_id', $filter->user);
-      }
-    }
+            // Filter by user
+            if (isset($filter->user)) {
+                $query->where('user_id', $filter->user);
+            }
+        }
 
     //Order by
-    $orderByField = $params->filter->order->field ?? 'created_at';//Default field
-    $orderWay = $params->filter->order->way ?? 'desc';//Default way
-    $query->orderBy($orderByField, $orderWay);//Add order to query
+        $orderByField = $params->filter->order->field ?? 'created_at'; //Default field
+        $orderWay = $params->filter->order->way ?? 'desc'; //Default way
+        $query->orderBy($orderByField, $orderWay); //Add order to query
 
-    /*== FIELDS ==*/
-    if (isset($params->fields) && count($params->fields))
-      $query->select($params->fields);
+        /*== FIELDS ==*/
+        if (isset($params->fields) && count($params->fields)) {
+            $query->select($params->fields);
+        }
 
-    /*== REQUEST ==*/
-    if (isset($params->page) && $params->page) {
-      $response = $query->paginate($params->take);
-    } else {
-      $params->take ? $query->take($params->take) : false;//Take
-      $response = $query->get();
+        /*== REQUEST ==*/
+        if (isset($params->page) && $params->page) {
+            $response = $query->paginate($params->take);
+        } else {
+            $params->take ? $query->take($params->take) : false; //Take
+            $response = $query->get();
+        }
+
+        //Event
+        if ($response->count()) {
+            event(new MessageWasRetrieved($response->first()));
+        }
+
+        //Response
+        return $response;
     }
 
-    //Event
-    if ($response->count()) {
-      event(new MessageWasRetrieved($response->first()));
+    public function getItem($criteria, $params = false)
+    {
+        //Initialize query
+        $query = $this->model->query();
+
+        /*== RELATIONSHIPS ==*/
+        if (in_array('*', $params->include)) {//If Request all relationships
+            $query->with(['files']);
+        } else {//Especific relationships
+            $includeDefault = ['files']; //Default relationships
+            if (isset($params->include)) {//merge relations with default relationships
+                $includeDefault = array_merge($includeDefault, $params->include);
+            }
+            $query->with($includeDefault); //Add Relationships to query
+        }
+
+        /*== FILTER ==*/
+        if (isset($params->filter)) {
+            $filter = $params->filter;
+
+            if (isset($filter->field)) {//Filter by specific field
+                $field = $filter->field;
+            }
+        }
+
+        /*== FIELDS ==*/
+        if (isset($params->fields) && count($params->fields)) {
+            $query->select($params->fields);
+        }
+
+        /*== REQUEST ==*/
+        return $query->where($field ?? 'id', $criteria)->first();
     }
 
-    //Response
-    return $response;
-  }
+    public function create($data)
+    {
+        return \DB::transaction(function () use ($data) {
+            $message = $this->model->create($data);
 
-  public function getItem($criteria, $params = false)
-  {
-    //Initialize query
-    $query = $this->model->query();
+            $conversation = $message->conversation;
 
-    /*== RELATIONSHIPS ==*/
-    if (in_array('*', $params->include)) {//If Request all relationships
-      $query->with(['files']);
-    } else {//Especific relationships
-      $includeDefault = ['files'];//Default relationships
-      if (isset($params->include))//merge relations with default relationships
-        $includeDefault = array_merge($includeDefault, $params->include);
-      $query->with($includeDefault);//Add Relationships to query
+            $message->conversation()->update(['private' => $conversation->private]);
+
+            //Event to ADD media
+            event(new CreateMedia($message, $data));
+            event(new MessageWasSaved($message));
+
+            return $message;
+        }, 5);
     }
 
-    /*== FILTER ==*/
-    if (isset($params->filter)) {
-      $filter = $params->filter;
+    public function updateBy($criteria, $data, $params = false)
+    {
+        /*== initialize query ==*/
+        $query = $this->model->query();
 
-      if (isset($filter->field))//Filter by specific field
-        $field = $filter->field;
+        /*== FILTER ==*/
+        if (isset($params->filter)) {
+            $filter = $params->filter;
+
+            //Update by field
+            if (isset($filter->field)) {
+                $field = $filter->field;
+            }
+        }
+
+        /*== REQUEST ==*/
+        $model = $query->where($field ?? 'id', $criteria)->first();
+
+        if ($model) {
+            $model->update($data);
+
+            //Event to Update media
+            event(new UpdateMedia($model, $data));
+
+            return $model;
+        }
+
+        return false;
     }
 
-    /*== FIELDS ==*/
-    if (isset($params->fields) && count($params->fields))
-      $query->select($params->fields);
+    public function deleteBy($criteria, $params = false)
+    {
+        /*== initialize query ==*/
+        $query = $this->model->query();
 
-    /*== REQUEST ==*/
-    return $query->where($field ?? 'id', $criteria)->first();
-  }
+        /*== FILTER ==*/
+        if (isset($params->filter)) {
+            $filter = $params->filter;
 
-  public function create($data)
-  {
-    return \DB::transaction(function () use ($data){
-    $message = $this->model->create($data);
-  
-    
-    $conversation = $message->conversation;
+            if (isset($filter->field)) {//Where field
+                $field = $filter->field;
+            }
+        }
 
-    $message->conversation()->update(['private'=>$conversation->private]);
+        /*== REQUEST ==*/
+        $model = $query->where($field ?? 'id', $criteria)->first();
+        $model ? $model->delete() : false;
 
-    //Event to ADD media
-    event(new CreateMedia($message, $data));
-    event(new MessageWasSaved($message));
-    
-
-    return $message;
-    }, 5);
-  }
-
-  public function updateBy($criteria, $data, $params = false)
-  {
-    /*== initialize query ==*/
-    $query = $this->model->query();
-
-    /*== FILTER ==*/
-    if (isset($params->filter)) {
-      $filter = $params->filter;
-
-      //Update by field
-      if (isset($filter->field))
-        $field = $filter->field;
+        if (isset($model->id)) {
+            event(new DeleteMedia($model->id, get_class($model)));
+        }
     }
-
-    /*== REQUEST ==*/
-    $model = $query->where($field ?? 'id', $criteria)->first();
-
-    if ($model) {
-
-      $model->update($data);
-
-      //Event to Update media
-      event(new UpdateMedia($model, $data));
-
-      return $model;
-    }
-
-    return false;
-  }
-
-  public function deleteBy($criteria, $params = false)
-  {
-    /*== initialize query ==*/
-    $query = $this->model->query();
-
-    /*== FILTER ==*/
-    if (isset($params->filter)) {
-      $filter = $params->filter;
-
-      if (isset($filter->field))//Where field
-        $field = $filter->field;
-    }
-
-    /*== REQUEST ==*/
-    $model = $query->where($field ?? 'id', $criteria)->first();
-    $model ? $model->delete() : false;
-
-    if(isset($model->id))
-      event(new DeleteMedia($model->id, get_class($model)));
-  }
 }

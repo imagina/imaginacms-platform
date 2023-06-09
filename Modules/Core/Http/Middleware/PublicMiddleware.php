@@ -12,6 +12,7 @@ class PublicMiddleware
      * @var Request
      */
     private $request;
+
     /**
      * @var MenuItemRepository
      */
@@ -26,8 +27,7 @@ class PublicMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function handle($request, \Closure $next)
@@ -44,7 +44,8 @@ class PublicMiddleware
 
     /**
      * Checks if the given menu item is offline
-     * @param  object $item
+     *
+     * @param  object  $item
      * @return bool
      */
     private function isOffline($item)

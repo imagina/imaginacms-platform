@@ -15,7 +15,7 @@ return [
         'english' => 'Englisch',
         'french' => 'Französisch',
         'german' => 'Deutsch',
-        'dutch' =>  'Holländisch',
+        'dutch' => 'Holländisch',
         'italian' => 'Italienisch',
         'greek' => 'Griechisch',
         'spanish' => 'Spanisch',

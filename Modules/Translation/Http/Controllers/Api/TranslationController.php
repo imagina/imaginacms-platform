@@ -12,6 +12,7 @@ use Modules\User\Traits\CanFindUserWithBearerToken;
 class TranslationController extends Controller
 {
     use CanFindUserWithBearerToken;
+
     /**
      * @var TranslationRepository
      */

@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'icommercepaymentez/v1'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercepaymentez.api.paymentez.init',
         'uses' => 'IcommercePaymentezApiController@init',
@@ -13,6 +12,4 @@ $router->group(['prefix' => 'icommercepaymentez/v1'], function (Router $router) 
         'as' => 'icommercepaymentez.api.paymentez.response',
         'uses' => 'IcommercePaymentezApiController@response',
     ]);
-
-
 });

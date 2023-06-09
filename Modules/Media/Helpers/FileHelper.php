@@ -8,7 +8,7 @@ class FileHelper
 {
     /**
      * Get first token of string before delimiter
-     * @param $mimetype
+     *
      * @return string
      */
     public static function getTypeByMimetype($mimetype)
@@ -18,7 +18,8 @@ class FileHelper
 
     /**
      * Get Font Awesome icon for various files
-     * @param string $mediaType
+     *
+     * @param  string  $mediaType
      * @return string
      */
     public static function getFaIcon($mediaType)
@@ -40,12 +41,12 @@ class FileHelper
 
         $name = Str::slug($name);
 
-        return $name . strtolower($extension);
+        return $name.strtolower($extension);
     }
 
     /**
      * Get the extension from the given name
-     * @param $name
+     *
      * @return string
      */
     public static function getExtension($name)

@@ -7,17 +7,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-use Modules\Ibooking\Repositories\ReservationRepository;
-
 class Reservation extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     public $reservation;
+
     public $subject;
+
     public $view;
 
-    public function __construct($reservation,$subject,$view)
+    public function __construct($reservation, $subject, $view)
     {
         $this->reservation = $reservation;
         $this->subject = $subject;
@@ -31,7 +31,6 @@ class Reservation extends Mailable implements ShouldQueue
      */
     public function build()
     {
-       
         return $this->view($this->view)
             ->subject($this->subject);
     }

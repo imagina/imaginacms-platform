@@ -4,14 +4,15 @@ namespace Modules\Imeeting\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Imeeting\Events\Handlers\RegisterImeetingSidebar;
 
 class ImeetingServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,19 +33,17 @@ class ImeetingServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('imeetings', Arr::dot(trans('imeeting::imeetings')));
             // append translations
-
         });
     }
 
     public function boot()
     {
-        
         $this->publishConfig('imeeting', 'config');
         $this->publishConfig('imeeting', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'settings'), "asgard.imeeting.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'settings-fields'), "asgard.imeeting.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'permissions'), "asgard.imeeting.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'settings'), 'asgard.imeeting.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'settings-fields'), 'asgard.imeeting.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('imeeting', 'permissions'), 'asgard.imeeting.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -56,7 +55,7 @@ class ImeetingServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -85,8 +84,6 @@ class ImeetingServiceProvider extends ServiceProvider
                 return new \Modules\Imeeting\Repositories\Cache\CacheProviderDecorator($repository);
             }
         );
-// add bindings
-
-
+        // add bindings
     }
 }

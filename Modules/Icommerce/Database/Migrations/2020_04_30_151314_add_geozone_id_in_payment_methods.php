@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddGeozoneIdInPaymentMethods extends Migration
 {
@@ -14,8 +14,8 @@ class AddGeozoneIdInPaymentMethods extends Migration
     public function up()
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
-          $table->integer('geozone_id')->unsigned()->nullable();
-          $table->foreign('geozone_id')->references('id')->on('ilocations__geozones');
+            $table->integer('geozone_id')->unsigned()->nullable();
+            $table->foreign('geozone_id')->references('id')->on('ilocations__geozones');
         });
     }
 
@@ -27,10 +27,10 @@ class AddGeozoneIdInPaymentMethods extends Migration
     public function down()
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
-          if(Schema::hasColumn('icommerce__payment_methods','geozone_id')) {
-            $table->dropForeign('icommerce__payment_methods_geozone_id_foreign');
-            $table->dropColumn('geozone_id');
-          }
+            if (Schema::hasColumn('icommerce__payment_methods', 'geozone_id')) {
+                $table->dropForeign('icommerce__payment_methods_geozone_id_foreign');
+                $table->dropColumn('geozone_id');
+            }
         });
     }
 }

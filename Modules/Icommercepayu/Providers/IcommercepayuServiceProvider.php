@@ -2,16 +2,17 @@
 
 namespace Modules\Icommercepayu\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Arr;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercepayu\Events\Handlers\RegisterIcommercepayuSidebar;
 
 class IcommercepayuServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercepayuServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercepayus', Arr::dot(trans('icommercepayu::icommercepayus')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercepayuServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommercepayuServiceProvider extends ServiceProvider
                 return new \Modules\Icommercepayu\Repositories\Cache\CacheIcommercePayuDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

@@ -8,13 +8,14 @@ use Spatie\Feed\FeedItem;
 
 class ProductTranslation extends EntityProductsTranslation implements Feedable
 {
-  public function toFeedItem(): FeedItem
-  {
-    return FeedItem::create([
-    ]);
-  }
-  public static function getFeedItems()
-  {
-    return ProductTranslation::orderBy('created_at', 'desc')->get();
-  }
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create([
+        ]);
+    }
+
+    public static function getFeedItems()
+    {
+        return ProductTranslation::orderBy('created_at', 'desc')->get();
+    }
 }

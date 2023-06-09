@@ -2,13 +2,12 @@
 
 namespace Modules\Icheckin\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Job;
 use Modules\Icheckin\Http\Requests\CreateJobRequest;
 use Modules\Icheckin\Http\Requests\UpdateJobRequest;
 use Modules\Icheckin\Repositories\JobRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class JobController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class JobController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateJobRequest $request
      * @return Response
      */
     public function store(CreateJobRequest $request)
@@ -63,7 +61,6 @@ class JobController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Job $job
      * @return Response
      */
     public function edit(Job $job)
@@ -74,8 +71,6 @@ class JobController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Job $job
-     * @param  UpdateJobRequest $request
      * @return Response
      */
     public function update(Job $job, UpdateJobRequest $request)
@@ -89,7 +84,6 @@ class JobController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Job $job
      * @return Response
      */
     public function destroy(Job $job)

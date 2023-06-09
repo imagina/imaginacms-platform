@@ -7,7 +7,7 @@ return [
         'target' => 'Target',
         'same tab' => 'Same tab',
         'new tab' => 'New tab',
-        'custom html' => 'Custom HTML'
+        'custom html' => 'Custom HTML',
     ],
     'link-type' => [
         'link type' => 'Linktype',
@@ -19,6 +19,6 @@ return [
     'create resource' => 'Create Slide',
     'edit resource' => 'Edit Slide',
     'destroy resource' => 'Delete Slide',
-    'store resource'=>'Store Slide',
-    'update resource'=>'Update Slide'
+    'store resource' => 'Store Slide',
+    'update resource' => 'Update Slide',
 ];

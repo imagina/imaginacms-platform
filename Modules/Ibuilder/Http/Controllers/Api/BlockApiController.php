@@ -2,39 +2,39 @@
 
 namespace Modules\Ibuilder\Http\Controllers\Api;
 
-use Modules\Core\Icrud\Controllers\BaseCrudController;
 use Illuminate\Http\Request;
-
+use Modules\Core\Icrud\Controllers\BaseCrudController;
 //Model
 use Modules\Ibuilder\Entities\Block;
 use Modules\Ibuilder\Repositories\BlockRepository;
 
 class BlockApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(Block $model, BlockRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
 
-  /**
-   * Organization Index
-   */
-  public function blockPreview(Request $request)
-  {
-    $params = $request->all();
+    public function __construct(Block $model, BlockRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 
-    //Instance the blockConfig
-    $blockConfig = [
-      "component" => json_decode($params['component'] ?? "[]"),
-      "entity" => json_decode($params['entity'] ?? "[]"),
-      "attributes" => json_decode($params['attributes'] ?? "[]")
-    ];
+    /**
+     * Organization Index
+     */
+    public function blockPreview(Request $request)
+    {
+        $params = $request->all();
 
-    //Render view
-    return view('ibuilder::frontend.blocks', compact('blockConfig'));
-  }
+        //Instance the blockConfig
+        $blockConfig = [
+            'component' => json_decode($params['component'] ?? '[]'),
+            'entity' => json_decode($params['entity'] ?? '[]'),
+            'attributes' => json_decode($params['attributes'] ?? '[]'),
+        ];
+
+        //Render view
+        return view('ibuilder::frontend.blocks', compact('blockConfig'));
+    }
 }

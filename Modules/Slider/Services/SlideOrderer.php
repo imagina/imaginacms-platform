@@ -1,6 +1,7 @@
-<?php namespace Modules\Slider\Services;
+<?php
 
-use Modules\Slider\Entities\Slide;
+namespace Modules\Slider\Services;
+
 use Modules\Slider\Repositories\SlideRepository;
 
 class SlideOrderer
@@ -10,17 +11,11 @@ class SlideOrderer
      */
     private $slideRepository;
 
-    /**
-     * @param SlideRepository $slide
-     */
     public function __construct(SlideRepository $slide)
     {
         $this->slideRepository = $slide;
     }
 
-    /**
-     * @param $data
-     */
     public function handle($data)
     {
         $data = $this->convertToArray(json_decode($data));
@@ -32,8 +27,9 @@ class SlideOrderer
 
     /**
      * Order recursively the slider items
-     * @param int   $position
-     * @param array $item
+     *
+     * @param  int  $position
+     * @param  array  $item
      */
     private function order($position, $item)
     {
@@ -43,8 +39,9 @@ class SlideOrderer
 
     /**
      * Save the given position on the slider item
-     * @param object $slide
-     * @param int    $position
+     *
+     * @param  object  $slide
+     * @param  int  $position
      */
     private function savePosition($slide, $position)
     {
@@ -53,7 +50,7 @@ class SlideOrderer
 
     /**
      * Convert the object to array
-     * @param $data
+     *
      * @return array
      */
     private function convertToArray($data)

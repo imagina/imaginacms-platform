@@ -9,34 +9,34 @@ return [
         'places' => 'Place',
         'create place' => 'Create a place',
         'edit place' => 'Edit a place',
-        'categories'=>'Category',
+        'categories' => 'Category',
         'extra-fields' => 'Extra Fields',
     ],
     'button' => [
         'create place' => 'Create a place',
     ],
     'table' => [
-        'id'=> 'Id',
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'status'=>'Status',
-        'categories'=>'Categories'
+        'id' => 'Id',
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'status' => 'Status',
+        'categories' => 'Categories',
 
     ],
     'form' => [
-        'title'=>'Title',
-        'description'=>'Description',
-        'slug'=>'Slug',
-        'summary'=>'Summary',
-        'select photo'=>'Select photo',
-        'address'=>'Address',
-        'principal'=>'Principal',
-        'metatitle'=>'MetaTitle',
-        'metadescription'=>'MetaDescription',
-        'metakeywords'=>'Metakeywords',
-        'metadata'=>'Meta Data',
-        'gama'=>'Gama',
-        'person'=>'Quantity Person',
+        'title' => 'Title',
+        'description' => 'Description',
+        'slug' => 'Slug',
+        'summary' => 'Summary',
+        'select photo' => 'Select photo',
+        'address' => 'Address',
+        'principal' => 'Principal',
+        'metatitle' => 'MetaTitle',
+        'metadescription' => 'MetaDescription',
+        'metakeywords' => 'Metakeywords',
+        'metadata' => 'Meta Data',
+        'gama' => 'Gama',
+        'person' => 'Quantity Person',
         'weather' => 'Weather',
         'housing' => 'Housing',
         'transport' => 'Transport',
@@ -45,7 +45,7 @@ return [
     'gama' => [
         'exclusive' => 'The most exclusive',
         'high' => 'High',
-        'low' => 'Low'
+        'low' => 'Low',
     ],
 
     'weather' => [
@@ -63,7 +63,7 @@ return [
         'slug is min 2' => 'Slug is min 2',
         'category is required' => 'Category is required',
         'address is required' => 'Address is required',
-        'notfound' => 'No places found with these categories <i class="fa fa-frown-o"></i>'
+        'notfound' => 'No places found with these categories <i class="fa fa-frown-o"></i>',
     ],
     'validation' => [
     ],

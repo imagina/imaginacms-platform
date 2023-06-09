@@ -4,14 +4,15 @@ namespace Modules\Icommerceopenpay\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceopenpay\Events\Handlers\RegisterIcommerceopenpaySidebar;
 
 class IcommerceopenpayServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceopenpays', Arr::dot(trans('icommerceopenpay::icommerceopenpays')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,9 +69,6 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceopenpay\Repositories\Cache\CacheIcommerceOpenpayDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-    
 }

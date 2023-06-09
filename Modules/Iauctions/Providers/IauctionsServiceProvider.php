@@ -2,16 +2,16 @@
 
 namespace Modules\Iauctions\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Iauctions\Listeners\RegisterIauctionsSidebar;
 
 class IauctionsServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,21 +32,18 @@ class IauctionsServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
     public function boot()
     {
-
         $this->publishConfig('iauctions', 'config');
         $this->publishConfig('iauctions', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'settings'), "asgard.iauctions.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'settings-fields'), "asgard.iauctions.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'permissions'), "asgard.iauctions.permissions");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'cmsPages'), "asgard.iauctions.cmsPages");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'cmsSidebar'), "asgard.iauctions.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'settings'), 'asgard.iauctions.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'settings-fields'), 'asgard.iauctions.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'permissions'), 'asgard.iauctions.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'cmsPages'), 'asgard.iauctions.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iauctions', 'cmsSidebar'), 'asgard.iauctions.cmsSidebar');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -58,7 +55,7 @@ class IauctionsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -99,11 +96,6 @@ class IauctionsServiceProvider extends ServiceProvider
                 return new \Modules\Iauctions\Repositories\Cache\CacheBidDecorator($repository);
             }
         );
-// add bindings
-
-
-
+        // add bindings
     }
-
-
 }

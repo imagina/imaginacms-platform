@@ -8,6 +8,7 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
 {
     /**
      * The root namespace to assume when generating URLs to actions.
+     *
      * @var string
      */
     protected $namespace = 'Modules\Imeeting\Http\Controllers';
@@ -33,6 +34,6 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getApiRoute()
     {
-        return __DIR__ . '/../Http/apiRoutes.php';
+        return __DIR__.'/../Http/apiRoutes.php';
     }
 }

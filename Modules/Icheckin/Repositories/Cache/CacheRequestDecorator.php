@@ -2,8 +2,8 @@
 
 namespace Modules\Icheckin\Repositories\Cache;
 
-use Modules\Icheckin\Repositories\RequestRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icheckin\Repositories\RequestRepository;
 
 class CacheRequestDecorator extends BaseCacheDecorator implements RequestRepository
 {

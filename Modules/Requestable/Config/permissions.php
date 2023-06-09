@@ -14,7 +14,7 @@ return [
         'edit-created-by' => 'requestable::requestables.edit-created-by resource',
         'filter-created-by' => 'requestable::requestables.filter-created-by resource',
         'filter-requested-by' => 'requestable::requestables.filter-requested-by resource',
-        'filter-status' => 'requestable::requestables.filter-status resource'
+        'filter-status' => 'requestable::requestables.filter-status resource',
     ],
     'requestable.categories' => [
         'manage' => 'requestable::categories.manage resource',
@@ -75,14 +75,6 @@ return [
         'destroy' => 'requestable::comments.destroy resource',
         'restore' => 'requestable::comments.restore resource',
     ],
-// append
-
-
-
-
-
-
-
-
+    // append
 
 ];

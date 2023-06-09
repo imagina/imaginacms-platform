@@ -7,6 +7,6 @@ return [
         'edit' => 'icommerceagree::icommerceagrees.edit resource',
         'destroy' => 'icommerceagree::icommerceagrees.destroy resource',
     ],
-// append
+    // append
 
 ];

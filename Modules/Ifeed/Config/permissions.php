@@ -9,6 +9,6 @@ return [
         'destroy' => 'ifeed::feeds.destroy resource',
         'restore' => 'ifeed::feeds.restore resource',
     ],
-// append
+    // append
 
 ];

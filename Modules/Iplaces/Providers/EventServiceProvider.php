@@ -5,24 +5,24 @@ namespace Modules\Iplaces\Providers;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Modules\Iplaces\Events\CategoryWasCreated;
 use Modules\Iplaces\Events\CategoryWasDeleted;
-use Modules\Iplaces\Events\ServiceWasCreated;
-use Modules\Iplaces\Events\ServiceWasDeleted;
 use Modules\Iplaces\Events\Handlers\DeleteCategoryImage;
 use Modules\Iplaces\Events\Handlers\SaveCategoryImage;
-use Modules\Iplaces\Events\Handlers\SaveServiceImage;
-use Modules\Iplaces\Events\PlaceWasCreated;
 use Modules\Iplaces\Events\Handlers\SavePlaceImage;
+use Modules\Iplaces\Events\Handlers\SaveServiceImage;
+use Modules\Iplaces\Events\Handlers\SaveSpaceImage;
+use Modules\Iplaces\Events\PlaceWasCreated;
+use Modules\Iplaces\Events\ServiceWasCreated;
+use Modules\Iplaces\Events\ServiceWasDeleted;
 use Modules\Iplaces\Events\SpaceWasCreated;
 use Modules\Iplaces\Events\SpaceWasDeleted;
-use Modules\Iplaces\Events\Handlers\SaveSpaceImage;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
         CategoryWasCreated::class => [
-           SaveCategoryImage::class,
+            SaveCategoryImage::class,
         ],
-        CategoryWasDeleted::class=>[
+        CategoryWasDeleted::class => [
             DeleteCategoryImage::class,
         ],
         PlaceWasCreated::class => [

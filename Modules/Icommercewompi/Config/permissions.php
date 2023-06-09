@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercewompi::icommercewompis.edit resource',
         'destroy' => 'icommercewompi::icommercewompis.destroy resource',
     ],
-// append
+    // append
 
 ];

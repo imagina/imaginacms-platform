@@ -18,7 +18,6 @@ return [
         'edit' => 'idocs::documents.edit resource',
         'destroy' => 'idocs::documents.destroy resource',
     ],
-// append
-
+    // append
 
 ];

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class SliderAddAuditstampInSliderAndSlideTables extends Migration
 {
@@ -13,13 +13,13 @@ class SliderAddAuditstampInSliderAndSlideTables extends Migration
      */
     public function up()
     {
-      Schema::table('slider__sliders', function (Blueprint $table) {
-        $table->auditStamps();
-        $table->unique(['system_name', 'organization_id'])->change();
-      });
-      Schema::table('slider__slides', function (Blueprint $table) {
-        $table->auditStamps();
-      });
+        Schema::table('slider__sliders', function (Blueprint $table) {
+            $table->auditStamps();
+            $table->unique(['system_name', 'organization_id'])->change();
+        });
+        Schema::table('slider__slides', function (Blueprint $table) {
+            $table->auditStamps();
+        });
     }
 
     /**

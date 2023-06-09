@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercestripe\Repositories\Cache;
 
-use Modules\Icommercestripe\Repositories\IcommerceStripeRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercestripe\Repositories\IcommerceStripeRepository;
 
 class CacheIcommerceStripeDecorator extends BaseCacheDecorator implements IcommerceStripeRepository
 {
@@ -14,11 +14,10 @@ class CacheIcommerceStripeDecorator extends BaseCacheDecorator implements Icomme
         $this->repository = $icommercestripe;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

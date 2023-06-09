@@ -8,6 +8,6 @@ return [
         'edit' => 'icurrency::currencies.edit resource',
         'destroy' => 'icurrency::currencies.destroy resource',
     ],
-// append
+    // append
 
 ];

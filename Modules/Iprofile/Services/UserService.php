@@ -6,34 +6,27 @@ use Modules\Iprofile\Entities\Setting as ProfileSetting;
 
 class UserService
 {
+    public function getUserWorkspace($user)
+    {
+        //default
+        $workspace = 'iadmin';
 
-	/**
-  	* 
-  	* @param $user
-  	*/
-  	public function getUserWorkspace($user){
+        // Get role user
+        foreach ($user->roles as $key => $rol) {
+            $userRoleId = $rol->id;
+            break;
+        }
 
-  		//default
-  		$workspace = "iadmin";
+        // Search Workspace user in setting by role
+        $resultQuery = ProfileSetting::where('entity_name', 'role')
+        ->where('related_id', $userRoleId)
+        ->where('name', 'workSpace')->first();
 
-  		// Get role user
-	    foreach ($user->roles as $key => $rol) {
-	        $userRoleId = $rol->id;
-	        break;
-	    }
-     	
-     	// Search Workspace user in setting by role
-	    $resultQuery = ProfileSetting::where("entity_name","role")
-	    ->where("related_id",$userRoleId)
-	    ->where("name","workSpace")->first();
+        if (! empty($resultQuery) && ! is_null($resultQuery)) {
+            $workspace = $resultQuery->value;
+        }
 
-	    if(!empty($resultQuery) && !is_null($resultQuery))
-	    	$workspace = $resultQuery->value;
-	    
-	    // return data 
-	    return $workspace;
-
-  	}
-
-
+        // return data
+        return $workspace;
+    }
 }

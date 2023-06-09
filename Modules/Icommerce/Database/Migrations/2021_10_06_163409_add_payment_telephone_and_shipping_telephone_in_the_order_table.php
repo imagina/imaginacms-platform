@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddPaymentTelephoneAndShippingTelephoneInTheOrderTable extends Migration
 {
@@ -14,8 +14,8 @@ class AddPaymentTelephoneAndShippingTelephoneInTheOrderTable extends Migration
     public function up()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          $table->string('payment_telephone')->nullable()->after('payment_last_name');
-          $table->string('shipping_telephone')->nullable()->after('shipping_last_name');
+            $table->string('payment_telephone')->nullable()->after('payment_last_name');
+            $table->string('shipping_telephone')->nullable()->after('shipping_last_name');
         });
     }
 
@@ -27,8 +27,8 @@ class AddPaymentTelephoneAndShippingTelephoneInTheOrderTable extends Migration
     public function down()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          $table->dropColumn('payment_telephone');
-          $table->dropColumn('shipping_telephone');
+            $table->dropColumn('payment_telephone');
+            $table->dropColumn('shipping_telephone');
         });
     }
 }

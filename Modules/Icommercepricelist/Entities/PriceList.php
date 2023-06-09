@@ -11,9 +11,11 @@ class PriceList extends Model
     use Translatable;
 
     protected $table = 'icommercepricelist__price_lists';
+
     public $translatedAttributes = [
-        'name'
+        'name',
     ];
+
     protected $fillable = [
         'status',
         'criteria',
@@ -32,9 +34,10 @@ class PriceList extends Model
 
     public function getEntityAttribute()
     {
-        if($this->related_entity && $this->related_id)
+        if ($this->related_entity && $this->related_id) {
             return app($this->related_entity)->find($this->related_id);
-        else
+        } else {
             return null;
+        }
     }
 }

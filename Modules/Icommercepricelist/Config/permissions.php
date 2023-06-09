@@ -1,4 +1,5 @@
 <?php
+
 return [
     'icommercepricelist.pricelists' => [
         'manage' => 'icommercepricelist::pricelists.manage resource',

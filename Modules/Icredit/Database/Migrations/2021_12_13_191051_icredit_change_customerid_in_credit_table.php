@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IcreditChangeCustomerIdInCreditTable extends Migration
 {
@@ -13,11 +13,9 @@ class IcreditChangeCustomerIdInCreditTable extends Migration
      */
     public function up()
     {
-      Schema::table('icredit__credits', function (Blueprint $table) {
-
-        $table->integer('customer_id')->unsigned()->nullable()->change();
-
-      });
+        Schema::table('icredit__credits', function (Blueprint $table) {
+            $table->integer('customer_id')->unsigned()->nullable()->change();
+        });
     }
 
     /**

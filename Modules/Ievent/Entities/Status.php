@@ -4,11 +4,11 @@ namespace Modules\Ievent\Entities;
 
 /**
  * Class Status
- * @package Modules\Blog\Entities
  */
 class Status
 {
     const PUBLISHED = 1;
+
     const CANCELLED = 0;
 
     /**
@@ -26,6 +26,7 @@ class Status
 
     /**
      * Get the available statuses
+     *
      * @return array
      */
     public function lists()
@@ -35,7 +36,8 @@ class Status
 
     /**
      * Get the post status
-     * @param int $statusId
+     *
+     * @param  int  $statusId
      * @return string
      */
     public function get($statusId)

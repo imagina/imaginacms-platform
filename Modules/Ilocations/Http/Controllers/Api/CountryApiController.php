@@ -4,7 +4,6 @@ namespace Modules\Ilocations\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 use Modules\Ilocations\Http\Requests\CreateCountryRequest;
 use Modules\Ilocations\Http\Requests\UpdateCountryRequest;
@@ -22,7 +21,6 @@ class CountryApiController extends BaseApiController
         CountryRepository $country)
     {
         $this->country = $country;
-
     }
 
     /**
@@ -40,23 +38,22 @@ class CountryApiController extends BaseApiController
             $dataEntity = $this->country->getItemsBy($params);
 
             //Response
-            $response = ["data" => CountryTransformer::collection($dataEntity)];
+            $response = ['data' => CountryTransformer::collection($dataEntity)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($dataEntity)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -69,20 +66,22 @@ class CountryApiController extends BaseApiController
             $dataEntity = $this->country->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$dataEntity) throw new Exception('Item not found', 404);
+            if (! $dataEntity) {
+                throw new Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new CountryTransformer($dataEntity)];
+            $response = ['data' => new CountryTransformer($dataEntity)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($dataEntity)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     public function create(Request $request)
@@ -95,12 +94,10 @@ class CountryApiController extends BaseApiController
 
             $dataEntity = $this->country->create($data);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
-
         } catch (Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -109,6 +106,7 @@ class CountryApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -125,11 +123,13 @@ class CountryApiController extends BaseApiController
             $dataEntity = $this->country->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$dataEntity) throw new Exception('Item not found', 204);
+            if (! $dataEntity) {
+                throw new Exception('Item not found', 204);
+            }
 
             $this->country->update($dataEntity, $data);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
@@ -141,6 +141,7 @@ class CountryApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
@@ -152,15 +153,16 @@ class CountryApiController extends BaseApiController
 
             $dataEntity = $this->country->getItem($criteria, $params);
             //Break if no found item
-            if (!$dataEntity) throw new Exception('Item not found', 204);
+            if (! $dataEntity) {
+                throw new Exception('Item not found', 204);
+            }
 
             $this->country->destroy($dataEntity);
 
-            $response = ["data" => "Request successful"];
+            $response = ['data' => 'Request successful'];
 
             \DB::commit();
         } catch (\Exception $exception) {
-
             \Log::Error($exception);
 
             \DB::rollback();
@@ -169,6 +171,7 @@ class CountryApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateImeetingMeetingsTable extends Migration
 {
@@ -25,12 +25,11 @@ class CreateImeetingMeetingsTable extends Migration
 
             $table->integer('entity_id');
             $table->string('entity_type');
-            
+
             $table->text('options')->nullable();
 
             $table->timestamps();
             $table->auditStamps();
-
         });
     }
 

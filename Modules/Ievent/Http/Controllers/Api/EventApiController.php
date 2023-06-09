@@ -4,231 +4,216 @@ namespace Modules\Ievent\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
-use Modules\Ievent\Entities\Status;
-use Modules\Ievent\Events\EventWasCancelled;
-use Modules\Ievent\Events\EventWasUpdated;
-use Modules\Ievent\Transformers\EventTransformer;
-use Modules\Ievent\Transformers\EventPublicTransformer;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Modules\Ievent\Repositories\EventRepository;
 use Modules\Ievent\Http\Requests\CreateEventRequest;
 use Modules\Ievent\Http\Requests\UpdateEventRequest;
+use Modules\Ievent\Repositories\EventRepository;
+use Modules\Ievent\Transformers\EventPublicTransformer;
+use Modules\Ievent\Transformers\EventTransformer;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 use Modules\Notification\Services\Inotification;
 
 class EventApiController extends BaseApiController
 {
+    private $event;
 
-  private $event;
-  private $notification;
+    private $notification;
 
-  public function __construct(EventRepository $event, Inotification $notification)
-  {
-    $this->event = $event;
-    $this->notification = $notification;
-  }
-
-  /**
-   * GET ITEMS
-   *
-   * @return mixed
-   */
-  public function index(Request $request)
-  {
-    try {
-
-      //Get Parameters from URL.
-      $params = $this->getParamsRequest($request);
-
-      //Request to Repository
-      $events = $this->event->getItemsBy($params);
-
-      //Response
-      $response = [
-        "data" => EventTransformer::collection($events)
-      ];
-
-      //If request pagination add meta-page
-      $params->page ? $response["meta"] = ["page" => $this->pageTransformer($events)] : false;
-    } catch (\Exception $e) {
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+    public function __construct(EventRepository $event, Inotification $notification)
+    {
+        $this->event = $event;
+        $this->notification = $notification;
     }
 
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
+    /**
+     * GET ITEMS
+     *
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        try {
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
 
-  /**
-   * GET A ITEM
-   *
-   * @param $criteria
-   * @return mixed
-   */
-  public function show($criteria, Request $request)
-  {
-    try {
-      //Get Parameters from URL.
-      $params = $this->getParamsRequest($request);
+            //Request to Repository
+            $events = $this->event->getItemsBy($params);
 
-      //Request to Repository
-      $event = $this->event->getItem($criteria, $params);
+            //Response
+            $response = [
+                'data' => EventTransformer::collection($events),
+            ];
 
-      //Break if no found item
-      if (!$event) throw new \Exception('Item not found', 404);
+            //If request pagination add meta-page
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($events)] : false;
+        } catch (\Exception $e) {
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
 
-      //Response
-      $response = ["data" => new EventTransformer($event)];
-
-      //If request pagination add meta-page
-      $params->page ? $response["meta"] = ["page" => $this->pageTransformer($event)] : false;
-    } catch (\Exception $e) {
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+        //Return response
+        return response()->json($response, $status ?? 200);
     }
 
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
+    /**
+     * GET A ITEM
+     *
+     * @return mixed
+     */
+    public function show($criteria, Request $request)
+    {
+        try {
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
 
-  /**
-   * CREATE A ITEM
-   *
-   * @param Request $request
-   * @return mixed
-   */
-  public function create(Request $request)
-  {
-    \DB::beginTransaction();
-    try {
+            //Request to Repository
+            $event = $this->event->getItem($criteria, $params);
 
-      //Get data
-      $data = $request->input('attributes');
+            //Break if no found item
+            if (! $event) {
+                throw new \Exception('Item not found', 404);
+            }
 
+            //Response
+            $response = ['data' => new EventTransformer($event)];
 
-      //Get Parameters from URL.
-      $params = $this->getParamsRequest($request);
+            //If request pagination add meta-page
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($event)] : false;
+        } catch (\Exception $e) {
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
 
-      //Validate Request
-      $this->validateRequestApi(new CreateEventRequest((array)$data));
-
-
-      $data["user_id"] = $params->user->id;
-      //$data["department_id"] = $params->department->id;
-      //Create item
-      $event = $this->event->create($data);
-
-     //Response
-      $response = ["data" => ""];
-      \DB::commit(); //Commit to Data Base
-
-    } catch (\Exception $e) {
-      \DB::rollback();//Rollback to Data Base
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
-    }
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
-
-  /**
-   * UPDATE ITEM
-   *
-   * @param $criteria
-   * @param Request $request
-   * @return mixed
-   */
-  public function update($criteria, Request $request)
-  {
-    \DB::beginTransaction(); //DB Transaction
-    try {
-      //Get data
-      $data = $request->input('attributes');
-
-      unset($data["department_id"]);
-      //Validate Request
-      $this->validateRequestApi(new UpdateEventRequest((array)$data));
-
-      //Get Parameters from URL.
-      $params = $this->getParamsRequest($request);
-
-      $event = $this->event->updateBy($criteria, $data, $params);
-
-
-
-      //Response
-      $response = ["data" => 'Item Updated'];
-      \DB::commit();//Commit to DataBase
-
-
-    } catch (\Exception $e) {
-      \DB::rollback();//Rollback to Data Base
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+        //Return response
+        return response()->json($response, $status ?? 200);
     }
 
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
+    /**
+     * CREATE A ITEM
+     *
+     * @return mixed
+     */
+    public function create(Request $request)
+    {
+        \DB::beginTransaction();
+        try {
+            //Get data
+            $data = $request->input('attributes');
 
-  /**
-   * DELETE A ITEM
-   *
-   * @param $criteria
-   * @return mixed
-   */
-  public function delete($criteria, Request $request)
-  {
-    \DB::beginTransaction();
-    try {
-      //Get params
-      $params = $this->getParamsRequest($request);
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
 
-      //call Method delete
-      $this->event->deleteBy($criteria, $params);
+            //Validate Request
+            $this->validateRequestApi(new CreateEventRequest((array) $data));
 
-      //Response
-      $response = ["data" => ""];
-      \DB::commit();//Commit to Data Base
-    } catch (\Exception $e) {
-      \DB::rollback();//Rollback to Data Base
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+            $data['user_id'] = $params->user->id;
+            //$data["department_id"] = $params->department->id;
+            //Create item
+            $event = $this->event->create($data);
+
+            //Response
+            $response = ['data' => ''];
+            \DB::commit(); //Commit to Data Base
+        } catch (\Exception $e) {
+            \DB::rollback(); //Rollback to Data Base
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
+        //Return response
+        return response()->json($response, $status ?? 200);
     }
 
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
+    /**
+     * UPDATE ITEM
+     *
+     * @return mixed
+     */
+    public function update($criteria, Request $request)
+    {
+        \DB::beginTransaction(); //DB Transaction
+        try {
+            //Get data
+            $data = $request->input('attributes');
 
-  /**
-   * GET A ITEM PUBLIC
-   *
-   * @param $criteria
-   * @return mixed
-   */
-  public function showPublic($criteria, Request $request)
-  {
-    try {
-      //Get Parameters from URL.
-      $params = $this->getParamsRequest($request);
+            unset($data['department_id']);
+            //Validate Request
+            $this->validateRequestApi(new UpdateEventRequest((array) $data));
 
-      //Request to Repository
-      $event = $this->event->getItem($criteria, $params);
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
 
-      //Break if no found item
-      if (!$event) throw new \Exception('Item not found', 404);
+            $event = $this->event->updateBy($criteria, $data, $params);
 
-      //Response
-      $response = ["data" => new EventPublicTransformer($event)];
+            //Response
+            $response = ['data' => 'Item Updated'];
+            \DB::commit(); //Commit to DataBase
+        } catch (\Exception $e) {
+            \DB::rollback(); //Rollback to Data Base
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
 
-      //If request pagination add meta-page
-      $params->page ? $response["meta"] = ["page" => $this->pageTransformer($event)] : false;
-    } catch (\Exception $e) {
-      $status = $this->getStatusError($e->getCode());
-      $response = ["errors" => $e->getMessage()];
+        //Return response
+        return response()->json($response, $status ?? 200);
     }
 
-    //Return response
-    return response()->json($response, $status ?? 200);
-  }
+    /**
+     * DELETE A ITEM
+     *
+     * @return mixed
+     */
+    public function delete($criteria, Request $request)
+    {
+        \DB::beginTransaction();
+        try {
+            //Get params
+            $params = $this->getParamsRequest($request);
+
+            //call Method delete
+            $this->event->deleteBy($criteria, $params);
+
+            //Response
+            $response = ['data' => ''];
+            \DB::commit(); //Commit to Data Base
+        } catch (\Exception $e) {
+            \DB::rollback(); //Rollback to Data Base
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
+
+        //Return response
+        return response()->json($response, $status ?? 200);
+    }
+
+    /**
+     * GET A ITEM PUBLIC
+     *
+     * @return mixed
+     */
+    public function showPublic($criteria, Request $request)
+    {
+        try {
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
+
+            //Request to Repository
+            $event = $this->event->getItem($criteria, $params);
+
+            //Break if no found item
+            if (! $event) {
+                throw new \Exception('Item not found', 404);
+            }
+
+            //Response
+            $response = ['data' => new EventPublicTransformer($event)];
+
+            //If request pagination add meta-page
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($event)] : false;
+        } catch (\Exception $e) {
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
+
+        //Return response
+        return response()->json($response, $status ?? 200);
+    }
 }

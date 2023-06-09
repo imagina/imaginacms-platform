@@ -10,6 +10,8 @@ class IcommerceCredibanco extends Model
     use Translatable;
 
     protected $table = 'icommercecredibanco__icommercecredibancos';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

@@ -9,6 +9,6 @@ return [
         'destroy' => 'ibinnacle::binnacles.destroy resource',
         'restore' => 'ibinnacle::binnacles.restore resource',
     ],
-// append
+    // append
 
 ];

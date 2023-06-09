@@ -2,8 +2,8 @@
 
 namespace Modules\Qreable\Repositories\Cache;
 
-use Modules\Qreable\Repositories\QredRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Qreable\Repositories\QredRepository;
 
 class CacheQredDecorator extends BaseCacheDecorator implements QredRepository
 {

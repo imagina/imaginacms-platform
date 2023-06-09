@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\AdUp;
 use Modules\Iad\Http\Requests\CreateAdUpRequest;
 use Modules\Iad\Http\Requests\UpdateAdUpRequest;
 use Modules\Iad\Repositories\AdUpRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AdUpController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class AdUpController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateAdUpRequest $request
      * @return Response
      */
     public function store(CreateAdUpRequest $request)
@@ -63,7 +61,6 @@ class AdUpController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  AdUp $adup
      * @return Response
      */
     public function edit(AdUp $adup)
@@ -74,8 +71,6 @@ class AdUpController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  AdUp $adup
-     * @param  UpdateAdUpRequest $request
      * @return Response
      */
     public function update(AdUp $adup, UpdateAdUpRequest $request)
@@ -89,7 +84,6 @@ class AdUpController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  AdUp $adup
      * @return Response
      */
     public function destroy(AdUp $adup)

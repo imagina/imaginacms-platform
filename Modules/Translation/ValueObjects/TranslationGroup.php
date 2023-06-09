@@ -17,7 +17,6 @@ class TranslationGroup
     }
 
     /**
-     * @param array $translationsRaw
      * @return Collection
      */
     private function reArrangeTranslations(array $translationsRaw)
@@ -35,6 +34,7 @@ class TranslationGroup
 
     /**
      * Return the translations
+     *
      * @return Collection
      */
     public function all()
@@ -44,6 +44,7 @@ class TranslationGroup
 
     /**
      * Return the raw translations
+     *
      * @return array
      */
     public function allRaw()

@@ -4,16 +4,16 @@ namespace Modules\Icommercecredibanco\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Icommercecredibanco\Events\Handlers\RegisterIcommercecredibancoSidebar;
-
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercecredibanco\Console\CheckUpdateOrders;
+use Modules\Icommercecredibanco\Events\Handlers\RegisterIcommercecredibancoSidebar;
 
 class IcommercecredibancoServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -35,12 +35,9 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
             $event->load('icommercecredibancos', Arr::dot(trans('icommercecredibanco::icommercecredibancos')));
             $event->load('transactions', Arr::dot(trans('icommercecredibanco::transactions')));
             // append translations
-
-
         });
 
         $this->registerCommands();
-
     }
 
     public function boot()
@@ -59,7 +56,7 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -88,9 +85,7 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
                 return new \Modules\Icommercecredibanco\Repositories\Cache\CacheTransactionDecorator($repository);
             }
         );
-// add bindings
-
-
+        // add bindings
     }
 
     /**
@@ -106,9 +101,7 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
      */
     private function registerIcommercecredibancoCommand()
     {
-
-        $this->app['command.icommercecredibanco.updateorders'] = $this->app->make(CheckUpdateOrders::class);;
+        $this->app['command.icommercecredibanco.updateorders'] = $this->app->make(CheckUpdateOrders::class);
         $this->commands(['command.icommercecredibanco.updateorders']);
     }
-
 }

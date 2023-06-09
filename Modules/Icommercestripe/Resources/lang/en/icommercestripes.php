@@ -30,7 +30,7 @@ return [
     'form' => [
     ],
     'formFields' => [
-        
+
     ],
     'messages' => [
         'accountCreated' => 'Your Connect account has been created',
@@ -39,6 +39,6 @@ return [
     ],
     'validation' => [
         'accountIncompletePanelUrl' => 'You must complete the account data verification process to get the panel URL',
-        'accountIncomplete' => 'The destination account does not have the requirements to receive payments'
-    ]
+        'accountIncomplete' => 'The destination account does not have the requirements to receive payments',
+    ],
 ];

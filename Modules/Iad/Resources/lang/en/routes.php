@@ -2,19 +2,19 @@
 
 return [
 
-  'ad' => [
-    'index' => [
-      'index' => 'ads',
-      'category' => 'ads/c/{categorySlug}',
-      'service' => 'ads/s/{serviceSlug}',
-    ],
+    'ad' => [
+        'index' => [
+            'index' => 'ads',
+            'category' => 'ads/c/{categorySlug}',
+            'service' => 'ads/s/{serviceSlug}',
+        ],
 
-    'show' => [
-      'ad' => 'ad/{adSlug}',
-    ],
+        'show' => [
+            'ad' => 'ad/{adSlug}',
+        ],
 
         'create' => [
-          'ad' => 'create/ad',
+            'ad' => 'create/ad',
         ],
-  ],
+    ],
 ];
