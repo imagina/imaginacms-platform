@@ -239,8 +239,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         $moduleName = $module->getLowerName();
 
-        $langPath = base_path("resources/lang/$moduleName");
-        $secondPath = base_path("resources/lang/translation/$moduleName");
+        $langPath = base_path("lang/$moduleName");
+        $secondPath = base_path("lang/translation/$moduleName");
 
         if ($moduleName !== 'translation' && $this->hasPublishedTranslations($langPath)) {
             return $this->loadTranslationsFrom($langPath, $moduleName);
