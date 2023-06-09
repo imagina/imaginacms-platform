@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IadController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('iad')->group(function () {
-    Route::get('/', 'IadController@index');
+    Route::get('/', [IadController::class, 'index']);
 });

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IauctionsController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('iauctions')->group(function () {
-    Route::get('/', 'IauctionsController@index');
+    Route::get('/', [IauctionsController::class, 'index']);
 });

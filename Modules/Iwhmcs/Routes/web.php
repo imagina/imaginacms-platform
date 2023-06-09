@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IwhmcsController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('iwhmcs')->group(function () {
-    Route::get('/', 'IwhmcsController@index');
+    Route::get('/', [IwhmcsController::class, 'index']);
 });
