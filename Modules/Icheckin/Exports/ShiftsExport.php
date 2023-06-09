@@ -2,8 +2,8 @@
 
 namespace Modules\Icheckin\Exports;
 
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;

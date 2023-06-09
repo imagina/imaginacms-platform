@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Image\Intervention;
 
-use Modules\Media\Image\ImageHandlerInterface;
 use Modules\Media\Image\ImageFactoryInterface;
+use Modules\Media\Image\ImageHandlerInterface;
 
 class InterventionFactory implements ImageFactoryInterface
 {

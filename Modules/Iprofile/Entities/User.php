@@ -2,11 +2,11 @@
 
 namespace Modules\Iprofile\Entities;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laracasts\Presenter\PresentableTrait;
 use Laravel\Passport\HasApiTokens;
 use Modules\Core\Support\Traits\AuditTrait;

@@ -2,9 +2,9 @@
 
 namespace Modules\Core\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
 
 class LocalizationMiddleware extends LaravelLocalizationRedirectFilter

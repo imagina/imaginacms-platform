@@ -2,9 +2,9 @@
 
 namespace Modules\Core\Foundation\Theme;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 class ThemeManager implements \Countable

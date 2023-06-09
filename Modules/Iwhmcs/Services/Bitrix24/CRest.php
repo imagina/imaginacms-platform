@@ -215,7 +215,6 @@ class CRest
     }
 
     /**
-     *
      * @var array
      * @var   int 0 or 1 stop batch on error
      *
@@ -309,7 +308,6 @@ class CRest
     }
 
     /**
-     *
      * @var  bool true if install app by installApp()
      * @var array settings application
      */

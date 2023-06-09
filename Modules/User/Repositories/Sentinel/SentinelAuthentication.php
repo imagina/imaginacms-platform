@@ -2,8 +2,6 @@
 
 namespace Modules\User\Repositories\Sentinel;
 
-use Modules\User\Repositories\RoleRepository;
-use Modules\User\Repositories\UserRepository;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
@@ -12,6 +10,8 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Events\UserHasActivatedAccount;
+use Modules\User\Repositories\RoleRepository;
+use Modules\User\Repositories\UserRepository;
 
 class SentinelAuthentication implements Authentication
 {

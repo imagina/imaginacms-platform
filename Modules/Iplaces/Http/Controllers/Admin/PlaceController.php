@@ -14,7 +14,6 @@ use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Entities\StatusYN;
 use Modules\Iplaces\Entities\Weather;
 use Modules\Iplaces\Http\Requests\CreatePlaceRequest;
-use Modules\Iplaces\Http\Requests\UpdatePlaceRequest;
 use Modules\Iplaces\Repositories\CategoryRepository;
 use Modules\Iplaces\Repositories\CityRepository as SiteRepository;
 use Modules\Iplaces\Repositories\PlaceRepository;

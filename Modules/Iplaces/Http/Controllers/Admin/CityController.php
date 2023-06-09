@@ -8,7 +8,6 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Repositories\ProvinceRepository;
 use Modules\Iplaces\Entities\City;
 use Modules\Iplaces\Http\Requests\CreateCityRequest;
-use Modules\Iplaces\Http\Requests\UpdateCityRequest;
 use Modules\Iplaces\Repositories\CityRepository;
 
 class CityController extends AdminBaseController

@@ -2,12 +2,9 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
-use Modules\Core\Foundation\Asset\Types\AssetType;
-
 class AssetTypeFactory
 {
     /**
-     *
      * @throws \InvalidArgumentException
      */
     public function make($asset): AssetType
