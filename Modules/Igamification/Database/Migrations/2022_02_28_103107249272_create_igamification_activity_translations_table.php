@@ -10,7 +10,7 @@ class CreateIgamificationActivityTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('igamification__activity_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIgamificationActivityTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('igamification__activity_translations', function (Blueprint $table) {
             $table->dropForeign(['activity_id']);

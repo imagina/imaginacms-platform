@@ -11,7 +11,7 @@ class IprofileAddAuditstampInDepartmentTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iprofile__departments', function (Blueprint $table) {
             $table->auditStamps();
@@ -23,7 +23,7 @@ class IprofileAddAuditstampInDepartmentTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

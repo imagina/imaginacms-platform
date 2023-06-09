@@ -61,7 +61,7 @@ class UserServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register($this->getUserPackageServiceProvider());
 
@@ -91,7 +91,7 @@ class UserServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerMiddleware();
 

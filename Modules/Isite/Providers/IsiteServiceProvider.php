@@ -39,7 +39,7 @@ class IsiteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerCommands();
@@ -89,7 +89,7 @@ class IsiteServiceProvider extends ServiceProvider
         */
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerMiddleware();
         $this->publishConfig('isite', 'config');

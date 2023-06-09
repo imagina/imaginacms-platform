@@ -11,7 +11,7 @@ class IformAddNameInBlockTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__blocks', function (Blueprint $table) {
             $table->string('name')->nullable()->after('options');
@@ -23,7 +23,7 @@ class IformAddNameInBlockTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

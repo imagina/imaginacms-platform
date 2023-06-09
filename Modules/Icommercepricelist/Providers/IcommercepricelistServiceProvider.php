@@ -16,7 +16,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerConfig();
         $this->registerViews();
@@ -28,7 +28,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerTranslations();

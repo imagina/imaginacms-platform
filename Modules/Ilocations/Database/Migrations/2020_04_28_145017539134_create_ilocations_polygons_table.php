@@ -10,7 +10,7 @@ class CreateIlocationsPolygonsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ilocations__polygons', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,7 +26,7 @@ class CreateIlocationsPolygonsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('ilocations__polygons');
     }

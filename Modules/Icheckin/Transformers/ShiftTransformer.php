@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class ShiftTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $date1 = new \DateTime($this->checkout_at ? $this->checkout_at : date('Y-m-d H:i:s'));
         $date2 = new \DateTime($this->checkin_at);

@@ -11,7 +11,7 @@ class AddSystemNameColumnToMenuitemsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('menu__menuitems', function (Blueprint $table) {
             $table->string('system_name')->after('page_id')->nullable()->default(null);
@@ -23,7 +23,7 @@ class AddSystemNameColumnToMenuitemsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('menu__menuitems', function (Blueprint $table) {
             $table->dropColumn('page_id');

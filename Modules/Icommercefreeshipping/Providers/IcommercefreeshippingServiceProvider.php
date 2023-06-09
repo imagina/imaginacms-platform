@@ -25,7 +25,7 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercefreeshippingSidebar::class);
@@ -36,7 +36,7 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercefreeshipping', 'permissions');
         $this->publishConfig('icommercefreeshipping', 'config');

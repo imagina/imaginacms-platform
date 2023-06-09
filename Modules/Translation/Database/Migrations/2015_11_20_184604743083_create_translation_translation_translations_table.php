@@ -10,7 +10,7 @@ class CreateTranslationTranslationTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('translation__translation_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -29,7 +29,7 @@ class CreateTranslationTranslationTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('translation__translation_translations');
     }

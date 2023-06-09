@@ -7,7 +7,7 @@ use Modules\User\Permissions\PermissionManager;
 
 class FullUserTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $permissionsManager = app(PermissionManager::class);
         $permissions = $this->buildPermissionList($permissionsManager->all());

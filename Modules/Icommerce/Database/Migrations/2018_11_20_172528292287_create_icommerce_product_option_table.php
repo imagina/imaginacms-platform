@@ -10,7 +10,7 @@ class CreateIcommerceProductOptionTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommerce__product_option', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -44,7 +44,7 @@ class CreateIcommerceProductOptionTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('icommerce__product_option');
     }

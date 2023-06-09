@@ -10,7 +10,7 @@ class CreateIgamificationActivityCategoryTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('igamification__activity_category', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -34,7 +34,7 @@ class CreateIgamificationActivityCategoryTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('igamification__activity_category');
     }

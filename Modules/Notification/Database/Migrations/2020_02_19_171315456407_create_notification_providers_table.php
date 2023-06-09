@@ -10,7 +10,7 @@ class CreateNotificationProvidersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('notification__providers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -33,7 +33,7 @@ class CreateNotificationProvidersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('notification__providers');
     }

@@ -10,7 +10,7 @@ class CreateSlidesTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('slider__slide_translations', function (Blueprint $table) {
             $table->increments('id');
@@ -33,7 +33,7 @@ class CreateSlidesTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('slider__slide_translations');
     }

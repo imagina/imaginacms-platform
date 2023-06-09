@@ -10,7 +10,7 @@ class CreateIbannersPositionsTables extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ibanners__positions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -28,7 +28,7 @@ class CreateIbannersPositionsTables extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('ibanners__positions');
     }

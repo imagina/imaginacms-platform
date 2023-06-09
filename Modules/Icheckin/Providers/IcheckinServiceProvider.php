@@ -29,7 +29,7 @@ class IcheckinServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcheckinSidebar::class);
@@ -44,7 +44,7 @@ class IcheckinServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerMiddleware();
         $this->publishConfig('icheckin', 'permissions');

@@ -10,7 +10,7 @@ class CreateIcommerceTaxRateTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommerce__tax_rate_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIcommerceTaxRateTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__tax_rate_translations', function (Blueprint $table) {
             $table->dropForeign(['tax_rate_id']);

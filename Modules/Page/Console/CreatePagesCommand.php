@@ -29,7 +29,7 @@ class CreatePagesCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $total = 10000;
         $bar = $this->output->createProgressBar($total);

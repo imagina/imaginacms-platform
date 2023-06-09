@@ -11,7 +11,7 @@ class CreateIappointmentAppointmentStatusHistoriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iappointment__appointment_status_histories', function (Blueprint $table) {
             $table->id();
@@ -37,7 +37,7 @@ class CreateIappointmentAppointmentStatusHistoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iappointment__appointment_status_histories', function (Blueprint $table) {
             $table->dropForeign('appointment_id_foreign');

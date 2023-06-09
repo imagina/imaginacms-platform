@@ -14,11 +14,11 @@ class SidebarServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
     }
 
-    public function boot(SidebarManager $manager)
+    public function boot(SidebarManager $manager): void
     {
         if ($this->app['asgard.onBackend'] === true) {
             $manager->register(AdminSidebar::class);

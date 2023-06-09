@@ -11,7 +11,7 @@ class ChangeQuantityFieldToLimits extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplan__limits', function (Blueprint $table) {
             $table->integer('quantity')->unsigned(false)->change();
@@ -26,7 +26,7 @@ class ChangeQuantityFieldToLimits extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplan__limits', function (Blueprint $table) {
             $table->integer('quantity')->unsigned()->change();

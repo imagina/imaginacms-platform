@@ -11,7 +11,7 @@ class IcommerceAddH1TitleInCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__category_translations', function (Blueprint $table) {
             $table->string('h1_title')->after('meta_description')->nullable();
@@ -23,7 +23,7 @@ class IcommerceAddH1TitleInCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

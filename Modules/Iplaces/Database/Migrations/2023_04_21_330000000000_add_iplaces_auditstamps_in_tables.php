@@ -11,7 +11,7 @@ class AddIplacesAuditstampsInTables extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplaces__categories', function (Blueprint $table) {
             $table->auditStamps();
@@ -41,7 +41,7 @@ class AddIplacesAuditstampsInTables extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

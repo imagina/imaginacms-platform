@@ -11,7 +11,7 @@ class AddGeozoneIdInPaymentMethods extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
             $table->integer('geozone_id')->unsigned()->nullable();
@@ -24,7 +24,7 @@ class AddGeozoneIdInPaymentMethods extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__payment_methods', 'geozone_id')) {

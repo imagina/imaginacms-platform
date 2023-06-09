@@ -10,7 +10,7 @@ class CreateRequestableCategoryRuleTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('requestable__category_rule_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateRequestableCategoryRuleTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('requestable__category_rule_translations', function (Blueprint $table) {
             $table->dropForeign(['category_rule_id']);

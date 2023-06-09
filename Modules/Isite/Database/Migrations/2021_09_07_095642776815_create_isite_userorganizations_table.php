@@ -10,7 +10,7 @@ class CreateIsiteUserOrganizationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('isite__user_organization', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -34,7 +34,7 @@ class CreateIsiteUserOrganizationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('isite__user_organization');
     }

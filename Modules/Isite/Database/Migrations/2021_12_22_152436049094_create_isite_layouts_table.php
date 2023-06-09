@@ -10,7 +10,7 @@ class CreateIsiteLayoutsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('isite__layouts', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -35,7 +35,7 @@ class CreateIsiteLayoutsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('isite__layouts');
     }

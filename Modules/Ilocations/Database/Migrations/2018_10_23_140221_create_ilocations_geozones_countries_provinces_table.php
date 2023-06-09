@@ -11,7 +11,7 @@ class CreateIlocationsGeozonesCountriesProvincesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ilocations__geozones_countries_provinces', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -35,7 +35,7 @@ class CreateIlocationsGeozonesCountriesProvincesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('ilocations__geozones_countries_provinces', function (Blueprint $table) {
             $table->dropForeign(['geozone_id']);

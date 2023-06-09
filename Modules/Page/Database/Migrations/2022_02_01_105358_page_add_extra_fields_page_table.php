@@ -11,7 +11,7 @@ class PageAddExtraFieldsPageTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('page__pages', function (Blueprint $table) {
             $table->string('system_name')->nullable()->after('internal');
@@ -24,7 +24,7 @@ class PageAddExtraFieldsPageTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('page__pages', function (Blueprint $table) {
             $table->dropColumn(['type', 'system_name']);

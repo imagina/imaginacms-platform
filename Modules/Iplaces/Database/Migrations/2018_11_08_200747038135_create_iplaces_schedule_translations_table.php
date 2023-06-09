@@ -10,7 +10,7 @@ class CreateIplacesScheduleTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplaces__schedule_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -30,7 +30,7 @@ class CreateIplacesScheduleTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplaces__schedule_translations', function (Blueprint $table) {
             $table->dropForeign(['schedule_id']);

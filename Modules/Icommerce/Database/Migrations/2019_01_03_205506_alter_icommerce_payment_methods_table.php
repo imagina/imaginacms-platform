@@ -10,7 +10,7 @@ class AlterIcommercePaymentMethodsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__payment_methods', function ($table) {
             $table->dropColumn('payment_code');
@@ -23,7 +23,7 @@ class AlterIcommercePaymentMethodsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

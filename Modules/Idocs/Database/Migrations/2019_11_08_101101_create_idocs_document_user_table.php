@@ -11,7 +11,7 @@ class CreateIdocsDocumentUserTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('idocs__document_user', function (Blueprint $table) {
             $table->increments('id');
@@ -26,7 +26,7 @@ class CreateIdocsDocumentUserTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('idocs__document_user');
     }

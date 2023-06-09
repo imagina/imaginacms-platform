@@ -10,7 +10,7 @@ class CreateRequestableFieldsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('requestable__fields', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -38,7 +38,7 @@ class CreateRequestableFieldsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('requestable__fields');
     }

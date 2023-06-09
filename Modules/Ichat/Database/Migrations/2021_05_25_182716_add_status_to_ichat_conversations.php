@@ -11,7 +11,7 @@ class AddStatusToIchatConversations extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ichat__conversations', function (Blueprint $table) {
             $table->integer('status')->unsigned()->nullable()->default(1);
@@ -23,7 +23,7 @@ class AddStatusToIchatConversations extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('ichat__conversations', function (Blueprint $table) {
             $table->dropColumn(['status']);

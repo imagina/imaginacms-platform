@@ -11,7 +11,7 @@ class AddFoldersColumnsOnFilesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('media__files', function (Blueprint $table) {
             $table->boolean('is_folder')->default(false)->after('id');
@@ -29,7 +29,7 @@ class AddFoldersColumnsOnFilesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('media__files', function (Blueprint $table) {
             $table->dropColumn('is_folder');

@@ -46,7 +46,7 @@ class MigrateIblog extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         try {
             DB::insert('insert into media__files ( is_folder, filename, path, folder_id) values (?, ?, ?, ?)', [1, 'media', '/assets/media', 0]);

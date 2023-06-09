@@ -10,7 +10,7 @@ class CreateIcommerceProductTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommerce__product_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -35,7 +35,7 @@ class CreateIcommerceProductTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__product_translations', function (Blueprint $table) {
             $table->dropForeign(['product_id']);

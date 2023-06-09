@@ -25,7 +25,7 @@ class IcommercepaymentezServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercepaymentezSidebar::class);
@@ -36,7 +36,7 @@ class IcommercepaymentezServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercepaymentez', 'permissions');
         $this->publishConfig('icommercepaymentez', 'config');

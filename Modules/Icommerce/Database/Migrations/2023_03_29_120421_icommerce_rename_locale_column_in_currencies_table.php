@@ -11,7 +11,7 @@ class IcommerceRenameLocaleColumnInCurrenciesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__currencies', function (Blueprint $table) {
             $table->renameColumn('locale', 'language');
@@ -23,7 +23,7 @@ class IcommerceRenameLocaleColumnInCurrenciesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

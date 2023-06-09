@@ -11,7 +11,7 @@ class AddExcludeDepartmentsInCouponsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__coupons', function (Blueprint $table) {
             $table->text('exclude_departments')->nullable();
@@ -24,7 +24,7 @@ class AddExcludeDepartmentsInCouponsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__coupons', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__coupons', 'exclude_departments')) {

@@ -7,7 +7,7 @@ use Modules\Iplaces\Entities\Status;
 
 class SpaceTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $status = new Status();
 

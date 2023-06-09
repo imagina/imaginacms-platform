@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class IcommerceOrderFieldInProductOptonTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__product_option', function (Blueprint $table) {
             $table->integer('sort_order')->unsigned()->nullable();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__product_option', function (Blueprint $table) {
             $table->dropColumn('sort_order');

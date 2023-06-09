@@ -25,7 +25,7 @@ class IcommerceflatrateServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommerceflatrateSidebar::class);
@@ -36,7 +36,7 @@ class IcommerceflatrateServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('icommerceflatrate', 'permissions'), 'asgard.icommerceflatrate.permissions');
         $this->publishConfig('icommerceflatrate', 'config');

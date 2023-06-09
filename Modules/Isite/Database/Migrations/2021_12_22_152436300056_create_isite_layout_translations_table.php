@@ -10,7 +10,7 @@ class CreateIsiteLayoutTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('isite__layout_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -30,7 +30,7 @@ class CreateIsiteLayoutTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('isite__layout_translations', function (Blueprint $table) {
             $table->dropForeign(['layout_id']);

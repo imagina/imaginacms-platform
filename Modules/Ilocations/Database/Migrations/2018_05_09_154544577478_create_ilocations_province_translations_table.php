@@ -10,7 +10,7 @@ class CreateIlocationsProvinceTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ilocations__province_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -30,7 +30,7 @@ class CreateIlocationsProvinceTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('ilocations__province_translations', function (Blueprint $table) {
             $table->dropForeign(['province_id']);

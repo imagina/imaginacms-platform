@@ -10,7 +10,7 @@ class AddIprofileFieldsAddressesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iprofile__addresses', function (Blueprint $table) {
             $table->integer('country_id')->unsigned()->nullable();
@@ -26,7 +26,7 @@ class AddIprofileFieldsAddressesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iprofile__addresses', function ($table) {
             $table->dropColumn('country_id');

@@ -9,7 +9,7 @@ class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         \DB::statement('ALTER TABLE iplaces__place_translations ADD FULLTEXT full(title)');
     }
@@ -19,7 +19,7 @@ class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

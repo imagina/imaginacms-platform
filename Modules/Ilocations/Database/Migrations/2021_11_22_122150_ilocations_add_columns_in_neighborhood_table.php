@@ -11,7 +11,7 @@ class IlocationsAddColumnsInNeighborhoodTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ilocations__neighborhoods', function (Blueprint $table) {
             $table->integer('country_id')->unsigned()->after('city_id');
@@ -27,7 +27,7 @@ class IlocationsAddColumnsInNeighborhoodTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

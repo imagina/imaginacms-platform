@@ -11,7 +11,7 @@ class IcommerceAddColumnShowPriceIsCallInProductTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->boolean('show_price_is_call')->default(false)->after('entity_type');
@@ -23,7 +23,7 @@ class IcommerceAddColumnShowPriceIsCallInProductTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->dropColumn('show_price_is_call');

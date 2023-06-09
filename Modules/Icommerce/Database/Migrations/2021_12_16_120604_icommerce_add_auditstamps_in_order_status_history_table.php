@@ -11,7 +11,7 @@ class IcommerceAddAuditstampsInOrderStatusHistoryTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__order_status_history', function (Blueprint $table) {
             $table->auditStamps();
@@ -23,7 +23,7 @@ class IcommerceAddAuditstampsInOrderStatusHistoryTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

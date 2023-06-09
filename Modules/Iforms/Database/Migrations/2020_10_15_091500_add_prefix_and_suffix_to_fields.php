@@ -11,7 +11,7 @@ class AddPrefixAndSuffixToFields extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__fields', function (Blueprint $table) {
             $table->string('suffix')->nullable()->after('order');
@@ -24,7 +24,7 @@ class AddPrefixAndSuffixToFields extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iforms__fields', function (Blueprint $table) {
             $table->dropColumn('prefix');

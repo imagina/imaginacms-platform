@@ -11,7 +11,7 @@ class AddIeventAuditstampsInTables extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ievent__attendants', function (Blueprint $table) {
             $table->auditStamps();
@@ -32,7 +32,7 @@ class AddIeventAuditstampsInTables extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

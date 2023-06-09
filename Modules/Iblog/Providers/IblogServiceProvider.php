@@ -36,7 +36,7 @@ class IblogServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIblogSidebar::class);
@@ -48,7 +48,7 @@ class IblogServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('iblog', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'settings'), 'asgard.iblog.settings');

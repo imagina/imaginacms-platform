@@ -10,7 +10,7 @@ class CreateIbookingReservationItemsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ibooking__reservation_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -47,7 +47,7 @@ class CreateIbookingReservationItemsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('ibooking__reservation_items');
     }

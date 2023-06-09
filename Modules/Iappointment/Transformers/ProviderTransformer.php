@@ -8,7 +8,7 @@ use Modules\Isite\Http\Controllers\Api\ConfigsApiController;
 
 class ProviderTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->when($this->id, $this->id),

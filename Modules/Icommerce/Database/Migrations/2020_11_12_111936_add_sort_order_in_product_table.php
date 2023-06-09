@@ -11,7 +11,7 @@ class AddSortOrderInProductTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->integer('sort_order')->default(0);
@@ -23,7 +23,7 @@ class AddSortOrderInProductTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__products', 'sort_order')) {

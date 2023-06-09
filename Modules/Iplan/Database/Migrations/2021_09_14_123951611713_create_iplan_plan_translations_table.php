@@ -10,7 +10,7 @@ class CreateIplanPlanTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplan__plan_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIplanPlanTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplan__plan_translations', function (Blueprint $table) {
             $table->dropForeign(['plan_id']);

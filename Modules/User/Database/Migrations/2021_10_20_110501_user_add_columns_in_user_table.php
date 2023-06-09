@@ -11,7 +11,7 @@ class UserAddColumnsInUserTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('language')->nullable()->after('last_name');
@@ -24,7 +24,7 @@ class UserAddColumnsInUserTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

@@ -10,7 +10,7 @@ class CreateIbookingServiceTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ibooking__service_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -32,7 +32,7 @@ class CreateIbookingServiceTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('ibooking__service_translations', function (Blueprint $table) {
             $table->dropForeign(['service_id']);

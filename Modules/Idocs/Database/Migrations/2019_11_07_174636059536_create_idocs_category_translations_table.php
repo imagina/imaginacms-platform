@@ -10,7 +10,7 @@ class CreateIdocsCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('idocs__category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -35,7 +35,7 @@ class CreateIdocsCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('idocs__category_translations', function (Blueprint $table) {
             $table->dropForeign(['category_id']);

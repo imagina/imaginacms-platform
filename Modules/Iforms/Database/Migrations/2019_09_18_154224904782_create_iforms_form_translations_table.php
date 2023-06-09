@@ -10,7 +10,7 @@ class CreateIformsFormTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iforms__form_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -28,7 +28,7 @@ class CreateIformsFormTranslationsTable extends Migration
        *
        * @return void
        */
-      public function down()
+      public function down(): void
       {
           Schema::table('iforms__form_translations', function (Blueprint $table) {
               $table->dropForeign(['form_id']);

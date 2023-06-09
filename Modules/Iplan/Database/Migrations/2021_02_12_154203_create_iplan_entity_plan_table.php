@@ -11,7 +11,7 @@ class CreateIplanEntityPlanTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplan__entity_plan', function (Blueprint $table) {
             $table->id();
@@ -29,7 +29,7 @@ class CreateIplanEntityPlanTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iplan__entity_plan');
     }

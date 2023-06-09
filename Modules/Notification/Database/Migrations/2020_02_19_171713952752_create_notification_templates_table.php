@@ -10,7 +10,7 @@ class CreateNotificationTemplatesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('notification__templates', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,7 +26,7 @@ class CreateNotificationTemplatesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('notification__templates');
     }

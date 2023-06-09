@@ -10,7 +10,7 @@ class AddIbookingAttrReservationItemsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ibooking__reservation_items', function (Blueprint $table) {
             $table->integer('customer_id')->unsigned()->nullable()->after('end_date');
@@ -28,7 +28,7 @@ class AddIbookingAttrReservationItemsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 }

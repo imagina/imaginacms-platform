@@ -11,7 +11,7 @@ class SetNullableCityIdAndProvinceIdInTablePlaces extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplaces__places', function (Blueprint $table) {
             $table->integer('city_id')->unsigned()->nullable()->change();
@@ -24,7 +24,7 @@ class SetNullableCityIdAndProvinceIdInTablePlaces extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

@@ -10,7 +10,7 @@ class CreateIformsFieldTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iforms__field_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -30,7 +30,7 @@ class CreateIformsFieldTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iforms__field_translations', function (Blueprint $table) {
             $table->dropForeign(['field_id']);

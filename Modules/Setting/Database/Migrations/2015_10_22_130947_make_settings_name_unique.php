@@ -10,7 +10,7 @@ class MakeSettingsNameUnique extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('setting__settings', function (Blueprint $table) {
             $table->unique('name', 'setting__settings_name_unique');
@@ -23,7 +23,7 @@ class MakeSettingsNameUnique extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('setting__settings', function (Blueprint $table) {
             $table->dropUnique('setting__settings_name_unique');

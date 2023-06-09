@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\DepartmentTransformer;
 
 class ProductDiscountTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->when($this->id, $this->id),

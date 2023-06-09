@@ -10,7 +10,7 @@ class CreateIfillableFieldTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ifillable__field_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -29,7 +29,7 @@ class CreateIfillableFieldTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('ifillable__field_translations', function (Blueprint $table) {
             $table->dropForeign(['field_id']);

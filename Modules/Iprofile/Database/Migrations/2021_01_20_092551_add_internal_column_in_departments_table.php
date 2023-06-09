@@ -11,7 +11,7 @@ class AddInternalColumnInDepartmentsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iprofile__departments', function (Blueprint $table) {
             $table->integer('internal')->default(0)->nullable()->after('parent_id');
@@ -24,7 +24,7 @@ class AddInternalColumnInDepartmentsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iprofile__departments', function (Blueprint $table) {
             $table->dropColumn('internal');

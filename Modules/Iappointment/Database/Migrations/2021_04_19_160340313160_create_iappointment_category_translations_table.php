@@ -10,7 +10,7 @@ class CreateIappointmentCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iappointment__category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -32,7 +32,7 @@ class CreateIappointmentCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iappointment__category_translations', function (Blueprint $table) {
             $table->dropForeign(['category_id']);

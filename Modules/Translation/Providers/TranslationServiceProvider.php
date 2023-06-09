@@ -41,7 +41,7 @@ class TranslationServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerConsoleCommands();
@@ -63,7 +63,7 @@ class TranslationServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('translation', 'config');
 

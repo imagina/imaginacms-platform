@@ -10,7 +10,7 @@ class CreateIsiteOrganizationTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('isite__organization_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -35,7 +35,7 @@ class CreateIsiteOrganizationTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('isite__organization_translations', function (Blueprint $table) {
             $table->dropForeign(['organization_id']);

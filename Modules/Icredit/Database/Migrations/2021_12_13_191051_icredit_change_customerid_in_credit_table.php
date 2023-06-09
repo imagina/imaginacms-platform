@@ -11,7 +11,7 @@ class IcreditChangeCustomerIdInCreditTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icredit__credits', function (Blueprint $table) {
             $table->integer('customer_id')->unsigned()->nullable()->change();
@@ -23,7 +23,7 @@ class IcreditChangeCustomerIdInCreditTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

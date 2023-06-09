@@ -11,7 +11,7 @@ class SetNullableGeozoneIdIcommerceTaxRate extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__tax_rates', function (Blueprint $table) {
             $table->integer('geozone_id')->unsigned()->nullable()->change();
@@ -23,7 +23,7 @@ class SetNullableGeozoneIdIcommerceTaxRate extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 }

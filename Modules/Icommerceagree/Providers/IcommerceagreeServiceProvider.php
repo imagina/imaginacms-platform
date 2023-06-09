@@ -25,7 +25,7 @@ class IcommerceagreeServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommerceagreeSidebar::class);
@@ -36,7 +36,7 @@ class IcommerceagreeServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommerceagree', 'permissions');
         $this->publishConfig('icommerceagree', 'config');

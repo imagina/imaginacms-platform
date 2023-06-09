@@ -10,7 +10,7 @@ class CreateIadCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iad__category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIadCategoryTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iad__category_translations', function (Blueprint $table) {
             $table->dropForeign(['category_id']);

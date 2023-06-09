@@ -11,7 +11,7 @@ class CreateIplanSubscriptionLimitsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplan__subscription_limits', function (Blueprint $table) {
             $table->id();
@@ -35,7 +35,7 @@ class CreateIplanSubscriptionLimitsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplan__subscription_limits', function (Blueprint $table) {
             $table->dropForeign('subs_limit_subscript');

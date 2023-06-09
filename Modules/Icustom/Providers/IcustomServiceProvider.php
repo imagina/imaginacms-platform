@@ -21,12 +21,12 @@ class IcustomServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icustom', 'permissions');
         $this->publishConfig('icustom', 'config');

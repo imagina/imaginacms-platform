@@ -11,7 +11,7 @@ class AddQuantitySoldColumnInProductDiscountTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
             $table->integer('quantity_sold')->default(0);
@@ -23,7 +23,7 @@ class AddQuantitySoldColumnInProductDiscountTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
             $table->dropColumn('quantity_sold');

@@ -11,7 +11,7 @@ class ChangeColumnMobileAttributesToNullableInBlocksTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ibuilder__blocks', function (Blueprint $table) {
             $table->text('mobile_attributes')->nullable()->after('attributes')->change();
@@ -23,7 +23,7 @@ class ChangeColumnMobileAttributesToNullableInBlocksTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     //
     }

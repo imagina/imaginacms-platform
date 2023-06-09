@@ -11,7 +11,7 @@ class CreateIappointmentHistoriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iappointment__appointment_assign_history', function (Blueprint $table) {
             $table->id();
@@ -31,7 +31,7 @@ class CreateIappointmentHistoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iappointment__appointment_assign_history');
     }

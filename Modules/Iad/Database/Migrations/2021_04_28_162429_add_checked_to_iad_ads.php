@@ -11,7 +11,7 @@ class AddCheckedToIadAds extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iad__ads', function (Blueprint $table) {
             $table->tinyInteger('checked')->unsigned()->nullable()->default(0);
@@ -23,7 +23,7 @@ class AddCheckedToIadAds extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iad__ads', function (Blueprint $table) {
             $table->dropColumn('checked');

@@ -11,7 +11,7 @@ class AddTypeInOrdersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
             $table->string('type')->nullable();
@@ -23,7 +23,7 @@ class AddTypeInOrdersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
             $table->dropColumn('type');

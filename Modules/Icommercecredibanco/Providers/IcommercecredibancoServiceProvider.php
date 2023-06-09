@@ -26,7 +26,7 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercecredibancoSidebar::class);
@@ -40,7 +40,7 @@ class IcommercecredibancoServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercecredibanco', 'permissions');
         $this->publishConfig('icommercecredibanco', 'config');

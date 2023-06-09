@@ -10,7 +10,7 @@ class CreateIappointmentAppointmentLeadsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iappointment__appointment_leads', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIappointmentAppointmentLeadsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iappointment__appointment_leads', function (Blueprint $table) {
             $table->dropForeign(['appointment_id']);

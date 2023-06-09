@@ -12,7 +12,7 @@ class GrantModulePermissionsCommand extends Command
 
     protected $description = 'Grant all the permissions to the admin role of given module';
 
-    public function handle()
+    public function handle(): void
     {
         $module = $this->argument('module');
 

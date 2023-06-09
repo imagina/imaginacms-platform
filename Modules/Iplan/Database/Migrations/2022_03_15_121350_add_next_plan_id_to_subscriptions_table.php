@@ -11,7 +11,7 @@ class AddNextPlanIdToSubscriptionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplan__subscriptions', function (Blueprint $table) {
             $table->bigInteger('next_plan_id')->nullable();
@@ -23,7 +23,7 @@ class AddNextPlanIdToSubscriptionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplan__subscriptions', function (Blueprint $table) {
             $table->dropColumn('next_plan_id');

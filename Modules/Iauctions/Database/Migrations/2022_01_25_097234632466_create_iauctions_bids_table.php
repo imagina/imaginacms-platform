@@ -10,7 +10,7 @@ class CreateIauctionsBidsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iauctions__bids', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -41,7 +41,7 @@ class CreateIauctionsBidsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iauctions__bids');
     }

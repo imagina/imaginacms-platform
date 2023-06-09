@@ -11,7 +11,7 @@ class AddAuditstampsInCartProductTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__cart_product', function (Blueprint $table) {
             $table->auditStamps();
@@ -23,7 +23,7 @@ class AddAuditstampsInCartProductTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 }

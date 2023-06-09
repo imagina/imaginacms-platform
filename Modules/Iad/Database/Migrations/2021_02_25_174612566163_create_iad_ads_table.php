@@ -10,7 +10,7 @@ class CreateIadAdsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iad__ads', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -39,7 +39,7 @@ class CreateIadAdsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iad__ads');
     }

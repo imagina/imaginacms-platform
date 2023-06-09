@@ -11,7 +11,7 @@ class CreateIcommercepricelistPriceListsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommercepricelist__price_lists', function (Blueprint $table) {
             $table->increments('id');
@@ -32,7 +32,7 @@ class CreateIcommercepricelistPriceListsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('icommercepricelist__price_lists');
     }

@@ -11,7 +11,7 @@ class CreateIplanSubscriptionRelatedTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplan__subscription_related', function (Blueprint $table) {
             $table->id();
@@ -27,7 +27,7 @@ class CreateIplanSubscriptionRelatedTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iplan__subscription_related');
     }

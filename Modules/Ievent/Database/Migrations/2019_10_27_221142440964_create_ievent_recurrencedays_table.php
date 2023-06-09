@@ -10,7 +10,7 @@ class CreateIeventRecurrenceDaysTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ievent__recurrence_days', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -29,7 +29,7 @@ class CreateIeventRecurrenceDaysTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('ievent__recurrence_days');
     }

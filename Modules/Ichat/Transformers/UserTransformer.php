@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $smallImage = $this->fields()->where('name', 'smallImage')->first();
         $mediumImage = $this->fields()->where('name', 'mediumImage')->first();

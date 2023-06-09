@@ -10,7 +10,7 @@ class UpdateIconColumnOnMenuitemsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('menu__menuitems', function (Blueprint $table) {
             $table->string('icon')->nullable()->default(null)->change();
@@ -22,7 +22,7 @@ class UpdateIconColumnOnMenuitemsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('menu__menuitems', function (Blueprint $table) {
             $table->string('icon')->default('')->nullable(false)->change();

@@ -11,7 +11,7 @@ class IblogAddExternalIdInCategoryAndPostTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iblog__categories', function (Blueprint $table) {
             $table->string('external_id')->nullable()->after('options');
@@ -26,7 +26,7 @@ class IblogAddExternalIdInCategoryAndPostTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

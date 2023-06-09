@@ -11,7 +11,7 @@ class AddMaintenanceModeColumnInOrganizationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('isite__organizations', function (Blueprint $table) {
             $table->text('maintenance_mode')->nullable()->after('enable');
@@ -23,7 +23,7 @@ class AddMaintenanceModeColumnInOrganizationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
       //
     }

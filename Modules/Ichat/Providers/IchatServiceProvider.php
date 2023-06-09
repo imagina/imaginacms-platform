@@ -25,7 +25,7 @@ class IchatServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         //$this->app['events']->listen(BuildingSidebar::class, RegisterIchatSidebar::class);
@@ -37,7 +37,7 @@ class IchatServiceProvider extends ServiceProvider
         });*/
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ichat', 'permissions');
         $this->publishConfig('ichat', 'config');

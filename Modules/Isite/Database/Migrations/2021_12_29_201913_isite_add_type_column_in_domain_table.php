@@ -11,7 +11,7 @@ class IsiteAddTypeColumnInDomainTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('isite__domains', function (Blueprint $table) {
             // Your fields...
@@ -24,7 +24,7 @@ class IsiteAddTypeColumnInDomainTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     //
     }

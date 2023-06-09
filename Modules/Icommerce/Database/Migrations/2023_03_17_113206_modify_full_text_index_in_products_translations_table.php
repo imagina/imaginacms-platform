@@ -10,7 +10,7 @@ class ModifyFullTextIndexInProductsTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
         $indexesFound = array_change_key_case($sm->listTableIndexes('icommerce__product_translations'), CASE_LOWER);
@@ -41,7 +41,7 @@ class ModifyFullTextIndexInProductsTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

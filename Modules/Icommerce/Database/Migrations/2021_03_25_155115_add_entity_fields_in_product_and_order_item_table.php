@@ -11,7 +11,7 @@ class AddEntityFieldsInProductAndOrderItemTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->string('entity_type')->nullable()->after('freeshipping');
@@ -29,7 +29,7 @@ class AddEntityFieldsInProductAndOrderItemTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
             $table->dropColumn('entity_id');

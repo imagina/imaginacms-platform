@@ -11,7 +11,7 @@ class ChangeTitleAndDescriptionInBlockTranslationTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__block_translations', function (Blueprint $table) {
             $table->string('title')->nullable()->change();
@@ -24,7 +24,7 @@ class ChangeTitleAndDescriptionInBlockTranslationTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

@@ -46,7 +46,7 @@ class ProfileValidated extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         try {
             $users = $this->user->getItemsBy((object) ['take' => false, 'filter' => ['field' => ['name' => 'validate', 'value' => true]], 'include' => []]);

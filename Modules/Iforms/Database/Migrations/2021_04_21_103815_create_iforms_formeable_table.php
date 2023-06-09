@@ -11,7 +11,7 @@ class CreateIformsFormeableTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iforms__formeable', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -27,7 +27,7 @@ class CreateIformsFormeableTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iforms__formeable');
     }

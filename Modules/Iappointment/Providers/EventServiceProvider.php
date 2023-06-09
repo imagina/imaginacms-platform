@@ -17,7 +17,7 @@ class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [];
 
-    public function boot()
+    public function boot(): void
     {
         //Listen category was created event
         Event::listen(

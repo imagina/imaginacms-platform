@@ -11,7 +11,7 @@ class ChangeColumnOldValueToTypeLongTextInRevisionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('isite__revisions', function (Blueprint $table) {
             $table->longText('old_value')->nullable()->change();
@@ -24,7 +24,7 @@ class ChangeColumnOldValueToTypeLongTextInRevisionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

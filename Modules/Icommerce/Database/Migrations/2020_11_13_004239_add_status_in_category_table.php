@@ -11,7 +11,7 @@ class AddStatusInCategoryTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__categories', function (Blueprint $table) {
             $table->tinyInteger('status')->default(1)->unsigned();
@@ -23,7 +23,7 @@ class AddStatusInCategoryTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__categories', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__categories', 'status')) {

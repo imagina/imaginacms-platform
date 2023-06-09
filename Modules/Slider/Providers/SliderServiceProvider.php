@@ -32,7 +32,7 @@ class SliderServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
     }
@@ -40,7 +40,7 @@ class SliderServiceProvider extends ServiceProvider
     /**
      * Register all online sliders on the Pingpong/Menu package
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('slider', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('slider', 'permissions'), 'asgard.slider.permissions');

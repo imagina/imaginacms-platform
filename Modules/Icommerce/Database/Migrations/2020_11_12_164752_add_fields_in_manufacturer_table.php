@@ -11,7 +11,7 @@ class AddFieldsInManufacturerTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__manufacturers', function (Blueprint $table) {
             $table->integer('sort_order')->default(0);
@@ -30,7 +30,7 @@ class AddFieldsInManufacturerTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__manufacturers', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__manufacturers', 'sort_order')) {

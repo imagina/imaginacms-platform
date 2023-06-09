@@ -11,7 +11,7 @@ class IformsAddUniqueSystemNameAndOrganizationIndex extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__forms', function (Blueprint $table) {
             $table->unique(['system_name', 'organization_id'])->change();
@@ -23,7 +23,7 @@ class IformsAddUniqueSystemNameAndOrganizationIndex extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

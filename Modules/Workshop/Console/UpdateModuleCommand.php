@@ -23,7 +23,7 @@ class UpdateModuleCommand extends Command
         $this->composer = $composer;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $packageName = $this->getModulePackageName($this->argument('module'));
 

@@ -32,7 +32,7 @@ class DownloadModuleCommand extends Command
      *
      * @throws \Symfony\Component\Process\Exception\LogicException
      */
-    public function handle()
+    public function handle(): void
     {
         $downloader = new Downloader($this->getOutput());
         try {

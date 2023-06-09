@@ -11,7 +11,7 @@ class DeleteTaxClassIdFromTaxRate extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__tax_rates', function (Blueprint $table) {
             $table->dropForeign(['tax_class_id']);
@@ -24,7 +24,7 @@ class DeleteTaxClassIdFromTaxRate extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__tax_rates', function (Blueprint $table) {
             if (! Schema::hasColumn('icommerce__tax_rates', 'tax_class_id')) {

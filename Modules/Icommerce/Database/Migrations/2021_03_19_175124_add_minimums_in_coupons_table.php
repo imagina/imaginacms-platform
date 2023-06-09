@@ -11,7 +11,7 @@ class AddMinimumsInCouponsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__coupons', function (Blueprint $table) {
             $table->float('minimum_order_amount', 50, 2)->default(0);
@@ -24,7 +24,7 @@ class AddMinimumsInCouponsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__coupons', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__coupons', 'minimum_order_amount')) {

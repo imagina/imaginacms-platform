@@ -11,7 +11,7 @@ class RequestableAddInternalToTheCategoryTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('requestable__categories', function (Blueprint $table) {
             $table->integer('internal')->default(1)->after('requestable_type');
@@ -23,7 +23,7 @@ class RequestableAddInternalToTheCategoryTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

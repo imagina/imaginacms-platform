@@ -10,7 +10,7 @@ class CreateIcommercePaymentMethodTranslationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommerce__payment_method_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIcommercePaymentMethodTranslationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__payment_method_translations', function (Blueprint $table) {
             $table->dropForeign(['payment_method_id']);

@@ -25,7 +25,7 @@ class IcurrencyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcurrencySidebar::class);
@@ -36,7 +36,7 @@ class IcurrencyServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icurrency', 'permissions');
 

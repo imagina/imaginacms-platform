@@ -31,7 +31,7 @@ class DashboardServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(WidgetRepository::class, function () {
             $repository = new EloquentWidgetRepository(new Widget());
@@ -53,7 +53,7 @@ class DashboardServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(StylistThemeManager $theme)
+    public function boot(StylistThemeManager $theme): void
     {
         $this->publishes([
             __DIR__.'/../Resources/views' => base_path('resources/views/asgard/dashboard'),

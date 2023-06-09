@@ -11,7 +11,7 @@ class PublishThemeAssetsCommand extends Command
 
     protected $description = 'Publish theme assets';
 
-    public function handle()
+    public function handle(): void
     {
         $theme = $this->argument('theme', null);
 

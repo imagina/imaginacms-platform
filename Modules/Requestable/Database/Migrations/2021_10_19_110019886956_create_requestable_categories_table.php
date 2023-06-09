@@ -10,7 +10,7 @@ class CreateRequestableCategoriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('requestable__categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -33,7 +33,7 @@ class CreateRequestableCategoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('requestable__categories');
     }
