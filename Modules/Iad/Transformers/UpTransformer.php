@@ -11,7 +11,7 @@ class UpTransformer extends CrudResource
      *
      * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         $data = [];
         if (is_module_enabled('Icommerce')) {

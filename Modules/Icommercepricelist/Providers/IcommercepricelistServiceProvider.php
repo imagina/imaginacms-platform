@@ -39,7 +39,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
     {
         $this->publishConfig('icommercepricelist', 'config');
         $this->publishConfig('icommercepricelist', 'crud-fields');
@@ -79,7 +79,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerViews()
+    public function registerViews(): void
     {
         $viewPath = resource_path('views/modules/icommercepricelist');
 
@@ -99,7 +99,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerTranslations()
+    public function registerTranslations(): void
     {
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('pricelists', Arr::dot(trans('icommercepricelist::pricelists')));
@@ -112,7 +112,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

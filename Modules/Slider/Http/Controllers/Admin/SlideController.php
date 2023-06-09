@@ -82,7 +82,7 @@ class SlideController extends AdminBaseController
     /**
      * @return array
      */
-    private function addSliderId(Slider $slider, FormRequest $request)
+    private function addSliderId(Slider $slider, FormRequest $request): array
     {
         return array_merge($request->all(), ['slider_id' => $slider->id]);
     }

@@ -29,7 +29,7 @@ class PostPresenter extends Presenter
      *
      * @return object
      */
-    public function previous()
+    public function previous(): object
     {
         return $this->post->getPreviousOf($this->entity);
     }
@@ -39,7 +39,7 @@ class PostPresenter extends Presenter
      *
      * @return object
      */
-    public function next()
+    public function next(): object
     {
         return $this->post->getNextOf($this->entity);
     }
@@ -49,7 +49,7 @@ class PostPresenter extends Presenter
      *
      * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
@@ -59,7 +59,7 @@ class PostPresenter extends Presenter
      *
      * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::DRAFT:

@@ -28,7 +28,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$templates = $this->template->all();
 
@@ -40,7 +40,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.templates.create');
     }
@@ -50,7 +50,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateTemplateRequest $request)
+    public function store(CreateTemplateRequest $request): Response
     {
         $this->template->create($request->all());
 
@@ -63,7 +63,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Template $template)
+    public function edit(Template $template): Response
     {
         return view('notification::admin.templates.edit', compact('template'));
     }
@@ -73,7 +73,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Template $template, UpdateTemplateRequest $request)
+    public function update(Template $template, UpdateTemplateRequest $request): Response
     {
         $this->template->update($template, $request->all());
 
@@ -86,7 +86,7 @@ class TemplateController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Template $template)
+    public function destroy(Template $template): Response
     {
         $this->template->destroy($template);
 

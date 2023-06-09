@@ -50,7 +50,7 @@ class TranslationsWriter
      * @param  string  $key
      * @return string
      */
-    private function getModuleNameFrom($key)
+    private function getModuleNameFrom(string $key): string
     {
         return substr($key, 0, strpos($key, '::'));
     }
@@ -58,7 +58,7 @@ class TranslationsWriter
     /**
      * @return string
      */
-    private function getTranslationsDirectory()
+    private function getTranslationsDirectory(): string
     {
         return __DIR__.'/../Resources/lang/';
     }
@@ -69,7 +69,7 @@ class TranslationsWriter
      * @param  string  $key
      * @return string
      */
-    private function getFileNameFrom($key)
+    private function getFileNameFrom(string $key): string
     {
         $key = str_replace($this->getModuleNameFrom($key).'::', '', $key);
 
@@ -81,7 +81,7 @@ class TranslationsWriter
      *
      * @return array
      */
-    private function makeTree(TranslationGroup $translations)
+    private function makeTree(TranslationGroup $translations): array
     {
         $tree = [];
 

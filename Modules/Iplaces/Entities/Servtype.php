@@ -28,7 +28,7 @@ class Servtype
      * @return array
      */
     /*listar*/
-    public function lists()
+    public function lists(): array
     {
         return $this->servtypes;
     }
@@ -39,7 +39,7 @@ class Servtype
      * @param  int  $statusId
      * @return string
      */
-    public function get($statusId)
+    public function get(int $statusId): string
     {
         if (isset($this->servtypes[$statusId])) {
             return $this->servtypes[$statusId];

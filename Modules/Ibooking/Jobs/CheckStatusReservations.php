@@ -28,7 +28,7 @@ class CheckStatusReservations implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         \Log::info('Ibooking: Jobs|CheckStatusReservation');
 

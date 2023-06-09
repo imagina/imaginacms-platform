@@ -2,6 +2,7 @@
 
 namespace Modules\Slider\Entities;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\URL;
@@ -70,7 +71,7 @@ class Slide extends Model
      *
      * @return number
      */
-    public function setPageIdAttribute($value)
+    public function setPageIdAttribute($value): number
     {
         $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
@@ -78,7 +79,7 @@ class Slide extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function page()
+    public function page(): BelongsTo
     {
         return $this->belongsTo(Page::class);
     }
@@ -88,7 +89,7 @@ class Slide extends Model
      *
      * @return string|null full image path if image exists or null if no image is set
      */
-    public function getImageUrl()
+    public function getImageUrl(): ?string
     {
         if ($this->imageUrl === null) {
             if (! empty($this->external_image_url)) {
@@ -106,7 +107,7 @@ class Slide extends Model
      *
      * @return string|null
      */
-    public function getLinkUrl()
+    public function getLinkUrl(): ?string
     {
         if ($this->linkUrl === null) {
             if (! empty($this->url)) {
@@ -126,7 +127,7 @@ class Slide extends Model
      *
      * @return string|null
      */
-    public function getUrlAttribute()
+    public function getUrlAttribute(): ?string
     {
         $url = '';
         if (! empty($this->attributes['url'])) {

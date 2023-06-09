@@ -15,7 +15,7 @@ class Composer extends \Illuminate\Support\Composer
      *
      * @return void
      */
-    public function enableOutput($command)
+    public function enableOutput($command): void
     {
         $this->output = function ($type, $buffer) use ($command) {
             if (Process::ERR === $type) {
@@ -31,7 +31,7 @@ class Composer extends \Illuminate\Support\Composer
      *
      * @return void
      */
-    public function disableOutput()
+    public function disableOutput(): void
     {
         $this->output = null;
     }
@@ -42,7 +42,7 @@ class Composer extends \Illuminate\Support\Composer
      * @param  string  $package
      * @return void
      */
-    public function update($package = null)
+    public function update(string $package = null): void
     {
         if (! is_null($package)) {
             $package = '"'.$package.'"';
@@ -58,7 +58,7 @@ class Composer extends \Illuminate\Support\Composer
      * @param  string  $package
      * @return void
      */
-    public function install($package)
+    public function install(string $package): void
     {
         if (! is_null($package)) {
             $package = '"'.$package.'"';
@@ -71,7 +71,7 @@ class Composer extends \Illuminate\Support\Composer
     /**
      * @return void
      */
-    public function dumpAutoload()
+    public function dumpAutoload(): void
     {
         $process = $this->getProcess();
         $process->setCommandLine(trim($this->findComposer().' dump-autoload -o'));

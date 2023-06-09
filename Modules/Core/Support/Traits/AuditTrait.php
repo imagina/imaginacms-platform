@@ -83,7 +83,7 @@ trait AuditTrait
      *
      * @return bool
      */
-    public static function usingSoftDeletes()
+    public static function usingSoftDeletes(): bool
     {
         static $usingSoftDeletes;
 
@@ -99,7 +99,7 @@ trait AuditTrait
      *
      * @return string
      */
-    public function getCreatedByColumn()
+    public function getCreatedByColumn(): string
     {
         return defined('static::CREATED_BY') ? static::CREATED_BY : 'created_by';
     }
@@ -109,7 +109,7 @@ trait AuditTrait
      *
      * @return string
      */
-    public function getUpdatedByColumn()
+    public function getUpdatedByColumn(): string
     {
         return defined('static::UPDATED_BY') ? static::UPDATED_BY : 'updated_by';
     }
@@ -119,7 +119,7 @@ trait AuditTrait
      *
      * @return string
      */
-    public function getDeletedByColumn()
+    public function getDeletedByColumn(): string
     {
         return defined('static::DELETED_BY') ? static::DELETED_BY : 'deleted_by';
     }
@@ -160,7 +160,7 @@ trait AuditTrait
      *
      * @return bool
      */
-    public function isUserstamping()
+    public function isUserstamping(): bool
     {
         return $this->userstamping;
     }
@@ -170,7 +170,7 @@ trait AuditTrait
      *
      * @return bool
      */
-    public function isSoftDeleting()
+    public function isSoftDeleting(): bool
     {
         return true; //$this->softdeleting ?? false;
     }

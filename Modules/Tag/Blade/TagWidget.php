@@ -72,7 +72,7 @@ class TagWidget
      *
      * @return array
      */
-    private function getTags()
+    private function getTags(): array
     {
         if ($this->entity === null) {
             return request()->old('tags', []);

@@ -37,7 +37,7 @@ class UpdateModuleCommand extends Command
      * @param  string  $module
      * @return string
      */
-    private function getModulePackageName($module)
+    private function getModulePackageName(string $module): string
     {
         return "asgardcms/{$module}-module";
     }

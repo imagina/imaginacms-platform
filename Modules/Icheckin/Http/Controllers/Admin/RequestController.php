@@ -29,7 +29,7 @@ class RequestController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$requests = $this->request->all();
 
@@ -41,7 +41,7 @@ class RequestController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.requests.create');
     }
@@ -51,7 +51,7 @@ class RequestController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRequestRequest $request)
+    public function store(CreateRequestRequest $request): Response
     {
         $this->request->create($request->all());
 
@@ -65,7 +65,7 @@ class RequestController extends AdminBaseController
      * @param  Request  $request
      * @return Response
      */
-    public function edit(RequestEntity $request)
+    public function edit(RequestEntity $request): Response
     {
         return view('icheckin::admin.requests.edit', compact('request'));
     }
@@ -76,7 +76,7 @@ class RequestController extends AdminBaseController
      * @param  Request  $request
      * @return Response
      */
-    public function update(RequestEntity $requestEntity, UpdateRequestRequest $request)
+    public function update(RequestEntity $requestEntity, UpdateRequestRequest $request): Response
     {
         $this->request->update($requestEntity, $request->all());
 
@@ -90,7 +90,7 @@ class RequestController extends AdminBaseController
      * @param  Request  $request
      * @return Response
      */
-    public function destroy(RequestEntity $request)
+    public function destroy(RequestEntity $request): Response
     {
         $this->request->destroy($request);
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Tag\Repositories\Cache;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Tag\Repositories\TagRepository;
 
@@ -20,7 +21,7 @@ class CacheTagDecorator extends BaseCacheDecorator implements TagRepository
      * @param  string  $namespace
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function allForNamespace($namespace)
+    public function allForNamespace(string $namespace): Collection
     {
         return $this->remember(function () use ($namespace) {
             return $this->repository->allForNamespace($namespace);

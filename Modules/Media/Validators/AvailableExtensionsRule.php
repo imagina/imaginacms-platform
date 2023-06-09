@@ -28,7 +28,7 @@ class AvailableExtensionsRule implements Rule
        * @param  mixed  $value
        * @return bool
        */
-      public function passes($attribute, $value)
+      public function passes(string $attribute, $value): bool
       {
           $intersection = array_diff(is_array($value) ? $value : [$value], $this->extensionsAvailable);
 
@@ -44,7 +44,7 @@ class AvailableExtensionsRule implements Rule
        *
        * @return string
        */
-      public function message()
+      public function message(): string
       {
           return $this->message;
       }

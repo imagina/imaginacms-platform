@@ -28,7 +28,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$requestables = $this->requestable->all();
 
@@ -40,7 +40,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('requestable::admin.requestables.create');
     }
@@ -50,7 +50,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRequestableRequest $request)
+    public function store(CreateRequestableRequest $request): Response
     {
         $this->requestable->create($request->all());
 
@@ -63,7 +63,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Requestable $requestable)
+    public function edit(Requestable $requestable): Response
     {
         return view('requestable::admin.requestables.edit', compact('requestable'));
     }
@@ -73,7 +73,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Requestable $requestable, UpdateRequestableRequest $request)
+    public function update(Requestable $requestable, UpdateRequestableRequest $request): Response
     {
         $this->requestable->update($requestable, $request->all());
 
@@ -86,7 +86,7 @@ class RequestableController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Requestable $requestable)
+    public function destroy(Requestable $requestable): Response
     {
         $this->requestable->destroy($requestable);
 

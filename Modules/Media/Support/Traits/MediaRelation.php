@@ -13,7 +13,7 @@ trait MediaRelation
      *
      * @return object
      */
-    public function files()
+    public function files(): object
     {
         $tenantWithCentralData = config('asgard.media.config.tenantWithCentralData.imageable');
 
@@ -30,7 +30,7 @@ trait MediaRelation
      * @param  string  $zone
      * @return object
      */
-    public function filesByZone($zone)
+    public function filesByZone(string $zone): object
     {
         return $this->morphToMany(File::class, 'imageable', 'media__imageables')
           ->withPivot('zone', 'id')
@@ -44,7 +44,7 @@ trait MediaRelation
      *
      * @return array
      */
-    public function mediaFiles()
+    public function mediaFiles(): array
     {
         $files = $this->files; //Get files
 

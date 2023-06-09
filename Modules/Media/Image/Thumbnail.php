@@ -29,7 +29,7 @@ class Thumbnail
     /**
      * @return static
      */
-    public static function make($thumbnailDefinition, $format = 'jpg')
+    public static function make($thumbnailDefinition, $format = 'jpg'): static
     {
         $name = key($thumbnailDefinition);
 
@@ -41,7 +41,7 @@ class Thumbnail
      *
      * @return array
      */
-    public static function makeMultiple(array $thumbnailDefinitions)
+    public static function makeMultiple(array $thumbnailDefinitions): array
     {
         $thumbnails = [];
 
@@ -57,7 +57,7 @@ class Thumbnail
      *
      * @return string
      */
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }
@@ -65,7 +65,7 @@ class Thumbnail
     /**
      * @return array
      */
-    public function filters()
+    public function filters(): array
     {
         return $this->filters;
     }
@@ -73,7 +73,7 @@ class Thumbnail
     /**
      * @return string
      */
-    public function format()
+    public function format(): string
     {
         return $this->format;
     }
@@ -83,7 +83,7 @@ class Thumbnail
      *
      * @return int
      */
-    public function width()
+    public function width(): int
     {
         return $this->getFirst('width');
     }
@@ -93,7 +93,7 @@ class Thumbnail
      *
      * @return int
      */
-    public function height()
+    public function height(): int
     {
         return $this->getFirst('height');
     }
@@ -103,7 +103,7 @@ class Thumbnail
      *
      * @return string
      */
-    public function size()
+    public function size(): string
     {
         return $this->width().'x'.$this->height();
     }
@@ -114,7 +114,7 @@ class Thumbnail
      * @param  string  $key
      * @return int
      */
-    private function getFirst($key)
+    private function getFirst(string $key): int
     {
         foreach ($this->filters as $filter) {
             if (isset($filter[$key])) {

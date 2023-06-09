@@ -16,7 +16,7 @@ class BannerAdsPresenter extends AbstractAdsPresenter implements BannerAdsPresen
      * @param  string  $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($position, $template = 'ibanners::frontend.banners.banner_ads', $options = [])
+    public function render($position, string $template = 'ibanners::frontend.banners.banner_ads', $options = []): string
     {
         if (! $position instanceof Position) {
             $position = $this->getPositionFromRepository($position);
@@ -40,7 +40,7 @@ class BannerAdsPresenter extends AbstractAdsPresenter implements BannerAdsPresen
     /**
      * @return Position
      */
-    private function getPositionFromRepository($systemName)
+    private function getPositionFromRepository($systemName): Position
     {
         return $this->positionRepository->findBySystemName($systemName);
     }

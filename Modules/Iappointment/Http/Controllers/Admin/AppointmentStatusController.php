@@ -28,7 +28,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$appointmentstatuses = $this->appointmentstatus->all();
 
@@ -40,7 +40,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.appointmentstatuses.create');
     }
@@ -50,7 +50,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateAppointmentStatusRequest $request)
+    public function store(CreateAppointmentStatusRequest $request): Response
     {
         $this->appointmentstatus->create($request->all());
 
@@ -63,7 +63,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(AppointmentStatus $appointmentstatus)
+    public function edit(AppointmentStatus $appointmentstatus): Response
     {
         return view('iappointment::admin.appointmentstatuses.edit', compact('appointmentstatus'));
     }
@@ -73,7 +73,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(AppointmentStatus $appointmentstatus, UpdateAppointmentStatusRequest $request)
+    public function update(AppointmentStatus $appointmentstatus, UpdateAppointmentStatusRequest $request): Response
     {
         $this->appointmentstatus->update($appointmentstatus, $request->all());
 
@@ -86,7 +86,7 @@ class AppointmentStatusController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(AppointmentStatus $appointmentstatus)
+    public function destroy(AppointmentStatus $appointmentstatus): Response
     {
         $this->appointmentstatus->destroy($appointmentstatus);
 

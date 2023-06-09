@@ -28,7 +28,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$forms = $this->form->all();
 
@@ -40,7 +40,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.forms.create');
     }
@@ -50,7 +50,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateFormRequest $request)
+    public function store(CreateFormRequest $request): Response
     {
         $this->form->create($request->all());
 
@@ -63,7 +63,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Form $form)
+    public function edit(Form $form): Response
     {
         return view('iforms::admin.forms.edit', compact('form'));
     }
@@ -73,7 +73,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Form $form, UpdateFormRequest $request)
+    public function update(Form $form, UpdateFormRequest $request): Response
     {
         $this->form->update($form, $request->all());
 
@@ -86,7 +86,7 @@ class FormController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Form $form)
+    public function destroy(Form $form): Response
     {
         $this->form->destroy($form);
 

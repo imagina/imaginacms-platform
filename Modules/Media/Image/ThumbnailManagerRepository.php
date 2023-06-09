@@ -19,7 +19,7 @@ class ThumbnailManagerRepository implements ThumbnailManager
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->thumbnails;
     }
@@ -29,7 +29,7 @@ class ThumbnailManagerRepository implements ThumbnailManager
      *
      * @return array
      */
-    public function find($thumbnail)
+    public function find($thumbnail): array
     {
         foreach ($this->all() as $thumb) {
             if ($thumb->name() === $thumbnail) {

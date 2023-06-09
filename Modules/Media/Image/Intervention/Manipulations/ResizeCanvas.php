@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Image\Intervention\Manipulations;
 
+use Intervention\Image\Image;
 use Modules\Media\Image\ImageHandlerInterface;
 
 class ResizeCanvas implements ImageHandlerInterface
@@ -18,7 +19,7 @@ class ResizeCanvas implements ImageHandlerInterface
      * @param  array  $options
      * @return \Intervention\Image\Image
      */
-    public function handle($image, $options)
+    public function handle(Image $image, array $options): Image
     {
         $options = array_merge($this->defaults, $options);
 

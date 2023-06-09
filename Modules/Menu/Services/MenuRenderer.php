@@ -27,7 +27,7 @@ class MenuRenderer
     /**
      * @return string
      */
-    public function renderForMenu($menuId, $menuItems)
+    public function renderForMenu($menuId, $menuItems): string
     {
         $this->menuId = $menuId;
 
@@ -77,7 +77,7 @@ HTML;
     /**
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren($item): bool
     {
         return count($item->items);
     }

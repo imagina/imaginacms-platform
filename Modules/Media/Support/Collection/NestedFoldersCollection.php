@@ -77,13 +77,13 @@ class NestedFoldersCollection extends Collection
      * @return array
      */
     public function listsFlattened(
-        $column = 'title',
+        string $column = 'title',
         BaseCollection $collection = null,
-        $level = 0,
+        int $level = 0,
         array &$flattened = [],
-        $indentChars = null,
+        ?string $indentChars = null,
         $parent_string = null
-    ) {
+    ): array {
         $collection = $collection ?: $this;
         $indentChars = $indentChars ?: $this->indentChars;
         foreach ($collection as $item) {
@@ -117,12 +117,12 @@ class NestedFoldersCollection extends Collection
      * @return array
      */
     public function listsFlattenedQualified(
-        $column = 'title',
+        string $column = 'title',
         BaseCollection $collection = null,
-        $level = 0,
+        int $level = 0,
         array &$flattened = [],
-        $indentChars = null
-    ) {
+        string $indentChars = null
+    ): array {
         return $this->listsFlattened($column, $collection, $level, $flattened, $indentChars, true);
     }
 
@@ -131,7 +131,7 @@ class NestedFoldersCollection extends Collection
      *
      * @return $this
      */
-    public function setIndent(string $indentChars)
+    public function setIndent(string $indentChars): static
     {
         $this->indentChars = $indentChars;
 
@@ -143,7 +143,7 @@ class NestedFoldersCollection extends Collection
      *
      * @return NestableCollection
      */
-    public function noCleaning()
+    public function noCleaning(): NestableCollection
     {
         $this->removeItemsWithMissingAncestor = false;
 
@@ -155,7 +155,7 @@ class NestedFoldersCollection extends Collection
      *
      * @return bool
      */
-    public function anAncestorIsMissing($item)
+    public function anAncestorIsMissing($item): bool
     {
         $parentColumn = $this->parentColumn;
         if (! $item->$parentColumn) {
@@ -174,7 +174,7 @@ class NestedFoldersCollection extends Collection
      *
      * @return int
      */
-    public function total()
+    public function total(): int
     {
         return $this->total;
     }
@@ -184,7 +184,7 @@ class NestedFoldersCollection extends Collection
      *
      * @return int
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return $this->total();
     }

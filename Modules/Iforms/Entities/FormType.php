@@ -36,7 +36,7 @@ class FormType extends Model
      *
      * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->types;
     }
@@ -47,7 +47,7 @@ class FormType extends Model
      * @param  int  $id
      * @return string
      */
-    public function get($id)
+    public function get(int $id): string
     {
         $id--;
         if (isset($this->types[$id])) {

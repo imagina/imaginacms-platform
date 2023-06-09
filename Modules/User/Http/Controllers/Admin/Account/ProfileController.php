@@ -33,7 +33,7 @@ class ProfileController extends AdminBaseController
      * @param  int  $id
      * @return Response
      */
-    public function edit()
+    public function edit(): Response
     {
         return view('user::admin.account.profile.edit');
     }
@@ -44,7 +44,7 @@ class ProfileController extends AdminBaseController
      * @param  int  $id
      * @return Response
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request): Response
     {
         $user = $this->auth->user();
 

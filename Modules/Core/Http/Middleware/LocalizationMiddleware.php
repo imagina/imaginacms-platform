@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Http\Middleware;
 
+use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
@@ -14,7 +15,7 @@ class LocalizationMiddleware extends LaravelLocalizationRedirectFilter
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         // If the URL of the request is in exceptions.
         if ($this->shouldIgnore($request)) {

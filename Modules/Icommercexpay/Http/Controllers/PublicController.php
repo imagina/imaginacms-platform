@@ -35,7 +35,7 @@ class PublicController extends BasePublicController
      *
      * @return view
      */
-    public function index(Request $request)
+    public function index(Request $request): view
     {
         // Init Data
         $resultInit = $this->initData($request);
@@ -90,7 +90,7 @@ class PublicController extends BasePublicController
      *
      * @return array result
      */
-    public function initData(Request $request)
+    public function initData(Request $request): array
     {
         $result = [];
 

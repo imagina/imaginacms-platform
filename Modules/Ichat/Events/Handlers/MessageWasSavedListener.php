@@ -28,7 +28,7 @@ class MessageWasSavedListener
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(object $event): void
     {
         //Get message
         $message = $event->message;

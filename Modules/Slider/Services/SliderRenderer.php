@@ -30,7 +30,7 @@ class SliderRenderer
      * @param  Slider  $slider
      * @return string
      */
-    public function renderForSlider($slider, $slides)
+    public function renderForSlider(Slider $slider, $slides): string
     {
         $this->sliderId = $slider->id;
 

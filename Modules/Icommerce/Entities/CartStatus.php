@@ -32,7 +32,7 @@ class CartStatus
      *
      * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->statuses;
     }
@@ -43,7 +43,7 @@ class CartStatus
      * @param  int  $statusId
      * @return string
      */
-    public function get($statusId)
+    public function get(int $statusId): string
     {
         if (isset($this->statuses[$statusId])) {
             return $this->statuses[$statusId];

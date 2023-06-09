@@ -43,7 +43,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         if ($request->input('q')) {
             $param = $request->input('q');
@@ -60,7 +60,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $categories = $this->category->all();
         $users = $this->user->all();
@@ -73,7 +73,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateDocumentRequest $request)
+    public function store(CreateDocumentRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -99,7 +99,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Document $document)
+    public function edit(Document $document): Response
     {
         $categories = $this->category->all();
         $users = $this->user->all();
@@ -112,7 +112,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Document $document, UpdateDocumentRequest $request)
+    public function update(Document $document, UpdateDocumentRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -135,7 +135,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Document $document)
+    public function destroy(Document $document): Response
     {
         \DB::beginTransaction();
         try {
@@ -158,7 +158,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function migration()
+    public function migration(): Response
     {
         $locale = \LaravelLocalization::getSupportedLocales();
 
@@ -170,7 +170,7 @@ class DocumentController extends AdminBaseController
      *
      * @return Response
      */
-    public function import(Request $request)
+    public function import(Request $request): Response
     {
         \DB::beginTransaction();
         try {

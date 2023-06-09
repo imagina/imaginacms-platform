@@ -27,7 +27,7 @@ class AssetPublisher
     /**
      * @return $this
      */
-    public function setFinder($finder)
+    public function setFinder($finder): static
     {
         $this->finder = $finder;
 
@@ -37,7 +37,7 @@ class AssetPublisher
     /**
      * @return $this
      */
-    public function setRepository($repository)
+    public function setRepository($repository): static
     {
         $this->repository = $repository;
 
@@ -66,7 +66,7 @@ class AssetPublisher
      *
      * @return string
      */
-    public function getSourcePath()
+    public function getSourcePath(): string
     {
         return $this->theme->getPath().'/assets';
     }
@@ -76,7 +76,7 @@ class AssetPublisher
      *
      * @return string
      */
-    public function getDestinationPath()
+    public function getDestinationPath(): string
     {
         return $this->repository->getAssetPath($this->theme->getLowerName());
     }

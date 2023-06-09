@@ -28,7 +28,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$categoryforms = $this->categoryform->all();
 
@@ -40,7 +40,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.categoryforms.create');
     }
@@ -50,7 +50,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCategoryFormRequest $request)
+    public function store(CreateCategoryFormRequest $request): Response
     {
         $this->categoryform->create($request->all());
 
@@ -63,7 +63,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(CategoryForm $categoryform)
+    public function edit(CategoryForm $categoryform): Response
     {
         return view('iappointment::admin.categoryforms.edit', compact('categoryform'));
     }
@@ -73,7 +73,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(CategoryForm $categoryform, UpdateCategoryFormRequest $request)
+    public function update(CategoryForm $categoryform, UpdateCategoryFormRequest $request): Response
     {
         $this->categoryform->update($categoryform, $request->all());
 
@@ -86,7 +86,7 @@ class CategoryFormController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(CategoryForm $categoryform)
+    public function destroy(CategoryForm $categoryform): Response
     {
         $this->categoryform->destroy($categoryform);
 

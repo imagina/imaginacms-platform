@@ -36,7 +36,7 @@ class PublicController extends BasePublicController
      * @param Requests request
      * @return route
      */
-    public function index($eURL)
+    public function index($eURL): route
     {
         try {
             // Decr
@@ -78,7 +78,7 @@ class PublicController extends BasePublicController
      * @param Requests request
      * @return route
      */
-    public function confirmation(Request $request, $orderId)
+    public function confirmation(Request $request, $orderId): route
     {
         //dd($request,$orderId);
 

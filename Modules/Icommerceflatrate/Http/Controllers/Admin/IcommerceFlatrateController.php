@@ -28,7 +28,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceflatrates = $this->icommerceflatrate->all();
 
@@ -40,7 +40,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.create');
     }
@@ -50,7 +50,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceFlatrateRequest $request)
+    public function store(CreateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->create($request->all());
 
@@ -63,7 +63,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceFlatrate $icommerceflatrate)
+    public function edit(IcommerceFlatrate $icommerceflatrate): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.edit', compact('icommerceflatrate'));
     }
@@ -73,7 +73,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request)
+    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->update($icommerceflatrate, $request->all());
 
@@ -86,7 +86,7 @@ class IcommerceFlatrateController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceFlatrate $icommerceflatrate)
+    public function destroy(IcommerceFlatrate $icommerceflatrate): Response
     {
         $this->icommerceflatrate->destroy($icommerceflatrate);
 

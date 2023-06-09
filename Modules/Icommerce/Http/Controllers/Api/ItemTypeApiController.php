@@ -26,7 +26,7 @@ class ItemTypeApiController extends BaseApiController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -79,7 +79,7 @@ class ItemTypeApiController extends BaseApiController
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         try {
             $this->itemType->create($request->all());
@@ -101,7 +101,7 @@ class ItemTypeApiController extends BaseApiController
      *
      * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         try {
             \DB::beginTransaction();
@@ -130,7 +130,7 @@ class ItemTypeApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         try {
             $this->itemType->deleteBy($criteria, $this->getParamsRequest($request));

@@ -27,7 +27,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
      *
      * @return int
      */
-    public function countAll()
+    public function countAll(): int
     {
         return $this->model->count();
     }
@@ -37,7 +37,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
      *
      * @return object
      */
-    public function allOnline()
+    public function allOnline(): object
     {
         return $this->model->where('active', '=', true)
           ->orderBy('created_at', 'DESC')
@@ -48,7 +48,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
      * @param  string  $systemName
      * @return Slider
      */
-    public function findBySystemName($systemName)
+    public function findBySystemName(string $systemName): Slider
     {
         return $this->model->where('system_name', '=', $systemName)->with(['slides', 'slides.files'])->first();
     }

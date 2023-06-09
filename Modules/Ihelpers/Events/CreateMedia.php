@@ -2,6 +2,7 @@
 
 namespace Modules\Ihelpers\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Contracts\StoringMedia;
 
 class CreateMedia implements StoringMedia
@@ -21,7 +22,7 @@ class CreateMedia implements StoringMedia
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->post;
     }
@@ -31,7 +32,7 @@ class CreateMedia implements StoringMedia
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

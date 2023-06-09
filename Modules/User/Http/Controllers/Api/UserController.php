@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\User\Contracts\Authentication;
@@ -47,7 +48,7 @@ class UserController extends Controller
         return (new FullUserTransformer($user))->additional(['data' => ['is_new' => true]]);
     }
 
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request): JsonResponse
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -59,7 +60,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(User $user, UpdateUserRequest $request)
+    public function update(User $user, UpdateUserRequest $request): JsonResponse
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -71,7 +72,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): JsonResponse
     {
         $this->user->delete($user->id);
 
@@ -81,7 +82,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function sendResetPassword(User $user, Authentication $auth)
+    public function sendResetPassword(User $user, Authentication $auth): JsonResponse
     {
         $code = $auth->createReminderCode($user);
 

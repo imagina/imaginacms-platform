@@ -12,7 +12,7 @@ class CommentTransformer extends CrudResource
      *
      * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         return [
             'userProfile' => new UserTransformer($this->whenLoaded('userProfile')),

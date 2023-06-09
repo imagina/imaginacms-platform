@@ -9,7 +9,7 @@ class ValueObjectGenerator extends Generator
      *
      * @return void
      */
-    public function generate(array $valueObjects)
+    public function generate(array $valueObjects): void
     {
         if (! $this->finder->isDirectory($this->getModulesPath('ValueObjects'))) {
             $this->finder->makeDirectory($this->getModulesPath('ValueObjects'));

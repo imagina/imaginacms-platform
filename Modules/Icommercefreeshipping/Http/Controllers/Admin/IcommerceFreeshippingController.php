@@ -28,7 +28,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercefreeshippings = $this->icommercefreeshipping->all();
 
@@ -40,7 +40,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercefreeshipping::admin.icommercefreeshippings.create');
     }
@@ -50,7 +50,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceFreeshippingRequest $request)
+    public function store(CreateIcommerceFreeshippingRequest $request): Response
     {
         $this->icommercefreeshipping->create($request->all());
 
@@ -63,7 +63,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceFreeshipping $icommercefreeshipping)
+    public function edit(IcommerceFreeshipping $icommercefreeshipping): Response
     {
         return view('icommercefreeshipping::admin.icommercefreeshippings.edit', compact('icommercefreeshipping'));
     }
@@ -73,7 +73,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request)
+    public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request): Response
     {
         $this->icommercefreeshipping->update($icommercefreeshipping, $request->all());
 
@@ -86,7 +86,7 @@ class IcommerceFreeshippingController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceFreeshipping $icommercefreeshipping)
+    public function destroy(IcommerceFreeshipping $icommercefreeshipping): Response
     {
         $this->icommercefreeshipping->destroy($icommercefreeshipping);
 

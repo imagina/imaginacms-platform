@@ -29,7 +29,7 @@ class CategoryPresenter extends Presenter
      *
      * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
@@ -39,7 +39,7 @@ class CategoryPresenter extends Presenter
      *
      * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::INACTIVE:

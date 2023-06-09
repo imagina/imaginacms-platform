@@ -27,7 +27,7 @@ class Ad extends Component
     /**
      * @return adRepository
      */
-    private function adRepository()
+    private function adRepository(): adRepository
     {
         return app('Modules\Iad\Repositories\AdRepository');
     }

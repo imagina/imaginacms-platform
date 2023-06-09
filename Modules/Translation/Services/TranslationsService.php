@@ -29,7 +29,7 @@ class TranslationsService
      *
      * @return TranslationGroup
      */
-    public function getFileAndDatabaseMergedTranslations()
+    public function getFileAndDatabaseMergedTranslations(): TranslationGroup
     {
         $allFileTranslations = $this->fileTranslations->all();
         $allDatabaseTranslations = $this->databaseTranslations->allFormatted();
@@ -71,7 +71,7 @@ class TranslationsService
      *
      * @return array
      */
-    private function getActiveLocales()
+    private function getActiveLocales(): array
     {
         $locales = [];
 

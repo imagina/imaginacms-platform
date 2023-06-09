@@ -26,7 +26,7 @@ class OpenpayApiController extends BaseApiController
      *
      * @return gateway
      */
-    public function getGateway()
+    public function getGateway(): gateway
     {
         // Payment Method Configuration
         $paymentMethod = openpayGetConfiguration();
@@ -49,7 +49,7 @@ class OpenpayApiController extends BaseApiController
      *
      * @return result
      */
-    public function createCharge($order, $transaction, $token, $deviceId)
+    public function createCharge($order, $transaction, $token, $deviceId): result
     {
         \Log::info('Icommerceopenpay: OpenpayApi|createCharge');
 
@@ -102,7 +102,7 @@ class OpenpayApiController extends BaseApiController
      *
      * @return result
      */
-    public function createPseRequest($order, $transaction)
+    public function createPseRequest($order, $transaction): result
     {
         \Log::info('Icommerceopenpay: OpenpayApi|createPseRequest');
 

@@ -91,7 +91,7 @@ class DeleteModuleCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['module', InputArgument::REQUIRED, 'The module name'],
@@ -103,7 +103,7 @@ class DeleteModuleCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Reset the module migrations', null],

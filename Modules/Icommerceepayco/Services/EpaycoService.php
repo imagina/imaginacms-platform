@@ -13,7 +13,7 @@ class EpaycoService
      *
      * @return object Configuration
      */
-    public function makeConfiguration($paymentMethod, $order, $transaction, $urls)
+    public function makeConfiguration($paymentMethod, $order, $transaction, $urls): object
     {
         $urlEpayco = $paymentMethod->options->test ? $urls['sandbox'] : $urls['production'];
 
@@ -52,7 +52,7 @@ class EpaycoService
      * @param Requests request
      * @return signature
      */
-    public function showVarsLog($request)
+    public function showVarsLog($request): signature
     {
         \Log::info('Module Icommerceepayco: ref_payco: '.$request->x_ref_payco);
         \Log::info('Module Icommerceepayco: order_id: '.$request->x_extra1);
@@ -70,7 +70,7 @@ class EpaycoService
      * @param Payment Method
      * @return signature
      */
-    public function makeSignature($request, $paymentMethod)
+    public function makeSignature($request, $paymentMethod): signature
     {
         $p_cust_id_cliente = $paymentMethod->options->clientId;
         $p_key = $paymentMethod->options->pKey;
@@ -91,7 +91,7 @@ class EpaycoService
      * @param int cod
      * @return int
      */
-    public function getStatusOrder($cod)
+    public function getStatusOrder($cod): int
     {
         switch ((int) $cod) {
             case 1: // Aceptada

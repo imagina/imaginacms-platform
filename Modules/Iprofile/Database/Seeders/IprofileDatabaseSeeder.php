@@ -11,7 +11,7 @@ class IprofileDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call(IprofileModuleTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);

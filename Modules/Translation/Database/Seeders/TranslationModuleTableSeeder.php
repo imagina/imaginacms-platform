@@ -12,7 +12,7 @@ class TranslationModuleTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
 

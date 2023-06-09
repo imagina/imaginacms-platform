@@ -11,7 +11,7 @@ class IcustomRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         // only allow updates if the user is logged in
         return true;
@@ -22,7 +22,7 @@ class IcustomRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             //'title' => 'required|min:2|max:255',
@@ -34,7 +34,7 @@ class IcustomRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function attributes()
+    public function attributes(): array
     {
         return [
             //
@@ -46,7 +46,7 @@ class IcustomRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             //

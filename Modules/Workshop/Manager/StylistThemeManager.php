@@ -24,7 +24,7 @@ class StylistThemeManager implements ThemeManager
     /**
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         $directories = $this->getDirectories();
 
@@ -42,7 +42,7 @@ class StylistThemeManager implements ThemeManager
      *
      * @throws ThemeNotFoundException
      */
-    public function find($themeName)
+    public function find(string $themeName): Theme
     {
         foreach ($this->getDirectories() as $directory) {
             if (strtolower(basename($directory)) !== strtolower($themeName)) {
@@ -59,7 +59,7 @@ class StylistThemeManager implements ThemeManager
      * @param  string  $directory
      * @return Theme
      */
-    private function getThemeInfoForPath($directory)
+    private function getThemeInfoForPath(string $directory): Theme
     {
         $themeJson = new Json($directory);
 
@@ -82,7 +82,7 @@ class StylistThemeManager implements ThemeManager
      *
      * @return array
      */
-    private function getDirectories()
+    private function getDirectories(): array
     {
         $themePath = config('stylist.themes.paths', [base_path('/Themes')]);
 
@@ -95,7 +95,7 @@ class StylistThemeManager implements ThemeManager
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getChangelog($directory)
+    private function getChangelog(string $directory): array
     {
         if (! $this->finder->isFile($directory.'/changelog.yml')) {
             return [];
@@ -117,7 +117,7 @@ class StylistThemeManager implements ThemeManager
      *
      * @return array
      */
-    private function limitLastVersionsAmount(array $versions)
+    private function limitLastVersionsAmount(array $versions): array
     {
         return array_slice($versions, 0, 5);
     }
@@ -127,7 +127,7 @@ class StylistThemeManager implements ThemeManager
      *
      * @return bool
      */
-    private function getStatus(Theme $theme)
+    private function getStatus(Theme $theme): bool
     {
         if ($theme->type !== 'Backend') {
             return setting('core::template') === $theme->getName();

@@ -28,7 +28,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$departmentsettings = $this->departmentsetting->all();
 
@@ -40,7 +40,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.departmentsettings.create');
     }
@@ -50,7 +50,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateSettingRequest $request)
+    public function store(CreateSettingRequest $request): Response
     {
         $this->departmentsetting->create($request->all());
 
@@ -63,7 +63,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Setting $departmentsetting)
+    public function edit(Setting $departmentsetting): Response
     {
         return view('Iprofile::admin.departmentsettings.edit', compact('departmentsetting'));
     }
@@ -73,7 +73,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Setting $departmentsetting, UpdateSettingRequest $request)
+    public function update(Setting $departmentsetting, UpdateSettingRequest $request): Response
     {
         $this->departmentsetting->update($departmentsetting, $request->all());
 
@@ -86,7 +86,7 @@ class DepartmentSettingController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Setting $departmentsetting)
+    public function destroy(Setting $departmentsetting): Response
     {
         $this->departmentsetting->destroy($departmentsetting);
 

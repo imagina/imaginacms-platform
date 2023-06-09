@@ -28,7 +28,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$notificationtypes = $this->notificationtype->all();
 
@@ -40,7 +40,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.notificationtypes.create');
     }
@@ -50,7 +50,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateNotificationTypeRequest $request)
+    public function store(CreateNotificationTypeRequest $request): Response
     {
         $this->notificationtype->create($request->all());
 
@@ -63,7 +63,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(NotificationType $notificationtype)
+    public function edit(NotificationType $notificationtype): Response
     {
         return view('notification::admin.notificationtypes.edit', compact('notificationtype'));
     }
@@ -73,7 +73,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(NotificationType $notificationtype, UpdateNotificationTypeRequest $request)
+    public function update(NotificationType $notificationtype, UpdateNotificationTypeRequest $request): Response
     {
         $this->notificationtype->update($notificationtype, $request->all());
 
@@ -86,7 +86,7 @@ class NotificationTypeController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(NotificationType $notificationtype)
+    public function destroy(NotificationType $notificationtype): Response
     {
         $this->notificationtype->destroy($notificationtype);
 

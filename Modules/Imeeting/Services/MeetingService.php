@@ -20,7 +20,7 @@ class MeetingService
      * @param string provider (optional)
      * @return response
      */
-    public function create($data)
+    public function create($data): response
     {
         // Default Provider
         $providerName = 'zoom';

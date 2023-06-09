@@ -21,7 +21,7 @@ class PermissionManager
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         $permissions = [];
         foreach ($this->module->allEnabled() as $enabledModule) {
@@ -39,7 +39,7 @@ class PermissionManager
      *
      * @return array
      */
-    public function clean($permissions)
+    public function clean($permissions): array
     {
         if (! $permissions) {
             return [];
@@ -57,7 +57,7 @@ class PermissionManager
     /**
      * @return bool
      */
-    protected function getState($checkedPermission)
+    protected function getState($checkedPermission): bool
     {
         if ($checkedPermission === '1' || $checkedPermission === 1) {
             return true;
@@ -76,7 +76,7 @@ class PermissionManager
      * @param  array  $permissions    Permissions array
      * @return bool
      */
-    public function permissionsAreAllFalse(array $permissions)
+    public function permissionsAreAllFalse(array $permissions): bool
     {
         $uniquePermissions = array_unique($permissions);
 

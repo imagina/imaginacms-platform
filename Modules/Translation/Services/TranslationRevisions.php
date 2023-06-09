@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Services;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Translation\Repositories\TranslationRepository;
 
@@ -24,7 +25,7 @@ class TranslationRevisions
      * @param  string  $locale
      * @return \Illuminate\Http\JsonResponse
      */
-    public function get($key, $locale)
+    public function get(string $key, string $locale): JsonResponse
     {
         $translation = $this->translation->findTranslationByKey($key);
         $translation = $translation->translate($locale);
@@ -45,7 +46,7 @@ class TranslationRevisions
      *
      * @return array
      */
-    private function formatRevisionHistory(Collection $revisionHistory)
+    private function formatRevisionHistory(Collection $revisionHistory): array
     {
         return $revisionHistory->reduce(function ($formattedHistory, $history) {
             $formattedHistory[] = view('translation::admin.translations.partials.revision', compact('history'))->render();

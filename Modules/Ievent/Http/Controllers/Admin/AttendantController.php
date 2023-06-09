@@ -28,7 +28,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$attendants = $this->attendant->all();
 
@@ -40,7 +40,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.attendants.create');
     }
@@ -50,7 +50,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateAttendantRequest $request)
+    public function store(CreateAttendantRequest $request): Response
     {
         $this->attendant->create($request->all());
 
@@ -63,7 +63,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Attendant $attendant)
+    public function edit(Attendant $attendant): Response
     {
         return view('ievent::admin.attendants.edit', compact('attendant'));
     }
@@ -73,7 +73,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Attendant $attendant, UpdateAttendantRequest $request)
+    public function update(Attendant $attendant, UpdateAttendantRequest $request): Response
     {
         $this->attendant->update($attendant, $request->all());
 
@@ -86,7 +86,7 @@ class AttendantController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Attendant $attendant)
+    public function destroy(Attendant $attendant): Response
     {
         $this->attendant->destroy($attendant);
 

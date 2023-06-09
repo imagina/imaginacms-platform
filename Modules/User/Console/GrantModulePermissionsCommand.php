@@ -26,7 +26,7 @@ class GrantModulePermissionsCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['module', InputArgument::REQUIRED, 'Module name'],
@@ -38,7 +38,7 @@ class GrantModulePermissionsCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
         ];

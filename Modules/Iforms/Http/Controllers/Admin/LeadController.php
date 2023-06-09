@@ -28,7 +28,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$leads = $this->lead->all();
 
@@ -40,7 +40,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.leads.create');
     }
@@ -50,7 +50,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateLeadRequest $request)
+    public function store(CreateLeadRequest $request): Response
     {
         $this->lead->create($request->all());
 
@@ -63,7 +63,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Lead $lead)
+    public function edit(Lead $lead): Response
     {
         return view('iforms::admin.leads.edit', compact('lead'));
     }
@@ -73,7 +73,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Lead $lead, UpdateLeadRequest $request)
+    public function update(Lead $lead, UpdateLeadRequest $request): Response
     {
         $this->lead->update($lead, $request->all());
 
@@ -86,7 +86,7 @@ class LeadController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Lead $lead)
+    public function destroy(Lead $lead): Response
     {
         $this->lead->destroy($lead);
 

@@ -22,7 +22,7 @@ class PageIsUpdating extends AbstractEntityHook implements EntityIsChanging
     /**
      * @return Page
      */
-    public function getPage()
+    public function getPage(): Page
     {
         return $this->page;
     }

@@ -13,7 +13,7 @@ class EloquentQredRepository extends EloquentBaseRepository implements QredRepos
      * @param  bool  $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, bool $params = false)
     {
         //Initialize query
         $query = $this->model->query();
@@ -59,7 +59,7 @@ class EloquentQredRepository extends EloquentBaseRepository implements QredRepos
      * @param  bool  $params
      * @return mixed
      */
-    public function getItemsBy($params = false)
+    public function getItemsBy(bool $params = false)
     {
         /*== initialize query ==*/
         $query = $this->model->query();

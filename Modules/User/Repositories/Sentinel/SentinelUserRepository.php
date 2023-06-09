@@ -40,7 +40,7 @@ class SentinelUserRepository implements UserRepository
      *
      * @return object
      */
-    public function all()
+    public function all(): object
     {
         return $this->user->all();
     }
@@ -51,7 +51,7 @@ class SentinelUserRepository implements UserRepository
      * @param  bool  $activated
      * @return mixed
      */
-    public function create(array $data, $activated = false)
+    public function create(array $data, bool $activated = false)
     {
         $this->hashPassword($data);
 
@@ -78,7 +78,7 @@ class SentinelUserRepository implements UserRepository
      * @param  bool  $activated
      * @return User
      */
-    public function createWithRoles($data, $roles, $activated = false)
+    public function createWithRoles(array $data, array $roles, bool $activated = false): User
     {
         $user = $this->create((array) $data, $activated);
 
@@ -98,7 +98,7 @@ class SentinelUserRepository implements UserRepository
      * @param  bool  $activated
      * @return User
      */
-    public function createWithRolesFromCli($data, $roles, $activated = false)
+    public function createWithRolesFromCli(array $data, array $roles, bool $activated = false): User
     {
         $this->hashPassword($data);
         $user = $this->user->create((array) $data);
@@ -283,7 +283,7 @@ class SentinelUserRepository implements UserRepository
      * @param  bool  $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, bool $params = false)
     {
         //Initialize query
         $query = $this->user->query();

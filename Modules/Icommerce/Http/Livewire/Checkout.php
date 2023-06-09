@@ -403,7 +403,7 @@ class Checkout extends Component
     /**
      * @return paymentMethodRepository
      */
-    private function paymentMethodRepository()
+    private function paymentMethodRepository(): paymentMethodRepository
     {
         return app('Modules\Icommerce\Repositories\PaymentMethodRepository');
     }
@@ -411,7 +411,7 @@ class Checkout extends Component
     /**
      * @return currencyRepository
      */
-    private function currencyRepository()
+    private function currencyRepository(): currencyRepository
     {
         return app('Modules\Icommerce\Repositories\CurrencyRepository');
     }
@@ -419,7 +419,7 @@ class Checkout extends Component
     /**
      * @return OrderRepository
      */
-    private function orderRepository()
+    private function orderRepository(): OrderRepository
     {
         return app('Modules\Icommerce\Repositories\OrderRepository');
     }
@@ -427,7 +427,7 @@ class Checkout extends Component
     /**
      * @return cartRepository
      */
-    private function cartRepository()
+    private function cartRepository(): cartRepository
     {
         return app('Modules\Icommerce\Repositories\CartRepository');
     }
@@ -435,7 +435,7 @@ class Checkout extends Component
     /**
      * @return cartRepository
      */
-    private function couponRepository()
+    private function couponRepository(): cartRepository
     {
         return app('Modules\Icommerce\Repositories\CouponRepository');
     }
@@ -443,7 +443,7 @@ class Checkout extends Component
     /**
      * @return shippingMethodRepository
      */
-    private function shippingMethodRepository()
+    private function shippingMethodRepository(): shippingMethodRepository
     {
         return app('Modules\Icommerce\Repositories\ShippingMethodRepository');
     }
@@ -464,7 +464,7 @@ class Checkout extends Component
     /**
      * @return orderService
      */
-    private function orderService()
+    private function orderService(): orderService
     {
         return app('Modules\Icommerce\Services\OrderService');
     }
@@ -472,7 +472,7 @@ class Checkout extends Component
     /**
      * @return orderService
      */
-    private function cartService()
+    private function cartService(): orderService
     {
         return app('Modules\Icommerce\Services\CartService');
     }
@@ -483,7 +483,7 @@ class Checkout extends Component
     /**
      * @return orderSupport
      */
-    private function orderSupport()
+    private function orderSupport(): orderSupport
     {
         return app('Modules\Icommerce\Support\Order');
     }

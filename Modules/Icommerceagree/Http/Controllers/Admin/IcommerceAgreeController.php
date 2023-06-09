@@ -28,7 +28,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceagrees = $this->icommerceagree->all();
 
@@ -40,7 +40,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceagree::admin.icommerceagrees.create');
     }
@@ -50,7 +50,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceAgreeRequest $request)
+    public function store(CreateIcommerceAgreeRequest $request): Response
     {
         $this->icommerceagree->create($request->all());
 
@@ -63,7 +63,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceAgree $icommerceagree)
+    public function edit(IcommerceAgree $icommerceagree): Response
     {
         return view('icommerceagree::admin.icommerceagrees.edit', compact('icommerceagree'));
     }
@@ -73,7 +73,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(IcommerceAgree $icommerceagree, UpdateIcommerceAgreeRequest $request)
+    public function update(IcommerceAgree $icommerceagree, UpdateIcommerceAgreeRequest $request): Response
     {
         $this->icommerceagree->update($icommerceagree, $request->all());
 
@@ -86,7 +86,7 @@ class IcommerceAgreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceAgree $icommerceagree)
+    public function destroy(IcommerceAgree $icommerceagree): Response
     {
         $this->icommerceagree->destroy($icommerceagree);
 

@@ -236,7 +236,7 @@ class CRest
      *      ]
      * ];
      */
-    public static function callBatch($arData, $halt = 0)
+    public static function callBatch($arData, $halt = 0): array
     {
         $arResult = [];
         if (is_array($arData)) {
@@ -276,7 +276,7 @@ class CRest
      *
      * @var array request when authorization error returned
      */
-    private static function GetNewAuth($arParams)
+    private static function GetNewAuth($arParams): array
     {
         $result = [];
         $arSettings = static::getAppSettings();
@@ -315,7 +315,7 @@ class CRest
      * @var  bool true if install app by installApp()
      * @var array settings application
      */
-    private static function setAppSettings($arSettings, $isInstall = false)
+    private static function setAppSettings($arSettings, $isInstall = false): bool
     {
         $return = false;
         if (is_array($arSettings)) {
@@ -362,7 +362,7 @@ class CRest
      *
      * @return array setting for getAppSettings()
      */
-    protected static function getSettingData()
+    protected static function getSettingData(): array
     {
         $return = [];
         if (file_exists(__DIR__.'/settings.json')) {
@@ -384,7 +384,7 @@ class CRest
      * @var bool true - encoding to utf8, false - decoding
      * @var mixed
      */
-    protected static function changeEncoding($data, $encoding = true)
+    protected static function changeEncoding($data, $encoding = true): string
     {
         if (is_array($data)) {
             $result = [];
@@ -409,7 +409,7 @@ class CRest
      * @var bool
      * @var mixed
      */
-    protected static function wrapData($data, $debag = false)
+    protected static function wrapData($data, $debag = false): string
     {
         if (defined('C_REST_CURRENT_ENCODING')) {
             $data = static::changeEncoding($data, true);
@@ -434,7 +434,7 @@ class CRest
      * @var bool
      * @var mixed
      */
-    protected static function expandData($data)
+    protected static function expandData($data): string
     {
         $return = json_decode($data, true);
         if (defined('C_REST_CURRENT_ENCODING')) {
@@ -451,7 +451,7 @@ class CRest
      *
      * @var array settings application
      */
-    protected static function setSettingData($arSettings)
+    protected static function setSettingData($arSettings): bool
     {
         return (bool) file_put_contents(__DIR__.'/settings.json', static::wrapData($arSettings));
     }
@@ -464,7 +464,7 @@ class CRest
      * @var   string to more identification log data
      * @var array of logs data
      */
-    public static function setLog($arData, $type = '')
+    public static function setLog($arData, $type = ''): bool
     {
         $return = false;
         if (! defined('C_REST_BLOCK_LOG') || C_REST_BLOCK_LOG !== true) {
@@ -502,7 +502,7 @@ class CRest
      *
      * @var bool
      */
-    public static function checkServer($print = true)
+    public static function checkServer($print = true): array
     {
         $return = [];
 

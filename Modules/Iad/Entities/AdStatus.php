@@ -32,7 +32,7 @@ class AdStatus
      *
      * @return array
      */
-    public function get()
+    public function get(): array
     {
         return $this->statuses;
     }

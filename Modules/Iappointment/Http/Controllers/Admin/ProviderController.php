@@ -28,7 +28,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$providers = $this->provider->all();
 
@@ -40,7 +40,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.providers.create');
     }
@@ -50,7 +50,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateProviderRequest $request)
+    public function store(CreateProviderRequest $request): Response
     {
         $this->provider->create($request->all());
 
@@ -63,7 +63,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Provider $provider)
+    public function edit(Provider $provider): Response
     {
         return view('iappointment::admin.providers.edit', compact('provider'));
     }
@@ -73,7 +73,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Provider $provider, UpdateProviderRequest $request)
+    public function update(Provider $provider, UpdateProviderRequest $request): Response
     {
         $this->provider->update($provider, $request->all());
 
@@ -86,7 +86,7 @@ class ProviderController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Provider $provider)
+    public function destroy(Provider $provider): Response
     {
         $this->provider->destroy($provider);
 

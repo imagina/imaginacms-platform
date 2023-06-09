@@ -13,7 +13,7 @@ class OpenpayService
      *
      * @return object Configuration
      */
-    public function makeConfiguration($paymentMethod, $order, $transaction)
+    public function makeConfiguration($paymentMethod, $order, $transaction): object
     {
         $conf['merchantId'] = $paymentMethod->options->merchantId ?? null;
         $conf['publicKey'] = $paymentMethod->options->publicKey ?? null;
@@ -59,7 +59,7 @@ class OpenpayService
      *
      * @return int
      */
-    public function getStatusOrder($type)
+    public function getStatusOrder($type): int
     {
         switch ($type) {
             case 'charge.succeeded'://Indica que el cargo se ha completado (tarjeta, banco o tienda)

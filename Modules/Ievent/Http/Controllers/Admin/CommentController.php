@@ -28,7 +28,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$comments = $this->comment->all();
 
@@ -40,7 +40,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.comments.create');
     }
@@ -50,7 +50,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCommentRequest $request)
+    public function store(CreateCommentRequest $request): Response
     {
         $this->comment->create($request->all());
 
@@ -63,7 +63,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Comment $comment)
+    public function edit(Comment $comment): Response
     {
         return view('ievent::admin.comments.edit', compact('comment'));
     }
@@ -73,7 +73,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Comment $comment, UpdateCommentRequest $request)
+    public function update(Comment $comment, UpdateCommentRequest $request): Response
     {
         $this->comment->update($comment, $request->all());
 
@@ -86,7 +86,7 @@ class CommentController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comment): Response
     {
         $this->comment->destroy($comment);
 

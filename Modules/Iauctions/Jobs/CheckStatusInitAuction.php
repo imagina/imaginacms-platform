@@ -29,7 +29,7 @@ class CheckStatusInitAuction implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         \Log::info('Iauctions: Jobs|CheckStatusInitAuction');
 

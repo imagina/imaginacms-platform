@@ -32,7 +32,7 @@ class IcommerceXpayController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercexpays = $this->icommercexpay->all();
 
@@ -44,7 +44,7 @@ class IcommerceXpayController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercexpay::admin.icommercexpays.create');
     }
@@ -54,7 +54,7 @@ class IcommerceXpayController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceXpayRequest $request)
+    public function store(CreateIcommerceXpayRequest $request): Response
     {
         $this->icommercexpay->create($request->all());
 
@@ -67,7 +67,7 @@ class IcommerceXpayController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceXpay $icommercexpay)
+    public function edit(IcommerceXpay $icommercexpay): Response
     {
         return view('icommercexpay::admin.icommercexpays.edit', compact('icommercexpay'));
     }
@@ -78,7 +78,7 @@ class IcommerceXpayController extends AdminBaseController
      * @param  IcommerceXpay  $icommercexpay
      * @return Response
      */
-    public function update($id, UpdateIcommerceXpayRequest $request)
+    public function update($id, UpdateIcommerceXpayRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,7 +101,7 @@ class IcommerceXpayController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceXpay $icommercexpay)
+    public function destroy(IcommerceXpay $icommercexpay): Response
     {
         $this->icommercexpay->destroy($icommercexpay);
 

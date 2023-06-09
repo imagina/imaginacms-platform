@@ -2,11 +2,12 @@
 
 namespace Modules\Translation\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
 class AllTranslationController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): JsonResponse
     {
         return response()->json([
             'page' => trans('page::pages'),

@@ -9,7 +9,7 @@ trait CanGetSidebarClassForModule
      * @param  string  $default
      * @return string
      */
-    public function getSidebarClassForModule($module, $default)
+    public function getSidebarClassForModule(string $module, string $default): string
     {
         if ($this->hasCustomSidebar($module)) {
             $class = config("asgard.{$module}.config.custom-sidebar");

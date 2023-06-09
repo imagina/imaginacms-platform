@@ -50,7 +50,7 @@ class IcommercewompiServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

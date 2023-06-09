@@ -45,7 +45,7 @@ class ModuleManager
      *
      * @return \Illuminate\Support\Collection
      */
-    public function all()
+    public function all(): Collection
     {
         $modules = new Collection($this->module->all());
 
@@ -68,7 +68,7 @@ class ModuleManager
      *
      * @return array
      */
-    public function enabled()
+    public function enabled(): array
     {
         return $this->module->allEnabled();
     }
@@ -91,7 +91,7 @@ class ModuleManager
      *
      * @return array
      */
-    public function getFlippedEnabledModules()
+    public function getFlippedEnabledModules(): array
     {
         $enabledModules = $this->module->allEnabled();
 
@@ -134,7 +134,7 @@ class ModuleManager
      *
      * @return array
      */
-    public function changelogFor(Module $module)
+    public function changelogFor(Module $module): array
     {
         $path = $module->getPath().'/changelog.yml';
         if (! $this->finder->isFile($path)) {
@@ -155,7 +155,7 @@ class ModuleManager
      *
      * @return array
      */
-    private function limitLastVersionsAmount(array $versions)
+    private function limitLastVersionsAmount(array $versions): array
     {
         return array_slice($versions, 0, 5);
     }

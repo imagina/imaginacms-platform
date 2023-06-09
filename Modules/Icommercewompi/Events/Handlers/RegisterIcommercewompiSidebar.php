@@ -29,7 +29,7 @@ class RegisterIcommercewompiSidebar implements \Maatwebsite\Sidebar\SidebarExten
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

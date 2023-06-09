@@ -12,7 +12,7 @@ class UserPresenter extends Presenter
      * @param  int  $size
      * @return string
      */
-    public function gravatar($size = 90)
+    public function gravatar(int $size = 90): string
     {
         $email = md5($this->email);
 
@@ -22,7 +22,7 @@ class UserPresenter extends Presenter
     /**
      * @return string
      */
-    public function fullname()
+    public function fullname(): string
     {
         return $this->name ?: $this->first_name.' '.$this->last_name;
     }

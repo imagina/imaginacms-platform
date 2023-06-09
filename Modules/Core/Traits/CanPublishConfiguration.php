@@ -10,7 +10,7 @@ trait CanPublishConfiguration
      * @param  string  $module
      * @param  string  $fileName
      */
-    public function publishConfig($module, $fileName)
+    public function publishConfig(string $module, string $fileName)
     {
         if (app()->environment() === 'testing') {
             return;
@@ -29,7 +29,7 @@ trait CanPublishConfiguration
      * @param  string  $file
      * @return string
      */
-    private function getModuleConfigFilePath($module, $file)
+    private function getModuleConfigFilePath(string $module, string $file): string
     {
         return $this->getModulePath($module)."/Config/$file.php";
     }
@@ -37,7 +37,7 @@ trait CanPublishConfiguration
     /**
      * @return string
      */
-    private function getModulePath($module)
+    private function getModulePath($module): string
     {
         return base_path('Modules'.DIRECTORY_SEPARATOR.ucfirst($module));
     }

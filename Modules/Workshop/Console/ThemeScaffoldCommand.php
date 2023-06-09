@@ -40,7 +40,7 @@ class ThemeScaffoldCommand extends Command
      * @param  string  $fullName
      * @return array
      */
-    private function separateVendorAndName($fullName)
+    private function separateVendorAndName(string $fullName): array
     {
         $explodedFullName = explode('/', $fullName);
 

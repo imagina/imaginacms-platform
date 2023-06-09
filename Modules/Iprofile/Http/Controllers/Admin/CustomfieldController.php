@@ -28,7 +28,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$customfields = $this->customfield->all();
 
@@ -40,7 +40,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.customfields.create');
     }
@@ -50,7 +50,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCustomFieldRequest $request)
+    public function store(CreateCustomFieldRequest $request): Response
     {
         $this->customfield->create($request->all());
 
@@ -63,7 +63,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Field $customfield)
+    public function edit(Field $customfield): Response
     {
         return view('Iprofile::admin.customfields.edit', compact('customfield'));
     }
@@ -73,7 +73,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Field $customfield, UpdateCustomFieldRequest $request)
+    public function update(Field $customfield, UpdateCustomFieldRequest $request): Response
     {
         $this->customfield->update($customfield, $request->all());
 
@@ -86,7 +86,7 @@ class CustomfieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Field $customfield)
+    public function destroy(Field $customfield): Response
     {
         $this->customfield->destroy($customfield);
 

@@ -47,7 +47,7 @@ class UserController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('user::admin.users.index');
     }
@@ -57,7 +57,7 @@ class UserController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('user::admin.users.create');
     }
@@ -67,7 +67,7 @@ class UserController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -82,7 +82,7 @@ class UserController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function edit()
+    public function edit(): Response
     {
         return view('user::admin.users.edit');
     }
@@ -93,7 +93,7 @@ class UserController extends BaseUserModuleController
      * @param  int  $id
      * @return Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update(int $id, UpdateUserRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -114,7 +114,7 @@ class UserController extends BaseUserModuleController
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(int $id): Response
     {
         $this->user->delete($id);
 

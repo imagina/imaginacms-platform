@@ -2,6 +2,8 @@
 
 namespace Modules\Icommerce\Events;
 
+use Illuminate\Database\Eloquent\Model;
+
 class CreateProductable
 {
     public $model;
@@ -19,7 +21,7 @@ class CreateProductable
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->model;
     }
@@ -29,7 +31,7 @@ class CreateProductable
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

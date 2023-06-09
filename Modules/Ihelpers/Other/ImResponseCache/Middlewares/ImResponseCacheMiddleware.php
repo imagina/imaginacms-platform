@@ -21,7 +21,7 @@ class ImResponseCacheMiddleware
     /**
      * @return Request
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Request
     {
         if ($this->responseCache->hasCached($request)) {
             return $this->responseCache->getCachedResponseFor($request);

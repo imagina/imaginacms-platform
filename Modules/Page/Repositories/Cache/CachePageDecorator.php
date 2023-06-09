@@ -27,7 +27,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
      *
      * @return object
      */
-    public function findHomepage()
+    public function findHomepage(): object
     {
         return $this->remember(function () {
             return $this->repository->findHomepage();
@@ -39,7 +39,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
      *
      * @return int
      */
-    public function countAll()
+    public function countAll(): int
     {
         return $this->remember(function () {
             return $this->repository->countAll();
@@ -49,7 +49,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     /**
      * @return object
      */
-    public function findBySlugInLocale($slug, $locale)
+    public function findBySlugInLocale($slug, $locale): object
     {
         return $this->remember(function () use ($slug, $locale) {
             return $this->repository->findBySlugInLocale($slug, $locale);
@@ -121,7 +121,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
    *
    * @return collection
    */
-  public function getItemsBy($params)
+  public function getItemsBy($params): collection
   {
       return $this->remember(function () use ($params) {
           return $this->repository->getItemsBy($params);
@@ -133,7 +133,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
    *
    * @return object
    */
-  public function getItem($criteria, $params = false)
+  public function getItem($criteria, $params = false): object
   {
       return $this->remember(function () use ($criteria, $params) {
           return $this->repository->getItem($criteria, $params);

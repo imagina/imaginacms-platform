@@ -68,7 +68,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      * @param Requests orderid
      * @return route
      */
-    public function init(Request $request)
+    public function init(Request $request): route
     {
         try {
             $data = $request->all();
@@ -136,7 +136,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      * @param Requests request
      * @return route
      */
-    public function getUpdateOrder(Request $request)
+    public function getUpdateOrder(Request $request): route
     {
         try {
             $orderID = $request->id;
@@ -197,7 +197,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      *
      * @return collection
      */
-    public function registerOrderCredibanco($paymentMethod, $order, $transaction)
+    public function registerOrderCredibanco($paymentMethod, $order, $transaction): collection
     {
         $orderRefCommerce = $this->getOrderRefCommerce($order, $transaction);
 
@@ -241,7 +241,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      *
      * @return collection
      */
-    public function getOrderStatusExtendedCredibanco($paymentMethod, $order, $transaction)
+    public function getOrderStatusExtendedCredibanco($paymentMethod, $order, $transaction): collection
     {
         \Log::info('Module Icommercecredibanco: GetOrderStatusExtented');
 
@@ -340,7 +340,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      *
      * @return collection
      */
-    public function getPaymentMethodConfiguration()
+    public function getPaymentMethodConfiguration(): collection
     {
         $paymentName = config('asgard.icommercecredibanco.config.paymentName');
         $attribute = ['name' => $paymentName];
@@ -354,7 +354,7 @@ class IcommerceCredibancoApiController extends BaseApiController
      *
      * @return collection
      */
-    public function getOrderRefCommerce($order, $transaction)
+    public function getOrderRefCommerce($order, $transaction): collection
     {
         //Fix: orderRefCommerce changed by only transaction->id as of the date 11/12/2020
         $orderDate = new \DateTime($order->created_at);

@@ -28,7 +28,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$departments = $this->department->all();
 
@@ -40,7 +40,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.departments.create');
     }
@@ -50,7 +50,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateDepartmentRequest $request)
+    public function store(CreateDepartmentRequest $request): Response
     {
         $this->department->create($request->all());
 
@@ -63,7 +63,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Department $department)
+    public function edit(Department $department): Response
     {
         return view('Iprofile::admin.departments.edit', compact('department'));
     }
@@ -73,7 +73,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Department $department, UpdateDepartmentRequest $request)
+    public function update(Department $department, UpdateDepartmentRequest $request): Response
     {
         $this->department->update($department, $request->all());
 
@@ -86,7 +86,7 @@ class DepartmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Department $department)
+    public function destroy(Department $department): Response
     {
         $this->department->destroy($department);
 

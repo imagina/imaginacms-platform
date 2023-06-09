@@ -27,7 +27,7 @@ class DeleteFolderOnDisk
      * @param  string  $path
      * @return string
      */
-    private function getDestinationPath($path)
+    private function getDestinationPath(string $path): string
     {
         if ($this->getConfiguredFilesystem() === 'local') {
             return basename(public_path()).$path;
@@ -39,7 +39,7 @@ class DeleteFolderOnDisk
     /**
      * @return string
      */
-    private function getConfiguredFilesystem()
+    private function getConfiguredFilesystem(): string
     {
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }

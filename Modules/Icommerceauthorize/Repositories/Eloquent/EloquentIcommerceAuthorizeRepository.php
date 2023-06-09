@@ -63,7 +63,7 @@ class EloquentIcommerceAuthorizeRepository extends EloquentBaseRepository implem
      *
      * @return array
      */
-    public function decriptUrl($eUrl)
+    public function decriptUrl($eUrl): array
     {
         $decrip = base64_decode($eUrl);
         $infor = explode('-', $decrip);

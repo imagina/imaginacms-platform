@@ -69,7 +69,7 @@ class BannerController extends AdminBaseController
     /**
      * @return array
      */
-    private function addPositionId(Position $position, FormRequest $request)
+    private function addPositionId(Position $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);
     }

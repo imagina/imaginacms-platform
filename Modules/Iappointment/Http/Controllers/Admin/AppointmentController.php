@@ -28,7 +28,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$appointments = $this->appointment->all();
 
@@ -40,7 +40,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.appointments.create');
     }
@@ -50,7 +50,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateAppointmentRequest $request)
+    public function store(CreateAppointmentRequest $request): Response
     {
         $this->appointment->create($request->all());
 
@@ -63,7 +63,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Appointment $appointment)
+    public function edit(Appointment $appointment): Response
     {
         return view('iappointment::admin.appointments.edit', compact('appointment'));
     }
@@ -73,7 +73,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Appointment $appointment, UpdateAppointmentRequest $request)
+    public function update(Appointment $appointment, UpdateAppointmentRequest $request): Response
     {
         $this->appointment->update($appointment, $request->all());
 
@@ -86,7 +86,7 @@ class AppointmentController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Appointment $appointment): Response
     {
         $this->appointment->destroy($appointment);
 

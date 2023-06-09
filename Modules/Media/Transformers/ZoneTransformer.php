@@ -11,7 +11,7 @@ class ZoneTransformer extends CrudResource
      *
      * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         return [];
     }

@@ -13,7 +13,7 @@ class ThemeGeneratorFactory
      *
      * @throws FileTypeNotFoundException
      */
-    public function make($file, array $options)
+    public function make(string $file, array $options): FileType
     {
         $class = 'Modules\Workshop\Scaffold\Theme\FileTypes\\'.ucfirst($file);
 

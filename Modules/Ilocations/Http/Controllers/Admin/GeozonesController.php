@@ -41,7 +41,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $geozones = Geozones::all();
 
@@ -53,7 +53,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.geozones.create');
     }
@@ -63,7 +63,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateGeozonesRequest $request)
+    public function store(CreateGeozonesRequest $request): Response
     {
         $geozone = $this->geozones->create($request->all());
 
@@ -83,7 +83,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Geozones $geozones)
+    public function edit(Geozones $geozones): Response
     {
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->with(['country', 'province'])->get();
 
@@ -95,7 +95,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Geozones $geozones, UpdateGeozonesRequest $request)
+    public function update(Geozones $geozones, UpdateGeozonesRequest $request): Response
     {
         $geozone = $this->geozones->update($geozones, $request->all());
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->delete();
@@ -117,7 +117,7 @@ class GeozonesController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Geozones $geozones)
+    public function destroy(Geozones $geozones): Response
     {
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->delete();
         $this->geozones->destroy($geozones);

@@ -28,7 +28,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$schedules = $this->schedule->all();
 
@@ -40,7 +40,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.schedules.create');
     }
@@ -50,7 +50,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateScheduleRequest $request)
+    public function store(CreateScheduleRequest $request): Response
     {
         $this->schedule->create($request->all());
 
@@ -63,7 +63,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Schedule $schedule)
+    public function edit(Schedule $schedule): Response
     {
         return view('iad::admin.schedules.edit', compact('schedule'));
     }
@@ -73,7 +73,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Schedule $schedule, UpdateScheduleRequest $request)
+    public function update(Schedule $schedule, UpdateScheduleRequest $request): Response
     {
         $this->schedule->update($schedule, $request->all());
 
@@ -86,7 +86,7 @@ class ScheduleController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Schedule $schedule): Response
     {
         $this->schedule->destroy($schedule);
 

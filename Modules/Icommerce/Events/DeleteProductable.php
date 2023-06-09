@@ -2,6 +2,8 @@
 
 namespace Modules\Icommerce\Events;
 
+use Illuminate\Database\Eloquent\Model;
+
 class DeleteProductable
 {
     public $model;
@@ -16,7 +18,7 @@ class DeleteProductable
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->model;
     }
@@ -26,7 +28,7 @@ class DeleteProductable
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return [];
     }

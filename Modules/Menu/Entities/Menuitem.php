@@ -59,7 +59,7 @@ class Menuitem extends Model
      *
      * @return bool
      */
-    public function isRoot()
+    public function isRoot(): bool
     {
         return (bool) $this->is_root;
     }
@@ -69,7 +69,7 @@ class Menuitem extends Model
      *
      * @return number
      */
-    public function setPageIdAttribute($value)
+    public function setPageIdAttribute($value): number
     {
         $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
@@ -79,7 +79,7 @@ class Menuitem extends Model
      *
      * @return number
      */
-    public function setParentIdAttribute($value)
+    public function setParentIdAttribute($value): number
     {
         $this->attributes['parent_id'] = ! empty($value) ? $value : null;
     }

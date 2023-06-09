@@ -12,7 +12,7 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
      * @param  int  $id
      * @return object
      */
-    public function find($id)
+    public function find(int $id): object
     {
         return $this->model->with('tags')->find($id);
     }
@@ -23,7 +23,7 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
      * @param  array  $data
      * @return Redirect
      */
-    public function create($data)
+    public function create(array $data): Redirect
     {
         $redirect = $this->model->create($data);
 
@@ -38,7 +38,7 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
      * @param  string  $slug
      * @return object
      */
-    public function findBySlug($slug)
+    public function findBySlug(string $slug): object
     {
         return $this->model->where('slug', $slug)->first();
     }

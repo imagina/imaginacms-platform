@@ -28,7 +28,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecredibancos = $this->icommercecredibanco->all();
 
@@ -40,7 +40,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecredibanco::admin.icommercecredibancos.create');
     }
@@ -50,7 +50,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceCredibancoRequest $request)
+    public function store(CreateIcommerceCredibancoRequest $request): Response
     {
         $this->icommercecredibanco->create($request->all());
 
@@ -63,7 +63,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceCredibanco $icommercecredibanco)
+    public function edit(IcommerceCredibanco $icommercecredibanco): Response
     {
         return view('icommercecredibanco::admin.icommercecredibancos.edit', compact('icommercecredibanco'));
     }
@@ -73,7 +73,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(IcommerceCredibanco $icommercecredibanco, UpdateIcommerceCredibancoRequest $request)
+    public function update(IcommerceCredibanco $icommercecredibanco, UpdateIcommerceCredibancoRequest $request): Response
     {
         $this->icommercecredibanco->update($icommercecredibanco, $request->all());
 
@@ -86,7 +86,7 @@ class IcommerceCredibancoController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceCredibanco $icommercecredibanco)
+    public function destroy(IcommerceCredibanco $icommercecredibanco): Response
     {
         $this->icommercecredibanco->destroy($icommercecredibanco);
 

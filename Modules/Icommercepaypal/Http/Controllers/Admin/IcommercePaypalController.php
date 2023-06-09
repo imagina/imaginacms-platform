@@ -34,7 +34,7 @@ class IcommercePaypalController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercepaypals = $this->icommercepaypal->all();
 
@@ -46,7 +46,7 @@ class IcommercePaypalController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercepaypal::admin.icommercepaypals.create');
     }
@@ -56,7 +56,7 @@ class IcommercePaypalController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommercePaypalRequest $request)
+    public function store(CreateIcommercePaypalRequest $request): Response
     {
         $this->icommercepaypal->create($request->all());
 
@@ -69,7 +69,7 @@ class IcommercePaypalController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommercePaypal $icommercepaypal)
+    public function edit(IcommercePaypal $icommercepaypal): Response
     {
         return view('icommercepaypal::admin.icommercepaypals.edit', compact('icommercepaypal'));
     }
@@ -80,7 +80,7 @@ class IcommercePaypalController extends AdminBaseController
      * @param  IcommercePaypal  $icommercepaypal
      * @return Response
      */
-    public function update($id, UpdateIcommercePaypalRequest $request)
+    public function update($id, UpdateIcommercePaypalRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -103,7 +103,7 @@ class IcommercePaypalController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommercePaypal $icommercepaypal)
+    public function destroy(IcommercePaypal $icommercepaypal): Response
     {
         $this->icommercepaypal->destroy($icommercepaypal);
 

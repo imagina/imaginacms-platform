@@ -30,7 +30,7 @@ class PublicMiddleware
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         $locale = $this->request->segment(1) ?: App::getLocale();
         $item = $this->menuItem->findByUriInLanguage($this->request->segment(2), $locale);
@@ -48,7 +48,7 @@ class PublicMiddleware
      * @param  object  $item
      * @return bool
      */
-    private function isOffline($item)
+    private function isOffline(object $item): bool
     {
         return is_null($item);
     }

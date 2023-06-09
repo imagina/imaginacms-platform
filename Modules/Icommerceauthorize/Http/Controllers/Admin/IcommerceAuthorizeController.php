@@ -34,7 +34,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceauthorizes = $this->icommerceauthorize->all();
 
@@ -46,7 +46,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceauthorize::admin.icommerceauthorizes.create');
     }
@@ -56,7 +56,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceAuthorizeRequest $request)
+    public function store(CreateIcommerceAuthorizeRequest $request): Response
     {
         $this->icommerceauthorize->create($request->all());
 
@@ -69,7 +69,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceAuthorize $icommerceauthorize)
+    public function edit(IcommerceAuthorize $icommerceauthorize): Response
     {
         return view('icommerceauthorize::admin.icommerceauthorizes.edit', compact('icommerceauthorize'));
     }
@@ -80,7 +80,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      * @param  IcommerceAuthorize  $icommerceauthorize
      * @return Response
      */
-    public function update($id, UpdateIcommerceAuthorizeRequest $request)
+    public function update($id, UpdateIcommerceAuthorizeRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -103,7 +103,7 @@ class IcommerceAuthorizeController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceAuthorize $icommerceauthorize)
+    public function destroy(IcommerceAuthorize $icommerceauthorize): Response
     {
         $this->icommerceauthorize->destroy($icommerceauthorize);
 

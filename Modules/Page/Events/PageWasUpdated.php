@@ -2,6 +2,7 @@
 
 namespace Modules\Page\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Contracts\StoringMedia;
 use Modules\Page\Entities\Page;
 
@@ -28,7 +29,7 @@ class PageWasUpdated implements StoringMedia
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->page;
     }
@@ -38,7 +39,7 @@ class PageWasUpdated implements StoringMedia
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

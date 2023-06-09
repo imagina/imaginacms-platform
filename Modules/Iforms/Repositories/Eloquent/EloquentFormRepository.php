@@ -167,7 +167,7 @@ class EloquentFormRepository extends EloquentBaseRepository implements FormRepos
      * @param  string  $systemName
      * @return Slider
      */
-    public function findBySystemName($systemName)
+    public function findBySystemName(string $systemName): Slider
     {
         return $this->model->with('translations', 'fields')->where('system_name', '=', $systemName)->first();
     }

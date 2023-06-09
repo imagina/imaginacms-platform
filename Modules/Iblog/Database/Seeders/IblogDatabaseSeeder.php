@@ -13,7 +13,7 @@ class IblogDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
         ProcessSeeds::dispatch([

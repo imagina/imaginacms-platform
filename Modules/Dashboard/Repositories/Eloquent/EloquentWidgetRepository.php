@@ -13,7 +13,7 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
      * @param  int  $userId
      * @return string
      */
-    public function findForUser($userId)
+    public function findForUser(int $userId): string
     {
         return $this->model->whereUserId($userId)->first();
     }
@@ -24,7 +24,7 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
      * @param  array  $widgets
      * @return void
      */
-    public function updateOrCreateForUser($widgets, $userId)
+    public function updateOrCreateForUser(array $widgets, $userId): void
     {
         $widget = $this->findForUser($userId);
 

@@ -17,7 +17,7 @@ class FormPresenter extends AbstractFormPresenter implements FormPresenterInterf
      * @param  array  $options
      * @return string rendered Form HTML
      */
-    public function render($form, $template = 'iforms::frontend.form.bt-horizontal.form', $options = [])
+    public function render($form, string $template = 'iforms::frontend.form.bt-horizontal.form', array $options = []): string
     {
         $default_options = ['rand' => rand(0, 100)];
         $options = array_merge($default_options, $options);
@@ -43,7 +43,7 @@ class FormPresenter extends AbstractFormPresenter implements FormPresenterInterf
     /**
      * @return Form
      */
-    private function getFormFromRepository($systemName)
+    private function getFormFromRepository($systemName): Form
     {
         return $this->formRepository->findBySystemName($systemName);
     }

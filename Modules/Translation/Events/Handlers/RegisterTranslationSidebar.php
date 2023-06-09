@@ -14,7 +14,7 @@ class RegisterTranslationSidebar extends AbstractAdminSidebar
      *
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         if (false === config('app.translations-gui')) {
             return $menu;

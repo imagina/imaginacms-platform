@@ -50,7 +50,7 @@ class SetAppKey implements SetupScript
      *
      * @return string
      */
-    protected function generateRandomKey()
+    protected function generateRandomKey(): string
     {
         return 'base64:'.base64_encode(
             Encrypter::generateKey(config('app.cipher'))
@@ -63,7 +63,7 @@ class SetAppKey implements SetupScript
      * @param  string  $key
      * @return bool
      */
-    protected function setKeyInEnvironmentFile($key)
+    protected function setKeyInEnvironmentFile(string $key): bool
     {
         $currentKey = config('app.key');
 
@@ -82,7 +82,7 @@ class SetAppKey implements SetupScript
      * @param  string  $key
      * @return void
      */
-    protected function writeNewEnvironmentFileWith($key)
+    protected function writeNewEnvironmentFileWith(string $key): void
     {
         file_put_contents(app()->environmentFilePath(), preg_replace(
             $this->keyReplacementPattern(),
@@ -96,7 +96,7 @@ class SetAppKey implements SetupScript
      *
      * @return string
      */
-    protected function keyReplacementPattern()
+    protected function keyReplacementPattern(): string
     {
         $escaped = preg_quote('='.config('app.key'), '/');
 

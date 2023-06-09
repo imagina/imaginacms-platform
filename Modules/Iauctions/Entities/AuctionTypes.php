@@ -23,7 +23,7 @@ class AuctionTypes
      *
      * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->auctionTypes;
     }

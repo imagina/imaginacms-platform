@@ -37,7 +37,7 @@ class ModulesController extends AdminBaseController
      *
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         $modules = $this->modules->all();
 
@@ -49,7 +49,7 @@ class ModulesController extends AdminBaseController
      *
      * @return View
      */
-    public function show(Module $module)
+    public function show(Module $module): View
     {
         $changelog = $this->moduleManager->changelogFor($module);
 
@@ -94,7 +94,7 @@ class ModulesController extends AdminBaseController
      *
      * @return Response json
      */
-    public function update(Request $request)
+    public function update(Request $request): Response
     {
         $output = new BufferedOutput();
         Artisan::call('asgard:update', ['module' => $request->get('module')], $output);
@@ -107,7 +107,7 @@ class ModulesController extends AdminBaseController
      *
      * @return bool
      */
-    private function isCoreModule(Module $module)
+    private function isCoreModule(Module $module): bool
     {
         $coreModules = array_flip(config('asgard.core.config.CoreModules'));
 

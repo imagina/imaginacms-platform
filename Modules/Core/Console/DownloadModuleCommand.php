@@ -76,7 +76,7 @@ class DownloadModuleCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['name', InputArgument::REQUIRED, 'The vendor/name of the module'],
@@ -88,7 +88,7 @@ class DownloadModuleCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Run the module migrations', null],
@@ -113,7 +113,7 @@ class DownloadModuleCommand extends Command
      *
      * @return string
      */
-    protected function findComposer()
+    protected function findComposer(): string
     {
         if (file_exists(getcwd().'/composer.phar')) {
             return '"'.PHP_BINARY.'" composer.phar';

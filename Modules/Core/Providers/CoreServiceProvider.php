@@ -117,7 +117,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }
@@ -127,7 +127,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerMiddleware(Router $router)
+    public function registerMiddleware(Router $router): void
     {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
@@ -259,7 +259,7 @@ class CoreServiceProvider extends ServiceProvider
      * @param $package
      * @return string
      */
-    private function getConfigFilename($file)
+    private function getConfigFilename($file): string
     {
         return preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
     }
@@ -346,7 +346,7 @@ class CoreServiceProvider extends ServiceProvider
      * @param  string  $path
      * @return bool
      */
-    private function hasPublishedTranslations($path)
+    private function hasPublishedTranslations(string $path): bool
     {
         return is_dir($path);
     }
@@ -356,7 +356,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    private function moduleHasCentralisedTranslations(Module $module)
+    private function moduleHasCentralisedTranslations(Module $module): bool
     {
         return is_dir($this->getCentralisedTranslationPath($module));
     }
@@ -366,7 +366,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return string
      */
-    private function getCentralisedTranslationPath(Module $module)
+    private function getCentralisedTranslationPath(Module $module): string
     {
         $path = config('modules.paths.modules').'/Translation';
 
@@ -402,7 +402,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    private function onBackend()
+    private function onBackend(): bool
     {
         $url = app(Request::class)->path();
         if (Str::contains($url, config('asgard.core.core.admin-prefix'))) {
@@ -417,7 +417,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    private function getArguments($argumentString)
+    private function getArguments($argumentString): array
     {
         return str_getcsv($argumentString, ',', "'");
     }

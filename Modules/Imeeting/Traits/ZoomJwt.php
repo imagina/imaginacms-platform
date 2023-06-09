@@ -87,7 +87,7 @@ trait ZoomJWT
      * @param DateTime
      * @return time
      */
-    public function convertTimeFormat(string $dateTime)
+    public function convertTimeFormat(string $dateTime): time
     {
         $date = new \DateTime($dateTime);
 

@@ -56,7 +56,7 @@ class ConfigureAppUrl implements SetupScript
      *
      * @return string
      */
-    protected function askAppUrl()
+    protected function askAppUrl(): string
     {
         do {
             $str = $this->command->ask('Enter you application url (e.g. http://localhost, http://dev.example.com)', 'http://localhost');

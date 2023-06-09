@@ -31,7 +31,7 @@ class SlideOrderer
      * @param  int  $position
      * @param  array  $item
      */
-    private function order($position, $item)
+    private function order(int $position, array $item)
     {
         $slide = $this->slideRepository->find($item['id']);
         $this->savePosition($slide, $position);
@@ -43,7 +43,7 @@ class SlideOrderer
      * @param  object  $slide
      * @param  int  $position
      */
-    private function savePosition($slide, $position)
+    private function savePosition(object $slide, int $position)
     {
         $this->slideRepository->update($slide, ['position' => $position]);
     }
@@ -53,7 +53,7 @@ class SlideOrderer
      *
      * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

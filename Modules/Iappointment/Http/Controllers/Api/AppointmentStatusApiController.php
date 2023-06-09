@@ -120,7 +120,7 @@ class AppointmentStatusApiController extends BaseApiController
      *
      * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -150,7 +150,7 @@ class AppointmentStatusApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {

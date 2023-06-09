@@ -27,7 +27,7 @@ class DeleteMedia implements DeletingMedia
      *
      * @return int
      */
-    public function getEntityId()
+    public function getEntityId(): int
     {
         return $this->postId;
     }
@@ -37,7 +37,7 @@ class DeleteMedia implements DeletingMedia
      *
      * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->postClass;
     }

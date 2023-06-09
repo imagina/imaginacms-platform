@@ -23,7 +23,7 @@ class Theme
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return ucfirst($this->name);
     }
@@ -31,7 +31,7 @@ class Theme
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -41,7 +41,7 @@ class Theme
      *
      * @return string
      */
-    public function getLowerName()
+    public function getLowerName(): string
     {
         return strtolower($this->name);
     }

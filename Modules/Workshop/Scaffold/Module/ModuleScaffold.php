@@ -131,7 +131,7 @@ class ModuleScaffold
      * @param  string  $vendor
      * @return $this
      */
-    public function vendor($vendor)
+    public function vendor(string $vendor): static
     {
         $this->vendor = $vendor;
 
@@ -142,7 +142,7 @@ class ModuleScaffold
      * @param  string  $name
      * @return $this
      */
-    public function name($name)
+    public function name(string $name): static
     {
         $this->name = $name;
 
@@ -154,7 +154,7 @@ class ModuleScaffold
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return Str::studly($this->name);
     }
@@ -165,7 +165,7 @@ class ModuleScaffold
      * @param  string  $entityType
      * @return $this
      */
-    public function setEntityType($entityType)
+    public function setEntityType(string $entityType): static
     {
         $this->entityType = $entityType;
 
@@ -175,7 +175,7 @@ class ModuleScaffold
     /**
      * @return $this
      */
-    public function withEntities(array $entities)
+    public function withEntities(array $entities): static
     {
         $this->entities = $entities;
 
@@ -185,7 +185,7 @@ class ModuleScaffold
     /**
      * @return $this
      */
-    public function withValueObjects(array $valueObjects)
+    public function withValueObjects(array $valueObjects): static
     {
         $this->valueObjects = $valueObjects;
 
@@ -198,7 +198,7 @@ class ModuleScaffold
      * @param  string  $path
      * @return string
      */
-    private function getModulesPath($path = '')
+    private function getModulesPath(string $path = ''): string
     {
         return $this->config->get('modules.paths.modules')."/{$this->getName()}/$path";
     }
@@ -255,7 +255,7 @@ class ModuleScaffold
      * @param  string  $content
      * @return string
      */
-    private function loadProviders($content)
+    private function loadProviders(string $content): string
     {
         $newProviders = <<<JSON
 "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
@@ -274,7 +274,7 @@ JSON;
      * @param  string  $content
      * @return string
      */
-    private function setModuleOrderOrder($content)
+    private function setModuleOrderOrder(string $content): string
     {
         return str_replace('"priority": 0,', '"priority": 1,', $content);
     }
@@ -285,7 +285,7 @@ JSON;
      * @param  string  $content
      * @return string
      */
-    private function setModuleVersion($content)
+    private function setModuleVersion(string $content): string
     {
         return str_replace('"description"', "\"version\": \"1.0.0\",\n\t\"description\"", $content);
     }

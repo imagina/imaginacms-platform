@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Media\Image\Imagy;
@@ -32,7 +33,7 @@ class BatchDestroyController extends Controller
         $this->imagy = $imagy;
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
         foreach ($request->get('files') as $file) {
             if ($file['is_folder'] === true) {

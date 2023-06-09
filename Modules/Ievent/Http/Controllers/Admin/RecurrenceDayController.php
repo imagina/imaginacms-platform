@@ -28,7 +28,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recurrencedays = $this->recurrenceday->all();
 
@@ -40,7 +40,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.recurrencedays.create');
     }
@@ -50,7 +50,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRecurrenceDayRequest $request)
+    public function store(CreateRecurrenceDayRequest $request): Response
     {
         $this->recurrenceday->create($request->all());
 
@@ -63,7 +63,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(RecurrenceDay $recurrenceday)
+    public function edit(RecurrenceDay $recurrenceday): Response
     {
         return view('ievent::admin.recurrencedays.edit', compact('recurrenceday'));
     }
@@ -73,7 +73,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(RecurrenceDay $recurrenceday, UpdateRecurrenceDayRequest $request)
+    public function update(RecurrenceDay $recurrenceday, UpdateRecurrenceDayRequest $request): Response
     {
         $this->recurrenceday->update($recurrenceday, $request->all());
 
@@ -86,7 +86,7 @@ class RecurrenceDayController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(RecurrenceDay $recurrenceday)
+    public function destroy(RecurrenceDay $recurrenceday): Response
     {
         $this->recurrenceday->destroy($recurrenceday);
 

@@ -28,7 +28,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$wishlistables = $this->wishlistable->all();
 
@@ -40,7 +40,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('wishlistable::admin.wishlistables.create');
     }
@@ -50,7 +50,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateWishlistableRequest $request)
+    public function store(CreateWishlistableRequest $request): Response
     {
         $this->wishlistable->create($request->all());
 
@@ -63,7 +63,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Wishlistable $wishlistable)
+    public function edit(Wishlistable $wishlistable): Response
     {
         return view('wishlistable::admin.wishlistables.edit', compact('wishlistable'));
     }
@@ -73,7 +73,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request)
+    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request): Response
     {
         $this->wishlistable->update($wishlistable, $request->all());
 
@@ -86,7 +86,7 @@ class WishlistableController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Wishlistable $wishlistable)
+    public function destroy(Wishlistable $wishlistable): Response
     {
         $this->wishlistable->destroy($wishlistable);
 

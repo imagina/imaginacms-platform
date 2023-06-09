@@ -22,7 +22,7 @@ class CreateReservationItem
      * @param  \App\Events\OrderShipped  $event
      * @return void
      */
-    public function handle(ReservationSaved $event)
+    public function handle(ReservationSaved $event): void
     {
         dd('AJDKSJDKJKAS', $event);
     }

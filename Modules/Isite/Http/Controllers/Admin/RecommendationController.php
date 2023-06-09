@@ -28,7 +28,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recommendations = $this->recommendation->all();
 
@@ -40,7 +40,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('isite::admin.recommendations.create');
     }
@@ -50,7 +50,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRecommendationRequest $request)
+    public function store(CreateRecommendationRequest $request): Response
     {
         $this->recommendation->create($request->all());
 
@@ -63,7 +63,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Recommendation $recommendation)
+    public function edit(Recommendation $recommendation): Response
     {
         return view('isite::admin.recommendations.edit', compact('recommendation'));
     }
@@ -73,7 +73,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Recommendation $recommendation, UpdateRecommendationRequest $request)
+    public function update(Recommendation $recommendation, UpdateRecommendationRequest $request): Response
     {
         $this->recommendation->update($recommendation, $request->all());
 
@@ -86,7 +86,7 @@ class RecommendationController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Recommendation $recommendation)
+    public function destroy(Recommendation $recommendation): Response
     {
         $this->recommendation->destroy($recommendation);
 

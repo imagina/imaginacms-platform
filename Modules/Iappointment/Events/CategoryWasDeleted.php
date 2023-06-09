@@ -28,7 +28,7 @@ class CategoryWasDeleted
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return [];
     }

@@ -31,7 +31,7 @@ class RegisterIcommercepaymentezSidebar implements \Maatwebsite\Sidebar\SidebarE
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommercepaymentez::icommercepaymentezs.title.icommercepaymentezs'), function (Item $item) {

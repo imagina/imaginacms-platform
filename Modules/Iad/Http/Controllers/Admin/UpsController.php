@@ -28,7 +28,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$ups = $this->ups->all();
 
@@ -40,7 +40,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.ups.create');
     }
@@ -50,7 +50,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateUpRequest $request)
+    public function store(CreateUpRequest $request): Response
     {
         $this->ups->create($request->all());
 
@@ -63,7 +63,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Up $ups)
+    public function edit(Up $ups): Response
     {
         return view('iad::admin.ups.edit', compact('ups'));
     }
@@ -73,7 +73,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Up $ups, UpdateUpRequest $request)
+    public function update(Up $ups, UpdateUpRequest $request): Response
     {
         $this->ups->update($ups, $request->all());
 
@@ -86,7 +86,7 @@ class UpsController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Up $ups)
+    public function destroy(Up $ups): Response
     {
         $this->ups->destroy($ups);
 

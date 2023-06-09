@@ -19,7 +19,7 @@ class CacheProductOptionDecorator extends BaseCacheDecorator implements ProductO
    *
    * @return collection
    */
-  public function getItemsBy($params)
+  public function getItemsBy($params): collection
   {
       return $this->remember(function () use ($params) {
           return $this->repository->getItemsBy($params);
@@ -31,7 +31,7 @@ class CacheProductOptionDecorator extends BaseCacheDecorator implements ProductO
    *
    * @return object
    */
-  public function getItem($criteria, $params = false)
+  public function getItem($criteria, $params = false): object
   {
       return $this->remember(function () use ($criteria, $params) {
           return $this->repository->getItem($criteria, $params);

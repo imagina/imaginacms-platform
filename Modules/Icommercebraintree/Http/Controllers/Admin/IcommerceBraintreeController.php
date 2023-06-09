@@ -32,7 +32,7 @@ class IcommerceBraintreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercebraintrees = $this->icommercebraintree->all();
 
@@ -44,7 +44,7 @@ class IcommerceBraintreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercebraintree::admin.icommercebraintrees.create');
     }
@@ -54,7 +54,7 @@ class IcommerceBraintreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceBraintreeRequest $request)
+    public function store(CreateIcommerceBraintreeRequest $request): Response
     {
         $this->icommercebraintree->create($request->all());
 
@@ -67,7 +67,7 @@ class IcommerceBraintreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceBraintree $icommercebraintree)
+    public function edit(IcommerceBraintree $icommercebraintree): Response
     {
         return view('icommercebraintree::admin.icommercebraintrees.edit', compact('icommercebraintree'));
     }
@@ -78,7 +78,7 @@ class IcommerceBraintreeController extends AdminBaseController
      * @param  IcommerceBraintree  $icommercebraintree
      * @return Response
      */
-    public function update($id, UpdateIcommerceBraintreeRequest $request)
+    public function update($id, UpdateIcommerceBraintreeRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,7 +101,7 @@ class IcommerceBraintreeController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceBraintree $icommercebraintree)
+    public function destroy(IcommerceBraintree $icommercebraintree): Response
     {
         $this->icommercebraintree->destroy($icommercebraintree);
 

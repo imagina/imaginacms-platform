@@ -28,7 +28,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $zones = $this->zone->paginate(20);
 
@@ -40,7 +40,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $zones = $this->zone->paginate(20);
 
@@ -52,7 +52,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateZoneRequest $request)
+    public function store(CreateZoneRequest $request): Response
     {//dd($request);
         try {
             $this->zone->create($request->all());
@@ -72,7 +72,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Zone $zone)
+    public function edit(Zone $zone): Response
     {//dd($zone);
         $zones = $this->zone->paginate(20);
 
@@ -84,7 +84,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Zone $zone, UpdateZoneRequest $request)
+    public function update(Zone $zone, UpdateZoneRequest $request): Response
     {//dd($zone);
         try {
             if (isset($request['options'])) {
@@ -110,7 +110,7 @@ class ZoneController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Zone $zone)
+    public function destroy(Zone $zone): Response
     {
         try {
             $this->zone->destroy($zone);
