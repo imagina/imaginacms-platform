@@ -24,9 +24,6 @@ class MenuRenderer
      */
     private $menu = '';
 
-    /**
-     * @return string
-     */
     public function renderForMenu($menuId, $menuItems): string
     {
         $this->menuId = $menuId;
@@ -74,9 +71,6 @@ HTML;
         $this->menu .= '</ol>';
     }
 
-    /**
-     * @return bool
-     */
     private function hasChildren($item): bool
     {
         return count($item->items);

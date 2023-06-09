@@ -12,8 +12,6 @@ class Composer extends \Illuminate\Support\Composer
 
     /**
      * Enable real time output of all commands.
-     *
-     * @return void
      */
     public function enableOutput($command): void
     {
@@ -28,8 +26,6 @@ class Composer extends \Illuminate\Support\Composer
 
     /**
      * Disable real time output of all commands.
-     *
-     * @return void
      */
     public function disableOutput(): void
     {
@@ -38,9 +34,6 @@ class Composer extends \Illuminate\Support\Composer
 
     /**
      * Update all composer packages.
-     *
-     * @param  string  $package
-     * @return void
      */
     public function update(string $package = null): void
     {
@@ -54,9 +47,6 @@ class Composer extends \Illuminate\Support\Composer
 
     /**
      * Require a new composer package.
-     *
-     * @param  string  $package
-     * @return void
      */
     public function install(string $package): void
     {
@@ -68,9 +58,6 @@ class Composer extends \Illuminate\Support\Composer
         $process->run($this->output);
     }
 
-    /**
-     * @return void
-     */
     public function dumpAutoload(): void
     {
         $process = $this->getProcess();

@@ -6,8 +6,6 @@ class AddFulltextIndiceInPostTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -16,8 +14,6 @@ class AddFulltextIndiceInPostTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

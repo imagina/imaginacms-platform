@@ -28,9 +28,6 @@ class RegisterIcommercecoordinadoraSidebar implements \Maatwebsite\Sidebar\Sideb
         //$sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
     public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {

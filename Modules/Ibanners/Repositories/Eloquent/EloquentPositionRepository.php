@@ -23,8 +23,6 @@ class EloquentPositionRepository extends EloquentBaseRepository implements Posit
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll(): int
     {
@@ -33,8 +31,6 @@ class EloquentPositionRepository extends EloquentBaseRepository implements Posit
 
     /**
      * Get all available positions
-     *
-     * @return object
      */
     public function allOnline(): object
     {
@@ -43,9 +39,6 @@ class EloquentPositionRepository extends EloquentBaseRepository implements Posit
             ->get();
     }
 
-    /**
-     * @return object
-     */
     public function findBySystemName(string $systemName): object
     {
         return $this->model->with('banners')->where('system_name', '=', $systemName)->first();

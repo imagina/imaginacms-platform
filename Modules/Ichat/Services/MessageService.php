@@ -118,8 +118,6 @@ class MessageService
 
     /**
      * Return the users for the conversation
-     *
-     * @return array
      */
     public function getConversationUsers($data): array
     {

@@ -25,8 +25,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -37,8 +35,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -47,8 +43,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateAttendantRequest $request): Response
     {
@@ -60,8 +54,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Attendant $attendant): Response
     {
@@ -70,8 +62,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Attendant $attendant, UpdateAttendantRequest $request): Response
     {
@@ -83,8 +73,6 @@ class AttendantController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Attendant $attendant): Response
     {

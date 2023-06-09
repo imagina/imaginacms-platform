@@ -78,8 +78,6 @@ class HandleMediaStorage
 
     /**
      * Parse the orders input and return an array of file ids, in order
-     *
-     * @return array
      */
     private function getOrdersFrom(array $attributes): array
     {

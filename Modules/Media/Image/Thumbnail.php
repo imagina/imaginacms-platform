@@ -26,9 +26,6 @@ class Thumbnail
         $this->format = $format;
     }
 
-    /**
-     * @return static
-     */
     public static function make($thumbnailDefinition, $format = 'jpg'): static
     {
         $name = key($thumbnailDefinition);
@@ -38,8 +35,6 @@ class Thumbnail
 
     /**
      * Make multiple thumbnail classes with the given array
-     *
-     * @return array
      */
     public static function makeMultiple(array $thumbnailDefinitions): array
     {
@@ -54,25 +49,17 @@ class Thumbnail
 
     /**
      * Return the thumbnail name
-     *
-     * @return string
      */
     public function name(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return array
-     */
     public function filters(): array
     {
         return $this->filters;
     }
 
-    /**
-     * @return string
-     */
     public function format(): string
     {
         return $this->format;
@@ -80,8 +67,6 @@ class Thumbnail
 
     /**
      * Return the first width option found in the filters
-     *
-     * @return int
      */
     public function width(): int
     {
@@ -90,8 +75,6 @@ class Thumbnail
 
     /**
      * Return the first height option found in the filters
-     *
-     * @return int
      */
     public function height(): int
     {
@@ -100,8 +83,6 @@ class Thumbnail
 
     /**
      * Get the thumbnail size in format: width x height
-     *
-     * @return string
      */
     public function size(): string
     {
@@ -110,9 +91,6 @@ class Thumbnail
 
     /**
      * Get the first found key in filters
-     *
-     * @param  string  $key
-     * @return int
      */
     private function getFirst(string $key): int
     {

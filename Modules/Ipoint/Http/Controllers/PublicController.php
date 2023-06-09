@@ -31,7 +31,6 @@ class PublicController extends BasePublicController
      * Index data
      *
      * @param Requests request
-     * @return route
      */
     public function paymentIndex($eURL): route
     {

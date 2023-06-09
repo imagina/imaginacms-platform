@@ -39,8 +39,6 @@ class FileService
     }
 
     /**
-     * @param  int  $parentId
-     * @param  string  $disk
      * @return mixed
      *
      * @throws \Illuminate\Contracts\Filesystem\FileExistsException
@@ -109,10 +107,6 @@ class FileService
         $this->dispatch(new CreateThumbnails($savedFile->path, $savedFile->disk));
     }
 
-    /**
-     * @param  string  $path
-     * @return string
-     */
     private function getDestinationPath(string $path): string
     {
         if ($this->getConfiguredFilesystem() === 'local') {
@@ -122,9 +116,6 @@ class FileService
         return $path;
     }
 
-    /**
-     * @return string
-     */
     private function getConfiguredFilesystem($disk = 'publicmedia'): string
     {
         $settingDisk = setting('media::filesystem', null, config('asgard.media.config.filesystem'));

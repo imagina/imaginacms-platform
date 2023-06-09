@@ -25,8 +25,6 @@ class MigrationCartalystSentinel extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -108,8 +106,6 @@ class MigrationCartalystSentinel extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

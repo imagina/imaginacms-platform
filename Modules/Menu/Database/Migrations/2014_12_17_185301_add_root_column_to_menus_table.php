@@ -7,8 +7,6 @@ class AddRootColumnToMenusTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -20,8 +18,6 @@ class AddRootColumnToMenusTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

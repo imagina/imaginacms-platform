@@ -43,8 +43,6 @@ class ProfileController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -71,8 +69,6 @@ class ProfileController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  Profile  $profile
-     * @param  UpdateProfileRequest  $request
-     * @return Response
      */
     public function update($userID, Request $request): Response
     {

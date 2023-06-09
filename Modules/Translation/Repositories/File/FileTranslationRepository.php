@@ -27,8 +27,6 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
 
     /**
      * Get all the translations for all modules on disk
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -53,8 +51,6 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
     /**
      * Get all of the names of the Translations files from an array of Paths.
      * Returns [ 'translationkeyprefix' => 'filepath' ]
-     *
-     * @return array
      */
     protected function getTranslationFilenamesFromPaths(array $paths): array
     {

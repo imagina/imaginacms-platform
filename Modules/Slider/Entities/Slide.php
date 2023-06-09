@@ -68,17 +68,12 @@ class Slide extends Model
 
     /**
      * Check if page_id is empty and returning null instead empty string
-     *
-     * @return number
      */
     public function setPageIdAttribute($value): number
     {
         $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function page(): BelongsTo
     {
         return $this->belongsTo(Page::class);
@@ -104,8 +99,6 @@ class Slide extends Model
 
     /**
      * returns slider link URL
-     *
-     * @return string|null
      */
     public function getLinkUrl(): ?string
     {
@@ -124,8 +117,6 @@ class Slide extends Model
 
     /**
      * returns slider link URL
-     *
-     * @return string|null
      */
     public function getUrlAttribute(): ?string
     {

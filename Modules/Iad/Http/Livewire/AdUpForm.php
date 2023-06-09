@@ -125,9 +125,6 @@ class AdUpForm extends Component
   //|--------------------------------------------------------------------------
   //| Repositories
   //|--------------------------------------------------------------------------
-  /**
-   * @return paymentMethodRepository
-   */
   private function upRepository(): paymentMethodRepository
   {
       return app('Modules\Iad\Repositories\UpRepository');

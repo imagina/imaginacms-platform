@@ -6,8 +6,6 @@ class ValueObjectGenerator extends Generator
 {
     /**
      * Generate the given files
-     *
-     * @return void
      */
     public function generate(array $valueObjects): void
     {

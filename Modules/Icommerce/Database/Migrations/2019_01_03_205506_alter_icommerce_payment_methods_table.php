@@ -7,8 +7,6 @@ class AlterIcommercePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -20,8 +18,6 @@ class AlterIcommercePaymentMethodsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

@@ -17,9 +17,6 @@ class Currency
         $this->localeCurency = CurrencyEntity::defaultCurrency();
     }
 
-    /**
-     * @return float
-     */
     public function convert($value): float
     {
         /*
@@ -33,9 +30,6 @@ class Currency
         return  $this->trasformerResult($result);
     }
 
-    /**
-     * @return float
-     */
     public function convertFromTo($value, $to, $from = 'USD'): float
     {
         /* Convert value from currency "From" */
@@ -66,9 +60,6 @@ class Currency
         $this->localeCurency = CurrencyEntity::currencyCode($newCurrency);
     }
 
-    /**
-     * @return float
-     */
     private function trasformerResult($result): float
     {
         return floatval(number_format($result, 2, '.', ''));

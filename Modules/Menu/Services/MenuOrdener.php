@@ -28,9 +28,6 @@ class MenuOrdener
 
     /**
      * Order recursively the menu items
-     *
-     * @param  int  $position
-     * @param  array  $item
      */
     private function order(int $position, array $item)
     {
@@ -61,9 +58,6 @@ class MenuOrdener
 
     /**
      * Save the given position on the menu item
-     *
-     * @param  object  $menuItem
-     * @param  int  $position
      */
     private function savePosition(object $menuItem, int $position)
     {
@@ -72,9 +66,6 @@ class MenuOrdener
 
     /**
      * Check if the item has children
-     *
-     * @param  array  $item
-     * @return bool
      */
     private function hasChildren(array $item): bool
     {
@@ -83,9 +74,6 @@ class MenuOrdener
 
     /**
      * Set the given parent id on the given menu item
-     *
-     * @param  object  $item
-     * @param  int  $parent_id
      */
     private function makeItemChildOf(object $item, int $parent_id)
     {
@@ -94,8 +82,6 @@ class MenuOrdener
 
     /**
      * Convert the object to array
-     *
-     * @return array
      */
     private function convertToArray($data): array
     {

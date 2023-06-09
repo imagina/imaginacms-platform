@@ -53,8 +53,6 @@ class ConfigureAppUrl implements SetupScript
      * Ensure that the APP_URL is valid
      *
      * e.g. http://localhost, http://192.168.0.10, https://www.example.com etc.
-     *
-     * @return string
      */
     protected function askAppUrl(): string
     {

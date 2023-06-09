@@ -7,8 +7,6 @@ class CreateIblogPostCategoryTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -21,8 +19,6 @@ class CreateIblogPostCategoryTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

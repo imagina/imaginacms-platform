@@ -66,9 +66,6 @@ class ThemeScaffold
         $this->addThemeToIgnoredExceptions();
     }
 
-    /**
-     * @return $this
-     */
     public function setName($name): static
     {
         if (empty($name)) {
@@ -80,10 +77,6 @@ class ThemeScaffold
         return $this;
     }
 
-    /**
-     * @param  string  $type
-     * @return $this
-     */
     public function forType(string $type): static
     {
         if (empty($type)) {

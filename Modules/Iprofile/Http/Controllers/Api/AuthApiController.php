@@ -595,9 +595,6 @@ class AuthApiController extends BaseApiController
           ->delete();
     }
 
-    /**
-     * @return bool
-     */
     private function getToken($user): bool
     {
         if (isset($user)) {

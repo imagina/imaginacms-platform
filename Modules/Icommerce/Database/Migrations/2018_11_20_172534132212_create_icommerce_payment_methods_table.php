@@ -7,8 +7,6 @@ class CreateIcommercePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -26,8 +24,6 @@ class CreateIcommercePaymentMethodsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

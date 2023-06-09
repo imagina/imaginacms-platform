@@ -490,8 +490,6 @@ class UserApiController extends BaseApiController
 
     /**
      * Change password
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function changePassword(Request $request): JsonResponse
     {

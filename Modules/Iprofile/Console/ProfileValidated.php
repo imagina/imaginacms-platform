@@ -31,8 +31,6 @@ class ProfileValidated extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @param  Mailer  $mail
      */
     public function __construct(UserRepository $user, Mail $mail)
     {
@@ -43,8 +41,6 @@ class ProfileValidated extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle(): void
     {

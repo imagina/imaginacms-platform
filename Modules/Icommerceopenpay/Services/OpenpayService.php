@@ -56,8 +56,6 @@ class OpenpayService
 
     /**
      * Get Status to Order
-     *
-     * @return int
      */
     public function getStatusOrder($type): int
     {

@@ -37,8 +37,6 @@ class RouterGenerator
 
     /**
      * Return routes to standar API
-     *
-     * @return void
      */
     private function getStandardApiRoutes($params): void
     {
@@ -111,8 +109,6 @@ class RouterGenerator
 
     /**
      * Return the static api routes to static entities
-     *
-     * @return void
      */
     private function getStaticApiRoutes($params): void
     {

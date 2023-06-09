@@ -8,8 +8,6 @@ class IadAddAuditstampsInTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -29,8 +27,6 @@ class IadAddAuditstampsInTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

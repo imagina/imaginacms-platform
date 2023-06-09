@@ -7,8 +7,6 @@ class CreateIformsFieldsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -28,8 +26,6 @@ class CreateIformsFieldsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

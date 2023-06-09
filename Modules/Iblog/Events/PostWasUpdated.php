@@ -26,8 +26,6 @@ class PostWasUpdated implements StoringMedia
 
     /**
      * Return the entity
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntity(): Model
     {
@@ -36,8 +34,6 @@ class PostWasUpdated implements StoringMedia
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData(): array
     {

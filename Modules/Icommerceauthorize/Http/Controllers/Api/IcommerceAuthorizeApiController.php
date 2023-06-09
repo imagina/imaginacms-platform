@@ -70,7 +70,6 @@ class IcommerceAuthorizeApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderid
-     * @return route
      */
     public function init(Request $request): route
     {
@@ -129,7 +128,6 @@ class IcommerceAuthorizeApiController extends BaseApiController
      * Response Api Method
      *
      * @param Requests request
-     * @return route
      */
     public function response(Request $request): route
     {

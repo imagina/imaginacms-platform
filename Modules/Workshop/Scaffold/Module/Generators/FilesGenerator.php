@@ -9,8 +9,6 @@ class FilesGenerator extends Generator
 {
     /**
      * Generate the given files
-     *
-     * @return void
      */
     public function generate(array $files): void
     {
@@ -24,8 +22,6 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module service provider
-     *
-     * @return $this
      */
     public function generateModuleProvider(): static
     {
@@ -39,8 +35,6 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module event provider
-     *
-     * @return $this
      */
     public function generateEventProvider(): static
     {
@@ -55,7 +49,6 @@ class FilesGenerator extends Generator
     /**
      * Get the content for the given file
      *
-     * @return string
      *
      * @throws FileNotFoundException
      */

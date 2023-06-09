@@ -18,10 +18,6 @@ class WidgetViewComposer
 
     /**
      * Add the html of the widget view to the given widget name
-     *
-     * @param  string  $name
-     * @param  string  $view
-     * @return $this
      */
     public function addSubview(string $name, string $view): static
     {
@@ -32,8 +28,6 @@ class WidgetViewComposer
 
     /**
      * Add widget options to the given widget name
-     *
-     * @return $this
      */
     public function addWidgetOptions($name, array $options): static
     {
@@ -44,9 +38,6 @@ class WidgetViewComposer
 
     /**
      * Set the widget name
-     *
-     * @param  string  $name
-     * @return $this
      */
     public function setWidgetName(string $name): static
     {

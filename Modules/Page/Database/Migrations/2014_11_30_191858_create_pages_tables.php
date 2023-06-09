@@ -7,8 +7,6 @@ class CreatePagesTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -45,8 +43,6 @@ class CreatePagesTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

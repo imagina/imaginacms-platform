@@ -32,8 +32,6 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -44,8 +42,6 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -54,8 +50,6 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommerceEpaycoRequest $request): Response
     {
@@ -67,8 +61,6 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommerceEpayco $icommerceepayco): Response
     {
@@ -79,7 +71,6 @@ class IcommerceEpaycoController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceEpayco  $icommerceepayco
-     * @return Response
      */
     public function update($id, UpdateIcommerceEpaycoRequest $request): Response
     {
@@ -101,8 +92,6 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommerceEpayco $icommerceepayco): Response
     {

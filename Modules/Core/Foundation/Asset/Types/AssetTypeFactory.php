@@ -7,7 +7,6 @@ use Modules\Core\Foundation\Asset\Types\AssetType;
 class AssetTypeFactory
 {
     /**
-     * @return \Modules\Core\Foundation\Asset\Types\AssetType
      *
      * @throws \InvalidArgumentException
      */

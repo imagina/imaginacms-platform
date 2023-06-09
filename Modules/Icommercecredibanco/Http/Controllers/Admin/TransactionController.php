@@ -25,8 +25,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -37,8 +35,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -47,8 +43,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateTransactionRequest $request): Response
     {
@@ -60,8 +54,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Transaction $transaction): Response
     {
@@ -70,8 +62,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Transaction $transaction, UpdateTransactionRequest $request): Response
     {
@@ -83,8 +73,6 @@ class TransactionController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Transaction $transaction): Response
     {

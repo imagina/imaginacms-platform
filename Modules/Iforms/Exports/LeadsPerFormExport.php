@@ -34,9 +34,6 @@ class LeadsPerFormExport implements FromQuery, WithHeadings, WithMapping, Should
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function query(): Collection
     {
         //Get query

@@ -20,8 +20,6 @@ class PaymentezApiController extends BaseApiController
 
     /**
      *  API - Generate Auth Token
-     *
-     * @return token
      */
     public function generateAuthToken($paymentMethod): token
     {

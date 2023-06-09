@@ -24,8 +24,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll(): int
     {
@@ -34,8 +32,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Get all available sliders
-     *
-     * @return object
      */
     public function allOnline(): object
     {
@@ -44,10 +40,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
           ->get();
     }
 
-    /**
-     * @param  string  $systemName
-     * @return Slider
-     */
     public function findBySystemName(string $systemName): Slider
     {
         return $this->model->where('system_name', '=', $systemName)->with(['slides', 'slides.files'])->first();

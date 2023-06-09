@@ -43,9 +43,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get online root elements
-     *
-     * @param  int  $menuId
-     * @return object
      */
     public function rootsForMenu(int $menuId): object
     {
@@ -57,9 +54,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get all root elements
-     *
-     * @param  int  $menuId
-     * @return object
      */
     public function allRootsForMenu(int $menuId): object
     {
@@ -68,8 +62,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get Items to build routes
-     *
-     * @return array
      */
     public function getForRoutes(): array
     {
@@ -101,9 +93,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get the root menu item for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
     public function getRootForMenu(int $menuId): object
     {
@@ -112,9 +101,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Return a complete tree for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
     public function getTreeForMenu(int $menuId): object
     {
@@ -123,11 +109,6 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
         return $items->noCleaning()->nest();
     }
 
-    /**
-     * @param  string  $uri
-     * @param  string  $locale
-     * @return object
-     */
     public function findByUriInLanguage(string $uri, string $locale): object
     {
         return $this->model->whereHas('translations', function (Builder $q) use ($locale, $uri) {

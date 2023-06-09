@@ -31,9 +31,6 @@ class LeadsExport implements WithEvents, WithMultipleSheets, ShouldQueue
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function sheets(): array
     {
         //Get forms

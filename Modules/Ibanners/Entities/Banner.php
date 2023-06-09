@@ -72,8 +72,6 @@ class Banner extends Model
 
     /**
      * returns slider link URL
-     *
-     * @return string|null
      */
     public function getLinkUrl(): ?string
     {

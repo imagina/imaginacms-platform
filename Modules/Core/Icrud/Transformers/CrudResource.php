@@ -12,8 +12,6 @@ class CrudResource extends JsonResource
 {
     /**
      * Method to merge values to response
-     *
-     * @return array
      */
     public function modelAttributes($request): array
     {
@@ -22,8 +20,6 @@ class CrudResource extends JsonResource
 
     /**
      * Transform the resource into an array.
-     *
-     * @return array
      */
     public function toArray($request): array
     {

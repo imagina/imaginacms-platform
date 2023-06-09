@@ -7,8 +7,6 @@ class CreateIgamificationActivityCategoryTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -31,8 +29,6 @@ class CreateIgamificationActivityCategoryTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

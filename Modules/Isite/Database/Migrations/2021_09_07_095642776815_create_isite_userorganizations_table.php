@@ -7,8 +7,6 @@ class CreateIsiteUserOrganizationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -31,8 +29,6 @@ class CreateIsiteUserOrganizationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

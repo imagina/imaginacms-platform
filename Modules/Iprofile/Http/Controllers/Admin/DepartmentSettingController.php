@@ -25,8 +25,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -37,8 +35,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -47,8 +43,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateSettingRequest $request): Response
     {
@@ -60,8 +54,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Setting $departmentsetting): Response
     {
@@ -70,8 +62,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Setting $departmentsetting, UpdateSettingRequest $request): Response
     {
@@ -83,8 +73,6 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Setting $departmentsetting): Response
     {

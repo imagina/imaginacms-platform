@@ -40,8 +40,6 @@ trait Formeable
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
     public function forms(): object
     {

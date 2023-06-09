@@ -8,8 +8,6 @@ class ChangeColumnsType extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -38,8 +36,6 @@ class ChangeColumnsType extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

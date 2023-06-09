@@ -80,8 +80,6 @@ trait AuditTrait
 
     /**
      * Has the model loaded the SoftDeletes trait.
-     *
-     * @return bool
      */
     public static function usingSoftDeletes(): bool
     {
@@ -96,8 +94,6 @@ trait AuditTrait
 
     /**
      * Get the name of the "created by" column.
-     *
-     * @return string
      */
     public function getCreatedByColumn(): string
     {
@@ -106,8 +102,6 @@ trait AuditTrait
 
     /**
      * Get the name of the "updated by" column.
-     *
-     * @return string
      */
     public function getUpdatedByColumn(): string
     {
@@ -116,8 +110,6 @@ trait AuditTrait
 
     /**
      * Get the name of the "deleted by" column.
-     *
-     * @return string
      */
     public function getDeletedByColumn(): string
     {
@@ -157,8 +149,6 @@ trait AuditTrait
 
     /**
      * Check if we're maintaing Userstamps on the model.
-     *
-     * @return bool
      */
     public function isUserstamping(): bool
     {
@@ -167,8 +157,6 @@ trait AuditTrait
 
     /**
      * Check if we're maintaing Userstamps on the model.
-     *
-     * @return bool
      */
     public function isSoftDeleting(): bool
     {

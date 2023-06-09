@@ -69,8 +69,6 @@ class TagWidget
 
     /**
      * Get the available tags, if an entity is available from that
-     *
-     * @return array
      */
     private function getTags(): array
     {

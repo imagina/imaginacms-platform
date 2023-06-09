@@ -47,8 +47,6 @@ class SetAppKey implements SetupScript
 
     /**
      * Generate a random key for the application.
-     *
-     * @return string
      */
     protected function generateRandomKey(): string
     {
@@ -59,9 +57,6 @@ class SetAppKey implements SetupScript
 
     /**
      * Set the application key in the environment file.
-     *
-     * @param  string  $key
-     * @return bool
      */
     protected function setKeyInEnvironmentFile(string $key): bool
     {
@@ -78,9 +73,6 @@ class SetAppKey implements SetupScript
 
     /**
      * Write a new environment file with the given key.
-     *
-     * @param  string  $key
-     * @return void
      */
     protected function writeNewEnvironmentFileWith(string $key): void
     {
@@ -93,8 +85,6 @@ class SetAppKey implements SetupScript
 
     /**
      * Get a regex pattern that will match env APP_KEY with any random key.
-     *
-     * @return string
      */
     protected function keyReplacementPattern(): string
     {
@@ -105,8 +95,6 @@ class SetAppKey implements SetupScript
 
     /**
      * Get the default confirmation callback.
-     *
-     * @return \Closure
      */
     protected function getDefaultConfirmCallback(): callable
     {

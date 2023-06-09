@@ -7,8 +7,6 @@ class CreateIcommerceProductOptionTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -41,8 +39,6 @@ class CreateIcommerceProductOptionTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

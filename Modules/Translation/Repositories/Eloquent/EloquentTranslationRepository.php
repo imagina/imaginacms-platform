@@ -9,11 +9,6 @@ use Modules\Translation\Repositories\TranslationRepository;
 
 class EloquentTranslationRepository extends EloquentBaseRepository implements TranslationRepository
 {
-    /**
-     * @param  string  $key
-     * @param  string  $locale
-     * @return string
-     */
     public function findByKeyAndLocale(string $key, string $locale = null): string
     {
         $locale = $locale ?: app()->getLocale();
@@ -72,7 +67,6 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
     /**
      * Update the given translation key with the given data
      *
-     * @param  string  $key
      * @return mixed
      */
     public function updateFromImport(string $key, array $data)
@@ -83,9 +77,6 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
     /**
      * Set the given value on the given TranslationTranslation
-     *
-     * @param  string  $value
-     * @return void
      */
     public function updateTranslationToValue(TranslationTranslation $translationTranslation, string $value): void
     {

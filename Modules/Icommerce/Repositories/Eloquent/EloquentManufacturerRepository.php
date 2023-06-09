@@ -125,9 +125,6 @@ class EloquentManufacturerRepository extends EloquentBaseRepository implements M
 
     /**
      * Find a resource by the given slug
-     *
-     * @param  string  $slug
-     * @return object
      */
     public function findBySlug(string $slug): object
     {

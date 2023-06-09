@@ -31,8 +31,6 @@ class IcommercePaypalController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -43,8 +41,6 @@ class IcommercePaypalController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -53,8 +49,6 @@ class IcommercePaypalController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommercePaypalRequest $request): Response
     {
@@ -66,8 +60,6 @@ class IcommercePaypalController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommercePaypal $icommercepaypal): Response
     {
@@ -78,7 +70,6 @@ class IcommercePaypalController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommercePaypal  $icommercepaypal
-     * @return Response
      */
     public function update($id, UpdateIcommercePaypalRequest $request): Response
     {
@@ -100,8 +91,6 @@ class IcommercePaypalController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommercePaypal $icommercepaypal): Response
     {

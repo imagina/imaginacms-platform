@@ -118,8 +118,6 @@ class AppointmentLeadApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update($criteria, Request $request): Response
     {
@@ -148,8 +146,6 @@ class AppointmentLeadApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request): Response
     {

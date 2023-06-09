@@ -19,9 +19,6 @@ class TagIsUpdating extends AbstractEntityHook implements EntityIsChanging
         parent::__construct($attributes);
     }
 
-    /**
-     * @return Tag
-     */
     public function getTag(): Tag
     {
         return $this->tag;

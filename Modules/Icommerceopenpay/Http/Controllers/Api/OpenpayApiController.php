@@ -23,8 +23,6 @@ class OpenpayApiController extends BaseApiController
 
     /**
      * Get gateway
-     *
-     * @return gateway
      */
     public function getGateway(): gateway
     {
@@ -46,8 +44,6 @@ class OpenpayApiController extends BaseApiController
 
     /**
      * Create Charge
-     *
-     * @return result
      */
     public function createCharge($order, $transaction, $token, $deviceId): result
     {
@@ -99,8 +95,6 @@ class OpenpayApiController extends BaseApiController
 
     /**
      * Create PSE Request
-     *
-     * @return result
      */
     public function createPseRequest($order, $transaction): result
     {

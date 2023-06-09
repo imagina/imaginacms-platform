@@ -25,8 +25,6 @@ class CartPresenter extends Presenter
 
     /**
      * Get the post status
-     *
-     * @return string
      */
     public function status(): string
     {
@@ -35,8 +33,6 @@ class CartPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
     public function statusLabelClass(): string
     {

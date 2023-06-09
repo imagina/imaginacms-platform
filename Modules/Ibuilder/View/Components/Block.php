@@ -121,8 +121,6 @@ class Block extends Component
 
     /**
      * Instance the component attributes
-     *
-     * @return void
      */
     public function instanceGeneralAttributes($params): void
     {
@@ -160,8 +158,6 @@ class Block extends Component
 
     /**
      * Instance the Background attribute
-     *
-     * @return void
      */
     public function instanceBackgroundAttribute($params): void
     {
@@ -176,8 +172,6 @@ class Block extends Component
 
     /**
      * Instance the block config
-     *
-     * @return void
      */
     public function instanceBlockConfig($params): void
     {
@@ -212,8 +206,6 @@ class Block extends Component
 
     /**
      * Instance the Media files related to the block
-     *
-     * @return void
      */
     public function instanceBlockConfigFiles($params): void
     {
@@ -257,8 +249,6 @@ class Block extends Component
 
     /**
      * Validate and instance if the dynamic component is Liveware or Blade
-     *
-     * @return void
      */
     public function instanceComponentType($params): void
     {
@@ -290,8 +280,6 @@ class Block extends Component
 
     /**
      * Instance the component config
-     *
-     * @return void
      */
     public function instanceComponentConfig(): void
     {
@@ -356,8 +344,6 @@ class Block extends Component
 
     /**
      * Get the inherit content for components
-     *
-     * @return void
      */
     public function getInheritcontent(): void
     {

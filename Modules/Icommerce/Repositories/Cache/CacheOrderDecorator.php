@@ -16,8 +16,6 @@ class CacheOrderDecorator extends BaseCacheDecorator implements OrderRepository
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params): collection
     {
@@ -28,8 +26,6 @@ class CacheOrderDecorator extends BaseCacheDecorator implements OrderRepository
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false): object
     {

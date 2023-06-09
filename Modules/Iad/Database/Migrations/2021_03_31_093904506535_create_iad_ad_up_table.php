@@ -7,8 +7,6 @@ class CreateIadAdUpTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -43,8 +41,6 @@ class CreateIadAdUpTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

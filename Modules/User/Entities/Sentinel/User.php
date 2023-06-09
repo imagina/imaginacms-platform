@@ -96,9 +96,6 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         return false;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function api_keys(): HasMany
     {
         return $this->hasMany(UserToken::class);

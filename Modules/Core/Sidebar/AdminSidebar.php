@@ -60,8 +60,6 @@ class AdminSidebar implements Sidebar, ShouldCache
 
     /**
      * Add the given class to the sidebar collection
-     *
-     * @param  string  $class
      */
     private function addToSidebar(string $class)
     {
@@ -73,9 +71,6 @@ class AdminSidebar implements Sidebar, ShouldCache
         $this->menu->add($extender->extendWith($this->menu));
     }
 
-    /**
-     * @return Menu
-     */
     public function getMenu(): Menu
     {
         $this->build();
@@ -85,9 +80,6 @@ class AdminSidebar implements Sidebar, ShouldCache
 
     /**
      * Check if the module has a custom sidebar class configured
-     *
-     * @param  string  $module
-     * @return bool
      */
     private function hasCustomSidebar(string $module): bool
     {

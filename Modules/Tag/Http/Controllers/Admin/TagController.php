@@ -31,8 +31,6 @@ class TagController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -43,8 +41,6 @@ class TagController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -55,8 +51,6 @@ class TagController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateTagRequest $request): Response
     {
@@ -68,8 +62,6 @@ class TagController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Tag $tag): Response
     {
@@ -80,8 +72,6 @@ class TagController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Tag $tag, UpdateTagRequest $request): Response
     {
@@ -93,8 +83,6 @@ class TagController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Tag $tag): Response
     {

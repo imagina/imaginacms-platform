@@ -26,8 +26,6 @@ class PublicController extends BasePublicController
 
     /**
      * Show Voucher
-     *
-     * @return view
      */
     public function voucherShow(Request $request): view
     {

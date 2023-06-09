@@ -6,9 +6,6 @@ trait CanPublishConfiguration
 {
     /**
      * Publish the given configuration file name (without extension) and the given module
-     *
-     * @param  string  $module
-     * @param  string  $fileName
      */
     public function publishConfig(string $module, string $fileName)
     {
@@ -24,19 +21,12 @@ trait CanPublishConfiguration
 
     /**
      * Get path of the give file name in the given module
-     *
-     * @param  string  $module
-     * @param  string  $file
-     * @return string
      */
     private function getModuleConfigFilePath(string $module, string $file): string
     {
         return $this->getModulePath($module)."/Config/$file.php";
     }
 
-    /**
-     * @return string
-     */
     private function getModulePath($module): string
     {
         return base_path('Modules'.DIRECTORY_SEPARATOR.ucfirst($module));

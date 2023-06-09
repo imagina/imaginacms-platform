@@ -16,9 +16,6 @@ class TranslationGroup
         $this->translations = $translations;
     }
 
-    /**
-     * @return Collection
-     */
     private function reArrangeTranslations(array $translationsRaw): Collection
     {
         $translations = [];
@@ -34,8 +31,6 @@ class TranslationGroup
 
     /**
      * Return the translations
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -44,8 +39,6 @@ class TranslationGroup
 
     /**
      * Return the raw translations
-     *
-     * @return array
      */
     public function allRaw(): array
     {

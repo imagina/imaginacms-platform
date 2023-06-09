@@ -7,8 +7,6 @@ class CreateIsiteLayoutsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -32,8 +30,6 @@ class CreateIsiteLayoutsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

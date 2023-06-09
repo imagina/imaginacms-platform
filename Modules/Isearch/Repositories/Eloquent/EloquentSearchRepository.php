@@ -89,13 +89,6 @@ class EloquentSearchRepository extends EloquentBaseRepository implements SearchR
 
     /**
      * Create a new length-aware paginator instance.
-     *
-     * @param  \Illuminate\Support\Collection  $items
-     * @param  int  $total
-     * @param  int  $perPage
-     * @param  int  $currentPage
-     * @param  array  $options
-     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     protected static function paginator(Illuminate\Support\Collection $items, int $total, int $perPage, int $currentPage, array $options): LengthAwarePaginator
     {

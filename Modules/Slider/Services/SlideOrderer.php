@@ -27,9 +27,6 @@ class SlideOrderer
 
     /**
      * Order recursively the slider items
-     *
-     * @param  int  $position
-     * @param  array  $item
      */
     private function order(int $position, array $item)
     {
@@ -39,9 +36,6 @@ class SlideOrderer
 
     /**
      * Save the given position on the slider item
-     *
-     * @param  object  $slide
-     * @param  int  $position
      */
     private function savePosition(object $slide, int $position)
     {
@@ -50,8 +44,6 @@ class SlideOrderer
 
     /**
      * Convert the object to array
-     *
-     * @return array
      */
     private function convertToArray($data): array
     {

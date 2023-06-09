@@ -8,9 +8,6 @@ class UserPresenter extends Presenter
 {
     /**
      * Return the gravatar link for the users email
-     *
-     * @param  int  $size
-     * @return string
      */
     public function gravatar(int $size = 90): string
     {
@@ -19,9 +16,6 @@ class UserPresenter extends Presenter
         return "https://www.gravatar.com/avatar/$email?s=$size";
     }
 
-    /**
-     * @return string
-     */
     public function fullname(): string
     {
         return $this->name ?: $this->first_name.' '.$this->last_name;

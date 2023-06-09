@@ -23,8 +23,6 @@ class GrantModulePermissionsCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments(): array
     {
@@ -35,8 +33,6 @@ class GrantModulePermissionsCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {

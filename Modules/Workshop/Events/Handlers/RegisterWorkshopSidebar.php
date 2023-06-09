@@ -11,8 +11,6 @@ class RegisterWorkshopSidebar extends AbstractAdminSidebar
 {
     /**
      * Method used to define your sidebar menu groups and items
-     *
-     * @return Menu
      */
     public function extendWith(Menu $menu): Menu
     {

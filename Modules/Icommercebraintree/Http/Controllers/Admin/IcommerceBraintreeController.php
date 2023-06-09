@@ -29,8 +29,6 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -41,8 +39,6 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -51,8 +47,6 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommerceBraintreeRequest $request): Response
     {
@@ -64,8 +58,6 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommerceBraintree $icommercebraintree): Response
     {
@@ -76,7 +68,6 @@ class IcommerceBraintreeController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceBraintree  $icommercebraintree
-     * @return Response
      */
     public function update($id, UpdateIcommerceBraintreeRequest $request): Response
     {
@@ -98,8 +89,6 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommerceBraintree $icommercebraintree): Response
     {

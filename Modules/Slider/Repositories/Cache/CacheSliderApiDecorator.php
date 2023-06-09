@@ -22,8 +22,6 @@ class CacheSliderApiDecorator extends BaseCacheDecorator implements SliderApiRep
 
     /**
      * Get all online sliders
-     *
-     * @return object
      */
     /* DEPRECATED
     public function allOnline()

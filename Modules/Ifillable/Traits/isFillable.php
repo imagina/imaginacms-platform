@@ -55,9 +55,6 @@ trait isFillable
 
     /**
      * Validate data to keep only fields to sync
-     *
-     * @param  array  $extraFields
-     * @return array
      */
     public function validateExtraFillable(array $extraFields = []): array
     {
@@ -97,8 +94,6 @@ trait isFillable
 
     /**
      * Format extra fillable to save in data base
-     *
-     * @param  array  $extraFields
      */
     public function formatFillableToDataBase(array $extraFields = [])
     {
@@ -130,8 +125,6 @@ trait isFillable
 
     /**
      * Format fillable to response in model
-     *
-     * @param  array  $extraFields
      */
     public function formatFillableToModel(array $extraFields = [])
     {

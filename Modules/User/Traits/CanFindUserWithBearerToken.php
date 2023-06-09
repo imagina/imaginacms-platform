@@ -7,10 +7,6 @@ use Modules\User\Repositories\UserTokenRepository;
 
 trait CanFindUserWithBearerToken
 {
-    /**
-     * @param  string  $token
-     * @return UserInterface|null
-     */
     public function findUserWithBearerToken(string $token): ?UserInterface
     {
         $token = app(UserTokenRepository::class)->findByAttributes(['access_token' => $this->parseToken($token)]);

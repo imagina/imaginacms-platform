@@ -66,9 +66,6 @@ class BannerController extends AdminBaseController
             ->withSuccess(trans('ibanners::messages.banner updated'));
     }
 
-    /**
-     * @return array
-     */
     private function addPositionId(Position $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);

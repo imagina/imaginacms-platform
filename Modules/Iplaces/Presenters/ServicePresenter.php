@@ -23,8 +23,6 @@ class ServicePresenter extends Presenter
 
     /**
      * Get the post status
-     *
-     * @return string
      */
     public function status(): string
     {
@@ -33,8 +31,6 @@ class ServicePresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
     public function statusLabelClass(): string
     {

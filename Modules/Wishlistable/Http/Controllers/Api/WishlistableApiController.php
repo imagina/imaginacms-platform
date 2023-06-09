@@ -26,8 +26,6 @@ class WishlistableApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request): Response
     {
@@ -83,8 +81,6 @@ class WishlistableApiController extends BaseApiController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(Request $request): Response
     {
@@ -120,8 +116,6 @@ class WishlistableApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update($criteria, Request $request): Response
     {
@@ -157,8 +151,6 @@ class WishlistableApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request): Response
     {

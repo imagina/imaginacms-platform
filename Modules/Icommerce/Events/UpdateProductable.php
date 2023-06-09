@@ -18,8 +18,6 @@ class UpdateProductable
 
     /**
      * Return the entity
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntity(): Model
     {
@@ -28,8 +26,6 @@ class UpdateProductable
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData(): array
     {

@@ -312,44 +312,15 @@ class ItemList extends Component
     /**
      * Create a new component instance.
      *
-     * @param  string  $mediaImage
-     * @param  string  $layout
      * @param  null  $parentAttributes
-     * @param  bool  $withViewMoreButton
-     * @param  string  $viewMoreButtonLabel
-     * @param  bool  $withCreatedDate
-     * @param  string  $formatCreatedDate
-     * @param  array  $orderClasses
-     * @param  bool  $withCategory
-     * @param  bool  $withSummary
-     * @param  int  $numberCharactersSummary
      * @param  null  $editLink
      * @param  null  $tooltipEditLink
      * @param  null  $itemComponentView
-     * @param  string  $itemComponentTarget
      * @param  null  $itemListLayout
      * @param  null  $positionNumber
-     * @param  string  $imageAspect
-     * @param  string  $imageObject
-     * @param  int  $imageBorderRadio
-     * @param  string  $imageBorderStyle
-     * @param  int  $imageBorderWidth
-     * @param  string  $imageBorderColor
      * @param  string  $imageBorderRadioUnit
-     * @param  int  $imagePadding
      * @param  string  $imageOpcityColor
      * @param  string  $itemStyle
-     * @param  bool  $withTitle
-     * @param  string  $titleAlign
-     * @param  string  $titleTextSize
-     * @param  string  $titleTextWeight
-     * @param  string  $titleTextTransform
-     * @param  string  $summaryAlign
-     * @param  string  $summaryTextSize
-     * @param  string  $summaryTextWeight
-     * @param  string  $categoryAlign
-     * @param  string  $categoryTextSize
-     * @param  string  $categoryTextWeight
      */
     public function __construct($item,
                               string $mediaImage = 'mainimage',

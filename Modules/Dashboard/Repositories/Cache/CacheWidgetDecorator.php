@@ -16,9 +16,6 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
 
     /**
      * Find the saved state of widgets for the given user id
-     *
-     * @param  int  $userId
-     * @return string
      */
     public function findForUser(int $userId): string
     {
@@ -36,7 +33,6 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
     /**
      * Update or create the given widgets for given user
      *
-     * @param  array  $widgets
      * @return mixed|void
      */
     public function updateOrCreateForUser(array $widgets, $userId)

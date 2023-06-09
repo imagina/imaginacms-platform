@@ -7,8 +7,6 @@ class CreateIcheckinRequestsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -38,8 +36,6 @@ class CreateIcheckinRequestsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

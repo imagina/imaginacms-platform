@@ -10,7 +10,6 @@ class EloquentQredRepository extends EloquentBaseRepository implements QredRepos
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, bool $params = false)
@@ -56,7 +55,6 @@ class EloquentQredRepository extends EloquentBaseRepository implements QredRepos
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItemsBy(bool $params = false)

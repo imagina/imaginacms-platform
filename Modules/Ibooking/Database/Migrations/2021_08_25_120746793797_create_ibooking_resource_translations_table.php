@@ -7,8 +7,6 @@ class CreateIbookingResourceTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -29,8 +27,6 @@ class CreateIbookingResourceTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

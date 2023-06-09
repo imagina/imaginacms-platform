@@ -37,9 +37,6 @@ class BannerAdsPresenter extends AbstractAdsPresenter implements BannerAdsPresen
         return $view->render();
     }
 
-    /**
-     * @return Position
-     */
     private function getPositionFromRepository($systemName): Position
     {
         return $this->positionRepository->findBySystemName($systemName);

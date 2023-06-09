@@ -34,8 +34,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * Find the page set as homepage
-     *
-     * @return object
      */
     public function findHomepage(): object
     {
@@ -44,8 +42,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll(): int
     {
@@ -54,7 +50,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * @param  mixed  $data
-     * @return object
      */
     public function create($data): object
     {
@@ -86,10 +81,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         return $page;
     }
 
-    /**
-     * @param  array  $data
-     * @return object
-     */
     public function update($model, array $data): object
     {
         if (Arr::get($data, 'is_home') === '1') {
@@ -115,9 +106,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         return $page->delete();
     }
 
-    /**
-     * @return object
-     */
     public function findBySlugInLocale($slug, $locale): object
     {
         if (method_exists($this->model, 'translations')) {

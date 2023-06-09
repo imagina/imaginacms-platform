@@ -59,8 +59,6 @@ class NavigationViewComposer
     /**
      * Add children to menu under the give name
      *
-     * @param  string  $name
-     * @param  object  $children
      * @param  Builder|MenuItem  $menu
      */
     private function addChildrenToMenu(string $name, object $children, $menu)
@@ -86,9 +84,6 @@ class NavigationViewComposer
 
     /**
      * Check if the given menu item has children
-     *
-     * @param  object  $item
-     * @return bool
      */
     private function hasChildren(object $item): bool
     {
