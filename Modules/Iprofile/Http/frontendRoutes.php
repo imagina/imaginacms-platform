@@ -13,8 +13,7 @@ $router->get('auth/login', [
 ]);
 
 //==================================================== Prefix account
-Route::group(['prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localize']], function (Router $router) use ($locale) {
+Route::prefix(LaravelLocalization::setLocale())->middleware('localize')->group(function (Router $router) use ($locale) {
         $router->get(trans('iprofile::routes.account'), [
             'as' => $locale.'.iprofile.account.index',
             'uses' => 'ProfileController@index',

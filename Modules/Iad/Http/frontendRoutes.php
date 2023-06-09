@@ -5,8 +5,7 @@ use Illuminate\Routing\Router;
 $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
 /** @var Router $router */
-Route::group(['prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localize']], function (Router $router) use ($locale) {
+Route::prefix(LaravelLocalization::setLocale())->middleware('localize')->group(function (Router $router) use ($locale) {
         $router->get(trans('iad::routes.ad.index.index'), [
             'as' => $locale.'.iad.ad.index',
             'uses' => 'PublicController@index',
