@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'subscriptions'], function (Router $router) {
+Route::group(['prefix' => 'subscriptions'], function (Router $router) {
 
   $router->get('/entities', [
     'as' => 'api.iplan.subscriptions.entities',

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'icommercestripe/v1'], function (Router $router) {
+Route::group(['prefix' => 'icommercestripe/v1'], function (Router $router) {
     
     $router->get('/', [
         'as' => 'icommercestripe.api.stripe.init',
@@ -18,7 +18,7 @@ $router->group(['prefix' => 'icommercestripe/v1'], function (Router $router) {
     /*
     * Connect Routes
     */
-    $router->group(['prefix' => 'payout/connect'], function (Router $router) {
+    Route::group(['prefix' => 'payout/connect'], function (Router $router) {
 
         $router->post('/', [
             'as' => 'icommercestripe.api.stripe.connect.createAccountLinkOnboarding',

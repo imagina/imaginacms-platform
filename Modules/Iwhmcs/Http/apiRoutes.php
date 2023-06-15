@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'iwhmcs/v1'], function (Router $router) {
+Route::group(['prefix' => 'iwhmcs/v1'], function (Router $router) {
   //Route sync cients to bitrix
   $router->get('/sync-clients-bitrix24', [
     'as' => 'api.iwhmcs.sync.cients.bitrix',

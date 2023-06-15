@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => 'iforms'], function (Router $router) {
+Route::group(['prefix' => 'iforms'], function (Router $router) {
 //
 //    $router->get('lead', [
 //        'as' => 'iforms.lead',

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/icheckin/v1'], function (Router $router) {
+Route::group(['prefix' => '/icheckin/v1'], function (Router $router) {
   //Shifts
   require('ApiRoutes/ShiftApiRoutes.php');
   //Jobs

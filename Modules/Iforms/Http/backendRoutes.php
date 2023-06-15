@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/iforms'], function (Router $router) {
+Route::group(['prefix' =>'/iforms'], function (Router $router) {
     $router->bind('form', function ($id) {
         return app('Modules\Iforms\Repositories\FormRepository')->find($id);
     });

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' =>'/translation'], function (Router $router) {
+Route::group(['prefix' =>'/translation'], function (Router $router) {
     $router->get('translations', [
         'uses' => 'TranslationController@index',
         'as' => 'admin.translation.translation.index',

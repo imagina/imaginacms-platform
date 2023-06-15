@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
+Route::group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
     $router->get('pages', [
         'as' => 'api.page.page.index',
         'uses' => 'PageController@index',
@@ -43,7 +43,7 @@ $router->group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']
 });
 
 
-$router->group(['prefix' => 'page/v1'], function (Router $router) {
+Route::group(['prefix' => 'page/v1'], function (Router $router) {
   
   //======  PAGES
   require('ApiRoutes/pageRoutes.php');

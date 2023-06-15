@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => '/slider/v1'], function (Router $router) {
+Route::group(['prefix' => '/slider/v1'], function (Router $router) {
 
   $router->post('/update', [
     'as' => 'api.slide.update',

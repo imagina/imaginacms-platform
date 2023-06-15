@@ -30,7 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
-$router->group(['prefix' => '/pins'], function (Router $router) {
+Route::group(['prefix' => '/pins'], function (Router $router) {
 
 
   $router->get('{pinSlug}/buy-up', [

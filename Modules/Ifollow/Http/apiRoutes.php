@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' =>'/ifollow/v1'], function (Router $router) {
+Route::group(['prefix' =>'/ifollow/v1'], function (Router $router) {
     $router->apiCrud([
       'module' => 'ifollow',
       'prefix' => 'followers',

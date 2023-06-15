@@ -6,7 +6,7 @@ use Illuminate\Routing\Router;
 $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
 /** @var Router $router */
-$router->group(['middleware' => ['localize']], function (Router $router) use ($locale) {
+Route::group(['middleware' => ['localize']], function (Router $router) use ($locale) {
   
 
     $router->get(trans('isearch::routes.url',[],$locale), [

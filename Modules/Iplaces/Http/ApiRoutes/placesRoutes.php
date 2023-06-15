@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'places'], function (Router $router) {
+Route::group(['prefix' => 'places'], function (Router $router) {
   
   
   $router->post('/', [

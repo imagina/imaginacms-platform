@@ -85,7 +85,7 @@ if(config('asgard.icommerce.config.useOldRoutes')){
         continue;
       }
       /** @var Router $router */
-      $router->group(['prefix' => $category->slug,
+      Route::group(['prefix' => $category->slug,
         'middleware' => $customMiddlewares], function (Router $router) use ($locale, $category) {
         
         $router->get('/', [

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/menu'], function (Router $router) {
+Route::group(['prefix' => '/menu'], function (Router $router) {
     $router->get('menus', [
         'as' => 'admin.menu.menu.index',
         'uses' => 'MenuController@index',

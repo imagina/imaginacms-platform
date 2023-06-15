@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'form-types'], function (Router $router) {
+Route::group(['prefix' => 'form-types'], function (Router $router) {
 
   //Route index
   $router->get('/', [

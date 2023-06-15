@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'icommercecheckmo'], function (Router $router) {
+Route::group(['prefix' => 'icommercecheckmo'], function (Router $router) {
     
     $router->get('/', [
         'as' => 'icommercecheckmo.api.checkmo.init',

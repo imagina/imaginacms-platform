@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'icommercefreeshipping'], function (Router $router) {
+Route::group(['prefix' => 'icommercefreeshipping'], function (Router $router) {
     
     $router->get('/', [
         'as' => 'icommercefreeshipping.api.freeshipping.init',

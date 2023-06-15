@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => '/v1/ibanners'], function (Router $router) {
+Route::group(['prefix' => '/v1/ibanners'], function (Router $router) {
 
   $router->post('banners/update', [
     'as' => 'api.banner.update',

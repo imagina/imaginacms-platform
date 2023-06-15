@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'redirects'], function (Router $router) {
+Route::group(['prefix' => 'redirects'], function (Router $router) {
   //Route create
   $router->post('/', [
     'as' => 'api.iredirect.redirects.create',

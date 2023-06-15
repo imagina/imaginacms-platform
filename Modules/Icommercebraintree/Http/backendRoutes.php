@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/icommercebraintree'], function (Router $router) {
+Route::group(['prefix' =>'/icommercebraintree'], function (Router $router) {
     $router->bind('icommercebraintree', function ($id) {
         return app('Modules\Icommercebraintree\Repositories\IcommerceBraintreeRepository')->find($id);
     });

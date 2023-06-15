@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/user'], function (Router $router) {
+Route::group(['prefix' => '/user'], function (Router $router) {
     $router->get('users', [
         'as' => 'admin.user.user.index',
         'uses' => 'UserController@index',
@@ -72,7 +72,7 @@ $router->group(['prefix' => '/user'], function (Router $router) {
     ]);
 });
 
-$router->group(['prefix' => '/account'], function (Router $router) {
+Route::group(['prefix' => '/account'], function (Router $router) {
     $router->get('profile', [
         'as' => 'admin.account.profile.edit',
         'uses' => 'Account\ProfileController@edit',

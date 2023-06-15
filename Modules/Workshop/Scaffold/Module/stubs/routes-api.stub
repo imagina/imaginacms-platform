@@ -2,6 +2,6 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' =>'/$LOWERCASE_MODULE_NAME$/v1'], function (Router $router) {
+Route::group(['prefix' =>'/$LOWERCASE_MODULE_NAME$/v1'], function (Router $router) {
 // append
 });

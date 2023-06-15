@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'currencies'], function (Router $router) {
+Route::group(['prefix' => 'currencies'], function (Router $router) {
 
   $router->post('/', [
     'as' => 'api.icurrency.currencies.create',

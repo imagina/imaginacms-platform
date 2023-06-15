@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'subscription-limits'], function (Router $router) {
+Route::group(['prefix' => 'subscription-limits'], function (Router $router) {
 
 
   $router->post('/', [

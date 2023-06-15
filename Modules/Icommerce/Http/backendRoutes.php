@@ -3,14 +3,14 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/icommerce'], function (Router $router) {
+Route::group(['prefix' =>'/icommerce'], function (Router $router) {
 
     $router->get('store/', [
         'as' => 'admin.icommerce.store.index',
         'uses' => 'ProductController@index',
         'middleware' => 'can:icommerce.products.index'
     ]);
-    $router->group(['prefix' =>'bulkload'], function (Router $router){
+    Route::group(['prefix' =>'bulkload'], function (Router $router){
 
         $router->get('index',[
             'as'=>'admin.icommerce.bulkload.index',

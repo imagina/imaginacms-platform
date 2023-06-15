@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => 'zones'], function (Router $router) {
+Route::group(['prefix' => 'zones'], function (Router $router) {
   
   
   $router->post('/', [

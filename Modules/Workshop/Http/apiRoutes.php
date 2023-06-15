@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => 'workshop', 'middleware' => 'api.token'], function (Router $router) {
+Route::group(['prefix' => 'workshop', 'middleware' => 'api.token'], function (Router $router) {
     $router->post('modules/{module}/publish', [
         'as' => 'api.workshop.module.publish',
         'uses' => 'ModulesController@publishAssets',

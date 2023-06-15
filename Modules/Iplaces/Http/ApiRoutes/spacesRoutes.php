@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => 'spaces'], function (Router $router) {
+Route::group(['prefix' => 'spaces'], function (Router $router) {
   
   
   $router->post('/', [

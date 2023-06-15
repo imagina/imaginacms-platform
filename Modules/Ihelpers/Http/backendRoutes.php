@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/ihelpers'], function (Router $router) {
+Route::group(['prefix' =>'/ihelpers'], function (Router $router) {
 
     $router->get('clearcache', [
         'as' => 'admin.ihelpers.clearcache',

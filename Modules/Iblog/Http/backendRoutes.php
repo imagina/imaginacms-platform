@@ -3,9 +3,9 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/iblog'], function (Router $router) {
+Route::group(['prefix' =>'/iblog'], function (Router $router) {
 
-    $router->group(['prefix' => 'posts'], function (Router $router) {
+    Route::group(['prefix' => 'posts'], function (Router $router) {
         $router->bind('post', function ($id) {
             return app('Modules\Iblog\Repositories\PostRepository')->find($id);
         });
@@ -42,7 +42,7 @@ $router->group(['prefix' =>'/iblog'], function (Router $router) {
         ]);
     });
 
-    $router->group(['prefix' => 'categories'], function (Router $router) {
+    Route::group(['prefix' => 'categories'], function (Router $router) {
         $router->bind('category', function ($id) {
             return app('Modules\Iblog\Repositories\CategoryRepository')->find($id);
         });

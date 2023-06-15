@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/isite'], function (Router $router) {
+Route::group(['prefix' =>'/isite'], function (Router $router) {
     $router->bind('site', function ($id) {
         return app('Modules\Isite\Repositories\SiteRepository')->find($id);
     });

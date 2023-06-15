@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => 'schedules'], function (Router $router) {
+Route::group(['prefix' => 'schedules'], function (Router $router) {
   
   
   $router->post('/', [

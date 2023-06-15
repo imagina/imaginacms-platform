@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/ilocations'], function (Router $router) {
+Route::group(['prefix' =>'/ilocations'], function (Router $router) {
     $router->bind('country', function ($id) {
         return app('Modules\Ilocations\Repositories\CountryRepository')->find($id);
     });

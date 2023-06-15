@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/notification'], function (Router $router) {
+Route::group(['prefix' => '/notification'], function (Router $router) {
     $router->get('notifications', [
         'as' => 'admin.notification.notification.index',
         'uses' => 'NotificationsController@index',

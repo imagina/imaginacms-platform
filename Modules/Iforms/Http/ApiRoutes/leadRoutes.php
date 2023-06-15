@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'leads'], function (Router $router) {
+Route::group(['prefix' => 'leads'], function (Router $router) {
 
   //Route create
   $router->post('/', [

@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => '/notifications'], function (Router $router) {
+Route::group(['prefix' => '/notifications'], function (Router $router) {
   
   //Route create
   $router->post('/', [

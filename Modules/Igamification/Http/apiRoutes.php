@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/igamification/v1'], function (Router $router) {
+Route::group(['prefix' => '/igamification/v1'], function (Router $router) {
   $router->apiCrud([
     'module' => 'igamification',
     'prefix' => 'categories',
@@ -21,7 +21,7 @@ $router->group(['prefix' => '/igamification/v1'], function (Router $router) {
     'staticEntity' => 'Modules\Igamification\Entities\Status',
     //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
   ]);
-  $router->group(['prefix' => 'activity-user'], function (Router $router) {
+  Route::group(['prefix' => 'activity-user'], function (Router $router) {
     $router->get('/', [
       'as' => 'api.igamification.activity-user.get.items.by',
       'uses' => 'ActivityUserApiController@index',

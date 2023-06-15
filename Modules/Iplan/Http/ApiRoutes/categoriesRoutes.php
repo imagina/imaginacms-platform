@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'categories'], function (Router $router) {
+Route::group(['prefix' => 'categories'], function (Router $router) {
 
 
   $router->post('/', [

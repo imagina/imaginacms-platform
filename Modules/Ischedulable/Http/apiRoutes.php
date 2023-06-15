@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/ischedulable/v1'], function (Router $router) {
+Route::group(['prefix' => '/ischedulable/v1'], function (Router $router) {
   $router->apiCrud([
     'module' => 'ischedulable',
     'prefix' => 'days',

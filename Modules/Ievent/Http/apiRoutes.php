@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/ievent/v1'], function (Router $router) {
+Route::group(['prefix' => '/ievent/v1'], function (Router $router) {
   
   //======  EVENTS
   require('ApiRoutes/eventRoutes.php');

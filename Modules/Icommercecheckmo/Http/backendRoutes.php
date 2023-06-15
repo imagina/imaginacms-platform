@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/icommercecheckmo'], function (Router $router) {
+Route::group(['prefix' =>'/icommercecheckmo'], function (Router $router) {
     $router->bind('icommercecheckmo', function ($id) {
         return app('Modules\Icommercecheckmo\Repositories\IcommerceCheckmoRepository')->find($id);
     });

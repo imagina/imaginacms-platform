@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => '/rules'], function (Router $router) {
+Route::group(['prefix' => '/rules'], function (Router $router) {
   
   
   $router->post('/', [

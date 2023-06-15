@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/coupons'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::group(['prefix' => '/coupons'/*,'middleware' => ['auth:api']*/], function (Router $router) {
   $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
 
   $router->get('/coupons-validate', [

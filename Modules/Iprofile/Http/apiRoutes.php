@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/profile/v1'], function (Router $router) {
+Route::group(['prefix' => '/profile/v1'], function (Router $router) {
   
   //======  AUTH
   require('ApiRoutes/authRoutes.php');

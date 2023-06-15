@@ -25,7 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
-$router->group(['prefix' => '/account'], function (Router $router) {
+Route::group(['prefix' => '/account'], function (Router $router) {
 
 
   $router->get('profile/', [

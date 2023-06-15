@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/requestables'], function (Router $router) {
+Route::group(['prefix' => '/requestables'], function (Router $router) {
   $router->get('/', [
     'as' => 'requestables.index',
     'uses' => 'RequestableApiController@index',

@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => 'lugares'], function (Router $router) {
+Route::group(['prefix' => 'lugares'], function (Router $router) {
 
     $router->get('/', [
         'as' => 'iplaces.place.index',
@@ -21,7 +21,7 @@ $router->group(['prefix' => 'lugares'], function (Router $router) {
 
 });
 
-$router->group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localize']], function (Router $router) {
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localize']], function (Router $router) {
     $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
     $router->get(trans('iplaces::routes.places.index.index'), [

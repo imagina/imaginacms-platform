@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/geozones'], function (Router $router) {
+Route::group(['prefix' => '/geozones'], function (Router $router) {
 
   //Route create
   $router->post('/', [

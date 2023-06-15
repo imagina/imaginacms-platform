@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' =>'/ifillable/v1'], function (Router $router) {
+Route::group(['prefix' =>'/ifillable/v1'], function (Router $router) {
     $router->apiCrud([
       'module' => 'ifillable',
       'prefix' => 'fields',

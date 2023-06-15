@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/appointment-leads'], function (Router $router) {
+Route::group(['prefix' => '/appointment-leads'], function (Router $router) {
 
     $router->post('/', [
         'as' => 'api.iappointment.appointmentLeads.create',

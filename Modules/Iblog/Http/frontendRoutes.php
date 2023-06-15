@@ -11,7 +11,7 @@ $customMiddlewares = config('asgard.iblog.config.middlewares') ?? [];
 //    foreach ($categories as $category) {
 //      if(!empty($category->slug) && !$category->internal) {
 //        /** @var Router $router */
-//        $router->group(['prefix' => $category->slug,
+//        Route::group(['prefix' => $category->slug,
 //          'middleware' => $customMiddlewares], function (Router $router) use ($locale, $category) {
 //
 //          $router->get('/', [
@@ -29,7 +29,7 @@ $customMiddlewares = config('asgard.iblog.config.middlewares') ?? [];
 //    }
 // // }
 //  /** @var Router $router */
-//  $router->group(['prefix' => trans('iblog::tag.uri'),
+//  Route::group(['prefix' => trans('iblog::tag.uri'),
 //    'middleware' => $customMiddlewares], function (Router $router) use ($locale) {
 //    $router->get('{slug}', [
 //      'as' => $locale . '.iblog.tag.slug',
@@ -40,7 +40,7 @@ $customMiddlewares = config('asgard.iblog.config.middlewares') ?? [];
   
   
   /** @var Router $router */
-  $router->group(['prefix' => 'iblog/feed',
+  Route::group(['prefix' => 'iblog/feed',
     'middleware' => $customMiddlewares], function (Router $router) use ($locale) {
     $router->get('{format}', [
       'as' => $locale . '.iblog.feed.format',

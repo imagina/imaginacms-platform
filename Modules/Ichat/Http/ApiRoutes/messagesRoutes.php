@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/messages'], function (Router $router) {
+Route::group(['prefix' => '/messages'], function (Router $router) {
   $router->post('/', [
     'as' => 'api.ichat.messages.create',
     'uses' => 'MessageApiController@create',

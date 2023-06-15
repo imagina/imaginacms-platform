@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/inline'], function (Router $router) {
+Route::group(['prefix' =>'/inline'], function (Router $router) {
 
     $router->post('/save', [
         'as' => 'inline.save',

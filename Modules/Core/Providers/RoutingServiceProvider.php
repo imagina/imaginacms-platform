@@ -48,11 +48,11 @@ abstract class RoutingServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function (Router $router) {
+        Route::group(['namespace' => $this->namespace], function (Router $router) {
             $this->loadApiRoutes($router);
         });
 
-        $router->group([
+        Route::group([
             'namespace' => $this->namespace,
             'prefix' => LaravelLocalization::setLocale(),
             'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'web'],
@@ -70,7 +70,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $frontend = $this->getFrontendRoute();
 
         if ($frontend && file_exists($frontend)) {
-            $router->group([
+            Route::group([
                 'middleware' => config('asgard.core.core.middleware.frontend', []),
             ], function (Router $router) use ($frontend) {
                 require $frontend;
@@ -86,7 +86,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $backend = $this->getBackendRoute();
 
         if ($backend && file_exists($backend)) {
-            $router->group([
+            Route::group([
                 'namespace' => 'Admin',
                 'prefix' => config('asgard.core.core.admin-prefix'),
                 'middleware' => config('asgard.core.core.middleware.backend', []),
@@ -104,7 +104,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $api = $this->getApiRoute();
 
         if ($api && file_exists($api)) {
-            $router->group([
+            Route::group([
                 'namespace' => 'Api',
                 'prefix' => LaravelLocalization::setLocale() . '/api',
                 'middleware' => config('asgard.core.core.middleware.api', []),

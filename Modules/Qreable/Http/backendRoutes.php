@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/qreable'], function (Router $router) {
+Route::group(['prefix' =>'/qreable'], function (Router $router) {
     $router->bind('qr', function ($id) {
         return app('Modules\Qreable\Repositories\QrRepository')->find($id);
     });

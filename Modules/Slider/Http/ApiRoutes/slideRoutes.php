@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/slides'], function (Router $router) {
+Route::group(['prefix' => '/slides'], function (Router $router) {
   $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
   
   $router->post('/', [

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/iprofile'], function (Router $router) {
+Route::group(['prefix' =>'/iprofile'], function (Router $router) {
     $router->bind('field', function ($id) {
         return app('Modules\iprofile\Repositories\FieldRepository')->find($id);
     });

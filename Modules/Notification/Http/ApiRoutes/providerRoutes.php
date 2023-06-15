@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => '/providers'], function (Router $router) {
+Route::group(['prefix' => '/providers'], function (Router $router) {
   
   //Route create
   $router->post('/', [

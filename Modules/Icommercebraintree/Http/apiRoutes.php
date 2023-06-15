@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'icommercebraintree'], function (Router $router) {
+Route::group(['prefix' => 'icommercebraintree'], function (Router $router) {
     
     $router->get('/', [
         'as' => 'icommercebraintree.api.braintree.init',

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 
-$router->group(['prefix' => 'ipin/v1'], function (Router $router) {
+Route::group(['prefix' => 'ipin/v1'], function (Router $router) {
   //======  ADS
   require('ApiRoutes/adsRoutes.php');
 

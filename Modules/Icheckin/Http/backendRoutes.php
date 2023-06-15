@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/icheckin'], function (Router $router) {
+Route::group(['prefix' =>'/icheckin'], function (Router $router) {
     $router->bind('job', function ($id) {
         return app('Modules\Icheckin\Repositories\JobRepository')->find($id);
     });

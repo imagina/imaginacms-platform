@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(
+Route::group(
     ['prefix' => '/workshop'],
     function (Router $router) {
         $router->get('modules', [

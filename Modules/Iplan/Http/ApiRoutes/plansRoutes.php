@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'plans'], function (Router $router) {
+Route::group(['prefix' => 'plans'], function (Router $router) {
   
   $router->get('/modules', [
     'as' => 'api.iplan.plans.modules',

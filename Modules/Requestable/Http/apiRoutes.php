@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/requestable/v1'], function (Router $router) {
+Route::group(['prefix' => '/requestable/v1'], function (Router $router) {
   
   $router->apiCrud([
     'module' => 'requestable',

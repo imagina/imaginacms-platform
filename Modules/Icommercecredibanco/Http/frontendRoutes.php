@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-    $router->group(['prefix'=>'icommercecredibanco'],function (Router $router){
+    Route::group(['prefix'=>'icommercecredibanco'],function (Router $router){
         $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
     

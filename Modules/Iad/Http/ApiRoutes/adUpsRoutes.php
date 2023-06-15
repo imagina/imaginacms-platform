@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'pin-ups'], function (Router $router) {
+Route::group(['prefix' => 'pin-ups'], function (Router $router) {
 
   $router->get('/', [
     'as' => 'api.iad.ad-ups.index',

@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'limits'], function (Router $router) {
+Route::group(['prefix' => 'limits'], function (Router $router) {
 
   $router->get('/entities', [
     'as' => 'api.iplan.limits.entities',

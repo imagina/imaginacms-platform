@@ -3,8 +3,8 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
-    $router->group(['prefix' => 'roles'], function (Router $router) {
+Route::group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
+    Route::group(['prefix' => 'roles'], function (Router $router) {
         $router->get('/', [
             'as' => 'api.user.role.index',
             'uses' => 'RoleController@index',
@@ -42,7 +42,7 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         ]);
     });
 
-    $router->group(['prefix' => 'users'], function (Router $router) {
+    Route::group(['prefix' => 'users'], function (Router $router) {
         $router->get('/', [
             'as' => 'api.user.user.index',
             'uses' => 'UserController@index',
@@ -80,7 +80,7 @@ $router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']
         ]);
     });
 
-    $router->group(['prefix' => '/account'], function (Router $router) {
+    Route::group(['prefix' => '/account'], function (Router $router) {
         $router->get('profile', [
             'as' => 'api.account.profile.find-current-user',
             'uses' => 'ProfileController@findCurrentUser',

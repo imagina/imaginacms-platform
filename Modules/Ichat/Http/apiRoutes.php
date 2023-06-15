@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/ichat/v1'], function (Router $router) {
+Route::group(['prefix' => '/ichat/v1'], function (Router $router) {
   // Conversation
   require('ApiRoutes/conversationsRoutes.php');
 

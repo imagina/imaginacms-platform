@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'documents'], function (Router $router) {
+Route::group(['prefix' => 'documents'], function (Router $router) {
   //Route create
   $router->post('/', [
     'as' => 'api.idocs.documents.create',

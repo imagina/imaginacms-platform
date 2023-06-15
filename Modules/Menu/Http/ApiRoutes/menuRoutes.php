@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'menu'], function (Router $router) {
+Route::group(['prefix' => 'menu'], function (Router $router) {
   $router->post('/', [
     'as' => 'api.imenu.menu.create',
     //'middleware' => ['auth:api'],

@@ -4,9 +4,9 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => 'iplaces'], function (Router $router) {
+Route::group(['prefix' => 'iplaces'], function (Router $router) {
 
-    $router->group(['prefix' => 'places'], function (Router $router) {
+    Route::group(['prefix' => 'places'], function (Router $router) {
         $router->bind('place', function ($id) {
             return app('Modules\Iplaces\Repositories\PlaceRepository')->find($id);
         });
@@ -57,7 +57,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
         ]);
     });
 
-    $router->group(['prefix' => 'categories'], function (Router $router) {
+    Route::group(['prefix' => 'categories'], function (Router $router) {
         $router->bind('category', function ($id) {
             return app('Modules\Iplaces\Repositories\CategoryRepository')->find($id);
         });
@@ -93,7 +93,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
         ]);
     });
 
-    $router->group(['prefix' => 'services'], function (Router $router) {
+    Route::group(['prefix' => 'services'], function (Router $router) {
 
         $router->bind('iplacesaservice', function ($id) {
             return app('Modules\Iplaces\Repositories\ServiceRepository')->find($id);
@@ -131,7 +131,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
 
     });
 
-    $router->group(['prefix' => 'zones'], function (Router $router) {
+    Route::group(['prefix' => 'zones'], function (Router $router) {
 
         $router->bind('zone', function ($id) {
             return app('Modules\Iplaces\Repositories\ZoneRepository')->find($id);
@@ -168,7 +168,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
         ]);
     });
 
-    $router->group(['prefix' => '/schedules'], function (Router $router) {
+    Route::group(['prefix' => '/schedules'], function (Router $router) {
 
         $router->bind('schedule', function ($id) {
             return app('Modules\Iplaces\Repositories\ScheduleRepository')->find($id);
@@ -206,7 +206,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
         
     });
 
-    $router->group(['prefix' => '/spaces'], function (Router $router) {
+    Route::group(['prefix' => '/spaces'], function (Router $router) {
 
         $router->bind('space', function ($id) {
             return app('Modules\Iplaces\Repositories\SpaceRepository')->find($id);
@@ -243,7 +243,7 @@ $router->group(['prefix' => 'iplaces'], function (Router $router) {
         ]);
     
     });
-    $router->group(['prefix' => '/cities'], function (Router $router) {
+    Route::group(['prefix' => '/cities'], function (Router $router) {
         $router->bind('iplacesacity', function ($id) {
             return app('Modules\Iplaces\Repositories\CityRepository')->find($id);
         });

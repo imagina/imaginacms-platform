@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Routing\Router;
-$router->group(['prefix' => 'fields'], function (Router $router) {
+Route::group(['prefix' => 'fields'], function (Router $router) {
   $router->post('/', [
     'as' => 'api.iad.fields.create',
     'uses' => 'FieldApiController@create',

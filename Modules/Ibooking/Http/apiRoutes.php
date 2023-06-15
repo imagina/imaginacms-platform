@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/ibooking/v1'], function (Router $router) {
+Route::group(['prefix' => '/ibooking/v1'], function (Router $router) {
   $router->apiCrud([
     'module' => 'ibooking',
     'prefix' => 'categories',

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' =>'/ipoint/v1'], function (Router $router) {
+Route::group(['prefix' =>'/ipoint/v1'], function (Router $router) {
     $router->apiCrud([
       'module' => 'ipoint',
       'prefix' => 'points',

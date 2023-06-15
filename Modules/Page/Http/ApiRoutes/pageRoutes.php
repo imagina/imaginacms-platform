@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'pages'], function (Router $router) {
+Route::group(['prefix' => 'pages'], function (Router $router) {
   //Route create
   $router->post('/', [
     'as' => 'api.ipage.page.create',

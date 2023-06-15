@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/idocs'], function (Router $router) {
+Route::group(['prefix' =>'/idocs'], function (Router $router) {
     $router->bind('idocCategory', function ($id) {
         return app('Modules\Idocs\Repositories\CategoryRepository')->find($id);
     });

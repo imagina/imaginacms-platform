@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => 'entity-plans'], function (Router $router) {
+Route::group(['prefix' => 'entity-plans'], function (Router $router) {
 
   $router->post('/', [
     'as' => 'api.iplan.entityPlans.create',

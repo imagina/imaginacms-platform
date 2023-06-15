@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/icredit'], function (Router $router) {
+Route::group(['prefix' =>'/icredit'], function (Router $router) {
     $router->bind('credit', function ($id) {
         return app('Modules\Icredit\Repositories\CreditRepository')->find($id);
     });

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 
-$router->group(['prefix' => 'iplan/v1'], function (Router $router) {
+Route::group(['prefix' => 'iplan/v1'], function (Router $router) {
 
   //======  CATEGORIES
   require('ApiRoutes/categoriesRoutes.php');

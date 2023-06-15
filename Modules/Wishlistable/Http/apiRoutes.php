@@ -2,9 +2,9 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/wishlistable/v1'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::group(['prefix' => '/wishlistable/v1'/*,'middleware' => ['auth:api']*/], function (Router $router) {
   
-  $router->group(['prefix' => '/wishlist'], function (Router $router) {
+  Route::group(['prefix' => '/wishlist'], function (Router $router) {
     
     $router->post('/', [
       'as' => 'api.wishlistable.wishlist.create',

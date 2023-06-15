@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/ievent'], function (Router $router) {
+Route::group(['prefix' =>'/ievent'], function (Router $router) {
     $router->bind('category', function ($id) {
         return app('Modules\Ievent\Repositories\CategoryRepository')->find($id);
     });

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/banners'], function (Router $router) {
+Route::group(['prefix' => '/banners'], function (Router $router) {
 
   $router->post('/', [
     'as' =>  'api.ibanners.banners.create',

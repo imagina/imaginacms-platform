@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/appointment-statuses'], function (Router $router) {
+Route::group(['prefix' => '/appointment-statuses'], function (Router $router) {
 
     $router->post('/', [
         'as' => 'api.iappointment.appointmentStatuses.create',

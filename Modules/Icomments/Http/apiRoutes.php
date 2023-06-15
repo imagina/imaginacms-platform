@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' =>'/icomments/v1'], function (Router $router) {
+Route::group(['prefix' =>'/icomments/v1'], function (Router $router) {
     $router->apiCrud([
       'module' => 'icomments',
       'prefix' => 'comments',

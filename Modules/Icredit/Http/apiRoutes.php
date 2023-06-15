@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/icredit/v1'], function (Router $router) {
+Route::group(['prefix' => '/icredit/v1'], function (Router $router) {
 
    
     // Base API Routes

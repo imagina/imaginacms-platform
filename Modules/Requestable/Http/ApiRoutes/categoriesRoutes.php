@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => '/categories'], function (Router $router) {
+Route::group(['prefix' => '/categories'], function (Router $router) {
  
 
   $router->get('/{id}/form-fields', [

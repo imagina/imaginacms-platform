@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/settings'], function (Router $router) {
+Route::group(['prefix' => '/settings'], function (Router $router) {
 
   $router->post('/', [
     'uses' => 'SettingApiController@createOrUpdate',

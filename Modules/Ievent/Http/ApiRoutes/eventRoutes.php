@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/events','middleware' => ['auth:api']], function (Router $router) {
+Route::group(['prefix' => '/events','middleware' => ['auth:api']], function (Router $router) {
   $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
 
   $router->post('/', [
@@ -35,7 +35,7 @@ $router->group(['prefix' => '/events','middleware' => ['auth:api']], function (R
 
 });
 
-$router->group(['prefix' => '/events-public'], function (Router $router) {
+Route::group(['prefix' => '/events-public'], function (Router $router) {
   $router->get('/{criteria}', [
     'as' => 'api.ievent.events.show.public',
     'uses' => 'EventApiController@showPublic'

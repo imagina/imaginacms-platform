@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 
-$router->group(['prefix' => '/v2/ilocations'], function (Router $router) {
+Route::group(['prefix' => '/v2/ilocations'], function (Router $router) {
 
   require('ApiRoutes/CityRoutes.php');
   require('ApiRoutes/CountryRoutes.php');
@@ -16,7 +16,7 @@ $router->group(['prefix' => '/v2/ilocations'], function (Router $router) {
 });
 
 
-$router->group(['prefix' => '/ilocations'], function (Router $router) {
+Route::group(['prefix' => '/ilocations'], function (Router $router) {
 
   $router->get('allfullcountries', [
     'as' => 'ilocation.api.get.allfullcountries',
