@@ -79,16 +79,16 @@ if (config('asgard.icommerce.config.useOldRoutes')) {
             }
             /** @var Router $router */
             Route::prefix($category->slug)->middleware($customMiddlewares)->group(function (Router $router) use ($locale, $category) {
-                    $router->get('/', [
-                        'as' => $locale.'.icommerce.category.'.$category->slug,
-                        'uses' => 'OldPublicController@index',
-                    ]);
+                $router->get('/', [
+                    'as' => $locale.'.icommerce.category.'.$category->slug,
+                    'uses' => 'OldPublicController@index',
+                ]);
 
-                    $router->get('{slug}', [
-                        'as' => $locale.'.icommerce.'.$category->slug.'.product',
-                        'uses' => 'OldPublicController@show',
-                    ]);
-                });
+                $router->get('{slug}', [
+                    'as' => $locale.'.icommerce.'.$category->slug.'.product',
+                    'uses' => 'OldPublicController@show',
+                ]);
+            });
         }
     }
 }

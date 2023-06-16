@@ -40,9 +40,9 @@ $customMiddlewares = config('asgard.iblog.config.middlewares') ?? [];
 
 /** @var Router $router */
 Route::prefix('iblog/feed')->middleware($customMiddlewares)->group(function (Router $router) use ($locale) {
-        $router->get('{format}', [
-            'as' => $locale.'.iblog.feed.format',
-            'uses' => 'PublicController@feed',
+    $router->get('{format}', [
+        'as' => $locale.'.iblog.feed.format',
+        'uses' => 'PublicController@feed',
 
-        ]);
-    });
+    ]);
+});
