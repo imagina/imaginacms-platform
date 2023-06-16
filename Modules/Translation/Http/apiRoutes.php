@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var $router Router */
-Route::group(['prefix' => '/translation', 'middleware' => 'api.token'], function (Router $router) {
+Route::prefix('/translation')->middleware('api.token')->group(function (Router $router) {
     $router->post('update', [
         'uses' => 'TranslationController@update',
         'as' => 'api.translation.translations.update',
@@ -26,7 +26,7 @@ Route::group(['prefix' => '/translation', 'middleware' => 'api.token'], function
         'as' => 'api.translation.translations.list-locales-for-select',
     ]);
 });
-Route::group(['prefix' => '/translation/v2/translations'], function (Router $router) {
+Route::prefix('/translation/v2/translations')->group(function (Router $router) {
     /* get new routing */
     $router->get('/', [
         'uses' => 'AllTranslationApiController@index',

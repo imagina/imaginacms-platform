@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/products'], function (Router $router) {
+Route::prefix('/products')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.icommerce.products.create',
         'uses' => 'ProductApiController@create',

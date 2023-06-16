@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/rules'], function (Router $router) {
+Route::prefix('/rules')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.notification.rules.create',
         'uses' => 'RuleApiController@create',

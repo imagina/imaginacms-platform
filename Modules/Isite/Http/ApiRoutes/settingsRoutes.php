@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/settings'], function (Router $router) {
+Route::prefix('/settings')->group(function (Router $router) {
     $router->post('/', [
         'uses' => 'SettingApiController@createOrUpdate',
         'middleware' => ['auth:api'],

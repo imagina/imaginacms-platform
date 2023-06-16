@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/icommercepricelist/v3', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/icommercepricelist/v3')->middleware('auth:api')->group(function (Router $router) {
     //======  PRICE LISTS
     require 'ApiRoutes/priceListRoutes.php';
 

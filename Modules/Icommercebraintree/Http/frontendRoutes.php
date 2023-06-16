@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercebraintree'], function (Router $router) {
+Route::prefix('icommercebraintree')->group(function (Router $router) {
     $router->get('/{eUrl}', [
         'as' => 'icommercebraintree',
         'uses' => 'PublicController@index',

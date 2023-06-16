@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/cities'], function (Router $router) {
+Route::prefix('/cities')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.ilocations.cities.create',

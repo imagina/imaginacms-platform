@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'plans'], function (Router $router) {
+Route::prefix('plans')->group(function (Router $router) {
     $router->get('/modules', [
         'as' => 'api.iplan.plans.modules',
         'uses' => 'PlanController@modules',

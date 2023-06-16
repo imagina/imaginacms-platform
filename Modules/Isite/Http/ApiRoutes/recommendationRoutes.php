@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/recommendations', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/recommendations')->middleware('auth:api')->group(function (Router $router) {
     $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
 
     $router->post('/', [

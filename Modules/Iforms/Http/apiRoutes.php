@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'iform/v4'], function (Router $router) {
+Route::prefix('iform/v4')->group(function (Router $router) {
     require 'ApiRoutes/formRoutes.php';
 
     require 'ApiRoutes/fieldRoutes.php';

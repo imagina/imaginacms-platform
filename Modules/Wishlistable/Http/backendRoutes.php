@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/wishlistable'], function (Router $router) {
+Route::prefix('/wishlistable')->group(function (Router $router) {
     $router->bind('wishlistable', function ($id) {
         return app('Modules\Wishlistable\Repositories\WishlistableRepository')->find($id);
     });

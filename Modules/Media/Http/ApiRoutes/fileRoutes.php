@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/files', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/files')->middleware('auth:api')->group(function (Router $router) {
     $router->bind('file', function ($id) {
         return app(\Modules\Media\Repositories\FileRepository::class)->find($id);
     });

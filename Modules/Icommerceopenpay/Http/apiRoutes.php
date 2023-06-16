@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommerceopenpay/v1'], function (Router $router) {
+Route::prefix('icommerceopenpay/v1')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'icommerceopenpay.api.openpay.init',
         'uses' => 'IcommerceOpenpayApiController@init',

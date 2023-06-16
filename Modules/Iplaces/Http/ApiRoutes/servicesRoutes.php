@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'services'], function (Router $router) {
+Route::prefix('services')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iplaces.services.create',
         'uses' => 'ServiceController@create',

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/imeeting/v1'], function (Router $router) {
+Route::prefix('/imeeting/v1')->group(function (Router $router) {
     $router->apiCrud([
         'module' => 'imeeting',
         'prefix' => 'meetings',

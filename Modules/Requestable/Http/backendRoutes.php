@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/requestable'], function (Router $router) {
+Route::prefix('/requestable')->group(function (Router $router) {
     $router->bind('requestable', function ($id) {
         return app('Modules\Requestable\Repositories\RequestableRepository')->find($id);
     });

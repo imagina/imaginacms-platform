@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/categories'], function (Router $router) {
+Route::prefix('/categories')->group(function (Router $router) {
     $router->get('/{id}/form-fields', [
         'as' => 'categories.form.fields',
         'uses' => 'CategoryApiController@getFormFields',

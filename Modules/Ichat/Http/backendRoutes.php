@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/ichat'], function (Router $router) {
+Route::prefix('/ichat')->group(function (Router $router) {
     $router->bind('message', function ($id) {
         return app('Modules\Ichat\Repositories\MessageRepository')->find($id);
     });

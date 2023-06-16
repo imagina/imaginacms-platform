@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['middleware' => 'api.token'], function (Router $router) {
+Route::middleware('api.token')->group(function (Router $router) {
     $router->get('folder', [
         'uses' => 'AllNestableFolderController',
         'as' => 'api.media.folders.all-nestable',
@@ -100,7 +100,7 @@ Route::group(['middleware' => 'api.token'], function (Router $router) {
 /**
  * IMAGINA API V1 ROUTES
  */
-Route::group(['prefix' => '/imedia/v1'], function (Router $router) {
+Route::prefix('/imedia/v1')->group(function (Router $router) {
     //======  FILES
     require 'ApiRoutes/fileRoutes.php';
 

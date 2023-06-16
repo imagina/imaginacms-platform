@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'pins'], function (Router $router) {
+Route::prefix('pins')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iad.ads.create',
         'uses' => 'AdApiController@create',

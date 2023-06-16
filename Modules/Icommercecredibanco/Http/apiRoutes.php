@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercecredibanco'], function (Router $router) {
+Route::prefix('icommercecredibanco')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'icommercecredibanco.api.credibanco.init',
         'uses' => 'IcommerceCredibancoApiController@init',

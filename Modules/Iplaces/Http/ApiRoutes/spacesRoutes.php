@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'spaces'], function (Router $router) {
+Route::prefix('spaces')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iplaces.spaces.create',
         'uses' => 'SpaceController@create',

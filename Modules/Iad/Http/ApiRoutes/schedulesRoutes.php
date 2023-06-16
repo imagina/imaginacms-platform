@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'schedules'], function (Router $router) {
+Route::prefix('schedules')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iad.schedules.create',
         'uses' => 'ScheduleApiController@create',

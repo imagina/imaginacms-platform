@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/icredit/v1'], function (Router $router) {
+Route::prefix('/icredit/v1')->group(function (Router $router) {
     // Base API Routes
     $router->apiCrud([
         'module' => 'icredit',

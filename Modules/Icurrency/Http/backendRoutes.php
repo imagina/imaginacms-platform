@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/icurrency'], function (Router $router) {
+Route::prefix('/icurrency')->group(function (Router $router) {
     $router->bind('currency', function ($id) {
         return app('Modules\Icurrency\Repositories\CurrencyRepository')->find($id);
     });

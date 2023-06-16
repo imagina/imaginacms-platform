@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/iappointment/v1'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::prefix('/iappointment/v1')->group(function (Router $router) {
     //======  CATEGORIES
     require 'ApiRoutes/categoryRoutes.php';
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/product-lists'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::prefix('/product-lists')->group(function (Router $router) {
     $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
     $router->post('/', [
         'as' => $locale.'api.icommercepricelist.product-lists.create',

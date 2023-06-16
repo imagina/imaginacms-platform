@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'categories'], function (Router $router) {
+Route::prefix('categories')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.idocs.category.create',

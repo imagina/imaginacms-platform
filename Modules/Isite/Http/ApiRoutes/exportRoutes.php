@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/export'], function (Router $router) {
+Route::prefix('/export')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'api.isite.export.get',
         'uses' => 'ExportApiController@show',

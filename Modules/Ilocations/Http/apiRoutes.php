@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/v2/ilocations'], function (Router $router) {
+Route::prefix('/v2/ilocations')->group(function (Router $router) {
     require 'ApiRoutes/CityRoutes.php';
     require 'ApiRoutes/CountryRoutes.php';
     require 'ApiRoutes/ProvinceRoutes.php';
@@ -12,7 +12,7 @@ Route::group(['prefix' => '/v2/ilocations'], function (Router $router) {
     require 'ApiRoutes/LocalityRoutes.php';
 });
 
-Route::group(['prefix' => '/ilocations'], function (Router $router) {
+Route::prefix('/ilocations')->group(function (Router $router) {
     $router->get('allfullcountries', [
         'as' => 'ilocation.api.get.allfullcountries',
         'uses' => 'CountryController@allFullCountries',

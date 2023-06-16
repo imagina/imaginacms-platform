@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/requests'], function (Router $router) {
+Route::prefix('/requests')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'ichecking.requests.create',

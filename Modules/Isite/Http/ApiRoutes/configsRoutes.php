@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/configs'], function (Router $router) {
+Route::prefix('/configs')->group(function (Router $router) {
     $router->get('/', [
         'uses' => 'ConfigsApiController@index',
     ]);

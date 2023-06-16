@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => 'ipay'], function (Router $router) {
+Route::prefix('ipay')->group(function (Router $router) {
     $router->get('all', [
         'as' => 'ipay.all',
         'uses' => 'PublicController@getAll',

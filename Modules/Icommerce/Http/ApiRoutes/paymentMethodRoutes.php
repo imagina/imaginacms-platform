@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/payment-methods'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::prefix('/payment-methods')->group(function (Router $router) {
     $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
 
     $router->post('/', [

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /*=== AUTH ===*/
-Route::group(['prefix' => '/auth'], function (Router $router) {
+Route::prefix('/auth')->group(function (Router $router) {
     $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
     $router->post('register', [
         'as' => $locale.'api.auth.register',

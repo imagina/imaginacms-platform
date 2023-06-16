@@ -3,6 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/icustom'], function (Router $router) {
+Route::prefix('/icustom')->group(function (Router $router) {
     //\CRUD::resource('icustom','article', 'ArticleController');
 });

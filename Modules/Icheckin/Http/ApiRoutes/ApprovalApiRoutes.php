@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/approvals', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/approvals')->middleware('auth:api')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'ichecking.approvals.create',

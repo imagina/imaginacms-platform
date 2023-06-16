@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'zones'], function (Router $router) {
+Route::prefix('zones')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iplaces.zones.create',
         'uses' => 'ZoneController@create',

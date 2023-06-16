@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/provider/conversations'], function (Router $router) {
+Route::prefix('/provider/conversations')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.ichat.provider.manage',
         'uses' => 'ProviderApiController@create',
@@ -10,7 +10,7 @@ Route::group(['prefix' => '/provider/conversations'], function (Router $router) 
     ]);
 });
 
-Route::group(['prefix' => '/provider/{providerName}'], function (Router $router) {
+Route::prefix('/provider/{providerName}')->group(function (Router $router) {
     $router->get('/webhook', [
         'as' => 'api.ichat.provider.validate.webhook',
         'uses' => 'ProviderApiController@validateWebhook',

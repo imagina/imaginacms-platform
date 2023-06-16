@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/statuses'], function (Router $router) {
+Route::prefix('/statuses')->group(function (Router $router) {
     $router->post('/order-status', [
         'as' => 'statuses.order.status',
         'uses' => 'StatusApiController@updateOrderStatus',

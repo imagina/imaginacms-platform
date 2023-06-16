@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/providers'], function (Router $router) {
+Route::prefix('/providers')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.notification.create',

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercecredibanco'], function (Router $router) {
+Route::prefix('icommercecredibanco')->group(function (Router $router) {
     $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
     $router->get('voucher/order/{id}/{tid?}', [

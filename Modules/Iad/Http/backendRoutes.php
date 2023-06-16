@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/iad'], function (Router $router) {
+Route::prefix('/iad')->group(function (Router $router) {
     $router->bind('category', function ($id) {
         return app('Modules\Iad\Repositories\CategoryRepository')->find($id);
     });

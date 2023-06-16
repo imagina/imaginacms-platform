@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercewompi'], function (Router $router) {
+Route::prefix('icommercewompi')->group(function (Router $router) {
     $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
     $router->get('/{eUrl}', [

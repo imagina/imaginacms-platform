@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'iplaces/v1'], function (Router $router) {
+Route::prefix('iplaces/v1')->group(function (Router $router) {
     //======  PLACES
     require 'ApiRoutes/placesRoutes.php';
 

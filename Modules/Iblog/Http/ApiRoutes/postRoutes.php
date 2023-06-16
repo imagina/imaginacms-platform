@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'posts'], function (Router $router) {
+Route::prefix('posts')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.iblog.post.create',

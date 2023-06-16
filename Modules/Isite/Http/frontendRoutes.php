@@ -23,7 +23,7 @@ $middlewares = [];
   $middlewares = [];
 
 /** @var Router $router */
-Route::group(['prefix' => LaravelLocalization::setLocale()], function (Router $router) use ($locale) {
+Route::prefix(LaravelLocalization::setLocale())->group(function (Router $router) use ($locale) {
     $router->get(trans('isite::routes.organizations.index.index'), [
         'as' => $locale.'.isite.organizations.index',
         'uses' => 'PublicController@index',

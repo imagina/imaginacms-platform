@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/polygons'], function (Router $router) {
+Route::prefix('/polygons')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.ilocations.polygons.create',

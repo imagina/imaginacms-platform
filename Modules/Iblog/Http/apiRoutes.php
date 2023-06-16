@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'iblog/v1'], function (Router $router) {
+Route::prefix('iblog/v1')->group(function (Router $router) {
     //======  CATEGORIES
     require 'ApiRoutes/categoryRoutes.php';
 

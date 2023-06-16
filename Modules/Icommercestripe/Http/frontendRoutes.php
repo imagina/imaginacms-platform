@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercestripe'], function (Router $router) {
+Route::prefix('icommercestripe')->group(function (Router $router) {
     $router->get('/{eUrl}', [
         'as' => 'icommercestripe',
         'uses' => 'PublicController@index',

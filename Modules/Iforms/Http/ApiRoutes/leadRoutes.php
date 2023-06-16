@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'leads'], function (Router $router) {
+Route::prefix('leads')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.iforms.leads.create',

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'subscription-limits'], function (Router $router) {
+Route::prefix('subscription-limits')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iplan.subscriptionlimits.create',
         'uses' => 'SubscriptionLimitController@create',

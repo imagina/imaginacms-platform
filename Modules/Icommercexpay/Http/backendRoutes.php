@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/icommercexpay'], function (Router $router) {
+Route::prefix('/icommercexpay')->group(function (Router $router) {
     $router->bind('icommercexpay', function ($id) {
         return app('Modules\Icommercexpay\Repositories\IcommerceXpayRepository')->find($id);
     });

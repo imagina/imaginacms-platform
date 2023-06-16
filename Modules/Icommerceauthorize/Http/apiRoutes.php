@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommerceauthorize/v1'], function (Router $router) {
+Route::prefix('icommerceauthorize/v1')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'icommerceauthorize.api.authorize.init',
         'uses' => 'IcommerceAuthorizeApiController@init',

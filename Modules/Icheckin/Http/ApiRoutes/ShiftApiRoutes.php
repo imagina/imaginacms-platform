@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/shifts', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/shifts')->middleware('auth:api')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'ichecking.shifts.create',

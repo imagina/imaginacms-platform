@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/geozones'], function (Router $router) {
+Route::prefix('/geozones')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.ilocations.geozones.create',

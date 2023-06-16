@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'subscriptions'], function (Router $router) {
+Route::prefix('subscriptions')->group(function (Router $router) {
     $router->get('/entities', [
         'as' => 'api.iplan.subscriptions.entities',
         'uses' => 'SubscriptionController@entities',

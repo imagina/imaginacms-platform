@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'blocks'], function (Router $router) {
+Route::prefix('blocks')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.iforms.blocks.create',

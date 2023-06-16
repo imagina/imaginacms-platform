@@ -3,8 +3,8 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => 'ipay'], function (Router $router) {
-    Route::group(['prefix' => 'pay'], function (Router $router) {
+Route::prefix('ipay')->group(function (Router $router) {
+    Route::prefix('pay')->group(function (Router $router) {
         $router->bind('config', function ($id) {
             return app('Modules\Ipay\Repositories\ConfigRepository')->find($id);
         });

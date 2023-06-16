@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/ibuilder/v1'], function (Router $router) {
+Route::prefix('/ibuilder/v1')->group(function (Router $router) {
     $router->apiCrud([
         'module' => 'ibuilder',
         'prefix' => 'blocks',

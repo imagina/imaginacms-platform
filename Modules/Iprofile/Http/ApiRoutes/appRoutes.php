@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/app', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/app')->middleware('auth:api')->group(function (Router $router) {
     $router->get('/version', [
         'as' => 'api.iprofile.app.version',
         'uses' => 'AppApiController@version',

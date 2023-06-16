@@ -8,7 +8,7 @@ $router->post('notification/mark-read',
         'uses' => 'NotificationsController@markAsRead',
     ]);
 
-Route::group(['prefix' => '/notification/v1'], function (Router $router) {
+Route::prefix('/notification/v1')->group(function (Router $router) {
     //====== Notifications
     require_once 'ApiRoutes/notificationRoutes.php';
 

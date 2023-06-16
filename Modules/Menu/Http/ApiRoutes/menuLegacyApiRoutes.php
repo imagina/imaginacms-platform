@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/menuitem', 'middleware' => 'api.token'], function (Router $router) {
+Route::prefix('/menuitem')->middleware('api.token')->group(function (Router $router) {
     $router->post('/update', [
         'as' => 'api.imenuitem.update',
         'uses' => 'MenuItemApiController@update',

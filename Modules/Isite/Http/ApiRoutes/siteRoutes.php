@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/site'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::prefix('/site')->group(function (Router $router) {
     $router->get('/version', [
         'as' => 'api.isite.version',
         'uses' => 'SiteApiController@version',
@@ -23,7 +23,7 @@ Route::group(['prefix' => '/site'/*,'middleware' => ['auth:api']*/], function (R
     ]);
 
     //Tenant Routes
-    Route::group(['prefix' => '/tenant'], function (Router $router) {
+    Route::prefix('/tenant')->group(function (Router $router) {
         $router->post('/', [
             'as' => 'api.isite.create',
             'uses' => 'SiteApiController@create',

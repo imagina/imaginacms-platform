@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/providers'], function (Router $router) {
+Route::prefix('/providers')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iappointment.providers.create',
         'uses' => 'ProviderApiController@create',

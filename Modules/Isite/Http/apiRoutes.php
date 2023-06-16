@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/isite/v1'], function (Router $router) {
+Route::prefix('/isite/v1')->group(function (Router $router) {
     //======  SETTINGS
     require 'ApiRoutes/settingsRoutes.php';
     //======  APP

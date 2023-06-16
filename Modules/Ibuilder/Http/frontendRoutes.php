@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/ibuilder'], function (Router $router) {
+Route::prefix('/ibuilder')->group(function (Router $router) {
     $router->get('/block/preview', [
         'as' => 'ibuilder.blocks.preview',
         'uses' => 'PublicController@blockPreview',

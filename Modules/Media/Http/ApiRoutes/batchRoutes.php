@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/batchs', 'middleware' => ['auth:api']], function (Router $router) {
+Route::prefix('/batchs')->middleware('auth:api')->group(function (Router $router) {
     $router->post('/move', [
         'as' => 'api.imedia.batchs.move',
         'uses' => 'NewApi\BatchApiController@move',

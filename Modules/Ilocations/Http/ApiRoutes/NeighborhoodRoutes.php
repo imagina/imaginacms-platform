@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/neighborhoods'], function (Router $router) {
+Route::prefix('/neighborhoods')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.ilocations.neighborhoods.create',

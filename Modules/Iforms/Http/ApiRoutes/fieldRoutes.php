@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'fields'], function (Router $router) {
+Route::prefix('fields')->group(function (Router $router) {
     //Route create
     $router->post('/', [
         'as' => 'api.iforms.fields.create',

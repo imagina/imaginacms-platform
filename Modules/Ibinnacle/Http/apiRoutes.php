@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/ibinnacle/v1'], function (Router $router) {
+Route::prefix('/ibinnacle/v1')->group(function (Router $router) {
     $router->apiCrud([
         'module' => 'ibinnacle',
         'prefix' => 'binnacles',

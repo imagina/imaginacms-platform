@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'ups'], function (Router $router) {
+Route::prefix('ups')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iad.ups.create',
         'uses' => 'UpApiController@create',

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/setting'], function (Router $router) {
+Route::prefix('/setting')->group(function (Router $router) {
     $router->get('settings/{module}', [
         'as' => 'dashboard.module.settings',
         'uses' => 'SettingController@getModuleSettings',

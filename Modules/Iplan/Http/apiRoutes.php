@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'iplan/v1'], function (Router $router) {
+Route::prefix('iplan/v1')->group(function (Router $router) {
     //======  CATEGORIES
     require 'ApiRoutes/categoriesRoutes.php';
     //======  PLANS

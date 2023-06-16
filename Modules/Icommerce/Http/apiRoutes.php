@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/icommerce/v3'/*,'middleware' => ['auth:api']*/], function (Router $router) {
+Route::prefix('/icommerce/v3')->group(function (Router $router) {
     //======  CATEGORIES
     require 'ApiRoutes/categoryRoutes.php';
 

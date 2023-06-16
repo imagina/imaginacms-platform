@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/positions'], function (Router $router) {
+Route::prefix('/positions')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.ibanners.positions.create',
         'uses' => 'PositionApiController@create',
