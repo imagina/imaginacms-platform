@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSessionIdInCartTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddSessionIdInCartTable extends Migration
     public function up()
     {
         Schema::table('icommerce__carts', function (Blueprint $table) {
-          $table->string('session_id')->nullable();
+            $table->string('session_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddSessionIdInCartTable extends Migration
     public function down()
     {
         Schema::table('icommerce__carts', function (Blueprint $table) {
-          $table->dropColumn('session_id');
+            $table->dropColumn('session_id');
         });
     }
 }

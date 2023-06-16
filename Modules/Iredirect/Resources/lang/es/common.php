@@ -11,10 +11,10 @@ return [
     'form' => [
     ],
     'messages' => [
-        'from is required'=>'La ruta de origen es requeride',
-        'from min 2'=>'La ruta de origen debe contener mínimo dos caracteres',
-        'to is required'=>'La ruta de destino es requerida',
-        'to min 2'=>'La ruta de destino debe contener mínimo dos caracteres',
+        'from is required' => 'La ruta de origen es requeride',
+        'from min 2' => 'La ruta de origen debe contener mínimo dos caracteres',
+        'to is required' => 'La ruta de destino es requerida',
+        'to min 2' => 'La ruta de destino debe contener mínimo dos caracteres',
     ],
     'validation' => [
     ],
@@ -26,14 +26,14 @@ return [
     'categories' => 'Categorías',
 
     'title' => 'Título',
-    'slug'=>'Enlace permanente:',
+    'slug' => 'Enlace permanente:',
     'description' => 'Descripción',
-    'metatitle' =>'Meta Título',
-    'metadescription' =>'Meta Descripción',
+    'metatitle' => 'Meta Título',
+    'metadescription' => 'Meta Descripción',
 
-    'date'      =>  'Fecha y hora',
-    'optional'  =>  '(Opcional)',
-    
+    'date' => 'Fecha y hora',
+    'optional' => '(Opcional)',
+
     'summary' => 'Sumario',
     'content' => 'Content',
 
@@ -44,7 +44,5 @@ return [
     'admin_notes' => 'Notas de Administración',
     'created_at' => 'Fecha de Creación',
     'parent' => 'Superior',
-
-
 
 ];

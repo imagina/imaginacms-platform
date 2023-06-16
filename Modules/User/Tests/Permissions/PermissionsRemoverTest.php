@@ -13,6 +13,7 @@ class PermissionsRemoverTest extends BaseUserTestCase
      * @var RoleRepository
      */
     private $role;
+
     /**
      * @var UserRepository
      */
@@ -24,11 +25,11 @@ class PermissionsRemoverTest extends BaseUserTestCase
         $this->role = app(RoleRepository::class);
         $this->user = app(UserRepository::class);
 
-        $this->role->create(['name' => 'Admin', 'slug' => 'admin', 'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true,]]);
+        $this->role->create(['name' => 'Admin', 'slug' => 'admin', 'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true]]);
         $this->user->create([
             'email' => 'n.widart@gmail.com',
             'password' => 'demo1234',
-            'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true,],
+            'permissions' => ['dashboard.index' => true, 'user.users.index' => true, 'user.users.create' => true],
         ]);
         $this->app->config->set('asgard.user.permissions', [
             'user.users' => [

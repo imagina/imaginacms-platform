@@ -14,6 +14,7 @@ class Currency extends Model
     public $translatedAttributes = [
         'name',
     ];
+
     protected $fillable = [
         'code',
         'symbol_left',
@@ -28,7 +29,7 @@ class Currency extends Model
     protected $fakeColumns = ['options'];
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
 
     /* Query Scopes */
@@ -44,12 +45,11 @@ class Currency extends Model
 
     public function scopeCurrencyCode($query, $currency)
     {
-      return $query->where('code', strtoupper($currency))->first();
+        return $query->where('code', strtoupper($currency))->first();
     }
 
     public function scopeActivedCurrencies($query)
     {
         return $query->where('status', 1)->get();
     }
-
 }

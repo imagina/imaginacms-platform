@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIprofileSettingsTable extends Migration
 {
@@ -16,14 +16,14 @@ class CreateIprofileSettingsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your fields
-  
-          $table->integer('related_id')->unsigned();
-          $table->string('entity_name');
 
-          $table->string('name')->nullable();
-          $table->text('value')->nullable();
-          $table->string('type')->nullable();
-          
+            $table->integer('related_id')->unsigned();
+            $table->string('entity_name');
+
+            $table->string('name')->nullable();
+            $table->text('value')->nullable();
+            $table->string('type')->nullable();
+
             $table->timestamps();
         });
     }

@@ -2,16 +2,17 @@
 
 namespace Modules\Icommercefreeshipping\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercefreeshipping\Events\Handlers\RegisterIcommercefreeshippingSidebar;
-use Illuminate\Support\Arr;
 
 class IcommercefreeshippingServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercefreeshippings', Arr::dot(trans('icommercefreeshipping::icommercefreeshippings')));
             // append translations
-
         });
     }
 
@@ -51,7 +51,7 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -68,7 +68,6 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
                 return new \Modules\Icommercefreeshipping\Repositories\Cache\CacheIcommerceFreeshippingDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\RevisionRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Isite\Repositories\RevisionRepository;
 
 class CacheRevisionDecorator extends BaseCacheCrudDecorator implements RevisionRepository
 {

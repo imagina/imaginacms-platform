@@ -9,6 +9,6 @@ return [
         'destroy' => 'ifillable::fields.destroy resource',
         'restore' => 'ifillable::fields.restore resource',
     ],
-// append
+    // append
 
 ];

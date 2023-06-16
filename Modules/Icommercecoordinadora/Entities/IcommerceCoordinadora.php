@@ -10,6 +10,8 @@ class IcommerceCoordinadora extends Model
     use Translatable;
 
     protected $table = 'icommercecoordinadora__icommercecoordinadoras';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

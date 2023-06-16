@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ifollow')->group(function() {
+Route::prefix('ifollow')->group(function () {
     Route::get('/', 'IfollowController@index');
 });

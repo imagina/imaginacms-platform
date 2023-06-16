@@ -33,9 +33,9 @@ class UpdateDocumentRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('idocs::common.messages.title is required'),
-            'title.min:2'=> trans('idocs::common.messages.title min 2 '),
+            'title.min:2' => trans('idocs::common.messages.title min 2 '),
             'description.required' => trans('idocs::common.messages.description is required'),
-            'description.min:2'=> trans('idocs::common.messages.description min 2 '),
+            'description.min:2' => trans('idocs::common.messages.description min 2 '),
         ];
     }
 }

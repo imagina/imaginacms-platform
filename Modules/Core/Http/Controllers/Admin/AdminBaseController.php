@@ -13,10 +13,12 @@ class AdminBaseController extends Controller
      * @var AssetManager
      */
     protected $assetManager;
+
     /**
      * @var AssetPipeline
      */
     protected $assetPipeline;
+
     /**
      * @var AssetTypeFactory
      */

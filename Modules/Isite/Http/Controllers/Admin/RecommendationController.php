@@ -2,13 +2,12 @@
 
 namespace Modules\Isite\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Isite\Entities\Recommendation;
 use Modules\Isite\Http\Requests\CreateRecommendationRequest;
 use Modules\Isite\Http\Requests\UpdateRecommendationRequest;
 use Modules\Isite\Repositories\RecommendationRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RecommendationController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class RecommendationController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRecommendationRequest $request
      * @return Response
      */
     public function store(CreateRecommendationRequest $request)
@@ -63,7 +61,6 @@ class RecommendationController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Recommendation $recommendation
      * @return Response
      */
     public function edit(Recommendation $recommendation)
@@ -74,8 +71,6 @@ class RecommendationController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Recommendation $recommendation
-     * @param  UpdateRecommendationRequest $request
      * @return Response
      */
     public function update(Recommendation $recommendation, UpdateRecommendationRequest $request)
@@ -89,7 +84,6 @@ class RecommendationController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Recommendation $recommendation
      * @return Response
      */
     public function destroy(Recommendation $recommendation)

@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Icredit\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
@@ -45,4 +46,3 @@ class CreditRequest extends BaseFormRequest
         ];
     }
 }
-

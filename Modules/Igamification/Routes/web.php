@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('igamification')->group(function() {
+Route::prefix('igamification')->group(function () {
     Route::get('/', 'IgamificationController@index');
 });

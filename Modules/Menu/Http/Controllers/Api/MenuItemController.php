@@ -15,10 +15,12 @@ class MenuItemController extends Controller
      * @var Repository
      */
     private $cache;
+
     /**
      * @var MenuOrdener
      */
     private $menuOrdener;
+
     /**
      * @var MenuItemRepository
      */
@@ -33,7 +35,6 @@ class MenuItemController extends Controller
 
     /**
      * Update all menu items
-     * @param Request $request
      */
     public function update(Request $request)
     {
@@ -44,7 +45,7 @@ class MenuItemController extends Controller
 
     /**
      * Delete a menu item
-     * @param Request $request
+     *
      * @return mixed
      */
     public function delete(Request $request)

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcommerceShippingMethodGeozonesTable extends Migration
 {
@@ -19,10 +19,10 @@ class CreateIcommerceShippingMethodGeozonesTable extends Migration
 
             $table->integer('shipping_method_id')->unsigned();
             $table->foreign('shipping_method_id')->references('id')->on('icommerce__shipping_methods')->onDelete('restrict');
-      
+
             $table->integer('geozone_id')->unsigned();
             $table->foreign('geozone_id')->references('id')->on('ilocations__geozones')->onDelete('restrict');
-            
+
             $table->timestamps();
         });
     }

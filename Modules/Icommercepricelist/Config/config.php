@@ -7,11 +7,11 @@ return [
      * use **onlyShowInTheDropdownHeader** (boolean) if you want the link only appear in the dropdown in the header
      * use **onlyShowInTheMenuOfTheIndexProfilePage** (boolean) if you want the link only appear in the dropdown in the header
      */
-    "userMenuLinks" => [
+    'userMenuLinks' => [
         [
-            "title" => "icommercepricelist::pricelists.title.pricelists",
-            "routeName" => "icommercepricelist.pricelists.index",
-            "icon" => "fa fa-list",
+            'title' => 'icommercepricelist::pricelists.title.pricelists',
+            'routeName' => 'icommercepricelist.pricelists.index',
+            'icon' => 'fa fa-list',
         ],
     ],
 ];

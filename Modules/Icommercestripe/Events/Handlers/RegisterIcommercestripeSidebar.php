@@ -16,8 +16,6 @@ class RegisterIcommercestripeSidebar implements \Maatwebsite\Sidebar\SidebarExte
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIcommercestripeSidebar implements \Maatwebsite\Sidebar\SidebarExte
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIcommercestripeSidebar implements \Maatwebsite\Sidebar\SidebarExte
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercestripe::icommercestripes.title.icommercestripes'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterIcommercestripeSidebar implements \Maatwebsite\Sidebar\SidebarExte
                         $this->auth->hasAccess('icommercestripe.icommercestripes.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

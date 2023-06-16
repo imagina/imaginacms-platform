@@ -2,8 +2,8 @@
 
 namespace Modules\Ibinnacle\Repositories\Cache;
 
-use Modules\Ibinnacle\Repositories\BinnacleRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ibinnacle\Repositories\BinnacleRepository;
 
 class CacheBinnacleDecorator extends BaseCacheCrudDecorator implements BinnacleRepository
 {

@@ -7,6 +7,6 @@ return [
         'edit' => 'wishlistable::wishlistables.edit resource',
         'destroy' => 'wishlistable::wishlistables.destroy resource',
     ],
-// append
+    // append
 
 ];

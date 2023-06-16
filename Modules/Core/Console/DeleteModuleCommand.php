@@ -23,6 +23,7 @@ class DeleteModuleCommand extends Command
      * @var string
      */
     protected $description = 'Delete a module and optionally its migrations';
+
     /**
      * @var Filesystem
      */
@@ -54,7 +55,7 @@ class DeleteModuleCommand extends Command
             return;
         }
 
-        $modulePath = config('modules.paths.modules') . '/' . $module;
+        $modulePath = config('modules.paths.modules').'/'.$module;
 
         if ($this->finder->exists($modulePath) === false) {
             $this->error('This module does not exist');

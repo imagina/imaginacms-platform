@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('iwhmcs')->group(function() {
+Route::prefix('iwhmcs')->group(function () {
     Route::get('/', 'IwhmcsController@index');
 });

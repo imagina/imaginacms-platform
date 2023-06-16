@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeTitleAndDescriptionInBlockTranslationTable extends Migration
 {
@@ -13,11 +13,10 @@ class ChangeTitleAndDescriptionInBlockTranslationTable extends Migration
      */
     public function up()
     {
-      Schema::table('iforms__block_translations', function (Blueprint $table) {
-
-        $table->string('title')->nullable()->change();
-        $table->text('description')->nullable()->change();
-    });
+        Schema::table('iforms__block_translations', function (Blueprint $table) {
+            $table->string('title')->nullable()->change();
+            $table->text('description')->nullable()->change();
+        });
     }
 
     /**

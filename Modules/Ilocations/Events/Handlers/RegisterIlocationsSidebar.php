@@ -16,8 +16,6 @@ class RegisterIlocationsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIlocationsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)

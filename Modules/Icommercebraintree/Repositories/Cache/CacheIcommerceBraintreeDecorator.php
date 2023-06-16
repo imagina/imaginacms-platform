@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercebraintree\Repositories\Cache;
 
-use Modules\Icommercebraintree\Repositories\IcommerceBraintreeRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercebraintree\Repositories\IcommerceBraintreeRepository;
 
 class CacheIcommerceBraintreeDecorator extends BaseCacheDecorator implements IcommerceBraintreeRepository
 {

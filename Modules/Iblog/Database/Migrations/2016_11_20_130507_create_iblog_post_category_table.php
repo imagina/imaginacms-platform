@@ -1,6 +1,8 @@
 <?php
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 class CreateIblogPostCategoryTable extends Migration
 {
     /**
@@ -16,6 +18,7 @@ class CreateIblogPostCategoryTable extends Migration
             $table->integer('category_id')->unsigned();
         });
     }
+
     /**
      * Reverse the migrations.
      *

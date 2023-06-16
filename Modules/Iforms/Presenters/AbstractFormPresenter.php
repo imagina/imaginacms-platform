@@ -13,11 +13,9 @@ abstract class AbstractFormPresenter implements FormPresenterInterface
 
     /**
      * FormPresenter constructor.
-     * @param FormRepository $formRepository
      */
     public function __construct(FormRepository $formRepository)
     {
         $this->formRepository = $formRepository;
     }
-
 }

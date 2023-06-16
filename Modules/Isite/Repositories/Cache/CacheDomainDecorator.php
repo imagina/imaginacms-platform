@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\DomainRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Isite\Repositories\DomainRepository;
 
 class CacheDomainDecorator extends BaseCacheCrudDecorator implements DomainRepository
 {

@@ -1,30 +1,26 @@
 <?php
- 
+
 namespace Modules\Ilocations\Jobs;
- 
- use Illuminate\Bus\Queueable;
 
- use Illuminate\Contracts\Queue\ShouldQueue;
- use Illuminate\Foundation\Bus\Dispatchable;
- use Illuminate\Queue\InteractsWithQueue;
- use Illuminate\Queue\SerializesModels;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
- 
 class ProcessLocations implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
- 
+
     public $timeout = 360;
 
     /**
-    * Handle init
-    */
+     * Handle init
+     */
     public function handle()
     {
-
-       
         $baseClass = "\Modules\Ilocations\Database\Seeders";
-        
+
         \Log::info('Ilocations: Jobs|ProcessLocations|IlocationsModuleTableSeeder|Running...');
         app($baseClass."\IlocationsModuleTableSeeder")->run();
         \Log::info('Ilocations: Jobs|ProcessLocations|IlocationsModuleTableSeeder|OK');
@@ -46,8 +42,5 @@ class ProcessLocations implements ShouldQueue
         \Log::info('Ilocations: Jobs|ProcessLocations|GeozoneTableSeeder|OK');
 
         \Log::info('Ilocations: Jobs|ProcessLocations|FINISHED ;)');
-        
     }
-
-   
 }

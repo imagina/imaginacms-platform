@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Tests;
+<?php
+
+namespace Modules\Ibanners\Tests;
 
 class SliderRepositoryTest extends BaseSliderTest
 {
@@ -24,5 +26,4 @@ class SliderRepositoryTest extends BaseSliderTest
         $this->sliderRepository->destroy($slider);
         $this->assertNull($this->sliderRepository->find($slider->id));
     }
-
 }

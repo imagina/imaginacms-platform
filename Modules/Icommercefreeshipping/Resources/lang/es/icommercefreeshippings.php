@@ -24,7 +24,7 @@ return [
         'msjini' => 'Debes ingresar un pais',
         'withoutfree' => 'El pais no ha sido asignado para freeshipping',
         'notavailable' => 'No disponible para el pais destino',
-        'totalmininum' => 'El total minimo de la orden(Productos sin freeshipping) debe ser:'
+        'totalmininum' => 'El total minimo de la orden(Productos sin freeshipping) debe ser:',
     ],
     'validation' => [
     ],

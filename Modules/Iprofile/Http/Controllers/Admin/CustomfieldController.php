@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Field;
 use Modules\Iprofile\Http\Requests\CreateCustomFieldRequest;
 use Modules\Iprofile\Http\Requests\UpdateCustomFieldRequest;
 use Modules\Iprofile\Repositories\FieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CustomfieldController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CustomfieldController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCustomFieldRequest $request
      * @return Response
      */
     public function store(CreateCustomFieldRequest $request)
@@ -63,7 +61,6 @@ class CustomfieldController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Field $customfield
      * @return Response
      */
     public function edit(Field $customfield)
@@ -74,8 +71,6 @@ class CustomfieldController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Field $customfield
-     * @param  UpdateCustomFieldRequest $request
      * @return Response
      */
     public function update(Field $customfield, UpdateCustomFieldRequest $request)
@@ -89,7 +84,6 @@ class CustomfieldController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Field $customfield
      * @return Response
      */
     public function destroy(Field $customfield)

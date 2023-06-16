@@ -7,7 +7,9 @@ use Illuminate\Support\Arr;
 final class MenuDirective
 {
     private $name;
+
     private $presenter;
+
     private $bindings;
 
     public function show($arguments)
@@ -19,7 +21,6 @@ final class MenuDirective
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {
@@ -30,6 +31,7 @@ final class MenuDirective
 
     /**
      * Prepare arguments and return menu
+     *
      * @return string|null
      */
     private function returnMenu()
@@ -38,7 +40,7 @@ final class MenuDirective
         if ($this->presenter === null && $customPresenter !== null) {
             $this->presenter = $customPresenter;
         }
-    
+
         return app('menus')->get($this->name, $this->presenter, $this->bindings);
     }
 

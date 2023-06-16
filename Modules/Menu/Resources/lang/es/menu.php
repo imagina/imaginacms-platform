@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'  => 'Menú',
+    'title' => 'Menú',
     'titles' => [
         'menu' => 'Administración del menú',
         'create menu' => 'Crear un menú',

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'appointmentCategory' => [
         'index' => 'cita/categorias',
@@ -7,5 +8,5 @@ return [
     'appointment' => [
         'index' => 'cita',
         'purchase' => 'cita/adquirir',
-    ]
+    ],
 ];

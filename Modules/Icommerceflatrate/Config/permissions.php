@@ -7,6 +7,6 @@ return [
         'edit' => 'icommerceflatrate::icommerceflatrates.edit resource',
         'destroy' => 'icommerceflatrate::icommerceflatrates.destroy resource',
     ],
-// append
+    // append
 
 ];

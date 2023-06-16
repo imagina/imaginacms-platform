@@ -14,7 +14,7 @@ class UpdateCategoryRequest extends BaseFormRequest
     public function translationRules()
     {
         return [
-            'title' => 'required|min:2'
+            'title' => 'required|min:2',
         ];
     }
 
@@ -32,7 +32,7 @@ class UpdateCategoryRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('idocs::common.messages.title is required'),
-            'title.min:2'=> trans('idocs::common.messages.title min 2 '),
+            'title.min:2' => trans('idocs::common.messages.title min 2 '),
         ];
     }
 }

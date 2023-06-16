@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Entities;
+<?php
+
+namespace Modules\Ibanners\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +12,7 @@ class BannerTranslation extends Model
         'uri',
         'url',
         'active',
-        'custom_html'
+        'custom_html',
     ];
 
     protected $table = 'ibanners__banner_translations';

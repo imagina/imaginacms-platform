@@ -103,9 +103,9 @@ class EloquentSettingRepositoryTest extends BaseSettingTest
         // Prepare
         $data = [
             'core::locales' => [
-                "su",
-                "bi",
-                "bs",
+                'su',
+                'bi',
+                'bs',
             ],
         ];
 

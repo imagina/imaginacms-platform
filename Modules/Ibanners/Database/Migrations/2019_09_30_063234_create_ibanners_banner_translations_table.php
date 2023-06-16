@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbannersBannerTranslationsTable extends Migration {
-
+class CreateIbannersBannerTranslationsTable extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,8 +12,7 @@ class CreateIbannersBannerTranslationsTable extends Migration {
      */
     public function up()
     {
-        Schema::create('ibanners__banner_translations', function(Blueprint $table)
-        {
+        Schema::create('ibanners__banner_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
@@ -40,5 +39,4 @@ class CreateIbannersBannerTranslationsTable extends Migration {
     {
         Schema::drop('slider__slide_translations');
     }
-
 }

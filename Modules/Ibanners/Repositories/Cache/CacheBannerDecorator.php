@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Repositories\Cache;
+<?php
+
+namespace Modules\Ibanners\Repositories\Cache;
 
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Ibanners\Repositories\BannerRepository;
@@ -17,10 +19,10 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
         $this->repository = $banner;
     }
 
-
     /**
      * Get all the read notifications for the given filters
-     * @param array $params
+     *
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItemsBy($params)
@@ -38,8 +40,9 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
 
     /**
      * Get the read notification for the given filters
-     * @param string $criteria
-     * @param array $params
+     *
+     * @param  string  $criteria
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItem($criteria, $params = false)

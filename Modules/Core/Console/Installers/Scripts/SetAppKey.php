@@ -24,7 +24,7 @@ class SetAppKey implements SetupScript
 
     /**
      * Fire the install script
-     * @param  Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -52,7 +52,7 @@ class SetAppKey implements SetupScript
      */
     protected function generateRandomKey()
     {
-        return 'base64:' . base64_encode(
+        return 'base64:'.base64_encode(
             Encrypter::generateKey(config('app.cipher'))
         );
     }
@@ -86,7 +86,7 @@ class SetAppKey implements SetupScript
     {
         file_put_contents(app()->environmentFilePath(), preg_replace(
             $this->keyReplacementPattern(),
-            'APP_KEY=' . $key,
+            'APP_KEY='.$key,
             file_get_contents(app()->environmentFilePath())
         ));
     }
@@ -98,7 +98,7 @@ class SetAppKey implements SetupScript
      */
     protected function keyReplacementPattern()
     {
-        $escaped = preg_quote('=' . config('app.key'), '/');
+        $escaped = preg_quote('='.config('app.key'), '/');
 
         return "/^APP_KEY{$escaped}/m";
     }

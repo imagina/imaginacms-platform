@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => 'icommerceepayco'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommerceepayco.api.epayco.init',
         'uses' => 'IcommerceEpaycoApiController@init',
@@ -13,5 +12,4 @@ Route::group(['prefix' => 'icommerceepayco'], function (Router $router) {
         'as' => 'icommerceepayco.api.epayco.confirmation',
         'uses' => 'IcommerceEpaycoApiController@confirmation',
     ]);
-
 });

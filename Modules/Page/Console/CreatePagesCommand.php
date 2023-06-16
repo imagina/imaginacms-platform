@@ -10,7 +10,9 @@ use Symfony\Component\Console\Input\InputOption;
 class CreatePagesCommand extends Command
 {
     protected $name = 'asgard:create:test-pages';
+
     protected $description = 'Command description.';
+
     /**
      * @var PageRepository
      */

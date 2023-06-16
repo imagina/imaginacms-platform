@@ -10,6 +10,7 @@ class FileStartedMoving
      * @var File
      */
     public $file;
+
     /**
      * @var array
      */

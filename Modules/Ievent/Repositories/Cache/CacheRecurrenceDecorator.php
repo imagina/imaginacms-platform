@@ -2,8 +2,8 @@
 
 namespace Modules\Ievent\Repositories\Cache;
 
-use Modules\Ievent\Repositories\RecurrenceRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Ievent\Repositories\RecurrenceRepository;
 
 class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceRepository
 {
@@ -13,8 +13,7 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
         $this->entityName = 'ievent.recurrences';
         $this->repository = $recurrence;
     }
-  
-  
+
   /**
    * List or resources
    *
@@ -22,12 +21,11 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
    */
   public function getItemsBy($params)
   {
-    return $this->remember(function () use ($params) {
-      return $this->repository->getItemsBy($params);
-    });
+      return $this->remember(function () use ($params) {
+          return $this->repository->getItemsBy($params);
+      });
   }
-  
-  
+
   /**
    * find a resource by id or slug
    *
@@ -35,12 +33,11 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
    */
   public function getItem($criteria, $params = false)
   {
-    return $this->remember(function () use ($criteria, $params) {
-      return $this->repository->getItem($criteria, $params);
-    });
+      return $this->remember(function () use ($criteria, $params) {
+          return $this->repository->getItem($criteria, $params);
+      });
   }
-  
-  
+
   /**
    * create a resource
    *
@@ -48,10 +45,11 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
    */
   public function create($data)
   {
-    $this->clearCache();
-    return $this->repository->create($data);
+      $this->clearCache();
+
+      return $this->repository->create($data);
   }
-  
+
   /**
    * update a resource
    *
@@ -59,12 +57,11 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
    */
   public function updateBy($criteria, $data, $params = false)
   {
-    $this->clearCache();
-    
-    return $this->repository->updateBy($criteria, $data, $params);
+      $this->clearCache();
+
+      return $this->repository->updateBy($criteria, $data, $params);
   }
-  
-  
+
   /**
    * destroy a resource
    *
@@ -72,9 +69,8 @@ class CacheRecurrenceDecorator extends BaseCacheDecorator implements RecurrenceR
    */
   public function deleteBy($criteria, $params = false)
   {
-    $this->clearCache();
-    
-    return $this->repository->deleteBy($criteria, $params);
+      $this->clearCache();
+
+      return $this->repository->deleteBy($criteria, $params);
   }
-  
 }

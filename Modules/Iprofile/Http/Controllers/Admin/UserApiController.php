@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\UserApi;
 use Modules\Iprofile\Http\Requests\CreateUserApiRequest;
 use Modules\Iprofile\Http\Requests\UpdateUserApiRequest;
 use Modules\Iprofile\Repositories\UserApiRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UserApiController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class UserApiController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateUserApiRequest $request
      * @return Response
      */
     public function store(CreateUserApiRequest $request)
@@ -63,7 +61,6 @@ class UserApiController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  UserApi $userapi
      * @return Response
      */
     public function edit(UserApi $userapi)
@@ -74,8 +71,6 @@ class UserApiController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserApi $userapi
-     * @param  UpdateUserApiRequest $request
      * @return Response
      */
     public function update(UserApi $userapi, UpdateUserApiRequest $request)
@@ -89,7 +84,6 @@ class UserApiController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  UserApi $userapi
      * @return Response
      */
     public function destroy(UserApi $userapi)

@@ -24,7 +24,7 @@ return [
         'msjini' => 'You must enter a Country',
         'withoutfree' => 'No country has been assigned for freeshipping',
         'notavailable' => 'Not available for the destination country',
-        'totalmininum' => 'The total minimum order (For products without freeshipping) must be:' 
+        'totalmininum' => 'The total minimum order (For products without freeshipping) must be:',
     ],
     'validation' => [
     ],

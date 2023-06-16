@@ -11,7 +11,7 @@ class ShiftWasCheckedIn
     /**
      * Create a new event instance.
      *
-     * @param Shift $model
+     * @param  Shift  $model
      */
     public function __construct($model)
     {

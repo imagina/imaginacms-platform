@@ -10,10 +10,12 @@ class FolderWasUpdated
      * @var File
      */
     public $folder;
+
     /**
      * @var array
      */
     public $data;
+
     /**
      * @var array
      */

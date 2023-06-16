@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIadUpsTable extends Migration
 {
@@ -16,9 +16,9 @@ class CreateIadUpsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('days_limit');
-          $table->integer('ups_daily');
-          $table->boolean('status')->default(0)->unsigned();
-          // Your fields
+            $table->integer('ups_daily');
+            $table->boolean('status')->default(0)->unsigned();
+            // Your fields
             $table->timestamps();
         });
     }

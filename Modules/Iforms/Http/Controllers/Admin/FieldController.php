@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Field;
 use Modules\Iforms\Http\Requests\CreateFieldRequest;
 use Modules\Iforms\Http\Requests\UpdateFieldRequest;
 use Modules\Iforms\Repositories\FieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class FieldController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class FieldController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateFieldRequest $request
      * @return Response
      */
     public function store(CreateFieldRequest $request)
@@ -63,7 +61,6 @@ class FieldController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Field $field
      * @return Response
      */
     public function edit(Field $field)
@@ -74,8 +71,6 @@ class FieldController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Field $field
-     * @param  UpdateFieldRequest $request
      * @return Response
      */
     public function update(Field $field, UpdateFieldRequest $request)
@@ -89,7 +84,6 @@ class FieldController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Field $field
      * @return Response
      */
     public function destroy(Field $field)

@@ -4,52 +4,53 @@ namespace Modules\Iforms\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
-use Modules\Isite\Traits\RevisionableTrait;
-
 use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Isite\Traits\RevisionableTrait;
 
 class Block extends Model
 {
-  use Translatable, AuditTrait, RevisionableTrait;
+    use Translatable, AuditTrait, RevisionableTrait;
 
-  public $transformer = 'Modules\Iforms\Transformers\BlockTransformer';
-  public $entity = 'Modules\Iforms\Entities\Block';
-  public $repository = 'Modules\Iforms\Repositories\BlockRepository';
+    public $transformer = 'Modules\Iforms\Transformers\BlockTransformer';
 
-  protected $table = 'iforms__blocks';
+    public $entity = 'Modules\Iforms\Entities\Block';
 
-  public $translatedAttributes = [
-    'title',
-    'description'
-  ];
-  protected $fillable = [
-    'form_id',
-    'sort_order',
-    'options',
-    'name',
-  ];
+    public $repository = 'Modules\Iforms\Repositories\BlockRepository';
 
-  protected $casts = [
-    'options' => 'array',
-  ];
+    protected $table = 'iforms__blocks';
 
-  public function form()
-  {
-    return $this->belongsTo(Form::class);
-  }
+    public $translatedAttributes = [
+        'title',
+        'description',
+    ];
 
-  public function fields()
-  {
-    return $this->hasMany(Field::class)->with('translations')->orderBy('order', 'asc');
-  }
+    protected $fillable = [
+        'form_id',
+        'sort_order',
+        'options',
+        'name',
+    ];
 
-  public function getOptionsAttribute($value)
-  {
-    try {
-      return json_decode(json_decode($value));
-    } catch (\Exception $e) {
-      return json_decode($value);
+    protected $casts = [
+        'options' => 'array',
+    ];
+
+    public function form()
+    {
+        return $this->belongsTo(Form::class);
     }
-  }
+
+    public function fields()
+    {
+        return $this->hasMany(Field::class)->with('translations')->orderBy('order', 'asc');
+    }
+
+    public function getOptionsAttribute($value)
+    {
+        try {
+            return json_decode(json_decode($value));
+        } catch (\Exception $e) {
+            return json_decode($value);
+        }
+    }
 }

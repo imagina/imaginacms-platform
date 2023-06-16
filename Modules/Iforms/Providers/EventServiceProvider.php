@@ -8,15 +8,14 @@ use Modules\Iforms\Events\Handlers\SendEmail;
 use Modules\Iforms\Events\LeadWasCreated;
 use Modules\Iforms\Events\SyncFormeable;
 
-
 class EventServiceProvider extends ServiceProvider
 {
-  protected $listen = [
-    LeadWasCreated::class => [
-      SendEmail::class,
-    ],
-    SyncFormeable::class => [
-      HandleFormeable::class,
-    ],
-  ];
+    protected $listen = [
+        LeadWasCreated::class => [
+            SendEmail::class,
+        ],
+        SyncFormeable::class => [
+            HandleFormeable::class,
+        ],
+    ];
 }

@@ -25,9 +25,6 @@ return [
         'destroy' => 'ischedulable::worktimes.destroy resource',
         'restore' => 'ischedulable::worktimes.restore resource',
     ],
-// append
-
-
-
+    // append
 
 ];

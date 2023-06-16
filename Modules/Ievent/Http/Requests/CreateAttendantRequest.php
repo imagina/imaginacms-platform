@@ -9,7 +9,7 @@ class CreateAttendantRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          "event_id" => "required"
+            'event_id' => 'required',
         ];
     }
 
@@ -26,7 +26,7 @@ class CreateAttendantRequest extends BaseFormRequest
     public function messages()
     {
         return [
-          'event_id.required' => trans('ievent::attendants.messages.eventIdRequired'),
+            'event_id.required' => trans('ievent::attendants.messages.eventIdRequired'),
         ];
     }
 

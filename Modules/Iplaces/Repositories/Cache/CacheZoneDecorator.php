@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\ZoneRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\ZoneRepository;
 
 class CacheZoneDecorator extends BaseCacheDecorator implements ZoneRepository
 {
@@ -27,7 +27,6 @@ class CacheZoneDecorator extends BaseCacheDecorator implements ZoneRepository
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

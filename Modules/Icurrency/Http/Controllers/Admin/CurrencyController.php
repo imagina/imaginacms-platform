@@ -2,13 +2,12 @@
 
 namespace Modules\Icurrency\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icurrency\Entities\Currency;
 use Modules\Icurrency\Http\Requests\CreateCurrencyRequest;
 use Modules\Icurrency\Http\Requests\UpdateCurrencyRequest;
 use Modules\Icurrency\Repositories\CurrencyRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CurrencyController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CurrencyController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCurrencyRequest $request
      * @return Response
      */
     public function store(CreateCurrencyRequest $request)
@@ -63,7 +61,6 @@ class CurrencyController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Currency $currency
      * @return Response
      */
     public function edit(Currency $currency)
@@ -74,8 +71,6 @@ class CurrencyController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Currency $currency
-     * @param  UpdateCurrencyRequest $request
      * @return Response
      */
     public function update(Currency $currency, UpdateCurrencyRequest $request)
@@ -89,7 +84,6 @@ class CurrencyController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Currency $currency
      * @return Response
      */
     public function destroy(Currency $currency)

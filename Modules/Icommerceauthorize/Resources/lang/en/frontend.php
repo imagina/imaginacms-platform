@@ -1,22 +1,22 @@
 <?php
 
 return [
-    
+
     'title' => [
-        'modal' => 'Card Information'
+        'modal' => 'Card Information',
     ],
     'button' => [
-        'pay' => 'Click here to pay'
+        'pay' => 'Click here to pay',
     ],
     'table' => [
-       
+
     ],
     'form' => [
     ],
     'messages' => [
-        'welcome' => 'Welcome to authorize.net, please click on the button to start the payment process'
+        'welcome' => 'Welcome to authorize.net, please click on the button to start the payment process',
     ],
     'validation' => [
-        'finding' => 'Sorry, an error has occurred in the process, try again'
+        'finding' => 'Sorry, an error has occurred in the process, try again',
     ],
 ];

@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 class ProductWasCreated
 {
     use SerializesModels;
+
     public $entity;
 
     /**
@@ -14,9 +15,9 @@ class ProductWasCreated
      *
      * @return void
      */
-     public function __construct($entity)
+    public function __construct($entity)
     {
-      $this->entity = $entity;
+        $this->entity = $entity;
         //
     }
 

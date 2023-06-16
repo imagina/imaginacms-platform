@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -25,11 +24,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-       // Passport::routes();
-      Passport::routes(null, ['middleware' => [
-        'universal',
-        \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class
-      ]]);
+        // Passport::routes();
+        Passport::routes(null, ['middleware' => [
+            'universal',
+            \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
+        ]]);
         //
     }
 }

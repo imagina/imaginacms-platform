@@ -10,6 +10,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 class IcommercepricelistServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Boot the application events.
      *
@@ -42,16 +43,17 @@ class IcommercepricelistServiceProvider extends ServiceProvider
     {
         $this->publishConfig('icommercepricelist', 'config');
         $this->publishConfig('icommercepricelist', 'crud-fields');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercepricelist', 'permissions'), "asgard.icommercepricelist.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercepricelist', 'permissions'), 'asgard.icommercepricelist.permissions');
     }
 
-    private function registerBindings(){
+    private function registerBindings()
+    {
         $this->app->bind(
             'Modules\Icommercepricelist\Repositories\PriceListRepository',
             function () {
                 $repository = new \Modules\Icommercepricelist\Repositories\Eloquent\EloquentPriceListRepository(new \Modules\Icommercepricelist\Entities\PriceList());
 
-                if (!config('app.cache')) {
+                if (! config('app.cache')) {
                     return $repository;
                 }
 
@@ -63,7 +65,7 @@ class IcommercepricelistServiceProvider extends ServiceProvider
             function () {
                 $repository = new \Modules\Icommercepricelist\Repositories\Eloquent\EloquentProductListRepository(new \Modules\Icommercepricelist\Entities\ProductList());
 
-                if (!config('app.cache')) {
+                if (! config('app.cache')) {
                     return $repository;
                 }
 
@@ -84,11 +86,11 @@ class IcommercepricelistServiceProvider extends ServiceProvider
         $sourcePath = module_path('Icommercepricelist', 'Resources/views');
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/icommercepricelist';
+            return $path.'/modules/icommercepricelist';
         }, \Config::get('view.paths')), [$sourcePath]), 'icommercepricelist');
     }
 

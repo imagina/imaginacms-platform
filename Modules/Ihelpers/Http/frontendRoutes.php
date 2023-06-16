@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Routing\Router;
+
 /** @var Router $router */
-
-Route::group(['prefix' =>'/inline'], function (Router $router) {
-
+Route::group(['prefix' => '/inline'], function (Router $router) {
     $router->post('/save', [
         'as' => 'inline.save',
         'uses' => 'PublicController@inlinesave',
@@ -14,7 +13,7 @@ Route::group(['prefix' =>'/inline'], function (Router $router) {
 });
 
 $router->get('/sitemap', [
-  'as' => 'ihelpers.sitemap',
-  'uses' => 'PublicController@showSiteMap',
-  //'middleware' => config('asgard.blog.config.middleware'),
+    'as' => 'ihelpers.sitemap',
+    'uses' => 'PublicController@showSiteMap',
+    //'middleware' => config('asgard.blog.config.middleware'),
 ]);

@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class AlterIcommercePaymentMethodsTable extends Migration
 {
@@ -13,11 +12,10 @@ class AlterIcommercePaymentMethodsTable extends Migration
      */
     public function up()
     {
-      Schema::table('icommerce__payment_methods', function($table)
-      {
-        $table->dropColumn('payment_code');
-        $table->text('options')->nullable();
-      });
+        Schema::table('icommerce__payment_methods', function ($table) {
+            $table->dropColumn('payment_code');
+            $table->text('options')->nullable();
+        });
     }
 
     /**

@@ -1,4 +1,5 @@
-<?
-require_once (__DIR__.'/crest.php');
+<?php
+
+require_once __DIR__.'/crest.php';
 
 CRest::checkServer();

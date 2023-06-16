@@ -18,11 +18,11 @@ return [
     'form' => [
     ],
     'messages' => [
-      'phoneFieldError' => "Debe crear un campo de tipo: <b>:fieldType</b> en el formulario: <a target='_blank' href=':formFieldsUrl'><b>:formTitle</b> <i class='fa-light fa-up-right-from-square'></i></a>"
+        'phoneFieldError' => "Debe crear un campo de tipo: <b>:fieldType</b> en el formulario: <a target='_blank' href=':formFieldsUrl'><b>:formTitle</b> <i class='fa-light fa-up-right-from-square'></i></a>",
     ],
     'validation' => [
     ],
     'leads' => [
-        'title' => 'Prospectos'
-    ]
+        'title' => 'Prospectos',
+    ],
 ];

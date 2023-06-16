@@ -11,15 +11,14 @@ use Modules\Idocs\Repositories\DocumentRepository;
 
 class DocumentsImport implements ToCollection, WithChunkReading, WithHeadingRow, ShouldQueue
 {
-
     private $document;
+
     private $info;
 
     public function __construct(
         DocumentRepository $documnet,
         $info
-    )
-    {
+    ) {
         $this->info = $info;
         $this->document = $documnet;
     }
@@ -29,45 +28,44 @@ class DocumentsImport implements ToCollection, WithChunkReading, WithHeadingRow,
      */
     public function collection(Collection $rows)
     {
-        $locale=$this->info['Locale'];
+        $locale = $this->info['Locale'];
         $rows = json_decode(json_encode($rows));
         foreach ($rows as $row) {
             try {
                 if (isset($row->id)) {
-                    $documnet_id = (int)$row->id;
-                    $title = (string)$row->title;
-                    $description = (string)$row->description;
-                    $category_id = (int)$row->category_id;
-                    $user_identification = (int)$row->user_identification;
-                    $file=(int)$row->file;
+                    $documnet_id = (int) $row->id;
+                    $title = (string) $row->title;
+                    $description = (string) $row->description;
+                    $category_id = (int) $row->category_id;
+                    $user_identification = (int) $row->user_identification;
+                    $file = (int) $row->file;
                     $status = $row->status;
-                    $categories=explode(',', $row->categoires);
+                    $categories = explode(',', $row->categoires);
                     $document = $this->document->find($documnet_id);
                     $param = [
                         'id' => $documnet_id,
-                        $locale =>[
-                            'title'=>$title,
+                        $locale => [
+                            'title' => $title,
                             'description' => $description,
-                        ] ,
+                        ],
                         'user-identification' => $user_identification,
-                        'medias_single'=>[
-                            'file'=>$file
+                        'medias_single' => [
+                            'file' => $file,
                         ],
                         'category_id' => $category_id,
-                        'categories'=>$categories,
-                        'status'=>$status,
-
+                        'categories' => $categories,
+                        'status' => $status,
 
                     ];
                     if ($document) {
                         //Update
                         $this->document->update($document, $param);
-                        \Log::info('Update Product: ' . $document->id . ', Title: ' . $document->title);
+                        \Log::info('Update Product: '.$document->id.', Title: '.$document->title);
                     } else {
                         //Create
                         $newDocument = $this->documnet->create($param);
 
-                        \Log::info('Create a Product: ' . $newDocument->title);
+                        \Log::info('Create a Product: '.$newDocument->title);
                     }
                 }//if row!=name
             } catch (\Exception $e) {
@@ -75,9 +73,7 @@ class DocumentsImport implements ToCollection, WithChunkReading, WithHeadingRow,
                 \Log::error($e->getLine());
                 // dd($e->getMessage());
             }
-
         }// foreach
-
     }//collection rows
 
     /*
@@ -96,5 +92,4 @@ class DocumentsImport implements ToCollection, WithChunkReading, WithHeadingRow,
     {
         return 1000;
     }
-
 }

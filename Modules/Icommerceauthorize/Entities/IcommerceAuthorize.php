@@ -10,6 +10,8 @@ class IcommerceAuthorize extends Model
     use Translatable;
 
     protected $table = 'icommerceauthorize__icommerceauthorizes';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

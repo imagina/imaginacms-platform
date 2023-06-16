@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('icredit')->group(function() {
+Route::prefix('icredit')->group(function () {
     Route::get('/', 'IcreditController@index');
 });

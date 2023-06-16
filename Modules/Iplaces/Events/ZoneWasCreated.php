@@ -1,27 +1,22 @@
 <?php
 
-
 namespace Modules\Iplaces\Events;
 
-use Modules\Iplaces\Entities\Zone;
 use Modules\Media\Contracts\StoringMedia;
-
 
 class ZoneWasCreated implements StoringMedia
 {
     public $entity;
-    public  $data;
+
+    public $data;
 
     /**
      * Create a new event instance.
-     *
-     * @param $entity
-     * @param array $data
      */
-    public function __construct($entity,array $data)
+    public function __construct($entity, array $data)
     { //dd($data,$entity);
-        $this->data=$data;
-        $this->entity=$entity;
+        $this->data = $data;
+        $this->entity = $entity;
     }
 
     public function getEntity()
@@ -31,14 +26,11 @@ class ZoneWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
+     *
      * @return array
      */
-
     public function getSubmissionData()
     {
         return $this->data;
     }
-
-
-
 }

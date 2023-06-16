@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Modules\Qreable\Transformers;
-
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +17,5 @@ class QrTransformer extends JsonResource
         ];
 
         return $data;
-
     }
-
 }

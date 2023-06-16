@@ -2,17 +2,16 @@
 
 return [
 
-  'ad' => [
-    'index' => [
-      'index' => 'anuncios',
-      'category' => 'anuncios/c/{categorySlug}',
-      'service' => 'anuncios/s/{serviceSlug}',
+    'ad' => [
+        'index' => [
+            'index' => 'anuncios',
+            'category' => 'anuncios/c/{categorySlug}',
+            'service' => 'anuncios/s/{serviceSlug}',
+        ],
+
+        'show' => [
+            'ad' => 'anuncios/{adSlug}',
+        ],
+
     ],
-
-    'show' => [
-      'ad' => 'anuncios/{adSlug}',
-    ],
-
-
-  ],
 ];

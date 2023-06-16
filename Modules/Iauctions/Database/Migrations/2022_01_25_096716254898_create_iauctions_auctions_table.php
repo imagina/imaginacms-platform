@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIauctionsAuctionsTable extends Migration
 {
@@ -38,7 +38,6 @@ class CreateIauctionsAuctionsTable extends Migration
             $table->foreign('winner_id')->references('id')->on(config('auth.table', 'users'))->onDelete('restrict');
 
             $table->text('options')->nullable();
-
 
             // Audit fields
             $table->timestamps();

@@ -2,8 +2,8 @@
 
 namespace Modules\Imeeting\Repositories\Cache;
 
-use Modules\Imeeting\Repositories\MeetingRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Imeeting\Repositories\MeetingRepository;
 
 class CacheMeetingDecorator extends BaseCacheCrudDecorator implements MeetingRepository
 {

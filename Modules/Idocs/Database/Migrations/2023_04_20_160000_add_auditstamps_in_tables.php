@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddAuditstampsInTables extends Migration
 {
@@ -13,12 +13,12 @@ class AddAuditstampsInTables extends Migration
      */
     public function up()
     {
-      Schema::table('idocs__categories', function (Blueprint $table) {
-        $table->auditStamps();
-      });
-      Schema::table('idocs__documents', function (Blueprint $table) {
-        $table->auditStamps();
-      });
+        Schema::table('idocs__categories', function (Blueprint $table) {
+            $table->auditStamps();
+        });
+        Schema::table('idocs__documents', function (Blueprint $table) {
+            $table->auditStamps();
+        });
     }
 
     /**

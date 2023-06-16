@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeParentIdColumnInCategoryTable extends Migration
 {
@@ -13,11 +13,9 @@ class ChangeParentIdColumnInCategoryTable extends Migration
      */
     public function up()
     {
-      Schema::table('icommerce__categories', function (Blueprint $table) {
-    
-        $table->integer('parent_id')->nullable()->default(null)->change();
-    
-      });
+        Schema::table('icommerce__categories', function (Blueprint $table) {
+            $table->integer('parent_id')->nullable()->default(null)->change();
+        });
     }
 
     /**

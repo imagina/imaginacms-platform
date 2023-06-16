@@ -2,16 +2,16 @@
 
 namespace Modules\Ibinnacle\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ibinnacle\Listeners\RegisterIbinnacleSidebar;
 
 class IbinnacleServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,19 +32,16 @@ class IbinnacleServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
     public function boot()
     {
-       
         $this->publishConfig('ibinnacle', 'config');
         $this->publishConfig('ibinnacle', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'settings'), "asgard.ibinnacle.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'settings-fields'), "asgard.ibinnacle.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'permissions'), "asgard.ibinnacle.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'settings'), 'asgard.ibinnacle.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'settings-fields'), 'asgard.ibinnacle.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibinnacle', 'permissions'), 'asgard.ibinnacle.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -56,7 +53,7 @@ class IbinnacleServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -73,9 +70,6 @@ class IbinnacleServiceProvider extends ServiceProvider
                 return new \Modules\Ibinnacle\Repositories\Cache\CacheBinnacleDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-
 }

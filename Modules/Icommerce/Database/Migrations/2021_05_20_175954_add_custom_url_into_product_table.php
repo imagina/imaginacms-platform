@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddCustomUrlIntoProductTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddCustomUrlIntoProductTable extends Migration
     public function up()
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
-          $table->string('custom_url')->nullable();
+            $table->string('custom_url')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddCustomUrlIntoProductTable extends Migration
     public function down()
     {
         Schema::table('icommerce__products', function (Blueprint $table) {
-          $table->dropColumn('custom_url');
+            $table->dropColumn('custom_url');
         });
     }
 }

@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => 'icommercepayu'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercepayu.api.payu.init',
         'uses' => 'IcommercePayuApiController@init',
@@ -18,5 +17,4 @@ Route::group(['prefix' => 'icommercepayu'], function (Router $router) {
         'as' => 'icommercepayu.api.post.payu.response',
         'uses' => 'IcommercePayuApiController@response',
     ]);
-
 });

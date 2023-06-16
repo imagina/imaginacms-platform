@@ -11,7 +11,7 @@ class AppointmentStatusTransformer extends JsonResource
         $data = [
             'id' => $this->id,
             'title' => $this->title ?? '',
-            'parentId' => (int)$this->parent_id,
+            'parentId' => (int) $this->parent_id,
             'createdAt' => $this->when($this->created_at, $this->created_at),
             'updatedAt' => $this->when($this->updated_at, $this->updated_at),
             'parent' => new AppointmentStatusTransformer($this->whenLoaded('parent')),
@@ -30,6 +30,7 @@ class AppointmentStatusTransformer extends JsonResource
                     $this->translate("$lang")['title'] : '';
             }
         }
+
         return $data;
     }
 }

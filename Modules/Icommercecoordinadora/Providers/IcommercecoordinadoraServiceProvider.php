@@ -4,14 +4,15 @@ namespace Modules\Icommercecoordinadora\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercecoordinadora\Events\Handlers\RegisterIcommercecoordinadoraSidebar;
 
 class IcommercecoordinadoraServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercecoordinadoraServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercecoordinadoras', Arr::dot(trans('icommercecoordinadora::icommercecoordinadoras')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercecoordinadoraServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommercecoordinadoraServiceProvider extends ServiceProvider
                 return new \Modules\Icommercecoordinadora\Repositories\Cache\CacheIcommerceCoordinadoraDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

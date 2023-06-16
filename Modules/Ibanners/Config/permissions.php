@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ibanners.positions' => [
         'manage' => 'ibanners::position.manage resource',

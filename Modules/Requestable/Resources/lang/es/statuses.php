@@ -20,7 +20,7 @@ return [
     'messages' => [
     ],
     'comments' => [
-      "statusUpdated" => "Estado Actualizado: de :prevStatus a :postStatus"
+        'statusUpdated' => 'Estado Actualizado: de :prevStatus a :postStatus',
     ],
     'validation' => [
     ],
@@ -31,6 +31,6 @@ return [
         'in progress' => 'En progreso',
         'successful' => 'Exitoso',
         'lost' => 'Perdido',
-    ]
+    ],
 
 ];

@@ -2,8 +2,8 @@
 
 namespace Modules\Icredit\Repositories\Cache;
 
-use Modules\Icredit\Repositories\CreditRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icredit\Repositories\CreditRepository;
 
 class CacheCreditDecorator extends BaseCacheDecorator implements CreditRepository
 {
@@ -14,11 +14,10 @@ class CacheCreditDecorator extends BaseCacheDecorator implements CreditRepositor
         $this->repository = $credit;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

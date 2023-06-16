@@ -15,15 +15,19 @@ final class FolderMover implements MoverInterface
      * @var Factory
      */
     private $filesystem;
+
     /**
      * @var FileRepository
      */
     private $file;
+
     /**
      * @var FolderRepository
      */
     private $folder;
+
     private $fromPath;
+
     private $toPath;
 
     public function __construct(Factory $filesystem, FileRepository $file, FolderRepository $folder)
@@ -33,7 +37,7 @@ final class FolderMover implements MoverInterface
         $this->folder = $folder;
     }
 
-    public function move(File $folder, File $destination) : bool
+    public function move(File $folder, File $destination): bool
     {
         $movedOnDisk = $this->moveOriginalOnDisk($folder, $destination);
 
@@ -47,7 +51,7 @@ final class FolderMover implements MoverInterface
         return true;
     }
 
-    private function moveOriginalOnDisk(File $folder, File $destination) : bool
+    private function moveOriginalOnDisk(File $folder, File $destination): bool
     {
         $this->fromPath = $folder->path->getRelativeUrl();
         $this->toPath = $this->getNewPathFor($folder->filename, $destination);
@@ -55,7 +59,7 @@ final class FolderMover implements MoverInterface
         return $this->moveDirectory($this->fromPath, $this->toPath, $folder->disk);
     }
 
-    private function moveDatabase(File $folder, File $destination) : File
+    private function moveDatabase(File $folder, File $destination): File
     {
         return $this->folder->move($folder, $destination);
     }
@@ -81,9 +85,9 @@ final class FolderMover implements MoverInterface
         }
     }
 
-    private function moveDirectory($fromPath, $toPath, $disk = null) : bool
+    private function moveDirectory($fromPath, $toPath, $disk = null): bool
     {
-        $disk = is_null($disk)? $this->getConfiguredFilesystem() : $disk;
+        $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
         try {
             $this->filesystem->disk($disk)
                 ->move(
@@ -97,26 +101,26 @@ final class FolderMover implements MoverInterface
         return true;
     }
 
-    private function getDestinationPath($path) : string
+    private function getDestinationPath($path): string
     {
         if ($this->getConfiguredFilesystem() === 'local') {
-            return basename(public_path()) . $path;
+            return basename(public_path()).$path;
         }
 
         return $path;
     }
 
-    private function getConfiguredFilesystem() : string
+    private function getConfiguredFilesystem(): string
     {
-        return setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+        return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }
 
-    private function getNewPathFor(string $filename, File $folder) : string
+    private function getNewPathFor(string $filename, File $folder): string
     {
-        return $this->removeDoubleSlashes($folder->path->getRelativeUrl() . '/' . Str::slug($filename));
+        return $this->removeDoubleSlashes($folder->path->getRelativeUrl().'/'.Str::slug($filename));
     }
 
-    private function removeDoubleSlashes(string $string) : string
+    private function removeDoubleSlashes(string $string): string
     {
         return str_replace('//', '/', $string);
     }

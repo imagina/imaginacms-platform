@@ -2,8 +2,8 @@
 
 namespace Modules\Ifeed\Repositories\Cache;
 
-use Modules\Ifeed\Repositories\FeedRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ifeed\Repositories\FeedRepository;
 
 class CacheFeedDecorator extends BaseCacheCrudDecorator implements FeedRepository
 {

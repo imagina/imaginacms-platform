@@ -1,5 +1,6 @@
-<?php namespace Modules\Ibanners\Repositories\Cache;
+<?php
 
+namespace Modules\Ibanners\Repositories\Cache;
 
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Ibanners\Repositories\PositionRepository;
@@ -20,6 +21,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
 
     /**
      * Get all online position
+     *
      * @return object
      */
     public function allOnline()
@@ -35,7 +37,8 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
 
     /**
      * Get all the read notifications for the given filters
-     * @param array $params
+     *
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItemsBy($params)
@@ -53,8 +56,9 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
 
     /**
      * Get the read notification for the given filters
-     * @param string $criteria
-     * @param array $params
+     *
+     * @param  string  $criteria
+     * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItem($criteria, $params = false)
@@ -69,5 +73,4 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
                 }
             );
     }
-
 }

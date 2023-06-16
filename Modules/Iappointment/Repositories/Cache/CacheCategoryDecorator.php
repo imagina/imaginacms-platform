@@ -2,8 +2,8 @@
 
 namespace Modules\Iappointment\Repositories\Cache;
 
-use Modules\Iappointment\Repositories\CategoryRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iappointment\Repositories\CategoryRepository;
 
 class CacheCategoryDecorator extends BaseCacheDecorator implements CategoryRepository
 {
@@ -15,10 +15,10 @@ class CacheCategoryDecorator extends BaseCacheDecorator implements CategoryRepos
     }
 
     /**
-    * List or resources
-    *
-    * @return collection
-    */
+     * List or resources
+     *
+     * @return collection
+     */
     public function getItemsBy($params)
     {
         return $this->remember(function () use ($params) {

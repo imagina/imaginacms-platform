@@ -2,19 +2,16 @@
 
 use Illuminate\Routing\Router;
 
-    Route::group(['prefix'=>'icommerceepayco'],function (Router $router){
-        $locale = LaravelLocalization::setLocale() ?: App::getLocale();
-  
-      $router->get('/{eUrl}', [
-            'as' => 'icommerceepayco',
-            'uses' => 'PublicController@index',
-        ]);
+Route::group(['prefix' => 'icommerceepayco'], function (Router $router) {
+    $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
-      $router->get('/payment/response/{orderId}', [
+    $router->get('/{eUrl}', [
+        'as' => 'icommerceepayco',
+        'uses' => 'PublicController@index',
+    ]);
+
+    $router->get('/payment/response/{orderId}', [
         'as' => 'icommerceepayco.response',
         'uses' => 'PublicController@response',
-      ]);
-        
-      
-       
-    });
+    ]);
+});

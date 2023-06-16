@@ -15,8 +15,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -25,17 +23,13 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     }
 
     /**
-     * @param Menu $menu
-     *
      * @return Menu
      */
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-
             $group->item(trans('ipay::common.ipay'), function (Item $item) {
-
-                 $item->item(trans('ipay::config.edit'), function (Item $item) {
+                $item->item(trans('ipay::config.edit'), function (Item $item) {
                     $item->icon('fa fa-list');
                     $item->weight(5);
                     $item->route('admin.ipay.config.index');
@@ -43,11 +37,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('ipay.config.index')
                     );
                 });
-
-
             });
-
-
         });
 
         return $menu;

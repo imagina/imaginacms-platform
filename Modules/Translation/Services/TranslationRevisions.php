@@ -12,9 +12,6 @@ class TranslationRevisions
      */
     private $translation;
 
-    /**
-     * @param TranslationRepository $translation
-     */
     public function __construct(TranslationRepository $translation)
     {
         $this->translation = $translation;
@@ -23,8 +20,8 @@ class TranslationRevisions
     /**
      * Get revisions for the given key and locale.
      *
-     * @param string $key
-     * @param string $locale
+     * @param  string  $key
+     * @param  string  $locale
      * @return \Illuminate\Http\JsonResponse
      */
     public function get($key, $locale)
@@ -33,7 +30,7 @@ class TranslationRevisions
         $translation = $translation->translate($locale);
 
         if ($translation === null) {
-            return response()->json(['<tr><td>' . trans('translation::translations.No Revisions yet') . '</td></tr>']);
+            return response()->json(['<tr><td>'.trans('translation::translations.No Revisions yet').'</td></tr>']);
         }
 
         return response()->json(
@@ -46,7 +43,6 @@ class TranslationRevisions
     /**
      * Format revision history.
      *
-     * @param Collection $revisionHistory
      * @return array
      */
     private function formatRevisionHistory(Collection $revisionHistory)

@@ -2,8 +2,8 @@
 
 namespace Modules\Iauctions\Repositories\Cache;
 
-use Modules\Iauctions\Repositories\BidRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Iauctions\Repositories\BidRepository;
 
 class CacheBidDecorator extends BaseCacheCrudDecorator implements BidRepository
 {

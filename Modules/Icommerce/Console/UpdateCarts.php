@@ -4,13 +4,9 @@ namespace Modules\Icommerce\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Support\Facades\Log;
-
 
 class UpdateCarts extends Command
 {
-
     /**
      * The console command name.
      *
@@ -42,11 +38,11 @@ class UpdateCarts extends Command
      */
     public function handle()
     {
-        $cartRepository=app('Modules\Icommerce\Repositories\CartRepository');
-        $carts=$cartRepository->getItemsBy(json_decode(json_encode(["filter"=>['status'=>1],'include'=>[],'take'=>null])));
+        $cartRepository = app('Modules\Icommerce\Repositories\CartRepository');
+        $carts = $cartRepository->getItemsBy(json_decode(json_encode(['filter' => ['status' => 1], 'include' => [], 'take' => null])));
 
         foreach ($carts as $item) {
-            $this->cartRepository->update($item,['status'=>0]);
+            $this->cartRepository->update($item, ['status' => 0]);
         }
     }
 
@@ -73,6 +69,4 @@ class UpdateCarts extends Command
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
         ];
     }
-
-
 }

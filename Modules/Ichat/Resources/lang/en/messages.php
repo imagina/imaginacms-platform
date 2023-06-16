@@ -21,7 +21,7 @@ return [
     ],
     'validation' => [
     ],
-  'notification' => [
-    'newMessage' => 'New Message'
-  ]
+    'notification' => [
+        'newMessage' => 'New Message',
+    ],
 ];

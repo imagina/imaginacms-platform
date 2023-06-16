@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\ScheduleRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\ScheduleRepository;
 
 class CacheScheduleDecorator extends BaseCacheDecorator implements ScheduleRepository
 {
@@ -27,7 +27,6 @@ class CacheScheduleDecorator extends BaseCacheDecorator implements ScheduleRepos
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

@@ -2,13 +2,12 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Country;
 use Modules\Ilocations\Http\Requests\CreateCountryRequest;
 use Modules\Ilocations\Http\Requests\UpdateCountryRequest;
 use Modules\Ilocations\Repositories\CountryRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CountryController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CountryController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCountryRequest $request
      * @return Response
      */
     public function store(CreateCountryRequest $request)
@@ -63,7 +61,6 @@ class CountryController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Country $country
      * @return Response
      */
     public function edit(Country $country)
@@ -74,8 +71,6 @@ class CountryController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Country $country
-     * @param  UpdateCountryRequest $request
      * @return Response
      */
     public function update(Country $country, UpdateCountryRequest $request)
@@ -89,7 +84,6 @@ class CountryController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Country $country
      * @return Response
      */
     public function destroy(Country $country)

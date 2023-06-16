@@ -5,28 +5,30 @@ namespace Modules\Iappointment\Entities;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Icrud\Traits\hasEventsWithBindings;
+use Modules\Core\Support\Traits\AuditTrait;
 use Modules\Iforms\Support\Traits\Formeable;
 use Modules\Media\Support\Traits\MediaRelation;
-
-use Modules\Core\Support\Traits\AuditTrait;
 
 class Category extends Model
 {
     use Translatable, MediaRelation, Formeable, hasEventsWithBindings, AuditTrait;
 
     protected $table = 'iappointment__categories';
+
     public $translatedAttributes = [
         'title',
         'slug',
         'status',
-        'description'
+        'description',
     ];
+
     protected $fillable = [
         'parent_id',
-        'options'
+        'options',
     ];
+
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
 
     public function getOptionsAttribute($value)
@@ -54,9 +56,10 @@ class Category extends Model
         return $this->hasMany(Appointment::class, 'category_id');
     }
 
-    public function getUrlAttribute(){
+    public function getUrlAttribute()
+    {
         $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
+
         return route($locale.'.appointment.category.show', [$this->id]);
     }
-
 }

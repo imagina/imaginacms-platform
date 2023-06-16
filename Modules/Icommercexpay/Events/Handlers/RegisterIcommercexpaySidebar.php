@@ -16,8 +16,6 @@ class RegisterIcommercexpaySidebar implements \Maatwebsite\Sidebar\SidebarExtend
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterIcommercexpaySidebar implements \Maatwebsite\Sidebar\SidebarExtend
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterIcommercexpaySidebar implements \Maatwebsite\Sidebar\SidebarExtend
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercexpay::icommercexpays.title.icommercexpays'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterIcommercexpaySidebar implements \Maatwebsite\Sidebar\SidebarExtend
                         $this->auth->hasAccess('icommercexpay.icommercexpays.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

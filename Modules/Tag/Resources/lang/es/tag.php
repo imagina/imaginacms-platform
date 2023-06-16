@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'name' => "Etiquetas",
+    'name' => 'Etiquetas',
     'single' => 'Etiqueta',
     'plural' => 'Etiquetas',
     'uri' => 'etiqueta',

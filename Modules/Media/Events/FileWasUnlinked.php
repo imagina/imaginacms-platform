@@ -6,12 +6,13 @@ class FileWasUnlinked
 {
     /**
      * The imageable id
+     *
      * @var int
      */
     public $imageableId;
 
     /**
-     * @param int $imageableId
+     * @param  int  $imageableId
      */
     public function __construct($imageableId)
     {

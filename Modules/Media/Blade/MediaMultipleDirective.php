@@ -11,14 +11,14 @@ class MediaMultipleDirective
      * @var string
      */
     private $zone;
-    /**
-     * @var
-     */
+
     private $entity;
+
     /**
      * @var string|null
      */
     private $view;
+
     /**
      * @var string|null
      */
@@ -46,7 +46,6 @@ class MediaMultipleDirective
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {

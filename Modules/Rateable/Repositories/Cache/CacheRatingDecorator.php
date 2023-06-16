@@ -2,8 +2,8 @@
 
 namespace Modules\Rateable\Repositories\Cache;
 
-use Modules\Rateable\Repositories\RatingRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Rateable\Repositories\RatingRepository;
 
 class CacheRatingDecorator extends BaseCacheCrudDecorator implements RatingRepository
 {

@@ -16,11 +16,9 @@ class CreateActivityRequest extends BaseFormRequest
 
     public function translationRules()
     {
-
         return [
             'title' => 'required|min:2',
         ];
-
     }
 
     public function authorize()
@@ -40,12 +38,12 @@ class CreateActivityRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('igamification::common.messages.field required'),
-            'title.min:2' => trans('igamification::common.messages.min 2 characters')
+            'title.min:2' => trans('igamification::common.messages.min 2 characters'),
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
-
 }

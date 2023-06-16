@@ -13,8 +13,8 @@ return [
             'type' => 'input',
             'isTranslatable' => true,
             'props' => [
-                'label' => 'icommerce::common.title'
-            ]
+                'label' => 'icommerce::common.title',
+            ],
         ],
         'description' => [
             'value' => null,
@@ -25,76 +25,76 @@ return [
                 'label' => 'icommerce::common.description',
                 'type' => 'textarea',
                 'rows' => 3,
-            ]
+            ],
         ],
         'status' => [
             'value' => 0,
             'name' => 'status',
             'type' => 'select',
             'props' => [
-              'label' => 'icommerce::common.status',
-              'useInput' => false,
-              'useChips' => false,
-              'multiple' => false,
-              'hideDropdownIcon' => true,
-              'newValueMode' => 'add-unique',
-              'options' => [
-                ['label' => 'Activo','value' => 1],
-                ['label' => 'Inactivo','value' => 0],
-              ]
-            ]
+                'label' => 'icommerce::common.status',
+                'useInput' => false,
+                'useChips' => false,
+                'multiple' => false,
+                'hideDropdownIcon' => true,
+                'newValueMode' => 'add-unique',
+                'options' => [
+                    ['label' => 'Activo', 'value' => 1],
+                    ['label' => 'Inactivo', 'value' => 0],
+                ],
+            ],
         ],
         'image' => [
-          'value' => (object)[],
-          'name' => 'mediasSingle',
-          'type' => 'media',
-          'props' => [
-            'label' => 'Image',
-            'zone' => 'image',
-            'entity' => "Modules\Icommerce\Entities\PaymentMethod",
-            'entityId' => null
-          ]
+            'value' => (object) [],
+            'name' => 'mediasSingle',
+            'type' => 'media',
+            'props' => [
+                'label' => 'Image',
+                'zone' => 'image',
+                'entity' => "Modules\Icommerce\Entities\PaymentMethod",
+                'entityId' => null,
+            ],
         ],
         'init' => [
             'value' => 'Modules\Icommercepayu\Http\Controllers\Api\IcommercePayuApiController',
             'name' => 'init',
-            'isFakeField' => true
+            'isFakeField' => true,
         ],
         'merchantId' => [
-        	'value' => null,
+            'value' => null,
             'name' => 'merchantId',
             'isFakeField' => true,
             'type' => 'input',
             'props' => [
-                'label' => 'icommercepayu::icommercepayus.table.merchantId'
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.merchantId',
+            ],
         ],
         'apiLogin' => [
-        	'value' => null,
+            'value' => null,
             'name' => 'apiLogin',
             'isFakeField' => true,
             'type' => 'input',
             'props' => [
-                'label' => 'icommercepayu::icommercepayus.table.apilogin'
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.apilogin',
+            ],
         ],
         'apiKey' => [
-        	'value' => null,
+            'value' => null,
             'name' => 'apiKey',
             'isFakeField' => true,
             'type' => 'input',
             'props' => [
-                'label' => 'icommercepayu::icommercepayus.table.apiKey'
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.apiKey',
+            ],
         ],
         'accountId' => [
-        	'value' => null,
+            'value' => null,
             'name' => 'accountId',
             'isFakeField' => true,
             'type' => 'input',
             'props' => [
-                'label' => 'icommercepayu::icommercepayus.table.accountId'
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.accountId',
+            ],
         ],
         'mode' => [
             'value' => 'sandbox',
@@ -102,17 +102,17 @@ return [
             'isFakeField' => true,
             'type' => 'select',
             'props' => [
-              'label' => 'icommercepayu::icommercepayus.table.mode',
-              'useInput' => false,
-              'useChips' => false,
-              'multiple' => false,
-              'hideDropdownIcon' => true,
-              'newValueMode' => 'add-unique',
-              'options' => [
-                ['label' => 'Sandbox','value' => 'sandbox'],
-                ['label' => 'Live','value' => 'live'],
-              ]
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.mode',
+                'useInput' => false,
+                'useChips' => false,
+                'multiple' => false,
+                'hideDropdownIcon' => true,
+                'newValueMode' => 'add-unique',
+                'options' => [
+                    ['label' => 'Sandbox', 'value' => 'sandbox'],
+                    ['label' => 'Live', 'value' => 'live'],
+                ],
+            ],
         ],
         'test' => [
             'value' => null,
@@ -120,19 +120,18 @@ return [
             'isFakeField' => true,
             'type' => 'select',
             'props' => [
-              'label' => 'icommercepayu::icommercepayus.table.test',
-              'useInput' => false,
-              'useChips' => false,
-              'multiple' => false,
-              'hideDropdownIcon' => true,
-              'newValueMode' => 'add-unique',
-              'options' => [
-                ['label' => 'Activo','value' => 1],
-                ['label' => 'Inactivo','value' => 0],
-              ]
-            ]
+                'label' => 'icommercepayu::icommercepayus.table.test',
+                'useInput' => false,
+                'useChips' => false,
+                'multiple' => false,
+                'hideDropdownIcon' => true,
+                'newValueMode' => 'add-unique',
+                'options' => [
+                    ['label' => 'Activo', 'value' => 1],
+                    ['label' => 'Inactivo', 'value' => 0],
+                ],
+            ],
         ],
-
 
     ],
 ];

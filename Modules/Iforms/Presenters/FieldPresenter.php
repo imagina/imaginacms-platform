@@ -10,6 +10,7 @@ class FieldPresenter extends Presenter
      * @var \Modules\Iforms\Entities\Type
      */
     protected $types;
+
     /**
      * @var \Modules\Iforms\Repositories\FieldRepository
      */
@@ -26,7 +27,4 @@ class FieldPresenter extends Presenter
     {
         return $this->types->get($this->entity->type);
     }
-
-
-
 }

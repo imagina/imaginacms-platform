@@ -12,10 +12,12 @@ final class AsgardNotification implements Notification
      * @var NotificationRepository
      */
     private $notification;
+
     /**
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var int
      */
@@ -29,10 +31,11 @@ final class AsgardNotification implements Notification
 
     /**
      * Push a notification on the dashboard
-     * @param string $title
-     * @param string $message
-     * @param string $icon
-     * @param string|null $link
+     *
+     * @param  string  $title
+     * @param  string  $message
+     * @param  string  $icon
+     * @param  string|null  $link
      */
     public function push($title, $message, $icon, $link = null)
     {
@@ -52,20 +55,17 @@ final class AsgardNotification implements Notification
 
     /**
      * Trigger the broadcast event for the given notification
-     * @param \Modules\Notification\Entities\Notification $notification
      */
     private function triggerEventFor(\Modules\Notification\Entities\Notification $notification)
     {
         broadcast(new BroadcastNotification($notification))->toOthers();
     }
 
-
     private function toFirebase(\Modules\Notification\Entities\Notification $notification)
     {
-
         try {
             \Log::info('Notification push');
-            fcm()->toTopic('notification.new.' . $notification->user_id) // $topic must an string (topic name)
+            fcm()->toTopic('notification.new.'.$notification->user_id) // $topic must an string (topic name)
             ->priority('normal')
                 ->timeToLive(0)
                 ->data([
@@ -74,21 +74,19 @@ final class AsgardNotification implements Notification
                 ->notification([
                     'title' => $notification->title,
                     'body' => $notification->message,
-                    'link'=>$notification->link,
-                    'image'=>setting('isite::logo1')
+                    'link' => $notification->link,
+                    'image' => setting('isite::logo1'),
                 ])
                 ->send();
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
         }
-
-
     }
-
 
     /**
      * Set a user id to set the notification to
-     * @param int $userId
+     *
+     * @param  int  $userId
      * @return $this
      */
     public function to($userId)

@@ -18,6 +18,6 @@ class ClearSettingsCache
 
     public function handle()
     {
-      $this->cache->clearCache();
+        $this->cache->clearCache();
     }
 }

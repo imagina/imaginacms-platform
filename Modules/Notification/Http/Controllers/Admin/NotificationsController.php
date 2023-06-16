@@ -13,6 +13,7 @@ class NotificationsController extends AdminBaseController
      * @var NotificationRepository
      */
     private $notification;
+
     /**
      * @var Authentication
      */
@@ -36,7 +37,6 @@ class NotificationsController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Notification $notification
      * @return Response
      */
     public function destroy(Notification $notification)

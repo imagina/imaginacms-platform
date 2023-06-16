@@ -14,16 +14,14 @@ return [
         'create zone' => 'Create a zone',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Title'
+        'id' => 'Id',
+        'title' => 'Title',
     ],
     'form' => [
-        'principal'=>'Principal',
-        'title'=>'Title',
-        'description'=>'Description',
-        'zones'=>'Zone Type'
-
-
+        'principal' => 'Principal',
+        'title' => 'Title',
+        'description' => 'Description',
+        'zones' => 'Zone Type',
 
     ],
     'messages' => [

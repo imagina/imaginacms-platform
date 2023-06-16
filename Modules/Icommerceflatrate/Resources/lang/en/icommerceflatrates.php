@@ -16,7 +16,7 @@ return [
         'create icommerceflatrate' => 'Create a icommerceflatrate',
     ],
     'table' => [
-        'cost' => 'Cost'
+        'cost' => 'Cost',
     ],
     'form' => [
     ],

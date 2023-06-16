@@ -16,8 +16,6 @@ class RegisterQreableSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterQreableSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterQreableSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('qreable::locations.title.locations'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterQreableSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('qreable.locations.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

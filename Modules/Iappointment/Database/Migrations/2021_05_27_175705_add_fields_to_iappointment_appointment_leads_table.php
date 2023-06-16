@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddFieldsToIappointmentAppointmentLeadsTable extends Migration
 {
@@ -28,7 +28,7 @@ class AddFieldsToIappointmentAppointmentLeadsTable extends Migration
     public function down()
     {
         Schema::table('iappointment__appointment_leads', function (Blueprint $table) {
-            $table->dropColumn(['value','name']);
+            $table->dropColumn(['value', 'name']);
             $table->text('values')->nullable();
         });
     }

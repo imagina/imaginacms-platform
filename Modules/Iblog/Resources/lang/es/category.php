@@ -17,21 +17,21 @@ return [
         'create category' => 'Crear Categoria',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Titulo',
-        'slug'=>'Url Amigable',
-        'no post'=> 'Cantidad de Articulos'
+        'id' => 'Id',
+        'title' => 'Titulo',
+        'slug' => 'Url Amigable',
+        'no post' => 'Cantidad de Articulos',
     ],
     'form' => [
-        'title'=>'Titulo',
-        'slug'=>'Url Amigable',
-        'description'=>'Descripción',
-        'parent category'=>'Categoria Padre',
-        'secondary image'=>'Imagen  Segundaria',
-        'image'=>'Imagen Principal'
+        'title' => 'Titulo',
+        'slug' => 'Url Amigable',
+        'description' => 'Descripción',
+        'parent category' => 'Categoria Padre',
+        'secondary image' => 'Imagen  Segundaria',
+        'image' => 'Imagen Principal',
     ],
     'messages' => [
-      "sameSlug" => "El Slug: ':slug' ya existe en otra categoría"
+        'sameSlug' => "El Slug: ':slug' ya existe en otra categoría",
     ],
     'validation' => [
     ],

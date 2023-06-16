@@ -8,12 +8,14 @@ class TagManagerRepository implements TagManager
 {
     /**
      * Array of registered namespaces.
+     *
      * @var array
      */
     private $namespaces = [];
 
     /**
      * Returns all the registered namespaces.
+     *
      * @return array
      */
     public function getNamespaces()
@@ -23,7 +25,7 @@ class TagManagerRepository implements TagManager
 
     /**
      * Registers an entity namespace.
-     * @param TaggableInterface $entity
+     *
      * @return void
      */
     public function registerNamespace(TaggableInterface $entity)

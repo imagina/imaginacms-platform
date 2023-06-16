@@ -2,8 +2,8 @@
 
 namespace Modules\Icomments\Repositories\Cache;
 
-use Modules\Icomments\Repositories\CommentRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Icomments\Repositories\CommentRepository;
 
 class CacheCommentDecorator extends BaseCacheCrudDecorator implements CommentRepository
 {

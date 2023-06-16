@@ -36,20 +36,20 @@ return [
             'name' => 'Cita',
             'status' => true,
             'attributes' => [
-            ]
-        ]
+            ],
+        ],
     ],
 
     //Media Fillables
     'mediaFillable' => [
         'appointment' => [
             'mainimage' => 'single',
-            'gallery' => 'multiple'
+            'gallery' => 'multiple',
         ],
         'category' => [
             'mainimage' => 'single',
             'gallery' => 'multiple',
-        ]
+        ],
     ],
 
 ];

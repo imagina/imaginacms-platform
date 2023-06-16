@@ -13,6 +13,7 @@ class UserRegistrationTest extends BaseUserTestCase
      * @var RoleRepository
      */
     private $role;
+
     /**
      * @var UserRepository
      */

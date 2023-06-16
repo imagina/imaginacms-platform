@@ -2,8 +2,8 @@
 
 namespace Modules\Imeeting\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class ImeetingDatabaseSeeder extends Seeder
 {
@@ -18,9 +18,5 @@ class ImeetingDatabaseSeeder extends Seeder
 
         $this->call(ImeetingModuleTableSeeder::class);
         $this->call(ZoomProviderSeeder::class);
- 
     }
-
-   
-
 }

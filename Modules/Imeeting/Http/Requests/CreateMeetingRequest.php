@@ -10,7 +10,7 @@ class CreateMeetingRequest extends BaseFormRequest
     {
         return [
             'meetingAttr' => 'required|array',
-            'entityAttr' => 'required|array'
+            'entityAttr' => 'required|array',
         ];
     }
 
@@ -27,16 +27,16 @@ class CreateMeetingRequest extends BaseFormRequest
     public function messages()
     {
         return [
-            'meetingAttr.required' => "meetingAttr - Array Requerido", 
-            'entityAttr.required' => "entityAttr - Array Requerido"
+            'meetingAttr.required' => 'meetingAttr - Array Requerido',
+            'entityAttr.required' => 'entityAttr - Array Requerido',
         ];
     }
 
     public function translationMessages()
     {
         return [
-            'meetingAttr.required' => "meetingAttr - Array Requerido",
-            'entityAttr.required' => "entityAttr - Array Requerido" 
+            'meetingAttr.required' => 'meetingAttr - Array Requerido',
+            'entityAttr.required' => 'entityAttr - Array Requerido',
         ];
     }
 }

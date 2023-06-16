@@ -2,13 +2,12 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Polygon;
 use Modules\Ilocations\Http\Requests\CreatePolygonRequest;
 use Modules\Ilocations\Http\Requests\UpdatePolygonRequest;
 use Modules\Ilocations\Repositories\PolygonRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class PolygonController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class PolygonController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreatePolygonRequest $request
      * @return Response
      */
     public function store(CreatePolygonRequest $request)
@@ -63,7 +61,6 @@ class PolygonController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Polygon $polygon
      * @return Response
      */
     public function edit(Polygon $polygon)
@@ -74,8 +71,6 @@ class PolygonController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Polygon $polygon
-     * @param  UpdatePolygonRequest $request
      * @return Response
      */
     public function update(Polygon $polygon, UpdatePolygonRequest $request)
@@ -89,7 +84,6 @@ class PolygonController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Polygon $polygon
      * @return Response
      */
     public function destroy(Polygon $polygon)

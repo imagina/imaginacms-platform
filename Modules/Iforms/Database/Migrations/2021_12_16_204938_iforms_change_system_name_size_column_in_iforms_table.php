@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IformsChangeSystemNameSizeColumnInIformsTable extends Migration
 {
@@ -13,10 +13,9 @@ class IformsChangeSystemNameSizeColumnInIformsTable extends Migration
      */
     public function up()
     {
-      Schema::table('iforms__forms', function (Blueprint $table) {
-        $table->string('system_name', 180)->change();
-        
-      });
+        Schema::table('iforms__forms', function (Blueprint $table) {
+            $table->string('system_name', 180)->change();
+        });
     }
 
     /**

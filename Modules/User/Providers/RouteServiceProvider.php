@@ -18,7 +18,7 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getFrontendRoute()
     {
-        return __DIR__ . '/../Http/frontendRoutes.php';
+        return __DIR__.'/../Http/frontendRoutes.php';
     }
 
     /**
@@ -26,7 +26,7 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getBackendRoute()
     {
-        return __DIR__ . '/../Http/backendRoutes.php';
+        return __DIR__.'/../Http/backendRoutes.php';
     }
 
     /**
@@ -34,6 +34,6 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected function getApiRoute()
     {
-        return __DIR__ . '/../Http/apiRoutes.php';
+        return __DIR__.'/../Http/apiRoutes.php';
     }
 }

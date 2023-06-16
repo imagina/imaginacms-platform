@@ -1,19 +1,14 @@
 <?php
 
-
 namespace Modules\Iappointment\Jobs;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
-use Illuminate\Foundation\Bus\Dispatchable;
-
 use Modules\Iappointment\Entities\Appointment;
-use Carbon\Carbon;
 use Modules\Iappointment\Entities\AppointmentStatus;
-use Modules\Iappointment\Repositories\AppointmentRepository;
-
 
 class MarkExpiredAppointments implements ShouldQueue
 {
@@ -21,36 +16,33 @@ class MarkExpiredAppointments implements ShouldQueue
 
     public function __construct()
     {
-
     }
 
-    public function handle(){
-
-        \Log::info("Iappointment: Jobs|MarkExpiredAppointments");
+    public function handle()
+    {
+        \Log::info('Iappointment: Jobs|MarkExpiredAppointments');
         \DB::beginTransaction();
-        try{
+        try {
             $now = Carbon::now();
             $appointmentDayLimit = setting('iappointment::appointmentDayLimit', null, '3'); //get inactive appointment days
             $dateLimit = $now->subDays($appointmentDayLimit);
-            $inactiveAppointments = Appointment::whereIn('status_id', [1, 4])->whereHas('statusHistory',function($query) use($dateLimit){
-                $query->whereDate('created_at','<=', $dateLimit)
+            $inactiveAppointments = Appointment::whereIn('status_id', [1, 4])->whereHas('statusHistory', function ($query) use ($dateLimit) {
+                $query->whereDate('created_at', '<=', $dateLimit)
                     ->whereIn('status_id', [1, 4]);
             })->pluck('id')->toArray(); //get inactive appointments
-            if($inactiveAppointments){
+            if ($inactiveAppointments) {
                 \Log::info($inactiveAppointments);
-                Appointment::whereIn('status_id', [1, 4])->whereHas('statusHistory',function($query) use($dateLimit){
-                    $query->whereDate('created_at','<=', $dateLimit)
+                Appointment::whereIn('status_id', [1, 4])->whereHas('statusHistory', function ($query) use ($dateLimit) {
+                    $query->whereDate('created_at', '<=', $dateLimit)
                         ->whereIn('status_id', [1, 4]);
                 })->update(['status_id' => 5]);
-                $expiredStatus = AppointmentStatus::where('id',5)->first();
+                $expiredStatus = AppointmentStatus::where('id', 5)->first();
                 $expiredStatus->appointments()->attach($inactiveAppointments);
             }
             \DB::commit();
-        }catch(\Exception $e){
+        } catch(\Exception $e) {
             \DB::rollback();
             \Log::info('Error marking expired appointments '.$e->getMessage().' - '.$e->getFile().' Line '.$e->getLine());
         }
-       
     }
-
 }

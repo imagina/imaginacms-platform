@@ -7,6 +7,6 @@ return [
         'edit' => 'qreable::locations.edit resource',
         'destroy' => 'qreable::locations.destroy resource',
     ],
-// append
+    // append
 
 ];

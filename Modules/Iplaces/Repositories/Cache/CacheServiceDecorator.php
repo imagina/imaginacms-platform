@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\ServiceRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\ServiceRepository;
 
 class CacheServiceDecorator extends BaseCacheDecorator implements ServiceRepository
 {
@@ -27,7 +27,6 @@ class CacheServiceDecorator extends BaseCacheDecorator implements ServiceReposit
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

@@ -9,8 +9,11 @@ use Illuminate\Support\Collection as BaseCollection;
 class NestedFoldersCollection extends Collection
 {
     private $total;
+
     private $parentColumn;
+
     private $removeItemsWithMissingAncestor = true;
+
     private $indentChars = '&nbsp;&nbsp;&nbsp;&nbsp;';
 
     public function __construct($items = [])
@@ -22,6 +25,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Nest items.
+     *
      * @return mixed NestableCollection
      */
     public function nest()
@@ -65,12 +69,11 @@ class NestedFoldersCollection extends Collection
     /**
      * Recursive function that flatten a nested Collection
      * with characters (default is four spaces).
-     * @param string $column
-     * @param BaseCollection|null $collection
-     * @param int $level
-     * @param array &$flattened
-     * @param string|null $indentChars
-     * @param string|boolen|null $parent_string
+     *
+     * @param  string  $column
+     * @param  int  $level
+     * @param  string|null  $indentChars
+     * @param  string|boolen|null  $parent_string
      * @return array
      */
     public function listsFlattened(
@@ -85,9 +88,9 @@ class NestedFoldersCollection extends Collection
         $indentChars = $indentChars ?: $this->indentChars;
         foreach ($collection as $item) {
             if ($parent_string) {
-                $item_string = ($parent_string === true) ? $item->$column : $parent_string . $indentChars . $item->$column;
+                $item_string = ($parent_string === true) ? $item->$column : $parent_string.$indentChars.$item->$column;
             } else {
-                $item_string = str_repeat($indentChars, $level) . $item->$column;
+                $item_string = str_repeat($indentChars, $level).$item->$column;
             }
             $flattened[$item->id] = $item_string;
             if ($item->items) {
@@ -107,11 +110,10 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Returns a fully qualified version of listsFlattened.
-     * @param BaseCollection|null $collection
-     * @param string $column
-     * @param int $level
-     * @param array &$flattened
-     * @param string $indentChars
+     *
+     * @param  string  $column
+     * @param  int  $level
+     * @param  string  $indentChars
      * @return array
      */
     public function listsFlattenedQualified(
@@ -126,7 +128,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Change the default indent characters when flattening lists.
-     * @param string $indentChars
+     *
      * @return $this
      */
     public function setIndent(string $indentChars)
@@ -138,6 +140,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Force keeping items that have a missing ancestor.
+     *
      * @return NestableCollection
      */
     public function noCleaning()
@@ -149,7 +152,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Check if an ancestor is missing.
-     * @param $item
+     *
      * @return bool
      */
     public function anAncestorIsMissing($item)
@@ -168,6 +171,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Get total items in nested collection.
+     *
      * @return int
      */
     public function total()
@@ -177,6 +181,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Get total items for laravel 4 compatibility.
+     *
      * @return int
      */
     public function getTotal()

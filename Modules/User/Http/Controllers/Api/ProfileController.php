@@ -14,6 +14,7 @@ class ProfileController extends Controller
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var UserRepository
      */

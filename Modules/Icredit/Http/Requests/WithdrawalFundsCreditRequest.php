@@ -3,7 +3,6 @@
 namespace Modules\Icredit\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
-use Modules\Ihelpers\Rules\UniqueSlugRule;
 
 class WithdrawalFundsCreditRequest extends BaseFormRequest
 {
@@ -16,8 +15,7 @@ class WithdrawalFundsCreditRequest extends BaseFormRequest
 
     public function translationRules()
     {
-
-       return [];
+        return [];
     }
 
     public function authorize()
@@ -39,7 +37,8 @@ class WithdrawalFundsCreditRequest extends BaseFormRequest
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
 }

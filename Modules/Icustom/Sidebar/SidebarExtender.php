@@ -15,8 +15,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -25,21 +23,16 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     }
 
     /**
-     * @param Menu $menu
-     *
      * @return Menu
      */
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-
-           /* $group->item(trans('icustom::common.icustom'), function (Item $item) {
-                $item->authorize(
-                    $this->auth->hasAccess('icustom.icustom.index')
-                );
-            });*/
-
-
+            /* $group->item(trans('icustom::common.icustom'), function (Item $item) {
+                 $item->authorize(
+                     $this->auth->hasAccess('icustom.icustom.index')
+                 );
+             });*/
         });
 
         return $menu;

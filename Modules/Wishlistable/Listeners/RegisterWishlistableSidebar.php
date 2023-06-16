@@ -16,8 +16,6 @@ class RegisterWishlistableSidebar implements \Maatwebsite\Sidebar\SidebarExtende
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -31,7 +29,6 @@ class RegisterWishlistableSidebar implements \Maatwebsite\Sidebar\SidebarExtende
     }
 
     /**
-     * @param Menu $menu
      * @return Menu
      */
     public function extendWith(Menu $menu)
@@ -41,7 +38,7 @@ class RegisterWishlistableSidebar implements \Maatwebsite\Sidebar\SidebarExtende
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('wishlistable::wishlistables.title.wishlistables'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +49,7 @@ class RegisterWishlistableSidebar implements \Maatwebsite\Sidebar\SidebarExtende
                         $this->auth->hasAccess('wishlistable.wishlistables.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

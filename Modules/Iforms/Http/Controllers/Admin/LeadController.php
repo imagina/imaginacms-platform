@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Lead;
 use Modules\Iforms\Http\Requests\CreateLeadRequest;
 use Modules\Iforms\Http\Requests\UpdateLeadRequest;
 use Modules\Iforms\Repositories\LeadRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class LeadController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class LeadController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateLeadRequest $request
      * @return Response
      */
     public function store(CreateLeadRequest $request)
@@ -63,7 +61,6 @@ class LeadController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Lead $lead
      * @return Response
      */
     public function edit(Lead $lead)
@@ -74,8 +71,6 @@ class LeadController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Lead $lead
-     * @param  UpdateLeadRequest $request
      * @return Response
      */
     public function update(Lead $lead, UpdateLeadRequest $request)
@@ -89,7 +84,6 @@ class LeadController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Lead $lead
      * @return Response
      */
     public function destroy(Lead $lead)

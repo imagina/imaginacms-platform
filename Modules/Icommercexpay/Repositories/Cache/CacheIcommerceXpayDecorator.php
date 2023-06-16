@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercexpay\Repositories\Cache;
 
-use Modules\Icommercexpay\Repositories\IcommerceXpayRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercexpay\Repositories\IcommerceXpayRepository;
 
 class CacheIcommerceXpayDecorator extends BaseCacheDecorator implements IcommerceXpayRepository
 {

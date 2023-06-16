@@ -1,7 +1,6 @@
 <?php
 
 use Modules\Isite\Activators\ModuleActivator;
-use Nwidart\Modules\Activators\FileActivator;
 
 return [
 
@@ -27,7 +26,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path() . '/vendor/nwidart/laravel-modules/src/Commands/stubs',
+        'path' => base_path().'/vendor/nwidart/laravel-modules/src/Commands/stubs',
         'files' => [
             'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
@@ -203,7 +202,7 @@ return [
     */
     'activators' => [
         'file' => [
-      'class' => ModuleActivator::class,
+            'class' => ModuleActivator::class,
             'statuses-file' => base_path('modules_statuses.json'),
             'cache-key' => 'activator.installed',
             'cache-lifetime' => 604800,

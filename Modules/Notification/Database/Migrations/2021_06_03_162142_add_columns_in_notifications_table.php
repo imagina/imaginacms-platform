@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddColumnsInNotificationsTable extends Migration
 {
@@ -14,8 +14,8 @@ class AddColumnsInNotificationsTable extends Migration
     public function up()
     {
         Schema::table('notification__notifications', function (Blueprint $table) {
-          $table->text('options')->after('is_read')->nullable();
-          $table->boolean('is_action')->after('is_read')->nullable();
+            $table->text('options')->after('is_read')->nullable();
+            $table->boolean('is_action')->after('is_read')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddColumnsInNotificationsTable extends Migration
     public function down()
     {
         Schema::table('notification__notifications', function (Blueprint $table) {
-          $table->dropColumn('options');
-          $table->dropColumn('is_action');
+            $table->dropColumn('options');
+            $table->dropColumn('is_action');
         });
     }
 }

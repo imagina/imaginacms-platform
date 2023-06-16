@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSuscriptionIdAndSuscriptionTokenInOrdersTable extends Migration
 {
@@ -14,10 +14,8 @@ class AddSuscriptionIdAndSuscriptionTokenInOrdersTable extends Migration
     public function up()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          
-          $table->string('suscription_id')->nullable();
-          $table->text('suscription_token')->nullable();
-          
+            $table->string('suscription_id')->nullable();
+            $table->text('suscription_token')->nullable();
         });
     }
 
@@ -29,8 +27,8 @@ class AddSuscriptionIdAndSuscriptionTokenInOrdersTable extends Migration
     public function down()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          $table->dropColumn('suscription_id');
-          $table->dropColumn('suscription_token');
+            $table->dropColumn('suscription_id');
+            $table->dropColumn('suscription_token');
         });
     }
 }

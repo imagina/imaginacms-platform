@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class BlockTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
-        'title','description'
+        'title', 'description',
     ];
+
     protected $table = 'iforms__block_translations';
 }

@@ -18,7 +18,7 @@ return [
     'form' => [
     ],
     'messages' => [
-      'eventIdRequired' => 'The Event Id is required'
+        'eventIdRequired' => 'The Event Id is required',
     ],
     'validation' => [
     ],

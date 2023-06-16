@@ -17,9 +17,6 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
      */
     public $user;
 
-    /**
-     * @var
-     */
     public $code;
 
     public function __construct(UserInterface $user, $code)

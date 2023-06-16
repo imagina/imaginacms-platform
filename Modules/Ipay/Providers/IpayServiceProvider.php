@@ -8,6 +8,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 class IpayServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -37,13 +38,11 @@ class IpayServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
     {
-
         // add bindings
-
     }
 }

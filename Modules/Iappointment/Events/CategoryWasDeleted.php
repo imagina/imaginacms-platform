@@ -2,21 +2,20 @@
 
 namespace Modules\Iappointment\Events;
 
-
 class CategoryWasDeleted
 {
     public $entity;
-    public  $data;
+
+    public $data;
 
     /**
      * Create a new event instance.
      *
-     * @param $entity
-     * @param array $data
+     * @param  array  $data
      */
     public function __construct($entity)
     {
-      $this->entity=$entity;
+        $this->entity = $entity;
     }
 
     public function getEntity()
@@ -26,12 +25,11 @@ class CategoryWasDeleted
 
     /**
      * Return the ALL data sent
+     *
      * @return array
      */
-
     public function getSubmissionData()
     {
         return [];
     }
-
 }

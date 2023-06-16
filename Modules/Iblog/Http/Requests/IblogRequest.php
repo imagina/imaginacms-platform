@@ -51,9 +51,9 @@ class IblogRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     {
         return [
             'title.required' => trans('iblog::common.messages.title is required'),
-            'title.min:2'=> trans('iblog::common.messages.title min 2 '),
-            'description.required'=> trans('iblog::common.messages.description is required'),
-            'description.min:2'=> trans('iblog::common.messages.description min 2 '),
+            'title.min:2' => trans('iblog::common.messages.title min 2 '),
+            'description.required' => trans('iblog::common.messages.description is required'),
+            'description.min:2' => trans('iblog::common.messages.description min 2 '),
         ];
     }
 }

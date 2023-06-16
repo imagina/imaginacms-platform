@@ -10,18 +10,17 @@ final class SettingDirective
      * @var string
      */
     private $settingName;
+
     /**
      * @var string
      */
     private $locale;
+
     /**
      * @var string Default value
      */
     private $default;
 
-    /**
-     * @param $arguments
-     */
     public function show($arguments)
     {
         $this->extractArguments($arguments);
@@ -29,9 +28,6 @@ final class SettingDirective
         return e(setting($this->settingName, $this->locale, $this->default));
     }
 
-    /**
-     * @param array $arguments
-     */
     private function extractArguments(array $arguments)
     {
         $this->settingName = Arr::get($arguments, 0);

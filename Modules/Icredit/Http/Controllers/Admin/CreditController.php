@@ -2,13 +2,12 @@
 
 namespace Modules\Icredit\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icredit\Entities\Credit;
 use Modules\Icredit\Http\Requests\CreateCreditRequest;
 use Modules\Icredit\Http\Requests\UpdateCreditRequest;
 use Modules\Icredit\Repositories\CreditRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CreditController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class CreditController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCreditRequest $request
      * @return Response
      */
     public function store(CreateCreditRequest $request)
@@ -63,7 +61,6 @@ class CreditController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Credit $credit
      * @return Response
      */
     public function edit(Credit $credit)
@@ -74,8 +71,6 @@ class CreditController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Credit $credit
-     * @param  UpdateCreditRequest $request
      * @return Response
      */
     public function update(Credit $credit, UpdateCreditRequest $request)
@@ -89,7 +84,6 @@ class CreditController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Credit $credit
      * @return Response
      */
     public function destroy(Credit $credit)

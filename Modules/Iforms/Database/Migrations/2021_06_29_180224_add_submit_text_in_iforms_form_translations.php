@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSubmitTextInIformsFormTranslations extends Migration
 {
@@ -27,7 +27,7 @@ class AddSubmitTextInIformsFormTranslations extends Migration
     public function down()
     {
         Schema::table('iforms__form_translations', function (Blueprint $table) {
-            $table->dropColumn(['submit_text','success_text']);
+            $table->dropColumn(['submit_text', 'success_text']);
         });
     }
 }

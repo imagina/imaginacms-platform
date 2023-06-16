@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 class RemoveModulePermissionsCommand extends Command
 {
     protected $name = 'asgard:user:remove-permissions';
+
     protected $description = 'Remove all the permissions for given module from any role or user';
 
     /**

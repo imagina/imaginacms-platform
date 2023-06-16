@@ -2,6 +2,6 @@
 
 return [
     'name' => 'Icommercebraintree',
-    'paymentName' => 'icommercebraintree'
-    
+    'paymentName' => 'icommercebraintree',
+
 ];

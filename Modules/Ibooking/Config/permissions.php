@@ -42,11 +42,6 @@ return [
         'manage' => 'ibooking::reservationitems.manage resource',
         'restore' => 'ibooking::reservationitems.restore resource',
     ],
-// append
-
-
-
-
-
+    // append
 
 ];

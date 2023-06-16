@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercecoordinadora\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercecoordinadora\Entities\IcommerceCoordinadora;
 use Modules\Icommercecoordinadora\Http\Requests\CreateIcommerceCoordinadoraRequest;
 use Modules\Icommercecoordinadora\Http\Requests\UpdateIcommerceCoordinadoraRequest;
 use Modules\Icommercecoordinadora\Repositories\IcommerceCoordinadoraRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceCoordinadoraController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class IcommerceCoordinadoraController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceCoordinadoraRequest $request
      * @return Response
      */
     public function store(CreateIcommerceCoordinadoraRequest $request)
@@ -63,7 +61,6 @@ class IcommerceCoordinadoraController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceCoordinadora $icommercecoordinadora
      * @return Response
      */
     public function edit(IcommerceCoordinadora $icommercecoordinadora)
@@ -74,8 +71,6 @@ class IcommerceCoordinadoraController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceCoordinadora $icommercecoordinadora
-     * @param  UpdateIcommerceCoordinadoraRequest $request
      * @return Response
      */
     public function update(IcommerceCoordinadora $icommercecoordinadora, UpdateIcommerceCoordinadoraRequest $request)
@@ -89,7 +84,6 @@ class IcommerceCoordinadoraController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceCoordinadora $icommercecoordinadora
      * @return Response
      */
     public function destroy(IcommerceCoordinadora $icommercecoordinadora)

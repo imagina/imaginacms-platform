@@ -4,11 +4,11 @@ namespace Modules\Icheckin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Request as RequestEntity;
 use Modules\Icheckin\Http\Requests\CreateRequestRequest;
 use Modules\Icheckin\Http\Requests\UpdateRequestRequest;
 use Modules\Icheckin\Repositories\RequestRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RequestController extends AdminBaseController
 {
@@ -49,7 +49,6 @@ class RequestController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRequestRequest $request
      * @return Response
      */
     public function store(CreateRequestRequest $request)
@@ -63,7 +62,7 @@ class RequestController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function edit(RequestEntity $request)
@@ -74,8 +73,7 @@ class RequestController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  UpdateRequestRequest $request
+     * @param  Request  $request
      * @return Response
      */
     public function update(RequestEntity $requestEntity, UpdateRequestRequest $request)
@@ -89,7 +87,7 @@ class RequestController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function destroy(RequestEntity $request)

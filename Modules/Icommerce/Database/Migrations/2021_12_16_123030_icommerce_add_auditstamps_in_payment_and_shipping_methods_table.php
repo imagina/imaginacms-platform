@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class IcommerceAddAuditstampsInPaymentAndShippingMethodsTable extends Migration
 {
@@ -13,12 +13,12 @@ class IcommerceAddAuditstampsInPaymentAndShippingMethodsTable extends Migration
      */
     public function up()
     {
-      Schema::table('icommerce__payment_methods', function (Blueprint $table) {
-        $table->auditStamps();
-      });
-      Schema::table('icommerce__shipping_methods', function (Blueprint $table) {
-        $table->auditStamps();
-      });
+        Schema::table('icommerce__payment_methods', function (Blueprint $table) {
+            $table->auditStamps();
+        });
+        Schema::table('icommerce__shipping_methods', function (Blueprint $table) {
+            $table->auditStamps();
+        });
     }
 
     /**

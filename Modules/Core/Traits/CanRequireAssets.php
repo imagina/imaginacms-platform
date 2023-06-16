@@ -8,7 +8,8 @@ trait CanRequireAssets
 {
     /**
      * Require a css asset from the asset pipeline
-     * @param string $name
+     *
+     * @param  string  $name
      */
     public function requireCss($name)
     {
@@ -17,7 +18,8 @@ trait CanRequireAssets
 
     /**
      * Require a js asset from the asset pipeline
-     * @param string $name
+     *
+     * @param  string  $name
      */
     public function requireJs($name)
     {

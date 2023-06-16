@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Ad;
 use Modules\Iad\Http\Requests\CreateAdRequest;
 use Modules\Iad\Http\Requests\UpdateAdRequest;
 use Modules\Iad\Repositories\AdRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AdController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class AdController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateAdRequest $request
      * @return Response
      */
     public function store(CreateAdRequest $request)
@@ -63,7 +61,6 @@ class AdController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Ad $ad
      * @return Response
      */
     public function edit(Ad $ad)
@@ -74,8 +71,6 @@ class AdController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Ad $ad
-     * @param  UpdateAdRequest $request
      * @return Response
      */
     public function update(Ad $ad, UpdateAdRequest $request)
@@ -89,7 +84,6 @@ class AdController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Ad $ad
      * @return Response
      */
     public function destroy(Ad $ad)

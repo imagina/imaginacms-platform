@@ -2,16 +2,17 @@
 
 namespace Modules\Qreable\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Qreable\Events\Handlers\RegisterQreableSidebar;
-use Illuminate\Support\Arr;
 
 class QreableServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class QreableServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('locations', Arr::dot(trans('qreable::locations')));
             // append translations
-
         });
     }
 
@@ -51,7 +51,7 @@ class QreableServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -80,7 +80,6 @@ class QreableServiceProvider extends ServiceProvider
                 return new \Modules\Qreable\Repositories\Cache\CacheQredDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

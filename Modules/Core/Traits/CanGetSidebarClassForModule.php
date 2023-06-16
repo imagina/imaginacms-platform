@@ -5,8 +5,8 @@ namespace Modules\Core\Traits;
 trait CanGetSidebarClassForModule
 {
     /**
-     * @param string $module
-     * @param string $default
+     * @param  string  $module
+     * @param  string  $default
      * @return string
      */
     public function getSidebarClassForModule($module, $default)

@@ -11,14 +11,14 @@ class MediaSingleDirective
      * @var string
      */
     private $zone;
-    /**
-     * @var
-     */
+
     private $entity;
+
     /**
      * @var string|null
      */
     private $view;
+
     /**
      * @var string|null
      */
@@ -46,7 +46,6 @@ class MediaSingleDirective
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {

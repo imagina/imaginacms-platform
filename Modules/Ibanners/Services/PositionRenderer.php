@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Services;
+<?php
+
+namespace Modules\Ibanners\Services;
 
 use Illuminate\Support\Facades\URL;
 
@@ -8,22 +10,24 @@ class PositionRenderer
      * @var int Id of the position to render
      */
     protected $positionId;
+
     /**
      * @var string
      */
     private $startTag = '<div class="dd">';
+
     /**
      * @var string
      */
     private $endTag = '</div>';
+
     /**
      * @var string
      */
     private $banners = '';
 
     /**
-     * @param Ibanners $position
-     * @param $banners
+     * @param  Ibanners  $position
      * @return string
      */
     public function renderForPosition($position, $banners)
@@ -39,7 +43,6 @@ class PositionRenderer
 
     /**
      * Generate the html for the given items
-     * @param $banners
      */
     private function generateHtmlFor($banners)
     {
@@ -58,13 +61,13 @@ class PositionRenderer
 </div>
 HTML;
             $this->banners .= "<div class='dd-handle'>{$banner->title}</div>";
-            if(strpos($banner->getImageUrl(),'youtube.com')){
+            if (strpos($banner->getImageUrl(), 'youtube.com')) {
                 $this->banners .= "<div><iframe width='100%' height='350' src='".$banner->getImageUrl()."'   frameborder='0' allowfullscreen></iframe></div>";
-            }elseif(strpos($banner->getImageUrl(),'.mp4')){
+            } elseif (strpos($banner->getImageUrl(), '.mp4')) {
                 $this->banners .= "<div><video class='img-responsive center-block' loop controls='false'>
                         <source src='".$banner->getImageUrl()."' type='video/mp4'>
                     </video></div>";
-            }else{
+            } else {
                 $this->banners .= "<div><img class='img-responsive' src='".$banner->getImageUrl()."' /></div>";
             }
 
@@ -72,5 +75,4 @@ HTML;
         }
         $this->banners .= '</ol>';
     }
-
 }

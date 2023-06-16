@@ -15,6 +15,7 @@ class ApiKeysController extends Controller
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var UserTokenRepository
      */

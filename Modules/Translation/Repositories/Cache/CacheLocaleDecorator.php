@@ -17,13 +17,13 @@ class CacheLocaleDecorator extends BaseCacheDecorator implements LocaleRepositor
     }
 
     /** {@inheritdoc} */
-    public function apiIndex(LocaleCodeRequest $request) : Collection
+    public function apiIndex(LocaleCodeRequest $request): Collection
     {
         return $this->remember(
             function () use ($request) {
                 return $this->repository->apiIndex($request);
             },
-            'locales_search_' . $request->get('search')
+            'locales_search_'.$request->get('search')
         );
     }
 
@@ -39,7 +39,7 @@ class CacheLocaleDecorator extends BaseCacheDecorator implements LocaleRepositor
     }
 
     /** {@inheritdoc} */
-    public function availableLocales() : Collection
+    public function availableLocales(): Collection
     {
         return $this->remember(
             function () {
@@ -50,7 +50,7 @@ class CacheLocaleDecorator extends BaseCacheDecorator implements LocaleRepositor
     }
 
     /** {@inheritdoc} */
-    public function supportedLocales() : Collection
+    public function supportedLocales(): Collection
     {
         return $this->remember(
             function () {
@@ -61,7 +61,7 @@ class CacheLocaleDecorator extends BaseCacheDecorator implements LocaleRepositor
     }
 
     /** {@inheritdoc} */
-    public function translatableLocales() : Collection
+    public function translatableLocales(): Collection
     {
         return $this->remember(
             function () {

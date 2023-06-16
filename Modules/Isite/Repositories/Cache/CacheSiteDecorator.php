@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\SiteRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Isite\Repositories\SiteRepository;
 
 class CacheSiteDecorator extends BaseCacheDecorator implements SiteRepository
 {

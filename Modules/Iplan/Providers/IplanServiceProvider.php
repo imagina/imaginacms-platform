@@ -4,14 +4,15 @@ namespace Modules\Iplan\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Iplan\Events\Handlers\RegisterIplanidebar;
 
 class IplanServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -36,9 +37,6 @@ class IplanServiceProvider extends ServiceProvider
             $event->load('subscriptions', array_dot(trans('iplan::subscriptions')));
             $event->load('subscriptionlimits', array_dot(trans('iplan::subscriptionlimits')));
             // append translations
-
-
-
         });
     }
 
@@ -46,11 +44,11 @@ class IplanServiceProvider extends ServiceProvider
     {
         $this->publishConfig('iplan', 'config');
 
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'settings'), "asgard.iplan.settings");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'settings-fields'), "asgard.iplan.settings-fields");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'permissions'), "asgard.iplan.permissions");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'cmsPages'), "asgard.iplan.cmsPages");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'cmsSidebar'), "asgard.iplan.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'settings'), 'asgard.iplan.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'settings-fields'), 'asgard.iplan.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'permissions'), 'asgard.iplan.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'cmsPages'), 'asgard.iplan.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iplan', 'cmsSidebar'), 'asgard.iplan.cmsSidebar');
 
         $this->publishConfig('iplan', 'crud-fields');
 
@@ -66,7 +64,7 @@ class IplanServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -143,22 +141,14 @@ class IplanServiceProvider extends ServiceProvider
                 return new \Modules\Iplan\Repositories\Cache\CacheEntityPlanDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
-
-
+        // add bindings
     }
 
     /**
      * Register Blade components
      */
-
-    private function registerComponents(){
+    private function registerComponents()
+    {
         Blade::componentNamespace("Modules\Iplan\View\Components", 'iplan');
     }
-
 }

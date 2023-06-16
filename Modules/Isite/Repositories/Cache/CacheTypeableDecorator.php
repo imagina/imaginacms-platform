@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\TypeableRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Isite\Repositories\TypeableRepository;
 
 class CacheTypeableDecorator extends BaseCacheCrudDecorator implements TypeableRepository
 {

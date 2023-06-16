@@ -6,5 +6,5 @@ use Modules\Media\Entities\File;
 
 interface MoverInterface
 {
-    public function move(File $file, File $destination) : bool;
+    public function move(File $file, File $destination): bool;
 }

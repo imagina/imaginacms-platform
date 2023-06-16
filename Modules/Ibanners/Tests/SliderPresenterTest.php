@@ -6,7 +6,6 @@ use Modules\Ibanners\Presenters\SliderPresenter;
 
 class SliderPresenterTest extends BaseSliderTest
 {
-
     /**
      * @var SliderPresenter
      */

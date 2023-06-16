@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class RequestableAddInternalToTheCategoryTable extends Migration
 {
@@ -13,9 +13,9 @@ class RequestableAddInternalToTheCategoryTable extends Migration
      */
     public function up()
     {
-      Schema::table('requestable__categories', function (Blueprint $table) {
-        $table->integer("internal")->default(1)->after("requestable_type");
-      });
+        Schema::table('requestable__categories', function (Blueprint $table) {
+            $table->integer('internal')->default(1)->after('requestable_type');
+        });
     }
 
     /**

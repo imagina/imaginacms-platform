@@ -4,14 +4,15 @@ namespace Modules\Icommercestripe\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercestripe\Events\Handlers\RegisterIcommercestripeSidebar;
 
 class IcommercestripeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercestripeServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercestripes', Arr::dot(trans('icommercestripe::icommercestripes')));
             // append translations
-
         });
     }
 
@@ -42,8 +42,8 @@ class IcommercestripeServiceProvider extends ServiceProvider
         $this->publishConfig('icommercestripe', 'config');
         $this->publishConfig('icommercestripe', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercestripe', 'settings'), "asgard.icommercestripe.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercestripe', 'settings-fields'), "asgard.icommercestripe.settings-fields");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercestripe', 'settings'), 'asgard.icommercestripe.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icommercestripe', 'settings-fields'), 'asgard.icommercestripe.settings-fields');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
@@ -55,7 +55,7 @@ class IcommercestripeServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -72,9 +72,6 @@ class IcommercestripeServiceProvider extends ServiceProvider
                 return new \Modules\Icommercestripe\Repositories\Cache\CacheIcommerceStripeDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-    
 }

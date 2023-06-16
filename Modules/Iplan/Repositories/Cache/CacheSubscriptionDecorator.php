@@ -2,8 +2,8 @@
 
 namespace Modules\Iplan\Repositories\Cache;
 
-use Modules\Iplan\Repositories\SubscriptionRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplan\Repositories\SubscriptionRepository;
 
 class CacheSubscriptionDecorator extends BaseCacheDecorator implements SubscriptionRepository
 {

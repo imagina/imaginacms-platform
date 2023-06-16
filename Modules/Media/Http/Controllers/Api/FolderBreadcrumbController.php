@@ -12,6 +12,7 @@ class FolderBreadcrumbController extends Controller
      * @var FolderRepository
      */
     private $folder;
+
     private $breadcrumb = [
         //0 => 'Home',
     ];

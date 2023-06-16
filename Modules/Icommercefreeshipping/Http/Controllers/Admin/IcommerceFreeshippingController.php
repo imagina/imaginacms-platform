@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercefreeshipping\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercefreeshipping\Entities\IcommerceFreeshipping;
 use Modules\Icommercefreeshipping\Http\Requests\CreateIcommerceFreeshippingRequest;
 use Modules\Icommercefreeshipping\Http\Requests\UpdateIcommerceFreeshippingRequest;
 use Modules\Icommercefreeshipping\Repositories\IcommerceFreeshippingRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceFreeshippingController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class IcommerceFreeshippingController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceFreeshippingRequest $request
      * @return Response
      */
     public function store(CreateIcommerceFreeshippingRequest $request)
@@ -63,7 +61,6 @@ class IcommerceFreeshippingController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
      * @return Response
      */
     public function edit(IcommerceFreeshipping $icommercefreeshipping)
@@ -74,8 +71,6 @@ class IcommerceFreeshippingController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
-     * @param  UpdateIcommerceFreeshippingRequest $request
      * @return Response
      */
     public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request)
@@ -89,7 +84,6 @@ class IcommerceFreeshippingController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
      * @return Response
      */
     public function destroy(IcommerceFreeshipping $icommercefreeshipping)

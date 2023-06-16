@@ -4,7 +4,6 @@ namespace Modules\Iad\Repositories\Cache;
 
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
 use Modules\Iad\Repositories\CategoryRepository;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
 class CacheCategoryDecorator extends BaseCacheCrudDecorator implements CategoryRepository
 {

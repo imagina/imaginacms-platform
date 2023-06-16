@@ -12,18 +12,22 @@ class TagWidget
      * @var TagRepository
      */
     private $tag;
+
     /**
      * @var string
      */
     private $namespace;
+
     /**
      * @var TaggableInterface|null
      */
     private $entity;
+
     /**
      * @var string|null
      */
     private $view;
+
     /**
      * @var string|null
      */
@@ -35,7 +39,6 @@ class TagWidget
     }
 
     /**
-     * @param $arguments
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($arguments)
@@ -55,7 +58,6 @@ class TagWidget
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {
@@ -67,6 +69,7 @@ class TagWidget
 
     /**
      * Get the available tags, if an entity is available from that
+     *
      * @return array
      */
     private function getTags()

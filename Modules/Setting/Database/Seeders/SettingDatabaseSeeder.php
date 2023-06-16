@@ -25,19 +25,19 @@ class SettingDatabaseSeeder extends Seeder
      */
     public function run()
     {
-      Model::unguard();
-  
-      $this->call(SettingModuleTableSeeder::class);
-      $settingsToCreate = [
-        'core::template' => 'ImaginaTheme',
-        'core::locales' => ['es'],
-      ];
-  
-      foreach ($settingsToCreate as $key => $settingToCreate){
-        $setting =  $this->setting->findByName($key);
-        if(!isset($setting->id)){
-          $this->setting->createOrUpdate([$key => $settingToCreate]);
+        Model::unguard();
+
+        $this->call(SettingModuleTableSeeder::class);
+        $settingsToCreate = [
+            'core::template' => 'ImaginaTheme',
+            'core::locales' => ['es'],
+        ];
+
+        foreach ($settingsToCreate as $key => $settingToCreate) {
+            $setting = $this->setting->findByName($key);
+            if (! isset($setting->id)) {
+                $this->setting->createOrUpdate([$key => $settingToCreate]);
+            }
         }
-      }
     }
 }

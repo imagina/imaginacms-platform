@@ -9,7 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 final class EntityScaffoldCommand extends Command
 {
     protected $name = 'asgard:entity:scaffold';
+
     protected $description = 'Scaffold a new entity with all its resources.';
+
     /**
      * @var EntityGenerator
      */

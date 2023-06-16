@@ -3,11 +3,10 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => '/categories'], function (Router $router) {
-
     $router->post('/', [
         'as' => 'api.iappointment.categories.create',
         'uses' => 'CategoryApiController@create',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->get('/', [
         'as' => 'api.iappointment.categories.index',
@@ -20,12 +19,11 @@ Route::group(['prefix' => '/categories'], function (Router $router) {
     $router->put('/{criteria}', [
         'as' => 'api.iappointment.categories.update',
         'uses' => 'CategoryApiController@update',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->delete('/{criteria}', [
         'as' => 'api.iappointment.categories.delete',
         'uses' => 'CategoryApiController@delete',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
-
 });

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIblogCategoryTranslationsTable extends Migration
 {
@@ -28,7 +28,6 @@ class CreateIblogCategoryTranslationsTable extends Migration
             $table->unique(['category_id', 'locale']);
             $table->foreign('category_id')->references('id')->on('iblog__categories')->onDelete('cascade');
         });
-
     }
 
     /**

@@ -25,9 +25,9 @@ return [
     | Add relations that will be dynamically added to the Page entity
     */
     'relations' => [
-//        'extension' => function (): \Illuminate\Database\Eloquent\Relations\BelongsTo {
-//            return $this->belongsTo(PageExtension::class, 'id', 'page_id')->first();
-//        }
+        //        'extension' => function (): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        //            return $this->belongsTo(PageExtension::class, 'id', 'page_id')->first();
+        //        }
     ],
     /*
     |--------------------------------------------------------------------------
@@ -73,11 +73,11 @@ return [
     ],
     //Media Fillables
     'mediaFillable' => [
-      'page' => [
-        'mainimage' => 'single',
-        'gallery' => 'multiple',
-        'secondaryimage' => 'single',
-        'breadcrumbimage' => 'single'
-      ]
-    ]
+        'page' => [
+            'mainimage' => 'single',
+            'gallery' => 'multiple',
+            'secondaryimage' => 'single',
+            'breadcrumbimage' => 'single',
+        ],
+    ],
 ];

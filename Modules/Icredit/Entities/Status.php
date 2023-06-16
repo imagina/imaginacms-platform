@@ -4,12 +4,13 @@ namespace Modules\Icredit\Entities;
 
 /**
  * Class Status
- * @package Modules\icommerce\Entities
  */
 class Status
 {
     const PENDING = 1;
+
     const APPROVED = 2;
+
     const CANCELED = 3;
 
     /**
@@ -28,6 +29,7 @@ class Status
 
     /**
      * Get the available statuses
+     *
      * @return array
      */
     public function lists()
@@ -37,7 +39,8 @@ class Status
 
     /**
      * Get the post status
-     * @param int $statusId
+     *
+     * @param  int  $statusId
      * @return string
      */
     public function get($statusId)

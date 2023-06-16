@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => 'icommercewompi'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercewompi.api.wompi.init',
         'uses' => 'IcommerceWompiApiController@init',
@@ -13,5 +12,4 @@ Route::group(['prefix' => 'icommercewompi'], function (Router $router) {
         'as' => 'icommercewompi.api.wompi.confirmation',
         'uses' => 'IcommerceWompiApiController@confirmation',
     ]);
-
 });

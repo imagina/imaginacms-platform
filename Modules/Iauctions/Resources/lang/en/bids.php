@@ -22,7 +22,7 @@ return [
         'amount' => 'Amount',
         'winner' => 'Winner',
         'description' => 'Description',
-        'create at' => 'Create at'
+        'create at' => 'Create at',
     ],
     'form' => [
     ],
@@ -34,6 +34,6 @@ return [
 
     'status' => [
         'declined' => 'Declinado',
-        'received' => 'Recibido'
-    ]
+        'received' => 'Recibido',
+    ],
 ];

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddColumnGuestPurchaseInOrderTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddColumnGuestPurchaseInOrderTable extends Migration
     public function up()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          $table->boolean('guest_purchase')->default(false);
+            $table->boolean('guest_purchase')->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnGuestPurchaseInOrderTable extends Migration
     public function down()
     {
         Schema::table('icommerce__orders', function (Blueprint $table) {
-          $table->dropColumn('guest_purchase');
+            $table->dropColumn('guest_purchase');
         });
     }
 }

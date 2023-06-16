@@ -25,22 +25,22 @@ return [
         'privateCrypto' => 'Private Cryto (site.cifrado.privada.txt)',
         'privateSign' => 'Private Sign (site.firma.privada.txt)',
         'publicCrypto' => 'Public Crypto (LLAVE.VPOS.CRB.CRYPTO.1024.X509.txt)',
-        'publicSign' => 'Public Sign (LLAVE.VPOS.CRB.SIGN.1024.X509.txt)'
+        'publicSign' => 'Public Sign (LLAVE.VPOS.CRB.SIGN.1024.X509.txt)',
     ],
     'form' => [
     ],
     'formFields' => [
-      'maximumAmount' => 'Monto Máximo Permitido',
-      'excludedUsersForMaximumAmount' => 'Usuarios excluidos del monto máximo',
+        'maximumAmount' => 'Monto Máximo Permitido',
+        'excludedUsersForMaximumAmount' => 'Usuarios excluidos del monto máximo',
     ],
     'messages' => [
         'info' => 'Remember to generate the keys and store them safely on the site',
     ],
     'validation' => [
-      'maximumAmount' => "El Monto de la orden excede el máximo permitido (:maximumAmount) para este método de pago"
+        'maximumAmount' => 'El Monto de la orden excede el máximo permitido (:maximumAmount) para este método de pago',
     ],
     'statusTransaction' => [
-        'approved'        => 'Aprobada',
-        'denied'           => 'Negada',
+        'approved' => 'Aprobada',
+        'denied' => 'Negada',
     ],
 ];

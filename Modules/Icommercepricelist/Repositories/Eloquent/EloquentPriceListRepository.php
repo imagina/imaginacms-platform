@@ -25,33 +25,34 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
 
             //add filter by search
             if (isset($filter->search)) {
-
                 //find search in columns
                 $query->where(function ($query) use ($filter, $lang) {
                     $query->whereHas('translations', function ($query) use ($filter, $lang) {
                         $query->where('locale', $lang)
-                            ->where('name', 'like', '%' . $filter->search . '%');
-                    })->orWhere('id', 'like', '%' . $filter->search . '%');
+                            ->where('name', 'like', '%'.$filter->search.'%');
+                    })->orWhere('id', 'like', '%'.$filter->search.'%');
                 });
             }
             if (isset($filter->store)) {
                 $query->where('store_id', $filter->store);
             }
             //add filter by status
-            if (!empty($filter->status)) {
+            if (! empty($filter->status)) {
                 $query->where('status', $filter->status);
             }
         }
 
         /*== FIELDS ==*/
-        if (isset($params->fields) && count($params->fields))
+        if (isset($params->fields) && count($params->fields)) {
             $query->select($params->fields);
+        }
 
         /*== REQUEST ==*/
         if (isset($params->page) && $params->page) {
             return $query->paginate($params->take);
         } else {
-            $params->take ? $query->take($params->take) : false;//Take
+            $params->take ? $query->take($params->take) : false; //Take
+
             return $query->get();
         }
     }
@@ -67,18 +68,16 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
         $includeDefault = ['translations'];
         $query->with(array_merge($includeDefault, $params->include));
 
-
         // FIELDS
         if ($params->fields) {
             $query->select($params->fields);
         }
-        return $query->first();
 
+        return $query->first();
     }
 
     public function create($data)
     {
-
         $priceList = $this->model->create($data);
 
         return $priceList;
@@ -86,7 +85,6 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
 
     public function updateBy($criteria, $data, $params = false)
     {
-
         // INITIALIZE QUERY
         $query = $this->model->query();
 
@@ -94,10 +92,11 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
         if (isset($params->filter)) {
             $filter = $params->filter;
 
-            if (isset($filter->field))//Where field
+            if (isset($filter->field)) {//Where field
                 $query->where($filter->field, $criteria);
-            else//where id
+            } else {//where id
                 $query->where('id', $criteria);
+            }
         }
 
         // REQUEST
@@ -106,6 +105,7 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
         if ($model) {
             $model->update($data);
         }
+
         return $model;
     }
 
@@ -118,10 +118,11 @@ class EloquentPriceListRepository extends EloquentBaseRepository implements Pric
         if (isset($params->filter)) {
             $filter = $params->filter;
 
-            if (isset($filter->field)) //Where field
+            if (isset($filter->field)) { //Where field
                 $query->where($filter->field, $criteria);
-            else //where id
+            } else { //where id
                 $query->where('id', $criteria);
+            }
         }
 
         // REQUEST

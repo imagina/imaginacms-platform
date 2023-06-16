@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIplacesPlacesTable extends Migration
 {
@@ -48,7 +48,7 @@ class CreateIplacesPlacesTable extends Migration
     public function down()
     {
         Schema::table('iplaces__places', function (Blueprint $table) {
-           // $table->dropForeign(['user_id']);
+            // $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('iplaces__places');
     }

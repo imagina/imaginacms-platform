@@ -5,25 +5,27 @@ namespace Modules\Iplaces\Entities;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\Iplaces\Presenters\SpacePresenter;
 use Laracasts\Presenter\PresentableTrait;
-use Modules\Media\Support\Traits\MediaRelation;
-use Modules\Media\Entities\File;
 use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Iplaces\Presenters\SpacePresenter;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Space extends Model
 {
     use Translatable,PresentableTrait, MediaRelation, AuditTrait;
 
     protected $table = 'iplaces__spaces';
-    public $translatedAttributes = ['title', 'description', 'slug','meta_title','meta_description','meta_keywords'];
-    protected $fillable = ['title', 'description', 'slug', 'options','status','meta_title','meta_description','meta_keywords'];
+
+    public $translatedAttributes = ['title', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords'];
+
+    protected $fillable = ['title', 'description', 'slug', 'options', 'status', 'meta_title', 'meta_description', 'meta_keywords'];
+
     protected $fakeColumns = ['options'];
 
     protected $presenter = SpacePresenter::class;
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
 
     public function places()
@@ -33,7 +35,7 @@ class Space extends Model
 
     protected function setSlugAttribute($value)
     {
-        if (!empty($value)) {
+        if (! empty($value)) {
             $this->attributes['slug'] = Str::slug($value, '-');
         } else {
             $this->attributes['slug'] = Str::slug($this->attributes['title'], '-');
@@ -42,11 +44,10 @@ class Space extends Model
 
     public function getMainImageAttribute()
     {
-        $image=$this->options->mainimage ?? 'modules/iplaces/img/default.jpg';
-        $v=strftime('%u%w%g%k%M%S', strtotime($this->updated_at));
+        $image = $this->options->mainimage ?? 'modules/iplaces/img/default.jpg';
+        $v = strftime('%u%w%g%k%M%S', strtotime($this->updated_at));
         // dd($v) ;
         return url($image.'?v='.$v);
-
     }
 
     public function getUrlAttribute()
@@ -58,5 +59,4 @@ class Space extends Model
     {
         return json_decode(json_decode($value));
     }
-
 }

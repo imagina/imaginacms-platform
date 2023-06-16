@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddColumnUserNameInUsersTable extends Migration
 {
@@ -13,9 +13,9 @@ class AddColumnUserNameInUsersTable extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-        $table->string('user_name')->nullable();
-      });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('user_name')->nullable();
+        });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddColumnUserNameInUsersTable extends Migration
      */
     public function down()
     {
-      Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn('user_name');
-      });
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_name');
+        });
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\SpaceRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\SpaceRepository;
 
 class CacheSpaceDecorator extends BaseCacheDecorator implements SpaceRepository
 {
@@ -27,7 +27,6 @@ class CacheSpaceDecorator extends BaseCacheDecorator implements SpaceRepository
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

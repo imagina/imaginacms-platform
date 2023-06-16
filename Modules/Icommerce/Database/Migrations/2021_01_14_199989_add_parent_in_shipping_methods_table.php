@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddParentInShippingMethodsTable extends Migration
 {
@@ -26,9 +26,9 @@ class AddParentInShippingMethodsTable extends Migration
     public function down()
     {
         Schema::table('icommerce__shipping_methods', function (Blueprint $table) {
-          if(Schema::hasColumn('icommerce__shipping_methods','parent_name')) {
-            $table->dropColumn('parent_name');
-          }
+            if (Schema::hasColumn('icommerce__shipping_methods', 'parent_name')) {
+                $table->dropColumn('parent_name');
+            }
         });
     }
 }

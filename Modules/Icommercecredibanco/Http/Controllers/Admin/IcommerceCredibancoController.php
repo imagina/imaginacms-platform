@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercecredibanco\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercecredibanco\Entities\IcommerceCredibanco;
 use Modules\Icommercecredibanco\Http\Requests\CreateIcommerceCredibancoRequest;
 use Modules\Icommercecredibanco\Http\Requests\UpdateIcommerceCredibancoRequest;
 use Modules\Icommercecredibanco\Repositories\IcommerceCredibancoRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceCredibancoController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class IcommerceCredibancoController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateIcommerceCredibancoRequest $request
      * @return Response
      */
     public function store(CreateIcommerceCredibancoRequest $request)
@@ -63,7 +61,6 @@ class IcommerceCredibancoController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  IcommerceCredibanco $icommercecredibanco
      * @return Response
      */
     public function edit(IcommerceCredibanco $icommercecredibanco)
@@ -74,8 +71,6 @@ class IcommerceCredibancoController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceCredibanco $icommercecredibanco
-     * @param  UpdateIcommerceCredibancoRequest $request
      * @return Response
      */
     public function update(IcommerceCredibanco $icommercecredibanco, UpdateIcommerceCredibancoRequest $request)
@@ -89,7 +84,6 @@ class IcommerceCredibancoController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  IcommerceCredibanco $icommercecredibanco
      * @return Response
      */
     public function destroy(IcommerceCredibanco $icommercecredibanco)

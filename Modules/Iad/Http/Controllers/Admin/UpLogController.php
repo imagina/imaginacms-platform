@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\UpLog;
 use Modules\Iad\Http\Requests\CreateUpLogRequest;
 use Modules\Iad\Http\Requests\UpdateUpLogRequest;
 use Modules\Iad\Repositories\UpLogRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UpLogController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class UpLogController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateUpLogRequest $request
      * @return Response
      */
     public function store(CreateUpLogRequest $request)
@@ -63,7 +61,6 @@ class UpLogController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  UpLog $uplog
      * @return Response
      */
     public function edit(UpLog $uplog)
@@ -74,8 +71,6 @@ class UpLogController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpLog $uplog
-     * @param  UpdateUpLogRequest $request
      * @return Response
      */
     public function update(UpLog $uplog, UpdateUpLogRequest $request)
@@ -89,7 +84,6 @@ class UpLogController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  UpLog $uplog
      * @return Response
      */
     public function destroy(UpLog $uplog)

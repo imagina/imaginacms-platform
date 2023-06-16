@@ -3,13 +3,9 @@
 namespace Modules\Iappointment\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
-use Illuminate\Foundation\Bus\Dispatchable;
-use Modules\Iappointment\Entities\Appointment;
-use Modules\Ichat\Entities\Conversation;
-use Carbon\Carbon;
 
 class AssignAppointment implements ShouldQueue
 {
@@ -22,10 +18,8 @@ class AssignAppointment implements ShouldQueue
         $this->appointmentService = app('Modules\Iappointment\Services\AppointmentService');
     }
 
-
     public function handle()
     {
-
         $this->appointmentService->assign();
     }
 }

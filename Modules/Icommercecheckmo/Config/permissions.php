@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercecheckmo::icommercecheckmos.edit resource',
         'destroy' => 'icommercecheckmo::icommercecheckmos.destroy resource',
     ],
-// append
+    // append
 
 ];

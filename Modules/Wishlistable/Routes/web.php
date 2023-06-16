@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('wishlistable')->group(function() {
+Route::prefix('wishlistable')->group(function () {
     Route::get('/', 'WishlistableController@index');
 });

@@ -7,6 +7,6 @@ return [
         'edit' => 'icommerceauthorize::icommerceauthorizes.edit resource',
         'destroy' => 'icommerceauthorize::icommerceauthorizes.destroy resource',
     ],
-// append
+    // append
 
 ];

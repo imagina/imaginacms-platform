@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcommerceOrderStatusHistoryTable extends Migration
 {
@@ -16,14 +16,14 @@ class CreateIcommerceOrderStatusHistoryTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your fields
-          $table->integer('order_id')->unsigned();
-          $table->foreign('order_id')->references('id')->on('icommerce__orders')->onDelete('restrict');
-  
-          $table->tinyInteger('status')->default(1)->unsigned();
-          $table->integer('notify')->unsigned();
-          $table->text('comment')->nullable();
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('icommerce__orders')->onDelete('restrict');
 
-          $table->timestamps();
+            $table->tinyInteger('status')->default(1)->unsigned();
+            $table->integer('notify')->unsigned();
+            $table->text('comment')->nullable();
+
+            $table->timestamps();
         });
     }
 

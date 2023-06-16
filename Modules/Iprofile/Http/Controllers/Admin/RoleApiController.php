@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\RoleApi;
 use Modules\Iprofile\Http\Requests\CreateRoleApiRequest;
 use Modules\Iprofile\Http\Requests\UpdateRoleApiRequest;
 use Modules\Iprofile\Repositories\RoleApiRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RoleApiController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class RoleApiController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRoleApiRequest $request
      * @return Response
      */
     public function store(CreateRoleApiRequest $request)
@@ -63,7 +61,6 @@ class RoleApiController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  RoleApi $roleapi
      * @return Response
      */
     public function edit(RoleApi $roleapi)
@@ -74,8 +71,6 @@ class RoleApiController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  RoleApi $roleapi
-     * @param  UpdateRoleApiRequest $request
      * @return Response
      */
     public function update(RoleApi $roleapi, UpdateRoleApiRequest $request)
@@ -89,7 +84,6 @@ class RoleApiController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  RoleApi $roleapi
      * @return Response
      */
     public function destroy(RoleApi $roleapi)

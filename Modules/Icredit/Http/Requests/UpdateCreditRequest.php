@@ -14,10 +14,9 @@ class UpdateCreditRequest extends BaseFormRequest
 
     public function translationRules()
     {
-
         return [
             'title' => 'min:2',
-            'slug' => [new UniqueSlugRule("icredit__credit_translations", $this->id, "credit_id") ,"min:2"],
+            'slug' => [new UniqueSlugRule('icredit__credit_translations', $this->id, 'credit_id'), 'min:2'],
             'description' => 'min:2',
         ];
     }
@@ -49,7 +48,8 @@ class UpdateCreditRequest extends BaseFormRequest
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
 }

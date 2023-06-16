@@ -9,12 +9,13 @@ use Modules\Requestable\Repositories\StatusHistoryRepository;
 
 class StatusHistoryApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(StatusHistory $model, StatusHistoryRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(StatusHistory $model, StatusHistoryRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

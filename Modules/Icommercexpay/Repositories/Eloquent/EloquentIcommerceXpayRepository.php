@@ -3,21 +3,16 @@
 namespace Modules\Icommercexpay\Repositories\Eloquent;
 
 use Illuminate\Support\Str;
-use Modules\Icommercexpay\Repositories\IcommerceXpayRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Icommercexpay\Repositories\IcommerceXpayRepository;
 
 class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements IcommerceXpayRepository
 {
-
     /**
      * Update Payment Method
-     *
-     * @param $model
-     * @param $data
-     * @return 
      */
-    public function update($model, $data){
-
+    public function update($model, $data)
+    {
         //Get data
         $requestimage = $data['mainimage'];
 
@@ -25,8 +20,8 @@ class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements 
         unset($data['mainimage']);
 
         // Image
-        if(($requestimage==NULL) || (!empty($requestimage)) ){
-            $requestimage = $this->saveImage($requestimage,"assets/icommercexpay/1.jpg");
+        if (($requestimage == null) || (! empty($requestimage))) {
+            $requestimage = $this->saveImage($requestimage, 'assets/icommercexpay/1.jpg');
         }
         $options['mainimage'] = $requestimage;
 
@@ -36,29 +31,24 @@ class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements 
         $model->update($data);
 
         return $model;
-
     }
 
-     /**
+    /**
      * Save Image
      *
-     * @param  $value
-     * @param  $destination
-     * @return 
+     * @param    $destination
      */
-    public function saveImage($value,$destination_path)
+    public function saveImage($value, $destination_path)
     {
-
-        $disk = "publicmedia";
+        $disk = 'publicmedia';
 
         //Defined return.
-        if(ends_with($value,'.jpg')) {
+        if (ends_with($value, '.jpg')) {
             return $value;
         }
 
         // if a base64 was sent, store it in the db
-        if (Str::startsWith($value, 'data:image'))
-        {
+        if (Str::startsWith($value, 'data:image')) {
             // 0. Make the image
             $image = \Image::make($value);
             // resize and prevent possible upsizing
@@ -67,22 +57,21 @@ class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements 
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
-            if(config('asgard.iblog.config.watermark.activated')){
+            if (config('asgard.iblog.config.watermark.activated')) {
                 $image->insert(config('asgard.iblog.config.watermark.url'), config('asgard.iblog.config.watermark.position'), config('asgard.iblog.config.watermark.x'), config('asgard.iblog.config.watermark.y'));
             }
             // 2. Store the image on disk.
-            \Storage::disk($disk)->put($destination_path, $image->stream('jpg','80'));
-
+            \Storage::disk($disk)->put($destination_path, $image->stream('jpg', '80'));
 
             // Save Thumbs
             \Storage::disk($disk)->put(
-                str_replace('.jpg','_mediumThumb.jpg',$destination_path),
-                $image->fit(config('asgard.iblog.config.mediumthumbsize.width'),config('asgard.iblog.config.mediumthumbsize.height'))->stream('jpg','80')
+                str_replace('.jpg', '_mediumThumb.jpg', $destination_path),
+                $image->fit(config('asgard.iblog.config.mediumthumbsize.width'), config('asgard.iblog.config.mediumthumbsize.height'))->stream('jpg', '80')
             );
 
             \Storage::disk($disk)->put(
-                str_replace('.jpg','_smallThumb.jpg',$destination_path),
-                $image->fit(config('asgard.iblog.config.smallthumbsize.width'),config('asgard.iblog.config.smallthumbsize.height'))->stream('jpg','80')
+                str_replace('.jpg', '_smallThumb.jpg', $destination_path),
+                $image->fit(config('asgard.iblog.config.smallthumbsize.width'), config('asgard.iblog.config.smallthumbsize.height'))->stream('jpg', '80')
             );
 
             // 3. Return the path
@@ -90,7 +79,7 @@ class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements 
         }
 
         // if the image was erased
-        if ($value==null) {
+        if ($value == null) {
             // delete the image from disk
             \Storage::disk($disk)->delete($destination_path);
 
@@ -98,6 +87,4 @@ class EloquentIcommerceXpayRepository extends EloquentBaseRepository implements 
             return null;
         }
     }
-
-
 }

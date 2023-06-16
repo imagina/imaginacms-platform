@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Event;
 use Modules\Ievent\Http\Requests\CreateEventRequest;
 use Modules\Ievent\Http\Requests\UpdateEventRequest;
 use Modules\Ievent\Repositories\EventRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class EventController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class EventController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateEventRequest $request
      * @return Response
      */
     public function store(CreateEventRequest $request)
@@ -63,7 +61,6 @@ class EventController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Event $event
      * @return Response
      */
     public function edit(Event $event)
@@ -74,8 +71,6 @@ class EventController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Event $event
-     * @param  UpdateEventRequest $request
      * @return Response
      */
     public function update(Event $event, UpdateEventRequest $request)
@@ -89,7 +84,6 @@ class EventController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Event $event
      * @return Response
      */
     public function destroy(Event $event)

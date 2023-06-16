@@ -2,8 +2,8 @@
 
 namespace Modules\Iplan\Repositories\Cache;
 
-use Modules\Iplan\Repositories\UserLimitRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplan\Repositories\UserLimitRepository;
 
 class CacheUserLimitDecorator extends BaseCacheDecorator implements UserLimitRepository
 {

@@ -1,7 +1,7 @@
 <?php
 
 return [
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Custom Sidebar Class
   |--------------------------------------------------------------------------
@@ -9,17 +9,17 @@ return [
   | You can define your own sidebar class for this module.
   | No custom sidebar: null
   */
-  'custom-sidebar' => null,
+    'custom-sidebar' => null,
 
-  /*
+    /*
   | Default Menu Presenter
   |--------------------------------------------------------------------------
   | Configure which Menu presenter will be used by default without
   | having to send it via the views
   */
-  'default_menu_presenter' => null,
+    'default_menu_presenter' => null,
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Load additional view namespaces for a module
   |--------------------------------------------------------------------------
@@ -28,15 +28,15 @@ return [
   | extra view namespace.
   | By default every extra namespace will be set to false.
   */
-  'useViewNamespaces' => [
-    // Read module views from /Themes/<backend-theme-name>/views/modules/<module-name>
-    'backend-theme' => false,
-    // Read module views from /Themes/<frontend-theme-name>/views/modules/<module-name>
-    'frontend-theme' => false,
-    // Read module views from /resources/views/asgard/<module-name>
-    'resources' => false,
-  ],
-  'documentation' => [
-    'menus' => "menu::cms.documentation.menus",
-  ]
+    'useViewNamespaces' => [
+        // Read module views from /Themes/<backend-theme-name>/views/modules/<module-name>
+        'backend-theme' => false,
+        // Read module views from /Themes/<frontend-theme-name>/views/modules/<module-name>
+        'frontend-theme' => false,
+        // Read module views from /resources/views/asgard/<module-name>
+        'resources' => false,
+    ],
+    'documentation' => [
+        'menus' => 'menu::cms.documentation.menus',
+    ],
 ];

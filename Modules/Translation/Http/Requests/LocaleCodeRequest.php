@@ -25,8 +25,8 @@ class LocaleCodeRequest extends FormRequest
     {
         return [
             'order_by' => ['required', 'string'],
-            'order'    => ['required', 'string', 'in:asc,desc'],
-            'search'   => ['nullable', 'string', 'min:3'],
+            'order' => ['required', 'string', 'in:asc,desc'],
+            'search' => ['nullable', 'string', 'min:3'],
         ];
     }
 }

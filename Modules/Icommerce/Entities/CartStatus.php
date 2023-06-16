@@ -4,12 +4,13 @@ namespace Modules\Icommerce\Entities;
 
 /**
  * Class Status
- * @package Modules\icommerce\Entities
  */
 class CartStatus
 {
     const ABANDONED = 0;
+
     const ACTIVE = 1;
+
     const PROCESSED = 2;
 
     /**
@@ -28,6 +29,7 @@ class CartStatus
 
     /**
      * Get the available statuses
+     *
      * @return array
      */
     public function lists()
@@ -37,7 +39,8 @@ class CartStatus
 
     /**
      * Get the post status
-     * @param int $statusId
+     *
+     * @param  int  $statusId
      * @return string
      */
     public function get($statusId)

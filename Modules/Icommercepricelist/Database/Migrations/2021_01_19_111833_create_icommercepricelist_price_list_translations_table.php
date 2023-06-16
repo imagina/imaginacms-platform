@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIcommercepricelistPriceListTranslationsTable extends Migration
 {
@@ -20,11 +20,10 @@ class CreateIcommercepricelistPriceListTranslationsTable extends Migration
 
             $table->integer('price_list_id')->unsigned();
             $table->string('locale')->index();
-            
+
             $table->unique(['price_list_id', 'locale'], 'price_list_id_unique');
 
-            $table->foreign('price_list_id','price_list_id_trans')->references('id')->on('icommercepricelist__price_lists')->onDelete('cascade');
-
+            $table->foreign('price_list_id', 'price_list_id_trans')->references('id')->on('icommercepricelist__price_lists')->onDelete('cascade');
         });
     }
 

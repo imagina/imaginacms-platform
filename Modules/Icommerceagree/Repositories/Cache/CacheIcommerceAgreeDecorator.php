@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerceagree\Repositories\Cache;
 
-use Modules\Icommerceagree\Repositories\IcommerceAgreeRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerceagree\Repositories\IcommerceAgreeRepository;
 
 class CacheIcommerceAgreeDecorator extends BaseCacheDecorator implements IcommerceAgreeRepository
 {
@@ -15,15 +15,14 @@ class CacheIcommerceAgreeDecorator extends BaseCacheDecorator implements Icommer
     }
 
     /**
-   * List or resources
-   *
-   * @return mixed
-   */
-    public function calculate($parameters,$conf)
+     * List or resources
+     *
+     * @return mixed
+     */
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
-            return $this->repository->calculate($parameters,$conf);
+        return $this->remember(function () use ($parameters, $conf) {
+            return $this->repository->calculate($parameters, $conf);
         });
     }
-
 }

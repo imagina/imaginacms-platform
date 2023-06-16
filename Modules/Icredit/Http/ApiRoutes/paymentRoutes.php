@@ -14,5 +14,4 @@ Route::group(['prefix' => '/payment'], function (Router $router) {
         'as' => 'icredit.api.payment.processPayment',
         'uses' => 'PaymentApiController@processPayment',
     ]);
-
 });

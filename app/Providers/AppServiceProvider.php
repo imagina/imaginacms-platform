@@ -24,13 +24,13 @@ class AppServiceProvider extends ServiceProvider
         Carbon::serializeUsing(function ($carbon) {
             return $carbon->format('Y-m-d H:i:s');
         });
-  
-      /*ADD THIS LINES*/
-      $this->commands([
-        InstallCommand::class,
-        ClientCommand::class,
-        KeysCommand::class,
-      ]);
+
+        /*ADD THIS LINES*/
+        $this->commands([
+            InstallCommand::class,
+            ClientCommand::class,
+            KeysCommand::class,
+        ]);
     }
 
     /**

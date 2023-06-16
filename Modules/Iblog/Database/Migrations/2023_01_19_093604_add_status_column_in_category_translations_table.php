@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddStatusColumnInCategoryTranslationsTable extends Migration
 {
@@ -13,9 +13,9 @@ class AddStatusColumnInCategoryTranslationsTable extends Migration
      */
     public function up()
     {
-      Schema::table('iblog__category_translations', function (Blueprint $table) {
-        $table->integer('status')->default(0)->unsigned();
-      });
+        Schema::table('iblog__category_translations', function (Blueprint $table) {
+            $table->integer('status')->default(0)->unsigned();
+        });
     }
 
     /**
@@ -25,6 +25,6 @@ class AddStatusColumnInCategoryTranslationsTable extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists('iblog__category_translations');
+        Schema::dropIfExists('iblog__category_translations');
     }
 }

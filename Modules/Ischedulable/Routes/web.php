@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('ischedulable')->group(function() {
+Route::prefix('ischedulable')->group(function () {
     Route::get('/', 'IschedulableController@index');
 });

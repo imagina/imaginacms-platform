@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class ActivityTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
+
     protected $table = 'igamification__activity_translations';
 }

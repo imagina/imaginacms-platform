@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class DeleteTaxClassIdFromTaxRate extends Migration
 {
@@ -27,9 +27,9 @@ class DeleteTaxClassIdFromTaxRate extends Migration
     public function down()
     {
         Schema::table('icommerce__tax_rates', function (Blueprint $table) {
-          if(!Schema::hasColumn('icommerce__tax_rates','tax_class_id')) {
-            $table->integer('tax_class_id')->unsigned();
-          }
+            if (! Schema::hasColumn('icommerce__tax_rates', 'tax_class_id')) {
+                $table->integer('tax_class_id')->unsigned();
+            }
         });
     }
 }

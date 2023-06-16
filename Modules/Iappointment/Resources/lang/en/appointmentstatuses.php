@@ -22,12 +22,12 @@ return [
     'validation' => [
     ],
     'statuses' => [
-        'canceled'          => 'Abandoned',
-        'completed'         => 'Completed',
-        'pending'           => 'Pending',
-        'in_progress'       => 'In progress Conversation',
-        'in_progress_pre'   => 'In progress Pre',
-        'in_progress_post'  => 'In Progress Post',
-        'expired'           => 'Expired',
+        'canceled' => 'Abandoned',
+        'completed' => 'Completed',
+        'pending' => 'Pending',
+        'in_progress' => 'In progress Conversation',
+        'in_progress_pre' => 'In progress Pre',
+        'in_progress_post' => 'In Progress Post',
+        'expired' => 'Expired',
     ],
 ];

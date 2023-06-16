@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercecredibanco\Repositories\Cache;
 
-use Modules\Icommercecredibanco\Repositories\IcommerceCredibancoRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercecredibanco\Repositories\IcommerceCredibancoRepository;
 
 class CacheIcommerceCredibancoDecorator extends BaseCacheDecorator implements IcommerceCredibancoRepository
 {

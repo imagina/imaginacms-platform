@@ -11,8 +11,6 @@
 |
 */
 
-Route::prefix('ifeed')->group(function() {
+Route::prefix('ifeed')->group(function () {
     Route::get('/', 'IfeedController@index');
 });
-
-

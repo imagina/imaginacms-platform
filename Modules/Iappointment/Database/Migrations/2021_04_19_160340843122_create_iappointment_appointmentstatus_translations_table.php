@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIappointmentAppointmentStatusTranslationsTable extends Migration
 {
@@ -20,8 +20,8 @@ class CreateIappointmentAppointmentStatusTranslationsTable extends Migration
 
             $table->integer('appointment_status_id')->unsigned();
             $table->string('locale')->index();
-            $table->unique(['appointment_status_id', 'locale'],'ap_status_locale');
-            $table->foreign('appointment_status_id','ap_status_foreign2')->references('id')->on('iappointment__appointment_statuses')->onDelete('cascade');
+            $table->unique(['appointment_status_id', 'locale'], 'ap_status_locale');
+            $table->foreign('appointment_status_id', 'ap_status_foreign2')->references('id')->on('iappointment__appointment_statuses')->onDelete('cascade');
         });
     }
 

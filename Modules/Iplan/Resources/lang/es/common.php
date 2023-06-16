@@ -1,7 +1,8 @@
 <?php
+
 return [
     'crudFields' => [
-        'url' => 'Enlace del plan'
+        'url' => 'Enlace del plan',
     ],
     'settings' => [
         'default-plan-to-new-users' => 'Plan por defecto para nuevos usuarios',
@@ -10,11 +11,11 @@ return [
         'cumulativePlans' => 'Planes acumulativos',
         'hideDefaultPlanInView' => 'Ocultar plan por defecto en la vista de planes',
         'tenant' => [
-          'group' => 'Inquilinos',
-          'tenantWithCentralData' => 'Entidades con data central',
-          'entities' => [
-            'plans' => 'Planes',
-          ],
+            'group' => 'Inquilinos',
+            'tenantWithCentralData' => 'Entidades con data central',
+            'entities' => [
+                'plans' => 'Planes',
+            ],
         ],
     ],
     'settingHints' => [
@@ -31,5 +32,5 @@ return [
         'my-subscriptions' => 'Mis Suscripciones',
         'print' => 'Imprimir',
     ],
-    "planNotFound" => "El plan no es valido"
+    'planNotFound' => 'El plan no es valido',
 ];

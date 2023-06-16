@@ -12,18 +12,18 @@ class CreateFolderRequest extends FormRequest
     {
         $parentId = $this->get('parent_id');
         $tenant = tenant() ?? null;
- 
+
         return [
             'name' => [
                 new AlphaDashWithSpaces(),
                 'required',
                 Rule::unique('media__files', 'filename')->where(function ($query) use ($parentId, $tenant) {
-                    $query->where('is_folder', 1)->where('folder_id', $parentId)->where("id","!=",$this->id);
-                    if(isset($tenant->id))
-                      return $query->where('organization_id', $tenant->id);
-                    else
-                      return $query;
-                    
+                    $query->where('is_folder', 1)->where('folder_id', $parentId)->where('id', '!=', $this->id);
+                    if (isset($tenant->id)) {
+                        return $query->where('organization_id', $tenant->id);
+                    } else {
+                        return $query;
+                    }
                 }),
             ],
         ];
@@ -37,7 +37,7 @@ class CreateFolderRequest extends FormRequest
     public function messages()
     {
         return [
-          "name.unique" => trans("media::messages.folderNameUnique")
+            'name.unique' => trans('media::messages.folderNameUnique'),
         ];
     }
 }

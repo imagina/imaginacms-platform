@@ -7,7 +7,7 @@ interface Setting
     /**
      * Determine if the given configuration value exists.
      *
-     * @param  string $key
+     * @param  string  $key
      * @return bool
      */
     public function has($key);
@@ -15,8 +15,8 @@ interface Setting
     /**
      * Get the specified configuration value in the given language
      *
-     * @param  string $key
-     * @param  string $locale
+     * @param  string  $key
+     * @param  string  $locale
      * @param  mixed  $default
      * @return string
      */
@@ -25,7 +25,7 @@ interface Setting
     /**
      * Set a given configuration value.
      *
-     * @param  string $key
+     * @param  string  $key
      * @param  mixed  $value
      * @return \Modules\Setting\Entities\Setting
      */

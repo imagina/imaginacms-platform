@@ -3,13 +3,13 @@
 namespace Modules\Ihelpers\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Ihelpers\Console\ClearPageCache;
-
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Ihelpers\Console\ClearPageCache;
 
 class IhelpersServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -41,12 +41,12 @@ class IhelpersServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
     {
-// add bindings
+        // add bindings
     }
 
     /**
@@ -62,8 +62,7 @@ class IhelpersServiceProvider extends ServiceProvider
      */
     private function registerCacheClearCommand()
     {
-
-        $this->app['command.ihelpers.pagecacheclear'] = $this->app->make(ClearPageCache::class);;
+        $this->app['command.ihelpers.pagecacheclear'] = $this->app->make(ClearPageCache::class);
         $this->commands(['command.ihelpers.pagecacheclear']);
     }
 }

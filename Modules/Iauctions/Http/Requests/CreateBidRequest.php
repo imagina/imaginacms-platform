@@ -30,7 +30,7 @@ class CreateBidRequest extends BaseFormRequest
         return [
             'auction_id.required' => trans('iauctions::common.messages.field required'),
             'description.required' => trans('iauctions::common.messages.field required'),
-            'amount.required' => trans('iauctions::common.messages.field required')
+            'amount.required' => trans('iauctions::common.messages.field required'),
         ];
     }
 
@@ -39,8 +39,8 @@ class CreateBidRequest extends BaseFormRequest
         return [];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
-    
 }

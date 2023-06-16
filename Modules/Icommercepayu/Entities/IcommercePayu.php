@@ -10,6 +10,8 @@ class IcommercePayu extends Model
     use Translatable;
 
     protected $table = 'icommercepayu__icommercepayus';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

@@ -2,13 +2,12 @@
 
 namespace Modules\Notification\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Notification\Entities\Template;
 use Modules\Notification\Http\Requests\CreateTemplateRequest;
 use Modules\Notification\Http\Requests\UpdateTemplateRequest;
 use Modules\Notification\Repositories\TemplateRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class TemplateController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class TemplateController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateTemplateRequest $request
      * @return Response
      */
     public function store(CreateTemplateRequest $request)
@@ -63,7 +61,6 @@ class TemplateController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Template $template
      * @return Response
      */
     public function edit(Template $template)
@@ -74,8 +71,6 @@ class TemplateController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Template $template
-     * @param  UpdateTemplateRequest $request
      * @return Response
      */
     public function update(Template $template, UpdateTemplateRequest $request)
@@ -89,7 +84,6 @@ class TemplateController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Template $template
      * @return Response
      */
     public function destroy(Template $template)

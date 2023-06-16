@@ -3,7 +3,6 @@
 namespace Modules\Ibooking\Repositories\Cache;
 
 use Modules\Ibooking\Repositories\ReservationRepository;
-use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
 
 class CacheReservationDecorator extends BaseCacheCrudDecorators implements ReservationRepository
 {

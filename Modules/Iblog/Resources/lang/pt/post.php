@@ -18,7 +18,7 @@ return [
         'create post' => 'Criar Artigo',
     ],
     'table' => [
-        'title' => 'Titulo'
+        'title' => 'Titulo',
     ],
     'form' => [
     ],
@@ -26,7 +26,7 @@ return [
     ],
     'validation' => [
     ],
-    'latest posts'=>'mais recente Artigos',
+    'latest posts' => 'mais recente Artigos',
     'widget' => [
         'postcount' => 'Nº Artigo',
     ],

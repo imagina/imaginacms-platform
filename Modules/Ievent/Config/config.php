@@ -1,56 +1,56 @@
 <?php
 
 return [
-  'name' => 'Ievent',
+    'name' => 'Ievent',
 
-  "whenStatusChange" => [
+    'whenStatusChange' => [
 
-    1 => "",
-    2 => ""
+        1 => '',
+        2 => '',
 
-  ],
-
-  'notifiable' => [
-    [
-      "title" => "Event",
-      "entityName" => "Modules\\Ievent\\Entities\\Event",
-      "events" => [
-        [
-          "title" => "Event was created",
-          "path" => "Modules\\Ievent\\Events\\EventWasCreated"
-        ],
-        [
-          "title" => "Event was cancelled",
-          "path" => "Modules\\Ievent\\Events\\EventWasCancelled"
-        ],
-        [
-          "title" => "Event was updated",
-          "path" => "Modules\\Ievent\\Events\\EventWasUpdated"
-        ]
-      ],
-      "conditions" => [
-
-      ],
-      "settings" => [
-        "email" => [
-          "recipients" => [
-            ['label' => 'Admin Email', 'value' => 'jcec007@gmail.com'],
-          ]
-        ],
-      ],
     ],
 
-  ],
+    'notifiable' => [
+        [
+            'title' => 'Event',
+            'entityName' => 'Modules\\Ievent\\Entities\\Event',
+            'events' => [
+                [
+                    'title' => 'Event was created',
+                    'path' => 'Modules\\Ievent\\Events\\EventWasCreated',
+                ],
+                [
+                    'title' => 'Event was cancelled',
+                    'path' => 'Modules\\Ievent\\Events\\EventWasCancelled',
+                ],
+                [
+                    'title' => 'Event was updated',
+                    'path' => 'Modules\\Ievent\\Events\\EventWasUpdated',
+                ],
+            ],
+            'conditions' => [
 
-  //Media Fillables
-  'mediaFillable' => [
-    'event' => [
-      'mainimage' => 'single',
-      'secondaryimage' => 'single'
+            ],
+            'settings' => [
+                'email' => [
+                    'recipients' => [
+                        ['label' => 'Admin Email', 'value' => 'jcec007@gmail.com'],
+                    ],
+                ],
+            ],
+        ],
+
     ],
-    'category' => [
-      'mainimage' => 'single',
-      'secondaryimage' => 'single'
-    ]
-  ]
+
+    //Media Fillables
+    'mediaFillable' => [
+        'event' => [
+            'mainimage' => 'single',
+            'secondaryimage' => 'single',
+        ],
+        'category' => [
+            'mainimage' => 'single',
+            'secondaryimage' => 'single',
+        ],
+    ],
 ];

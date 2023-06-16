@@ -6,8 +6,6 @@ use Modules\User\Contracts\Authentication;
 
 /**
  * Class LoggedInMiddleware
- * @package Modules\User\Http\Middleware
- * Middleware to make sure affected routes need a logged in user
  */
 class LoggedInMiddleware
 {
@@ -23,8 +21,8 @@ class LoggedInMiddleware
 
     /**
      * Handle an incoming request.
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function handle($request, \Closure $next)

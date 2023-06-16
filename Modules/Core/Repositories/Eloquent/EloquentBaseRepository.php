@@ -8,8 +8,6 @@ use Modules\Core\Repositories\BaseRepository;
 
 /**
  * Class EloquentCoreRepository
- *
- * @package Modules\Core\Repositories\Eloquent
  */
 abstract class EloquentBaseRepository implements BaseRepository
 {
@@ -19,7 +17,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     protected $model;
 
     /**
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct($model)
     {
@@ -27,7 +25,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function find($id)
     {
@@ -39,7 +37,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function all()
     {
@@ -51,9 +49,9 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function allWithBuilder() : Builder
+    public function allWithBuilder(): Builder
     {
         if (method_exists($this->model, 'translations')) {
             return $this->model->with('translations');
@@ -63,7 +61,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function paginate($perPage = 15)
     {
@@ -75,7 +73,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function create($data)
     {
@@ -83,7 +81,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function update($model, $data)
     {
@@ -93,7 +91,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function destroy($model)
     {
@@ -101,7 +99,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function allTranslatedIn($lang)
     {
@@ -111,7 +109,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findBySlug($slug)
     {
@@ -125,7 +123,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findByAttributes(array $attributes)
     {
@@ -135,7 +133,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
     {
@@ -146,9 +144,9 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * Build Query to catch resources by an array of attributes and params
-     * @param  array $attributes
-     * @param  null|string $orderBy
-     * @param  string $sortOrder
+     *
+     * @param  null|string  $orderBy
+     * @param  string  $sortOrder
      * @return \Illuminate\Database\Eloquent\Builder
      */
     private function buildQueryByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
@@ -171,7 +169,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findByMany(array $ids)
     {
@@ -181,11 +179,11 @@ abstract class EloquentBaseRepository implements BaseRepository
             $query = $query->with('translations');
         }
 
-        return $query->whereIn("id", $ids)->get();
+        return $query->whereIn('id', $ids)->get();
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function clearCache()
     {
@@ -193,21 +191,21 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function where(string $field, $value, string $operator = null)
     {
         if ($operator === null) {
             $operator = '=';
         } else {
-            list($value, $operator) = [$operator, $value];
+            [$value, $operator] = [$operator, $value];
         }
 
         return $this->model->where($field, $operator, $value);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function with($relationships)
     {
@@ -215,9 +213,9 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function whereIn(string $field, array $values) : Builder
+    public function whereIn(string $field, array $values): Builder
     {
         return $this->model->whereIn($field, $values);
     }

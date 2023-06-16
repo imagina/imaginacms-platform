@@ -23,6 +23,5 @@ class CartTransformer extends JsonResource
         ];
 
         return $data;
-
     }
 }

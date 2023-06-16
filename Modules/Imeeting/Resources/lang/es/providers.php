@@ -26,6 +26,6 @@ return [
         'description' => 'La descripcion',
         'apiKey' => 'Api Key',
         'apiSecret' => 'Api Secret',
-    ]
-    
+    ],
+
 ];

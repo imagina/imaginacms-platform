@@ -2,6 +2,6 @@
 
 return [
     'name' => 'Icommercewompi',
-    'paymentName' => 'icommercewompi'
-    
+    'paymentName' => 'icommercewompi',
+
 ];

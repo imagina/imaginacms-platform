@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Up;
 use Modules\Iad\Http\Requests\CreateUpRequest;
 use Modules\Iad\Http\Requests\UpdateUpRequest;
 use Modules\Iad\Repositories\UpRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UpsController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class UpsController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateUpRequest $request
      * @return Response
      */
     public function store(CreateUpRequest $request)
@@ -63,7 +61,6 @@ class UpsController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Up $ups
      * @return Response
      */
     public function edit(Up $ups)
@@ -74,8 +71,6 @@ class UpsController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Up $ups
-     * @param  UpdateUpRequest $request
      * @return Response
      */
     public function update(Up $ups, UpdateUpRequest $request)
@@ -89,7 +84,6 @@ class UpsController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Up $ups
      * @return Response
      */
     public function destroy(Up $ups)

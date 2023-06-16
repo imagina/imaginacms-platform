@@ -14,18 +14,18 @@ return [
         'create service' => 'Create a service',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'status'=>'Status',
+        'id' => 'Id',
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'status' => 'Status',
 
     ],
     'form' => [
-        'title'=>'Title',
-        'slug'=>'Slug',
-        'description'=>'Description',
-        'services'=>'Services',
-        'principal'=>'Principal',
+        'title' => 'Title',
+        'slug' => 'Slug',
+        'description' => 'Description',
+        'services' => 'Services',
+        'principal' => 'Principal',
         'servtype' => 'Type',
     ],
     'messages' => [

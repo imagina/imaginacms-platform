@@ -9,9 +9,9 @@ class CreateNeighborhoodRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'province_id' => 'required',
-          'country_id' => 'required',
-          'city_id' => 'required',
+            'province_id' => 'required',
+            'country_id' => 'required',
+            'city_id' => 'required',
         ];
     }
 

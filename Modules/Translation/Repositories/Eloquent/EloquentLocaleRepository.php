@@ -9,6 +9,7 @@ use Modules\Translation\Repositories\LocaleRepository;
 class EloquentLocaleRepository implements LocaleRepository
 {
     private $locales;
+
     private $mapper;
 
     public function __construct()
@@ -16,7 +17,7 @@ class EloquentLocaleRepository implements LocaleRepository
         $this->mapper = function (array $item, string $key) {
             return [
                 'code' => $key,
-                'name'   => trans('translation::locales.' . $key),
+                'name' => trans('translation::locales.'.$key),
                 'script' => $item['script'],
                 'native' => $item['native'],
             ];
@@ -27,7 +28,7 @@ class EloquentLocaleRepository implements LocaleRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function listLocalesForSelect(LocaleCodeRequest $request): Collection
     {
@@ -42,7 +43,7 @@ class EloquentLocaleRepository implements LocaleRepository
             });
         }
 
-        $order    = $request->get('order');
+        $order = $request->get('order');
         $order_by = $request->get('order_by');
         switch ($order_by) {
             case 'code':
@@ -66,7 +67,7 @@ class EloquentLocaleRepository implements LocaleRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function availableLocales(): Collection
     {
@@ -74,7 +75,7 @@ class EloquentLocaleRepository implements LocaleRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function supportedLocales(): Collection
     {
@@ -84,7 +85,7 @@ class EloquentLocaleRepository implements LocaleRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function translatableLocales(): Collection
     {

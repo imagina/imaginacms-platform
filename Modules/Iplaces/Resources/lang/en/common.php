@@ -1,8 +1,8 @@
 <?php
+
 return [
 
     'iplaces' => 'Places',
-
 
     'form' => [
         'title' => 'Title',
@@ -14,15 +14,15 @@ return [
         'metadescription' => 'MetaDescription',
         'metakeywords' => 'Metakeywords',
         'metadata' => 'Meta Data',
-        'cities'=>'City',
-        'provinces'=>'Departments',
-        'principal'=>'Principal',
-        'schedule'=>'Schedule'
+        'cities' => 'City',
+        'provinces' => 'Departments',
+        'principal' => 'Principal',
+        'schedule' => 'Schedule',
 
     ],
 
     'settings' => [
-        'apimaps' => 'Api Code Maps'
-    ]
+        'apimaps' => 'Api Code Maps',
+    ],
 
 ];

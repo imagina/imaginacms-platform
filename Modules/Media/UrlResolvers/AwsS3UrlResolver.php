@@ -7,8 +7,7 @@ use League\Flysystem\AwsS3v3\AwsS3Adapter;
 class AwsS3UrlResolver
 {
     /**
-     * @param AwsS3Adapter $adapter
-     * @param string $path
+     * @param  string  $path
      * @return string
      */
     public function resolve(AwsS3Adapter $adapter, $path)

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcommerceShippingMethodTranslationsTable extends Migration
 {
@@ -21,8 +21,8 @@ class CreateIcommerceShippingMethodTranslationsTable extends Migration
 
             $table->integer('shipping_method_id')->unsigned();
             $table->string('locale')->index();
-            $table->unique(['shipping_method_id', 'locale'],'unique_shipping_method_id');
-            $table->foreign('shipping_method_id','sm_id_foreing')->references('id')->on('icommerce__shipping_methods')->onDelete('cascade');
+            $table->unique(['shipping_method_id', 'locale'], 'unique_shipping_method_id');
+            $table->foreign('shipping_method_id', 'sm_id_foreing')->references('id')->on('icommerce__shipping_methods')->onDelete('cascade');
         });
     }
 
@@ -34,9 +34,9 @@ class CreateIcommerceShippingMethodTranslationsTable extends Migration
     public function down()
     {
         Schema::table('icommerce__shipping_method_translations', function (Blueprint $table) {
-          if(Schema::hasColumn('icommerce__shipping_method_translations','shippingmethod_id')) {
-            $table->dropForeign(['shippingmethod_id']);
-          }
+            if (Schema::hasColumn('icommerce__shipping_method_translations', 'shippingmethod_id')) {
+                $table->dropForeign(['shippingmethod_id']);
+            }
         });
         Schema::dropIfExists('icommerce__shipping_method_translations');
     }

@@ -7,7 +7,7 @@ return [
         'target' => 'Target',
         'same tab' => 'Same tab',
         'new tab' => 'New tab',
-        'custom html' => 'Custom HTML'
+        'custom html' => 'Custom HTML',
     ],
     'link-type' => [
         'link type' => 'Linktype',
@@ -19,6 +19,6 @@ return [
     'create resource' => 'Create Banner',
     'edit resource' => 'Edit Banner',
     'destroy resource' => 'Delete Banner',
-    'store resource'=>'Store Banner',
-    'update resource'=>'Update Banner'
+    'store resource' => 'Store Banner',
+    'update resource' => 'Update Banner',
 ];

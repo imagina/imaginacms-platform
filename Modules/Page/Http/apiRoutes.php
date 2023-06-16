@@ -42,11 +42,7 @@ Route::group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']],
     $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
 });
 
-
 Route::group(['prefix' => 'page/v1'], function (Router $router) {
-  
-  //======  PAGES
-  require('ApiRoutes/pageRoutes.php');
-  
-  
+    //======  PAGES
+    require 'ApiRoutes/pageRoutes.php';
 });

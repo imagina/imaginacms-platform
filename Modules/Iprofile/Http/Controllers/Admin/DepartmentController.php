@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Department;
 use Modules\Iprofile\Http\Requests\CreateDepartmentRequest;
 use Modules\Iprofile\Http\Requests\UpdateDepartmentRequest;
 use Modules\Iprofile\Repositories\DepartmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class DepartmentController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class DepartmentController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateDepartmentRequest $request
      * @return Response
      */
     public function store(CreateDepartmentRequest $request)
@@ -63,7 +61,6 @@ class DepartmentController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Department $department
      * @return Response
      */
     public function edit(Department $department)
@@ -74,8 +71,6 @@ class DepartmentController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Department $department
-     * @param  UpdateDepartmentRequest $request
      * @return Response
      */
     public function update(Department $department, UpdateDepartmentRequest $request)
@@ -89,7 +84,6 @@ class DepartmentController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Department $department
      * @return Response
      */
     public function destroy(Department $department)

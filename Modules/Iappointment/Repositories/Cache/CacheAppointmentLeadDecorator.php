@@ -2,8 +2,8 @@
 
 namespace Modules\Iappointment\Repositories\Cache;
 
-use Modules\Iappointment\Repositories\AppointmentLeadRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iappointment\Repositories\AppointmentLeadRepository;
 
 class CacheAppointmentLeadDecorator extends BaseCacheDecorator implements AppointmentLeadRepository
 {

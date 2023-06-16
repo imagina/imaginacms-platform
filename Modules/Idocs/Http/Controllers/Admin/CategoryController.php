@@ -2,7 +2,6 @@
 
 namespace Modules\Idocs\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Idocs\Entities\Category;
@@ -36,8 +35,6 @@ class CategoryController extends AdminBaseController
         return view('idocs::admin.categories.index', compact('categories'));
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,13 +43,13 @@ class CategoryController extends AdminBaseController
     public function create()
     {
         $categories = $this->category->all();
-        return view('idocs::admin.categories.create',compact('categories'));
+
+        return view('idocs::admin.categories.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateCategoryRequest $request
      * @return Response
      */
     public function store(CreateCategoryRequest $request)
@@ -60,35 +57,34 @@ class CategoryController extends AdminBaseController
         \DB::beginTransaction();
         try {
             $this->category->create($request->all());
-            \DB::commit();//Commit to Data Base
+            \DB::commit(); //Commit to Data Base
+
             return redirect()->route('admin.idocs.category.index')
                 ->withSuccess(trans('idocs::common.messages.resource created', ['name' => trans('idocs::categories.title.categories')]));
         } catch (\Exception $e) {
             \DB::rollback();
             \Log::error($e->getMessage());
+
             return redirect()->back()
                 ->withError(trans('idocs::common.messages.resource error', ['name' => trans('idocs:categories.title.categories')]))->withInput($request->all());
-
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Category $category
      * @return Response
      */
     public function edit(Category $category)
     {
         $categories = $this->category->all();
+
         return view('idocs::admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Category $category
-     * @param  UpdateCategoryRequest $request
      * @return Response
      */
     public function update(Category $category, UpdateCategoryRequest $request)
@@ -96,22 +92,22 @@ class CategoryController extends AdminBaseController
         \DB::beginTransaction();
         try {
             $this->category->update($category, $request->all());
-            \DB::commit();//Commit to Data Base
+            \DB::commit(); //Commit to Data Base
+
             return redirect()->route('admin.idocs.category.index')
                 ->withSuccess(trans('idocs::common.messages.resource updated', ['name' => trans('idocs::categories.title.categories')]));
         } catch (\Exception $e) {
             \DB::rollback();
             \Log::error($e->getMessage());
+
             return redirect()->back()
                 ->withError(trans('idocs::common.messages.resource error', ['name' => trans('idocs:categories.title.categories')]))->withInput($request->all());
-
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Category $category
      * @return Response
      */
     public function destroy(Category $category)
@@ -119,15 +115,16 @@ class CategoryController extends AdminBaseController
         \DB::beginTransaction();
         try {
             $this->category->destroy($category);
-            \DB::commit();//Commit to Data Base
+            \DB::commit(); //Commit to Data Base
+
             return redirect()->route('admin.idocs.category.index')
                 ->withSuccess(trans('idocs::common.messages.resource deleted', ['name' => trans('idocs::categories.title.categories')]));
         } catch (\Exception $e) {
             \DB::rollback();
             \Log::error($e->getMessage());
+
             return redirect()->back()
                 ->withError(trans('idocs::common.messages.resource error', ['name' => trans('idocs:categories.title.categories')]));
-
         }
     }
 }

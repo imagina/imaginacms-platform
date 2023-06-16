@@ -1,7 +1,7 @@
 <?php
 
 return [
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Choose which filesystem you wish to use to store the media
   |--------------------------------------------------------------------------
@@ -9,47 +9,47 @@ return [
   | in app/config/filesystems.php
   | Supported: "local", "s3"
   */
-  'filesystem' => 'publicmedia',
-  /*
+    'filesystem' => 'publicmedia',
+    /*
   |--------------------------------------------------------------------------
   | The path where the media files will be uploaded
   |--------------------------------------------------------------------------
   | Note: Trailing slash is required
   */
-  'files-path' => '/assets/media/',
-  /*
+    'files-path' => '/assets/media/',
+    /*
   |--------------------------------------------------------------------------
   | Specify all the allowed file extensions a user can upload on the server
   |--------------------------------------------------------------------------
   */
-  'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg,webp',
-  'allowedImageTypes' => json_encode(["jpg", "png", "jpeg", "webp"]),
-  'allowedFileTypes' => json_encode(["pdf", "doc", "docx", "xls", "xlsx", "svg"]),
-  'allowedVideoTypes' => json_encode(["mp4", "webm", "ogg"]),
-  'allowedAudioTypes' => json_encode(["mp3", "avi"]),
-  /*
+    'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg,webp',
+    'allowedImageTypes' => json_encode(['jpg', 'png', 'jpeg', 'webp']),
+    'allowedFileTypes' => json_encode(['pdf', 'doc', 'docx', 'xls', 'xlsx', 'svg']),
+    'allowedVideoTypes' => json_encode(['mp4', 'webm', 'ogg']),
+    'allowedAudioTypes' => json_encode(['mp3', 'avi']),
+    /*
    * |--------------------------------------------------------------------------
   | Specify all the allowed ratios to user can crop an images
   |--------------------------------------------------------------------------
   */
-  'allowedRatios' => ['16:9', '4:3', '1:1', '2:3', 'free'],
-  /*
+    'allowedRatios' => ['16:9', '4:3', '1:1', '2:3', 'free'],
+    /*
   |--------------------------------------------------------------------------
   | Determine the max file size upload rate
   | Defined in MB
   |--------------------------------------------------------------------------
   */
-  'max-file-size' => '10',
+    'max-file-size' => '10',
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Determine the max total media folder size
   |--------------------------------------------------------------------------
   | Expressed in bytes
   */
-  'max-total-size' => 1000000000,
+    'max-total-size' => 1000000000,
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Custom Sidebar Class
   |--------------------------------------------------------------------------
@@ -57,9 +57,9 @@ return [
   | You can define your own sidebar class for this module.
   | No custom sidebar: null
   */
-  'custom-sidebar' => null,
+    'custom-sidebar' => null,
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Load additional view namespaces for a module
   |--------------------------------------------------------------------------
@@ -68,85 +68,84 @@ return [
   | extra view namespace.
   | By default every extra namespace will be set to false.
   */
-  'useViewNamespaces' => [
-    // Read module views from /Themes/<backend-theme-name>/views/modules/<module-name>
-    'backend-theme' => false,
-    // Read module views from /Themes/<frontend-theme-name>/views/modules/<module-name>
-    'frontend-theme' => false,
-    // Read module views from /resources/views/asgard/<module-name>
-    'resources' => false,
-  ],
-
-
-  'defaultImageSize' => json_encode(['width' => 1920, 'height' => 1920, 'quality' => 90]),
-
-  'watermark' => [
-    'activated' => false,
-    'url' => 'modules/media/img/watermark/watermark.png',
-    'position' => 'top-left', //top, top-right, left, center, right, bottom-left, bottom, bottom-right
-    'x' => 10,
-    'y' => 10,
-  ],
-
-  "defaultThumbnails" => json_encode([
-    "smallThumb" => [
-      "quality" => 80,
-      "width" => 300,
-      "height" => null,
-      "aspectRatio" => true,
-      "upsize" => true,
-      "format" => "webp",
+    'useViewNamespaces' => [
+        // Read module views from /Themes/<backend-theme-name>/views/modules/<module-name>
+        'backend-theme' => false,
+        // Read module views from /Themes/<frontend-theme-name>/views/modules/<module-name>
+        'frontend-theme' => false,
+        // Read module views from /resources/views/asgard/<module-name>
+        'resources' => false,
     ],
-    "mediumThumb" => [
-      "quality" => 80,
-      "width" => 600,
-      "height" => null,
-      "aspectRatio" => true,
-      "upsize" => true,
-      "format" => "webp",
-    ],
-    "largeThumb" => [
-      "quality" => 80,
-      "width" => 900,
-      "height" => null,
-      "aspectRatio" => true,
-      "upsize" => true,
-      "format" => "webp",
-    ],
-    "extraLargeThumb" => [
-      "quality" => 80,
-      "width" => 1920,
-      "height" => null,
-      "aspectRatio" => true,
-      "upsize" => true,
-      "format" => "webp",
-    ]
-  ]),
 
-  /*
+    'defaultImageSize' => json_encode(['width' => 1920, 'height' => 1920, 'quality' => 90]),
+
+    'watermark' => [
+        'activated' => false,
+        'url' => 'modules/media/img/watermark/watermark.png',
+        'position' => 'top-left', //top, top-right, left, center, right, bottom-left, bottom, bottom-right
+        'x' => 10,
+        'y' => 10,
+    ],
+
+    'defaultThumbnails' => json_encode([
+        'smallThumb' => [
+            'quality' => 80,
+            'width' => 300,
+            'height' => null,
+            'aspectRatio' => true,
+            'upsize' => true,
+            'format' => 'webp',
+        ],
+        'mediumThumb' => [
+            'quality' => 80,
+            'width' => 600,
+            'height' => null,
+            'aspectRatio' => true,
+            'upsize' => true,
+            'format' => 'webp',
+        ],
+        'largeThumb' => [
+            'quality' => 80,
+            'width' => 900,
+            'height' => null,
+            'aspectRatio' => true,
+            'upsize' => true,
+            'format' => 'webp',
+        ],
+        'extraLargeThumb' => [
+            'quality' => 80,
+            'width' => 1920,
+            'height' => null,
+            'aspectRatio' => true,
+            'upsize' => true,
+            'format' => 'webp',
+        ],
+    ]),
+
+    /*
 |--------------------------------------------------------------------------
 | Define config to the tenant with central data by model
 |--------------------------------------------------------------------------
 */
 
-  'tenantWithCentralData' => [
-    'imageable' => true
-  ],
+    'tenantWithCentralData' => [
+        'imageable' => true,
+    ],
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Define config to the mediaFillable trait for each entity
   |--------------------------------------------------------------------------
   */
-  "mediaFillable" => [
-    'zone' => [
-      'watermark' => 'single'
+    'mediaFillable' => [
+        'zone' => [
+            'watermark' => 'single',
+        ],
+
     ],
 
-  ],
-
-  'documentation' => [
-    'medias' => "media::cms.documentation.medias",
-    'zones' => "media::cms.documentation.zones",
-  ]
+    'documentation' => [
+        'medias' => 'media::cms.documentation.medias',
+        'zones' => 'media::cms.documentation.zones',
+    ],
 ];

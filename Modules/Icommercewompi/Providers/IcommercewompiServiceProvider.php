@@ -2,16 +2,17 @@
 
 namespace Modules\Icommercewompi\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Arr;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercewompi\Events\Handlers\RegisterIcommercewompiSidebar;
 
 class IcommercewompiServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommercewompiServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercewompis', Arr::dot(trans('icommercewompi::icommercewompis')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommercewompiServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommercewompiServiceProvider extends ServiceProvider
                 return new \Modules\Icommercewompi\Repositories\Cache\CacheIcommerceWompiDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

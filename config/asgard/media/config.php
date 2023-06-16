@@ -23,10 +23,10 @@ return [
     |--------------------------------------------------------------------------
     */
     'allowed-types' => 'jpg,png,pdf,jpeg,mp4,webm,ogg,svg',
-    'allowedImageTypes' => json_encode(["jpg", "png", "jpeg", "svg"]),
-    'allowedFileTypes' => json_encode(["pdf", "doc", "docx", "xls", "xlsx"]),
-    'allowedVideoTypes' => json_encode(["mp4","webm","ogg"]),
-    'allowedAudioTypes' => json_encode([ "mp3", "avi"]),
+    'allowedImageTypes' => json_encode(['jpg', 'png', 'jpeg', 'svg']),
+    'allowedFileTypes' => json_encode(['pdf', 'doc', 'docx', 'xls', 'xlsx']),
+    'allowedVideoTypes' => json_encode(['mp4', 'webm', 'ogg']),
+    'allowedAudioTypes' => json_encode(['mp3', 'avi']),
     /*
     |--------------------------------------------------------------------------
     | Determine the max file size upload rate
@@ -71,14 +71,13 @@ return [
         'resources' => false,
     ],
 
+    'defaultImageSize' => json_encode(['width' => 1920, 'height' => 1080, 'quality' => 90]),
 
-  'defaultImageSize' => json_encode(['width' => 1920, 'height' => 1080, 'quality' => 90]),
- 
-  'watermark' => [
-    'activated' => false,
-    'url' => 'modules/media/img/watermark/watermark.png',
-    'position' => 'top-left', //top, top-right, left, center, right, bottom-left, bottom, bottom-right
-    'x' => 10,
-    'y' => 10,
-  ],
+    'watermark' => [
+        'activated' => false,
+        'url' => 'modules/media/img/watermark/watermark.png',
+        'position' => 'top-left', //top, top-right, left, center, right, bottom-left, bottom, bottom-right
+        'x' => 10,
+        'y' => 10,
+    ],
 ];

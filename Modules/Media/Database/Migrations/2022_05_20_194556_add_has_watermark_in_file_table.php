@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddHasWatermarkInFileTable extends Migration
 {
@@ -13,9 +13,9 @@ class AddHasWatermarkInFileTable extends Migration
      */
     public function up()
     {
-      Schema::table('media__files', function (Blueprint $table) {
-        $table->boolean("has_watermark")->default(false)->after("folder_id");
-      });
+        Schema::table('media__files', function (Blueprint $table) {
+            $table->boolean('has_watermark')->default(false)->after('folder_id');
+        });
     }
 
     /**
@@ -25,6 +25,5 @@ class AddHasWatermarkInFileTable extends Migration
      */
     public function down()
     {
-    
     }
 }

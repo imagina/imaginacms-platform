@@ -14,14 +14,14 @@ return [
         'create schedule' => 'Create a schedule',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Title'
+        'id' => 'Id',
+        'title' => 'Title',
     ],
     'form' => [
-        'principal'=>'Principal',
-        'title'=>'Title',
-        'description'=>'Description',
-        'schedules'=>'Schedules'
+        'principal' => 'Principal',
+        'title' => 'Title',
+        'description' => 'Description',
+        'schedules' => 'Schedules',
     ],
     'messages' => [
     ],

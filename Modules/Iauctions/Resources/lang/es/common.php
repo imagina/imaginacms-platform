@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'title' => [
     ],
     'button' => [
@@ -21,6 +21,6 @@ return [
         'emails' => 'Emails para enviar notificaciones',
     ],
     'settingHints' => [
-        'emails' => "Ingresa el correo y presiona enter"
+        'emails' => 'Ingresa el correo y presiona enter',
     ],
 ];

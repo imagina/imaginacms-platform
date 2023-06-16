@@ -6,8 +6,7 @@ use Modules\Ibooking\Entities\Reservation;
 
 class ReservationSaved
 {
-    
-     /**
+    /**
      * The order instance.
      *
      * @var \App\Models\Order
@@ -24,5 +23,4 @@ class ReservationSaved
     {
         $this->reservation = $reservation;
     }
-
 }

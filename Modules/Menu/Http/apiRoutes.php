@@ -16,16 +16,12 @@ Route::group(['prefix' => '/menuitem', 'middleware' => 'api.token'], function (R
     ]);
 });
 Route::group(['prefix' => 'imenu'], function (Router $router) {
+    // menu Routes
+    require 'ApiRoutes/menuRoutes.php';
 
-  // menu Routes
-  require('ApiRoutes/menuRoutes.php');
+    // menuItems Routes
+    require 'ApiRoutes/menuItemRoutes.php';
 
-  // menuItems Routes
-  require('ApiRoutes/menuItemRoutes.php');
-
-  // Legacy Api Routes
-  require ('ApiRoutes/menuLegacyApiRoutes.php');
-
+    // Legacy Api Routes
+    require 'ApiRoutes/menuLegacyApiRoutes.php';
 });
-
-

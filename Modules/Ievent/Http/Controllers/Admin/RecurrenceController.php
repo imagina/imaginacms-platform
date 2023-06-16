@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Recurrence;
 use Modules\Ievent\Http\Requests\CreateRecurrenceRequest;
 use Modules\Ievent\Http\Requests\UpdateRecurrenceRequest;
 use Modules\Ievent\Repositories\RecurrenceRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RecurrenceController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class RecurrenceController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRecurrenceRequest $request
      * @return Response
      */
     public function store(CreateRecurrenceRequest $request)
@@ -63,7 +61,6 @@ class RecurrenceController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Recurrence $recurrence
      * @return Response
      */
     public function edit(Recurrence $recurrence)
@@ -74,8 +71,6 @@ class RecurrenceController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Recurrence $recurrence
-     * @param  UpdateRecurrenceRequest $request
      * @return Response
      */
     public function update(Recurrence $recurrence, UpdateRecurrenceRequest $request)
@@ -89,7 +84,6 @@ class RecurrenceController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Recurrence $recurrence
      * @return Response
      */
     public function destroy(Recurrence $recurrence)

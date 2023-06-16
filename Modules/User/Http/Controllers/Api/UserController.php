@@ -20,6 +20,7 @@ class UserController extends Controller
      * @var UserRepository
      */
     private $user;
+
     /**
      * @var PermissionManager
      */
@@ -92,11 +93,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return array
-     */
-    private function mergeRequestWithPermissions(Request $request) : array
+    private function mergeRequestWithPermissions(Request $request): array
     {
         $permissions = $this->permissions->clean($request->get('permissions'));
 

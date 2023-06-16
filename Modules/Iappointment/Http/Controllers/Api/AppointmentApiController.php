@@ -5,20 +5,16 @@ namespace Modules\Iappointment\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 // Base Api
 use Modules\Iappointment\Http\Requests\CreateAppointmentRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentRequest;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Iappointment\Repositories\AppointmentRepository;
 // Transformers
 use Modules\Iappointment\Transformers\AppointmentTransformer;
-
 // Entities
-use Modules\Iappointment\Entities\Appointment;
 
 // Repositories
-use Modules\Iappointment\Repositories\AppointmentRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class AppointmentApiController extends BaseApiController
 {
@@ -44,23 +40,22 @@ class AppointmentApiController extends BaseApiController
             $appointments = $this->appointment->getItemsBy($params);
 
             //Response
-            $response = ["data" => AppointmentTransformer::collection($appointments)];
+            $response = ['data' => AppointmentTransformer::collection($appointments)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($appointments)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($appointments)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -73,33 +68,34 @@ class AppointmentApiController extends BaseApiController
             $appointment = $this->appointment->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$appointment) throw new \Exception('Item not found', 204);
+            if (! $appointment) {
+                throw new \Exception('Item not found', 204);
+            }
 
             //Response
-            $response = ["data" => new AppointmentTransformer($appointment)];
+            $response = ['data' => new AppointmentTransformer($appointment)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($appointment)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($appointment)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
     {
         \DB::beginTransaction();
         try {
-            $data = $request->input('attributes') ?? [];//Get data
+            $data = $request->input('attributes') ?? []; //Get data
             //Validate Request
 
             $this->validateRequestApi(new CreateAppointmentRequest($data));
@@ -111,62 +107,63 @@ class AppointmentApiController extends BaseApiController
             $conversationData = [
                 'users' => [
                     $data['customer_id'],
-                    $data['assigned_to']
+                    $data['assigned_to'],
                 ],
                 'private' => 1,
                 'entity_id' => $appointment->id,
                 'entity_type' => get_class($appointment),
             ];
 
-            if(setting('iappointment::enableChat')==='1')
-                if(is_module_enabled('Ichat'))
+            if (setting('iappointment::enableChat') === '1') {
+                if (is_module_enabled('Ichat')) {
                     app('Modules\Ichat\Services\ConversationService')->create($conversationData);
+                }
+            }
 
             //Response
-            $response = ["data" => new AppointmentTransformer($appointment)];
+            $response = ['data' => new AppointmentTransformer($appointment)];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
+     *
      * @return Response
      */
     public function update($criteria, Request $request)
     {
-
-
         \DB::beginTransaction();
-     //   try {
-            $params = $this->getParamsRequest($request);
-            $data = $request->input('attributes');
+        //   try {
+        $params = $this->getParamsRequest($request);
+        $data = $request->input('attributes');
 
-            //Validate Request
-            $this->validateRequestApi(new UpdateAppointmentRequest($data));
+        //Validate Request
+        $this->validateRequestApi(new UpdateAppointmentRequest($data));
 
-            //Update data
-            $appointment = $this->appointment->updateBy($criteria, $data,$params);
+        //Update data
+        $appointment = $this->appointment->updateBy($criteria, $data, $params);
 
-            //Response
-            $response = ['data' => 'Item Updated'];
-            \DB::commit(); //Commit to Data Base
-     /*   } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
-            $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
-        }*/
+        //Response
+        $response = ['data' => 'Item Updated'];
+        \DB::commit(); //Commit to Data Base
+        /*   } catch (\Exception $e) {
+               \DB::rollback();//Rollback to Data Base
+               $status = $this->getStatusError($e->getCode());
+               $response = ["errors" => $e->getMessage()];
+           }*/
         return response()->json($response, $status ?? 200);
     }
 
     /**
      * Remove the specified resource from storage.
+     *
      * @return Response
      */
     public function delete($criteria, Request $request)
@@ -183,10 +180,11 @@ class AppointmentApiController extends BaseApiController
             $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 }

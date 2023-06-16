@@ -4,13 +4,15 @@ namespace Modules\Iblog\Entities;
 
 /**
  * Class Status
- * @package Modules\Blog\Entities
  */
 class Status
 {
     const DRAFT = 0;
+
     const PENDING = 1;
+
     const PUBLISHED = 2;
+
     const UNPUBLISHED = 3;
 
     /**
@@ -30,6 +32,7 @@ class Status
 
     /**
      * Get the available statuses
+     *
      * @return array
      */
     public function lists()
@@ -39,7 +42,8 @@ class Status
 
     /**
      * Get the post status
-     * @param int $statusId
+     *
+     * @param  int  $statusId
      * @return string
      */
     public function get($statusId)

@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class AuctionTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
+
     protected $table = 'iauctions__auction_translations';
 }

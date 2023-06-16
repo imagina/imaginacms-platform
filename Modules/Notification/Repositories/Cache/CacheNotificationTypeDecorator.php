@@ -2,8 +2,8 @@
 
 namespace Modules\Notification\Repositories\Cache;
 
-use Modules\Notification\Repositories\NotificationTypeRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Notification\Repositories\NotificationTypeRepository;
 
 class CacheNotificationTypeDecorator extends BaseCacheDecorator implements NotificationTypeRepository
 {

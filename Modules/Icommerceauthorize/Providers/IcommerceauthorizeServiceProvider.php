@@ -4,14 +4,15 @@ namespace Modules\Icommerceauthorize\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceauthorize\Events\Handlers\RegisterIcommerceauthorizeSidebar;
 
 class IcommerceauthorizeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -32,7 +33,6 @@ class IcommerceauthorizeServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceauthorizes', Arr::dot(trans('icommerceauthorize::icommerceauthorizes')));
             // append translations
-
         });
     }
 
@@ -52,7 +52,7 @@ class IcommerceauthorizeServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +69,6 @@ class IcommerceauthorizeServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceauthorize\Repositories\Cache\CacheIcommerceAuthorizeDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

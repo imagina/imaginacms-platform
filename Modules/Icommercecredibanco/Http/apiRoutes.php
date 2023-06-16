@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => 'icommercecredibanco'], function (Router $router) {
-    
     $router->get('/', [
         'as' => 'icommercecredibanco.api.credibanco.init',
         'uses' => 'IcommerceCredibancoApiController@init',
@@ -13,7 +12,4 @@ Route::group(['prefix' => 'icommercecredibanco'], function (Router $router) {
         'as' => 'icommercecredibanco.api.credibanco.getUpdateOrder',
         'uses' => 'IcommerceCredibancoApiController@getUpdateOrder',
     ]);
-
-   
-
 });

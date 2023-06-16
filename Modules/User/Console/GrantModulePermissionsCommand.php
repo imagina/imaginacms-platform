@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 class GrantModulePermissionsCommand extends Command
 {
     protected $name = 'asgard:user:grant-permissions';
+
     protected $description = 'Grant all the permissions to the admin role of given module';
 
     public function handle()

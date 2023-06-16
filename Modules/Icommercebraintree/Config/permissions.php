@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercebraintree::icommercebraintrees.edit resource',
         'destroy' => 'icommercebraintree::icommercebraintrees.destroy resource',
     ],
-// append
+    // append
 
 ];

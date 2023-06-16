@@ -5,8 +5,8 @@ namespace Modules\Iplaces\Entities;
 class StatusYN
 {
     const NO = 0;
-    const YES = 1;
 
+    const YES = 1;
 
     /**
      * @var array
@@ -24,6 +24,7 @@ class StatusYN
 
     /**
      * Get the available statuses
+     *
      * @return array
      */
     /*listar*/
@@ -34,7 +35,8 @@ class StatusYN
 
     /**
      * Get the post status
-     * @param int $statusId
+     *
+     * @param  int  $statusId
      * @return string
      */
     public function get($statusId)

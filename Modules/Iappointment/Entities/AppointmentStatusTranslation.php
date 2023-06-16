@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class AppointmentStatusTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
-        'title'
+        'title',
     ];
+
     protected $table = 'iappointment__appointment_status_translations';
 }

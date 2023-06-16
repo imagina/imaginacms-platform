@@ -2,13 +2,12 @@
 
 namespace Modules\Wishlistable\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Wishlistable\Entities\Wishlistable;
 use Modules\Wishlistable\Http\Requests\CreateWishlistableRequest;
 use Modules\Wishlistable\Http\Requests\UpdateWishlistableRequest;
 use Modules\Wishlistable\Repositories\WishlistableRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class WishlistableController extends AdminBaseController
 {
@@ -49,7 +48,6 @@ class WishlistableController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateWishlistableRequest $request
      * @return Response
      */
     public function store(CreateWishlistableRequest $request)
@@ -63,7 +61,6 @@ class WishlistableController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Wishlistable $wishlistable
      * @return Response
      */
     public function edit(Wishlistable $wishlistable)
@@ -74,8 +71,6 @@ class WishlistableController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Wishlistable $wishlistable
-     * @param  UpdateWishlistableRequest $request
      * @return Response
      */
     public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request)
@@ -89,7 +84,6 @@ class WishlistableController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Wishlistable $wishlistable
      * @return Response
      */
     public function destroy(Wishlistable $wishlistable)

@@ -16,24 +16,22 @@ class ModuleManager
      * @var RepositoryInterface
      */
     private $module;
+
     /**
      * @var Config
      */
     private $config;
+
     /**
      * @var PackageInformation
      */
     private $packageVersion;
+
     /**
      * @var Filesystem
      */
     private $finder;
 
-    /**
-     * @param Config $config
-     * @param PackageInformation $packageVersion
-     * @param Filesystem $finder
-     */
     public function __construct(Config $config, PackageInformation $packageVersion, Filesystem $finder)
     {
         $this->module = app('modules');
@@ -44,6 +42,7 @@ class ModuleManager
 
     /**
      * Return all modules
+     *
      * @return \Illuminate\Support\Collection
      */
     public function all()
@@ -53,11 +52,11 @@ class ModuleManager
         foreach ($modules as $module) {
             $moduleName = $module->getName();
             $package = $this->packageVersion->getPackageInfo("asgardcms/$moduleName-module");
-            $module->version = isset($package->version) ? $package->version: 'N/A';
+            $module->version = isset($package->version) ? $package->version : 'N/A';
             $module->versionUrl = '#';
             if (isset($package->source->url)) {
                 $packageUrl = str_replace('.git', '', $package->source->url);
-                $module->versionUrl = $packageUrl . '/tree/' . $package->dist->reference;
+                $module->versionUrl = $packageUrl.'/tree/'.$package->dist->reference;
             }
         }
 
@@ -66,6 +65,7 @@ class ModuleManager
 
     /**
      * Return all the enabled modules
+     *
      * @return array
      */
     public function enabled()
@@ -75,6 +75,7 @@ class ModuleManager
 
     /**
      * Get the core modules that shouldn't be disabled
+     *
      * @return array|mixed
      */
     public function getCoreModules()
@@ -87,6 +88,7 @@ class ModuleManager
 
     /**
      * Get the enabled modules, with the module name as the key
+     *
      * @return array
      */
     public function getFlippedEnabledModules()
@@ -102,7 +104,6 @@ class ModuleManager
 
     /**
      * Disable the given modules
-     * @param $enabledModules
      */
     public function disableModules($enabledModules)
     {
@@ -119,7 +120,6 @@ class ModuleManager
 
     /**
      * Enable the given modules
-     * @param $modules
      */
     public function enableModules($modules)
     {
@@ -131,12 +131,12 @@ class ModuleManager
 
     /**
      * Get the changelog for the given module
-     * @param Module $module
+     *
      * @return array
      */
     public function changelogFor(Module $module)
     {
-        $path = $module->getPath() . '/changelog.yml';
+        $path = $module->getPath().'/changelog.yml';
         if (! $this->finder->isFile($path)) {
             return [];
         }
@@ -152,7 +152,7 @@ class ModuleManager
 
     /**
      * Limit the versions to the last 5
-     * @param array $versions
+     *
      * @return array
      */
     private function limitLastVersionsAmount(array $versions)

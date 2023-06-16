@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddPayoutInPaymentMethodsTable extends Migration
 {
@@ -26,9 +26,9 @@ class AddPayoutInPaymentMethodsTable extends Migration
     public function down()
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
-          if(Schema::hasColumn('icommerce__payment_methods','payout')) {
-            $table->dropColumn('payout');
-          }
+            if (Schema::hasColumn('icommerce__payment_methods', 'payout')) {
+                $table->dropColumn('payout');
+            }
         });
     }
 }

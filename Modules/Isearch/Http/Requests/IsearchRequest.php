@@ -24,7 +24,7 @@ class IsearchRequest extends Request
     public function rules()
     {
         return [
-            'search' => 'required|min:2'
+            'search' => 'required|min:2',
         ];
     }
 
@@ -49,7 +49,7 @@ class IsearchRequest extends Request
     {
         return [
             'search.required' => trans('isearch::common.messages.search is required'),
-            'search.min:2'=> trans('isearch::common.messages.search min 2 ')
+            'search.min:2' => trans('isearch::common.messages.search min 2 '),
         ];
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
@@ -13,7 +11,7 @@ class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
      */
     public function up()
     {
-      \DB::statement("ALTER TABLE iplaces__place_translations ADD FULLTEXT full(title)");
+        \DB::statement('ALTER TABLE iplaces__place_translations ADD FULLTEXT full(title)');
     }
 
     /**

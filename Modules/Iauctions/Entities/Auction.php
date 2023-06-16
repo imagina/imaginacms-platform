@@ -4,116 +4,117 @@ namespace Modules\Iauctions\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
-use Modules\Iprofile\Entities\Department;
-
+use Modules\Iauctions\Traits\Notificable;
 //Static Classes
-use Modules\Iauctions\Entities\Status;
-use Modules\Iauctions\Entities\AuctionTypes;
 
 //Traits
-use Modules\Iauctions\Traits\Notificable;
 use Modules\Icomments\Traits\Commentable;
-
 use Modules\Ifillable\Traits\isFillable;
+use Modules\Iprofile\Entities\Department;
 
 class Auction extends CrudModel
 {
-  use isFillable, Translatable, Commentable, Notificable;
+    use isFillable, Translatable, Commentable, Notificable;
 
-  protected $table = 'iauctions__auctions';
-  public $transformer = 'Modules\Iauctions\Transformers\AuctionTransformer';
-  public $repository = 'Modules\Iauctions\Repositories\AuctionRepository';
-  public $requestValidation = [
-    'create' => 'Modules\Iauctions\Http\Requests\CreateAuctionRequest',
-    'update' => 'Modules\Iauctions\Http\Requests\UpdateAuctionRequest',
-  ];
-  public $translatedAttributes = [
-    'title',
-    'description'
-  ];
-  protected $fillable = [
-    'status',
-    'type',
-    'user_id',
-    'department_id',
-    'start_at',
-    'end_at',
-    'category_id',
-    'winner_id',
-    'options'
-  ];
+    protected $table = 'iauctions__auctions';
 
-  protected $casts = ['options' => 'array'];
+    public $transformer = 'Modules\Iauctions\Transformers\AuctionTransformer';
 
+    public $repository = 'Modules\Iauctions\Repositories\AuctionRepository';
 
-  //============== RELATIONS ==============//
+    public $requestValidation = [
+        'create' => 'Modules\Iauctions\Http\Requests\CreateAuctionRequest',
+        'update' => 'Modules\Iauctions\Http\Requests\UpdateAuctionRequest',
+    ];
 
-  // Responsable User
-  public function user()
-  {
-    $driver = config('asgard.user.config.driver');
-    return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User");
-  }
+    public $translatedAttributes = [
+        'title',
+        'description',
+    ];
 
-  public function category()
-  {
-    return $this->belongsTo(Category::class);
-  }
+    protected $fillable = [
+        'status',
+        'type',
+        'user_id',
+        'department_id',
+        'start_at',
+        'end_at',
+        'category_id',
+        'winner_id',
+        'options',
+    ];
 
-  public function department()
-  {
-    return $this->belongsTo(Department::class);
-  }
+    protected $casts = ['options' => 'array'];
 
-  public function bids()
-  {
-    return $this->hasMany(Bid::class);
-  }
+    //============== RELATIONS ==============//
 
-  public function winner()
-  {
-    $driver = config('asgard.user.config.driver');
-    return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'winner_id');
-  }
+    // Responsable User
+    public function user()
+    {
+        $driver = config('asgard.user.config.driver');
 
-  //============== MUTATORS / ACCESORS ==============//
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User");
+    }
 
-  public function setOptionsAttribute($value)
-  {
-    $this->attributes['options'] = json_encode($value);
-  }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-  public function getOptionsAttribute($value)
-  {
-    return json_decode($value);
-  }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 
-  public function getStatusNameAttribute()
-  {
-    $status = new Status();
-    return $status->get($this->status);
-  }
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
 
-  public function getTypeNameAttribute()
-  {
-    $type = new AuctionTypes();
-    return $type->get($this->type);
-  }
+    public function winner()
+    {
+        $driver = config('asgard.user.config.driver');
 
-  public function getIsAvailableAttribute()
-  {
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'winner_id');
+    }
 
-    $isAvailable = false;
-    $today = date("Y-m-d H:i:s");
-    //\Log::info("Today: ".$today);
+    //============== MUTATORS / ACCESORS ==============//
 
-    //ACTIVE = 1 and Between Dates
-    if ($this->status == 1 && $this->start_at <= $today && $this->end_at >= $today)
-      $isAvailable = true;
+    public function setOptionsAttribute($value)
+    {
+        $this->attributes['options'] = json_encode($value);
+    }
 
-    return $isAvailable;
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value);
+    }
 
-  }
+    public function getStatusNameAttribute()
+    {
+        $status = new Status();
 
+        return $status->get($this->status);
+    }
 
+    public function getTypeNameAttribute()
+    {
+        $type = new AuctionTypes();
+
+        return $type->get($this->type);
+    }
+
+    public function getIsAvailableAttribute()
+    {
+        $isAvailable = false;
+        $today = date('Y-m-d H:i:s');
+        //\Log::info("Today: ".$today);
+
+        //ACTIVE = 1 and Between Dates
+        if ($this->status == 1 && $this->start_at <= $today && $this->end_at >= $today) {
+            $isAvailable = true;
+        }
+
+        return $isAvailable;
+    }
 }

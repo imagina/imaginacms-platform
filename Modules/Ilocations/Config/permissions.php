@@ -51,11 +51,11 @@ return [
         'destroy' => 'ilocations::polygons.destroy resource',
     ],
     'ilocations.neighborhoods' => [
-      'manage' => 'ilocations::neighborhoods.manage resource',
-      'index' => 'ilocations::neighborhoods.list resource',
-      'create' => 'ilocations::neighborhoods.create resource',
-      'edit' => 'ilocations::neighborhoods.edit resource',
-      'destroy' => 'ilocations::neighborhoods.destroy resource',
+        'manage' => 'ilocations::neighborhoods.manage resource',
+        'index' => 'ilocations::neighborhoods.list resource',
+        'create' => 'ilocations::neighborhoods.create resource',
+        'edit' => 'ilocations::neighborhoods.edit resource',
+        'destroy' => 'ilocations::neighborhoods.destroy resource',
     ],
     'ilocations.localities' => [
         'manage' => 'ilocations::localities.manage resource',
@@ -65,9 +65,6 @@ return [
         'destroy' => 'ilocations::localities.destroy resource',
         'restore' => 'ilocations::localities.restore resource',
     ],
-// append
-
-
-
+    // append
 
 ];

@@ -27,148 +27,149 @@ use Modules\Translation\Services\TranslationLoader;
 
 class TranslationServiceProvider extends ServiceProvider
 {
-  use CanPublishConfiguration, CanGetSidebarClassForModule;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
 
-  /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
-  /**
-   * Register the service provider.
-   *
-   * @return void
-   */
-  public function register()
-  {
-    $this->registerBindings();
-    $this->registerConsoleCommands();
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerBindings();
+        $this->registerConsoleCommands();
 
-    view()->composer('translation::admin.translations.index', CurrentUserViewComposer::class);
+        view()->composer('translation::admin.translations.index', CurrentUserViewComposer::class);
 
-    $this->app['events']->listen(
-      BuildingSidebar::class,
-      $this->getSidebarClassForModule('translation', RegisterTranslationSidebar::class)
-    );
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('translation', RegisterTranslationSidebar::class)
+        );
 
-    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-      $event->load('translations', Arr::dot(trans('translation::translations')));
-      $event->load('locales', Arr::dot(trans('translation::locales')));
-    });
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('translations', Arr::dot(trans('translation::translations')));
+            $event->load('locales', Arr::dot(trans('translation::locales')));
+        });
 
-    app('router')->bind('translations', function ($id) {
-      return TranslationTranslation::find($id);
-    });
-  }
-
-  public function boot()
-  {
-    $this->publishConfig('translation', 'config');
-
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'permissions'), "asgard.translation.permissions");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'cmsPages'), "asgard.translation.cmsPages");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'cmsSidebar'), "asgard.translation.cmsSidebar");
-
-    $this->registerValidators();
-    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
-    if ($this->app->runningInConsole() === true) {
-      return;
+        app('router')->bind('translations', function ($id) {
+            return TranslationTranslation::find($id);
+        });
     }
 
-    if ($this->shouldRegisterCustomTranslator()) {
-      $this->registerCustomTranslator();
-    }
-  }
+    public function boot()
+    {
+        $this->publishConfig('translation', 'config');
 
-  /**
-   * Should we register the Custom Translator?
-   * @return bool
-   */
-  protected function shouldRegisterCustomTranslator()
-  {
-    if (false === config('app.translations-gui', true)) {
-      return false;
-    }
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'permissions'), 'asgard.translation.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'cmsPages'), 'asgard.translation.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('translation', 'cmsSidebar'), 'asgard.translation.cmsSidebar');
 
-    if (false === env('INSTALLED', false)) {
-      return false;
-    }
+        $this->registerValidators();
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
-    if (false === Schema::hasTable((new Translation)->getTable())) {
-      return false;
+        if ($this->app->runningInConsole() === true) {
+            return;
+        }
+
+        if ($this->shouldRegisterCustomTranslator()) {
+            $this->registerCustomTranslator();
+        }
     }
 
-    return true;
-  }
+    /**
+     * Should we register the Custom Translator?
+     *
+     * @return bool
+     */
+    protected function shouldRegisterCustomTranslator()
+    {
+        if (false === config('app.translations-gui', true)) {
+            return false;
+        }
 
-  /**
-   * Get the services provided by the provider.
-   *
-   * @return array
-   */
-  public function provides()
-  {
-    return [];
-  }
+        if (false === env('INSTALLED', false)) {
+            return false;
+        }
 
-  private function registerBindings()
-  {
-    $this->app->bind(TranslationRepository::class, function () {
-      $repository = new EloquentTranslationRepository(new Translation());
+        if (false === Schema::hasTable((new Translation)->getTable())) {
+            return false;
+        }
 
-      return new CacheTranslationDecorator($repository);
-    });
+        return true;
+    }
 
-    $this->app->bind(FileTranslationRepository::class, function ($app) {
-      return new FileDiskTranslationRepository($app['files'], $app['translation.loader']);
-    });
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
 
-    $this->app->bind(
-      LocaleRepository::class,
-      function () {
-        $repository = new EloquentLocaleRepository();
+    private function registerBindings()
+    {
+        $this->app->bind(TranslationRepository::class, function () {
+            $repository = new EloquentTranslationRepository(new Translation());
 
-        return new CacheLocaleDecorator($repository);
-      }
-    );
-  }
+            return new CacheTranslationDecorator($repository);
+        });
 
-  private function registerConsoleCommands()
-  {
-    $this->commands([
-      BuildTranslationsCacheCommand::class,
-    ]);
-  }
+        $this->app->bind(FileTranslationRepository::class, function ($app) {
+            return new FileDiskTranslationRepository($app['files'], $app['translation.loader']);
+        });
 
-  protected function registerCustomTranslator()
-  {
-    $this->app->singleton('translation.loader', function ($app) {
-      return new TranslationLoader($app['files'], $app['path.lang']);
-    });
-    $this->app->singleton('translator', function ($app) {
-      $loader = $app['translation.loader'];
+        $this->app->bind(
+            LocaleRepository::class,
+            function () {
+                $repository = new EloquentLocaleRepository();
 
-      $locale = $app['config']['app.locale'];
+                return new CacheLocaleDecorator($repository);
+            }
+        );
+    }
 
-      $trans = new \Illuminate\Translation\Translator($loader, $locale);
+    private function registerConsoleCommands()
+    {
+        $this->commands([
+            BuildTranslationsCacheCommand::class,
+        ]);
+    }
 
-      $trans->setFallback($app['config']['app.fallback_locale']);
+    protected function registerCustomTranslator()
+    {
+        $this->app->singleton('translation.loader', function ($app) {
+            return new TranslationLoader($app['files'], $app['path.lang']);
+        });
+        $this->app->singleton('translator', function ($app) {
+            $loader = $app['translation.loader'];
 
-      return $trans;
-    });
-  }
+            $locale = $app['config']['app.locale'];
 
-  private function registerValidators()
-  {
-    Validator::extend('extensions', function ($attribute, $value, $parameters) {
-      return in_array($value->getClientOriginalExtension(), $parameters);
-    });
+            $trans = new \Illuminate\Translation\Translator($loader, $locale);
 
-    Validator::replacer('extensions', function ($message, $attribute, $rule, $parameters) {
-      return str_replace([':attribute', ':values'], [$attribute, implode(',', $parameters)], $message);
-    });
-  }
+            $trans->setFallback($app['config']['app.fallback_locale']);
+
+            return $trans;
+        });
+    }
+
+    private function registerValidators()
+    {
+        Validator::extend('extensions', function ($attribute, $value, $parameters) {
+            return in_array($value->getClientOriginalExtension(), $parameters);
+        });
+
+        Validator::replacer('extensions', function ($message, $attribute, $rule, $parameters) {
+            return str_replace([':attribute', ':values'], [$attribute, implode(',', $parameters)], $message);
+        });
+    }
 }

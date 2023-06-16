@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Modules\Isearch\Transformers;
-
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,11 +14,9 @@ class SearchItemTransformer extends JsonResource
             'slug' => $this->slug ?? '',
             'url' => $this->url ?? '',
             'mediaFiles' => $this->mediaFiles(),
-            'category' => new SearchItemTransformer($this->whenLoaded('category'))
+            'category' => new SearchItemTransformer($this->whenLoaded('category')),
         ];
 
         return $data;
-
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'manage resource' => 'Ver Listas de precios',
     'list resource' => 'Ver Listas de precios',
@@ -12,7 +13,7 @@ return [
     ],
     'button' => [
         'create pricelist' => 'Crear una Lista de precios',
-        'download' => 'Descargar'
+        'download' => 'Descargar',
     ],
     'table' => [
     ],

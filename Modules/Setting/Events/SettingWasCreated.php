@@ -24,7 +24,7 @@ class SettingWasCreated implements StoringMedia
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getEntity()
     {
@@ -32,7 +32,7 @@ class SettingWasCreated implements StoringMedia
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSubmissionData()
     {

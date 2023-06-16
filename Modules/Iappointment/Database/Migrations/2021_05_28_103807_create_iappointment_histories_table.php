@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIappointmentHistoriesTable extends Migration
 {
@@ -17,10 +17,10 @@ class CreateIappointmentHistoriesTable extends Migration
             $table->id();
 
             $table->integer('appointment_id')->unsigned();
-            $table->foreign('appointment_id','appointment_hist_id_foreign')->references('id')->on('iappointment__appointments')->onDelete('restrict');
+            $table->foreign('appointment_id', 'appointment_hist_id_foreign')->references('id')->on('iappointment__appointments')->onDelete('restrict');
 
             $table->integer('assigned_to')->unsigned()->nullable();
-            $table->foreign('assigned_to','assigned_to_hist_foreign')->references('id')->on(config('auth.table', 'users'))->onDelete('restrict');
+            $table->foreign('assigned_to', 'assigned_to_hist_foreign')->references('id')->on(config('auth.table', 'users'))->onDelete('restrict');
 
             $table->timestamps();
         });

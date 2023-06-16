@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('iauctions')->group(function() {
+Route::prefix('iauctions')->group(function () {
     Route::get('/', 'IauctionsController@index');
 });

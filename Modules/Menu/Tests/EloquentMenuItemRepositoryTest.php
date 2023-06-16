@@ -17,6 +17,7 @@ class EloquentMenuItemRepositoryTest extends BaseMenuTest
 
     /**
      * New menu item should be created
+     *
      * @test
      */
     public function it_should_create_menu_item_as_root()

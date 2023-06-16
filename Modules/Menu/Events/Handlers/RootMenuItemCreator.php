@@ -12,6 +12,7 @@ class RootMenuItemCreator
      * @var MenuItemRepository
      */
     private $menuItem;
+
     /**
      * @var Setting
      */
@@ -40,6 +41,7 @@ class RootMenuItemCreator
 
     /**
      * Return an array of enabled locales
+     *
      * @return array
      */
     private function getEnabledLocales()

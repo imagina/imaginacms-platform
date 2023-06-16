@@ -7,17 +7,17 @@ use Modules\Core\Support\Traits\AuditTrait;
 
 class Category extends Model
 {
-
     use AuditTrait;
 
     protected $table = 'iplan__categories';
+
     protected $fillable = [
-      "title",
-      "slug",
-      "description",
-      "parent_id",
-      "options",
-      "status",
+        'title',
+        'slug',
+        'description',
+        'parent_id',
+        'options',
+        'status',
     ];
 
     public function plans()
@@ -27,11 +27,11 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(Category::class,"parent_id");
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
     public function parent()
     {
-        return $this->belongsTo(Category::class,"parent_id");
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 }

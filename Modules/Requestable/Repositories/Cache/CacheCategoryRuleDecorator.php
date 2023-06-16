@@ -2,8 +2,8 @@
 
 namespace Modules\Requestable\Repositories\Cache;
 
-use Modules\Requestable\Repositories\CategoryRuleRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Requestable\Repositories\CategoryRuleRepository;
 
 class CacheCategoryRuleDecorator extends BaseCacheCrudDecorator implements CategoryRuleRepository
 {

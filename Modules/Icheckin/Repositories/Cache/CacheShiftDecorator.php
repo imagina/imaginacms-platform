@@ -2,8 +2,8 @@
 
 namespace Modules\Icheckin\Repositories\Cache;
 
-use Modules\Icheckin\Repositories\ShiftRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icheckin\Repositories\ShiftRepository;
 
 class CacheShiftDecorator extends BaseCacheDecorator implements ShiftRepository
 {

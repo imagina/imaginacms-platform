@@ -2,12 +2,12 @@
 
 namespace Modules\Requestable\Entities;
 
-
 class StatusGeneral
 {
     const INACTIVE = 0;
+
     const ACTIVE = 1;
-   
+
     private $statuses = [];
 
     public function __construct()
@@ -25,19 +25,16 @@ class StatusGeneral
 
     public function getAllStatus()
     {
-
         $statuses = $this->statuses;
         $statusTransform = [];
         foreach ($statuses as $key => $status) {
-           array_push($statusTransform,['value' => $key, 'name' => $status]);
+            array_push($statusTransform, ['value' => $key, 'name' => $status]);
         }
         //\Log::info("StatusSetting: ".json_encode($statusSetting));
         //return $statusTransform;
         return collect($statusTransform);
-
     }
 
-   
     public function get($statusId)
     {
         if (isset($this->statuses[$statusId])) {
@@ -46,5 +43,4 @@ class StatusGeneral
 
         return $this->statuses[self::ACTIVE];
     }
-    
 }

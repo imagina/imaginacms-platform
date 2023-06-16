@@ -3,11 +3,10 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => '/providers'], function (Router $router) {
-
     $router->post('/', [
         'as' => 'api.iappointment.providers.create',
         'uses' => 'ProviderApiController@create',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->get('/', [
         'as' => 'api.iappointment.providers.index',
@@ -20,12 +19,11 @@ Route::group(['prefix' => '/providers'], function (Router $router) {
     $router->put('/{criteria}', [
         'as' => 'api.iappointment.providers.update',
         'uses' => 'ProviderApiController@update',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->delete('/{criteria}', [
         'as' => 'api.iappointment.providers.delete',
         'uses' => 'ProviderApiController@delete',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
-
 });

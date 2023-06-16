@@ -11,9 +11,6 @@ class FileWasUploaded
      */
     public $file;
 
-    /**
-     * @param File $file
-     */
     public function __construct(File $file)
     {
         $this->file = $file;

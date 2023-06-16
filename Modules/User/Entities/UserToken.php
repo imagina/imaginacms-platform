@@ -8,6 +8,7 @@ use Modules\User\Entities\Sentinel\User;
 class UserToken extends Model
 {
     protected $table = 'user_tokens';
+
     protected $fillable = ['user_id', 'access_token'];
 
     /**

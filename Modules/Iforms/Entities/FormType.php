@@ -6,50 +6,54 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormType extends Model
 {
-  const NORMAL = 1;
-  const STEPS = 2;
+    const NORMAL = 1;
 
-  /**
-   * @var array
-   */
-  private $types = [];
+    const STEPS = 2;
 
-  public function __construct()
-  {
-    $this->types = [
-      [
-        'id' => self::NORMAL,
-        'name' => trans('iforms::common.formTypes.normal'),
-        'value' => 'normal'
-      ],
-      [
-        'id' => self::STEPS,
-        'name' => trans('iforms::common.formTypes.steps'),
-        'value' => 'steps'
-      ],
-    ];
-  }
+    /**
+     * @var array
+     */
+    private $types = [];
 
-  /**
-   * Get the available statuses
-   * @return array
-   */
-  public function lists()
-  {
-    return $this->types;
-  }
-
-  /**
-   * Get the post status
-   * @param int $id
-   * @return string
-   */
-  public function get($id)
-  {
-    $id --;
-    if (isset($this->types[$id])) {
-      return $this->types[$id];
+    public function __construct()
+    {
+        $this->types = [
+            [
+                'id' => self::NORMAL,
+                'name' => trans('iforms::common.formTypes.normal'),
+                'value' => 'normal',
+            ],
+            [
+                'id' => self::STEPS,
+                'name' => trans('iforms::common.formTypes.steps'),
+                'value' => 'steps',
+            ],
+        ];
     }
-    return $this->types[0];
-  }
+
+    /**
+     * Get the available statuses
+     *
+     * @return array
+     */
+    public function lists()
+    {
+        return $this->types;
+    }
+
+    /**
+     * Get the post status
+     *
+     * @param  int  $id
+     * @return string
+     */
+    public function get($id)
+    {
+        $id--;
+        if (isset($this->types[$id])) {
+            return $this->types[$id];
+        }
+
+        return $this->types[0];
+    }
 }

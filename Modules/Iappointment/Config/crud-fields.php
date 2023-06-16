@@ -1,5 +1,6 @@
 <?php
+
 return [
-    'categories' =>[],
+    'categories' => [],
     'appointments' => [],
 ];

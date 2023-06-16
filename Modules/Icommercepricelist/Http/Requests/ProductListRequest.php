@@ -9,8 +9,8 @@ class ProductListRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'product_id' => 'required',
-          'price_list_id' => 'required',
+            'product_id' => 'required',
+            'price_list_id' => 'required',
 
         ];
     }
@@ -28,11 +28,11 @@ class ProductListRequest extends BaseFormRequest
     public function messages()
     {
         return [
-          // Product Id
-          'product_id.required' => trans('icommerce::common.messages.field required'),
+            // Product Id
+            'product_id.required' => trans('icommerce::common.messages.field required'),
 
-          // Price List Id
-          'price_list_id.required' => trans('icommerce::common.messages.field required'),
+            // Price List Id
+            'price_list_id.required' => trans('icommerce::common.messages.field required'),
 
         ];
     }

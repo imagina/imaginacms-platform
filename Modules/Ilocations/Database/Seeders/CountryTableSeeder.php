@@ -2,11 +2,9 @@
 
 namespace Modules\Ilocations\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 use Modules\Ilocations\Entities\Country;
-
 
 class CountryTableSeeder extends Seeder
 {
@@ -18,16 +16,16 @@ class CountryTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-  
-     
+
         $path = base_path('/Modules/Ilocations/Assets/js/countries.json');
         $countries = json_decode(file_get_contents($path), true);
 
-        foreach ($countries as $key => $country){
-          $currentCountry = Country::where("iso_3",$country["iso_3"])->first();
-          
-          if(!isset($currentCountry->id)) Country::create($country);
+        foreach ($countries as $key => $country) {
+            $currentCountry = Country::where('iso_3', $country['iso_3'])->first();
+
+            if (! isset($currentCountry->id)) {
+                Country::create($country);
+            }
         }
-        
     }
 }
