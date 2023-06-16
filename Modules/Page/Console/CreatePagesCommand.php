@@ -49,18 +49,18 @@ class CreatePagesCommand extends Command
             'is_home' => 0,
             'template' => 'default',
             'en' => [
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
             'fr' => [
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
             'nl' => [
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
         ]);
