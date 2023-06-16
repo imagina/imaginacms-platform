@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIappointmentAppointmentTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -37,4 +37,4 @@ class CreateIappointmentAppointmentTranslationsTable extends Migration
         });
         Schema::dropIfExists('iappointment__appointment_translations');
     }
-}
+};

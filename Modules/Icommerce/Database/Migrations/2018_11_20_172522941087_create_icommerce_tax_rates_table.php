@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceTaxRatesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateIcommerceTaxRatesTable extends Migration
     {
         Schema::dropIfExists('icommerce__tax_rates');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIformsFormTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class CreateIformsFormTranslationsTable extends Migration
           });
           Schema::dropIfExists('iforms__form_translations');
       }
-}
+};

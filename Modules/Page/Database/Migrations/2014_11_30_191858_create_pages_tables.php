@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePagesTables extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -53,4 +53,4 @@ class CreatePagesTables extends Migration
         Schema::drop('page__page_translations');
         Schema::drop('page__pages');
     }
-}
+};

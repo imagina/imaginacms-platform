@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbookingResourceTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -39,4 +39,4 @@ class CreateIbookingResourceTranslationsTable extends Migration
         });
         Schema::dropIfExists('ibooking__resource_translations');
     }
-}
+};

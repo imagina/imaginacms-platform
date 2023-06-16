@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRequestableFieldsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -42,4 +42,4 @@ class CreateRequestableFieldsTable extends Migration
     {
         Schema::dropIfExists('requestable__fields');
     }
-}
+};

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddExternalIdInProductAndCategoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class AddExternalIdInProductAndCategoryTable extends Migration
             $table->dropColumn('external_id');
         });
     }
-}
+};

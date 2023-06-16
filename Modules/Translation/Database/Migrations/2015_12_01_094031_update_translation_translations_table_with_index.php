@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class UpdateTranslationTranslationsTableWithIndex extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class UpdateTranslationTranslationsTableWithIndex extends Migration
             $table->dropIndex('translation__translations_key_index');
         });
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIsiteIcrudsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class CreateIsiteIcrudsTable extends Migration
     {
         Schema::dropIfExists('isite__icruds');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbuilderBlockTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateIbuilderBlockTranslationsTable extends Migration
         });
         Schema::dropIfExists('ibuilder__block_translations');
     }
-}
+};

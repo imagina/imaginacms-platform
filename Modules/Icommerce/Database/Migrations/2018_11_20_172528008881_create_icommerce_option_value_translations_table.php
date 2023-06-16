@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceOptionValueTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -40,4 +40,4 @@ class CreateIcommerceOptionValueTranslationsTable extends Migration
         });
         Schema::dropIfExists('icommerce__option_value_trans');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIplanPlanCategoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class CreateIplanPlanCategoryTable extends Migration
     {
         Schema::drop('iplan__plan_category');
     }
-}
+};

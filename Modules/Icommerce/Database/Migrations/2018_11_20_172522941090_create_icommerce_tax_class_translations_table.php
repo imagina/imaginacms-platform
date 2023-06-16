@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceTaxClassTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -39,4 +39,4 @@ class CreateIcommerceTaxClassTranslationsTable extends Migration
         });
         Schema::dropIfExists('icommerce__tax_class_translations');
     }
-}
+};

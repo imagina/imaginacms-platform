@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIblogCategoriesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -37,4 +37,4 @@ class CreateIblogCategoriesTable extends Migration
     {
         Schema::dropIfExists('iblog__categories');
     }
-}
+};

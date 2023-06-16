@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIfillableFieldTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateIfillableFieldTranslationsTable extends Migration
         });
         Schema::dropIfExists('ifillable__field_translations');
     }
-}
+};

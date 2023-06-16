@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIeventCategoryTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -39,4 +39,4 @@ class CreateIeventCategoryTranslationsTable extends Migration
         });
         Schema::dropIfExists('ievent__category_translations');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcheckinShiftsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -49,4 +49,4 @@ class CreateIcheckinShiftsTable extends Migration
     {
         Schema::dropIfExists('icheckin__shifts');
     }
-}
+};

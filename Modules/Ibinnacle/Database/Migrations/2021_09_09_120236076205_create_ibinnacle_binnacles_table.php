@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbinnacleBinnaclesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateIbinnacleBinnaclesTable extends Migration
     {
         Schema::dropIfExists('ibinnacle__binnacles');
     }
-}
+};

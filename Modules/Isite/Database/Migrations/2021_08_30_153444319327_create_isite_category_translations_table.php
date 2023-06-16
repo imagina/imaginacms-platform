@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIsiteCategoryTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -41,4 +41,4 @@ class CreateIsiteCategoryTranslationsTable extends Migration
         });
         Schema::dropIfExists('isite__category_translations');
     }
-}
+};

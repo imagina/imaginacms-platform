@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceProductCategoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -33,4 +33,4 @@ class CreateIcommerceProductCategoryTable extends Migration
     {
         Schema::dropIfExists('icommerce__product_category');
     }
-}
+};

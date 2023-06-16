@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIauctionsBidsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -45,4 +45,4 @@ class CreateIauctionsBidsTable extends Migration
     {
         Schema::dropIfExists('iauctions__bids');
     }
-}
+};

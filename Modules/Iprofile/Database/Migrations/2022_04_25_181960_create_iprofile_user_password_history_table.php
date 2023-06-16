@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIprofileUserPasswordHistoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -37,4 +37,4 @@ class CreateIprofileUserPasswordHistoryTable extends Migration
     {
         Schema::dropIfExists('iprofile__user_password_history');
     }
-}
+};

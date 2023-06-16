@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class MakeSettingsValueTextField extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -34,4 +34,4 @@ class MakeSettingsValueTextField extends Migration
             $table->string('value')->text('value')->change();
         });
     }
-}
+};

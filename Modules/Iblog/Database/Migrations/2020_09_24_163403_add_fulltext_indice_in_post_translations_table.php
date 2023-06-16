@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddFulltextIndiceInPostTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,4 +22,4 @@ class AddFulltextIndiceInPostTranslationsTable extends Migration
     public function down()
     {
     }
-}
+};

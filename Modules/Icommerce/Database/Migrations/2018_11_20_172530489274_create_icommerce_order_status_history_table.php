@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceOrderStatusHistoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateIcommerceOrderStatusHistoryTable extends Migration
     {
         Schema::dropIfExists('icommerce__order_status_history');
     }
-}
+};
