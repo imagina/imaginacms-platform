@@ -59,11 +59,8 @@ class Post extends CrudModel implements TaggableInterface
 
     protected $presenter = PostPresenter::class;
 
-    protected $dates = [
-        'date_available',
-    ];
-
     protected $casts = [
+        'date_available' => 'datetime',
         'options' => 'array',
     ];
 
