@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IgamificationController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('igamification')->group(function () {
-    Route::get('/', 'IgamificationController@index');
+    Route::get('/', [IgamificationController::class, 'index']);
 });

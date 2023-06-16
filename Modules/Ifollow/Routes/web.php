@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IfollowController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('ifollow')->group(function () {
-    Route::get('/', 'IfollowController@index');
+    Route::get('/', [IfollowController::class, 'index']);
 });

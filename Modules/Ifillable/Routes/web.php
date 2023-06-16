@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IfillableController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('ifillable')->group(function () {
-    Route::get('/', 'IfillableController@index');
+    Route::get('/', [IfillableController::class, 'index']);
 });

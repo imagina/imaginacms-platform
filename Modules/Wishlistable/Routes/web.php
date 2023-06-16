@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\WishlistableController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,5 @@
 */
 
 Route::prefix('wishlistable')->group(function () {
-    Route::get('/', 'WishlistableController@index');
+    Route::get('/', [WishlistableController::class, 'index']);
 });
