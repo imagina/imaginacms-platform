@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         if (Schema::hasColumn('requestable__status_history', 'value')) {
             Schema::table('requestable__status_history', function (Blueprint $table) {
@@ -24,7 +24,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 };

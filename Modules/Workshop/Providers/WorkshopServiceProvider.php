@@ -41,7 +41,7 @@ class WorkshopServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerCommands();
         $this->bindThemeManager();
@@ -65,7 +65,7 @@ class WorkshopServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('workshop', 'permissions'), 'asgard.workshop.permissions');
         $this->publishConfig('workshop', 'config');

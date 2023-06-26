@@ -7,7 +7,7 @@ use Modules\Icurrency\Support\Facades\Currency;
 
 class CartProductTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $product = $this->product()->first();
         $data = [

@@ -25,7 +25,7 @@ class QreableServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterQreableSidebar::class);
@@ -36,7 +36,7 @@ class QreableServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('qreable', 'config');
         $this->publishConfig('qreable', 'permissions');

@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
             $table->tinyInteger('payout')->default(0)->unsigned();
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__payment_methods', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__payment_methods', 'payout')) {

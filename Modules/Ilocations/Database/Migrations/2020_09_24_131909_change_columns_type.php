@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ilocations__country_translations', function (Blueprint $table) {
             $table->string('full_name')->default('')->nullable()->change();
@@ -41,7 +41,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

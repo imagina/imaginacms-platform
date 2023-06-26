@@ -7,7 +7,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class FullPageTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $pageData = [
             'id' => $this->resource->id,

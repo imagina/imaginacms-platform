@@ -25,7 +25,7 @@ class IappointmentServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIappointmentSidebar::class);
@@ -41,7 +41,7 @@ class IappointmentServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('iappointment', 'config');
         $this->publishConfig('iappointment', 'crud-fields');

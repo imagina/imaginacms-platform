@@ -36,7 +36,7 @@ class UpdateCarts extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $cartRepository = app('Modules\Icommerce\Repositories\CartRepository');
         $carts = $cartRepository->getItemsBy(json_decode(json_encode(['filter' => ['status' => 1], 'include' => [], 'take' => null])));

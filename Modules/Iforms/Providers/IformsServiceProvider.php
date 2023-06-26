@@ -26,7 +26,7 @@ class IformsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIformsSidebar::class);
@@ -38,7 +38,7 @@ class IformsServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('iforms', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'settings'), 'asgard.iforms.settings');

@@ -50,7 +50,7 @@ class InstallCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 

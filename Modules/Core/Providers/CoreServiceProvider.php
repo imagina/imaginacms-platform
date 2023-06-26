@@ -52,7 +52,7 @@ class CoreServiceProvider extends ServiceProvider
         ],
     ];
 
-    public function boot()
+    public function boot(): void
     {
         // Hot fix livewire endpoints prioritizing locale
         if (Str::contains(request()->path(), ['livewire/message'])) {
@@ -82,7 +82,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('asgard.isInstalled', function () {
             return true === config('asgard.core.core.is_installed');

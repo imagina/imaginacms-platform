@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('requestable__category_rules', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -39,7 +39,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('requestable__category_rules');
     }

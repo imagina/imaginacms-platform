@@ -36,7 +36,7 @@ class IprofileServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIprofileSidebar::class);
@@ -49,7 +49,7 @@ class IprofileServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerMiddleware();
         $this->publishConfig('iprofile', 'config');

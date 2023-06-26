@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__field_translations', function (Blueprint $table) {
             $table->string('placeholder')->nullable()->change();
@@ -24,7 +24,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iforms__field_translations', function (Blueprint $table) {
             $table->string('placeholder')->nullable(false)->change();

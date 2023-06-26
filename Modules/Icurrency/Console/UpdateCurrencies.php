@@ -38,7 +38,7 @@ class UpdateCurrencies extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $currencies = Currency::noDefaultCurrency();
         foreach ($currencies as $currency) {

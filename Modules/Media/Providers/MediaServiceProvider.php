@@ -53,7 +53,7 @@ class MediaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
 
@@ -84,7 +84,7 @@ class MediaServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(DispatcherContract $events)
+    public function boot(DispatcherContract $events): void
     {
         $this->publishConfig('media', 'config');
         $this->publishConfig('media', 'assets');

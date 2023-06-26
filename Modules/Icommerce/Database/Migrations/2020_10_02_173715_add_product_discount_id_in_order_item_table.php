@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__order_item', function (Blueprint $table) {
             $table->integer('product_discount_id')->unsigned()->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__order_item', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__order_item', 'product_discount_id')) {

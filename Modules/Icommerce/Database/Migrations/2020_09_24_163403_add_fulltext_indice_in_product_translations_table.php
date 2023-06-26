@@ -9,7 +9,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         \DB::statement('ALTER TABLE icommerce__product_translations ADD FULLTEXT full(name)');
     }
@@ -19,7 +19,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 };

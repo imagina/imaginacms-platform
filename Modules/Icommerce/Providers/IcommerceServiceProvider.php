@@ -30,7 +30,7 @@ class IcommerceServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommerceSidebar::class);
@@ -75,7 +75,7 @@ class IcommerceServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommerce', 'config');
         $this->publishConfig('icommerce', 'crud-fields');

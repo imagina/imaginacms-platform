@@ -25,7 +25,7 @@ class IcommercepayuServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercepayuSidebar::class);
@@ -36,7 +36,7 @@ class IcommercepayuServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercepayu', 'permissions');
         $this->publishConfig('icommercepayu', 'config');

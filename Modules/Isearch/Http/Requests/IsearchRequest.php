@@ -11,7 +11,7 @@ class IsearchRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class IsearchRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'search' => 'required|min:2',
@@ -33,7 +33,7 @@ class IsearchRequest extends Request
      *
      * @return array
      */
-    public function attributes()
+    public function attributes(): array
     {
         return [
             //
@@ -45,7 +45,7 @@ class IsearchRequest extends Request
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'search.required' => trans('isearch::common.messages.search is required'),

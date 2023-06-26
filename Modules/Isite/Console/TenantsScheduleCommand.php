@@ -20,7 +20,7 @@ class TenantsScheduleCommand extends Command
         $this->organizationRepository = $organizationRepository;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('PROCCESS INIT');
 

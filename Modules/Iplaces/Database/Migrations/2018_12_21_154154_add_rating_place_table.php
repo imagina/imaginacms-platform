@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplaces__places', function (Blueprint $table) {
             $table->float('rating', 3, 2)->default('3');
@@ -24,7 +24,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplaces__places', function (Blueprint $table) {
             $table->dropForeign(['user_id']);

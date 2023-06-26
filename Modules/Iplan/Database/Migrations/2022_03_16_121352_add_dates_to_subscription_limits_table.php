@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iplan__subscription_limits', function (Blueprint $table) {
             $table->dateTime('start_date')->nullable()->after('quantity_used');
@@ -25,7 +25,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplan__subscription_limits', function (Blueprint $table) {
             $table->dropColumn('start_date');

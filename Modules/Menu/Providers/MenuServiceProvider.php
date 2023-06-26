@@ -39,7 +39,7 @@ class MenuServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
 
@@ -68,7 +68,7 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Register all online menus on the Pingpong/Menu package
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerMenus();
         $this->registerBladeTags();

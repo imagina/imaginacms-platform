@@ -37,7 +37,7 @@ class ModuleScaffoldCommand extends Command
         $this->moduleScaffold = $moduleScaffold;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $moduleName = $this->ask('Please enter the module name in the following format: vendor/name');
         [$vendor, $name] = $this->separateVendorAndName($moduleName);

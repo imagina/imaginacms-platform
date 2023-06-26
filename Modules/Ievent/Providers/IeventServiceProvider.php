@@ -25,7 +25,7 @@ class IeventServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIeventSidebar::class);
@@ -41,7 +41,7 @@ class IeventServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ievent', 'config');
         $this->publishConfig('ievent', 'permissions');

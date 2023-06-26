@@ -24,7 +24,7 @@ class IgamificationServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIgamificationSidebar::class);
@@ -34,7 +34,7 @@ class IgamificationServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('igamification', 'config');
         $this->publishConfig('igamification', 'crud-fields');

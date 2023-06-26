@@ -7,7 +7,7 @@ use Modules\Icommerce\Transformers\ProductTransformer;
 
 class PriceListTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,

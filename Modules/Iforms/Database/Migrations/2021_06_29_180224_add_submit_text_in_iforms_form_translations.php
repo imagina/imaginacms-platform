@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iforms__form_translations', function (Blueprint $table) {
             $table->string('success_text')->nullable()->after('title');
@@ -24,7 +24,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iforms__form_translations', function (Blueprint $table) {
             $table->dropColumn(['submit_text', 'success_text']);

@@ -25,7 +25,7 @@ class IcommercecoordinadoraServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercecoordinadoraSidebar::class);
@@ -36,7 +36,7 @@ class IcommercecoordinadoraServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercecoordinadora', 'permissions');
         $this->publishConfig('icommercecoordinadora', 'config');

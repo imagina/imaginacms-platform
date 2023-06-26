@@ -11,7 +11,7 @@ class NwidartModuleTransformer extends JsonResource
      *
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $title = $this->getName() == 'Icustom' ? trans('isite::isite.icustom') : trans($this->getAlias().'::'.$this->getAlias().'.name');
 

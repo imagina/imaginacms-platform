@@ -9,7 +9,7 @@ use Modules\User\Entities\Sentinel\User;
 
 class ByShiftsTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         if ($this->approval_id) {
             $approval = Approvals::find($this->approval_id);

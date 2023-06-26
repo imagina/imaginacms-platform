@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('ibuilder__blocks', function (Blueprint $table) {
             $table->integer('status')->default(1)->after('system_name')->unsigned();
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 };

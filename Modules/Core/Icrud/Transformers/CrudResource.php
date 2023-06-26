@@ -25,7 +25,7 @@ class CrudResource extends JsonResource
      *
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $response = []; //Default Response
         $translatableAttributes = $this->translatedAttributes ?? []; //Get translatable attributes

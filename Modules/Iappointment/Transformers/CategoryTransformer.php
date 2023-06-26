@@ -7,7 +7,7 @@ use Modules\Iforms\Transformers\FormTransformer;
 
 class CategoryTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,

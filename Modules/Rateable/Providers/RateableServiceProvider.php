@@ -25,7 +25,7 @@ class RateableServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterRateableSidebar::class);
@@ -38,7 +38,7 @@ class RateableServiceProvider extends ServiceProvider
         $this->instanceMediaDisk();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('rateable', 'config');
         $this->publishConfig('rateable', 'crud-fields');
