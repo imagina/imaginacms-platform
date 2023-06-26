@@ -2,9 +2,9 @@
 
 namespace Modules\Iprofile\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Carbon\Carbon;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;

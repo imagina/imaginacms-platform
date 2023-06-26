@@ -2,9 +2,9 @@
 
 namespace Modules\Page\Http\Controllers;
 
-use Illuminate\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Modules\Core\Http\Controllers\BasePublicController;
 use Modules\Menu\Repositories\MenuItemRepository;
 use Modules\Page\Entities\Page;

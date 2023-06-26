@@ -2,9 +2,9 @@
 
 namespace Modules\Dashboard\Http\Controllers\Admin;
 
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Dashboard\Repositories\WidgetRepository;
 use Modules\User\Contracts\Authentication;

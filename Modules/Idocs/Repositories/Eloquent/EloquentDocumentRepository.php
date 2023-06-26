@@ -2,8 +2,8 @@
 
 namespace Modules\Idocs\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Idocs\Events\DocumentWasCreated;
 use Modules\Idocs\Events\DocumentWasDeleted;

@@ -2,8 +2,8 @@
 
 namespace Modules\Workshop\Http\Controllers\Admin;
 
-use Illuminate\View\View;
 use FloatingPoint\Stylist\Theme\Theme;
+use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Manager\ThemeManager;
 

@@ -2,8 +2,8 @@
 
 namespace Modules\Translation\Services;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Modules\Translation\Repositories\TranslationRepository;
 
 class TranslationRevisions

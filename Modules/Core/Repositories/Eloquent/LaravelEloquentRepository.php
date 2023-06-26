@@ -2,9 +2,9 @@
 
 namespace Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Filesystem\Filesystem;
 use Modules\Isite\Entities\Module as ModuleEntity;
 use Nwidart\Modules\Collection;
 use Nwidart\Modules\Contracts\RepositoryInterface;

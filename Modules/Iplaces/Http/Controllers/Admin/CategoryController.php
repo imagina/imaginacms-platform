@@ -7,7 +7,6 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iplaces\Entities\Category;
 use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Http\Requests\CreateCategoryRequest;
-use Modules\Iplaces\Http\Requests\UpdateCategoryRequest;
 use Modules\Iplaces\Repositories\CategoryRepository;
 
 class CategoryController extends AdminBaseController

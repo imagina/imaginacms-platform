@@ -3,8 +3,8 @@
 namespace Modules\User\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Collection;
-use Modules\User\Entities\UserToken;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\User\Entities\UserToken;
 use Modules\User\Repositories\UserTokenRepository;
 use Ramsey\Uuid\Uuid;
 
