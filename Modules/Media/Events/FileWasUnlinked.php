@@ -11,9 +11,6 @@ class FileWasUnlinked
      */
     public $imageableId;
 
-    /**
-     * @param  int  $imageableId
-     */
     public function __construct(int $imageableId)
     {
         $this->imageableId = $imageableId;

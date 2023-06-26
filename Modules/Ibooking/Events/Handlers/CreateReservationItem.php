@@ -18,9 +18,6 @@ class CreateReservationItem
 
     /**
      * Handle the event.
-     *
-     * @param  \App\Events\OrderShipped  $event
-     * @return void
      */
     public function handle(ReservationSaved $event): void
     {

@@ -30,8 +30,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the given entities
-     *
-     * @param  bool  $regenerateSidebar
      */
     public function generate(array $entities, bool $regenerateSidebar = true)
     {
@@ -88,8 +86,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the repositories for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateRepositoriesFor(string $entity)
     {
@@ -114,8 +110,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the controller for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateControllerFor(string $entity)
     {
@@ -131,8 +125,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the Api controller for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateApiControllerFor(string $entity)
     {
@@ -148,8 +140,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the requests for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateRequestsFor(string $entity)
     {
@@ -169,8 +159,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate views for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateViewsFor(string $entity)
     {
@@ -188,8 +176,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate language files for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateLanguageFilesFor(string $entity)
     {
@@ -206,8 +192,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate migrations file for eloquent entities
-     *
-     * @param  string  $entity
      */
     private function generateMigrationsFor(string $entity)
     {
@@ -230,8 +214,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate Api Routes for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateApiRoutesFilesFor(string $entity)
     {
@@ -247,8 +229,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the Transformers for the given entity
-     *
-     * @param  string  $entity
      */
     private function generateTransformerFor(string $entity)
     {
@@ -265,7 +245,6 @@ class EntityGenerator extends Generator
     /**
      * Append the api routes
      *
-     * @param  string  $entity
      *
      * @throws FileNotFoundException
      */
@@ -280,7 +259,6 @@ class EntityGenerator extends Generator
     /**
      * Append the IoC bindings for the given entity to the Service Provider
      *
-     * @param  string  $entity
      *
      * @throws FileNotFoundException
      */
@@ -295,7 +273,6 @@ class EntityGenerator extends Generator
     /**
      * Append the routes for the given entity to the routes file
      *
-     * @param  string  $entity
      *
      * @throws FileNotFoundException
      */
@@ -308,7 +285,6 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * @param  string  $entity
      *
      * @throws FileNotFoundException
      */
@@ -320,9 +296,6 @@ class EntityGenerator extends Generator
         $this->finder->put($this->getModulesPath('Config/permissions.php'), $permissionsContent);
     }
 
-    /**
-     * @param  string  $entity
-     */
     private function appendSidebarLinksFor(string $entity)
     {
         $sidebarComposerContent = $this->finder->get($this->getModulesPath("Listeners/Register{$this->name}Sidebar.php"));
@@ -332,9 +305,6 @@ class EntityGenerator extends Generator
         $this->finder->put($this->getModulesPath("Listeners/Register{$this->name}Sidebar.php"), $sidebarComposerContent);
     }
 
-    /**
-     * @param  string  $entity
-     */
     private function appendBackendTranslations(string $entity)
     {
         $moduleProviderContent = $this->finder->get($this->getModulesPath("Providers/{$this->name}ServiceProvider.php"));
@@ -387,8 +357,6 @@ class EntityGenerator extends Generator
 
     /**
      * Get the current time with microseconds
-     *
-     * @return string
      */
     private function getDateTimePrefix(): string
     {

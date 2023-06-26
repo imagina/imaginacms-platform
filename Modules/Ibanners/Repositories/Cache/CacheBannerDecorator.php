@@ -22,9 +22,6 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
 
     /**
      * Get all the read notifications for the given filters
-     *
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItemsBy(array $params): Collection
     {
@@ -41,10 +38,6 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
 
     /**
      * Get the read notification for the given filters
-     *
-     * @param  string  $criteria
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItem(string $criteria, array $params = false): Collection
     {

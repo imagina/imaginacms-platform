@@ -26,9 +26,6 @@ class RegisterIcommercepayuSidebar implements \Maatwebsite\Sidebar\SidebarExtend
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
     public function extendWith(Menu $menu): Menu
     {
         return $menu;

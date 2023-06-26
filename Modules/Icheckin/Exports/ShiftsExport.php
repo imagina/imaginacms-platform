@@ -38,9 +38,6 @@ class ShiftsExport implements FromCollection, WithEvents, ShouldQueue, WithMappi
         $this->service = $service;
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function collection(): Collection
     {
         //Init Repo

@@ -10,8 +10,6 @@ trait MediaRelation
 {
     /**
      * Make the Many To Many Morph To Relation
-     *
-     * @return object
      */
     public function files(): object
     {
@@ -26,9 +24,6 @@ trait MediaRelation
 
     /**
      * Make the Many to Many Morph to Relation with specific zone
-     *
-     * @param  string  $zone
-     * @return object
      */
     public function filesByZone(string $zone): object
     {
@@ -41,8 +36,6 @@ trait MediaRelation
 
     /**
      * Order and transform all files data
-     *
-     * @return array
      */
     public function mediaFiles(): array
     {

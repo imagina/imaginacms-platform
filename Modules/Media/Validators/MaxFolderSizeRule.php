@@ -12,10 +12,6 @@ class MaxFolderSizeRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  UploadedFile  $value
-     * @return bool
      */
     public function passes(string $attribute, UploadedFile $value): bool
     {
@@ -34,8 +30,6 @@ class MaxFolderSizeRule implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
@@ -47,8 +41,6 @@ class MaxFolderSizeRule implements Rule
 
     /**
      * Get the directory size
-     *
-     * @param  string  $directory
      */
     public function getDirSize(string $directory): int
     {

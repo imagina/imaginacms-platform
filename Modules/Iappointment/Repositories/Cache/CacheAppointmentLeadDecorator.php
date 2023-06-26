@@ -16,8 +16,6 @@ class CacheAppointmentLeadDecorator extends BaseCacheDecorator implements Appoin
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params): collection
     {
@@ -28,8 +26,6 @@ class CacheAppointmentLeadDecorator extends BaseCacheDecorator implements Appoin
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false): object
     {

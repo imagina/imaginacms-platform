@@ -17,19 +17,11 @@ class CollectingAssets
         $this->assetPipeline = $assetPipeline;
     }
 
-    /**
-     * @param  string  $asset
-     * @return AssetPipeline
-     */
     public function requireJs(string $asset): AssetPipeline
     {
         return $this->assetPipeline->requireJs($asset);
     }
 
-    /**
-     * @param  string  $asset
-     * @return AssetPipeline
-     */
     public function requireCss(string $asset): AssetPipeline
     {
         return $this->assetPipeline->requireCss($asset);
@@ -39,7 +31,6 @@ class CollectingAssets
      * Match a single route
      *
      * @param  string|array  $route
-     * @return bool
      */
     public function onRoute($route): bool
     {
@@ -50,8 +41,6 @@ class CollectingAssets
 
     /**
      * Match multiple routes
-     *
-     * @return bool
      */
     public function onRoutes(array $routes): bool
     {

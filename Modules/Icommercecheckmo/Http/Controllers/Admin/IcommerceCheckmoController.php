@@ -29,8 +29,6 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -41,8 +39,6 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -51,8 +47,6 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommerceCheckmoRequest $request): Response
     {
@@ -64,8 +58,6 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommerceCheckmo $icommercecheckmo): Response
     {
@@ -76,7 +68,6 @@ class IcommerceCheckmoController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceCheckmo  $icommercecheckmo
-     * @return Response
      */
     public function update($id, UpdateIcommerceCheckmoRequest $request): Response
     {
@@ -98,8 +89,6 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommerceCheckmo $icommercecheckmo): Response
     {

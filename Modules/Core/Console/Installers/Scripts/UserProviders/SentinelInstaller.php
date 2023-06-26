@@ -8,8 +8,6 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
 {
     /**
      * Check if the user driver is correctly registered.
-     *
-     * @return bool
      */
     public function checkIsInstalled(): bool
     {

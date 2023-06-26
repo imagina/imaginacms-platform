@@ -56,7 +56,6 @@ class IcommerceBraintreeApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
     public function init(Request $request): route
     {
@@ -113,8 +112,6 @@ class IcommerceBraintreeApiController extends BaseApiController
 
     /**
      * ROUTE - GET Client Token
-     *
-     * @return Token
      */
     public function getClientToken(): Token
     {
@@ -141,7 +138,6 @@ class IcommerceBraintreeApiController extends BaseApiController
      *
      * @param OrderId
      * @param nonce
-     * @return response
      */
     public function processPayment(Request $request): response
     {
@@ -214,7 +210,6 @@ class IcommerceBraintreeApiController extends BaseApiController
      * ROUTE - GET Transaction
      *
      * @param Id Transaction Braintree
-     * @return transaction
      */
     public function findTransaction($id): transaction
     {

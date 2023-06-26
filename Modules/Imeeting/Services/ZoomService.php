@@ -189,7 +189,6 @@ class ZoomService
      * Find the User and get status in Zoom
      *
      * @param  array  $data[email]
-     * @return response['providerStatus','providerStatusName']
      */
     public function validateRequirements($data): response
     {

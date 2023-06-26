@@ -16,8 +16,6 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params): collection
     {
@@ -28,8 +26,6 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false): object
     {
@@ -76,8 +72,6 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
 
     /**
      * Min and Max Price
-     *
-     * @return collection
      */
     public function getPriceRange($params): collection
     {
@@ -88,8 +82,6 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
 
     /**
      * Get Manufactures From Products Filtered
-     *
-     * @return collection
      */
     public function getManufacturers($params): collection
     {
@@ -100,8 +92,6 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
 
     /**
      * Get Product Options From Products Filtered
-     *
-     * @return collection
      */
     public function getProductOptions($params): collection
     {

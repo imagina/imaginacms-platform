@@ -27,8 +27,6 @@ class BannerOrderer
 
     /**
      * Order recursively the bannerr items
-     *
-     * @param  array  $item
      */
     private function order($order, array $item)
     {
@@ -38,9 +36,6 @@ class BannerOrderer
 
     /**
      * Save the given order on the bannerr item
-     *
-     * @param  object  $banner
-     * @param  int  $order
      */
     private function saveOrder(object $banner, int $order)
     {
@@ -49,8 +44,6 @@ class BannerOrderer
 
     /**
      * Convert the object to array
-     *
-     * @return array
      */
     private function convertToArray($data): array
     {

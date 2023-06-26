@@ -82,16 +82,12 @@ class MenuItemController extends AdminBaseController
 
     /**
      * @param Menu, $menuItemId
-     * @return array
      */
     private function getMenuSelect($menu): array
     {
         return $menu->menuitems()->where('is_root', '!=', true)->get()->noCleaning()->nest()->listsFlattened('title');
     }
 
-    /**
-     * @return array
-     */
     private function addMenuId(Menu $menu, FormRequest $request): array
     {
         $data = $request->all();

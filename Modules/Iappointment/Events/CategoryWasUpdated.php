@@ -24,8 +24,6 @@ class CategoryWasUpdated
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData(): array
     {

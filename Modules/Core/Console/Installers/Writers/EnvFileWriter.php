@@ -45,7 +45,6 @@ class EnvFileWriter
     /**
      * Create a new .env file using the contents of .env.example
      *
-     * @return void
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -59,8 +58,6 @@ class EnvFileWriter
     /**
      * Update the .env file
      *
-     * @param  array  $vars
-     * @return void
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */

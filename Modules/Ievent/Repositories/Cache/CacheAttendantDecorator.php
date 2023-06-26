@@ -16,8 +16,6 @@ class CacheAttendantDecorator extends BaseCacheDecorator implements AttendantRep
 
   /**
    * List or resources
-   *
-   * @return collection
    */
   public function getItemsBy($params): collection
   {
@@ -28,8 +26,6 @@ class CacheAttendantDecorator extends BaseCacheDecorator implements AttendantRep
 
   /**
    * find a resource by id or slug
-   *
-   * @return object
    */
   public function getItem($criteria, $params = false): object
   {

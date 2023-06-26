@@ -8,8 +8,6 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -19,8 +17,6 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -32,8 +28,6 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 
     /**
      * Get the validation attributes that apply to the request.
-     *
-     * @return array
      */
     public function attributes(): array
     {
@@ -44,8 +38,6 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 
     /**
      * Get the validation messages that apply to the request.
-     *
-     * @return array
      */
     public function messages(): array
     {

@@ -38,9 +38,6 @@ class Notification extends Model
 
     protected $casts = ['is_read' => 'bool', 'options' => 'array'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): BelongsTo
     {
         $driver = config('asgard.user.config.driver');
@@ -50,8 +47,6 @@ class Notification extends Model
 
     /**
      * Return the created time in difference for humans (2 min ago)
-     *
-     * @return string
      */
     public function getTimeAgoAttribute(): string
     {

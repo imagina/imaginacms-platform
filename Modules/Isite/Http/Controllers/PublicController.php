@@ -92,9 +92,6 @@ class PublicController extends BaseApiController
         ]]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function uri($slug, Request $request): View
     {
         try {

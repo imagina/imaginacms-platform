@@ -25,7 +25,6 @@ class PermissionMiddleware
     }
 
     /**
-     * @param  callable  $next
      * @return mixed
      */
     public function handle(Request $request, \Closure $next)
@@ -61,25 +60,16 @@ class PermissionMiddleware
         return $segmentPosition;
     }
 
-    /**
-     * @return string
-     */
     private function getPermission($moduleName, $entityName, $actionMethod): string
     {
         return ltrim($moduleName.'.'.$entityName.'.'.$actionMethod, '.');
     }
 
-    /**
-     * @return string
-     */
     protected function getModuleName(Request $request, $segmentPosition): string
     {
         return $request->segment($segmentPosition - 1);
     }
 
-    /**
-     * @return string
-     */
     protected function getEntityName(Request $request, $segmentPosition): string
     {
         $entityName = $request->segment($segmentPosition);

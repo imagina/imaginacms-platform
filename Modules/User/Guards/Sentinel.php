@@ -10,8 +10,6 @@ class Sentinel implements LaravelGuard
 {
     /**
      * Determine if the current user is authenticated.
-     *
-     * @return bool
      */
     public function check(): bool
     {
@@ -24,8 +22,6 @@ class Sentinel implements LaravelGuard
 
     /**
      * Determine if the current user is a guest.
-     *
-     * @return bool
      */
     public function guest(): bool
     {
@@ -34,8 +30,6 @@ class Sentinel implements LaravelGuard
 
     /**
      * Get the currently authenticated user.
-     *
-     * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function user(): ?Authenticatable
     {
@@ -44,8 +38,6 @@ class Sentinel implements LaravelGuard
 
     /**
      * Get the ID for the currently authenticated user.
-     *
-     * @return int|null
      */
     public function id(): ?int
     {
@@ -58,8 +50,6 @@ class Sentinel implements LaravelGuard
 
     /**
      * Validate a user's credentials.
-     *
-     * @return bool
      */
     public function validate(array $credentials = []): bool
     {
@@ -68,8 +58,6 @@ class Sentinel implements LaravelGuard
 
     /**
      * Set the current user.
-     *
-     * @return bool
      */
     public function setUser(Authenticatable $user): bool
     {
@@ -78,35 +66,22 @@ class Sentinel implements LaravelGuard
 
     /**
      * Alias to set the current user.
-     *
-     * @return bool
      */
     public function login(Authenticatable $user): bool
     {
         return $this->setUser($user);
     }
 
-    /**
-     * @param  bool  $remember
-     * @return bool
-     */
     public function attempt(array $credentials, bool $remember = false): bool
     {
         return SentinelFacade::authenticate($credentials, $remember);
     }
 
-    /**
-     * @return bool
-     */
     public function logout(): bool
     {
         return SentinelFacade::logout();
     }
 
-    /**
-     * @param  int  $userId
-     * @return bool
-     */
     public function loginUsingId(int $userId): bool
     {
         $user = app(\Modules\User\Repositories\UserRepository::class)->find($userId);

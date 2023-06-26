@@ -55,8 +55,6 @@ class OrderController extends BasePublicController
 
     /**
      * Show the specified resource.
-     *
-     * @return Response
      */
     public function show(Request $request): Response
     {

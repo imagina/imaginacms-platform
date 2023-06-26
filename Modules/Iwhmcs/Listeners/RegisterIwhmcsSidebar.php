@@ -26,9 +26,6 @@ class RegisterIwhmcsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
     public function extendWith(Menu $menu): Menu
     {
         return $menu;

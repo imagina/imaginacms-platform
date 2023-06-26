@@ -13,25 +13,16 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected $namespace = 'Modules\Dashboard\Http\Controllers';
 
-    /**
-     * @return string
-     */
     protected function getFrontendRoute(): string
     {
         return false;
     }
 
-    /**
-     * @return string
-     */
     protected function getBackendRoute(): string
     {
         return __DIR__.'/../Http/backendRoutes.php';
     }
 
-    /**
-     * @return string
-     */
     protected function getApiRoute(): string
     {
         return false;

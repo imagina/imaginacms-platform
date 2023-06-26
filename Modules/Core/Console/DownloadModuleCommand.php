@@ -28,7 +28,6 @@ class DownloadModuleCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
      *
      * @throws \Symfony\Component\Process\Exception\LogicException
      */
@@ -73,8 +72,6 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments(): array
     {
@@ -85,8 +82,6 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {
@@ -110,8 +105,6 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the composer command for the environment.
-     *
-     * @return string
      */
     protected function findComposer(): string
     {

@@ -10,7 +10,6 @@ class EloquentQrRepository extends EloquentBaseRepository implements QrRepositor
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItemsBy(bool $params = false)
@@ -63,7 +62,6 @@ class EloquentQrRepository extends EloquentBaseRepository implements QrRepositor
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, bool $params = false)

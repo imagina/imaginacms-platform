@@ -141,8 +141,6 @@ class Category extends Model
 
     /**
      * Check if the post is in draft
-     *
-     * @return Builder
      */
     public function scopeActive(Builder $query): Builder
     {
@@ -151,8 +149,6 @@ class Category extends Model
 
     /**
      * Check if the post is pending review
-     *
-     * @return Builder
      */
     public function scopeInactive(Builder $query): Builder
     {

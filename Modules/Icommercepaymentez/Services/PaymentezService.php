@@ -76,7 +76,6 @@ class PaymentezService
      * Get Status to Order
      *
      * @param Paymentez Status
-     * @return int
      */
     public function getStatusOrder($cod): int
     {
@@ -161,7 +160,6 @@ class PaymentezService
      * @param request transaction
      * @param request user
      * @param payment method
-     * @return stoken
      */
     public function generateStoken($transaction, $user, $paymentMethod): stoken
     {

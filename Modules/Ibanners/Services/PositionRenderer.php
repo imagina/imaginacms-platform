@@ -26,10 +26,6 @@ class PositionRenderer
      */
     private $banners = '';
 
-    /**
-     * @param  Ibanners  $position
-     * @return string
-     */
     public function renderForPosition(Ibanners $position, $banners): string
     {
         $this->positionId = $position->id;

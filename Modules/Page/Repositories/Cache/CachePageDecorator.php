@@ -24,8 +24,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
     /**
      * Find the page set as homepage
-     *
-     * @return object
      */
     public function findHomepage(): object
     {
@@ -36,8 +34,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll(): int
     {
@@ -46,9 +42,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
         });
     }
 
-    /**
-     * @return object
-     */
     public function findBySlugInLocale($slug, $locale): object
     {
         return $this->remember(function () use ($slug, $locale) {
@@ -118,8 +111,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
   /**
    * List or resources
-   *
-   * @return collection
    */
   public function getItemsBy($params): collection
   {
@@ -130,8 +121,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
   /**
    * find a resource by id or slug
-   *
-   * @return object
    */
   public function getItem($criteria, $params = false): object
   {

@@ -24,9 +24,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
         $this->auth = $auth;
     }
 
-    /**
-     * @return Menu
-     */
     public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {

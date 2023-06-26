@@ -21,9 +21,6 @@ class Installer
         $this->composer = $composer;
     }
 
-    /**
-     * @return $this
-     */
     public function stack(array $scripts): static
     {
         $this->scripts = $scripts;
@@ -33,8 +30,6 @@ class Installer
 
     /**
      * Fire install scripts
-     *
-     * @return bool
      */
     public function install(Command $command): bool
     {

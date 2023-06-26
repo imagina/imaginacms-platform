@@ -73,10 +73,6 @@ class Downloader
 
     /**
      * Extract the zip file into the given directory.
-     *
-     * @param  string  $zipFile
-     * @param  string  $directory
-     * @return $this
      */
     protected function extract(string $zipFile, string $directory): static
     {
@@ -96,10 +92,6 @@ class Downloader
 
     /**
      * Download the temporary Zip to the given file.
-     *
-     * @param  string  $zipFile
-     * @param  string  $latestVersionUrl
-     * @return $this
      */
     protected function downloadFile(string $zipFile, string $latestVersionUrl): static
     {
@@ -120,9 +112,6 @@ class Downloader
 
     /**
      * Clean-up the Zip file.
-     *
-     * @param  string  $zipFile
-     * @return $this
      */
     protected function cleanUp(string $zipFile): static
     {
@@ -134,8 +123,6 @@ class Downloader
 
     /**
      * Generate a random temporary filename.
-     *
-     * @return string
      */
     protected function makeFilename(): string
     {

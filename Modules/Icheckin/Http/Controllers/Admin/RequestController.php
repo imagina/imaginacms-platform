@@ -26,8 +26,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -38,8 +36,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -48,8 +44,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateRequestRequest $request): Response
     {
@@ -61,9 +55,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function edit(RequestEntity $request): Response
     {
@@ -72,9 +63,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function update(RequestEntity $requestEntity, UpdateRequestRequest $request): Response
     {
@@ -86,9 +74,6 @@ class RequestController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function destroy(RequestEntity $request): Response
     {

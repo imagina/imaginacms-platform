@@ -14,7 +14,6 @@ class EloquentTransactionRepository extends EloquentBaseRepository implements Tr
      * @param    $arrayOut
      * @param    $type (1 = IcommerceCredibanco , 2 = Icredibanco)
      * @param    $config
-     * @return transaction
      */
     //Deprecated
     /*

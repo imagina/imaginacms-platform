@@ -79,8 +79,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -114,8 +112,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides(): array
     {
@@ -124,8 +120,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Register the filters.
-     *
-     * @return void
      */
     public function registerMiddleware(Router $router): void
     {
@@ -257,7 +251,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * @param $package
-     * @return string
      */
     private function getConfigFilename($file): string
     {
@@ -342,10 +335,6 @@ class CoreServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * @param  string  $path
-     * @return bool
-     */
     private function hasPublishedTranslations(string $path): bool
     {
         return is_dir($path);
@@ -353,8 +342,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Does a Module have it's Translations centralised in the Translation module?
-     *
-     * @return bool
      */
     private function moduleHasCentralisedTranslations(Module $module): bool
     {
@@ -363,8 +350,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Get the absolute path to the Centralised Translations for a Module (via the Translations module)
-     *
-     * @return string
      */
     private function getCentralisedTranslationPath(Module $module): string
     {
@@ -399,8 +384,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Checks if the current url matches the configured backend uri
-     *
-     * @return bool
      */
     private function onBackend(): bool
     {
@@ -414,8 +397,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Get argument array from argument string.
-     *
-     * @return array
      */
     private function getArguments($argumentString): array
     {

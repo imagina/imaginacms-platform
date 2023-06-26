@@ -40,8 +40,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Register a new user.
-     *
-     * @return bool
      */
     public function register(array $user): bool
     {
@@ -51,8 +49,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Assign a role to the given user.
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
-     * @param  \Modules\User\Repositories\RoleRepository  $role
      * @return mixed
      */
     public function assignRole(UserRepository $user, RoleRepository $role)
@@ -62,8 +58,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Log the user out of the application.
-     *
-     * @return bool
      */
     public function logout(): bool
     {
@@ -73,8 +67,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Activate the given used id
      *
-     * @param  int  $userId
-     * @param  string  $code
      * @return mixed
      */
     public function activate(int $userId, string $code)
@@ -92,7 +84,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Create an activation code for the given user
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
      * @return mixed
      */
     public function createActivation(UserRepository $user)
@@ -103,7 +94,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Create a reminders code for the given user
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
      * @return mixed
      */
     public function createReminderCode(UserRepository $user)
@@ -115,10 +105,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Completes the reset password process
-     *
-     * @param  string  $code
-     * @param  string  $password
-     * @return bool
      */
     public function completeResetPassword($user, string $code, string $password): bool
     {
@@ -153,8 +139,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Get the currently logged in user
-     *
-     * @return \Modules\User\Entities\UserInterface
      */
     public function user(): \Modules\User\Entities\UserInterface
     {

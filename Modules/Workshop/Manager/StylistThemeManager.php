@@ -21,9 +21,6 @@ class StylistThemeManager implements ThemeManager
         $this->finder = $finder;
     }
 
-    /**
-     * @return array
-     */
     public function all(): array
     {
         $directories = $this->getDirectories();
@@ -37,8 +34,6 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
-     * @param  string  $themeName
-     * @return Theme
      *
      * @throws ThemeNotFoundException
      */
@@ -55,10 +50,6 @@ class StylistThemeManager implements ThemeManager
         throw new ThemeNotFoundException($themeName);
     }
 
-    /**
-     * @param  string  $directory
-     * @return Theme
-     */
     private function getThemeInfoForPath(string $directory): Theme
     {
         $themeJson = new Json($directory);
@@ -79,8 +70,6 @@ class StylistThemeManager implements ThemeManager
 
     /**
      * Get all theme directories
-     *
-     * @return array
      */
     private function getDirectories(): array
     {
@@ -90,8 +79,6 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
-     * @param  string  $directory
-     * @return array
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -114,8 +101,6 @@ class StylistThemeManager implements ThemeManager
 
     /**
      * Limit the versions to the last 5
-     *
-     * @return array
      */
     private function limitLastVersionsAmount(array $versions): array
     {
@@ -124,8 +109,6 @@ class StylistThemeManager implements ThemeManager
 
     /**
      * Check if the theme is active based on its type
-     *
-     * @return bool
      */
     private function getStatus(Theme $theme): bool
     {

@@ -27,8 +27,6 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
 
     /**
      * Build the message.
-     *
-     * @return $this
      */
     public function build(): static
     {

@@ -27,7 +27,6 @@ class PublicMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function handle(Request $request, \Closure $next)
@@ -44,9 +43,6 @@ class PublicMiddleware
 
     /**
      * Checks if the given menu item is offline
-     *
-     * @param  object  $item
-     * @return bool
      */
     private function isOffline(object $item): bool
     {

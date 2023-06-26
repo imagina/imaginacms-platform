@@ -36,9 +36,6 @@ class ReservationService
         return $cartService;
     }
 
-    /**
-     * @return reservation
-     */
     public function createReservation($data): reservation
     {
         // Get Customer Id if exist

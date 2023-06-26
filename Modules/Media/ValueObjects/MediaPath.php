@@ -42,9 +42,6 @@ class MediaPath
 
     /**
      * Get the URL depending on configured disk
-     *
-     * @param  string  $disk
-     * @return string
      */
     public function getUrl(string $disk = null, $organizationId = null): string
     {
@@ -55,9 +52,6 @@ class MediaPath
         return Storage::disk($disk)->url(($organizationPrefix).$path);
     }
 
-    /**
-     * @return string
-     */
     public function getRelativeUrl(): string
     {
         return $this->path;

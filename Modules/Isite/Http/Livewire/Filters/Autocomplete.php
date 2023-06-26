@@ -222,9 +222,6 @@ class Autocomplete extends Component
         $this->updatedSearch();
     }
 
-    /**
-     * @return SearchRepository
-     */
     private function searchRepository(): SearchRepository
     {
         return app('Modules\Isearch\Repositories\SearchRepository');

@@ -26,8 +26,6 @@ class CurrencyApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request): Response
     {
@@ -79,8 +77,6 @@ class CurrencyApiController extends BaseApiController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(Request $request): Response
     {
@@ -144,8 +140,6 @@ class CurrencyApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request): Response
     {

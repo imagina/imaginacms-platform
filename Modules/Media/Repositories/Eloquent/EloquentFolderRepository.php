@@ -25,9 +25,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     /**
      * Find a folder by its ID
-     *
-     * @param  int  $folderId
-     * @return File|null
      */
     public function findFolder(int $folderId): ?File
     {
@@ -89,9 +86,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
         return $folder->forceDelete();
     }
 
-    /**
-     * @return Collection
-     */
     public function allChildrenOf(File $folder): Collection
     {
         $path = $folder->path->getRelativeUrl();
@@ -124,8 +118,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     /**
      * Find the folder by ID or return a root folder
      * which is an instantiated File class
-     *
-     * @param  int  $folderId
      */
     public function findFolderOrRoot(int $folderId): File
     {
@@ -173,7 +165,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     }
 
   /**
-   * @param  bool  $params
    * @return mixed
    */
   public function getItemsBy(bool $params = false)

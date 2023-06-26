@@ -421,8 +421,6 @@ class Product extends Model implements TaggableInterface
 
     /**
      * URL product
-     *
-     * @return string
      */
     public function getUrlAttribute($locale = null): string
     {
@@ -470,8 +468,6 @@ class Product extends Model implements TaggableInterface
 
     /**
      * Is New product
-     *
-     * @return bool
      */
     public function getIsNewAttribute(): bool
     {
@@ -489,8 +485,6 @@ class Product extends Model implements TaggableInterface
 
     /**
      * Is Sold Out
-     *
-     * @return bool
      */
     public function getIsSoldOutAttribute(): bool
     {
@@ -499,8 +493,6 @@ class Product extends Model implements TaggableInterface
 
     /**
      * Is New product
-     *
-     * @return number
      */
     public function getIsAvailableAttribute(): number
     {

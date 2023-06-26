@@ -13,25 +13,16 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected $namespace = 'Modules\Imeeting\Http\Controllers';
 
-    /**
-     * @return string
-     */
     protected function getFrontendRoute(): string
     {
         return false;
     }
 
-    /**
-     * @return string
-     */
     protected function getBackendRoute(): string
     {
         return false;
     }
 
-    /**
-     * @return string
-     */
     protected function getApiRoute(): string
     {
         return __DIR__.'/../Http/apiRoutes.php';

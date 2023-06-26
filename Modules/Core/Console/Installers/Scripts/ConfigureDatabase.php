@@ -65,9 +65,6 @@ class ConfigureDatabase implements SetupScript
         $command->info('Database successfully configured');
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabaseDriver(): string
     {
         $driver = $this->command->ask('Enter your database driver (e.g. mysql, pgsql)', 'mysql');
@@ -75,9 +72,6 @@ class ConfigureDatabase implements SetupScript
         return $driver;
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabaseHost(): string
     {
         $host = $this->command->ask('Enter your database host', '127.0.0.1');
@@ -85,9 +79,6 @@ class ConfigureDatabase implements SetupScript
         return $host;
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabasePort($driver): string
     {
         $port = $this->command->ask('Enter your database port', $this->config['database.connections.'.$driver.'.port']);
@@ -95,9 +86,6 @@ class ConfigureDatabase implements SetupScript
         return $port;
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabaseName(): string
     {
         do {
@@ -110,9 +98,6 @@ class ConfigureDatabase implements SetupScript
         return $name;
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabaseUsername(): string
     {
         do {
@@ -125,9 +110,6 @@ class ConfigureDatabase implements SetupScript
         return $user;
     }
 
-    /**
-     * @return string
-     */
     protected function askDatabasePassword(): string
     {
         $databasePassword = $this->command->ask('Enter your database password (leave <none> for no password)', 'secret');
@@ -135,9 +117,6 @@ class ConfigureDatabase implements SetupScript
         return ($databasePassword === '<none>') ? '' : $databasePassword;
     }
 
-    /**
-     * @param  array  $vars
-     */
     protected function setLaravelConfiguration(array $vars)
     {
         $driver = $vars['db_driver'];
@@ -155,8 +134,6 @@ class ConfigureDatabase implements SetupScript
 
     /**
      * Is the database connection valid?
-     *
-     * @return bool
      */
     protected function databaseConnectionIsValid(): bool
     {

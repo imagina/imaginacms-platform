@@ -25,8 +25,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -37,8 +35,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create(): Response
     {
@@ -47,8 +43,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateAppointmentStatusRequest $request): Response
     {
@@ -60,8 +54,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(AppointmentStatus $appointmentstatus): Response
     {
@@ -70,8 +62,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(AppointmentStatus $appointmentstatus, UpdateAppointmentStatusRequest $request): Response
     {
@@ -83,8 +73,6 @@ class AppointmentStatusController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(AppointmentStatus $appointmentstatus): Response
     {

@@ -44,7 +44,6 @@ class PublicController extends BasePublicController
      * Index data
      *
      * @param Requests request
-     * @return route
      */
     public function index($eURL): route
     {
@@ -89,8 +88,6 @@ class PublicController extends BasePublicController
 
     /**
      * Response Frontend After the Payment
-     *
-     * @return redirect
      */
     public function response(Request $request, $orderId): redirect
     {

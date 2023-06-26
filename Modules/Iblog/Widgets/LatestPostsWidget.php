@@ -21,8 +21,6 @@ class LatestPostsWidget extends BaseWidget
 
     /**
      * Get the widget name
-     *
-     * @return string
      */
     protected function name(): string
     {
@@ -33,8 +31,6 @@ class LatestPostsWidget extends BaseWidget
      * Get the widget options
      * Possible options:
      *  x, y, width, height
-     *
-     * @return string
      */
     protected function options(): string
     {
@@ -46,8 +42,6 @@ class LatestPostsWidget extends BaseWidget
 
     /**
      * Get the widget view
-     *
-     * @return string
      */
     protected function view(): string
     {
@@ -56,8 +50,6 @@ class LatestPostsWidget extends BaseWidget
 
     /**
      * Get the widget data to send to the view
-     *
-     * @return string
      */
     protected function data(): string
     {

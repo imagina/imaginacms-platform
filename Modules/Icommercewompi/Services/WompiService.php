@@ -36,7 +36,6 @@ class WompiService
      *
      * @param Requests request
      * @param Payment Method
-     * @return signature
      */
     public function makeSignature($request, $paymentMethod): signature
     {
@@ -60,7 +59,6 @@ class WompiService
      * Get Status to Order
      *
      * @param int cod
-     * @return int
      */
     public function getStatusOrder($cod): int
     {

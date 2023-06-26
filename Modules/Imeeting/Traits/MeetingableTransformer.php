@@ -6,8 +6,6 @@ trait MeetingableTransformer
 {
     /**
      * Method to merge values with response
-     *
-     * @return array
      */
     public function getDataMeetings(): array
     {

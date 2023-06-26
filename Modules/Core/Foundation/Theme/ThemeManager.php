@@ -25,10 +25,6 @@ class ThemeManager implements \Countable
         $this->path = $path;
     }
 
-    /**
-     * @param  string  $name
-     * @return Theme|null
-     */
     public function find(string $name): ?Theme
     {
         foreach ($this->all() as $theme) {
@@ -40,8 +36,6 @@ class ThemeManager implements \Countable
 
     /**
      * Return all available themes
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -64,8 +58,6 @@ class ThemeManager implements \Countable
 
     /**
      * Get only the public themes
-     *
-     * @return array
      */
     public function allPublicThemes(): array
     {
@@ -91,8 +83,6 @@ class ThemeManager implements \Countable
 
     /**
      * Get the theme directories
-     *
-     * @return array
      */
     private function getDirectories(): array
     {
@@ -101,26 +91,17 @@ class ThemeManager implements \Countable
 
     /**
      * Return the theme assets path
-     *
-     * @param  string  $theme
-     * @return string
      */
     public function getAssetPath(string $theme): string
     {
         return public_path($this->getConfig()->get('themify.themes_assets_path').'/'.$theme);
     }
 
-    /**
-     * @return \Illuminate\Filesystem\Filesystem
-     */
     protected function getFinder(): Filesystem
     {
         return $this->app['files'];
     }
 
-    /**
-     * @return \Illuminate\Config\Repository
-     */
     protected function getConfig(): Repository
     {
         return $this->app['config'];
@@ -137,7 +118,6 @@ class ThemeManager implements \Countable
     /**
      * Returns the theme json file
      *
-     * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -146,9 +126,6 @@ class ThemeManager implements \Countable
         return json_decode($this->getFinder()->get("$theme/theme.json"));
     }
 
-    /**
-     * @return bool
-     */
     private function isFrontendTheme($themeJson): bool
     {
         return isset($themeJson->type) && $themeJson->type !== 'frontend' ? false : true;

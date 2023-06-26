@@ -85,9 +85,6 @@ class RoleController extends Controller
         ]);
     }
 
-    /**
-     * @return array
-     */
     private function mergeRequestWithPermissions(Request $request): array
     {
         $permissions = $this->permissions->clean($request->get('permissions'));

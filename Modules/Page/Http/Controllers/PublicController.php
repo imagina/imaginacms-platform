@@ -34,8 +34,6 @@ class PublicController extends BasePublicController
 
     /**
      * DEPRECATED
-     *
-     * @return \Illuminate\View\View
      */
     public function uri($page, $slug, Request $request): View
     {
@@ -72,9 +70,6 @@ class PublicController extends BasePublicController
         return view($template, compact('page', 'pageContent', 'organization', 'transformedPage'));
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function homepage(Request $request): View
     {
         //Validation with lang from URL
@@ -108,9 +103,6 @@ class PublicController extends BasePublicController
     /**
      * Find a page for the given slug.
      * The slug can be a 'composed' slug via the Menu
-     *
-     * @param  string  $slug
-     * @return Page
      */
     private function findPageForSlug(string $slug): Page
     {
@@ -126,8 +118,6 @@ class PublicController extends BasePublicController
     /**
      * Return the template for the given page
      * or the default template if none found
-     *
-     * @return string
      */
     private function getTemplateForPage($page): string
     {
@@ -149,9 +139,6 @@ class PublicController extends BasePublicController
 
     /**
      * Create a key=>value array for alternate links
-     *
-     *
-     * @return array
      */
     private function getAlternateMetaData($page): array
     {
@@ -174,8 +161,6 @@ class PublicController extends BasePublicController
 
     /**
      * Get the page content validation
-     *
-     * @return string
      */
     private function getContentForPage($page): string
     {

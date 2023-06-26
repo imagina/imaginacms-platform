@@ -127,10 +127,6 @@ class ModuleScaffold
         $this->valueObjectGenerator->forModule($this->getName())->type($this->entityType)->generate($this->valueObjects);
     }
 
-    /**
-     * @param  string  $vendor
-     * @return $this
-     */
     public function vendor(string $vendor): static
     {
         $this->vendor = $vendor;
@@ -138,10 +134,6 @@ class ModuleScaffold
         return $this;
     }
 
-    /**
-     * @param  string  $name
-     * @return $this
-     */
     public function name(string $name): static
     {
         $this->name = $name;
@@ -151,8 +143,6 @@ class ModuleScaffold
 
     /**
      * Get the name of module will created. By default in studly case.
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -161,9 +151,6 @@ class ModuleScaffold
 
     /**
      * Set the entity type [Eloquent, Doctrine]
-     *
-     * @param  string  $entityType
-     * @return $this
      */
     public function setEntityType(string $entityType): static
     {
@@ -172,9 +159,6 @@ class ModuleScaffold
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withEntities(array $entities): static
     {
         $this->entities = $entities;
@@ -182,9 +166,6 @@ class ModuleScaffold
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withValueObjects(array $valueObjects): static
     {
         $this->valueObjects = $valueObjects;
@@ -194,9 +175,6 @@ class ModuleScaffold
 
     /**
      * Return the current module path
-     *
-     * @param  string  $path
-     * @return string
      */
     private function getModulesPath(string $path = ''): string
     {
@@ -251,9 +229,6 @@ class ModuleScaffold
 
     /**
      * Load the routing service provider
-     *
-     * @param  string  $content
-     * @return string
      */
     private function loadProviders(string $content): string
     {
@@ -270,9 +245,6 @@ JSON;
 
     /**
      * Set the module order to 1
-     *
-     * @param  string  $content
-     * @return string
      */
     private function setModuleOrderOrder(string $content): string
     {
@@ -281,9 +253,6 @@ JSON;
 
     /**
      * Set the module version to 1.0.0 by default
-     *
-     * @param  string  $content
-     * @return string
      */
     private function setModuleVersion(string $content): string
     {

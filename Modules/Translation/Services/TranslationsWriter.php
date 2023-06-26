@@ -46,18 +46,12 @@ class TranslationsWriter
 
     /**
      * Get the module name from the given key
-     *
-     * @param  string  $key
-     * @return string
      */
     private function getModuleNameFrom(string $key): string
     {
         return substr($key, 0, strpos($key, '::'));
     }
 
-    /**
-     * @return string
-     */
     private function getTranslationsDirectory(): string
     {
         return __DIR__.'/../Resources/lang/';
@@ -65,9 +59,6 @@ class TranslationsWriter
 
     /**
      * Get the file name from the given key
-     *
-     * @param  string  $key
-     * @return string
      */
     private function getFileNameFrom(string $key): string
     {
@@ -78,8 +69,6 @@ class TranslationsWriter
 
     /**
      * Make a usable array
-     *
-     * @return array
      */
     private function makeTree(TranslationGroup $translations): array
     {

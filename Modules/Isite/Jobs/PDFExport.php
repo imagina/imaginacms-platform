@@ -39,9 +39,6 @@ class PDFExport implements ShouldQueue
         $this->pdfService = app('Modules\Isite\Services\PdfService');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function query(): Collection
     {
         //Init Repo
@@ -55,8 +52,6 @@ class PDFExport implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
     public function handle(): void
     {

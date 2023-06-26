@@ -25,8 +25,6 @@ class BannerWasCreated implements StoringMedia
 
     /**
      * Return the entity
-     *
-     * @return Banner
      */
     public function getEntity(): Banner
     {
@@ -35,8 +33,6 @@ class BannerWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData(): array
     {

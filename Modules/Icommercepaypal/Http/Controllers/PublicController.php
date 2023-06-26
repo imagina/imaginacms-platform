@@ -36,7 +36,6 @@ class PublicController extends BasePublicController
      * Response Frontend After the Payment
      *
      * @param    $request ()
-     * @return redirect
      */
     public function response(Request $request, $orderId, $transactionId): redirect
     {

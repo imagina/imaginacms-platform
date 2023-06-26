@@ -34,17 +34,12 @@ class TranslationsExporter
 
     /**
      * Get the filename
-     *
-     * @return string
      */
     public function getFileName(): string
     {
         return $this->filename.time().'.csv';
     }
 
-    /**
-     * @return array
-     */
     private function formatData(): array
     {
         $translations = $this->translations->getFileAndDatabaseMergedTranslations();

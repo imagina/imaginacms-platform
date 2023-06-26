@@ -43,9 +43,6 @@ class ImResponseCache
 
     /**
      * Determine if the given request should be cached.
-     *
-     *
-     * @return bool
      */
     public function shouldCache(Request $request, Response $response): bool
     {
@@ -109,9 +106,6 @@ class ImResponseCache
 
     /**
      * Cache the response to a file.
-     *
-     * @param  \Symfony\Component\HttpFoundation\Request  $response
-     * @return void
      */
     public function public_cache(Request $request, Response $response): void
     {
@@ -122,9 +116,6 @@ class ImResponseCache
 
     /**
      * Get the names of the directory and file.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
      */
     protected function getDirectoryAndFileNames(Request $request): array
     {
@@ -137,8 +128,6 @@ class ImResponseCache
     /**
      * Gets the path to the cache directory.
      *
-     * @param  string  $path
-     * @return string
      *
      * @throws \Exception
      */
@@ -155,9 +144,6 @@ class ImResponseCache
 
     /**
      * Alias the filename if necessary.
-     *
-     * @param  string  $filename
-     * @return string
      */
     protected function aliasFilename(string $filename): string
     {
@@ -166,9 +152,6 @@ class ImResponseCache
 
     /**
      * Determine if the given request has been cached.
-     *
-     *
-     * @return bool
      */
     public function hasCached(Request $request): bool
     {
@@ -177,9 +160,6 @@ class ImResponseCache
 
     /**
      * Get the cached response for the given request.
-     *
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getCachedResponseFor(Request $request): Response
     {
@@ -196,8 +176,6 @@ class ImResponseCache
 
     /**
      * Fully clear the cache directory.
-     *
-     * @return bool
      */
     public function flushPageCache(): bool
     {
@@ -206,9 +184,6 @@ class ImResponseCache
 
     /**
      * Add a header with the cache date on the response.
-     *
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function addCachedHeader(Response $response): Response
     {

@@ -52,8 +52,6 @@ trait WithProduct
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
     public function products(): object
     {

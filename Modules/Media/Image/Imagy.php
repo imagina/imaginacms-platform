@@ -48,11 +48,6 @@ class Imagy
 
     /**
      * Get an image in the given thumbnail options
-     *
-     * @param  string  $path
-     * @param  string  $thumbnail
-     * @param  bool  $forceCreate
-     * @return string
      */
     public function get(string $path, string $thumbnail, bool $forceCreate = false, $disk = null): string
     {
@@ -81,8 +76,6 @@ class Imagy
      * Return the thumbnail path
      *
      * @param  string|File  $originalImage
-     * @param  string  $thumbnail
-     * @return string
      */
     public function getThumbnail($originalImage, string $thumbnail, $disk = null): string
     {
@@ -153,10 +146,6 @@ class Imagy
 
     /**
      * Return the already created file if it exists and force create is false
-     *
-     * @param  string  $filename
-     * @param  bool  $forceCreate
-     * @return bool
      */
     private function returnCreatedFile(string $filename, bool $forceCreate, $disk = null): bool
     {
@@ -165,8 +154,6 @@ class Imagy
 
     /**
      * Write the given image
-     *
-     * @param  string  $filename
      */
     private function writeImage(string $filename, Stream $image, $disk = null, $path = null)
     {
@@ -189,7 +176,6 @@ class Imagy
     /**
      * Make a new image
      *
-     * @param  string  $filename
      * @param string null $thumbnail
      */
     private function makeNew(MediaPath $path, string $filename, $thumbnail)
@@ -207,9 +193,6 @@ class Imagy
 
     /**
      * Check if the given path is en image
-     *
-     * @param  string  $path
-     * @return bool
      */
     public function isImage(string $path): bool
     {
@@ -219,8 +202,6 @@ class Imagy
     /**
      * Delete all files on disk for the given file in storage
      * This means the original and the thumbnails
-     *
-     * @return bool
      */
     public function deleteAllFor(File $file): bool
     {
@@ -248,10 +229,6 @@ class Imagy
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }
 
-    /**
-     * @param  string  $disk
-     * @return bool
-     */
     private function fileExists($filename, string $disk = null): bool
     {
         $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
@@ -259,10 +236,6 @@ class Imagy
         return $this->filesystem->disk($disk)->exists($filename);
     }
 
-    /**
-     * @param  string  $path
-     * @return string
-     */
     private function getDestinationPath(string $path, $disk = null): string
     {
         $tenantPrefix = mediaOrganizationPrefix();
@@ -276,7 +249,6 @@ class Imagy
 
     /**
      * @param  Thumbnail|string  $thumbnail
-     * @return string
      */
     private function getFilenameFor(MediaPath $path, $thumbnail): string
     {

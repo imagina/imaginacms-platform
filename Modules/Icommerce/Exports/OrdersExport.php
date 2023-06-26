@@ -37,9 +37,6 @@ class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, W
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function query(): Collection
     {
         return OrderItem::orderBy('id', 'desc')->with(['order.customer']);

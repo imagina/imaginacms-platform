@@ -18,8 +18,6 @@ class PermissionManager
 
     /**
      * Get the permissions from all the enabled modules
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -36,8 +34,6 @@ class PermissionManager
 
     /**
      * Return a correctly type casted permissions array
-     *
-     * @return array
      */
     public function clean($permissions): array
     {
@@ -54,9 +50,6 @@ class PermissionManager
         return $cleanedPermissions;
     }
 
-    /**
-     * @return bool
-     */
     protected function getState($checkedPermission): bool
     {
         if ($checkedPermission === '1' || $checkedPermission === 1) {
@@ -74,7 +67,6 @@ class PermissionManager
      * Are all of the permissions passed of false value?
      *
      * @param  array  $permissions    Permissions array
-     * @return bool
      */
     public function permissionsAreAllFalse(array $permissions): bool
     {

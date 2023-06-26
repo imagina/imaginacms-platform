@@ -143,10 +143,6 @@ class BannerApiController extends BaseApiController
         return response()->json($response, $status ?? 200);
     }
 
-    /**
-     * @param  \Illuminate\Foundation\Http\FormRequest  $request
-     * @return array
-     */
     private function addIbannersId(Ibanners $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);
