@@ -25,10 +25,8 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$approvals = $this->approval->all();
 
@@ -37,20 +35,16 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.approvals.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateApprovalRequest $request)
+    public function store(CreateApprovalRequest $request): Response
     {
         $this->approval->create($request->all());
 
@@ -60,20 +54,16 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Approvals $approval)
+    public function edit(Approvals $approval): Response
     {
         return view('icheckin::admin.approvals.edit', compact('approval'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Approvals $approval, UpdateApprovalRequest $request)
+    public function update(Approvals $approval, UpdateApprovalRequest $request): Response
     {
         $this->approval->update($approval, $request->all());
 
@@ -83,10 +73,8 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Approvals $approval)
+    public function destroy(Approvals $approval): Response
     {
         $this->approval->destroy($approval);
 

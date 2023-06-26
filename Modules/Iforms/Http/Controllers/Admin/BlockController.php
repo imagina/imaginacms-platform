@@ -25,10 +25,8 @@ class BlockController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$blocks = $this->block->all();
 
@@ -37,20 +35,16 @@ class BlockController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.blocks.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateBlockRequest $request)
+    public function store(CreateBlockRequest $request): Response
     {
         $this->block->create($request->all());
 
@@ -60,20 +54,16 @@ class BlockController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Block $block)
+    public function edit(Block $block): Response
     {
         return view('iforms::admin.blocks.edit', compact('block'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Block $block, UpdateBlockRequest $request)
+    public function update(Block $block, UpdateBlockRequest $request): Response
     {
         $this->block->update($block, $request->all());
 
@@ -83,10 +73,8 @@ class BlockController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Block $block)
+    public function destroy(Block $block): Response
     {
         $this->block->destroy($block);
 

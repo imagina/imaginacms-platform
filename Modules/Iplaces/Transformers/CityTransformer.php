@@ -13,10 +13,7 @@ use Modules\Ilocations\Transformers\ProvinceTransformer;
 
 class CityTransformer extends JsonResource
 {
-    /**
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,

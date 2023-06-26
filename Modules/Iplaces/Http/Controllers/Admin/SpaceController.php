@@ -29,10 +29,8 @@ class SpaceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $spaces = $this->space->all();
 
@@ -41,20 +39,16 @@ class SpaceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iplaces::admin.spaces.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateSpaceRequest $request)
+    public function store(CreateSpaceRequest $request): Response
     {
         try {
             $this->space->create($request->all());
@@ -71,20 +65,16 @@ class SpaceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Space $space)
+    public function edit(Space $space): Response
     {
         return view('iplaces::admin.spaces.edit', compact('space'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Space $space, UpdateSpaceRequest $request)
+    public function update(Space $space, UpdateSpaceRequest $request): Response
     {
         try {
             $this->space->update($space, $request->all());
@@ -101,10 +91,8 @@ class SpaceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Space $space)
+    public function destroy(Space $space): Response
     {
         $this->space->destroy($space);
 

@@ -3,6 +3,7 @@
 namespace Modules\Icheckin\Exports;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -37,10 +38,7 @@ class ShiftsExport implements FromCollection, WithEvents, ShouldQueue, WithMappi
         $this->service = $service;
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function collection()
+    public function collection(): Collection
     {
         //Init Repo
         //$this->params->returnAsQuery = true;

@@ -16,7 +16,7 @@ class EloquentBannerRepository extends EloquentBaseRepository implements BannerR
      * @param  mixed  $data Data from POST request form
      * @return object The created entity
      */
-    public function create($data)
+    public function create($data): object
     {
         $banner = parent::create($data);
 

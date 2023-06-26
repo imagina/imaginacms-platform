@@ -31,10 +31,8 @@ class TagServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
 
@@ -55,7 +53,7 @@ class TagServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('tag', 'permissions'), 'asgard.tag.permissions');
         $this->publishConfig('tag', 'config');
@@ -66,10 +64,8 @@ class TagServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

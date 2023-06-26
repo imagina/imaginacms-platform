@@ -3,6 +3,7 @@
 namespace Modules\Iforms\Exports;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithEvents;
 //Events
@@ -33,10 +34,7 @@ class LeadsPerFormExport implements FromQuery, WithHeadings, WithMapping, Should
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function query()
+    public function query(): Collection
     {
         //Get query
         $this->params->returnAsQuery = true;

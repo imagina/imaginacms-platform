@@ -17,10 +17,9 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
-    public function getItemsBy($params = false)
+    public function getItemsBy(bool $params = false)
     {
         /*== initialize query ==*/
         $query = $this->model->query();
@@ -117,10 +116,9 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, bool $params = false)
     {
         //Initialize query
         $query = $this->model->query();
@@ -191,11 +189,8 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
-     * @return bool
      */
-    public function updateBy($criteria, $data, $params = false)
+    public function updateBy($criteria, $data, bool $params = false): bool
     {
         /*== initialize query ==*/
         $query = $this->model->query();
@@ -232,10 +227,8 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
      */
-    public function deleteBy($criteria, $params = false)
+    public function deleteBy($criteria, bool $params = false)
     {
         /*== initialize query ==*/
         $query = $this->model->query();

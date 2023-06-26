@@ -15,20 +15,16 @@ class TagManagerRepository implements TagManager
 
     /**
      * Returns all the registered namespaces.
-     *
-     * @return array
      */
-    public function getNamespaces()
+    public function getNamespaces(): array
     {
         return $this->namespaces;
     }
 
     /**
      * Registers an entity namespace.
-     *
-     * @return void
      */
-    public function registerNamespace(TaggableInterface $entity)
+    public function registerNamespace(TaggableInterface $entity): void
     {
         $this->namespaces[] = $entity->getEntityNamespace();
     }

@@ -4,6 +4,7 @@ namespace Modules\Dashboard\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Dashboard\Repositories\WidgetRepository;
 use Modules\User\Contracts\Authentication;
@@ -36,10 +37,8 @@ class DashboardController extends AdminBaseController
 
     /**
      * Display the dashboard with its widgets
-     *
-     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $this->requireAssets();
 

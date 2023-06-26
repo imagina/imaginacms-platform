@@ -26,40 +26,32 @@ class PostPresenter extends Presenter
 
     /**
      * Get the previous post of the current post
-     *
-     * @return object
      */
-    public function previous()
+    public function previous(): object
     {
         return $this->post->getPreviousOf($this->entity);
     }
 
     /**
      * Get the next post of the current post
-     *
-     * @return object
      */
-    public function next()
+    public function next(): object
     {
         return $this->post->getNextOf($this->entity);
     }
 
     /**
      * Get the post status
-     *
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::DRAFT:

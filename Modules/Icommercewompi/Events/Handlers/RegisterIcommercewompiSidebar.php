@@ -26,10 +26,7 @@ class RegisterIcommercewompiSidebar implements \Maatwebsite\Sidebar\SidebarExten
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

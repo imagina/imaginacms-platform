@@ -7,7 +7,6 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iplaces\Entities\Category;
 use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Http\Requests\CreateCategoryRequest;
-use Modules\Iplaces\Http\Requests\UpdateCategoryRequest;
 use Modules\Iplaces\Repositories\CategoryRepository;
 
 class CategoryController extends AdminBaseController
@@ -31,10 +30,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $categories = $this->category->all();
 
@@ -43,10 +40,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -56,10 +51,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateCategoryRequest $request): Response
     {
         // dd($request);
         try {
@@ -77,10 +70,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category): Response
     {
         //dd($category->mainimage);
         $statuses = $this->status->lists();
@@ -91,11 +82,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  UpdateCategoryRequest  $request
-     * @return Response
      */
-    public function update(Category $category, CreateCategoryRequest $request)
+    public function update(Category $category, CreateCategoryRequest $request): Response
     {
         try {
             if (isset($request['options'])) {
@@ -120,10 +108,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): Response
     {
         try {
             $this->category->destroy($category);

@@ -25,10 +25,8 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$userdepartments = $this->userdepartment->all();
 
@@ -37,20 +35,16 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.userdepartments.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateUserDepartmentRequest $request)
+    public function store(CreateUserDepartmentRequest $request): Response
     {
         $this->userdepartment->create($request->all());
 
@@ -60,20 +54,16 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(UserDepartment $userdepartment)
+    public function edit(UserDepartment $userdepartment): Response
     {
         return view('Iprofile::admin.userdepartments.edit', compact('userdepartment'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(UserDepartment $userdepartment, UpdateUserDepartmentRequest $request)
+    public function update(UserDepartment $userdepartment, UpdateUserDepartmentRequest $request): Response
     {
         $this->userdepartment->update($userdepartment, $request->all());
 
@@ -83,10 +73,8 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(UserDepartment $userdepartment)
+    public function destroy(UserDepartment $userdepartment): Response
     {
         $this->userdepartment->destroy($userdepartment);
 

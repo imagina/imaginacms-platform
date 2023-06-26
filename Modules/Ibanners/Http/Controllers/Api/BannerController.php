@@ -3,6 +3,7 @@
 namespace Modules\Ibanners\Http\Controllers\Api;
 
 use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
@@ -36,7 +37,7 @@ class BannerController extends Controller
     /**
      * Update all banners
      */
-    public function update(Request $request)
+    public function update(Request $request): JsonResponse
     {
         try {
             $this->cache->tags('banners')->flush();
@@ -57,10 +58,8 @@ class BannerController extends Controller
 
     /**
      * Delete a banner
-     *
-     * @return mixed
      */
-    public function delete(Request $request)
+    public function delete(Request $request): JsonResponse
     {
         $banner = $this->banner->find($request->get('banner'));
 

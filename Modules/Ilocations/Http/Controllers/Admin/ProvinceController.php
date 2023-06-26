@@ -25,10 +25,8 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$provinces = $this->province->all();
 
@@ -37,20 +35,16 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.provinces.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateProvinceRequest $request)
+    public function store(CreateProvinceRequest $request): Response
     {
         $this->province->create($request->all());
 
@@ -60,20 +54,16 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Province $province)
+    public function edit(Province $province): Response
     {
         return view('ilocations::admin.provinces.edit', compact('province'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Province $province, UpdateProvinceRequest $request)
+    public function update(Province $province, UpdateProvinceRequest $request): Response
     {
         $this->province->update($province, $request->all());
 
@@ -83,10 +73,8 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Province $province)
+    public function destroy(Province $province): Response
     {
         $this->province->destroy($province);
 

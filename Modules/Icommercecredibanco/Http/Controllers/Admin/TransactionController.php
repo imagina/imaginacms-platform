@@ -25,10 +25,8 @@ class TransactionController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$transactions = $this->transaction->all();
 
@@ -37,20 +35,16 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecredibanco::admin.transactions.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateTransactionRequest $request)
+    public function store(CreateTransactionRequest $request): Response
     {
         $this->transaction->create($request->all());
 
@@ -60,20 +54,16 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(Transaction $transaction): Response
     {
         return view('icommercecredibanco::admin.transactions.edit', compact('transaction'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Transaction $transaction, UpdateTransactionRequest $request)
+    public function update(Transaction $transaction, UpdateTransactionRequest $request): Response
     {
         $this->transaction->update($transaction, $request->all());
 
@@ -83,10 +73,8 @@ class TransactionController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Transaction $transaction): Response
     {
         $this->transaction->destroy($transaction);
 

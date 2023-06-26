@@ -32,7 +32,7 @@ class CreditApiController extends BaseCrudController
      * @param  Request  $attribute['amount']
      * @return Requestable Transformer
      */
-    public function withdrawalFunds(Request $request)
+    public function withdrawalFunds(Request $request): Requestable
     {
         \DB::beginTransaction();
         try {

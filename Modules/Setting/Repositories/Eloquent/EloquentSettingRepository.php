@@ -25,10 +25,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
     /**
      * Return all settings, with the setting name as key
-     *
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         $rawSettings = parent::all();
 
@@ -121,11 +119,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
     /**
      * Create a setting with the given name
-     *
-     * @param  string  $settingName
-     * @return Setting
      */
-    private function createForName($settingName, $settingValues)
+    private function createForName(string $settingName, $settingValues): Setting
     {
         event($event = new SettingIsCreating($settingName, $settingValues));
 
@@ -181,9 +176,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      * with its settings
      *
      * @param  array|string  $modules
-     * @return array
      */
-    public function moduleSettings($modules)
+    public function moduleSettings($modules): array
     {
         if (is_string($modules)) {
             return config('asgard.'.strtolower($modules).'.settings');
@@ -220,7 +214,7 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      * @param  string  $module Module name
      * @return mixed
      */
-    public function findByModule($module, $central = false)
+    public function findByModule(string $module, $central = false)
     {
         $model = $this->model;
 
@@ -255,10 +249,9 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
     /**
      * Find the given setting name for the given module
      *
-     * @param  string  $settingName
      * @return mixed
      */
-    public function get($settingName, $central = false)
+    public function get(string $settingName, $central = false)
     {
         $query = $this->model->where('name', 'LIKE', "{$settingName}");
 
@@ -287,10 +280,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
     /**
      * Return the non translatable module settings
-     *
-     * @return array
      */
-    public function plainModuleSettings($module)
+    public function plainModuleSettings($module): array
     {
         return array_filter($this->moduleSettings($module), function ($setting) {
             return ! isset($setting['translatable']) || $setting['translatable'] === false;
@@ -299,11 +290,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
     /**
      * Return a setting name using dot notation: asgard.{module}.settings.{settingName}
-     *
-     * @param  string  $settingName
-     * @return string
      */
-    private function getConfigSettingName($settingName)
+    private function getConfigSettingName(string $settingName): string
     {
         [$module, $setting] = explode('::', $settingName);
 
@@ -312,11 +300,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
 
     /**
      * Check if the given setting name is translatable
-     *
-     * @param  string  $settingName
-     * @return bool
      */
-    private function isTranslatableSetting($settingName)
+    private function isTranslatableSetting(string $settingName): bool
     {
         $configSettingName = $this->getConfigSettingName($settingName);
 
@@ -329,9 +314,8 @@ class EloquentSettingRepository extends EloquentBaseRepository implements Settin
      * Return the setting value(s). If values are ann array, json_encode them
      *
      * @param  string|array  $settingValues
-     * @return string
      */
-    private function getSettingPlainValue($settingValues)
+    private function getSettingPlainValue($settingValues): string
     {
         if (is_array($settingValues)) {
             return json_encode($settingValues);

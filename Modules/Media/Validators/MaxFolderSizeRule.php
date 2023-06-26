@@ -12,12 +12,8 @@ class MaxFolderSizeRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  UploadedFile  $value
-     * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, UploadedFile $value): bool
     {
         //check if the tenant its initialized and the folder size must be calculated of the organization folder
         $tenantPrefix = mediaOrganizationPrefix(null, '/');
@@ -34,10 +30,8 @@ class MaxFolderSizeRule implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
-    public function message()
+    public function message(): string
     {
         $bytes = setting('media::maxTotalSize', null, config('asgard.media.config.max-total-size'));
         $size = $this->formatBytes($bytes);
@@ -47,10 +41,8 @@ class MaxFolderSizeRule implements Rule
 
     /**
      * Get the directory size
-     *
-     * @param  string  $directory
      */
-    public function getDirSize($directory): int
+    public function getDirSize(string $directory): int
     {
         $size = 0;
 

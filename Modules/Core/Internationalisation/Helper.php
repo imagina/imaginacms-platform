@@ -27,10 +27,8 @@ class Helper
 
     /**
      * Separate the input fields into their own language key
-     *
-     * @return array
      */
-    public static function separateLanguages($data)
+    public static function separateLanguages($data): array
     {
         $cleanedData = [];
         foreach ($data as $key => $value) {

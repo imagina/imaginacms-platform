@@ -11,10 +11,8 @@ class IcommercestripeFormConnectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run($paymentMethod = null)
+    public function run($paymentMethod = null): void
     {
         Model::unguard();
 

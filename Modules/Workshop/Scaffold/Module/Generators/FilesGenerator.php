@@ -9,10 +9,8 @@ class FilesGenerator extends Generator
 {
     /**
      * Generate the given files
-     *
-     * @return void
      */
-    public function generate(array $files)
+    public function generate(array $files): void
     {
         foreach ($files as $stub => $file) {
             $this->writeFile(
@@ -24,10 +22,8 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module service provider
-     *
-     * @return $this
      */
-    public function generateModuleProvider()
+    public function generateModuleProvider(): static
     {
         $this->writeFile(
             $this->getModulesPath("Providers/{$this->name}ServiceProvider"),
@@ -39,10 +35,8 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module event provider
-     *
-     * @return $this
      */
-    public function generateEventProvider()
+    public function generateEventProvider(): static
     {
         $this->writeFile(
             $this->getModulesPath('Providers/EventServiceProvider'),
@@ -55,11 +49,10 @@ class FilesGenerator extends Generator
     /**
      * Get the content for the given file
      *
-     * @return string
      *
      * @throws FileNotFoundException
      */
-    private function getContentFor($stub)
+    private function getContentFor($stub): string
     {
         $stub = $this->finder->get($this->getStubPath($stub));
 

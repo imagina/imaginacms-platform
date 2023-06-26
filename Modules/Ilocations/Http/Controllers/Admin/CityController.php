@@ -25,10 +25,8 @@ class CityController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$cities = $this->city->all();
 
@@ -37,20 +35,16 @@ class CityController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.cities.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCityRequest $request)
+    public function store(CreateCityRequest $request): Response
     {
         $this->city->create($request->all());
 
@@ -60,20 +54,16 @@ class CityController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(City $city)
+    public function edit(City $city): Response
     {
         return view('ilocations::admin.cities.edit', compact('city'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(City $city, UpdateCityRequest $request)
+    public function update(City $city, UpdateCityRequest $request): Response
     {
         $this->city->update($city, $request->all());
 
@@ -83,10 +73,8 @@ class CityController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(City $city)
+    public function destroy(City $city): Response
     {
         $this->city->destroy($city);
 

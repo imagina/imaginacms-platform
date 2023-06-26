@@ -2,6 +2,7 @@
 
 namespace Modules\Ilocations\Repositories\Cache;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Ilocations\Repositories\NeighborhoodRepository;
 
@@ -16,11 +17,8 @@ class CacheNeighborhoodDecorator extends BaseCacheDecorator implements Neighborh
 
     /**
      * Get all the read notifications for the given filters
-     *
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItemsBy($params)
+    public function getItemsBy(array $params): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -35,12 +33,8 @@ class CacheNeighborhoodDecorator extends BaseCacheDecorator implements Neighborh
 
     /**
      * Get the read notification for the given filters
-     *
-     * @param  string  $criteria
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params = false)
+    public function getItem(string $criteria, array $params = false): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

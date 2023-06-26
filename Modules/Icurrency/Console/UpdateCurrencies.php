@@ -35,10 +35,8 @@ class UpdateCurrencies extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $currencies = Currency::noDefaultCurrency();
         foreach ($currencies as $currency) {
@@ -48,10 +46,8 @@ class UpdateCurrencies extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
 
@@ -60,10 +56,8 @@ class UpdateCurrencies extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

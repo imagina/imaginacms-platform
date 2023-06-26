@@ -40,10 +40,8 @@ trait Formeable
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
-    public function forms()
+    public function forms(): object
     {
         return $this->morphToMany(Form::class, 'formeable', 'iforms__formeable')
           ->withPivot('formeable_type')

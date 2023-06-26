@@ -2,6 +2,7 @@
 
 namespace Modules\Idocs\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Idocs\Entities\Document;
 use Modules\Media\Contracts\StoringMedia;
 
@@ -25,20 +26,16 @@ class DocumentWasUpdated implements StoringMedia
 
     /**
      * Return the entity
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->document;
     }
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

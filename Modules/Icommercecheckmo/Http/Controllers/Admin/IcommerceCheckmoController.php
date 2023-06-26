@@ -29,10 +29,8 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecheckmos = $this->icommercecheckmo->all();
 
@@ -41,20 +39,16 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecheckmo::admin.icommercecheckmos.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceCheckmoRequest $request)
+    public function store(CreateIcommerceCheckmoRequest $request): Response
     {
         $this->icommercecheckmo->create($request->all());
 
@@ -64,10 +58,8 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceCheckmo $icommercecheckmo)
+    public function edit(IcommerceCheckmo $icommercecheckmo): Response
     {
         return view('icommercecheckmo::admin.icommercecheckmos.edit', compact('icommercecheckmo'));
     }
@@ -76,9 +68,8 @@ class IcommerceCheckmoController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceCheckmo  $icommercecheckmo
-     * @return Response
      */
-    public function update($id, UpdateIcommerceCheckmoRequest $request)
+    public function update($id, UpdateIcommerceCheckmoRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -98,10 +89,8 @@ class IcommerceCheckmoController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceCheckmo $icommercecheckmo)
+    public function destroy(IcommerceCheckmo $icommercecheckmo): Response
     {
         $this->icommercecheckmo->destroy($icommercecheckmo);
 

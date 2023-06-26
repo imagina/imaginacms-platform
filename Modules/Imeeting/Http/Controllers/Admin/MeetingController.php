@@ -28,10 +28,8 @@ class MeetingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$imeetings = $this->imeeting->all();
 
@@ -40,20 +38,16 @@ class MeetingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('imeeting::admin.imeetings.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateImeetingRequest $request)
+    public function store(CreateImeetingRequest $request): Response
     {
         $this->imeeting->create($request->all());
 
@@ -63,10 +57,8 @@ class MeetingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Imeeting $imeeting)
+    public function edit(Imeeting $imeeting): Response
     {
         return view('imeeting::admin.imeetings.edit', compact('imeeting'));
     }
@@ -75,9 +67,8 @@ class MeetingController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  Imeeting  $imeeting
-     * @return Response
      */
-    public function update($id, UpdateImeetingRequest $request)
+    public function update($id, UpdateImeetingRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -97,10 +88,8 @@ class MeetingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Imeeting $imeeting)
+    public function destroy(Imeeting $imeeting): Response
     {
         $this->imeeting->destroy($imeeting);
 

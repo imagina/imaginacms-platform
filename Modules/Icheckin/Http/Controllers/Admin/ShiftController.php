@@ -25,10 +25,8 @@ class ShiftController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$shifts = $this->shift->all();
 
@@ -37,20 +35,16 @@ class ShiftController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.shifts.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateShiftRequest $request)
+    public function store(CreateShiftRequest $request): Response
     {
         $this->shift->create($request->all());
 
@@ -60,20 +54,16 @@ class ShiftController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Shift $shift)
+    public function edit(Shift $shift): Response
     {
         return view('icheckin::admin.shifts.edit', compact('shift'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Shift $shift, UpdateShiftRequest $request)
+    public function update(Shift $shift, UpdateShiftRequest $request): Response
     {
         $this->shift->update($shift, $request->all());
 
@@ -83,10 +73,8 @@ class ShiftController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Shift $shift)
+    public function destroy(Shift $shift): Response
     {
         $this->shift->destroy($shift);
 

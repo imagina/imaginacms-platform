@@ -11,7 +11,7 @@ class PublishModuleAssetsCommand extends Command
 
     protected $description = 'Publish module assets';
 
-    public function handle()
+    public function handle(): void
     {
         $this->call('module:publish', ['module' => $this->argument('module')]);
     }

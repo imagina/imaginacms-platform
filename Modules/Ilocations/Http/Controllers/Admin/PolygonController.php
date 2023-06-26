@@ -25,10 +25,8 @@ class PolygonController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$polygons = $this->polygon->all();
 
@@ -37,20 +35,16 @@ class PolygonController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.polygons.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreatePolygonRequest $request)
+    public function store(CreatePolygonRequest $request): Response
     {
         $this->polygon->create($request->all());
 
@@ -60,20 +54,16 @@ class PolygonController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Polygon $polygon)
+    public function edit(Polygon $polygon): Response
     {
         return view('ilocations::admin.polygons.edit', compact('polygon'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Polygon $polygon, UpdatePolygonRequest $request)
+    public function update(Polygon $polygon, UpdatePolygonRequest $request): Response
     {
         $this->polygon->update($polygon, $request->all());
 
@@ -83,10 +73,8 @@ class PolygonController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Polygon $polygon)
+    public function destroy(Polygon $polygon): Response
     {
         $this->polygon->destroy($polygon);
 

@@ -29,10 +29,8 @@ class OrderNotification extends Mailable implements ShouldQueue
 
     /**
      * Build the message.
-     *
-     * @return $this
      */
-    public function build()
+    public function build(): static
     {
         $message = $this->view($this->view)
             ->subject($this->subject);

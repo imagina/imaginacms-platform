@@ -23,10 +23,8 @@ class OrderStatusApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -76,10 +74,8 @@ class OrderStatusApiController extends BaseApiController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         try {
             $this->orderStatus->create($request->all());
@@ -98,10 +94,8 @@ class OrderStatusApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         try {
             \DB::beginTransaction();
@@ -127,10 +121,8 @@ class OrderStatusApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         try {
             $this->orderStatus->deleteBy($criteria, $this->getParamsRequest($request));

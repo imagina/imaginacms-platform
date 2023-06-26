@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // OJO : toco esta tabla reducirle el nombre a trans porque excedia
         // el max de caracteres de mysql al momento de generar la llave unique
@@ -30,10 +28,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__option_value_trans', function (Blueprint $table) {
             $table->dropForeign(['option_value_id']);

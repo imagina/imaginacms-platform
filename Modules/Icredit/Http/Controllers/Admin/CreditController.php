@@ -25,10 +25,8 @@ class CreditController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$credits = $this->credit->all();
 
@@ -37,20 +35,16 @@ class CreditController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icredit::admin.credits.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCreditRequest $request)
+    public function store(CreateCreditRequest $request): Response
     {
         $this->credit->create($request->all());
 
@@ -60,20 +54,16 @@ class CreditController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Credit $credit)
+    public function edit(Credit $credit): Response
     {
         return view('icredit::admin.credits.edit', compact('credit'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Credit $credit, UpdateCreditRequest $request)
+    public function update(Credit $credit, UpdateCreditRequest $request): Response
     {
         $this->credit->update($credit, $request->all());
 
@@ -83,10 +73,8 @@ class CreditController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Credit $credit)
+    public function destroy(Credit $credit): Response
     {
         $this->credit->destroy($credit);
 

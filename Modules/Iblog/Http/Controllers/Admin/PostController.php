@@ -52,10 +52,8 @@ class PostController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         if ($request->input('q')) {
             $param = $request->input('q');
@@ -69,10 +67,8 @@ class PostController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $users = $this->user->all();
         $status = $this->status->lists();
@@ -83,10 +79,8 @@ class PostController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreatePostRequest $request)
+    public function store(CreatePostRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -106,10 +100,8 @@ class PostController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Post $post)
+    public function edit(Post $post): Response
     {
         $users = $this->user->all();
         $status = $this->status->lists();
@@ -122,9 +114,8 @@ class PostController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  Post  $Post
-     * @return Response
      */
-    public function update(Post $post, CreatePostRequest $request)
+    public function update(Post $post, CreatePostRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -144,10 +135,8 @@ class PostController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): Response
     {
         try {
             $this->post->destroy($post);

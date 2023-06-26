@@ -8,21 +8,16 @@ class FileHelper
 {
     /**
      * Get first token of string before delimiter
-     *
-     * @return string
      */
-    public static function getTypeByMimetype($mimetype)
+    public static function getTypeByMimetype($mimetype): string
     {
         return strtok($mimetype, '/');
     }
 
     /**
      * Get Font Awesome icon for various files
-     *
-     * @param  string  $mediaType
-     * @return string
      */
-    public static function getFaIcon($mediaType)
+    public static function getFaIcon(string $mediaType): string
     {
         switch ($mediaType) {
             case 'video':
@@ -46,10 +41,8 @@ class FileHelper
 
     /**
      * Get the extension from the given name
-     *
-     * @return string
      */
-    public static function getExtension($name)
+    public static function getExtension($name): string
     {
         return substr($name, strrpos($name, '.'));
     }

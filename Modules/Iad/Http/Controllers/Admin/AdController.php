@@ -25,10 +25,8 @@ class AdController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$ads = $this->ad->all();
 
@@ -37,20 +35,16 @@ class AdController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.ads.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateAdRequest $request)
+    public function store(CreateAdRequest $request): Response
     {
         $this->ad->create($request->all());
 
@@ -60,20 +54,16 @@ class AdController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Ad $ad)
+    public function edit(Ad $ad): Response
     {
         return view('iad::admin.ads.edit', compact('ad'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Ad $ad, UpdateAdRequest $request)
+    public function update(Ad $ad, UpdateAdRequest $request): Response
     {
         $this->ad->update($ad, $request->all());
 
@@ -83,10 +73,8 @@ class AdController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Ad $ad)
+    public function destroy(Ad $ad): Response
     {
         $this->ad->destroy($ad);
 

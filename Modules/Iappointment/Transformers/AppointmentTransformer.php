@@ -8,7 +8,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class AppointmentTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,

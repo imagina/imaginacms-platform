@@ -25,10 +25,8 @@ class RecurrenceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recurrences = $this->recurrence->all();
 
@@ -37,20 +35,16 @@ class RecurrenceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.recurrences.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateRecurrenceRequest $request)
+    public function store(CreateRecurrenceRequest $request): Response
     {
         $this->recurrence->create($request->all());
 
@@ -60,20 +54,16 @@ class RecurrenceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Recurrence $recurrence)
+    public function edit(Recurrence $recurrence): Response
     {
         return view('ievent::admin.recurrences.edit', compact('recurrence'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Recurrence $recurrence, UpdateRecurrenceRequest $request)
+    public function update(Recurrence $recurrence, UpdateRecurrenceRequest $request): Response
     {
         $this->recurrence->update($recurrence, $request->all());
 
@@ -83,10 +73,8 @@ class RecurrenceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Recurrence $recurrence)
+    public function destroy(Recurrence $recurrence): Response
     {
         $this->recurrence->destroy($recurrence);
 

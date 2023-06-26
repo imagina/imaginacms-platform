@@ -30,11 +30,9 @@ class UniqueSlugRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
-     * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
         $explodeAttributes = explode('.', $attribute);
         $slugs = \DB::table($this->table)
@@ -52,10 +50,8 @@ class UniqueSlugRule implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
-    public function message()
+    public function message(): string
     {
         return $this->message;
     }

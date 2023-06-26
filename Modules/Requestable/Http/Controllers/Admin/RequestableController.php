@@ -25,10 +25,8 @@ class RequestableController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$requestables = $this->requestable->all();
 
@@ -37,20 +35,16 @@ class RequestableController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('requestable::admin.requestables.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateRequestableRequest $request)
+    public function store(CreateRequestableRequest $request): Response
     {
         $this->requestable->create($request->all());
 
@@ -60,20 +54,16 @@ class RequestableController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Requestable $requestable)
+    public function edit(Requestable $requestable): Response
     {
         return view('requestable::admin.requestables.edit', compact('requestable'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Requestable $requestable, UpdateRequestableRequest $request)
+    public function update(Requestable $requestable, UpdateRequestableRequest $request): Response
     {
         $this->requestable->update($requestable, $request->all());
 
@@ -83,10 +73,8 @@ class RequestableController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Requestable $requestable)
+    public function destroy(Requestable $requestable): Response
     {
         $this->requestable->destroy($requestable);
 

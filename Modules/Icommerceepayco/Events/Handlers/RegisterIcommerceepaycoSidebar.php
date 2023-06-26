@@ -26,10 +26,7 @@ class RegisterIcommerceepaycoSidebar implements \Maatwebsite\Sidebar\SidebarExte
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

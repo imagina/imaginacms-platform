@@ -13,10 +13,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerConfig();
         $this->registerViews();
@@ -25,10 +23,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerTranslations();
@@ -36,10 +32,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register config.
-     *
-     * @return void
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
     {
         $this->publishConfig('icommercepricelist', 'config');
         $this->publishConfig('icommercepricelist', 'crud-fields');
@@ -76,10 +70,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register views.
-     *
-     * @return void
      */
-    public function registerViews()
+    public function registerViews(): void
     {
         $viewPath = resource_path('views/modules/icommercepricelist');
 
@@ -96,10 +88,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register translations.
-     *
-     * @return void
      */
-    public function registerTranslations()
+    public function registerTranslations(): void
     {
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('pricelists', Arr::dot(trans('icommercepricelist::pricelists')));
@@ -109,10 +99,8 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

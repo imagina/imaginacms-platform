@@ -24,7 +24,7 @@ class EventServiceProvider extends ServiceProvider
 
     ];
 
-    public function register()
+    public function register(): void
     {
         if (is_module_enabled('Iplan')) {
             Event::listen(

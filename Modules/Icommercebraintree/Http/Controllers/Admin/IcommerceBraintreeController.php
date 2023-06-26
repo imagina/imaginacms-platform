@@ -29,10 +29,8 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercebraintrees = $this->icommercebraintree->all();
 
@@ -41,20 +39,16 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercebraintree::admin.icommercebraintrees.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceBraintreeRequest $request)
+    public function store(CreateIcommerceBraintreeRequest $request): Response
     {
         $this->icommercebraintree->create($request->all());
 
@@ -64,10 +58,8 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceBraintree $icommercebraintree)
+    public function edit(IcommerceBraintree $icommercebraintree): Response
     {
         return view('icommercebraintree::admin.icommercebraintrees.edit', compact('icommercebraintree'));
     }
@@ -76,9 +68,8 @@ class IcommerceBraintreeController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceBraintree  $icommercebraintree
-     * @return Response
      */
-    public function update($id, UpdateIcommerceBraintreeRequest $request)
+    public function update($id, UpdateIcommerceBraintreeRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -98,10 +89,8 @@ class IcommerceBraintreeController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceBraintree $icommercebraintree)
+    public function destroy(IcommerceBraintree $icommercebraintree): Response
     {
         $this->icommercebraintree->destroy($icommercebraintree);
 

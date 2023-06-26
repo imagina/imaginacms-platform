@@ -25,10 +25,8 @@ class QrController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$locations = $this->qr->all();
 
@@ -37,20 +35,16 @@ class QrController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('qreable::admin.locations.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateQrRequest $request)
+    public function store(CreateQrRequest $request): Response
     {
         $this->qr->create($request->all());
 
@@ -60,20 +54,16 @@ class QrController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Qr $qr)
+    public function edit(Qr $qr): Response
     {
         return view('qreable::admin.locations.edit', compact('qr'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Qr $qr, UpdateQrRequest $request)
+    public function update(Qr $qr, UpdateQrRequest $request): Response
     {
         $this->qr->update($qr, $request->all());
 
@@ -83,10 +73,8 @@ class QrController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Qr $qr)
+    public function destroy(Qr $qr): Response
     {
         $this->qr->destroy($qr);
 

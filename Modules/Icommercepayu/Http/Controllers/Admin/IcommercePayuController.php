@@ -32,10 +32,8 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercepayus = $this->icommercepayu->all();
 
@@ -44,20 +42,16 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercepayu::admin.icommercepayus.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommercePayuRequest $request)
+    public function store(CreateIcommercePayuRequest $request): Response
     {
         $this->icommercepayu->create($request->all());
 
@@ -67,10 +61,8 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommercePayu $icommercepayu)
+    public function edit(IcommercePayu $icommercepayu): Response
     {
         return view('icommercepayu::admin.icommercepayus.edit', compact('icommercepayu'));
     }
@@ -79,9 +71,8 @@ class IcommercePayuController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommercePayu  $icommercepayu
-     * @return Response
      */
-    public function update($id, UpdateIcommercePayuRequest $request)
+    public function update($id, UpdateIcommercePayuRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,10 +92,8 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommercePayu $icommercepayu)
+    public function destroy(IcommercePayu $icommercepayu): Response
     {
         $this->icommercepayu->destroy($icommercepayu);
 

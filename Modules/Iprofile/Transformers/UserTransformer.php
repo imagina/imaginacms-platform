@@ -9,7 +9,7 @@ use Modules\Isite\Transformers\OrganizationTransformer;
 
 class UserTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $this->permissionsApiController = new PermissionsApiController();
         $this->settingsApiController = new SettingsApiController();

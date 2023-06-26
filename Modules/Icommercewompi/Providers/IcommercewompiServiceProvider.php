@@ -22,10 +22,8 @@ class IcommercewompiServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercewompiSidebar::class);
@@ -36,7 +34,7 @@ class IcommercewompiServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercewompi', 'permissions');
         $this->publishConfig('icommercewompi', 'config');
@@ -47,10 +45,8 @@ class IcommercewompiServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

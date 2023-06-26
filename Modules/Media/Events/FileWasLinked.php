@@ -18,10 +18,7 @@ class FileWasLinked
      */
     public $entity;
 
-    /**
-     * @param  object  $entity
-     */
-    public function __construct(File $file, $entity)
+    public function __construct(File $file, object $entity)
     {
         $this->file = $file;
         $this->entity = $entity;

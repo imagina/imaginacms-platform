@@ -4,6 +4,7 @@ namespace Modules\Isite\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Modules\Iblog\Entities\Post;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 use Modules\Isite\Repositories\CategoryRepository;
@@ -91,10 +92,7 @@ class PublicController extends BaseApiController
         ]]);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function uri($slug, Request $request)
+    public function uri($slug, Request $request): View
     {
         try {
             //revoke api routes

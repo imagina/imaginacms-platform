@@ -25,10 +25,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $schedules = $this->schedule->paginate(20);
 
@@ -37,10 +35,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $schedules = $this->schedule->paginate(20);
 
@@ -49,10 +45,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateScheduleRequest $request)
+    public function store(CreateScheduleRequest $request): Response
     {
         try {
             $this->schedule->create($request->all());
@@ -69,10 +63,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Schedule $schedule)
+    public function edit(Schedule $schedule): Response
     {
         $schedules = $this->schedule->paginate(20);
 
@@ -81,10 +73,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Schedule $schedule, UpdateScheduleRequest $request)
+    public function update(Schedule $schedule, UpdateScheduleRequest $request): Response
     {
         try {
             if (isset($request['options'])) {
@@ -108,10 +98,8 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Schedule $schedule): Response
     {
         try {
             $this->schedule->destroy($schedule);

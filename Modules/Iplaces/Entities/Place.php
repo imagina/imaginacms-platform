@@ -232,20 +232,16 @@ class Place extends Model implements TaggableInterface
 
     /**
      * Check if the post is in draft
-     *
-     * @return Builder
      */
-    public function scopeActive(Builder $query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->whereStatus(Status::ACTIVE);
     }
 
     /**
      * Check if the post is pending review
-     *
-     * @return Builder
      */
-    public function scopeCloudy(Builder $query)
+    public function scopeCloudy(Builder $query): Builder
     {
         return $query->whereWeather(Weather::CLOUDY);
     }

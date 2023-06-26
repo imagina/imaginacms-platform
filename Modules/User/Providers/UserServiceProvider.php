@@ -58,10 +58,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register($this->getUserPackageServiceProvider());
 
@@ -91,7 +89,7 @@ class UserServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerMiddleware();
 
@@ -111,10 +109,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

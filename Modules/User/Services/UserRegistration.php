@@ -63,10 +63,8 @@ class UserRegistration
 
     /**
      * Check if the request input has a profile key
-     *
-     * @return bool
      */
-    private function hasProfileData()
+    private function hasProfileData(): bool
     {
         return isset($this->input['profile']);
     }

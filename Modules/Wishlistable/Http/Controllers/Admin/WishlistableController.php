@@ -25,10 +25,8 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$wishlistables = $this->wishlistable->all();
 
@@ -37,20 +35,16 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('wishlistable::admin.wishlistables.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateWishlistableRequest $request)
+    public function store(CreateWishlistableRequest $request): Response
     {
         $this->wishlistable->create($request->all());
 
@@ -60,20 +54,16 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Wishlistable $wishlistable)
+    public function edit(Wishlistable $wishlistable): Response
     {
         return view('wishlistable::admin.wishlistables.edit', compact('wishlistable'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request)
+    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request): Response
     {
         $this->wishlistable->update($wishlistable, $request->all());
 
@@ -83,10 +73,8 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Wishlistable $wishlistable)
+    public function destroy(Wishlistable $wishlistable): Response
     {
         $this->wishlistable->destroy($wishlistable);
 

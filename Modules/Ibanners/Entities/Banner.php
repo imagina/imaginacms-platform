@@ -57,7 +57,7 @@ class Banner extends Model
      *
      * @return string|null full image path if image exists or null if no image is set
      */
-    public function getImageUrl()
+    public function getImageUrl(): ?string
     {
         if ($this->imageUrl === null) {
             if (! empty($this->external_image_url)) {
@@ -72,10 +72,8 @@ class Banner extends Model
 
     /**
      * returns slider link URL
-     *
-     * @return string|null
      */
-    public function getLinkUrl()
+    public function getLinkUrl(): ?string
     {
         if ($this->linkUrl === null) {
             if (! empty($this->url)) {

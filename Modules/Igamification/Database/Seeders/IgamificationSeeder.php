@@ -11,10 +11,8 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
         //Instance the uploaded files
@@ -53,10 +51,8 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Seed the categories
-     *
-     * @return void
      */
-    public function seedCategories($data)
+    public function seedCategories($data): void
     {
         //Instance the repository
         $categoryRepository = app('Modules\Igamification\Repositories\CategoryRepository');
@@ -95,10 +91,8 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Seed the activities
-     *
-     * @return void
      */
-    public function seedActivities($data)
+    public function seedActivities($data): void
     {
         //Get categories
         $activityRepository = app('Modules\Igamification\Entities\Activity');

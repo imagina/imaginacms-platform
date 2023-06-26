@@ -25,10 +25,8 @@ class AttendantController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$attendants = $this->attendant->all();
 
@@ -37,20 +35,16 @@ class AttendantController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.attendants.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateAttendantRequest $request)
+    public function store(CreateAttendantRequest $request): Response
     {
         $this->attendant->create($request->all());
 
@@ -60,20 +54,16 @@ class AttendantController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Attendant $attendant)
+    public function edit(Attendant $attendant): Response
     {
         return view('ievent::admin.attendants.edit', compact('attendant'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Attendant $attendant, UpdateAttendantRequest $request)
+    public function update(Attendant $attendant, UpdateAttendantRequest $request): Response
     {
         $this->attendant->update($attendant, $request->all());
 
@@ -83,10 +73,8 @@ class AttendantController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Attendant $attendant)
+    public function destroy(Attendant $attendant): Response
     {
         $this->attendant->destroy($attendant);
 

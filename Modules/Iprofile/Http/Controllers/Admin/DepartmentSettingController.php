@@ -25,10 +25,8 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$departmentsettings = $this->departmentsetting->all();
 
@@ -37,20 +35,16 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.departmentsettings.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateSettingRequest $request)
+    public function store(CreateSettingRequest $request): Response
     {
         $this->departmentsetting->create($request->all());
 
@@ -60,20 +54,16 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Setting $departmentsetting)
+    public function edit(Setting $departmentsetting): Response
     {
         return view('Iprofile::admin.departmentsettings.edit', compact('departmentsetting'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Setting $departmentsetting, UpdateSettingRequest $request)
+    public function update(Setting $departmentsetting, UpdateSettingRequest $request): Response
     {
         $this->departmentsetting->update($departmentsetting, $request->all());
 
@@ -83,10 +73,8 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Setting $departmentsetting)
+    public function destroy(Setting $departmentsetting): Response
     {
         $this->departmentsetting->destroy($departmentsetting);
 

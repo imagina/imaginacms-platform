@@ -19,16 +19,14 @@ class IhelpersServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerCommands();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ihelpers', 'config');
         $this->publishConfig('ihelpers', 'permissions');
@@ -36,10 +34,8 @@ class IhelpersServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

@@ -26,10 +26,8 @@ class RequestController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$requests = $this->request->all();
 
@@ -38,20 +36,16 @@ class RequestController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.requests.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateRequestRequest $request)
+    public function store(CreateRequestRequest $request): Response
     {
         $this->request->create($request->all());
 
@@ -61,22 +55,16 @@ class RequestController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Request  $request
-     * @return Response
      */
-    public function edit(RequestEntity $request)
+    public function edit(RequestEntity $request): Response
     {
         return view('icheckin::admin.requests.edit', compact('request'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
      */
-    public function update(RequestEntity $requestEntity, UpdateRequestRequest $request)
+    public function update(RequestEntity $requestEntity, UpdateRequestRequest $request): Response
     {
         $this->request->update($requestEntity, $request->all());
 
@@ -86,11 +74,8 @@ class RequestController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Request  $request
-     * @return Response
      */
-    public function destroy(RequestEntity $request)
+    public function destroy(RequestEntity $request): Response
     {
         $this->request->destroy($request);
 

@@ -43,8 +43,6 @@ class TenantModuleMigrateCommand extends MigrateCommand
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle(): int
     {
@@ -81,10 +79,8 @@ class TenantModuleMigrateCommand extends MigrateCommand
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['tenant', InputArgument::REQUIRED, 'Tenant id.'],

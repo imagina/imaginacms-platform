@@ -47,10 +47,7 @@ class SubscriptionListItem extends Component
         ];
     }
 
-    /**
-     * @return PlanRepository
-     */
-    private function categoryRepository()
+    private function categoryRepository(): PlanRepository
     {
         return app('Modules\Iplan\Repositories\CategoryRepository');
     }

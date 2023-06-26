@@ -31,10 +31,8 @@ class BuildingSidebar
 
     /**
      * Get the current Laravel-Sidebar menu
-     *
-     * @return Menu
      */
-    public function getMenu()
+    public function getMenu(): Menu
     {
         return $this->menu;
     }

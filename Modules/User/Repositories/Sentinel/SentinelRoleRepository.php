@@ -118,10 +118,9 @@ class SentinelRoleRepository implements RoleRepository
   /**
    * Find a role by its name
    *
-   * @param  string  $name
    * @return mixed
    */
-  public function findByName($name)
+  public function findByName(string $name)
   {
       return Sentinel::findRoleByName($name);
   }
@@ -129,10 +128,9 @@ class SentinelRoleRepository implements RoleRepository
   /**
    * Find a role by its slug
    *
-   * @param  string  $slug
    * @return mixed
    */
-  public function findBySlug($slug)
+  public function findBySlug(string $slug)
   {
       return Sentinel::findRoleBySlug($slug);
   }

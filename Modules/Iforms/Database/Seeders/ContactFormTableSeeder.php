@@ -9,10 +9,8 @@ class ContactFormTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $seedUniquesUse = DB::table('isite__seeds')->where('name', 'ContactFormTableSeeder')->first();
         if (empty($seedUniquesUse)) {

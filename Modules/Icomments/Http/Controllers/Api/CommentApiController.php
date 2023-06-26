@@ -27,10 +27,8 @@ class CommentApiController extends BaseCrudController
 
       /**
        * Store a newly created resource in storage.
-       *
-       * @return Response
        */
-      public function create(Request $request)
+      public function create(Request $request): Response
       {
           \DB::beginTransaction();
           try {

@@ -9,10 +9,8 @@ class CommentTransformer extends CrudResource
 {
     /**
      * Method to merge values with response
-     *
-     * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         return [
             'userProfile' => new UserTransformer($this->whenLoaded('userProfile')),

@@ -28,7 +28,7 @@ class AvailabilityApiController extends BaseCrudController
      * @param resourceId (Optional)
      * @return response (Array)
      */
-    public function availability(Request $request)
+    public function availability(Request $request): response
     {
         // Get Params
         $params = $this->getParamsRequest($request)->filter;

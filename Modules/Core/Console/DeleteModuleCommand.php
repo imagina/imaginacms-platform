@@ -38,10 +38,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $module = $this->argument('module');
 
@@ -88,10 +86,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['module', InputArgument::REQUIRED, 'The module name'],
@@ -100,10 +96,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Reset the module migrations', null],

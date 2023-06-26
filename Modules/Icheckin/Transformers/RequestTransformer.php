@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class RequestTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $item = [
             'id' => $this->when($this->id, $this->id),

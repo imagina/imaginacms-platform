@@ -33,10 +33,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $services = $this->service->all();
 
@@ -45,10 +43,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $statuses = $this->status->lists();
         $servtypes = $this->servtype->lists();
@@ -59,10 +55,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateServiceRequest $request)
+    public function store(CreateServiceRequest $request): Response
     {
         try {
             $this->service->create($request->all());
@@ -79,10 +73,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Service $service)
+    public function edit(Service $service): Response
     {//dd($service);
         //$services = $this->service->paginate(20);
         $statuses = $this->status->lists();
@@ -93,10 +85,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Service $service, UpdateServiceRequest $request)
+    public function update(Service $service, UpdateServiceRequest $request): Response
     {
         try {
             $this->service->update($service, $request->all());
@@ -113,10 +103,8 @@ class ServiceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Service $service)
+    public function destroy(Service $service): Response
     {
         try {
             $this->service->destroy($service);

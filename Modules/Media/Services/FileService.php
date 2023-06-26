@@ -39,13 +39,11 @@ class FileService
     }
 
     /**
-     * @param  int  $parentId
-     * @param  string  $disk
      * @return mixed
      *
      * @throws \Illuminate\Contracts\Filesystem\FileExistsException
      */
-    public function store(UploadedFile $file, $parentId = 0, $disk = null, $createThumbnails = true)
+    public function store(UploadedFile $file, int $parentId = 0, string $disk = null, $createThumbnails = true)
     {
         $disk = $this->getConfiguredFilesystem($disk);
 
@@ -109,11 +107,7 @@ class FileService
         $this->dispatch(new CreateThumbnails($savedFile->path, $savedFile->disk));
     }
 
-    /**
-     * @param  string  $path
-     * @return string
-     */
-    private function getDestinationPath($path)
+    private function getDestinationPath(string $path): string
     {
         if ($this->getConfiguredFilesystem() === 'local') {
             return basename(public_path()).$path;
@@ -122,10 +116,7 @@ class FileService
         return $path;
     }
 
-    /**
-     * @return string
-     */
-    private function getConfiguredFilesystem($disk = 'publicmedia')
+    private function getConfiguredFilesystem($disk = 'publicmedia'): string
     {
         $settingDisk = setting('media::filesystem', null, config('asgard.media.config.filesystem'));
         if ($disk == 'publicmedia' && $settingDisk == 's3') {

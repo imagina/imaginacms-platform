@@ -25,10 +25,8 @@ class NotificationTypeController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$notificationtypes = $this->notificationtype->all();
 
@@ -37,20 +35,16 @@ class NotificationTypeController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.notificationtypes.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateNotificationTypeRequest $request)
+    public function store(CreateNotificationTypeRequest $request): Response
     {
         $this->notificationtype->create($request->all());
 
@@ -60,20 +54,16 @@ class NotificationTypeController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(NotificationType $notificationtype)
+    public function edit(NotificationType $notificationtype): Response
     {
         return view('notification::admin.notificationtypes.edit', compact('notificationtype'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(NotificationType $notificationtype, UpdateNotificationTypeRequest $request)
+    public function update(NotificationType $notificationtype, UpdateNotificationTypeRequest $request): Response
     {
         $this->notificationtype->update($notificationtype, $request->all());
 
@@ -83,10 +73,8 @@ class NotificationTypeController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(NotificationType $notificationtype)
+    public function destroy(NotificationType $notificationtype): Response
     {
         $this->notificationtype->destroy($notificationtype);
 

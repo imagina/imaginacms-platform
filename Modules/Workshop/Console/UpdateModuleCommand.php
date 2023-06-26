@@ -23,7 +23,7 @@ class UpdateModuleCommand extends Command
         $this->composer = $composer;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $packageName = $this->getModulePackageName($this->argument('module'));
 
@@ -33,11 +33,8 @@ class UpdateModuleCommand extends Command
 
     /**
      * Make the full package name for the given module name
-     *
-     * @param  string  $module
-     * @return string
      */
-    private function getModulePackageName($module)
+    private function getModulePackageName(string $module): string
     {
         return "asgardcms/{$module}-module";
     }

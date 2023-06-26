@@ -45,11 +45,10 @@ class EnvFileWriter
     /**
      * Create a new .env file using the contents of .env.example
      *
-     * @return void
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function create()
+    public function create(): void
     {
         $environmentFile = $this->finder->get($this->template);
 
@@ -59,12 +58,10 @@ class EnvFileWriter
     /**
      * Update the .env file
      *
-     * @param  array  $vars
-     * @return void
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function write($vars)
+    public function write(array $vars): void
     {
         if (! empty($vars)) {
             $environmentFile = $this->finder->get($this->file);

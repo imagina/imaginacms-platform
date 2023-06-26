@@ -13,10 +13,8 @@ class StripeService
 
   /**
    * Make Configuration to Payment
-   *
-   * @return array
    */
-  public function createConfigToTransferGroup($paymentMethod, $order, $transaction)
+  public function createConfigToTransferGroup($paymentMethod, $order, $transaction): array
   {
       // Meta Data
       $metaData = [
@@ -46,10 +44,8 @@ class StripeService
 
     /**
      * Make Configuration Implementation Destination Charge
-     *
-     * @return array
      */
-    public function createConfigToDestinationCharge($paymentMethod, $order, $transaction)
+    public function createConfigToDestinationCharge($paymentMethod, $order, $transaction): array
     {
         //All API requests expect amounts to be provided in a currency’s smallest unit
         //$amount = $order->total * 100;
@@ -91,10 +87,8 @@ class StripeService
 
   /**
    * Get Status to Order
-   *
-   * @return int
    */
-  public function getStatusDetail($event)
+  public function getStatusDetail($event): int
   {
       \Log::info('Icommercestripe: getStatusDetail - Event Type: '.$event->type);
 
@@ -130,10 +124,8 @@ class StripeService
 
   /**
    * Get Line Items
-   *
-   * @return int
    */
-  public function getLineItems($order, $currencyAccount)
+  public function getLineItems($order, $currencyAccount): int
   {
       $currencyConvertionValue = stripeGetCurrencyValue($currencyAccount);
 
@@ -187,9 +179,8 @@ class StripeService
    * Values to save or update in Configuration Payout User Profile Field
    *
    * @param $payoutConfigValues - array
-   * @return Model
    */
-  public function syncDataUserField($payoutConfigValues)
+  public function syncDataUserField($payoutConfigValues): Model
   {
       // Find Field
       $modelExist = $this->findPayoutConfigUser();

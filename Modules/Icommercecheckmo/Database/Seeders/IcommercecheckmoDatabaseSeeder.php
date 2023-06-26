@@ -9,10 +9,8 @@ class IcommercecheckmoDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         ProcessSeeds::dispatch([
             'baseClass' => "\Modules\Icommercecheckmo\Database\Seeders",

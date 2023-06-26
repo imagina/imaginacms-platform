@@ -22,10 +22,8 @@ class IcommentsServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommentsSidebar::class);
@@ -35,7 +33,7 @@ class IcommentsServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icomments', 'config');
         $this->publishConfig('icomments', 'crud-fields');
@@ -51,10 +49,8 @@ class IcommentsServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

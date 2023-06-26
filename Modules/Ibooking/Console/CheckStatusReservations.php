@@ -33,10 +33,8 @@ class CheckStatusReservations extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         //Log::info("Ibooking: Jobs|CheckStatusReservation");
 

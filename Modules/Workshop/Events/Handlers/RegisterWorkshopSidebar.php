@@ -11,10 +11,8 @@ class RegisterWorkshopSidebar extends AbstractAdminSidebar
 {
     /**
      * Method used to define your sidebar menu groups and items
-     *
-     * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->weight(100);

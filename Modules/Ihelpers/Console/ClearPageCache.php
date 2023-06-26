@@ -24,10 +24,8 @@ class ClearPageCache extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $imresponsecache = $this->laravel->make(ImResponseCache::class);
         //Clear cache for spatie cache.

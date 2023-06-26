@@ -19,10 +19,7 @@ class PageIsUpdating extends AbstractEntityHook implements EntityIsChanging
         parent::__construct($attributes);
     }
 
-    /**
-     * @return Page
-     */
-    public function getPage()
+    public function getPage(): Page
     {
         return $this->page;
     }

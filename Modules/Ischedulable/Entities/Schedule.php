@@ -48,10 +48,9 @@ class Schedule extends CrudModel
     /**
      * Return schedule shifts
      *
-     * @param  array  $params
      * @return mixed
      */
-    public function getShifts($params = [])
+    public function getShifts(array $params = [])
     {
         $response = []; //Instance response
         $workTimes = $this->workTimes; //Get schedule worktimes

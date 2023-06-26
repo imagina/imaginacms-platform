@@ -7,7 +7,7 @@ use Modules\Isite\Transformers\RevisionTransformer;
 
 class SlideApiTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,

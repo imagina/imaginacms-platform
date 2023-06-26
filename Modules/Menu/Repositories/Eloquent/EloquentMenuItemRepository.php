@@ -43,11 +43,8 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get online root elements
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function rootsForMenu($menuId)
+    public function rootsForMenu(int $menuId): object
     {
         return $this->model->whereHas('translations', function (Builder $q) {
             $q->where('status', 1);
@@ -57,21 +54,16 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get all root elements
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function allRootsForMenu($menuId)
+    public function allRootsForMenu(int $menuId): object
     {
         return $this->model->with('translations')->whereMenuId($menuId)->orderBy('parent_id')->orderBy('position')->get();
     }
 
     /**
      * Get Items to build routes
-     *
-     * @return array
      */
-    public function getForRoutes()
+    public function getForRoutes(): array
     {
         $menuitems = DB::table('menu__menus')
           ->select(
@@ -101,34 +93,23 @@ class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuI
 
     /**
      * Get the root menu item for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function getRootForMenu($menuId)
+    public function getRootForMenu(int $menuId): object
     {
         return $this->model->with('translations')->where(['menu_id' => $menuId, 'is_root' => true])->firstOrFail();
     }
 
     /**
      * Return a complete tree for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function getTreeForMenu($menuId)
+    public function getTreeForMenu(int $menuId): object
     {
         $items = $this->rootsForMenu($menuId);
 
         return $items->noCleaning()->nest();
     }
 
-    /**
-     * @param  string  $uri
-     * @param  string  $locale
-     * @return object
-     */
-    public function findByUriInLanguage($uri, $locale)
+    public function findByUriInLanguage(string $uri, string $locale): object
     {
         return $this->model->whereHas('translations', function (Builder $q) use ($locale, $uri) {
             $q->where('status', 1);

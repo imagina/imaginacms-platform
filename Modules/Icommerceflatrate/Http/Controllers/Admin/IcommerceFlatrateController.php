@@ -25,10 +25,8 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceflatrates = $this->icommerceflatrate->all();
 
@@ -37,20 +35,16 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceFlatrateRequest $request)
+    public function store(CreateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->create($request->all());
 
@@ -60,20 +54,16 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceFlatrate $icommerceflatrate)
+    public function edit(IcommerceFlatrate $icommerceflatrate): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.edit', compact('icommerceflatrate'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request)
+    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->update($icommerceflatrate, $request->all());
 
@@ -83,10 +73,8 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceFlatrate $icommerceflatrate)
+    public function destroy(IcommerceFlatrate $icommerceflatrate): Response
     {
         $this->icommerceflatrate->destroy($icommerceflatrate);
 

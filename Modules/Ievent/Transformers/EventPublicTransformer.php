@@ -7,7 +7,7 @@ use Modules\Iteam\Transformers\SimpleTeamTransformer;
 
 class EventPublicTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->when($this->id, $this->id),

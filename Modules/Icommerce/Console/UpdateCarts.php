@@ -33,10 +33,8 @@ class UpdateCarts extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $cartRepository = app('Modules\Icommerce\Repositories\CartRepository');
         $carts = $cartRepository->getItemsBy(json_decode(json_encode(['filter' => ['status' => 1], 'include' => [], 'take' => null])));
@@ -48,10 +46,8 @@ class UpdateCarts extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
 
@@ -60,10 +56,8 @@ class UpdateCarts extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

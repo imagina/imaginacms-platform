@@ -101,7 +101,7 @@ class ZoomService
      * @param email from user (Host)
      * @return object id | object code=1001 - message="not found"
      */
-    public function findUser($email)
+    public function findUser($email): object
     {
         \Log::info('Imeeting: Services|ZoomService|FindUser: '.$email);
 
@@ -128,7 +128,7 @@ class ZoomService
      * @param Only Pro or higher plan
      * @return object user
      */
-    public function createUser($email)
+    public function createUser($email): object
     {
         \Log::info('Imeeting: Services|ZoomService|CreateUser');
 
@@ -189,9 +189,8 @@ class ZoomService
      * Find the User and get status in Zoom
      *
      * @param  array  $data[email]
-     * @return response['providerStatus','providerStatusName']
      */
-    public function validateRequirements($data)
+    public function validateRequirements($data): response
     {
         \Log::info('Imeeting: Services|ZoomService|ValidateRequirements');
 

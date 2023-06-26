@@ -48,13 +48,8 @@ class Imagy
 
     /**
      * Get an image in the given thumbnail options
-     *
-     * @param  string  $path
-     * @param  string  $thumbnail
-     * @param  bool  $forceCreate
-     * @return string
      */
-    public function get($path, $thumbnail, $forceCreate = false, $disk = null)
+    public function get(string $path, string $thumbnail, bool $forceCreate = false, $disk = null): string
     {
         if (! $this->isImage($path)) {
             return;
@@ -81,10 +76,8 @@ class Imagy
      * Return the thumbnail path
      *
      * @param  string|File  $originalImage
-     * @param  string  $thumbnail
-     * @return string
      */
-    public function getThumbnail($originalImage, $thumbnail, $disk = null)
+    public function getThumbnail($originalImage, string $thumbnail, $disk = null): string
     {
         $file = $originalImage;
         if ($originalImage instanceof File) {
@@ -153,22 +146,16 @@ class Imagy
 
     /**
      * Return the already created file if it exists and force create is false
-     *
-     * @param  string  $filename
-     * @param  bool  $forceCreate
-     * @return bool
      */
-    private function returnCreatedFile($filename, $forceCreate, $disk = null)
+    private function returnCreatedFile(string $filename, bool $forceCreate, $disk = null): bool
     {
         return $this->fileExists($filename) && $forceCreate === false;
     }
 
     /**
      * Write the given image
-     *
-     * @param  string  $filename
      */
-    private function writeImage($filename, Stream $image, $disk = null, $path = null)
+    private function writeImage(string $filename, Stream $image, $disk = null, $path = null)
     {
         $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
 
@@ -189,10 +176,9 @@ class Imagy
     /**
      * Make a new image
      *
-     * @param  string  $filename
      * @param string null $thumbnail
      */
-    private function makeNew(MediaPath $path, $filename, $thumbnail)
+    private function makeNew(MediaPath $path, string $filename, $thumbnail)
     {
         $image = $this->image->make($path->getUrl());
 
@@ -207,11 +193,8 @@ class Imagy
 
     /**
      * Check if the given path is en image
-     *
-     * @param  string  $path
-     * @return bool
      */
-    public function isImage($path)
+    public function isImage(string $path): bool
     {
         return in_array(pathinfo($path, PATHINFO_EXTENSION), $this->imageExtensions);
     }
@@ -219,10 +202,8 @@ class Imagy
     /**
      * Delete all files on disk for the given file in storage
      * This means the original and the thumbnails
-     *
-     * @return bool
      */
-    public function deleteAllFor(File $file)
+    public function deleteAllFor(File $file): bool
     {
         $disk = is_null($file->disk) ? $this->getConfiguredFilesystem() : $file->disk;
 
@@ -248,22 +229,14 @@ class Imagy
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }
 
-    /**
-     * @param  string  $disk
-     * @return bool
-     */
-    private function fileExists($filename, $disk = null)
+    private function fileExists($filename, string $disk = null): bool
     {
         $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
 
         return $this->filesystem->disk($disk)->exists($filename);
     }
 
-    /**
-     * @param  string  $path
-     * @return string
-     */
-    private function getDestinationPath($path, $disk = null)
+    private function getDestinationPath(string $path, $disk = null): string
     {
         $tenantPrefix = mediaOrganizationPrefix();
 
@@ -276,9 +249,8 @@ class Imagy
 
     /**
      * @param  Thumbnail|string  $thumbnail
-     * @return string
      */
-    private function getFilenameFor(MediaPath $path, $thumbnail)
+    private function getFilenameFor(MediaPath $path, $thumbnail): string
     {
         if ($thumbnail instanceof Thumbnail) {
             $thumbnail = $thumbnail->name();

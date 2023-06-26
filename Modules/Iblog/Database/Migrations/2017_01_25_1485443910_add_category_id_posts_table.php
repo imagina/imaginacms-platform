@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('iblog__posts', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->nullable();
@@ -23,10 +21,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iblog__posts', function (Blueprint $table) {
             $table->dropForeign('iblog__posts_category_id_foreign');

@@ -40,9 +40,8 @@ class IcommerceCheckmoApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderid
-     * @return route
      */
-    public function init(Request $request)
+    public function init(Request $request): route
     {
         try {
             $orderID = $request->orderID;
@@ -93,9 +92,8 @@ class IcommerceCheckmoApiController extends BaseApiController
      * Response Api Method
      *
      * @param Requests request
-     * @return route
      */
-    public function response(Request $request)
+    public function response(Request $request): route
     {
         /**
          * Not applicable for this module

@@ -8,10 +8,8 @@ class DeleteSvgOfImageTypes extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $settingRepository = app('Modules\Setting\Repositories\SettingRepository');
         $allowedImageTypes = json_decode(setting('media::allowedImageTypes'));

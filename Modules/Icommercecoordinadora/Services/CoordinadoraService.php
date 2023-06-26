@@ -31,9 +31,8 @@ class CoordinadoraService
 
     /**
      * @param Request Array  products(items,total)
-     * @return array
      */
-    public function getInforCotizar($products, $methodConfig, $address)
+    public function getInforCotizar($products, $methodConfig, $address): array
     {
         // Examples
         // Origen - Ibague -73001000

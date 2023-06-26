@@ -16,7 +16,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
      * @param  string  $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($slider, $template = 'slider::frontend.bootstrap.slider', $options = [])
+    public function render($slider, string $template = 'slider::frontend.bootstrap.slider', $options = []): string
     {
         if (! $slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
@@ -37,10 +37,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
         return $view->render();
     }
 
-    /**
-     * @return Slider
-     */
-    private function getSliderFromRepository($systemName)
+    private function getSliderFromRepository($systemName): Slider
     {
         return $this->sliderRepository->findBySystemName($systemName);
     }

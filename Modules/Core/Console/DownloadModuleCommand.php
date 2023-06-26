@@ -28,11 +28,10 @@ class DownloadModuleCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
      *
      * @throws \Symfony\Component\Process\Exception\LogicException
      */
-    public function handle()
+    public function handle(): void
     {
         $downloader = new Downloader($this->getOutput());
         try {
@@ -73,10 +72,8 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['name', InputArgument::REQUIRED, 'The vendor/name of the module'],
@@ -85,10 +82,8 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Run the module migrations', null],
@@ -110,10 +105,8 @@ class DownloadModuleCommand extends Command
 
     /**
      * Get the composer command for the environment.
-     *
-     * @return string
      */
-    protected function findComposer()
+    protected function findComposer(): string
     {
         if (file_exists(getcwd().'/composer.phar')) {
             return '"'.PHP_BINARY.'" composer.phar';

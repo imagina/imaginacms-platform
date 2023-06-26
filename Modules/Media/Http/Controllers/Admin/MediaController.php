@@ -50,20 +50,16 @@ class MediaController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('media.create');
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(File $file)
+    public function edit(File $file): Response
     {
         $thumbnails = $this->thumbnailsManager->all();
 
@@ -72,10 +68,8 @@ class MediaController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(File $file, UpdateMediaRequest $request)
+    public function update(File $file, UpdateMediaRequest $request): Response
     {
         $this->file->update($file, $request->all());
 
@@ -87,10 +81,8 @@ class MediaController extends AdminBaseController
      * Remove the specified resource from storage.
      *
      * @internal param int $id
-     *
-     * @return Response
      */
-    public function destroy(File $file)
+    public function destroy(File $file): Response
     {
         $this->imagy->deleteAllFor($file);
         $this->file->destroy($file);

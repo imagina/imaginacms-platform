@@ -18,9 +18,8 @@ class MeetingService
      * @param array meetingAttr (title,startTime,email, etc)
      * @param array entityAttr (id,type)
      * @param string provider (optional)
-     * @return response
      */
-    public function create($data)
+    public function create($data): response
     {
         // Default Provider
         $providerName = 'zoom';

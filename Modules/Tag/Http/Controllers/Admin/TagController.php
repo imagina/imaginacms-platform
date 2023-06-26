@@ -31,10 +31,8 @@ class TagController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $tags = $this->tag->all();
 
@@ -43,10 +41,8 @@ class TagController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $namespaces = $this->formatNamespaces($this->tagManager->getNamespaces());
 
@@ -55,10 +51,8 @@ class TagController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateTagRequest $request)
+    public function store(CreateTagRequest $request): Response
     {
         $this->tag->create($request->all());
 
@@ -68,10 +62,8 @@ class TagController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Tag $tag)
+    public function edit(Tag $tag): Response
     {
         $namespaces = $this->formatNamespaces($this->tagManager->getNamespaces());
 
@@ -80,10 +72,8 @@ class TagController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Tag $tag, UpdateTagRequest $request)
+    public function update(Tag $tag, UpdateTagRequest $request): Response
     {
         $this->tag->update($tag, $request->all());
 
@@ -93,10 +83,8 @@ class TagController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Tag $tag): Response
     {
         $this->tag->destroy($tag);
 

@@ -22,7 +22,7 @@ class BuildTranslationsCacheCommand extends Command
         $this->translation = $translation;
     }
 
-    public function handle()
+    public function handle(): void
     {
         foreach ($this->translation->all() as $translation) {
             foreach (config('laravellocalization.supportedLocales') as $locale => $language) {

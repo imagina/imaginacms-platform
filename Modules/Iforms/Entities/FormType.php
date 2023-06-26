@@ -33,21 +33,16 @@ class FormType extends Model
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->types;
     }
 
     /**
      * Get the post status
-     *
-     * @param  int  $id
-     * @return string
      */
-    public function get($id)
+    public function get(int $id): string
     {
         $id--;
         if (isset($this->types[$id])) {

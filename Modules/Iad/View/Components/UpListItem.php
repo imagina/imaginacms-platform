@@ -24,10 +24,7 @@ class UpListItem extends Component
         $this->view = 'iad::frontend.components.up-list-item.layout.'.($layout ?? '.up-list-item-1').'.index';
     }
 
-    /**
-     * @return currencyRepository
-     */
-    private function categoryRepository()
+    private function categoryRepository(): currencyRepository
     {
         return app('Modules\Iad\Repositories\CategoryRepository');
     }

@@ -25,10 +25,8 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$customfields = $this->customfield->all();
 
@@ -37,20 +35,16 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.customfields.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCustomFieldRequest $request)
+    public function store(CreateCustomFieldRequest $request): Response
     {
         $this->customfield->create($request->all());
 
@@ -60,20 +54,16 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Field $customfield)
+    public function edit(Field $customfield): Response
     {
         return view('Iprofile::admin.customfields.edit', compact('customfield'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Field $customfield, UpdateCustomFieldRequest $request)
+    public function update(Field $customfield, UpdateCustomFieldRequest $request): Response
     {
         $this->customfield->update($customfield, $request->all());
 
@@ -83,10 +73,8 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Field $customfield)
+    public function destroy(Field $customfield): Response
     {
         $this->customfield->destroy($customfield);
 

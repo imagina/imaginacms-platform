@@ -22,10 +22,8 @@ class IlocationsServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIlocationsSidebar::class);
@@ -39,7 +37,7 @@ class IlocationsServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ilocations', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ilocations', 'permissions'), 'asgard.ilocations.permissions');
@@ -52,10 +50,8 @@ class IlocationsServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

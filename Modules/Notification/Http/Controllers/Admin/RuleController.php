@@ -25,10 +25,8 @@ class RuleController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$rules = $this->rule->all();
 
@@ -37,20 +35,16 @@ class RuleController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.rules.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateRuleRequest $request)
+    public function store(CreateRuleRequest $request): Response
     {
         $this->rule->create($request->all());
 
@@ -60,20 +54,16 @@ class RuleController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Rule $rule)
+    public function edit(Rule $rule): Response
     {
         return view('notification::admin.rules.edit', compact('rule'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Rule $rule, UpdateRuleRequest $request)
+    public function update(Rule $rule, UpdateRuleRequest $request): Response
     {
         $this->rule->update($rule, $request->all());
 
@@ -83,10 +73,8 @@ class RuleController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Rule $rule)
+    public function destroy(Rule $rule): Response
     {
         $this->rule->destroy($rule);
 

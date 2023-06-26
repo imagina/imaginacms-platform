@@ -276,11 +276,8 @@ class EloquentCategoryRepository extends EloquentBaseRepository implements Categ
 
     /**
      * Find a resource by the given slug
-     *
-     * @param  string  $slug
-     * @return object
      */
-    public function findBySlug($slug)
+    public function findBySlug(string $slug): object
     {
         if (method_exists($this->model, 'translations')) {
             $query = $this->model->whereHas('translations', function (Builder $q) use ($slug) {

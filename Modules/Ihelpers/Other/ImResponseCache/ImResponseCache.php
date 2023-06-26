@@ -43,11 +43,8 @@ class ImResponseCache
 
     /**
      * Determine if the given request should be cached.
-     *
-     *
-     * @return bool
      */
-    public function shouldCache(Request $request, Response $response)
+    public function shouldCache(Request $request, Response $response): bool
     {
         if (! config('laravel-responsecache.enabled')) {
             return false;
@@ -109,11 +106,8 @@ class ImResponseCache
 
     /**
      * Cache the response to a file.
-     *
-     * @param  \Symfony\Component\HttpFoundation\Request  $response
-     * @return void
      */
-    public function public_cache(Request $request, Response $response)
+    public function public_cache(Request $request, Response $response): void
     {
         [$path, $file] = $this->getDirectoryAndFileNames($request);
         $this->files->makeDirectory($path, 0775, true, true);
@@ -122,11 +116,8 @@ class ImResponseCache
 
     /**
      * Get the names of the directory and file.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
      */
-    protected function getDirectoryAndFileNames($request)
+    protected function getDirectoryAndFileNames(Request $request): array
     {
         $segments = explode('/', ltrim($request->getPathInfo(), '/'));
         $file = $this->aliasFilename(array_pop($segments)).'.html';
@@ -137,12 +128,10 @@ class ImResponseCache
     /**
      * Gets the path to the cache directory.
      *
-     * @param  string  $path
-     * @return string
      *
      * @throws \Exception
      */
-    public function getCachePath($path = '')
+    public function getCachePath(string $path = ''): string
     {
         $base = public_path().'/page-cache/';
 
@@ -155,33 +144,24 @@ class ImResponseCache
 
     /**
      * Alias the filename if necessary.
-     *
-     * @param  string  $filename
-     * @return string
      */
-    protected function aliasFilename($filename)
+    protected function aliasFilename(string $filename): string
     {
         return $filename ?: 'pc__index__pc';
     }
 
     /**
      * Determine if the given request has been cached.
-     *
-     *
-     * @return bool
      */
-    public function hasCached(Request $request)
+    public function hasCached(Request $request): bool
     {
         return $this->cache->has($this->hasher->getHashFor($request));
     }
 
     /**
      * Get the cached response for the given request.
-     *
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getCachedResponseFor(Request $request)
+    public function getCachedResponseFor(Request $request): Response
     {
         return $this->cache->get($this->hasher->getHashFor($request));
     }
@@ -196,21 +176,16 @@ class ImResponseCache
 
     /**
      * Fully clear the cache directory.
-     *
-     * @return bool
      */
-    public function flushPageCache()
+    public function flushPageCache(): bool
     {
         return $this->files->deleteDirectory($this->getCachePath(), true);
     }
 
     /**
      * Add a header with the cache date on the response.
-     *
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function addCachedHeader(Response $response)
+    protected function addCachedHeader(Response $response): Response
     {
         $clonedResponse = clone $response;
 

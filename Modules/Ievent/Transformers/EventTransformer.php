@@ -9,7 +9,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class EventTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id' => $this->when($this->id, $this->id),

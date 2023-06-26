@@ -46,10 +46,8 @@ class Frequency
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->frequencies;
     }
@@ -58,9 +56,8 @@ class Frequency
      * Get the post status
      *
      * @param  int  $statusId
-     * @return string
      */
-    public function get($frequencyId)
+    public function get($frequencyId): string
     {
         $frequencies = collect($this->frequencies);
         $frequency = $frequencies->where('id', $frequencyId)->first() ?? $frequencies->where('id', self::MONTHLY)->first();

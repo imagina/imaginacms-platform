@@ -22,10 +22,8 @@ class RequestableServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterRequestableSidebar::class);
@@ -36,7 +34,7 @@ class RequestableServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('requestable', 'permissions'), 'asgard.requestable.permissions');
         $this->publishConfig('requestable', 'config');
@@ -51,10 +49,8 @@ class RequestableServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

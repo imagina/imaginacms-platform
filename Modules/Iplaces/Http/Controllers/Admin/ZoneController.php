@@ -25,10 +25,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $zones = $this->zone->paginate(20);
 
@@ -37,10 +35,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $zones = $this->zone->paginate(20);
 
@@ -49,10 +45,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateZoneRequest $request)
+    public function store(CreateZoneRequest $request): Response
     {//dd($request);
         try {
             $this->zone->create($request->all());
@@ -69,10 +63,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Zone $zone)
+    public function edit(Zone $zone): Response
     {//dd($zone);
         $zones = $this->zone->paginate(20);
 
@@ -81,10 +73,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Zone $zone, UpdateZoneRequest $request)
+    public function update(Zone $zone, UpdateZoneRequest $request): Response
     {//dd($zone);
         try {
             if (isset($request['options'])) {
@@ -107,10 +97,8 @@ class ZoneController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Zone $zone)
+    public function destroy(Zone $zone): Response
     {
         try {
             $this->zone->destroy($zone);

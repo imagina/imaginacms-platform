@@ -21,10 +21,8 @@ class IschedulableServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIschedulableSidebar::class);
@@ -34,7 +32,7 @@ class IschedulableServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ischedulable', 'config');
         $this->publishConfig('ischedulable', 'crud-fields');
@@ -48,10 +46,8 @@ class IschedulableServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

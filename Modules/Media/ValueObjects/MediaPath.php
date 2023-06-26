@@ -42,11 +42,8 @@ class MediaPath
 
     /**
      * Get the URL depending on configured disk
-     *
-     * @param  string  $disk
-     * @return string
      */
-    public function getUrl($disk = null, $organizationId = null)
+    public function getUrl(string $disk = null, $organizationId = null): string
     {
         $path = ltrim($this->path, '/');
         $disk = is_null($disk) ? is_null($this->disk) ? setting('media::filesystem', null, config('asgard.media.config.filesystem')) : $this->disk : $disk;
@@ -55,10 +52,7 @@ class MediaPath
         return Storage::disk($disk)->url(($organizationPrefix).$path);
     }
 
-    /**
-     * @return string
-     */
-    public function getRelativeUrl()
+    public function getRelativeUrl(): string
     {
         return $this->path;
     }

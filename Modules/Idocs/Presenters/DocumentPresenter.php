@@ -24,10 +24,8 @@ class DocumentPresenter extends Presenter
 
     /**
      * Get the doc status
-     *
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         if ($this->entity->status) {
             return trans('idocs::documents.status.active');
@@ -63,10 +61,8 @@ class DocumentPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case 0:

@@ -25,10 +25,8 @@ class AddressController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$addresses = $this->address->all();
 
@@ -37,20 +35,16 @@ class AddressController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iprofile::admin.addresses.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateAddressRequest $request)
+    public function store(CreateAddressRequest $request): Response
     {
         $this->address->create($request->all());
 
@@ -60,20 +54,16 @@ class AddressController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Address $address)
+    public function edit(Address $address): Response
     {
         return view('iprofile::admin.addresses.edit', compact('address'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Address $address, UpdateAddressRequest $request)
+    public function update(Address $address, UpdateAddressRequest $request): Response
     {
         $this->address->update($address, $request->all());
 
@@ -83,10 +73,8 @@ class AddressController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Address $address)
+    public function destroy(Address $address): Response
     {
         $this->address->destroy($address);
 

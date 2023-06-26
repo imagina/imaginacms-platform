@@ -28,10 +28,8 @@ class CouponApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -87,10 +85,8 @@ class CouponApiController extends BaseApiController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -118,10 +114,8 @@ class CouponApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         \DB::beginTransaction();
 
@@ -158,10 +152,8 @@ class CouponApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
 
@@ -192,10 +184,8 @@ class CouponApiController extends BaseApiController
 
     /**
      * Validate Coupon.
-     *
-     * @return Response
      */
-    public function validateCoupon(Request $request)
+    public function validateCoupon(Request $request): Response
     {
         try {
             $params = $this->getParamsRequest($request);

@@ -18,10 +18,8 @@ class PriceListController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $params = $this->getParamsRequest($request, ['include' => ['products']]);
 

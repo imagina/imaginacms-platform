@@ -51,10 +51,7 @@ class PermissionsRemover
         }
     }
 
-    /**
-     * @return array
-     */
-    private function buildPermissionList()
+    private function buildPermissionList(): array
     {
         $permissionsConfig = config('asgard.'.strtolower($this->moduleName).'.permissions');
         $list = [];

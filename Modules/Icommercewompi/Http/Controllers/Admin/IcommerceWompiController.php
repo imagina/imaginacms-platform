@@ -32,10 +32,8 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercewompis = $this->icommercewompi->all();
 
@@ -44,20 +42,16 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercewompi::admin.icommercewompis.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceWompiRequest $request)
+    public function store(CreateIcommerceWompiRequest $request): Response
     {
         $this->icommercewompi->create($request->all());
 
@@ -67,10 +61,8 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceWompi $icommercewompi)
+    public function edit(IcommerceWompi $icommercewompi): Response
     {
         return view('icommercewompi::admin.icommercewompis.edit', compact('icommercewompi'));
     }
@@ -79,9 +71,8 @@ class IcommerceWompiController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceWompi  $icommercewompi
-     * @return Response
      */
-    public function update($id, UpdateIcommerceWompiRequest $request)
+    public function update($id, UpdateIcommerceWompiRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,10 +92,8 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceWompi $icommercewompi)
+    public function destroy(IcommerceWompi $icommercewompi): Response
     {
         $this->icommercewompi->destroy($icommercewompi);
 

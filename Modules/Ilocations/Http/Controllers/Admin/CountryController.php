@@ -25,10 +25,8 @@ class CountryController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$countries = $this->country->all();
 
@@ -37,20 +35,16 @@ class CountryController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.countries.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCountryRequest $request)
+    public function store(CreateCountryRequest $request): Response
     {
         $this->country->create($request->all());
 
@@ -60,20 +54,16 @@ class CountryController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Country $country)
+    public function edit(Country $country): Response
     {
         return view('ilocations::admin.countries.edit', compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Country $country, UpdateCountryRequest $request)
+    public function update(Country $country, UpdateCountryRequest $request): Response
     {
         $this->country->update($country, $request->all());
 
@@ -83,10 +73,8 @@ class CountryController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Country $country)
+    public function destroy(Country $country): Response
     {
         $this->country->destroy($country);
 

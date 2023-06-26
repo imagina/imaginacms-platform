@@ -165,10 +165,8 @@ class Post extends CrudModel implements TaggableInterface
 
     /**
      * URL post
-     *
-     * @return string
      */
-    public function getUrlAttribute($locale = null)
+    public function getUrlAttribute($locale = null): string
     {
         if (empty($this->slug)) {
             $post = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
@@ -213,12 +211,11 @@ class Post extends CrudModel implements TaggableInterface
     /**
      * Magic Method modification to allow dynamic relations to other entities.
      *
-     * @return string
      *
      * @var
      * @var
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): string
     {
         //i: Convert array to dot notation
         $config = implode('.', ['asgard.iblog.config.relations.post', $method]);

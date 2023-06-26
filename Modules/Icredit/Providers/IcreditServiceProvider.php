@@ -21,10 +21,8 @@ class IcreditServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcreditSidebar::class);
@@ -35,7 +33,7 @@ class IcreditServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icredit', 'config');
         $this->publishConfig('icredit', 'crud-fields');
@@ -51,10 +49,8 @@ class IcreditServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

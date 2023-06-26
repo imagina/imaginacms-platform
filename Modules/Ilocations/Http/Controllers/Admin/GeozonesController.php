@@ -38,10 +38,8 @@ class GeozonesController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $geozones = Geozones::all();
 
@@ -50,20 +48,16 @@ class GeozonesController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.geozones.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateGeozonesRequest $request)
+    public function store(CreateGeozonesRequest $request): Response
     {
         $geozone = $this->geozones->create($request->all());
 
@@ -80,10 +74,8 @@ class GeozonesController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Geozones $geozones)
+    public function edit(Geozones $geozones): Response
     {
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->with(['country', 'province'])->get();
 
@@ -92,10 +84,8 @@ class GeozonesController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Geozones $geozones, UpdateGeozonesRequest $request)
+    public function update(Geozones $geozones, UpdateGeozonesRequest $request): Response
     {
         $geozone = $this->geozones->update($geozones, $request->all());
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->delete();
@@ -114,10 +104,8 @@ class GeozonesController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Geozones $geozones)
+    public function destroy(Geozones $geozones): Response
     {
         $geozoneRelation = GeozonesCountries::where('geozone_id', $geozones->id)->delete();
         $this->geozones->destroy($geozones);

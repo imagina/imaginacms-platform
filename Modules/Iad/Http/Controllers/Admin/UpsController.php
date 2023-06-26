@@ -25,10 +25,8 @@ class UpsController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$ups = $this->ups->all();
 
@@ -37,20 +35,16 @@ class UpsController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.ups.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateUpRequest $request)
+    public function store(CreateUpRequest $request): Response
     {
         $this->ups->create($request->all());
 
@@ -60,20 +54,16 @@ class UpsController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Up $ups)
+    public function edit(Up $ups): Response
     {
         return view('iad::admin.ups.edit', compact('ups'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Up $ups, UpdateUpRequest $request)
+    public function update(Up $ups, UpdateUpRequest $request): Response
     {
         $this->ups->update($ups, $request->all());
 
@@ -83,10 +73,8 @@ class UpsController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Up $ups)
+    public function destroy(Up $ups): Response
     {
         $this->ups->destroy($ups);
 

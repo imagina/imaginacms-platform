@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
@@ -35,7 +36,7 @@ class MoveMediaController extends Controller
         $this->mover = $mover;
     }
 
-    public function __invoke(MoveMediaRequest $request)
+    public function __invoke(MoveMediaRequest $request): JsonResponse
     {
         $destination = $this->folder->findFolderOrRoot($request->get('destinationFolder'));
 

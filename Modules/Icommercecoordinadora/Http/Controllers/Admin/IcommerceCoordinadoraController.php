@@ -25,10 +25,8 @@ class IcommerceCoordinadoraController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecoordinadoras = $this->icommercecoordinadora->all();
 
@@ -37,20 +35,16 @@ class IcommerceCoordinadoraController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecoordinadora::admin.icommercecoordinadoras.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceCoordinadoraRequest $request)
+    public function store(CreateIcommerceCoordinadoraRequest $request): Response
     {
         $this->icommercecoordinadora->create($request->all());
 
@@ -60,20 +54,16 @@ class IcommerceCoordinadoraController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceCoordinadora $icommercecoordinadora)
+    public function edit(IcommerceCoordinadora $icommercecoordinadora): Response
     {
         return view('icommercecoordinadora::admin.icommercecoordinadoras.edit', compact('icommercecoordinadora'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(IcommerceCoordinadora $icommercecoordinadora, UpdateIcommerceCoordinadoraRequest $request)
+    public function update(IcommerceCoordinadora $icommercecoordinadora, UpdateIcommerceCoordinadoraRequest $request): Response
     {
         $this->icommercecoordinadora->update($icommercecoordinadora, $request->all());
 
@@ -83,10 +73,8 @@ class IcommerceCoordinadoraController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceCoordinadora $icommercecoordinadora)
+    public function destroy(IcommerceCoordinadora $icommercecoordinadora): Response
     {
         $this->icommercecoordinadora->destroy($icommercecoordinadora);
 

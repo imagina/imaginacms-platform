@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductGroupsToBitrix24Transformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'ID' => $this->when($this->bitrixId, $this->bitrixId),

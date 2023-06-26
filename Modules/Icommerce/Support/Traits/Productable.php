@@ -57,10 +57,8 @@ trait Productable
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
-    public function products()
+    public function products(): object
     {
         return $this->morphMany(Product::class, 'entity');
     }

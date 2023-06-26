@@ -55,10 +55,8 @@ class OrderController extends BasePublicController
 
     /**
      * Show the specified resource.
-     *
-     * @return Response
      */
-    public function show(Request $request)
+    public function show(Request $request): Response
     {
         $tpl = 'icommerce::frontend.orders.show';
         $ttpl = 'icommerce.orders.show';

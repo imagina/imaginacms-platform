@@ -4,6 +4,7 @@ namespace Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Filesystem\Filesystem;
 use Modules\Isite\Entities\Module as ModuleEntity;
 use Nwidart\Modules\Collection;
 use Nwidart\Modules\Contracts\RepositoryInterface;
@@ -29,8 +30,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get all modules.
-     *
-     * @return EloquentCollection
      */
     public function all(): array
     {
@@ -78,8 +77,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get list of enabled modules.
-     *
-     * @return mixed
      */
     public function allEnabled(): array
     {
@@ -124,10 +121,8 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get modules by the given status.
-     *
-     * @param  int  $status
      */
-    public function getByStatus($status): array
+    public function getByStatus(int $status): array
     {
         $results = $this->moduleEntity
           ->newQuery()
@@ -139,8 +134,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Find a specific module.
-     *
-     * @return \Nwidart\Modules\Contracts\ModuleInterface
      */
     public function find($name): ?\Nwidart\Modules\Contracts\ModuleInterface
     {
@@ -179,10 +172,7 @@ class LaravelEloquentRepository implements RepositoryInterface
         return $module->getPath();
     }
 
-    /**
-     * @return \Illuminate\Filesystem\Filesystem
-     */
-    public function getFiles()
+    public function getFiles(): Filesystem
     {
         return $this->app['files'];
     }
@@ -203,11 +193,10 @@ class LaravelEloquentRepository implements RepositoryInterface
     /**
      * Delete a specific module.
      *
-     * @param  string  $name
      *
      * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
      */
-    public function delete($name): bool
+    public function delete(string $name): bool
     {
         return $this->findOrFail($name)->delete();
     }

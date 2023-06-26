@@ -4,6 +4,8 @@ namespace Modules\Media\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Modules\Core\Traits\NamespacedEntity;
 use Modules\Isite\Traits\Tokenable;
@@ -120,11 +122,8 @@ class File extends CrudModel implements TaggableInterface, Responsable
 
     /**
      * Create an HTTP response that represents the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function toResponse($request)
+    public function toResponse(Request $request): Response
     {
         return response()
           ->file(public_path($this->path->getRelativeUrl()), [

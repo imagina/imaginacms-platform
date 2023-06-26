@@ -26,10 +26,8 @@ class CreatePagesCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $total = 10000;
         $bar = $this->output->createProgressBar($total);
@@ -68,10 +66,8 @@ class CreatePagesCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             //['example', InputArgument::REQUIRED, 'An example argument.'],
@@ -80,10 +76,8 @@ class CreatePagesCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             //['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

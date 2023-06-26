@@ -190,10 +190,8 @@ class EloquentIcommercePayuRepository extends EloquentBaseRepository implements 
 
     /**
      * Decript url to get data
-     *
-     * @return array
      */
-    public function decriptUrl($eUrl)
+    public function decriptUrl($eUrl): array
     {
         $decrip = base64_decode($eUrl);
         $infor = explode('-', $decrip);

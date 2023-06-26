@@ -46,10 +46,8 @@ class CheckUpdateOrders extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Icommercecredibanco Command: START');
         \Log::info('Icommercecredibanco Command: START');

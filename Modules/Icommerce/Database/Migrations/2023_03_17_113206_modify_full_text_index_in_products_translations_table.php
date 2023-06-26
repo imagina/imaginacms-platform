@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
         $indexesFound = array_change_key_case($sm->listTableIndexes('icommerce__product_translations'), CASE_LOWER);
@@ -38,10 +36,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

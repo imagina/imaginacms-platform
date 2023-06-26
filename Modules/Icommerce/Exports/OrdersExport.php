@@ -3,6 +3,7 @@
 namespace Modules\Icommerce\Exports;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -36,10 +37,7 @@ class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, W
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function query()
+    public function query(): Collection
     {
         return OrderItem::orderBy('id', 'desc')->with(['order.customer']);
     }

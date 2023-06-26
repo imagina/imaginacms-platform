@@ -25,10 +25,8 @@ class JobController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$jobs = $this->job->all();
 
@@ -37,20 +35,16 @@ class JobController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.jobs.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateJobRequest $request)
+    public function store(CreateJobRequest $request): Response
     {
         $this->job->create($request->all());
 
@@ -60,20 +54,16 @@ class JobController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(Job $job)
+    public function edit(Job $job): Response
     {
         return view('icheckin::admin.jobs.edit', compact('job'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(Job $job, UpdateJobRequest $request)
+    public function update(Job $job, UpdateJobRequest $request): Response
     {
         $this->job->update($job, $request->all());
 
@@ -83,10 +73,8 @@ class JobController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Job $job)
+    public function destroy(Job $job): Response
     {
         $this->job->destroy($job);
 

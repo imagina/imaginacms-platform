@@ -35,10 +35,7 @@ class CreateFolderOnDisk
         return $path;
     }
 
-    /**
-     * @return string
-     */
-    private function getConfiguredFilesystem()
+    private function getConfiguredFilesystem(): string
     {
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }

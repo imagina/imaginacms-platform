@@ -25,10 +25,8 @@ class UserApiController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$userapis = $this->userapi->all();
 
@@ -37,20 +35,16 @@ class UserApiController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.userapis.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateUserApiRequest $request)
+    public function store(CreateUserApiRequest $request): Response
     {
         $this->userapi->create($request->all());
 
@@ -60,20 +54,16 @@ class UserApiController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(UserApi $userapi)
+    public function edit(UserApi $userapi): Response
     {
         return view('Iprofile::admin.userapis.edit', compact('userapi'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(UserApi $userapi, UpdateUserApiRequest $request)
+    public function update(UserApi $userapi, UpdateUserApiRequest $request): Response
     {
         $this->userapi->update($userapi, $request->all());
 
@@ -83,10 +73,8 @@ class UserApiController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(UserApi $userapi)
+    public function destroy(UserApi $userapi): Response
     {
         $this->userapi->destroy($userapi);
 

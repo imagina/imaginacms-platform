@@ -13,10 +13,8 @@ class UsherInstaller extends ProviderInstaller implements SetupScript
 
     /**
      * Check if the user driver is correctly registered.
-     *
-     * @return bool
      */
-    public function checkIsInstalled()
+    public function checkIsInstalled(): bool
     {
         return class_exists('Maatwebsite\Usher\UsherServiceProvider')
             && class_exists('Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider');

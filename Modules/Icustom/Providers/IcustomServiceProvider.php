@@ -18,15 +18,13 @@ class IcustomServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icustom', 'permissions');
         $this->publishConfig('icustom', 'config');
@@ -34,10 +32,8 @@ class IcustomServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

@@ -36,10 +36,8 @@ class NotificationsController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Notification $notification)
+    public function destroy(Notification $notification): Response
     {
         $this->notification->destroy($notification);
 

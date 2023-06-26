@@ -24,7 +24,7 @@ final class EntityScaffoldCommand extends Command
         $this->entityGenerator = $entityGenerator;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->entityGenerator
             ->forModule($this->argument('module'))

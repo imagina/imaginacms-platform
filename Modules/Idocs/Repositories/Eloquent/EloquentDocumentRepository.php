@@ -3,6 +3,7 @@
 namespace Modules\Idocs\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Idocs\Events\DocumentWasCreated;
 use Modules\Idocs\Events\DocumentWasDeleted;
@@ -178,9 +179,8 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
 
     /**
      * @param $param
-     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function search($keys)
+    public function search($keys): Collection
     {
         $query = $this->model->query();
         $criterion = $keys;
@@ -195,11 +195,8 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
     /**
      * Standard Api Method
      * Create a iblog post
-     *
-     * @param  array  $data
-     * @return Post
      */
-    public function create($data)
+    public function create(array $data): Post
     {
         $document = $this->model->create($data);
 
@@ -212,10 +209,9 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
      * Update a resource
      *
      * @param $documnet
-     * @param  array  $data
      * @return mixed
      */
-    public function update($document, $data)
+    public function update($document, array $data)
     {
         $document->update($data);
 

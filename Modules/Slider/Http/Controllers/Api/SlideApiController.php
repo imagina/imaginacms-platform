@@ -156,11 +156,7 @@ class SlideApiController extends BaseApiController
               return response()->json($response, $status ?? 200);
           }
 
-      /**
-       * @param  \Illuminate\Foundation\Http\FormRequest  $request
-       * @return array
-       */
-      private function addSliderId(Slider $slider, FormRequest $request)
+      private function addSliderId(Slider $slider, FormRequest $request): array
       {
           return array_merge($request->all(), ['slider_id' => $slider->id]);
       }

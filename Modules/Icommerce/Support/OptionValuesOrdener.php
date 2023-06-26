@@ -30,11 +30,8 @@ class OptionValuesOrdener
 
     /**
      * Order recursively the value
-     *
-     * @param  int  $position
-     * @param  array  $item
      */
-    private function order($position, $item)
+    private function order(int $position, array $item)
     {
         $optionValue = $this->optionValueRepository->find($item['id']);
         if (0 === $position && false === true/*$optionValue->isRoot()*/) {
@@ -48,9 +45,6 @@ class OptionValuesOrdener
         }
     }
 
-    /**
-     * @param  Menuitem  $parent
-     */
     private function handleChildrenForParent(OptionValue $parent, array $children)
     {
         foreach ($children as $position => $item) {
@@ -66,11 +60,8 @@ class OptionValuesOrdener
 
     /**
      * Save the given position on the value
-     *
-     * @param  object  $optionValue
-     * @param  int  $position
      */
-    private function savePosition($optionValue, $position)
+    private function savePosition(object $optionValue, int $position)
     {
         $data = [
             'sort_order' => $position,
@@ -80,32 +71,24 @@ class OptionValuesOrdener
 
     /**
      * Check if the value has children
-     *
-     * @param  array  $item
-     * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(array $item): bool
     {
         return isset($item['children']);
     }
 
     /**
      * Set the given parent id on the given value
-     *
-     * @param  object  $item
-     * @param  int  $parent_id
      */
-    private function makeItemChildOf($item, $parent_id)
+    private function makeItemChildOf(object $item, int $parent_id)
     {
         $this->optionValueRepository->update($item, compact('parent_id'));
     }
 
     /**
      * Convert the object to array
-     *
-     * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

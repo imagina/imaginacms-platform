@@ -330,10 +330,8 @@ class SubscriptionController extends BaseApiController
 
     /**
      * Buy subscription
-     *
-     * @return void
      */
-    public function buy(Request $request)
+    public function buy(Request $request): void
     {
         \DB::beginTransaction();
         try {

@@ -69,10 +69,8 @@ class TagWidget
 
     /**
      * Get the available tags, if an entity is available from that
-     *
-     * @return array
      */
-    private function getTags()
+    private function getTags(): array
     {
         if ($this->entity === null) {
             return request()->old('tags', []);

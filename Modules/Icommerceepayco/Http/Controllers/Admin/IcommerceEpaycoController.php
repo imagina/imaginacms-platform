@@ -32,10 +32,8 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceepaycos = $this->icommerceepayco->all();
 
@@ -44,20 +42,16 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceepayco::admin.icommerceepaycos.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateIcommerceEpaycoRequest $request)
+    public function store(CreateIcommerceEpaycoRequest $request): Response
     {
         $this->icommerceepayco->create($request->all());
 
@@ -67,10 +61,8 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(IcommerceEpayco $icommerceepayco)
+    public function edit(IcommerceEpayco $icommerceepayco): Response
     {
         return view('icommerceepayco::admin.icommerceepaycos.edit', compact('icommerceepayco'));
     }
@@ -79,9 +71,8 @@ class IcommerceEpaycoController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceEpayco  $icommerceepayco
-     * @return Response
      */
-    public function update($id, UpdateIcommerceEpaycoRequest $request)
+    public function update($id, UpdateIcommerceEpaycoRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,10 +92,8 @@ class IcommerceEpaycoController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(IcommerceEpayco $icommerceepayco)
+    public function destroy(IcommerceEpayco $icommerceepayco): Response
     {
         $this->icommerceepayco->destroy($icommerceepayco);
 

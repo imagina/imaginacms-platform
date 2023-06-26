@@ -19,10 +19,7 @@ use Modules\Isite\Transformers\RevisionTransformer;
 
 class PlaceTransformer extends JsonResource
 {
-    /**
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $includes = explode(',', $request->include);
 

@@ -6,6 +6,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laracasts\Presenter\PresentableTrait;
 use Laravel\Passport\HasApiTokens;
 use Modules\Core\Support\Traits\AuditTrait;
@@ -95,10 +96,7 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         return false;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function api_keys()
+    public function api_keys(): HasMany
     {
         return $this->hasMany(UserToken::class);
     }

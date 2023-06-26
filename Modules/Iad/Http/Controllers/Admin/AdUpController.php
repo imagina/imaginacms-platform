@@ -25,10 +25,8 @@ class AdUpController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$adups = $this->adup->all();
 
@@ -37,20 +35,16 @@ class AdUpController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.adups.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateAdUpRequest $request)
+    public function store(CreateAdUpRequest $request): Response
     {
         $this->adup->create($request->all());
 
@@ -60,20 +54,16 @@ class AdUpController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(AdUp $adup)
+    public function edit(AdUp $adup): Response
     {
         return view('iad::admin.adups.edit', compact('adup'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(AdUp $adup, UpdateAdUpRequest $request)
+    public function update(AdUp $adup, UpdateAdUpRequest $request): Response
     {
         $this->adup->update($adup, $request->all());
 
@@ -83,10 +73,8 @@ class AdUpController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(AdUp $adup)
+    public function destroy(AdUp $adup): Response
     {
         $this->adup->destroy($adup);
 

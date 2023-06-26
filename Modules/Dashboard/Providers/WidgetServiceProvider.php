@@ -7,7 +7,7 @@ use Modules\Dashboard\Composers\WidgetViewComposer;
 
 class WidgetServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(WidgetViewComposer::class, function () {
             return new WidgetViewComposer();

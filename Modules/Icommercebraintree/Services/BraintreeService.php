@@ -12,9 +12,8 @@ class BraintreeService
      * Get Status to Order
      *
      * @param Braintree Transaction
-     * @return int
      */
-    public function getStatusOrder($cod)
+    public function getStatusOrder($cod): int
     {
         \Log::info('Module Icommercebraintree: Status Braintree: '.$cod);
 
@@ -68,9 +67,8 @@ class BraintreeService
      * Get Status to Order
      *
      * @param Braintree Errors Transaction
-     * @return array
      */
-    public function getErrors($errors)
+    public function getErrors($errors): array
     {
         $errorsGral = [];
         $errorsString = '';
@@ -88,10 +86,8 @@ class BraintreeService
 
     /**
      * Get Data
-     *
-     * @return array
      */
-    public function getDataToSuscription($token, $planId, $planPrice)
+    public function getDataToSuscription($token, $planId, $planPrice): array
     {
         $dataSubscription = [
             'paymentMethodToken' => $token,

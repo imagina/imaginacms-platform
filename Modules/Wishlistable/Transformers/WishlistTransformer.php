@@ -9,7 +9,7 @@ class WishlistTransformer extends JsonResource
 {
     use Transformeable;
 
-    public function toArray($request)
+    public function toArray($request): array
     {
         $item = [
             'id' => $this->when($this->id, $this->id),

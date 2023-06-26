@@ -8,7 +8,6 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Repositories\ProvinceRepository;
 use Modules\Iplaces\Entities\City;
 use Modules\Iplaces\Http\Requests\CreateCityRequest;
-use Modules\Iplaces\Http\Requests\UpdateCityRequest;
 use Modules\Iplaces\Repositories\CityRepository;
 
 class CityController extends AdminBaseController
@@ -30,10 +29,8 @@ class CityController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $cities = $this->city->all();
 
@@ -42,10 +39,8 @@ class CityController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $filter = json_decode(json_encode(['country_id' => 48]));
         $provinces = $this->province->index(null, null, $filter, [], []);
@@ -55,10 +50,8 @@ class CityController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateCityRequest $request)
+    public function store(CreateCityRequest $request): Response
     {
         try {
             $this->city->create($request->all());
@@ -75,10 +68,8 @@ class CityController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(City $city)
+    public function edit(City $city): Response
     {
         $filter = json_decode(json_encode(['country_id' => 48]));
         $provinces = $this->province->index(null, null, $filter, [], []);
@@ -88,11 +79,8 @@ class CityController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  UpdateCityRequest  $request
-     * @return Response
      */
-    public function update(City $city, Request $request)
+    public function update(City $city, Request $request): Response
     {
         $this->city->update($city, $request->all());
 
@@ -102,10 +90,8 @@ class CityController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(City $city)
+    public function destroy(City $city): Response
     {
         $this->city->destroy($city);
 

@@ -25,10 +25,8 @@ class UpLogController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$uplogs = $this->uplog->all();
 
@@ -37,20 +35,16 @@ class UpLogController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.uplogs.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(CreateUpLogRequest $request)
+    public function store(CreateUpLogRequest $request): Response
     {
         $this->uplog->create($request->all());
 
@@ -60,20 +54,16 @@ class UpLogController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit(UpLog $uplog)
+    public function edit(UpLog $uplog): Response
     {
         return view('iad::admin.uplogs.edit', compact('uplog'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
-    public function update(UpLog $uplog, UpdateUpLogRequest $request)
+    public function update(UpLog $uplog, UpdateUpLogRequest $request): Response
     {
         $this->uplog->update($uplog, $request->all());
 
@@ -83,10 +73,8 @@ class UpLogController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(UpLog $uplog)
+    public function destroy(UpLog $uplog): Response
     {
         $this->uplog->destroy($uplog);
 

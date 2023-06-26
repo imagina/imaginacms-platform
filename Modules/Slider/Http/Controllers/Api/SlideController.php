@@ -3,6 +3,7 @@
 namespace Modules\Slider\Http\Controllers\Api;
 
 use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
@@ -36,7 +37,7 @@ class SlideController extends Controller
     /**
      * Update all slides
      */
-    public function update(Request $request)
+    public function update(Request $request): JsonResponse
     {
         try {
             $this->cache->tags('slides')->flush();
@@ -57,10 +58,8 @@ class SlideController extends Controller
 
     /**
      * Delete a slide
-     *
-     * @return mixed
      */
-    public function delete(Request $request)
+    public function delete(Request $request): JsonResponse
     {
         $slide = $this->slide->find($request->get('slide'));
 

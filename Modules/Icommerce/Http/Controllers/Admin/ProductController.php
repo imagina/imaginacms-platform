@@ -49,10 +49,8 @@ class ProductController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('icommerce::admin.products.index');
     }

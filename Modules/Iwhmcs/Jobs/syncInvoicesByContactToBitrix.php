@@ -40,10 +40,8 @@ class syncInvoicesByContactToBitrix implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         //dd(CRest::call('crm.deal.get', ["id" => '78536']));
         $this->dispatchInvoicesByContactBatch();

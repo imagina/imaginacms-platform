@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icommerce__shipping_method_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -28,10 +26,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__shipping_method_translations', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__shipping_method_translations', 'shippingmethod_id')) {

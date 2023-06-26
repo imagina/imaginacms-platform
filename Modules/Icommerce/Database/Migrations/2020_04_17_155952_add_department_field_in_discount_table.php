@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
             $table->integer('department_id')->unsigned()->nullable();
@@ -21,10 +19,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icommerce__product_discounts', function (Blueprint $table) {
             if (Schema::hasColumn('icommerce__product_discounts', 'department_id')) {

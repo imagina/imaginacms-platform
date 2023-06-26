@@ -22,10 +22,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Get all root elements
      *
-     * @param  int  $menuId
      * @return mixed
      */
-    public function rootsForMenu($menuId)
+    public function rootsForMenu(int $menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->rootsForMenu($menuId);
@@ -46,11 +45,8 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Get the root menu item for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function getRootForMenu($menuId)
+    public function getRootForMenu(int $menuId): object
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->getRootForMenu($menuId);
@@ -59,11 +55,8 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Return a complete tree for the given menu id
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function getTreeForMenu($menuId)
+    public function getTreeForMenu(int $menuId): object
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->getTreeForMenu($menuId);
@@ -72,23 +65,15 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Get all root elements
-     *
-     * @param  int  $menuId
-     * @return object
      */
-    public function allRootsForMenu($menuId)
+    public function allRootsForMenu(int $menuId): object
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->allRootsForMenu($menuId);
         });
     }
 
-    /**
-     * @param  string  $uri
-     * @param  string  $locale
-     * @return object
-     */
-    public function findByUriInLanguage($uri, $locale)
+    public function findByUriInLanguage(string $uri, string $locale): object
     {
         return $this->remember(function () use ($uri, $locale) {
             return $this->repository->findByUriInLanguage($uri, $locale);
@@ -157,12 +142,8 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Update the Menu Items for the given ids
-     *
-     * @param  array  $criterias
-     * @param  array  $data
-     * @return bool
      */
-    public function updateItems($criterias, $data)
+    public function updateItems(array $criterias, array $data): bool
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -171,11 +152,8 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Delete the Menu Items for the given ids
-     *
-     * @param  array  $criterias
-     * @return bool
      */
-    public function deleteItems($criterias)
+    public function deleteItems(array $criterias): bool
     {
         $this->cache->tags($this->entityName)->flush();
 

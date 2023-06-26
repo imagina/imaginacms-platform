@@ -6,10 +6,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         \DB::statement('ALTER TABLE `iblog__post_translations` DROP INDEX `full`;');
         \DB::statement('ALTER TABLE iblog__post_translations ADD FULLTEXT full(title,description,summary)');
@@ -17,10 +15,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

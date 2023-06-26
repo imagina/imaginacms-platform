@@ -52,10 +52,8 @@ trait WithProduct
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
-    public function products()
+    public function products(): object
     {
         return $this->morphMany("Modules\Icommerce\Entities\Product", 'entity');
     }

@@ -28,10 +28,8 @@ class RefreshThumbnailCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->line('Preparing to regenerate all thumbnails...');
 

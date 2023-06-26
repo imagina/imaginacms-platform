@@ -42,10 +42,8 @@ class ModuleManager
 
     /**
      * Return all modules
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function all()
+    public function all(): Collection
     {
         $modules = new Collection($this->module->all());
 
@@ -65,10 +63,8 @@ class ModuleManager
 
     /**
      * Return all the enabled modules
-     *
-     * @return array
      */
-    public function enabled()
+    public function enabled(): array
     {
         return $this->module->allEnabled();
     }
@@ -88,10 +84,8 @@ class ModuleManager
 
     /**
      * Get the enabled modules, with the module name as the key
-     *
-     * @return array
      */
-    public function getFlippedEnabledModules()
+    public function getFlippedEnabledModules(): array
     {
         $enabledModules = $this->module->allEnabled();
 
@@ -131,10 +125,8 @@ class ModuleManager
 
     /**
      * Get the changelog for the given module
-     *
-     * @return array
      */
-    public function changelogFor(Module $module)
+    public function changelogFor(Module $module): array
     {
         $path = $module->getPath().'/changelog.yml';
         if (! $this->finder->isFile($path)) {
@@ -152,10 +144,8 @@ class ModuleManager
 
     /**
      * Limit the versions to the last 5
-     *
-     * @return array
      */
-    private function limitLastVersionsAmount(array $versions)
+    private function limitLastVersionsAmount(array $versions): array
     {
         return array_slice($versions, 0, 5);
     }

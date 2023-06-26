@@ -25,20 +25,16 @@ class BannerWasCreated implements StoringMedia
 
     /**
      * Return the entity
-     *
-     * @return Banner
      */
-    public function getEntity()
+    public function getEntity(): Banner
     {
         return $this->banner;
     }
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

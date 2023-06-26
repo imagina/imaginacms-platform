@@ -48,11 +48,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
     /**
      * Recursively remove the given directory
-     *
-     * @param  string  $dir
-     * @return bool
      */
-    public static function delTree($dir)
+    public static function delTree(string $dir): bool
     {
         $files = array_diff(scandir($dir), ['.', '..']);
         foreach ($files as $file) {
@@ -562,11 +559,10 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get the contents of composer.json file
      *
-     * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getComposerFile()
+    private function getComposerFile(): string
     {
         $composerJson = $this->finder->get($this->testModulePath.'/composer.json');
 
@@ -576,11 +572,10 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get the contents of module.json file
      *
-     * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getModuleFile()
+    private function getModuleFile(): string
     {
         $moduleFile = $this->finder->get($this->testModulePath.'/module.json');
 
@@ -590,10 +585,9 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get a Controller
      *
-     * @param  string  $controllerName
      * @return mixed
      */
-    private function getAdminControllerFile($controllerName = 'Post')
+    private function getAdminControllerFile(string $controllerName = 'Post')
     {
         $controllerFile = $this->finder->get("{$this->testModulePath}/Http/Controllers/Admin/{$controllerName}Controller.php");
 

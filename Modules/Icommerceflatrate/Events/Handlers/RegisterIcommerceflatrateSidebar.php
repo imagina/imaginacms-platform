@@ -28,10 +28,7 @@ class RegisterIcommerceflatrateSidebar implements \Maatwebsite\Sidebar\SidebarEx
         //$sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommerceflatrate::icommerceflatrates.title.icommerceflatrates'), function (Item $item) {

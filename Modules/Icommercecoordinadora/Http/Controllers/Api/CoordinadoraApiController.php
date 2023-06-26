@@ -42,7 +42,7 @@ class CoordinadoraApiController extends BaseApiController
      * @param array address
      * @return response Cotizador
      */
-    public function cotizacion(Request $request, $address)
+    public function cotizacion(Request $request, $address): response
     {
         try {
             //dd($this->clientSoap->__getTypes());
@@ -72,7 +72,7 @@ class CoordinadoraApiController extends BaseApiController
      * @param TESTING
      * @return response Array of Json City
      */
-    public function getCities()
+    public function getCities(): response
     {
         $items = null;
         $result = $this->initClientSoap()->Cotizador_ciudades();

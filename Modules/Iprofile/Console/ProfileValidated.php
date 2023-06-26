@@ -31,8 +31,6 @@ class ProfileValidated extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @param  Mailer  $mail
      */
     public function __construct(UserRepository $user, Mail $mail)
     {
@@ -43,10 +41,8 @@ class ProfileValidated extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         try {
             $users = $this->user->getItemsBy((object) ['take' => false, 'filter' => ['field' => ['name' => 'validate', 'value' => true]], 'include' => []]);
