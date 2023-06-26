@@ -24,7 +24,7 @@ class LatestPostsWidget extends BaseWidget
      *
      * @return string
      */
-    protected function name()
+    protected function name(): string
     {
         return 'LatestPostsWidget';
     }
@@ -36,7 +36,7 @@ class LatestPostsWidget extends BaseWidget
      *
      * @return string
      */
-    protected function options()
+    protected function options(): string
     {
         return [
             'width' => '4',
@@ -49,7 +49,7 @@ class LatestPostsWidget extends BaseWidget
      *
      * @return string
      */
-    protected function view()
+    protected function view(): string
     {
         return 'iblog::admin.widgets.latest-posts';
     }
@@ -59,7 +59,7 @@ class LatestPostsWidget extends BaseWidget
      *
      * @return string
      */
-    protected function data()
+    protected function data(): string
     {
         $limit = $this->setting->get('iblog::widget-posts-amount', locale(), 5);
 

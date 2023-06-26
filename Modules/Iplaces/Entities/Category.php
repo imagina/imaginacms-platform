@@ -144,7 +144,7 @@ class Category extends Model
      *
      * @return Builder
      */
-    public function scopeActive(Builder $query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->whereStatus(Status::ACTIVE);
     }
@@ -154,7 +154,7 @@ class Category extends Model
      *
      * @return Builder
      */
-    public function scopeInactive(Builder $query)
+    public function scopeInactive(Builder $query): Builder
     {
         return $query->whereStatus(Status::INACTIVE);
     }

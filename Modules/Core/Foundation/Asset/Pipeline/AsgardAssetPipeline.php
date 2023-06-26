@@ -33,7 +33,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @throws AssetNotFoundException
      */
-    public function requireJs($dependency)
+    public function requireJs(string $dependency): static
     {
         if (is_array($dependency)) {
             foreach ($dependency as $dependency) {
@@ -58,7 +58,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @throws AssetNotFoundException
      */
-    public function requireCss($dependency)
+    public function requireCss(string $dependency): static
     {
         if (is_array($dependency)) {
             foreach ($dependency as $dependency) {
@@ -81,7 +81,7 @@ class AsgardAssetPipeline implements AssetPipeline
      * @param  string  $dependency
      * @return void
      */
-    public function after($dependency)
+    public function after(string $dependency): void
     {
         $this->insert($dependency, 'after');
     }
@@ -92,7 +92,7 @@ class AsgardAssetPipeline implements AssetPipeline
      * @param  string  $dependency
      * @return void
      */
-    public function before($dependency)
+    public function before(string $dependency): void
     {
         $this->insert($dependency, 'before');
     }
@@ -103,7 +103,7 @@ class AsgardAssetPipeline implements AssetPipeline
      * @param  string  $dependency
      * @param  string  $offset
      */
-    private function insert($dependency, $offset = 'before')
+    private function insert(string $dependency, string $offset = 'before')
     {
         $offset = $offset == 'before' ? 0 : 1;
 
@@ -126,7 +126,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @return \Illuminate\Support\Collection
      */
-    public function allCss()
+    public function allCss(): Collection
     {
         return $this->css;
     }
@@ -136,7 +136,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @return \Illuminate\Support\Collection
      */
-    public function allJs()
+    public function allJs(): Collection
     {
         return $this->js;
     }
@@ -147,7 +147,7 @@ class AsgardAssetPipeline implements AssetPipeline
      * @param  string  $dependency
      * @return array
      */
-    private function findDependenciesForKey($dependency)
+    private function findDependenciesForKey(string $dependency): array
     {
         if ($this->css->get($dependency)) {
             return [$this->css->toArray(), 'css'];
@@ -161,7 +161,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @return array
      */
-    private function getLastKeyAndValueOf(array $dependencyArray)
+    private function getLastKeyAndValueOf(array $dependencyArray): array
     {
         $value = end($dependencyArray);
         $key = key($dependencyArray);
@@ -175,7 +175,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @return int
      */
-    private function getPositionInArray($dependency, array $dependencyArray)
+    private function getPositionInArray($dependency, array $dependencyArray): int
     {
         $pos = array_search($dependency, array_keys($dependencyArray));
 
@@ -189,7 +189,7 @@ class AsgardAssetPipeline implements AssetPipeline
      *
      * @throws AssetNotFoundException
      */
-    private function guardForAssetNotFound($assetPath)
+    private function guardForAssetNotFound(string $assetPath)
     {
         if (is_null($assetPath)) {
             throw new AssetNotFoundException($assetPath);

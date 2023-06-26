@@ -124,7 +124,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceGeneralAttributes($params)
+    public function instanceGeneralAttributes($params): void
     {
         $this->id = $params['id'] ?? uniqid();
         $this->container = $params['container'];
@@ -163,7 +163,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceBackgroundAttribute($params)
+    public function instanceBackgroundAttribute($params): void
     {
         $this->backgrounds = json_encode($params['backgrounds'] ?? [
             'position' => 'center',
@@ -179,7 +179,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceBlockConfig($params)
+    public function instanceBlockConfig($params): void
     {
         //If not get blockConfig then search by systemName
         if (! is_array($this->blockConfig) || ! count($this->blockConfig)) {
@@ -215,7 +215,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceBlockConfigFiles($params)
+    public function instanceBlockConfigFiles($params): void
     {
         //Instance the media attributes
         $componentAttrs = $this->blockConfig->attributes->componentAttributes;
@@ -260,7 +260,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceComponentType($params)
+    public function instanceComponentType($params): void
     {
         $systemName = $this->blockConfig->component->systemName ?? null;
         $nameSpace = $this->blockConfig->component->nameSpace ?? null;
@@ -293,7 +293,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function instanceComponentConfig()
+    public function instanceComponentConfig(): void
     {
         if ($this->componentType) {
             //Instance the default config
@@ -359,7 +359,7 @@ class Block extends Component
      *
      * @return void
      */
-    public function getInheritcontent()
+    public function getInheritcontent(): void
     {
         //Return the attribute inherit content
         if ($this->inheritContent) {

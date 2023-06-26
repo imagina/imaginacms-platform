@@ -31,7 +31,7 @@ class RegisterIeventSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('ievent::ievent.title.ievent'), function (Item $item) {

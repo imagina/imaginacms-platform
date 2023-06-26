@@ -25,7 +25,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      * @param  File  $file
      * @return mixed
      */
-    public function update($file, $data)
+    public function update(File $file, $data)
     {
         event($event = new FileIsUpdating($file, $data));
         $file->update($event->getAttributes());
@@ -44,7 +44,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      * @param  string  $disk
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file, $parentId = 0, $disk = null)
+    public function createFromFile(UploadedFile $file, int $parentId = 0, string $disk = null)
     {
         $fileName = FileHelper::slug($file->getClientOriginalName());
 
@@ -96,7 +96,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      * @param  object  $entity
      * @return object
      */
-    public function findFileByZoneForEntity($zone, $entity)
+    public function findFileByZoneForEntity($zone, object $entity): object
     {
         foreach ($entity->files as $file) {
             if ($file->pivot->zone == $zone) {
@@ -114,7 +114,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      * @param  object  $entity
      * @return object
      */
-    public function findMultipleFilesByZoneForEntity($zone, $entity)
+    public function findMultipleFilesByZoneForEntity(zone $zone, object $entity): object
     {
         $files = [];
         foreach ($entity->files as $file) {
@@ -129,7 +129,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * @return string
      */
-    private function getNewUniqueFilename($fileName)
+    private function getNewUniqueFilename($fileName): string
     {
         $fileNameOnly = pathinfo($fileName, PATHINFO_FILENAME);
         $extension = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -180,7 +180,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * @param  int  $folderId
      */
-    public function allChildrenOf($folderId): Collection
+    public function allChildrenOf(int $folderId): Collection
     {
         return $this->model->where('folder_id', $folderId)->get();
     }

@@ -86,7 +86,7 @@ class ModuleScaffoldCommand extends Command
      * @param  string  $fullName
      * @return array
      */
-    private function separateVendorAndName($fullName)
+    private function separateVendorAndName(string $fullName): array
     {
         $explodedFullName = explode('/', $fullName);
 
@@ -101,7 +101,7 @@ class ModuleScaffoldCommand extends Command
      *
      * @param  string  $name
      */
-    private function checkForModuleUniqueness($name)
+    private function checkForModuleUniqueness(string $name)
     {
         /** @var \Illuminate\Filesystem\Filesystem $files */
         $files = app('Illuminate\Filesystem\Filesystem');

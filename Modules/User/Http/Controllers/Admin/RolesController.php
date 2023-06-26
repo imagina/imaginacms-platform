@@ -26,7 +26,7 @@ class RolesController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('user::admin.roles.index');
     }
@@ -36,7 +36,7 @@ class RolesController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('user::admin.roles.create');
     }
@@ -46,7 +46,7 @@ class RolesController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function store(UpdateRoleRequest $request)
+    public function store(UpdateRoleRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -61,7 +61,7 @@ class RolesController extends BaseUserModuleController
      *
      * @return Response
      */
-    public function edit()
+    public function edit(): Response
     {
         return view('user::admin.roles.edit');
     }
@@ -72,7 +72,7 @@ class RolesController extends BaseUserModuleController
      * @param  int  $id
      * @return Response
      */
-    public function update($id, UpdateRoleRequest $request)
+    public function update(int $id, UpdateRoleRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -88,7 +88,7 @@ class RolesController extends BaseUserModuleController
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(int $id): Response
     {
         $this->role->delete($id);
 

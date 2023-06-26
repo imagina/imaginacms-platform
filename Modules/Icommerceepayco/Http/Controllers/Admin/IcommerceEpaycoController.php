@@ -35,7 +35,7 @@ class IcommerceEpaycoController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceepaycos = $this->icommerceepayco->all();
 
@@ -47,7 +47,7 @@ class IcommerceEpaycoController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceepayco::admin.icommerceepaycos.create');
     }
@@ -57,7 +57,7 @@ class IcommerceEpaycoController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceEpaycoRequest $request)
+    public function store(CreateIcommerceEpaycoRequest $request): Response
     {
         $this->icommerceepayco->create($request->all());
 
@@ -70,7 +70,7 @@ class IcommerceEpaycoController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceEpayco $icommerceepayco)
+    public function edit(IcommerceEpayco $icommerceepayco): Response
     {
         return view('icommerceepayco::admin.icommerceepaycos.edit', compact('icommerceepayco'));
     }
@@ -81,7 +81,7 @@ class IcommerceEpaycoController extends AdminBaseController
      * @param  IcommerceEpayco  $icommerceepayco
      * @return Response
      */
-    public function update($id, UpdateIcommerceEpaycoRequest $request)
+    public function update($id, UpdateIcommerceEpaycoRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -104,7 +104,7 @@ class IcommerceEpaycoController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceEpayco $icommerceepayco)
+    public function destroy(IcommerceEpayco $icommerceepayco): Response
     {
         $this->icommerceepayco->destroy($icommerceepayco);
 

@@ -32,7 +32,7 @@ class MenuOrdener
      * @param  int  $position
      * @param  array  $item
      */
-    private function order($position, $item)
+    private function order(int $position, array $item)
     {
         $menuItem = $this->menuItemRepository->find($item['id']);
         if (0 === $position && false === $menuItem->isRoot()) {
@@ -65,7 +65,7 @@ class MenuOrdener
      * @param  object  $menuItem
      * @param  int  $position
      */
-    private function savePosition($menuItem, $position)
+    private function savePosition(object $menuItem, int $position)
     {
         $this->menuItemRepository->update($menuItem, compact('position'));
     }
@@ -76,7 +76,7 @@ class MenuOrdener
      * @param  array  $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(array $item): bool
     {
         return isset($item['children']);
     }
@@ -87,7 +87,7 @@ class MenuOrdener
      * @param  object  $item
      * @param  int  $parent_id
      */
-    private function makeItemChildOf($item, $parent_id)
+    private function makeItemChildOf(object $item, int $parent_id)
     {
         $this->menuItemRepository->update($item, compact('parent_id'));
     }
@@ -97,7 +97,7 @@ class MenuOrdener
      *
      * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

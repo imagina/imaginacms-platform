@@ -27,7 +27,7 @@ class CategoryWasCreated
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

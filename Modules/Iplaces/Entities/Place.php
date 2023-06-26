@@ -235,7 +235,7 @@ class Place extends Model implements TaggableInterface
      *
      * @return Builder
      */
-    public function scopeActive(Builder $query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->whereStatus(Status::ACTIVE);
     }
@@ -245,7 +245,7 @@ class Place extends Model implements TaggableInterface
      *
      * @return Builder
      */
-    public function scopeCloudy(Builder $query)
+    public function scopeCloudy(Builder $query): Builder
     {
         return $query->whereWeather(Weather::CLOUDY);
     }

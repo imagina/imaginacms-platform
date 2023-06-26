@@ -32,7 +32,7 @@ class IcommerceCheckmoController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecheckmos = $this->icommercecheckmo->all();
 
@@ -44,7 +44,7 @@ class IcommerceCheckmoController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecheckmo::admin.icommercecheckmos.create');
     }
@@ -54,7 +54,7 @@ class IcommerceCheckmoController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceCheckmoRequest $request)
+    public function store(CreateIcommerceCheckmoRequest $request): Response
     {
         $this->icommercecheckmo->create($request->all());
 
@@ -67,7 +67,7 @@ class IcommerceCheckmoController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceCheckmo $icommercecheckmo)
+    public function edit(IcommerceCheckmo $icommercecheckmo): Response
     {
         return view('icommercecheckmo::admin.icommercecheckmos.edit', compact('icommercecheckmo'));
     }
@@ -78,7 +78,7 @@ class IcommerceCheckmoController extends AdminBaseController
      * @param  IcommerceCheckmo  $icommercecheckmo
      * @return Response
      */
-    public function update($id, UpdateIcommerceCheckmoRequest $request)
+    public function update($id, UpdateIcommerceCheckmoRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -101,7 +101,7 @@ class IcommerceCheckmoController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceCheckmo $icommercecheckmo)
+    public function destroy(IcommerceCheckmo $icommercecheckmo): Response
     {
         $this->icommercecheckmo->destroy($icommercecheckmo);
 

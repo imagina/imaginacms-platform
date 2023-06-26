@@ -20,7 +20,7 @@ class Currency
     /**
      * @return float
      */
-    public function convert($value)
+    public function convert($value): float
     {
         /*
          * calculate value,
@@ -36,7 +36,7 @@ class Currency
     /**
      * @return float
      */
-    public function convertFromTo($value, $to, $from = 'USD')
+    public function convertFromTo($value, $to, $from = 'USD'): float
     {
         /* Convert value from currency "From" */
         $fromCurrency = CurrencyEntity::currencyCode($from);
@@ -69,7 +69,7 @@ class Currency
     /**
      * @return float
      */
-    private function trasformerResult($result)
+    private function trasformerResult($result): float
     {
         return floatval(number_format($result, 2, '.', ''));
     }

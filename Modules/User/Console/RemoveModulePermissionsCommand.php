@@ -31,7 +31,7 @@ class RemoveModulePermissionsCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['module', InputArgument::REQUIRED, 'Module name'],
@@ -43,7 +43,7 @@ class RemoveModulePermissionsCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
         ];

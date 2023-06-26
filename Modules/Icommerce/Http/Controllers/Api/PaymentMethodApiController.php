@@ -28,7 +28,7 @@ class PaymentMethodApiController extends BaseApiController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -142,7 +142,7 @@ class PaymentMethodApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         try {
             $params = $this->getParamsRequest($request);

@@ -12,7 +12,7 @@ class IcommerceagreeDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         ProcessSeeds::dispatch([
             'baseClass' => "\Modules\Icommerceagree\Database\Seeders",

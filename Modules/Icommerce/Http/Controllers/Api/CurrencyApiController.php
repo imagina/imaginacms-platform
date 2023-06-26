@@ -29,7 +29,7 @@ class CurrencyApiController extends BaseApiController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -82,7 +82,7 @@ class CurrencyApiController extends BaseApiController
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \DB::beginTransaction();
 
@@ -147,7 +147,7 @@ class CurrencyApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         try {
             \DB::beginTransaction();

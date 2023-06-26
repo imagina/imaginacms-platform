@@ -28,7 +28,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$userapis = $this->userapi->all();
 
@@ -40,7 +40,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.userapis.create');
     }
@@ -50,7 +50,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateUserApiRequest $request)
+    public function store(CreateUserApiRequest $request): Response
     {
         $this->userapi->create($request->all());
 
@@ -63,7 +63,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(UserApi $userapi)
+    public function edit(UserApi $userapi): Response
     {
         return view('Iprofile::admin.userapis.edit', compact('userapi'));
     }
@@ -73,7 +73,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(UserApi $userapi, UpdateUserApiRequest $request)
+    public function update(UserApi $userapi, UpdateUserApiRequest $request): Response
     {
         $this->userapi->update($userapi, $request->all());
 
@@ -86,7 +86,7 @@ class UserApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(UserApi $userapi)
+    public function destroy(UserApi $userapi): Response
     {
         $this->userapi->destroy($userapi);
 

@@ -38,7 +38,7 @@ class SyncClientsToBitrix24 implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->syncClientsToBitrix();
         //$this->getClientBitrixId();

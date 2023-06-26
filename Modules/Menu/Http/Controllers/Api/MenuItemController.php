@@ -2,6 +2,7 @@
 
 namespace Modules\Menu\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -48,7 +49,7 @@ class MenuItemController extends Controller
      *
      * @return mixed
      */
-    public function delete(Request $request)
+    public function delete(Request $request): JsonResponse
     {
         $menuItem = $this->menuItem->find($request->get('menuitem'));
 

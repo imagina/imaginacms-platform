@@ -2,6 +2,7 @@
 
 namespace Modules\Notification\Entities;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -40,7 +41,7 @@ class Notification extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         $driver = config('asgard.user.config.driver');
 
@@ -52,7 +53,7 @@ class Notification extends Model
      *
      * @return string
      */
-    public function getTimeAgoAttribute()
+    public function getTimeAgoAttribute(): string
     {
         return $this->created_at->diffForHumans();
     }

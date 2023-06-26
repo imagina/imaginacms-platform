@@ -195,7 +195,7 @@ class ShippingMethodApiController extends BaseApiController
      *
      * @return Response
      */
-    public function calculations(Request $request)
+    public function calculations(Request $request): Response
     {
         try {
             $data = $request->input('attributes');

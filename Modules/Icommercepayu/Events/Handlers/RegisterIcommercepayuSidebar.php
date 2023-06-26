@@ -29,7 +29,7 @@ class RegisterIcommercepayuSidebar implements \Maatwebsite\Sidebar\SidebarExtend
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

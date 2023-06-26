@@ -55,7 +55,7 @@ class PostController extends AdminBaseController
      *
      * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         if ($request->input('q')) {
             $param = $request->input('q');
@@ -72,7 +72,7 @@ class PostController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $users = $this->user->all();
         $status = $this->status->lists();
@@ -86,7 +86,7 @@ class PostController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreatePostRequest $request)
+    public function store(CreatePostRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -109,7 +109,7 @@ class PostController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Post $post)
+    public function edit(Post $post): Response
     {
         $users = $this->user->all();
         $status = $this->status->lists();
@@ -124,7 +124,7 @@ class PostController extends AdminBaseController
      * @param  Post  $Post
      * @return Response
      */
-    public function update(Post $post, CreatePostRequest $request)
+    public function update(Post $post, CreatePostRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -147,7 +147,7 @@ class PostController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): Response
     {
         try {
             $this->post->destroy($post);

@@ -31,7 +31,7 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommercecredibanco::icommercecredibancos.title.icommercecredibancos'), function (Item $item) {

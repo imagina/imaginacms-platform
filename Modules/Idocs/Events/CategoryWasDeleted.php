@@ -27,7 +27,7 @@ class CategoryWasDeleted implements DeletingMedia
      *
      * @return int
      */
-    public function getEntityId()
+    public function getEntityId(): int
     {
         return $this->categoryId;
     }
@@ -37,7 +37,7 @@ class CategoryWasDeleted implements DeletingMedia
      *
      * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->categoryClass;
     }

@@ -13,7 +13,7 @@ class IcommerceagreeSeeder extends Seeder
      *
      * @return void
      */
-    public function run($methodsFromOther = null)
+    public function run($methodsFromOther = null): void
     {
         Model::unguard();
 

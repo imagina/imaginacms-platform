@@ -15,7 +15,7 @@ class CrudResource extends JsonResource
      *
      * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         return [];
     }

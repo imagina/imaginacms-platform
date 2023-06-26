@@ -22,7 +22,7 @@ class RoleIsUpdating extends AbstractEntityHook implements EntityIsChanging
     /**
      * @return RoleInterface
      */
-    public function getRole()
+    public function getRole(): RoleInterface
     {
         return $this->role;
     }

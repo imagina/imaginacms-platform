@@ -24,7 +24,7 @@ class Installer
     /**
      * @return $this
      */
-    public function stack(array $scripts)
+    public function stack(array $scripts): static
     {
         $this->scripts = $scripts;
 
@@ -36,7 +36,7 @@ class Installer
      *
      * @return bool
      */
-    public function install(Command $command)
+    public function install(Command $command): bool
     {
         foreach ($this->scripts as $script) {
             try {

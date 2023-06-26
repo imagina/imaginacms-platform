@@ -46,7 +46,7 @@ class ProfileController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $user = $this->auth->user();
         $user = $this->userApi->getItem($user->id, (object) [
@@ -74,7 +74,7 @@ class ProfileController extends AdminBaseController
      * @param  UpdateProfileRequest  $request
      * @return Response
      */
-    public function update($userID, Request $request)
+    public function update($userID, Request $request): Response
     {
         $user = $this->auth->user();
 

@@ -13,7 +13,7 @@ class IcommercebraintreeDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
 

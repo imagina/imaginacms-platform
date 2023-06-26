@@ -13,7 +13,7 @@ class CurrencyTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
         $copSeed = Currency::where('code', 'COP')->first();

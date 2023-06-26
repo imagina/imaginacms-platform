@@ -23,7 +23,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

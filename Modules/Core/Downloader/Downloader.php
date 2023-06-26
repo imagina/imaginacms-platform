@@ -78,7 +78,7 @@ class Downloader
      * @param  string  $directory
      * @return $this
      */
-    protected function extract($zipFile, $directory)
+    protected function extract(string $zipFile, string $directory): static
     {
         $modulesPath = config('modules.paths.modules');
 
@@ -101,7 +101,7 @@ class Downloader
      * @param  string  $latestVersionUrl
      * @return $this
      */
-    protected function downloadFile($zipFile, $latestVersionUrl)
+    protected function downloadFile(string $zipFile, string $latestVersionUrl): static
     {
         $progress = new ProgressBar($this->output);
         $progress->setFormat('[%bar%] %elapsed:6s%');
@@ -124,7 +124,7 @@ class Downloader
      * @param  string  $zipFile
      * @return $this
      */
-    protected function cleanUp($zipFile)
+    protected function cleanUp(string $zipFile): static
     {
         @chmod($zipFile, 0777);
         @unlink($zipFile);
@@ -137,7 +137,7 @@ class Downloader
      *
      * @return string
      */
-    protected function makeFilename()
+    protected function makeFilename(): string
     {
         return getcwd().'/asgardcms_'.md5(time().uniqid()).'.zip';
     }

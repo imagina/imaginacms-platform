@@ -28,7 +28,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecoordinadoras = $this->icommercecoordinadora->all();
 
@@ -40,7 +40,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecoordinadora::admin.icommercecoordinadoras.create');
     }
@@ -50,7 +50,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateIcommerceCoordinadoraRequest $request)
+    public function store(CreateIcommerceCoordinadoraRequest $request): Response
     {
         $this->icommercecoordinadora->create($request->all());
 
@@ -63,7 +63,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(IcommerceCoordinadora $icommercecoordinadora)
+    public function edit(IcommerceCoordinadora $icommercecoordinadora): Response
     {
         return view('icommercecoordinadora::admin.icommercecoordinadoras.edit', compact('icommercecoordinadora'));
     }
@@ -73,7 +73,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(IcommerceCoordinadora $icommercecoordinadora, UpdateIcommerceCoordinadoraRequest $request)
+    public function update(IcommerceCoordinadora $icommercecoordinadora, UpdateIcommerceCoordinadoraRequest $request): Response
     {
         $this->icommercecoordinadora->update($icommercecoordinadora, $request->all());
 
@@ -86,7 +86,7 @@ class IcommerceCoordinadoraController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(IcommerceCoordinadora $icommercecoordinadora)
+    public function destroy(IcommerceCoordinadora $icommercecoordinadora): Response
     {
         $this->icommercecoordinadora->destroy($icommercecoordinadora);
 

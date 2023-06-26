@@ -20,7 +20,7 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
      * @param  int  $userId
      * @return string
      */
-    public function findForUser($userId)
+    public function findForUser(int $userId): string
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -39,7 +39,7 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
      * @param  array  $widgets
      * @return mixed|void
      */
-    public function updateOrCreateForUser($widgets, $userId)
+    public function updateOrCreateForUser(array $widgets, $userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

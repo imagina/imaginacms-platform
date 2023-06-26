@@ -56,7 +56,7 @@ class TemplateViewComposer
      *
      * @return string
      */
-    private function getCurrentThemeBasePath()
+    private function getCurrentThemeBasePath(): string
     {
         return $this->themeManager->find(setting('core::template'))->getPath();
     }
@@ -67,7 +67,7 @@ class TemplateViewComposer
      *
      * @return string
      */
-    private function getTemplateName($template)
+    private function getTemplateName($template): string
     {
         preg_match('/{{-- Template: (.*) --}}/', $template->getContents(), $templateName);
 
@@ -109,7 +109,7 @@ class TemplateViewComposer
      *
      * @return bool
      */
-    private function hasSubdirectory($relativePath)
+    private function hasSubdirectory($relativePath): bool
     {
         return ! empty($relativePath);
     }

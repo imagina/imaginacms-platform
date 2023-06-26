@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Repositories\Eloquent;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Modules\Isite\Entities\Module as ModuleEntity;
@@ -127,7 +128,7 @@ class LaravelEloquentRepository implements RepositoryInterface
      *
      * @param  int  $status
      */
-    public function getByStatus($status): array
+    public function getByStatus(int $status): array
     {
         $results = $this->moduleEntity
           ->newQuery()
@@ -182,7 +183,7 @@ class LaravelEloquentRepository implements RepositoryInterface
     /**
      * @return \Illuminate\Filesystem\Filesystem
      */
-    public function getFiles()
+    public function getFiles(): Filesystem
     {
         return $this->app['files'];
     }
@@ -207,7 +208,7 @@ class LaravelEloquentRepository implements RepositoryInterface
      *
      * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
      */
-    public function delete($name): bool
+    public function delete(string $name): bool
     {
         return $this->findOrFail($name)->delete();
     }

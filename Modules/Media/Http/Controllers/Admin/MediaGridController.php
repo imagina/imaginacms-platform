@@ -2,6 +2,7 @@
 
 namespace Modules\Media\Http\Controllers\Admin;
 
+use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FileRepository;
@@ -31,7 +32,7 @@ class MediaGridController extends AdminBaseController
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();
@@ -44,7 +45,7 @@ class MediaGridController extends AdminBaseController
      *
      * @return \Illuminate\View\View
      */
-    public function ckIndex()
+    public function ckIndex(): View
     {
         $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();

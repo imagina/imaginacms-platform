@@ -88,7 +88,7 @@ class TranslationServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    protected function shouldRegisterCustomTranslator()
+    protected function shouldRegisterCustomTranslator(): bool
     {
         if (false === config('app.translations-gui', true)) {
             return false;
@@ -110,7 +110,7 @@ class TranslationServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

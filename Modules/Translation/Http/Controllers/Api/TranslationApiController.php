@@ -109,7 +109,7 @@ class TranslationApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($key, Request $request)
+    public function delete($key, Request $request): Response
     {
         \DB::beginTransaction();
         try {

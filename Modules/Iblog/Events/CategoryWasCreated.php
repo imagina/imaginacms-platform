@@ -2,6 +2,7 @@
 
 namespace Modules\Iblog\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Iblog\Entities\Category;
 use Modules\Media\Contracts\StoringMedia;
 
@@ -28,7 +29,7 @@ class CategoryWasCreated implements StoringMedia
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity()
+    public function getEntity(): Model
     {
         return $this->entity;
     }
@@ -38,7 +39,7 @@ class CategoryWasCreated implements StoringMedia
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

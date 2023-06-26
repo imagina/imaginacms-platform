@@ -30,7 +30,7 @@ class CheckDaysToStartAuction implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $nowDate = date('Y-m-d');
         \Log::info('Iauctions: Jobs|CheckDaysToStartAuction');

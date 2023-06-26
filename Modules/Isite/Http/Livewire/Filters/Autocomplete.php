@@ -225,7 +225,7 @@ class Autocomplete extends Component
     /**
      * @return SearchRepository
      */
-    private function searchRepository()
+    private function searchRepository(): SearchRepository
     {
         return app('Modules\Isearch\Repositories\SearchRepository');
     }

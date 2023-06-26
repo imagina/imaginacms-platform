@@ -12,7 +12,7 @@ trait Relationable
      * @var
      * @var
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): string
     {
         $classNamespace = get_class($this);
         $classNamespaceExploded = explode('\\', strtolower($classNamespace));

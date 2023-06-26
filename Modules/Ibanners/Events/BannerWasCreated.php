@@ -28,7 +28,7 @@ class BannerWasCreated implements StoringMedia
      *
      * @return Banner
      */
-    public function getEntity()
+    public function getEntity(): Banner
     {
         return $this->banner;
     }
@@ -38,7 +38,7 @@ class BannerWasCreated implements StoringMedia
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

@@ -28,7 +28,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$credits = $this->credit->all();
 
@@ -40,7 +40,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icredit::admin.credits.create');
     }
@@ -50,7 +50,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCreditRequest $request)
+    public function store(CreateCreditRequest $request): Response
     {
         $this->credit->create($request->all());
 
@@ -63,7 +63,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Credit $credit)
+    public function edit(Credit $credit): Response
     {
         return view('icredit::admin.credits.edit', compact('credit'));
     }
@@ -73,7 +73,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Credit $credit, UpdateCreditRequest $request)
+    public function update(Credit $credit, UpdateCreditRequest $request): Response
     {
         $this->credit->update($credit, $request->all());
 
@@ -86,7 +86,7 @@ class CreditController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Credit $credit)
+    public function destroy(Credit $credit): Response
     {
         $this->credit->destroy($credit);
 

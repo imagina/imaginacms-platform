@@ -12,7 +12,7 @@ class BlockTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $forms = Form::all();
         foreach ($forms as $form) {

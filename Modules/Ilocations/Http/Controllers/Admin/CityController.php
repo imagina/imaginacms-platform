@@ -28,7 +28,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$cities = $this->city->all();
 
@@ -40,7 +40,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.cities.create');
     }
@@ -50,7 +50,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCityRequest $request)
+    public function store(CreateCityRequest $request): Response
     {
         $this->city->create($request->all());
 
@@ -63,7 +63,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(City $city)
+    public function edit(City $city): Response
     {
         return view('ilocations::admin.cities.edit', compact('city'));
     }
@@ -73,7 +73,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(City $city, UpdateCityRequest $request)
+    public function update(City $city, UpdateCityRequest $request): Response
     {
         $this->city->update($city, $request->all());
 
@@ -86,7 +86,7 @@ class CityController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(City $city)
+    public function destroy(City $city): Response
     {
         $this->city->destroy($city);
 

@@ -13,7 +13,7 @@ class AssetsFolder extends BaseFileType implements FileType
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         $stub = $this->finder->get(__DIR__.'/../stubs/gitignore.stub');
 

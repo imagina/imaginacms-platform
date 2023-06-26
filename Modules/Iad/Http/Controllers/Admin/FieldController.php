@@ -28,7 +28,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$fields = $this->field->all();
 
@@ -40,7 +40,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.fields.create');
     }
@@ -50,7 +50,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateFieldRequest $request)
+    public function store(CreateFieldRequest $request): Response
     {
         $this->field->create($request->all());
 
@@ -63,7 +63,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Field $field)
+    public function edit(Field $field): Response
     {
         return view('iad::admin.fields.edit', compact('field'));
     }
@@ -73,7 +73,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Field $field, UpdateFieldRequest $request)
+    public function update(Field $field, UpdateFieldRequest $request): Response
     {
         $this->field->update($field, $request->all());
 
@@ -86,7 +86,7 @@ class FieldController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Field $field)
+    public function destroy(Field $field): Response
     {
         $this->field->destroy($field);
 

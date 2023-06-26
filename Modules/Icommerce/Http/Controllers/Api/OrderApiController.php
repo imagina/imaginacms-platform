@@ -124,7 +124,7 @@ class OrderApiController extends BaseApiController
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \Log::info('Icommerce: OrderApiController|Create');
 
@@ -162,7 +162,7 @@ class OrderApiController extends BaseApiController
      *
      * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         \Log::info('Icommerce: OrderApiController|Update');
         try {

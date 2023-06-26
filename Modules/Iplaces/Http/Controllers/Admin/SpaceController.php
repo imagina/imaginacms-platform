@@ -32,7 +32,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $spaces = $this->space->all();
 
@@ -44,7 +44,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iplaces::admin.spaces.create');
     }
@@ -54,7 +54,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateSpaceRequest $request)
+    public function store(CreateSpaceRequest $request): Response
     {
         try {
             $this->space->create($request->all());
@@ -74,7 +74,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Space $space)
+    public function edit(Space $space): Response
     {
         return view('iplaces::admin.spaces.edit', compact('space'));
     }
@@ -84,7 +84,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Space $space, UpdateSpaceRequest $request)
+    public function update(Space $space, UpdateSpaceRequest $request): Response
     {
         try {
             $this->space->update($space, $request->all());
@@ -104,7 +104,7 @@ class SpaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Space $space)
+    public function destroy(Space $space): Response
     {
         $this->space->destroy($space);
 

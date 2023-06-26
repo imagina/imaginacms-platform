@@ -28,7 +28,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$addresses = $this->address->all();
 
@@ -40,7 +40,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iprofile::admin.addresses.create');
     }
@@ -50,7 +50,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateAddressRequest $request)
+    public function store(CreateAddressRequest $request): Response
     {
         $this->address->create($request->all());
 
@@ -63,7 +63,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Address $address)
+    public function edit(Address $address): Response
     {
         return view('iprofile::admin.addresses.edit', compact('address'));
     }
@@ -73,7 +73,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Address $address, UpdateAddressRequest $request)
+    public function update(Address $address, UpdateAddressRequest $request): Response
     {
         $this->address->update($address, $request->all());
 
@@ -86,7 +86,7 @@ class AddressController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Address $address)
+    public function destroy(Address $address): Response
     {
         $this->address->destroy($address);
 

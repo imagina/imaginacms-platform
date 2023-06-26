@@ -2,6 +2,7 @@
 
 namespace Modules\Notification\Events\Handlers;
 
+use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Sidebar\AbstractAdminSidebar;
 
 class RegisterNotificationSidebar extends AbstractAdminSidebar
@@ -12,7 +13,7 @@ class RegisterNotificationSidebar extends AbstractAdminSidebar
      *
      * @return \Maatwebsite\Sidebar\Menu
      */
-    public function extendWith(\Maatwebsite\Sidebar\Menu $menu)
+    public function extendWith(\Maatwebsite\Sidebar\Menu $menu): Menu
     {
         return $menu;
     }

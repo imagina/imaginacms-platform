@@ -28,7 +28,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recurrences = $this->recurrence->all();
 
@@ -40,7 +40,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.recurrences.create');
     }
@@ -50,7 +50,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRecurrenceRequest $request)
+    public function store(CreateRecurrenceRequest $request): Response
     {
         $this->recurrence->create($request->all());
 
@@ -63,7 +63,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Recurrence $recurrence)
+    public function edit(Recurrence $recurrence): Response
     {
         return view('ievent::admin.recurrences.edit', compact('recurrence'));
     }
@@ -73,7 +73,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Recurrence $recurrence, UpdateRecurrenceRequest $request)
+    public function update(Recurrence $recurrence, UpdateRecurrenceRequest $request): Response
     {
         $this->recurrence->update($recurrence, $request->all());
 
@@ -86,7 +86,7 @@ class RecurrenceController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Recurrence $recurrence)
+    public function destroy(Recurrence $recurrence): Response
     {
         $this->recurrence->destroy($recurrence);
 

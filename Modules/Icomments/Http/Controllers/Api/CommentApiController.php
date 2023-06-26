@@ -30,7 +30,7 @@ class CommentApiController extends BaseCrudController
        *
        * @return Response
        */
-      public function create(Request $request)
+      public function create(Request $request): Response
       {
           \DB::beginTransaction();
           try {

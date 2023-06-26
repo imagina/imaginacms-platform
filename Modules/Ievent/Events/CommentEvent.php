@@ -45,7 +45,7 @@ class CommentEvent implements ShouldBroadcastNow
      *
      * @return array
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
         return new Channel('global');
     }

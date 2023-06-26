@@ -53,7 +53,7 @@ class MediaController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('media.create');
     }
@@ -63,7 +63,7 @@ class MediaController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(File $file)
+    public function edit(File $file): Response
     {
         $thumbnails = $this->thumbnailsManager->all();
 
@@ -75,7 +75,7 @@ class MediaController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(File $file, UpdateMediaRequest $request)
+    public function update(File $file, UpdateMediaRequest $request): Response
     {
         $this->file->update($file, $request->all());
 
@@ -90,7 +90,7 @@ class MediaController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(File $file)
+    public function destroy(File $file): Response
     {
         $this->imagy->deleteAllFor($file);
         $this->file->destroy($file);

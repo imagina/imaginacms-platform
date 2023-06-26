@@ -14,7 +14,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
      * @param  string  $locale
      * @return string
      */
-    public function findByKeyAndLocale($key, $locale = null)
+    public function findByKeyAndLocale(string $key, string $locale = null): string
     {
         $locale = $locale ?: app()->getLocale();
         $translation = $this->model->where('key', $key)->with('translations')->first();
@@ -75,7 +75,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
      * @param  string  $key
      * @return mixed
      */
-    public function updateFromImport($key, array $data)
+    public function updateFromImport(string $key, array $data)
     {
         $translation = $this->findTranslationByKey($key);
         $translation->update($data);
@@ -87,7 +87,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
      * @param  string  $value
      * @return void
      */
-    public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value)
+    public function updateTranslationToValue(TranslationTranslation $translationTranslation, string $value): void
     {
         $translationTranslation->value = $value;
         $translationTranslation->save();

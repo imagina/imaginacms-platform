@@ -32,7 +32,7 @@ class MakeMenuItemChildOfRoot
      * @param  object  $menuItem
      * @return bool
      */
-    private function isRoot($menuItem)
+    private function isRoot(object $menuItem): bool
     {
         return (bool) $menuItem->is_root;
     }

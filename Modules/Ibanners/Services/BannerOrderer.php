@@ -30,7 +30,7 @@ class BannerOrderer
      *
      * @param  array  $item
      */
-    private function order($order, $item)
+    private function order($order, array $item)
     {
         $banner = $this->bannerRepository->find($item['id']);
         $this->saveOrder($banner, $order);
@@ -42,7 +42,7 @@ class BannerOrderer
      * @param  object  $banner
      * @param  int  $order
      */
-    private function saveOrder($banner, $order)
+    private function saveOrder(object $banner, int $order)
     {
         $this->bannerRepository->update($banner, ['order' => $order]);
     }
@@ -52,7 +52,7 @@ class BannerOrderer
      *
      * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

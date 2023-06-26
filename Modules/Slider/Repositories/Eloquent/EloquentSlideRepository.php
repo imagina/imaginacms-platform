@@ -14,7 +14,7 @@ class EloquentSlideRepository extends EloquentBaseRepository implements SlideRep
      * @param  mixed  $data Data from POST request form
      * @return object The created entity
      */
-    public function create($data)
+    public function create($data): object
     {
         $slide = parent::create($data);
 

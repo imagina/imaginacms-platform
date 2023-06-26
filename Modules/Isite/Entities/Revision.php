@@ -2,6 +2,7 @@
 
 namespace Modules\Isite\Entities;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Icrud\Entities\CrudModel;
 
 class Revision extends CrudModel
@@ -50,7 +51,7 @@ class Revision extends CrudModel
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public static function newModel()
+    public static function newModel(): Model
     {
         $model = app('Modules\Isite\Entities\Revision');
 
@@ -64,7 +65,7 @@ class Revision extends CrudModel
      *
      * @return array revision history
      */
-    public function revisionable()
+    public function revisionable(): array
     {
         return $this->morphTo();
     }
@@ -77,7 +78,7 @@ class Revision extends CrudModel
      *
      * @return string field
      */
-    public function fieldName()
+    public function fieldName(): string
     {
         if ($formatted = $this->formatFieldName($this->key)) {
             return $formatted;
@@ -96,7 +97,7 @@ class Revision extends CrudModel
      *
      * @return bool
      */
-    private function formatFieldName($key)
+    private function formatFieldName($key): bool
     {
         $related_model = $this->getActualClassNameForMorph($this->revisionable_type);
         $related_model = new $related_model;
@@ -117,7 +118,7 @@ class Revision extends CrudModel
      *
      * @return string old value
      */
-    public function oldValue()
+    public function oldValue(): string
     {
         return $this->getValue('old');
     }
@@ -130,7 +131,7 @@ class Revision extends CrudModel
      *
      * @return string old value
      */
-    public function newValue()
+    public function newValue(): string
     {
         return $this->getValue('new');
     }
@@ -142,7 +143,7 @@ class Revision extends CrudModel
      * @param  string  $which old or new
      * @return string value
      */
-    private function getValue($which = 'new')
+    private function getValue(string $which = 'new'): string
     {
         $which_value = $which.'_value';
 
@@ -213,7 +214,7 @@ class Revision extends CrudModel
      *
      * @return bool
      */
-    private function isRelated()
+    private function isRelated(): bool
     {
         $isRelated = false;
         $idSuffix = '_id';
@@ -233,7 +234,7 @@ class Revision extends CrudModel
      *
      * @return string
      */
-    private function getRelatedModel()
+    private function getRelatedModel(): string
     {
         $idSuffix = '_id';
 

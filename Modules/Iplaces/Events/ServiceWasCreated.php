@@ -29,7 +29,7 @@ class ServiceWasCreated implements StoringMedia
      *
      * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

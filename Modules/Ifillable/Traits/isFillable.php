@@ -59,7 +59,7 @@ trait isFillable
      * @param  array  $extraFields
      * @return array
      */
-    public function validateExtraFillable($extraFields = [])
+    public function validateExtraFillable(array $extraFields = []): array
     {
         //Instance response
         $response = [];
@@ -100,7 +100,7 @@ trait isFillable
      *
      * @param  array  $extraFields
      */
-    public function formatFillableToDataBase($extraFields = [])
+    public function formatFillableToDataBase(array $extraFields = [])
     {
         //Instance response
         $response = [];
@@ -133,7 +133,7 @@ trait isFillable
      *
      * @param  array  $extraFields
      */
-    public function formatFillableToModel($extraFields = [])
+    public function formatFillableToModel(array $extraFields = [])
     {
         //instance response
         $response = [];

@@ -84,7 +84,7 @@ class MenuServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }
@@ -158,7 +158,7 @@ class MenuServiceProvider extends ServiceProvider
      * @param  object  $children
      * @param  Builder|MenuItem  $menu
      */
-    private function addChildrenToMenu($name, $children, $menu, $attribs = [])
+    private function addChildrenToMenu(string $name, object $children, $menu, $attribs = [])
     {
         $menu->dropdown($name, function (PingpongMenuItem $subMenu) use ($children) {
             foreach ($children as $child) {
@@ -186,7 +186,7 @@ class MenuServiceProvider extends ServiceProvider
      * @param  object  $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(object $item): bool
     {
         return $item->items->count() > 0;
     }

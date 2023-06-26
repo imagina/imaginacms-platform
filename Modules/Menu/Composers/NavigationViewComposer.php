@@ -63,7 +63,7 @@ class NavigationViewComposer
      * @param  object  $children
      * @param  Builder|MenuItem  $menu
      */
-    private function addChildrenToMenu($name, $children, $menu)
+    private function addChildrenToMenu(string $name, object $children, $menu)
     {
         $menu->dropdown($name, function (MenuItem $subMenu) use ($children) {
             foreach ($children as $child) {
@@ -90,7 +90,7 @@ class NavigationViewComposer
      * @param  object  $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(object $item): bool
     {
         return $item->items->count() > 0;
     }

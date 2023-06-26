@@ -28,7 +28,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$polygons = $this->polygon->all();
 
@@ -40,7 +40,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.polygons.create');
     }
@@ -50,7 +50,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreatePolygonRequest $request)
+    public function store(CreatePolygonRequest $request): Response
     {
         $this->polygon->create($request->all());
 
@@ -63,7 +63,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Polygon $polygon)
+    public function edit(Polygon $polygon): Response
     {
         return view('ilocations::admin.polygons.edit', compact('polygon'));
     }
@@ -73,7 +73,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Polygon $polygon, UpdatePolygonRequest $request)
+    public function update(Polygon $polygon, UpdatePolygonRequest $request): Response
     {
         $this->polygon->update($polygon, $request->all());
 
@@ -86,7 +86,7 @@ class PolygonController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Polygon $polygon)
+    public function destroy(Polygon $polygon): Response
     {
         $this->polygon->destroy($polygon);
 

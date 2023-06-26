@@ -28,7 +28,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$categories = $this->category->all();
 
@@ -40,7 +40,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.categories.create');
     }
@@ -50,7 +50,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateCategoryRequest $request): Response
     {
         $this->category->create($request->all());
 
@@ -63,7 +63,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category): Response
     {
         return view('iappointment::admin.categories.edit', compact('category'));
     }
@@ -73,7 +73,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Category $category, UpdateCategoryRequest $request)
+    public function update(Category $category, UpdateCategoryRequest $request): Response
     {
         $this->category->update($category, $request->all());
 
@@ -86,7 +86,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): Response
     {
         $this->category->destroy($category);
 

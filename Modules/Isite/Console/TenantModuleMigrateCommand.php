@@ -84,7 +84,7 @@ class TenantModuleMigrateCommand extends MigrateCommand
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['tenant', InputArgument::REQUIRED, 'Tenant id.'],

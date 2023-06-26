@@ -11,7 +11,7 @@ class FileHelper
      *
      * @return string
      */
-    public static function getTypeByMimetype($mimetype)
+    public static function getTypeByMimetype($mimetype): string
     {
         return strtok($mimetype, '/');
     }
@@ -22,7 +22,7 @@ class FileHelper
      * @param  string  $mediaType
      * @return string
      */
-    public static function getFaIcon($mediaType)
+    public static function getFaIcon(string $mediaType): string
     {
         switch ($mediaType) {
             case 'video':
@@ -49,7 +49,7 @@ class FileHelper
      *
      * @return string
      */
-    public static function getExtension($name)
+    public static function getExtension($name): string
     {
         return substr($name, strrpos($name, '.'));
     }

@@ -31,7 +31,7 @@ class MeetingController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$imeetings = $this->imeeting->all();
 
@@ -43,7 +43,7 @@ class MeetingController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('imeeting::admin.imeetings.create');
     }
@@ -53,7 +53,7 @@ class MeetingController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateImeetingRequest $request)
+    public function store(CreateImeetingRequest $request): Response
     {
         $this->imeeting->create($request->all());
 
@@ -66,7 +66,7 @@ class MeetingController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Imeeting $imeeting)
+    public function edit(Imeeting $imeeting): Response
     {
         return view('imeeting::admin.imeetings.edit', compact('imeeting'));
     }
@@ -77,7 +77,7 @@ class MeetingController extends AdminBaseController
      * @param  Imeeting  $imeeting
      * @return Response
      */
-    public function update($id, UpdateImeetingRequest $request)
+    public function update($id, UpdateImeetingRequest $request): Response
     {
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
@@ -100,7 +100,7 @@ class MeetingController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Imeeting $imeeting)
+    public function destroy(Imeeting $imeeting): Response
     {
         $this->imeeting->destroy($imeeting);
 

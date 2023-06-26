@@ -28,7 +28,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$blocks = $this->block->all();
 
@@ -40,7 +40,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.blocks.create');
     }
@@ -50,7 +50,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateBlockRequest $request)
+    public function store(CreateBlockRequest $request): Response
     {
         $this->block->create($request->all());
 
@@ -63,7 +63,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Block $block)
+    public function edit(Block $block): Response
     {
         return view('iforms::admin.blocks.edit', compact('block'));
     }
@@ -73,7 +73,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Block $block, UpdateBlockRequest $request)
+    public function update(Block $block, UpdateBlockRequest $request): Response
     {
         $this->block->update($block, $request->all());
 
@@ -86,7 +86,7 @@ class BlockController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Block $block)
+    public function destroy(Block $block): Response
     {
         $this->block->destroy($block);
 

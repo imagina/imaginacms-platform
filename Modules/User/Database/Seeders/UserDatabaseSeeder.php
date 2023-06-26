@@ -11,7 +11,7 @@ class UserDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call(UserModuleTableSeeder::class);
         $this->call(SentinelGroupSeedTableSeeder::class);

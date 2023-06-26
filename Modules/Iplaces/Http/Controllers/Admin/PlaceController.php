@@ -96,7 +96,7 @@ class PlaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $places = $this->place->all();
 
@@ -108,7 +108,7 @@ class PlaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -134,7 +134,7 @@ class PlaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreatePlaceRequest $request)
+    public function store(CreatePlaceRequest $request): Response
     {
         try {
             $this->place->create($request->all());
@@ -155,7 +155,7 @@ class PlaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Place $place)
+    public function edit(Place $place): Response
     {//dd($place->services);
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -184,7 +184,7 @@ class PlaceController extends AdminBaseController
      * @param  UpdatePlaceRequest  $request
      * @return Response
      */
-    public function update(Place $place, CreatePlaceRequest $request)
+    public function update(Place $place, CreatePlaceRequest $request): Response
     {//dd($request);
         try {
             if (isset($request['options'])) {
@@ -213,7 +213,7 @@ class PlaceController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Place $place)
+    public function destroy(Place $place): Response
     {
         try {
             $this->place->destroy($place);

@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Foundation\Asset\Types;
 
+use Modules\Core\Foundation\Asset\Types\AssetType;
+
 class AssetTypeFactory
 {
     /**
@@ -9,7 +11,7 @@ class AssetTypeFactory
      *
      * @throws \InvalidArgumentException
      */
-    public function make($asset)
+    public function make($asset): AssetType
     {
         $typeClass = 'Modules\Core\Foundation\Asset\Types\\'.ucfirst(key($asset)).'Asset';
 

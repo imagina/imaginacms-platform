@@ -82,7 +82,7 @@ class IcommercePaymentezApiController extends BaseApiController
      * @param Requests orderId
      * @return route
      */
-    public function init(Request $request)
+    public function init(Request $request): route
     {
         try {
             \Log::info('Icommercepaymentez: Init');
@@ -146,7 +146,7 @@ class IcommercePaymentezApiController extends BaseApiController
      * @param Requests request
      * @return route
      */
-    public function response(Request $request)
+    public function response(Request $request): route
     {
         \Log::info('Icommercepaymentez: Response - INIT - '.time());
 

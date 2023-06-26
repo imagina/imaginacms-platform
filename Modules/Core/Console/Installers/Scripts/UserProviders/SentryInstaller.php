@@ -16,7 +16,7 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
      *
      * @return bool
      */
-    public function checkIsInstalled()
+    public function checkIsInstalled(): bool
     {
         return class_exists('Cartalyst\Sentry\SentryServiceProvider');
     }

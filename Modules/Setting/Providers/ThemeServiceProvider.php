@@ -42,7 +42,7 @@ class ThemeServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    private function inAdministration()
+    private function inAdministration(): bool
     {
         $segment = config('laravellocalization.hideDefaultLocaleInURL', false) ? 1 : 2;
 

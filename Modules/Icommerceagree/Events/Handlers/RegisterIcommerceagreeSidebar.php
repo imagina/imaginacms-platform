@@ -31,7 +31,7 @@ class RegisterIcommerceagreeSidebar implements \Maatwebsite\Sidebar\SidebarExten
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommerceagree::icommerceagrees.title.icommerceagrees'), function (Item $item) {

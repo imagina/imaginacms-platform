@@ -22,7 +22,7 @@ class TagIsUpdating extends AbstractEntityHook implements EntityIsChanging
     /**
      * @return Tag
      */
-    public function getTag()
+    public function getTag(): Tag
     {
         return $this->tag;
     }

@@ -28,7 +28,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$messages = $this->message->all();
 
@@ -40,7 +40,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ichat::admin.messages.create');
     }
@@ -50,7 +50,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateMessageRequest $request)
+    public function store(CreateMessageRequest $request): Response
     {
         $this->message->create($request->all());
 
@@ -63,7 +63,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Message $message)
+    public function edit(Message $message): Response
     {
         return view('ichat::admin.messages.edit', compact('message'));
     }
@@ -73,7 +73,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Message $message, UpdateMessageRequest $request)
+    public function update(Message $message, UpdateMessageRequest $request): Response
     {
         $this->message->update($message, $request->all());
 
@@ -86,7 +86,7 @@ class MessageController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Message $message)
+    public function destroy(Message $message): Response
     {
         $this->message->destroy($message);
 

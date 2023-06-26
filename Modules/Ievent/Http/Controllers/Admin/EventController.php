@@ -28,7 +28,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$events = $this->event->all();
 
@@ -40,7 +40,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.events.create');
     }
@@ -50,7 +50,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateEventRequest $request)
+    public function store(CreateEventRequest $request): Response
     {
         $this->event->create($request->all());
 
@@ -63,7 +63,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Event $event)
+    public function edit(Event $event): Response
     {
         return view('ievent::admin.events.edit', compact('event'));
     }
@@ -73,7 +73,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Event $event, UpdateEventRequest $request)
+    public function update(Event $event, UpdateEventRequest $request): Response
     {
         $this->event->update($event, $request->all());
 
@@ -86,7 +86,7 @@ class EventController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event): Response
     {
         $this->event->destroy($event);
 

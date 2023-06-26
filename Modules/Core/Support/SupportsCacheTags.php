@@ -9,7 +9,7 @@ trait SupportsCacheTags
      *
      * @return bool
      */
-    public function cacheTagsAreSupported()
+    public function cacheTagsAreSupported(): bool
     {
         return ! in_array(config('cache.default'), ['file', 'database']);
     }

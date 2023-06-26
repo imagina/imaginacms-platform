@@ -23,7 +23,7 @@ class ValidatePath implements Rule
      * @param  mixed  $value - Example Path.
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
         return app($value);
     }
@@ -33,7 +33,7 @@ class ValidatePath implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'Path not found';
     }

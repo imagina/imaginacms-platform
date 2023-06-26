@@ -28,7 +28,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $categories = $this->category->all();
 
@@ -40,7 +40,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $categories = $this->category->all();
 
@@ -52,7 +52,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateCategoryRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -75,7 +75,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category): Response
     {
         $categories = $this->category->all();
 
@@ -87,7 +87,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Category $category, UpdateCategoryRequest $request)
+    public function update(Category $category, UpdateCategoryRequest $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -110,7 +110,7 @@ class CategoryController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): Response
     {
         \DB::beginTransaction();
         try {

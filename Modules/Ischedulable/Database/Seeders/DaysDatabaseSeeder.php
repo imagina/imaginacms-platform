@@ -13,7 +13,7 @@ class DaysDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
         //Insert week day monday

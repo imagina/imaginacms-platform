@@ -18,7 +18,7 @@ class CachePostDecorator extends BaseCacheCrudDecorator implements PostRepositor
      * @param  object  $id
      * @return object
      */
-    public function whereCategory($id)
+    public function whereCategory(object $id): object
     {
         return $this->remember(function () use ($id) {
             return $this->repository->whereCategory($id);

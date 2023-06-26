@@ -27,7 +27,7 @@ class UpListItem extends Component
     /**
      * @return currencyRepository
      */
-    private function categoryRepository()
+    private function categoryRepository(): currencyRepository
     {
         return app('Modules\Iad\Repositories\CategoryRepository');
     }

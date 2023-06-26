@@ -30,7 +30,7 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         $files = $this->getTranslationFilenamesFromPaths($this->loader->paths());
 
@@ -56,7 +56,7 @@ class FileTranslationRepository implements FileTranslationRepositoryInterface
      *
      * @return array
      */
-    protected function getTranslationFilenamesFromPaths(array $paths)
+    protected function getTranslationFilenamesFromPaths(array $paths): array
     {
         $files = [];
         $locales = config('laravellocalization.supportedLocales');

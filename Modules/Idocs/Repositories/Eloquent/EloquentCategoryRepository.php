@@ -147,7 +147,7 @@ class EloquentCategoryRepository extends EloquentBaseRepository implements Categ
      * @param  string  $slug
      * @return object
      */
-    public function findBySlug($slug)
+    public function findBySlug(string $slug): object
     {
         if (method_exists($this->model, 'translations')) {
             return $this->model->whereHas('translations', function (Builder $q) use ($slug) {
@@ -178,7 +178,7 @@ class EloquentCategoryRepository extends EloquentBaseRepository implements Categ
      * @param  array  $data
      * @return mixed
      */
-    public function update($category, $data)
+    public function update($category, array $data)
     {
         $category->update($data);
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Http\Controllers\Admin;
 
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
@@ -39,7 +40,7 @@ class DashboardController extends AdminBaseController
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $this->requireAssets();
 

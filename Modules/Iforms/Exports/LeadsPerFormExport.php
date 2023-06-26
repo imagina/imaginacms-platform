@@ -2,6 +2,7 @@
 
 namespace Modules\Iforms\Exports;
 
+use Illuminate\Support\Collection;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -36,7 +37,7 @@ class LeadsPerFormExport implements FromQuery, WithHeadings, WithMapping, Should
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function query()
+    public function query(): Collection
     {
         //Get query
         $this->params->returnAsQuery = true;

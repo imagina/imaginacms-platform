@@ -31,7 +31,7 @@ class RegisterIfollowSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('ifollow::ifollows.title.ifollows'), function (Item $item) {

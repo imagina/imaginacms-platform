@@ -49,7 +49,7 @@ class EnvFileWriter
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function create()
+    public function create(): void
     {
         $environmentFile = $this->finder->get($this->template);
 
@@ -64,7 +64,7 @@ class EnvFileWriter
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function write($vars)
+    public function write(array $vars): void
     {
         if (! empty($vars)) {
             $environmentFile = $this->finder->get($this->file);

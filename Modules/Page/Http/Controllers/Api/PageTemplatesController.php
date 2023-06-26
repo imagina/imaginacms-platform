@@ -2,6 +2,7 @@
 
 namespace Modules\Page\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Services\FinderService;
@@ -25,7 +26,7 @@ class PageTemplatesController extends Controller
         $this->finder = $finder;
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
         return response()->json($this->getTemplates());
     }
@@ -57,7 +58,7 @@ class PageTemplatesController extends Controller
      *
      * @return string
      */
-    private function getCurrentThemeBasePath()
+    private function getCurrentThemeBasePath(): string
     {
         return $this->themeManager->find(setting('core::template'))->getPath();
     }
@@ -68,7 +69,7 @@ class PageTemplatesController extends Controller
      *
      * @return string
      */
-    private function getTemplateName($template)
+    private function getTemplateName($template): string
     {
         preg_match('/{{-- Template: (.*) --}}/', $template->getContents(), $templateName);
 
@@ -110,7 +111,7 @@ class PageTemplatesController extends Controller
      *
      * @return bool
      */
-    private function hasSubdirectory($relativePath)
+    private function hasSubdirectory($relativePath): bool
     {
         return ! empty($relativePath);
     }

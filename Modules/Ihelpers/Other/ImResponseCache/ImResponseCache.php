@@ -47,7 +47,7 @@ class ImResponseCache
      *
      * @return bool
      */
-    public function shouldCache(Request $request, Response $response)
+    public function shouldCache(Request $request, Response $response): bool
     {
         if (! config('laravel-responsecache.enabled')) {
             return false;
@@ -113,7 +113,7 @@ class ImResponseCache
      * @param  \Symfony\Component\HttpFoundation\Request  $response
      * @return void
      */
-    public function public_cache(Request $request, Response $response)
+    public function public_cache(Request $request, Response $response): void
     {
         [$path, $file] = $this->getDirectoryAndFileNames($request);
         $this->files->makeDirectory($path, 0775, true, true);
@@ -126,7 +126,7 @@ class ImResponseCache
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    protected function getDirectoryAndFileNames($request)
+    protected function getDirectoryAndFileNames(Request $request): array
     {
         $segments = explode('/', ltrim($request->getPathInfo(), '/'));
         $file = $this->aliasFilename(array_pop($segments)).'.html';
@@ -142,7 +142,7 @@ class ImResponseCache
      *
      * @throws \Exception
      */
-    public function getCachePath($path = '')
+    public function getCachePath(string $path = ''): string
     {
         $base = public_path().'/page-cache/';
 
@@ -159,7 +159,7 @@ class ImResponseCache
      * @param  string  $filename
      * @return string
      */
-    protected function aliasFilename($filename)
+    protected function aliasFilename(string $filename): string
     {
         return $filename ?: 'pc__index__pc';
     }
@@ -170,7 +170,7 @@ class ImResponseCache
      *
      * @return bool
      */
-    public function hasCached(Request $request)
+    public function hasCached(Request $request): bool
     {
         return $this->cache->has($this->hasher->getHashFor($request));
     }
@@ -181,7 +181,7 @@ class ImResponseCache
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getCachedResponseFor(Request $request)
+    public function getCachedResponseFor(Request $request): Response
     {
         return $this->cache->get($this->hasher->getHashFor($request));
     }
@@ -199,7 +199,7 @@ class ImResponseCache
      *
      * @return bool
      */
-    public function flushPageCache()
+    public function flushPageCache(): bool
     {
         return $this->files->deleteDirectory($this->getCachePath(), true);
     }
@@ -210,7 +210,7 @@ class ImResponseCache
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function addCachedHeader(Response $response)
+    protected function addCachedHeader(Response $response): Response
     {
         $clonedResponse = clone $response;
 

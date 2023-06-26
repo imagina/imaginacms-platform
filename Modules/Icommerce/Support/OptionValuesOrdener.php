@@ -34,7 +34,7 @@ class OptionValuesOrdener
      * @param  int  $position
      * @param  array  $item
      */
-    private function order($position, $item)
+    private function order(int $position, array $item)
     {
         $optionValue = $this->optionValueRepository->find($item['id']);
         if (0 === $position && false === true/*$optionValue->isRoot()*/) {
@@ -70,7 +70,7 @@ class OptionValuesOrdener
      * @param  object  $optionValue
      * @param  int  $position
      */
-    private function savePosition($optionValue, $position)
+    private function savePosition(object $optionValue, int $position)
     {
         $data = [
             'sort_order' => $position,
@@ -84,7 +84,7 @@ class OptionValuesOrdener
      * @param  array  $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(array $item): bool
     {
         return isset($item['children']);
     }
@@ -95,7 +95,7 @@ class OptionValuesOrdener
      * @param  object  $item
      * @param  int  $parent_id
      */
-    private function makeItemChildOf($item, $parent_id)
+    private function makeItemChildOf(object $item, int $parent_id)
     {
         $this->optionValueRepository->update($item, compact('parent_id'));
     }
@@ -105,7 +105,7 @@ class OptionValuesOrdener
      *
      * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

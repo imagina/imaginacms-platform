@@ -598,7 +598,7 @@ class AuthApiController extends BaseApiController
     /**
      * @return bool
      */
-    private function getToken($user)
+    private function getToken($user): bool
     {
         if (isset($user)) {
             return $user->createToken('Laravel Password Grant Client');

@@ -30,7 +30,7 @@ class BaseUrlResolver
      * @param  string  $disk
      * @return string
      */
-    public function resolve($path, $disk = null)
+    public function resolve(string $path, string $disk = null): string
     {
         $factory = app(Factory::class);
         $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
@@ -42,7 +42,7 @@ class BaseUrlResolver
     /**
      * @return string
      */
-    private function getConfiguredFilesystem()
+    private function getConfiguredFilesystem(): string
     {
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }

@@ -168,7 +168,7 @@ class Post extends CrudModel implements TaggableInterface
      *
      * @return string
      */
-    public function getUrlAttribute($locale = null)
+    public function getUrlAttribute($locale = null): string
     {
         if (empty($this->slug)) {
             $post = $this->getTranslation(\LaravelLocalization::getDefaultLocale());
@@ -218,7 +218,7 @@ class Post extends CrudModel implements TaggableInterface
      * @var
      * @var
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): string
     {
         //i: Convert array to dot notation
         $config = implode('.', ['asgard.iblog.config.relations.post', $method]);

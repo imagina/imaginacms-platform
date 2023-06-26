@@ -29,7 +29,7 @@ class TaxRateApiController extends BaseApiController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         //return $request;
         try {
@@ -83,7 +83,7 @@ class TaxRateApiController extends BaseApiController
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -110,7 +110,7 @@ class TaxRateApiController extends BaseApiController
      *
      * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         \DB::beginTransaction(); //DB Transaction
         try {
@@ -139,7 +139,7 @@ class TaxRateApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {

@@ -31,7 +31,7 @@ class RegisterIbuilderSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     /**
      * @return Menu
      */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('ibuilder::ibuilders.title.ibuilders'), function (Item $item) {

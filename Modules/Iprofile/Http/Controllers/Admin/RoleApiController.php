@@ -28,7 +28,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$roleapis = $this->roleapi->all();
 
@@ -40,7 +40,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.roleapis.create');
     }
@@ -50,7 +50,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateRoleApiRequest $request)
+    public function store(CreateRoleApiRequest $request): Response
     {
         $this->roleapi->create($request->all());
 
@@ -63,7 +63,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(RoleApi $roleapi)
+    public function edit(RoleApi $roleapi): Response
     {
         return view('Iprofile::admin.roleapis.edit', compact('roleapi'));
     }
@@ -73,7 +73,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(RoleApi $roleapi, UpdateRoleApiRequest $request)
+    public function update(RoleApi $roleapi, UpdateRoleApiRequest $request): Response
     {
         $this->roleapi->update($roleapi, $request->all());
 
@@ -86,7 +86,7 @@ class RoleApiController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(RoleApi $roleapi)
+    public function destroy(RoleApi $roleapi): Response
     {
         $this->roleapi->destroy($roleapi);
 

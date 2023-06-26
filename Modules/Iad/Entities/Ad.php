@@ -121,7 +121,7 @@ class Ad extends CrudModel
      *
      * @return string
      */
-    public function getUrlAttribute()
+    public function getUrlAttribute(): string
     {
         return \URL::route(\LaravelLocalization::getCurrentLocale().'.iad.ad.show', $this->slug);
     }

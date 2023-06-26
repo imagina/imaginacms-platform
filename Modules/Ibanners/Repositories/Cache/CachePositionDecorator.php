@@ -2,6 +2,7 @@
 
 namespace Modules\Ibanners\Repositories\Cache;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Ibanners\Repositories\PositionRepository;
 
@@ -24,7 +25,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
      *
      * @return object
      */
-    public function allOnline()
+    public function allOnline(): object
     {
         return $this->cache
             ->tags($this->entityName, 'global')
@@ -41,7 +42,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
      * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItemsBy($params)
+    public function getItemsBy(array $params): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -61,7 +62,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
      * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params = false)
+    public function getItem(string $criteria, array $params = false): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

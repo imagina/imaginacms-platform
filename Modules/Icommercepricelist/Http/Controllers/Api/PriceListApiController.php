@@ -30,7 +30,7 @@ class PriceListApiController extends BaseApiController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -87,7 +87,7 @@ class PriceListApiController extends BaseApiController
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -122,7 +122,7 @@ class PriceListApiController extends BaseApiController
      *
      * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -152,7 +152,7 @@ class PriceListApiController extends BaseApiController
      *
      * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {

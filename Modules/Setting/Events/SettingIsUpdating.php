@@ -60,7 +60,7 @@ class SettingIsUpdating
     /**
      * @return Setting
      */
-    public function getSetting()
+    public function getSetting(): Setting
     {
         return $this->setting;
     }

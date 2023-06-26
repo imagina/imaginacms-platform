@@ -79,7 +79,7 @@ class IcommerceWompiApiController extends BaseApiController
      * @param Requests orderId
      * @return route
      */
-    public function init(Request $request)
+    public function init(Request $request): route
     {
         try {
             $data = $request->all();
@@ -138,7 +138,7 @@ class IcommerceWompiApiController extends BaseApiController
      * @param Requests request
      * @return route
      */
-    public function confirmation(Request $request)
+    public function confirmation(Request $request): route
     {
         \Log::info('Module Icommercewompi: Confirmation - INIT - '.time());
         //\Log::info('Module Icommercewompi: Event: '.$request->event);

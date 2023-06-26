@@ -61,7 +61,7 @@ class BroadcastNotification implements ShouldBroadcast, ShouldQueue
      *
      * @return Channel
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel
     {
         return new Channel('imagina.notifications');
     }

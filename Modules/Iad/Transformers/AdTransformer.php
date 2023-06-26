@@ -11,7 +11,7 @@ class AdTransformer extends CrudResource
      *
      * @return array
      */
-    public function modelAttributes($request)
+    public function modelAttributes($request): array
     {
         return [
             'statusName' => $this->when(isset($this->statusName), $this->statusName),

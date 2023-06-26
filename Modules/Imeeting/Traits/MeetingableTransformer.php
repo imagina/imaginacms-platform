@@ -9,7 +9,7 @@ trait MeetingableTransformer
      *
      * @return array
      */
-    public function getDataMeetings()
+    public function getDataMeetings(): array
     {
         $data = [
             'meetings' => $this->when($this->meetings, $this->meetings),

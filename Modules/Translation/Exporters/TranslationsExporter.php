@@ -37,7 +37,7 @@ class TranslationsExporter
      *
      * @return string
      */
-    public function getFileName()
+    public function getFileName(): string
     {
         return $this->filename.time().'.csv';
     }
@@ -45,7 +45,7 @@ class TranslationsExporter
     /**
      * @return array
      */
-    private function formatData()
+    private function formatData(): array
     {
         $translations = $this->translations->getFileAndDatabaseMergedTranslations();
         $translations = $translations->all();

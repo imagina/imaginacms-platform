@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Entities\UserToken;
@@ -34,7 +35,7 @@ class ApiKeysController extends Controller
         return ApiKeysTransformer::collection($tokens);
     }
 
-    public function create()
+    public function create(): JsonResponse
     {
         $userId = $this->auth->id();
         $this->userToken->generateFor($userId);
@@ -47,7 +48,7 @@ class ApiKeysController extends Controller
         ]);
     }
 
-    public function destroy(DeleteUserTokenRequest $request, UserToken $userToken)
+    public function destroy(DeleteUserTokenRequest $request, UserToken $userToken): JsonResponse
     {
         if ($this->userToken->allForUser($this->auth->id())->count() === 1) {
             return response()->json([

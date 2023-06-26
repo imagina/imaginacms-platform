@@ -28,7 +28,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$sites = $this->site->all();
 
@@ -40,7 +40,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('isite::admin.sites.create');
     }
@@ -50,7 +50,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateSiteRequest $request)
+    public function store(CreateSiteRequest $request): Response
     {
         $this->site->create($request->all());
 
@@ -63,7 +63,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(Site $site)
+    public function edit(Site $site): Response
     {
         return view('isite::admin.sites.edit', compact('site'));
     }
@@ -73,7 +73,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(Site $site, UpdateSiteRequest $request)
+    public function update(Site $site, UpdateSiteRequest $request): Response
     {
         $data = $request->all();
         $token = $data['_token'];
@@ -122,7 +122,7 @@ class SiteController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(Site $site)
+    public function destroy(Site $site): Response
     {
         $this->site->destroy($site);
 

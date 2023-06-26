@@ -22,7 +22,7 @@ class CategoriesWidget extends BaseWidget
      *
      * @return string
      */
-    protected function name()
+    protected function name(): string
     {
         return 'CategoriesWidget';
     }
@@ -32,7 +32,7 @@ class CategoriesWidget extends BaseWidget
      *
      * @return string
      */
-    protected function view()
+    protected function view(): string
     {
         return 'iblog::admin.widgets.categories';
     }
@@ -42,7 +42,7 @@ class CategoriesWidget extends BaseWidget
      *
      * @return string
      */
-    protected function data()
+    protected function data(): string
     {
         return ['categoryCount' => $this->category->all()->count()];
     }
@@ -52,7 +52,7 @@ class CategoriesWidget extends BaseWidget
      *
      * @return string
      */
-    protected function options()
+    protected function options(): string
     {
         return [
             'width' => '2',

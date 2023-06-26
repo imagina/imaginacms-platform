@@ -23,7 +23,7 @@ class PaymentezApiController extends BaseApiController
      *
      * @return token
      */
-    public function generateAuthToken($paymentMethod)
+    public function generateAuthToken($paymentMethod): token
     {
         \Log::info('Icommercepaymentez: Generate Auth Token');
 

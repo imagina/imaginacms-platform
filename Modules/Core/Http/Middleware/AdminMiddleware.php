@@ -51,7 +51,7 @@ class AdminMiddleware
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         // Check if the user is logged in
         if (! $this->auth->check()) {

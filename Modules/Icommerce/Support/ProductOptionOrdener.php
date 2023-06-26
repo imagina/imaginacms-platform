@@ -35,7 +35,7 @@ class ProductOptionOrdener
      * @param  int  $position
      * @param  array  $item
      */
-    private function order($position, $item)
+    private function order(int $position, array $item)
     {
         $menuItem = $this->productOptionRepository->find($item['id']);
 
@@ -53,7 +53,7 @@ class ProductOptionOrdener
     /**
      * @param  Menuitem  $parent
      */
-    private function handleChildrenForParent($parent, array $children)
+    private function handleChildrenForParent(Menuitem $parent, array $children)
     {
         foreach ($children as $position => $item) {
             $menuItem = $this->productOptionRepository->find($item['id']);
@@ -72,7 +72,7 @@ class ProductOptionOrdener
      * @param  object  $menuItem
      * @param  int  $position
      */
-    private function savePosition($menuItem, $position)
+    private function savePosition(object $menuItem, int $position)
     {
         $data = [
             'sort_order' => $position,
@@ -87,7 +87,7 @@ class ProductOptionOrdener
      * @param  array  $item
      * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(array $item): bool
     {
         return isset($item['children']);
     }
@@ -98,7 +98,7 @@ class ProductOptionOrdener
      * @param  object  $item
      * @param  int  $parent_id
      */
-    private function makeItemChildOf($item, $parent_id)
+    private function makeItemChildOf(object $item, int $parent_id)
     {
         $this->productOptionRepository->update($item, compact('parent_id'));
     }
@@ -108,7 +108,7 @@ class ProductOptionOrdener
      *
      * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

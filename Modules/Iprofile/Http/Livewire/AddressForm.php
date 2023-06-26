@@ -45,7 +45,7 @@ class AddressForm extends Component
      * @return void
      */
     public function mount($embedded = false, $route = false, $type = null, $openInModal = false,
-                        $withButtonSubmit = true, $livewireEvent = null, $addressGuest = [])
+                        $withButtonSubmit = true, $livewireEvent = null, $addressGuest = []): void
     {
         $this->embedded = $embedded;
         $this->openInModal = $openInModal;

@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Foundation\Theme;
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 
@@ -27,7 +29,7 @@ class ThemeManager implements \Countable
      * @param  string  $name
      * @return Theme|null
      */
-    public function find($name)
+    public function find(string $name): ?Theme
     {
         foreach ($this->all() as $theme) {
             if ($theme->getLowerName() == strtolower($name)) {
@@ -41,7 +43,7 @@ class ThemeManager implements \Countable
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         $themes = [];
         if (! $this->getFinder()->isDirectory($this->path)) {
@@ -65,7 +67,7 @@ class ThemeManager implements \Countable
      *
      * @return array
      */
-    public function allPublicThemes()
+    public function allPublicThemes(): array
     {
         $themes = [];
         if (! $this->getFinder()->isDirectory($this->path)) {
@@ -92,7 +94,7 @@ class ThemeManager implements \Countable
      *
      * @return array
      */
-    private function getDirectories()
+    private function getDirectories(): array
     {
         return $this->getFinder()->directories($this->path);
     }
@@ -103,7 +105,7 @@ class ThemeManager implements \Countable
      * @param  string  $theme
      * @return string
      */
-    public function getAssetPath($theme)
+    public function getAssetPath(string $theme): string
     {
         return public_path($this->getConfig()->get('themify.themes_assets_path').'/'.$theme);
     }
@@ -111,7 +113,7 @@ class ThemeManager implements \Countable
     /**
      * @return \Illuminate\Filesystem\Filesystem
      */
-    protected function getFinder()
+    protected function getFinder(): Filesystem
     {
         return $this->app['files'];
     }
@@ -119,7 +121,7 @@ class ThemeManager implements \Countable
     /**
      * @return \Illuminate\Config\Repository
      */
-    protected function getConfig()
+    protected function getConfig(): Repository
     {
         return $this->app['config'];
     }
@@ -139,7 +141,7 @@ class ThemeManager implements \Countable
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getThemeJsonFile($theme)
+    private function getThemeJsonFile($theme): string
     {
         return json_decode($this->getFinder()->get("$theme/theme.json"));
     }
@@ -147,7 +149,7 @@ class ThemeManager implements \Countable
     /**
      * @return bool
      */
-    private function isFrontendTheme($themeJson)
+    private function isFrontendTheme($themeJson): bool
     {
         return isset($themeJson->type) && $themeJson->type !== 'frontend' ? false : true;
     }

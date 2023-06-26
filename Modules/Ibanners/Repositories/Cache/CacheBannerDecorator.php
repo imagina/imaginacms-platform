@@ -2,6 +2,7 @@
 
 namespace Modules\Ibanners\Repositories\Cache;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Ibanners\Repositories\BannerRepository;
 
@@ -25,7 +26,7 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
      * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItemsBy($params)
+    public function getItemsBy(array $params): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -45,7 +46,7 @@ class CacheBannerDecorator extends BaseCacheDecorator implements BannerRepositor
      * @param  array  $params
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getItem($criteria, $params = false)
+    public function getItem(string $criteria, array $params = false): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

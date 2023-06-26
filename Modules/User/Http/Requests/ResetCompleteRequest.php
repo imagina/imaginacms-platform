@@ -11,7 +11,7 @@ class ResetCompleteRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'password' => 'required|min:3|confirmed',
@@ -24,7 +24,7 @@ class ResetCompleteRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

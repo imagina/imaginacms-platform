@@ -32,7 +32,7 @@ class Sendmail extends Mailable implements ShouldQueue
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         return $this->view($this->view)->subject($this->subject);
     }

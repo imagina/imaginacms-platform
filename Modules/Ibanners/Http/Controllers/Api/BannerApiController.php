@@ -147,7 +147,7 @@ class BannerApiController extends BaseApiController
      * @param  \Illuminate\Foundation\Http\FormRequest  $request
      * @return array
      */
-    private function addIbannersId(Ibanners $position, FormRequest $request)
+    private function addIbannersId(Ibanners $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);
     }

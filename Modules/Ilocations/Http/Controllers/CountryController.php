@@ -13,7 +13,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('ilocations::index');
     }
@@ -23,7 +23,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::create');
     }
@@ -33,7 +33,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request): Response
     {
     }
 
@@ -42,7 +42,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function show()
+    public function show(): Response
     {
         return view('ilocations::show');
     }
@@ -52,7 +52,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function edit()
+    public function edit(): Response
     {
         return view('ilocations::edit');
     }
@@ -62,7 +62,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request): Response
     {
     }
 
@@ -71,7 +71,7 @@ class CountryController extends BasePublicController
      *
      * @return Response
      */
-    public function destroy()
+    public function destroy(): Response
     {
     }
 

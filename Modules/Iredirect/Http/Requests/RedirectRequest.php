@@ -11,7 +11,7 @@ class RedirectRequest extends BaseFormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'from' => 'required',
@@ -35,7 +35,7 @@ class RedirectRequest extends BaseFormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

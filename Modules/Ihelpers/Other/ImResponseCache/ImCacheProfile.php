@@ -15,7 +15,7 @@ class ImCacheProfile extends BaseCacheProfile implements CacheProfile
      *
      * @return bool
      */
-    public function shouldCacheRequest(Request $request)
+    public function shouldCacheRequest(Request $request): bool
     {
         if ($request->ajax()) {
             return false;
@@ -47,7 +47,7 @@ class ImCacheProfile extends BaseCacheProfile implements CacheProfile
      *
      * @return bool
      */
-    public function shouldCacheResponse(Response $response)
+    public function shouldCacheResponse(Response $response): bool
     {
         return $response->isSuccessful() || $response->isRedirection();
     }

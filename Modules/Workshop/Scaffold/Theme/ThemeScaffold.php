@@ -69,7 +69,7 @@ class ThemeScaffold
     /**
      * @return $this
      */
-    public function setName($name)
+    public function setName($name): static
     {
         if (empty($name)) {
             throw new \InvalidArgumentException('You must provide a name');
@@ -84,7 +84,7 @@ class ThemeScaffold
      * @param  string  $type
      * @return $this
      */
-    public function forType($type)
+    public function forType(string $type): static
     {
         if (empty($type)) {
             throw new \InvalidArgumentException('You must provide a type');

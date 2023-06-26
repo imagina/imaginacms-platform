@@ -28,7 +28,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$adups = $this->adup->all();
 
@@ -40,7 +40,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.adups.create');
     }
@@ -50,7 +50,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function store(CreateAdUpRequest $request)
+    public function store(CreateAdUpRequest $request): Response
     {
         $this->adup->create($request->all());
 
@@ -63,7 +63,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function edit(AdUp $adup)
+    public function edit(AdUp $adup): Response
     {
         return view('iad::admin.adups.edit', compact('adup'));
     }
@@ -73,7 +73,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function update(AdUp $adup, UpdateAdUpRequest $request)
+    public function update(AdUp $adup, UpdateAdUpRequest $request): Response
     {
         $this->adup->update($adup, $request->all());
 
@@ -86,7 +86,7 @@ class AdUpController extends AdminBaseController
      *
      * @return Response
      */
-    public function destroy(AdUp $adup)
+    public function destroy(AdUp $adup): Response
     {
         $this->adup->destroy($adup);
 

@@ -12,7 +12,7 @@ class IcustomDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
         $this->call(IcustomModuleTableSeeder::class);
