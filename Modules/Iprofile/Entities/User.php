@@ -16,7 +16,7 @@ use Modules\User\Presenters\UserPresenter;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract
 {
-    use PresentableTrait, Authenticatable, HasApiTokens, AuditTrait;
+    use PresentableTrait, Authenticatable, HasApiTokens;
 
     protected $fillable = [
         'email',
@@ -144,22 +144,22 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
             'iprofile__user_department');
     }
 
-    public function __call($method, $parameters)
-    {
-        //i: Convert array to dot notation
-        $config = implode('.', ['asgard.user.config.relations', $method]);
-
-        //i: Relation method resolver
-        if (config()->has($config)) {
-            $function = config()->get($config);
-            $bound = $function->bindTo($this);
-
-            return $bound();
-        }
-
-        //i: No relation found, return the call to parent (Eloquent) to handle it.
-        return parent::__call($method, $parameters);
-    }
+//    public function __call($method, $parameters)
+//    {
+//        //i: Convert array to dot notation
+//        $config = implode('.', ['asgard.user.config.relations', $method]);
+//
+//        //i: Relation method resolver
+//        if (config()->has($config)) {
+//            $function = config()->get($config);
+//            $bound = $function->bindTo($this);
+//
+//            return $bound();
+//        }
+//
+//        //i: No relation found, return the call to parent (Eloquent) to handle it.
+//        return parent::__call($method, $parameters);
+//    }
 
     /**
      * {@inheritdoc}

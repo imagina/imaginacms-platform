@@ -26,7 +26,7 @@ trait hasEventsWithBindings
      * @param  array  $data
      * @return mixed
      */
-    protected function fireModelEvent(string $event, bool $halt = true, array $bindings = [])
+    public function fireModelEvent($event, $halt = true, $bindings = [])
     {
         //Save Event bindings
         $this->eventBindings[$event] = $bindings;

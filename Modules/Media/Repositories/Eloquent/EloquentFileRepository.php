@@ -24,7 +24,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      *
      * @return mixed
      */
-    public function update(File $file, $data)
+    public function update($file, $data)
     {
         event($event = new FileIsUpdating($file, $data));
         $file->update($event->getAttributes());
@@ -104,7 +104,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Find multiple files for the given zone and entity
      */
-    public function findMultipleFilesByZoneForEntity(zone $zone, object $entity): object
+    public function findMultipleFilesByZoneForEntity(string $zone, object $entity): object
     {
         $files = [];
         foreach ($entity->files as $file) {

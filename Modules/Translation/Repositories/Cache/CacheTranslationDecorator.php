@@ -80,7 +80,7 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
     {
         app('cache')->driver('translations')->flush();
 
-        return $this->repository->updateTranslationToValue($translationTranslation, $value);
+        $this->repository->updateTranslationToValue($translationTranslation, $value);
     }
 
     /**

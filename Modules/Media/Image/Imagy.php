@@ -49,7 +49,7 @@ class Imagy
     /**
      * Get an image in the given thumbnail options
      */
-    public function get(string $path, string $thumbnail, bool $forceCreate = false, $disk = null): string
+    public function get(string $path, string $thumbnail, bool $forceCreate = false, $disk = null)
     {
         if (! $this->isImage($path)) {
             return;

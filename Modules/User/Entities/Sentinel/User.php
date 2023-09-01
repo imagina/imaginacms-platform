@@ -50,9 +50,9 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         if (config()->has('asgard.user.config.presenter')) {
             $this->presenter = config('asgard.user.config.presenter', UserPresenter::class);
         }
-        if (config()->has('asgard.user.config.dates')) {
-            $this->dates = config('asgard.user.config.dates', []);
-        }
+//        if (config()->has('asgard.user.config.dates')) {
+//            $this->dates = config('asgard.user.config.dates', []);
+//        }
         if (config()->has('asgard.user.config.casts')) {
             $this->casts = config('asgard.user.config.casts', []);
         }
@@ -146,23 +146,23 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
             \Modules\Iprofile\Entities\Department::class,
             'iprofile__user_department');
     }
-
-    public function __call($method, $parameters)
-    {
-        //i: Convert array to dot notation
-        $config = implode('.', ['asgard.user.config.relations', $method]);
-
-        //i: Relation method resolver
-        if (config()->has($config)) {
-            $function = config()->get($config);
-            $bound = $function->bindTo($this);
-
-            return $bound();
-        }
-
-        //i: No relation found, return the call to parent (Eloquent) to handle it.
-        return parent::__call($method, $parameters);
-    }
+//
+//    public function __call($method, $parameters)
+//    {
+//        //i: Convert array to dot notation
+//        $config = implode('.', ['asgard.user.config.relations', $method]);
+//
+//        //i: Relation method resolver
+//        if (config()->has($config)) {
+//            $function = config()->get($config);
+//            $bound = $function->bindTo($this);
+//
+//            return $bound();
+//        }
+//
+//        //i: No relation found, return the call to parent (Eloquent) to handle it.
+//        return parent::__call($method, $parameters);
+//    }
 
     /**
      * {@inheritdoc}

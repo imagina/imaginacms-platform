@@ -113,9 +113,14 @@ class ModuleActivator implements ActivatorInterface
 
         //cached module entity for 30 days
         $module = Cache::store(config('cache.default'))->remember('isite_module_'.Str::lower($name).(isset(tenant()->domain) ? tenant()->domain : request()->getHost() ?? ''), 60 * 60 * 24 * 30, function () use ($name, $allModules) {
+          try {
             if (! \Schema::hasTable('isite__modules')) {
-                return false;
+              return false;
             }
+          }catch(\Exception $e){
+            return false;
+          }
+           
 
             if (! empty($allModules)) {
                 $module = $allModules->where('alias', Str::lower($name))->first() ?? '';
@@ -231,7 +236,11 @@ class ModuleActivator implements ActivatorInterface
         $allModules = $this->tenantModules();
 
         if (empty($allModules)) {
-            $allModules = IModule::all() ?? '';
+          try {
+            $allModules = IModule::all() ?? [];
+          }catch(\Exception $e){
+            $allModules = [];
+          }
         }
 
         //});
@@ -275,9 +284,14 @@ class ModuleActivator implements ActivatorInterface
         }
 
         return Cache::store(config('cache.default'))->remember('isite_module_all_modules'.(isset(tenant()->domain) ? tenant()->domain : $domain ?? ''), 60 * 60 * 24 * 30, function () use ($domain) {
-            if (! \Schema::hasTable('isite__organizations')) {
-                return '';
-            }
+         try {
+           if (! \Schema::hasTable('isite__organizations')) {
+             return '';
+           }
+         }catch(\Exception $e){
+           return '';
+         }
+           
 
             $tenant = \DB::table('isite__organizations as org')->leftJoin('isite__domains as dom', 'org.id', 'dom.organization_id')->where('dom.domain', $domain)
               ->first();

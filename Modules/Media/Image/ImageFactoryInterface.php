@@ -10,5 +10,5 @@ interface ImageFactoryInterface
      * @param  string  $manipulation
      * @return \Modules\Media\Image\ImageHandlerInterface
      */
-    public function make($manipulation);
+    public function make(string $manipulation): ImageHandlerInterface;
 }

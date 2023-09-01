@@ -38,7 +38,7 @@ class RouterGenerator
     /**
      * Return routes to standar API
      */
-    private function getStandardApiRoutes($params): void
+    private function getStandardApiRoutes($params): array
     {
         return [
             (object) [//Route create
@@ -110,7 +110,7 @@ class RouterGenerator
     /**
      * Return the static api routes to static entities
      */
-    private function getStaticApiRoutes($params): void
+    private function getStaticApiRoutes($params): array
     {
         //Instance controller
         $controller = new BaseCrudController();

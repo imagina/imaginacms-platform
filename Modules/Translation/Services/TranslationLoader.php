@@ -21,7 +21,7 @@ class TranslationLoader extends FileLoader
     /**
      * Load the messages for the given locale.
      */
-    public function load(string $locale, string $group, string $namespace = null): array
+    public function load($locale,  $group, $namespace = null)
     {
         $fileTranslations = parent::load($locale, $group, $namespace);
 

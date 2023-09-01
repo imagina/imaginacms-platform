@@ -32,7 +32,6 @@
 <body>
 
 <div id="page-wrapper">
-    @include('partials.variables')
     @include('partials.header')
     @yield('content')
     @include('partials.footer')

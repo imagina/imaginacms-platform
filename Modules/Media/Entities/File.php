@@ -123,7 +123,7 @@ class File extends CrudModel implements TaggableInterface, Responsable
     /**
      * Create an HTTP response that represents the object.
      */
-    public function toResponse(Request $request): Response
+    public function toResponse($request)
     {
         return response()
           ->file(public_path($this->path->getRelativeUrl()), [

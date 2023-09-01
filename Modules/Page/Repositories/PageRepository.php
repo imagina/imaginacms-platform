@@ -14,19 +14,19 @@ interface PageRepository extends BaseRepository
      *
      * @return object
      */
-    public function findHomepage();
+    public function findHomepage(): object;
 
     /**
      * Count all records
      *
      * @return int
      */
-    public function countAll();
+    public function countAll(): int;
 
     /**
      * @return object
      */
-    public function findBySlugInLocale($slug, $locale);
+    public function findBySlugInLocale($slug, $locale): object;
 
     /**
      * Paginating, ordering and searching through pages for server side index table
@@ -59,7 +59,7 @@ interface PageRepository extends BaseRepository
      */
     public function markMultipleAsOfflineInAllLocales(array $pageIds);
 
-    public function getItemsBy($params);
+    public function getItemsBy($params = false);
 
     public function getItem($criteria, $params = false);
 

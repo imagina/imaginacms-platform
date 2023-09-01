@@ -81,7 +81,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         return $page;
     }
 
-    public function update($model, array $data): object
+    public function update($model, $data): object
     {
         if (Arr::get($data, 'is_home') === '1') {
             $this->removeOtherHomepage($model->id);
