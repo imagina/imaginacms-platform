@@ -14,14 +14,14 @@ return [
         'create schedule' => 'Crear un horario',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Titulo'
+        'id' => 'Id',
+        'title' => 'Titulo',
     ],
     'form' => [
-        'principal'=>'Principal',
-        'title'=>'Titulo',
-        'description'=>'Descripcion',
-        'schedules'=>'Horarios'
+        'principal' => 'Principal',
+        'title' => 'Titulo',
+        'description' => 'Descripcion',
+        'schedules' => 'Horarios',
     ],
     'messages' => [
     ],

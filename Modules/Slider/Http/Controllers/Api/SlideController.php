@@ -3,11 +3,12 @@
 namespace Modules\Slider\Http\Controllers\Api;
 
 use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
-use Modules\Slider\Services\SlideOrderer;
 use Modules\Slider\Repositories\SlideRepository;
+use Modules\Slider\Services\SlideOrderer;
 
 class SlideController extends Controller
 {
@@ -15,10 +16,12 @@ class SlideController extends Controller
      * @var Repository
      */
     private $cache;
+
     /**
      * @var SlideOrderer
      */
     private $slideOrderer;
+
     /**
      * @var SlideRepository
      */
@@ -33,36 +36,34 @@ class SlideController extends Controller
 
     /**
      * Update all slides
-     * @param Request $request
      */
-    public function update(Request $request)
+    public function update(Request $request): JsonResponse
     {
-      try {
-        $this->cache->tags('slides')->flush();
-        if ($request->input('attributes')){
-          $data = $request->input('attributes');
-          $this->slideOrderer->handle(json_encode($data['slider']));
-        } else {
-          $this->slideOrderer->handle($request->get('slider'));
+        try {
+            $this->cache->tags('slides')->flush();
+            if ($request->input('attributes')) {
+                $data = $request->input('attributes');
+                $this->slideOrderer->handle(json_encode($data['slider']));
+            } else {
+                $this->slideOrderer->handle($request->get('slider'));
+            }
+            $response = ['data' => 'Order Updated'];
+        } catch (\Exception $e) {
+            $status = 500;
+            $response = ['errors' => $e->getMessage()];
         }
-        $response = ["data" => "Order Updated"];
-      } catch (\Exception $e) {
-        $status = 500;
-        $response = ["errors" => $e->getMessage()];
-      }
-      return response()->json($response, $status ?? 200);
+
+        return response()->json($response, $status ?? 200);
     }
 
     /**
      * Delete a slide
-     * @param Request $request
-     * @return mixed
      */
-    public function delete(Request $request)
+    public function delete(Request $request): JsonResponse
     {
         $slide = $this->slide->find($request->get('slide'));
 
-        if (!$slide) {
+        if (! $slide) {
             return Response::json(['errors' => true]);
         }
 

@@ -12,6 +12,7 @@ class NotificationViewComposer
      * @var NotificationRepository
      */
     private $notification;
+
     /**
      * @var Authentication
      */

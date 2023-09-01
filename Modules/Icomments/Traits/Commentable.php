@@ -11,7 +11,7 @@ trait Commentable
      */
     protected static function bootCommentable()
     {
-        static::deleted(function($commentable) {
+        static::deleted(function ($commentable) {
             foreach ($commentable->comments as $comment) {
                 $comment->delete();
             }

@@ -2,8 +2,8 @@
 
 namespace Modules\Ischedulable\Repositories\Cache;
 
-use Modules\Ischedulable\Repositories\ScheduleRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ischedulable\Repositories\ScheduleRepository;
 
 class CacheScheduleDecorator extends BaseCacheCrudDecorator implements ScheduleRepository
 {

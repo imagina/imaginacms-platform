@@ -2,11 +2,11 @@
 
 namespace Modules\Ibanners\Events\Handlers;
 
+use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Events\BuildingSidebar;
-use Maatwebsite\Sidebar\Badge;
 use Modules\Ibanners\Repositories\PositionRepository;
 use Modules\User\Contracts\Authentication;
 
@@ -18,8 +18,6 @@ class RegisterIbannersSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -32,11 +30,7 @@ class RegisterIbannersSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('ibanners::common.title'), function (Item $item) {
@@ -54,6 +48,5 @@ class RegisterIbannersSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         });
 
         return $menu;
-        
     }
 }

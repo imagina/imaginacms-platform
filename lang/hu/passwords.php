@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Language Lines
+    | Password Reminder Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'LA password deve essere di almeno 6 caratteri e coincidere.',
-    'reset' => 'La tua password è stata ripristinata!',
-    'sent' => 'Ti abbiamo inviato un email per il ripristino password!',
-    'token' => 'Questo ripristino password non è valido.',
-    'user' => "Non riusciamo a trovare un utente con questa email.",
+    'password' => 'A jelszónak legalább hat karakterből kell állnia és egyeznie kell a jelszó megerősítéssel.',
+    'reset' => 'Az új jelszó beállítva!',
+    'sent' => 'Jelszó-emlékeztető elküldve!',
+    'token' => 'Ez az új jelszó generálásához tartozó token érvénytelen.',
+    'user' => 'Nem található felhasználó a megadott email címmel.',
 
 ];

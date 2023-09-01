@@ -2,12 +2,12 @@
 
 namespace Modules\Iauctions\Entities;
 
-
 class AuctionTypes
 {
     const INVERSE = 0;
+
     const OPEN = 1;
-   
+
     private $auctionTypes = [];
 
     public function __construct()
@@ -20,14 +20,12 @@ class AuctionTypes
 
     /**
      * Get the available statuses
-     * @return array
      */
-    public function lists()
+    public function lists(): array
     {
         return $this->auctionTypes;
     }
 
-    
     public function get($statusId)
     {
         if (isset($this->auctionTypes[$statusId])) {
@@ -36,5 +34,4 @@ class AuctionTypes
 
         return $this->auctionTypes[self::INVERSE];
     }
-
 }

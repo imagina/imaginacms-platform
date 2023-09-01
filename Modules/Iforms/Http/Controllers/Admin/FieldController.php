@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Field;
 use Modules\Iforms\Http\Requests\CreateFieldRequest;
 use Modules\Iforms\Http\Requests\UpdateFieldRequest;
 use Modules\Iforms\Repositories\FieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class FieldController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class FieldController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$fields = $this->field->all();
 
@@ -38,21 +35,16 @@ class FieldController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.fields.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateFieldRequest $request
-     * @return Response
      */
-    public function store(CreateFieldRequest $request)
+    public function store(CreateFieldRequest $request): Response
     {
         $this->field->create($request->all());
 
@@ -62,23 +54,16 @@ class FieldController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Field $field
-     * @return Response
      */
-    public function edit(Field $field)
+    public function edit(Field $field): Response
     {
         return view('iforms::admin.fields.edit', compact('field'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Field $field
-     * @param  UpdateFieldRequest $request
-     * @return Response
      */
-    public function update(Field $field, UpdateFieldRequest $request)
+    public function update(Field $field, UpdateFieldRequest $request): Response
     {
         $this->field->update($field, $request->all());
 
@@ -88,11 +73,8 @@ class FieldController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Field $field
-     * @return Response
      */
-    public function destroy(Field $field)
+    public function destroy(Field $field): Response
     {
         $this->field->destroy($field);
 

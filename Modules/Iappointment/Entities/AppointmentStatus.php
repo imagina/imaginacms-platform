@@ -10,12 +10,14 @@ class AppointmentStatus extends Model
     use Translatable;
 
     protected $table = 'iappointment__appointment_statuses';
+
     public $translatedAttributes = [
-        'title'
+        'title',
     ];
+
     protected $fillable = [
         'parent_id',
-        'status'
+        'status',
     ];
 
     public function parent()
@@ -28,7 +30,8 @@ class AppointmentStatus extends Model
         return $this->hasMany(AppointmentStatus::class, 'parent_id');
     }
 
-    public function appointments(){
+    public function appointments()
+    {
         return $this->belongsToMany(Appointment::class, AppointmentStatusHistory::class, 'status_id', 'appointment_id');
     }
 }

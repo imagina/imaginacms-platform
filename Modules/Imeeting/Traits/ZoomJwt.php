@@ -2,27 +2,23 @@
 
 namespace Modules\Imeeting\Traits;
 
-use Illuminate\Support\Facades\Log;
-
 trait ZoomJWT
 {
-
-
     /**
      * GET API KEYS
      * GENERATE JWT Token
      */
     private function generateToken($dataRequest)
     {
-
         // Get Configuration Provider
         $configBD = imeetingGetProviderConfiguration('zoom');
 
-        $apiKey =  $configBD->options->apiKey;
-        $apiSecret =  $configBD->options->apiSecret;  
-        
-        if(empty($apiKey) || empty($apiSecret))
+        $apiKey = $configBD->options->apiKey;
+        $apiSecret = $configBD->options->apiSecret;
+
+        if (empty($apiKey) || empty($apiSecret)) {
             throw new \Exception('API KEYS NOT FOUND', 404);
+        }
 
         $payload = [
             'iss' => $apiKey,
@@ -33,11 +29,11 @@ trait ZoomJWT
     }
 
     /**
-    * GET Config Module
-    */
-    public function getConfig($route ='asgard.imeeting.config.zoom'){
-
-        return config($route);       
+     * GET Config Module
+     */
+    public function getConfig($route = 'asgard.imeeting.config.zoom')
+    {
+        return config($route);
     }
 
     /**
@@ -45,10 +41,9 @@ trait ZoomJWT
      */
     private function getApiUrl()
     {
-
         $config = $this->getConfig();
-        return $config['apiUrl'];
 
+        return $config['apiUrl'];
     }
 
     /**
@@ -56,55 +51,45 @@ trait ZoomJWT
      */
     private function getRequestWithHeaderToken($dataRequest)
     {
-
         $token = $this->generateToken($dataRequest);
 
         return \Illuminate\Support\Facades\Http::withHeaders([
-            'authorization' => 'Bearer ' . $token,
+            'authorization' => 'Bearer '.$token,
             'content-type' => 'application/json',
         ]);
-
     }
 
     /**
-     *  POST - REQUEST 
-     *  @param String $path
-     *  @param Array $body
+     *  POST - REQUEST
      */
-    public function requestPost(string $path, array $body = [],$dataRequest)
+    public function requestPost(string $path, array $body, $dataRequest)
     {
-
         $url = $this->getApiUrl();
         $request = $this->getRequestWithHeaderToken($dataRequest);
 
-        return $request->post($url . $path, $body);
-
+        return $request->post($url.$path, $body);
     }
 
     /**
-     *  GET - REQUEST 
-     *  @param String $path
-     *  @param Array $body
+     *  GET - REQUEST
      */
-    public function requestGet(string $path, array $body = [],$dataRequest)
+    public function requestGet(string $path, array $body, $dataRequest)
     {
-
         $url = $this->getApiUrl();
         $request = $this->getRequestWithHeaderToken($dataRequest);
 
-        return $request->get($url . $path, $body);
-
+        return $request->get($url.$path, $body);
     }
-    
-    /**
-    * Convert Time
-    * @param DateTime
-    * @return time
-    */
-    public function convertTimeFormat(string $dateTime){
 
+    /**
+     * Convert Time
+     *
+     * @param DateTime
+     */
+    public function convertTimeFormat(string $dateTime): time
+    {
         $date = new \DateTime($dateTime);
+
         return $date->format('Y-m-d\TH:i:s');
     }
-
 }

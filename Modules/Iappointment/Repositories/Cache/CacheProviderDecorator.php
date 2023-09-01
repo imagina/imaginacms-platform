@@ -2,8 +2,8 @@
 
 namespace Modules\Iappointment\Repositories\Cache;
 
-use Modules\Iappointment\Repositories\ProviderRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iappointment\Repositories\ProviderRepository;
 
 class CacheProviderDecorator extends BaseCacheDecorator implements ProviderRepository
 {
@@ -15,11 +15,9 @@ class CacheProviderDecorator extends BaseCacheDecorator implements ProviderRepos
     }
 
     /**
-    * List or resources
-    *
-    * @return collection
-    */
-    public function getItemsBy($params)
+     * List or resources
+     */
+    public function getItemsBy($params): collection
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getItemsBy($params);
@@ -28,10 +26,8 @@ class CacheProviderDecorator extends BaseCacheDecorator implements ProviderRepos
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, $params = false): object
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);
@@ -73,5 +69,4 @@ class CacheProviderDecorator extends BaseCacheDecorator implements ProviderRepos
 
         return $this->repository->deleteBy($criteria, $params);
     }
-    
 }

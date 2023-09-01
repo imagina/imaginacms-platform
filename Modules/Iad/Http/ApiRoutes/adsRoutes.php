@@ -3,15 +3,15 @@
 use Illuminate\Routing\Router;
 
 Route::group(['prefix' => 'pins'], function (Router $router) {
-  $router->post('/', [
-    'as' => 'api.iad.ads.create',
-    'uses' => 'AdApiController@create',
-    'middleware' => ['auth:api']
-  ]);
-  $router->get('/', [
-    'as' => 'api.iad.ads.index',
-    'uses' => 'AdApiController@index',
-    'middleware' => ['auth:api']
+    $router->post('/', [
+        'as' => 'api.iad.ads.create',
+        'uses' => 'AdApiController@create',
+        'middleware' => ['auth:api'],
+    ]);
+    $router->get('/', [
+        'as' => 'api.iad.ads.index',
+        'uses' => 'AdApiController@index',
+        'middleware' => ['auth:api'],
   ]);
   $router->get('/status', [
     'as' => 'api.iad.ads.status.index',

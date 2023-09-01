@@ -2,74 +2,68 @@
 
 namespace Modules\Ibooking\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Icrud\Entities\CrudModel;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
-
-use Modules\Ibooking\Entities\Status;
-
 use Modules\Ibooking\Traits\WithItems;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Reservation extends CrudModel
 {
+    use WithItems; // Event to update status itemsssss
+    //use BelongsToTenant;
 
-  use WithItems; // Event to update status itemsssss
-  //use BelongsToTenant;
+    public $transformer = 'Modules\Ibooking\Transformers\ReservationTransformer';
 
-  public $transformer = 'Modules\Ibooking\Transformers\ReservationTransformer';
-  public $repository = 'Modules\Ibooking\Repositories\ReservationRepository';
-  public $requestValidation = [
-    'create' => 'Modules\Ibooking\Http\Requests\CreateReservationRequest',
-    'update' => 'Modules\Ibooking\Http\Requests\UpdateReservationRequest',
-  ];
+    public $repository = 'Modules\Ibooking\Repositories\ReservationRepository';
 
-  
-  public $modelRelations = [
-    'items' => 'hasMany'
-  ];
- 
+    public $requestValidation = [
+        'create' => 'Modules\Ibooking\Http\Requests\CreateReservationRequest',
+        'update' => 'Modules\Ibooking\Http\Requests\UpdateReservationRequest',
+    ];
 
-  protected $table = 'ibooking__reservations';
-  protected $casts = ['options' => 'array'];
-  protected $fillable = [
-    'customer_id',
-    'status',
-    'options'
-  ];
+    public $modelRelations = [
+        'items' => 'hasMany',
+    ];
 
-  //============== RELATIONS ==============//
+    protected $table = 'ibooking__reservations';
 
-  public function items()
-  {
-    return $this->hasMany(ReservationItem::class);
-  }
+    protected $casts = ['options' => 'array'];
 
-  public function customer()
-  {
-    $driver = config('asgard.user.config.driver');
+    protected $fillable = [
+        'customer_id',
+        'status',
+        'options',
+    ];
 
-    return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'customer_id');
-  }
+    //============== RELATIONS ==============//
 
-  //============== MUTATORS / ACCESORS ==============//
+    public function items()
+    {
+        return $this->hasMany(ReservationItem::class);
+    }
 
-  public function setOptionsAttribute($value)
-  {
-    $this->attributes['options'] = json_encode($value);
-  }
+    public function customer()
+    {
+        $driver = config('asgard.user.config.driver');
 
-  public function getOptionsAttribute($value)
-  {
-    return json_decode($value);
-  }
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'customer_id');
+    }
 
-  public function getStatusNameAttribute()
-  {
-    
-    $status = new Status();
-    return $status->get($this->status);
+    //============== MUTATORS / ACCESORS ==============//
 
-  }
+    public function setOptionsAttribute($value)
+    {
+        $this->attributes['options'] = json_encode($value);
+    }
 
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value);
+    }
 
+    public function getStatusNameAttribute()
+    {
+        $status = new Status();
+
+        return $status->get($this->status);
+    }
 }

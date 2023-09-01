@@ -9,7 +9,6 @@ use Modules\User\Contracts\Authentication;
 /**
  * Class Authorization
  * Inspired by : https://github.com/spatie/laravel-authorize
- * @package Modules\Core\Http\Middleware
  */
 class Authorization
 {
@@ -20,7 +19,6 @@ class Authorization
 
     /**
      * Authorization constructor.
-     * @param Authentication $auth
      */
     public function __construct(Authentication $auth)
     {
@@ -28,9 +26,6 @@ class Authorization
     }
 
     /**
-     * @param $request
-     * @param \Closure $next
-     * @param $permission
      * @return \Illuminate\Http\RedirectResponse|Response
      */
     public function handle($request, \Closure $next, $permission)
@@ -43,8 +38,6 @@ class Authorization
     }
 
     /**
-     * @param Request $request
-     * @param $permission
      * @return \Illuminate\Http\RedirectResponse|Response
      */
     private function handleUnauthorizedRequest(Request $request, $permission)

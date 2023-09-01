@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Category;
 use Modules\Ievent\Http\Requests\CreateCategoryRequest;
 use Modules\Ievent\Http\Requests\UpdateCategoryRequest;
 use Modules\Ievent\Repositories\CategoryRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CategoryController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$categories = $this->category->all();
 
@@ -38,21 +35,16 @@ class CategoryController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCategoryRequest $request
-     * @return Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateCategoryRequest $request): Response
     {
         $this->category->create($request->all());
 
@@ -62,23 +54,16 @@ class CategoryController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Category $category
-     * @return Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category): Response
     {
         return view('ievent::admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Category $category
-     * @param  UpdateCategoryRequest $request
-     * @return Response
      */
-    public function update(Category $category, UpdateCategoryRequest $request)
+    public function update(Category $category, UpdateCategoryRequest $request): Response
     {
         $this->category->update($category, $request->all());
 
@@ -88,11 +73,8 @@ class CategoryController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Category $category
-     * @return Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): Response
     {
         $this->category->destroy($category);
 

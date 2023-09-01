@@ -2,10 +2,10 @@
 
 namespace Modules\Iplan\Entities;
 
-
 class PlanType
 {
     const PRINCIPAL = 0;
+
     const EXTRA = 1;
 
     private $types = [];
@@ -14,7 +14,7 @@ class PlanType
     {
         $this->types = [
             self::PRINCIPAL => trans('iplan::plans.types.principal'),
-            self::EXTRA => trans('iplan::plans.types.extra')
+            self::EXTRA => trans('iplan::plans.types.extra'),
         ];
     }
 
@@ -22,7 +22,6 @@ class PlanType
     {
         return $this->types;
     }
-
 
     public function get($statusId)
     {
@@ -39,10 +38,9 @@ class PlanType
         $response = [];
         //AMp status
         foreach ($this->types as $key => $status) {
-          array_push($response, ['id' => $key, 'title' => $status]);
+            array_push($response, ['id' => $key, 'title' => $status]);
         }
         //Repsonse
         return collect($response);
     }
-    
 }

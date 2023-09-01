@@ -13,7 +13,7 @@ class DeleteUserTokenRequest extends FormRequest
 
     public function authorize()
     {
-        return ($this->userTokenId->user->id === $this->user()->id);
+        return $this->userTokenId->user->id === $this->user()->id;
     }
 
     public function messages()

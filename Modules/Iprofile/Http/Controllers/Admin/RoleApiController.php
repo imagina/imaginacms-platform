@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\RoleApi;
 use Modules\Iprofile\Http\Requests\CreateRoleApiRequest;
 use Modules\Iprofile\Http\Requests\UpdateRoleApiRequest;
 use Modules\Iprofile\Repositories\RoleApiRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RoleApiController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class RoleApiController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$roleapis = $this->roleapi->all();
 
@@ -38,21 +35,16 @@ class RoleApiController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.roleapis.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateRoleApiRequest $request
-     * @return Response
      */
-    public function store(CreateRoleApiRequest $request)
+    public function store(CreateRoleApiRequest $request): Response
     {
         $this->roleapi->create($request->all());
 
@@ -62,23 +54,16 @@ class RoleApiController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  RoleApi $roleapi
-     * @return Response
      */
-    public function edit(RoleApi $roleapi)
+    public function edit(RoleApi $roleapi): Response
     {
         return view('Iprofile::admin.roleapis.edit', compact('roleapi'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  RoleApi $roleapi
-     * @param  UpdateRoleApiRequest $request
-     * @return Response
      */
-    public function update(RoleApi $roleapi, UpdateRoleApiRequest $request)
+    public function update(RoleApi $roleapi, UpdateRoleApiRequest $request): Response
     {
         $this->roleapi->update($roleapi, $request->all());
 
@@ -88,11 +73,8 @@ class RoleApiController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  RoleApi $roleapi
-     * @return Response
      */
-    public function destroy(RoleApi $roleapi)
+    public function destroy(RoleApi $roleapi): Response
     {
         $this->roleapi->destroy($roleapi);
 

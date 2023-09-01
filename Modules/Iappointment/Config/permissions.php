@@ -27,10 +27,6 @@ return [
         'edit' => 'iappointment::appointmentstatuses.edit resource',
         'destroy' => 'iappointment::appointmentstatuses.destroy resource',
     ],
-// append
-
-
-
-
+    // append
 
 ];

@@ -5,8 +5,8 @@ namespace Modules\Iplaces\Entities;
 class StatusYN
 {
     const NO = 0;
-    const YES = 1;
 
+    const YES = 1;
 
     /**
      * @var array
@@ -24,20 +24,17 @@ class StatusYN
 
     /**
      * Get the available statuses
-     * @return array
      */
     /*listar*/
-    public function lists()
+    public function lists(): array
     {
         return $this->statuses;
     }
 
     /**
      * Get the post status
-     * @param int $statusId
-     * @return string
      */
-    public function get($statusId)
+    public function get(int $statusId): string
     {
         if (isset($this->statuses[$statusId])) {
             return $this->statuses[$statusId];

@@ -10,11 +10,10 @@ class MasterBladeLayout extends BaseFileType implements FileType
 
     /**
      * Generate the current file type
-     * @return string
      */
-    public function generate()
+    public function generate(): string
     {
-        $stub = $this->finder->get(__DIR__ . '/../stubs/masterBladeLayout.stub');
+        $stub = $this->finder->get(__DIR__.'/../stubs/masterBladeLayout.stub');
 
         $this->finder->makeDirectory($this->themePathForFile($this->options['name'], '/views/layouts'), 0755, true);
 

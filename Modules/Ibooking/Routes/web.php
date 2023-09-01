@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IbookingController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('ibooking')->group(function() {
-    Route::get('/', 'IbookingController@index');
+Route::prefix('ibooking')->group(function () {
+    Route::get('/', [IbookingController::class, 'index']);
 });

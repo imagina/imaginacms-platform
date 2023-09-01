@@ -16,8 +16,6 @@ class RegisterIcommerceopenpaySidebar implements \Maatwebsite\Sidebar\SidebarExt
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIcommerceopenpaySidebar implements \Maatwebsite\Sidebar\SidebarExt
         //$sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommerceopenpay::icommerceopenpays.title.icommerceopenpays'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommerceopenpay::icommerceopenpays.title.icommerceopenpays'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +46,7 @@ class RegisterIcommerceopenpaySidebar implements \Maatwebsite\Sidebar\SidebarExt
                         $this->auth->hasAccess('icommerceopenpay.icommerceopenpays.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

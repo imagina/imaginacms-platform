@@ -2,8 +2,8 @@
 
 namespace Modules\Iplan\Repositories\Cache;
 
-use Modules\Iplan\Repositories\PlanRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Iplan\Repositories\PlanRepository;
 
 class CachePlanDecorator extends BaseCacheCrudDecorator implements PlanRepository
 {

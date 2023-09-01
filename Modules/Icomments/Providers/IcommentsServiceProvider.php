@@ -2,17 +2,17 @@
 
 namespace Modules\Icomments\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icomments\Listeners\RegisterIcommentsSidebar;
-use Illuminate\Support\Facades\Blade;
 
 class IcommentsServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -22,10 +22,8 @@ class IcommentsServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommentsSidebar::class);
@@ -33,19 +31,16 @@ class IcommentsServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
-    public function boot()
+    public function boot(): void
     {
-       
         $this->publishConfig('icomments', 'config');
         $this->publishConfig('icomments', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'settings'), "asgard.icomments.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'settings-fields'), "asgard.icomments.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'permissions'), "asgard.icomments.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'settings'), 'asgard.icomments.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'settings-fields'), 'asgard.icomments.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('icomments', 'permissions'), 'asgard.icomments.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
@@ -54,17 +49,15 @@ class IcommentsServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     /**
-    * Register components
-    */
+     * Register components
+     */
     private function registerComponents()
     {
         Blade::componentNamespace("Modules\Icomments\View\Components", 'icomments');
@@ -84,9 +77,6 @@ class IcommentsServiceProvider extends ServiceProvider
                 return new \Modules\Icomments\Repositories\Cache\CacheCommentDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-
 }

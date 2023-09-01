@@ -18,6 +18,7 @@ class TranslationController extends AdminBaseController
      * @var TranslationsService
      */
     private $translationsService;
+
     /**
      * @var TranslationRepository
      */
@@ -34,10 +35,8 @@ class TranslationController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $translations = $this->translationsService->getFileAndDatabaseMergedTranslations();
 

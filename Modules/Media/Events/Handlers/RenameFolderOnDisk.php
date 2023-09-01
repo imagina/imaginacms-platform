@@ -12,6 +12,7 @@ class RenameFolderOnDisk
      * @var Factory
      */
     private $filesystem;
+
     /**
      * @var FileRepository
      */
@@ -39,33 +40,29 @@ class RenameFolderOnDisk
 
     private function renameFolder($event)
     {
-    if($event->previousFolderData["filename"] != $event->folder->filename){
-      $disk = is_null($event->folder->disk)? $this->getConfiguredFilesystem() : $event->folder->disk;
+        if ($event->previousFolderData['filename'] != $event->folder->filename) {
+            $disk = is_null($event->folder->disk) ? $this->getConfiguredFilesystem() : $event->folder->disk;
 
-      $this->filesystem->disk($disk)
-        ->move(
-          $this->getDestinationPath($event->previousFolderData['path']->getRelativeUrl()),
-          $this->getDestinationPath($event->folder->path->getRelativeUrl())
-        );
-    }
-   
+            $this->filesystem->disk($disk)
+              ->move(
+                  $this->getDestinationPath($event->previousFolderData['path']->getRelativeUrl()),
+                  $this->getDestinationPath($event->folder->path->getRelativeUrl())
+              );
+        }
     }
 
     private function getDestinationPath($path)
     {
         if ($this->getConfiguredFilesystem() === 'local') {
-            return basename(public_path()) . $path;
+            return basename(public_path()).$path;
         }
 
         return $path;
     }
 
-    /**
-     * @return string
-     */
-    private function getConfiguredFilesystem()
+    private function getConfiguredFilesystem(): string
     {
-        return setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+        return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }
 
     private function replacePathReferences($folderId, $previousPath, $newPath)

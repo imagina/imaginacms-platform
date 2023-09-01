@@ -8,7 +8,6 @@ use Maatwebsite\Sidebar\Menu;
  * Hook BuildingSidebar
  * Triggered when building the backend sidebar
  * Use this hook to add your sidebar items
- * @package Modules\Core\Events
  */
 class BuildingSidebar
 {
@@ -24,7 +23,6 @@ class BuildingSidebar
 
     /**
      * Add a menu group to the menu
-     * @param Menu $menu
      */
     public function add(Menu $menu)
     {
@@ -33,9 +31,8 @@ class BuildingSidebar
 
     /**
      * Get the current Laravel-Sidebar menu
-     * @return Menu
      */
-    public function getMenu()
+    public function getMenu(): Menu
     {
         return $this->menu;
     }

@@ -1,21 +1,19 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateImeetingProvidersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('imeeting__providers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            
+
             // Your fields
             $table->string('name');
             $table->integer('status')->unsigned();
@@ -23,16 +21,13 @@ class CreateImeetingProvidersTable extends Migration
 
             $table->timestamps();
             $table->auditStamps();
-
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('imeeting__providers');
     }

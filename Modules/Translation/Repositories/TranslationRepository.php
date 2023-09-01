@@ -8,11 +8,11 @@ use Modules\Translation\Entities\TranslationTranslation;
 interface TranslationRepository extends BaseRepository
 {
     /**
-     * @param string $key
-     * @param string $locale
+     * @param  string  $key
+     * @param  string  $locale
      * @return string
      */
-    public function findByKeyAndLocale($key, $locale = null);
+  public function findByKeyAndLocale(string $key, string $locale = null): string;
 
     /**
      * @return mixed
@@ -20,34 +20,30 @@ interface TranslationRepository extends BaseRepository
     public function allFormatted();
 
     /**
-     * @param $locale
-     * @param $key
-     * @param $value
      * @return mixed
      */
     public function saveTranslationForLocaleAndKey($locale, $key, $value);
 
     /**
-     * @param $key
      * @return mixed
      */
     public function findTranslationByKey($key);
 
     /**
      * Update the given translation key with the given data
-     * @param string $key
-     * @param array $data
+     *
+     * @param  string  $key
      * @return mixed
      */
-    public function updateFromImport($key, array $data);
+    public function updateFromImport(string $key, array $data);
 
     /**
      * Set the given value on the given TranslationTranslation
-     * @param TranslationTranslation $translationTranslation
-     * @param string $value
+     *
+     * @param  string  $value
      * @return void
      */
-    public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value);
+    public function updateTranslationToValue(TranslationTranslation $translationTranslation,  string $value): void;
 
     public function getTranslationsForGroupAndNamespace($locale, $group, $namespace);
 

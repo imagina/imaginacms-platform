@@ -205,7 +205,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         $pageOne = $this->createRandomOfflinePage();
         $pageTwo = $this->createRandomOfflinePage();
 
-        $this->page->markMultipleAsOnlineInAllLocales([1,2]);
+        $this->page->markMultipleAsOnlineInAllLocales([1, 2]);
 
         $pageOne->refresh();
         $pageTwo->refresh();
@@ -233,7 +233,7 @@ class EloquentPageRepositoryTest extends BasePageTest
         $pageOne = $this->createRandomOnlinePage();
         $pageTwo = $this->createRandomOnlinePage();
 
-        $this->page->markMultipleAsOfflineInAllLocales([1,2]);
+        $this->page->markMultipleAsOfflineInAllLocales([1, 2]);
 
         $pageOne->refresh();
         $pageTwo->refresh();
@@ -266,14 +266,14 @@ class EloquentPageRepositoryTest extends BasePageTest
             'template' => 'default',
             'en' => [
                 'status' => 0,
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
             'fr' => [
                 'status' => 0,
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
         ];
@@ -290,14 +290,14 @@ class EloquentPageRepositoryTest extends BasePageTest
             'template' => 'default',
             'en' => [
                 'status' => 1,
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
             'fr' => [
                 'status' => 1,
-                'title' => $faker->name,
-                'slug' => $faker->slug,
+                'title' => $faker->name(),
+                'slug' => $faker->slug(),
                 'body' => $faker->paragraph(),
             ],
         ];

@@ -10,6 +10,8 @@ class IcommerceAgree extends Model
     use Translatable;
 
     protected $table = 'icommerceagree__icommerceagrees';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

@@ -1,17 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIplacesPlaceCategoryTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplaces__place_category', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -19,16 +17,14 @@ class CreateIplacesPlaceCategoryTable extends Migration
             $table->integer('place_id')->unsigned();
             $table->integer('category_id')->unsigned();
 
-           // $table->timestamps();
+            // $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iplaces__place_category');
     }

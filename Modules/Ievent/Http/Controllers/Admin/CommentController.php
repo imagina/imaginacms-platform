@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Comment;
 use Modules\Ievent\Http\Requests\CreateCommentRequest;
 use Modules\Ievent\Http\Requests\UpdateCommentRequest;
 use Modules\Ievent\Repositories\CommentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CommentController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CommentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$comments = $this->comment->all();
 
@@ -38,21 +35,16 @@ class CommentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.comments.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCommentRequest $request
-     * @return Response
      */
-    public function store(CreateCommentRequest $request)
+    public function store(CreateCommentRequest $request): Response
     {
         $this->comment->create($request->all());
 
@@ -62,23 +54,16 @@ class CommentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Comment $comment
-     * @return Response
      */
-    public function edit(Comment $comment)
+    public function edit(Comment $comment): Response
     {
         return view('ievent::admin.comments.edit', compact('comment'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Comment $comment
-     * @param  UpdateCommentRequest $request
-     * @return Response
      */
-    public function update(Comment $comment, UpdateCommentRequest $request)
+    public function update(Comment $comment, UpdateCommentRequest $request): Response
     {
         $this->comment->update($comment, $request->all());
 
@@ -88,11 +73,8 @@ class CommentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Comment $comment
-     * @return Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comment): Response
     {
         $this->comment->destroy($comment);
 

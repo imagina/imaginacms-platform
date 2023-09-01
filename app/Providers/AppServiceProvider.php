@@ -13,10 +13,8 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Schema::defaultStringLength(191);
 
@@ -24,21 +22,19 @@ class AppServiceProvider extends ServiceProvider
         Carbon::serializeUsing(function ($carbon) {
             return $carbon->format('Y-m-d H:i:s');
         });
-  
-      /*ADD THIS LINES*/
-      $this->commands([
-        InstallCommand::class,
-        ClientCommand::class,
-        KeysCommand::class,
-      ]);
+
+        /*ADD THIS LINES*/
+        $this->commands([
+            InstallCommand::class,
+            ClientCommand::class,
+            KeysCommand::class,
+        ]);
     }
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         if ($this->app->environment() === 'local') {
             $this->app->register('\Barryvdh\Debugbar\ServiceProvider');

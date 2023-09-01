@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'=>'Banners Ads',
+    'title' => 'Banners Ads',
     'form' => [
-    ]
+    ],
 ];

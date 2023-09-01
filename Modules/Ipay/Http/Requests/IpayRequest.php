@@ -8,10 +8,8 @@ class IpayRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         // only allow updates if the user is logged in
         return true;
@@ -19,25 +17,21 @@ class IpayRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'title'             => 'required|min:1|max:255',
-            'merchantid'        => 'numeric',
-            'accountid'         => 'numeric',
-            'apikey'            => 'required|min:1|max:255',
+            'title' => 'required|min:1|max:255',
+            'merchantid' => 'numeric',
+            'accountid' => 'numeric',
+            'apikey' => 'required|min:1|max:255',
         ];
     }
 
     /**
      * Get the validation attributes that apply to the request.
-     *
-     * @return array
      */
-    public function attributes()
+    public function attributes(): array
     {
         return [
             //
@@ -46,10 +40,8 @@ class IpayRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 
     /**
      * Get the validation messages that apply to the request.
-     *
-     * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             //

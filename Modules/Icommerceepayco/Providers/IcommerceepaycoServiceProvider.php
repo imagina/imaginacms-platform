@@ -2,16 +2,17 @@
 
 namespace Modules\Icommerceepayco\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Arr;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceepayco\Events\Handlers\RegisterIcommerceepaycoSidebar;
 
 class IcommerceepaycoServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommerceepaycoSidebar::class);
@@ -32,11 +31,10 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceepaycos', Arr::dot(trans('icommerceepayco::icommerceepaycos')));
             // append translations
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommerceepayco', 'permissions');
         $this->publishConfig('icommerceepayco', 'config');
@@ -47,12 +45,10 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +65,6 @@ class IcommerceepaycoServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceepayco\Repositories\Cache\CacheIcommerceEpaycoDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

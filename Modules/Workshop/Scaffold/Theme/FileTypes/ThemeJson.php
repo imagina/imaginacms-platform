@@ -10,11 +10,10 @@ class ThemeJson extends BaseFileType implements FileType
 
     /**
      * Generate the current file type
-     * @return string
      */
-    public function generate()
+    public function generate(): string
     {
-        $stub = $this->finder->get(__DIR__ . '/../stubs/themeJson.stub');
+        $stub = $this->finder->get(__DIR__.'/../stubs/themeJson.stub');
 
         $stub = $this->replaceContentInStub($stub);
 

@@ -8,25 +8,21 @@
 
 namespace Modules\Iplaces\Events;
 
-use Modules\Iplaces\Entities\Place;
 use Modules\Media\Contracts\StoringMedia;
-
 
 class PlaceWasCreated implements StoringMedia
 {
     public $entity;
-    public  $data;
+
+    public $data;
 
     /**
      * Create a new event instance.
-     *
-     * @param $entity
-     * @param array $data
      */
-    public function __construct($entity,array $data)
+    public function __construct($entity, array $data)
     {
-        $this->data=$data;
-        $this->entity=$entity;
+        $this->data = $data;
+        $this->entity = $entity;
     }
 
     public function getEntity()
@@ -36,14 +32,9 @@ class PlaceWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
-     * @return array
      */
-
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }
-
-
-
 }

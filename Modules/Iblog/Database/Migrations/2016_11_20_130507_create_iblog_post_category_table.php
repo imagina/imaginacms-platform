@@ -1,14 +1,14 @@
 <?php
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 class CreateIblogPostCategoryTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iblog__post__category', function (Blueprint $table) {
             $table->increments('id');
@@ -16,12 +16,11 @@ class CreateIblogPostCategoryTable extends Migration
             $table->integer('category_id')->unsigned();
         });
     }
+
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('iblog__post__category');
     }

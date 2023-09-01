@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Address;
 use Modules\Iprofile\Http\Requests\CreateAddressRequest;
 use Modules\Iprofile\Http\Requests\UpdateAddressRequest;
 use Modules\Iprofile\Repositories\AddressRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AddressController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class AddressController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$addresses = $this->address->all();
 
@@ -38,21 +35,16 @@ class AddressController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iprofile::admin.addresses.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateAddressRequest $request
-     * @return Response
      */
-    public function store(CreateAddressRequest $request)
+    public function store(CreateAddressRequest $request): Response
     {
         $this->address->create($request->all());
 
@@ -62,23 +54,16 @@ class AddressController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Address $address
-     * @return Response
      */
-    public function edit(Address $address)
+    public function edit(Address $address): Response
     {
         return view('iprofile::admin.addresses.edit', compact('address'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Address $address
-     * @param  UpdateAddressRequest $request
-     * @return Response
      */
-    public function update(Address $address, UpdateAddressRequest $request)
+    public function update(Address $address, UpdateAddressRequest $request): Response
     {
         $this->address->update($address, $request->all());
 
@@ -88,11 +73,8 @@ class AddressController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Address $address
-     * @return Response
      */
-    public function destroy(Address $address)
+    public function destroy(Address $address): Response
     {
         $this->address->destroy($address);
 

@@ -12,6 +12,7 @@ class TranslationsExporter
      * @var TranslationsService
      */
     private $translations;
+
     private $filename = 'translations_';
 
     public function __construct(TranslationsService $translations)
@@ -33,17 +34,13 @@ class TranslationsExporter
 
     /**
      * Get the filename
-     * @return string
      */
-    public function getFileName()
+    public function getFileName(): string
     {
-        return $this->filename . time() . '.csv';
+        return $this->filename.time().'.csv';
     }
 
-    /**
-     * @return array
-     */
-    private function formatData()
+    private function formatData(): array
     {
         $translations = $this->translations->getFileAndDatabaseMergedTranslations();
         $translations = $translations->all();

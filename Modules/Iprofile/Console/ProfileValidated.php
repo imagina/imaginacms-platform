@@ -3,12 +3,11 @@
 namespace Modules\Iprofile\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 use Modules\Iprofile\Emails\UpdateProfile;
 use Modules\Iprofile\Repositories\UserRepository;
-use Modules\Iprofile\Transformers\UserProfileTransformer;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Support\Facades\Mail;
 
 class ProfileValidated extends Command
 {
@@ -18,7 +17,9 @@ class ProfileValidated extends Command
      * @var string
      */
     protected $name = 'profile:validate';
+
     private $mail;
+
     /**
      * The console command description.
      *
@@ -30,50 +31,42 @@ class ProfileValidated extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @param UserRepository $user
-     * @param Mailer $mail
      */
     public function __construct(UserRepository $user, Mail $mail)
     {
         parent::__construct();
         $this->user = $user;
         $this->mail = $mail;
-
     }
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
-        try{
-            $users =$this->user->getItemsBy((object)['take' => false, 'filter' => ['field' => ['name' => 'validate', 'value' => true]], 'include' => []]);
+        try {
+            $users = $this->user->getItemsBy((object) ['take' => false, 'filter' => ['field' => ['name' => 'validate', 'value' => true]], 'include' => []]);
             $cont = 0;
 
             foreach ($users as $user) {
-                if (!isset($user->notification)) {
+                if (! isset($user->notification)) {
                     $remove = config()->get('asgard.iprofile.config.file_remove');
                     $cont++;
                     $dataUpdate = $remove;
-                    $subject = trans("iprofile::profile.messages.Update User profile");
-                    $view = "iprofile::emails.update_profile";
-                    $dataUpdate = array_merge($dataUpdate,['notification'=>true,'validate'=>false]);
+                    $subject = trans('iprofile::profile.messages.Update User profile');
+                    $view = 'iprofile::emails.update_profile';
+                    $dataUpdate = array_merge($dataUpdate, ['notification' => true, 'validate' => false]);
                     $this->mail->to($user->email ?? env('MAIL_FROM_ADDRESS'))->send(new UpdateProfile($user, $subject, $view));
-                    \Log::info('user ' . $user->id . ' notified');
-                    $this->info('user ' . $user->id . ' notifies');
-                    $this->user->update($user,$dataUpdate);
+                    \Log::info('user '.$user->id.' notified');
+                    $this->info('user '.$user->id.' notifies');
+                    $this->user->update($user, $dataUpdate);
                 }
             }
-            $this->info($cont . ' users notified');
-        }catch (\Exception $e){
+            $this->info($cont.' users notified');
+        } catch (\Exception $e) {
             \Log::error($e->getMessage());
             $this->info($e->getMessage());
         }
-
-
     }
 
     /**

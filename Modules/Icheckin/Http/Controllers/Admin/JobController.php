@@ -2,13 +2,12 @@
 
 namespace Modules\Icheckin\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Job;
 use Modules\Icheckin\Http\Requests\CreateJobRequest;
 use Modules\Icheckin\Http\Requests\UpdateJobRequest;
 use Modules\Icheckin\Repositories\JobRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class JobController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class JobController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$jobs = $this->job->all();
 
@@ -38,21 +35,16 @@ class JobController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.jobs.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateJobRequest $request
-     * @return Response
      */
-    public function store(CreateJobRequest $request)
+    public function store(CreateJobRequest $request): Response
     {
         $this->job->create($request->all());
 
@@ -62,23 +54,16 @@ class JobController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Job $job
-     * @return Response
      */
-    public function edit(Job $job)
+    public function edit(Job $job): Response
     {
         return view('icheckin::admin.jobs.edit', compact('job'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Job $job
-     * @param  UpdateJobRequest $request
-     * @return Response
      */
-    public function update(Job $job, UpdateJobRequest $request)
+    public function update(Job $job, UpdateJobRequest $request): Response
     {
         $this->job->update($job, $request->all());
 
@@ -88,11 +73,8 @@ class JobController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Job $job
-     * @return Response
      */
-    public function destroy(Job $job)
+    public function destroy(Job $job): Response
     {
         $this->job->destroy($job);
 

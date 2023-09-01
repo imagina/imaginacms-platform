@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Field;
 use Modules\Iprofile\Http\Requests\CreateCustomFieldRequest;
 use Modules\Iprofile\Http\Requests\UpdateCustomFieldRequest;
 use Modules\Iprofile\Repositories\FieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CustomfieldController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$customfields = $this->customfield->all();
 
@@ -38,21 +35,16 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.customfields.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCustomFieldRequest $request
-     * @return Response
      */
-    public function store(CreateCustomFieldRequest $request)
+    public function store(CreateCustomFieldRequest $request): Response
     {
         $this->customfield->create($request->all());
 
@@ -62,23 +54,16 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Field $customfield
-     * @return Response
      */
-    public function edit(Field $customfield)
+    public function edit(Field $customfield): Response
     {
         return view('Iprofile::admin.customfields.edit', compact('customfield'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Field $customfield
-     * @param  UpdateCustomFieldRequest $request
-     * @return Response
      */
-    public function update(Field $customfield, UpdateCustomFieldRequest $request)
+    public function update(Field $customfield, UpdateCustomFieldRequest $request): Response
     {
         $this->customfield->update($customfield, $request->all());
 
@@ -88,11 +73,8 @@ class CustomfieldController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Field $customfield
-     * @return Response
      */
-    public function destroy(Field $customfield)
+    public function destroy(Field $customfield): Response
     {
         $this->customfield->destroy($customfield);
 

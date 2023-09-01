@@ -6,7 +6,7 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface PlanuserRepository extends BaseRepository
 {
-  public function getItemsBy($params);
+    public function getItemsBy($params);
 
     public function getItem($criteria, $params = false);
 

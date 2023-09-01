@@ -2,13 +2,12 @@
 
 namespace Modules\Isite\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Isite\Entities\Recommendation;
 use Modules\Isite\Http\Requests\CreateRecommendationRequest;
 use Modules\Isite\Http\Requests\UpdateRecommendationRequest;
 use Modules\Isite\Repositories\RecommendationRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RecommendationController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class RecommendationController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recommendations = $this->recommendation->all();
 
@@ -38,21 +35,16 @@ class RecommendationController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('isite::admin.recommendations.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateRecommendationRequest $request
-     * @return Response
      */
-    public function store(CreateRecommendationRequest $request)
+    public function store(CreateRecommendationRequest $request): Response
     {
         $this->recommendation->create($request->all());
 
@@ -62,23 +54,16 @@ class RecommendationController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Recommendation $recommendation
-     * @return Response
      */
-    public function edit(Recommendation $recommendation)
+    public function edit(Recommendation $recommendation): Response
     {
         return view('isite::admin.recommendations.edit', compact('recommendation'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Recommendation $recommendation
-     * @param  UpdateRecommendationRequest $request
-     * @return Response
      */
-    public function update(Recommendation $recommendation, UpdateRecommendationRequest $request)
+    public function update(Recommendation $recommendation, UpdateRecommendationRequest $request): Response
     {
         $this->recommendation->update($recommendation, $request->all());
 
@@ -88,11 +73,8 @@ class RecommendationController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Recommendation $recommendation
-     * @return Response
      */
-    public function destroy(Recommendation $recommendation)
+    public function destroy(Recommendation $recommendation): Response
     {
         $this->recommendation->destroy($recommendation);
 

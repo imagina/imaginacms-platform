@@ -12,7 +12,7 @@ class UpdatePasswordRequest extends BaseFormRequest
             'email' => 'required',
             'password' => 'required',
             'newPassword' => 'required|min:3',
-            'newPasswordConfirmation' => 'required|same:newPassword'
+            'newPasswordConfirmation' => 'required|same:newPassword',
         ];
     }
 
@@ -42,7 +42,8 @@ class UpdatePasswordRequest extends BaseFormRequest
         return [];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
 }

@@ -7,12 +7,11 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Translation\Providers\TranslationServiceProvider;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\LaravelModulesServiceProvider;
-use Modules\Core\Providers\LaravelModulesServiceProvider as CoreModuleServiceProvider;
+
 class AsgardServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
- 
         if (class_exists(TranslationServiceProvider::class)) {
             $this->app->register(TranslationServiceProvider::class);
         }

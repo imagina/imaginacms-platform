@@ -4,14 +4,15 @@ namespace Modules\Icommerceopenpay\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommerceopenpay\Events\Handlers\RegisterIcommerceopenpaySidebar;
 
 class IcommerceopenpayServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommerceopenpaySidebar::class);
@@ -32,11 +31,10 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommerceopenpays', Arr::dot(trans('icommerceopenpay::icommerceopenpays')));
             // append translations
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommerceopenpay', 'permissions');
         $this->publishConfig('icommerceopenpay', 'config');
@@ -47,12 +45,10 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,9 +65,6 @@ class IcommerceopenpayServiceProvider extends ServiceProvider
                 return new \Modules\Icommerceopenpay\Repositories\Cache\CacheIcommerceOpenpayDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
-
-    
 }

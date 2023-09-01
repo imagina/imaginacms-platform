@@ -2,8 +2,8 @@
 
 namespace Modules\Requestable\Repositories\Cache;
 
-use Modules\Requestable\Repositories\FieldRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Requestable\Repositories\FieldRepository;
 
 class CacheFieldDecorator extends BaseCacheCrudDecorator implements FieldRepository
 {

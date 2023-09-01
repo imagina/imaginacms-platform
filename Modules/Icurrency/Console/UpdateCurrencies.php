@@ -3,10 +3,9 @@
 namespace Modules\Icurrency\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
-use Modules\Icurrency\Entities\Currency;
 use Illuminate\Support\Facades\Log;
+use Modules\Icurrency\Entities\Currency;
+use Symfony\Component\Console\Input\InputOption;
 
 class UpdateCurrencies extends Command
 {
@@ -36,23 +35,19 @@ class UpdateCurrencies extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
-      $currencies = Currency::noDefaultCurrency();
-      foreach ($currencies as $currency){
-          $this->updateCurrency($currency->code);
-      }
+        $currencies = Currency::noDefaultCurrency();
+        foreach ($currencies as $currency) {
+            $this->updateCurrency($currency->code);
+        }
     }
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
 
@@ -61,23 +56,21 @@ class UpdateCurrencies extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
         ];
     }
 
-    private  function updateCurrency($from_currency)
+    private function updateCurrency($from_currency)
     {
         $defaultCurrency = Currency::defaultCurrency();
         $apikey = env('CURRCONV_APIKEY');
         $from_Currency = urlencode($from_currency);
         $to_Currency = urlencode($defaultCurrency->code);
-        $query =  "{$from_Currency}_{$to_Currency}";
+        $query = "{$from_Currency}_{$to_Currency}";
         $json = file_get_contents("https://free.currconv.com/api/v7/convert?q={$query}&compact=ultra&apiKey={$apikey}");
         $obj = json_decode($json, true);
         $val = floatval($obj["$query"]);

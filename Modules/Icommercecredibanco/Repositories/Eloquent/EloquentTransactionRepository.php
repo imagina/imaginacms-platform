@@ -2,19 +2,18 @@
 
 namespace Modules\Icommercecredibanco\Repositories\Eloquent;
 
-use Modules\Icommercecredibanco\Repositories\TransactionRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Icommercecredibanco\Repositories\TransactionRepository;
 
 class EloquentTransactionRepository extends EloquentBaseRepository implements TransactionRepository
 {
-
     /**
      * Generate Voucher
-     * @param  $order
-     * @param  $arrayOut
-     * @param  $type (1 = IcommerceCredibanco , 2 = Icredibanco)
-     * @param  $config
-     * @return transaction
+     *
+     * @param    $order
+     * @param    $arrayOut
+     * @param    $type (1 = IcommerceCredibanco , 2 = Icredibanco)
+     * @param    $config
      */
     //Deprecated
     /*
@@ -37,26 +36,22 @@ class EloquentTransactionRepository extends EloquentBaseRepository implements Tr
             'authorizationCode' => isset($arrayOut['authorizationCode'])?$arrayOut['authorizationCode']:'',
             'authorizationResult' => $arrayOut['authorizationResult']
          );
- 
+
         $transaction = $this->model->create($data);
- 
+
         return $transaction;
- 
+
     }
     */
-    public function findByOrder($id){
-
-        return $this->model->where('order_id',"=",$id)->first();
-
+    public function findByOrder($id): transaction
+    {
+        return $this->model->where('order_id', '=', $id)->first();
     }
 
-    public function findByOrderTrans($orderID,$transactionID){
-
+    public function findByOrderTrans($orderID, $transactionID)
+    {
         return $this->model->where([
-            ['id',"=",$transactionID],['order_id',"=",$orderID]
-            ])->first();
-
+            ['id', '=', $transactionID], ['order_id', '=', $orderID],
+        ])->first();
     }
-
-
 }

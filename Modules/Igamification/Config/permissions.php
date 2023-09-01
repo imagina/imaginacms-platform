@@ -17,7 +17,6 @@ return [
         'destroy' => 'igamification::activities.destroy resource',
         'restore' => 'igamification::activities.restore resource',
     ],
-// append
-
+    // append
 
 ];

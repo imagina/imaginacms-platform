@@ -2,7 +2,9 @@
 
 namespace Modules\Core\Foundation\Theme;
 
+use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 class ThemeManager implements \Countable
@@ -11,44 +13,34 @@ class ThemeManager implements \Countable
      * @var Application
      */
     private $app;
+
     /**
      * @var string Path to scan for themes
      */
     private $path;
 
-    /**
-     * @param Application $app
-     * @param $path
-     */
     public function __construct(Application $app, $path)
     {
         $this->app = $app;
         $this->path = $path;
     }
 
-    /**
-     * @param  string     $name
-     * @return Theme|null
-     */
-    public function find($name)
+    public function find(string $name): ?Theme
     {
         foreach ($this->all() as $theme) {
             if ($theme->getLowerName() == strtolower($name)) {
                 return $theme;
             }
         }
-
-        return;
     }
 
     /**
      * Return all available themes
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         $themes = [];
-        if (!$this->getFinder()->isDirectory($this->path)) {
+        if (! $this->getFinder()->isDirectory($this->path)) {
             return $themes;
         }
 
@@ -66,12 +58,11 @@ class ThemeManager implements \Countable
 
     /**
      * Get only the public themes
-     * @return array
      */
-    public function allPublicThemes()
+    public function allPublicThemes(): array
     {
         $themes = [];
-        if (!$this->getFinder()->isDirectory($this->path)) {
+        if (! $this->getFinder()->isDirectory($this->path)) {
             return $themes;
         }
 
@@ -92,35 +83,26 @@ class ThemeManager implements \Countable
 
     /**
      * Get the theme directories
-     * @return array
      */
-    private function getDirectories()
+    private function getDirectories(): array
     {
         return $this->getFinder()->directories($this->path);
     }
 
     /**
      * Return the theme assets path
-     * @param  string $theme
-     * @return string
      */
-    public function getAssetPath($theme)
+    public function getAssetPath(string $theme): string
     {
-        return public_path($this->getConfig()->get('themify.themes_assets_path') . '/' . $theme);
+        return public_path($this->getConfig()->get('themify.themes_assets_path').'/'.$theme);
     }
 
-    /**
-     * @return \Illuminate\Filesystem\Filesystem
-     */
-    protected function getFinder()
+    protected function getFinder(): Filesystem
     {
         return $this->app['files'];
     }
 
-    /**
-     * @return \Illuminate\Config\Repository
-     */
-    protected function getConfig()
+    protected function getConfig(): Repository
     {
         return $this->app['config'];
     }
@@ -135,20 +117,16 @@ class ThemeManager implements \Countable
 
     /**
      * Returns the theme json file
-     * @param $theme
-     * @return string
+     *
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getThemeJsonFile($theme)
+    private function getThemeJsonFile($theme): string
     {
         return json_decode($this->getFinder()->get("$theme/theme.json"));
     }
 
-    /**
-     * @param $themeJson
-     * @return bool
-     */
-    private function isFrontendTheme($themeJson)
+    private function isFrontendTheme($themeJson): bool
     {
         return isset($themeJson->type) && $themeJson->type !== 'frontend' ? false : true;
     }

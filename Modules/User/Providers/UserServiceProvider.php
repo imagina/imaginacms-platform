@@ -29,140 +29,134 @@ use Modules\User\Repositories\UserTokenRepository;
 
 class UserServiceProvider extends ServiceProvider
 {
-  use CanPublishConfiguration, CanGetSidebarClassForModule;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
 
-  /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
-  /**
-   * @var array
-   */
-  protected $providers = [
-    'Sentinel' => SentinelServiceProvider::class,
-  ];
+    /**
+     * @var array
+     */
+    protected $providers = [
+        'Sentinel' => SentinelServiceProvider::class,
+    ];
 
-  /**
-   * @var array
-   */
-  protected $middleware = [
-    'auth.guest' => GuestMiddleware::class,
-    'logged.in' => LoggedInMiddleware::class,
-    'api.token' => AuthorisedApiToken::class,
-    'api.token.admin' => AuthorisedApiTokenAdmin::class,
-    'token-can' => TokenCan::class,
-  ];
+    /**
+     * @var array
+     */
+    protected $middleware = [
+        'auth.guest' => GuestMiddleware::class,
+        'logged.in' => LoggedInMiddleware::class,
+        'api.token' => AuthorisedApiToken::class,
+        'api.token.admin' => AuthorisedApiTokenAdmin::class,
+        'token-can' => TokenCan::class,
+    ];
 
-  /**
-   * Register the service provider.
-   *
-   * @return void
-   */
-  public function register()
-  {
-    $this->app->register($this->getUserPackageServiceProvider());
+    /**
+     * Register the service provider.
+     */
+    public function register(): void
+    {
+        $this->app->register($this->getUserPackageServiceProvider());
 
-    $this->registerBindings();
+        $this->registerBindings();
 
-    $this->app['events']->listen(
-      BuildingSidebar::class,
-      $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
-    );
-    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-      $event->load('users', Arr::dot(trans('user::users')));
-      $event->load('roles', Arr::dot(trans('user::roles')));
-    });
-    $this->commands([
-      GrantModulePermissionsCommand::class,
-      RemoveModulePermissionsCommand::class,
-    ]);
-    
-    app('router')->bind('role', function ($id) {
-      return app(RoleRepository::class)->find($id);
-    });
-    app('router')->bind('user', function ($id) {
-      return app(UserRepository::class)->find($id);
-    });
-    app('router')->bind('userTokenId', function ($id) {
-      return app(UserTokenRepository::class)->find($id);
-    });
-  }
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
+        );
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('users', Arr::dot(trans('user::users')));
+            $event->load('roles', Arr::dot(trans('user::roles')));
+        });
+        $this->commands([
+            GrantModulePermissionsCommand::class,
+            RemoveModulePermissionsCommand::class,
+        ]);
 
-  /**
-   */
-  public function boot()
-  {
-    $this->registerMiddleware();
-
-    $this->publishes([
-      __DIR__ . '/../Resources/views' => base_path('resources/views/asgard/user'),
-    ]);
-
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('user', 'permissions'), "asgard.user.permissions");
-    $this->publishConfig('user', 'config');
-
-    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
-    Auth::extend('sentinel-guard', function () {
-      return new Sentinel();
-    });
-  }
-
-  /**
-   * Get the services provided by the provider.
-   *
-   * @return array
-   */
-  public function provides()
-  {
-    return [];
-  }
-
-  private function registerBindings()
-  {
-    $driver = config('asgard.user.config.driver', 'Sentinel');
-
-    $this->app->bind(
-      UserRepository::class,
-      "Modules\\User\\Repositories\\{$driver}\\{$driver}UserRepository"
-    );
-    $this->app->bind(
-      RoleRepository::class,
-      "Modules\\User\\Repositories\\{$driver}\\{$driver}RoleRepository"
-    );
-    $this->app->bind(
-      Authentication::class,
-      "Modules\\User\\Repositories\\{$driver}\\{$driver}Authentication"
-    );
-    $this->app->bind(UserTokenRepository::class, function () {
-      $repository = new EloquentUserTokenRepository(new UserToken());
-
-      if (!config('app.cache')) {
-        return $repository;
-      }
-
-      return new CacheUserTokenDecorator($repository);
-    });
-  }
-
-  private function registerMiddleware()
-  {
-    foreach ($this->middleware as $name => $class) {
-      $this->app['router']->aliasMiddleware($name, $class);
-    }
-  }
-
-  private function getUserPackageServiceProvider()
-  {
-    $driver = config('asgard.user.config.driver', 'Sentinel');
-
-    if (!isset($this->providers[$driver])) {
-      throw new \Exception("Driver [{$driver}] does not exist");
+        app('router')->bind('role', function ($id) {
+            return app(RoleRepository::class)->find($id);
+        });
+        app('router')->bind('user', function ($id) {
+            return app(UserRepository::class)->find($id);
+        });
+        app('router')->bind('userTokenId', function ($id) {
+            return app(UserTokenRepository::class)->find($id);
+        });
     }
 
-    return $this->providers[$driver];
-  }
+    public function boot(): void
+    {
+        $this->registerMiddleware();
+
+        $this->publishes([
+            __DIR__.'/../Resources/views' => base_path('resources/views/asgard/user'),
+        ]);
+
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('user', 'permissions'), 'asgard.user.permissions');
+        $this->publishConfig('user', 'config');
+
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        Auth::extend('sentinel-guard', function () {
+            return new Sentinel();
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array
+    {
+        return [];
+    }
+
+    private function registerBindings()
+    {
+        $driver = config('asgard.user.config.driver', 'Sentinel');
+
+        $this->app->bind(
+            UserRepository::class,
+            "Modules\\User\\Repositories\\{$driver}\\{$driver}UserRepository"
+        );
+        $this->app->bind(
+            RoleRepository::class,
+            "Modules\\User\\Repositories\\{$driver}\\{$driver}RoleRepository"
+        );
+        $this->app->bind(
+            Authentication::class,
+            "Modules\\User\\Repositories\\{$driver}\\{$driver}Authentication"
+        );
+        $this->app->bind(UserTokenRepository::class, function () {
+            $repository = new EloquentUserTokenRepository(new UserToken());
+
+            if (! config('app.cache')) {
+                return $repository;
+            }
+
+            return new CacheUserTokenDecorator($repository);
+        });
+    }
+
+    private function registerMiddleware()
+    {
+        foreach ($this->middleware as $name => $class) {
+            $this->app['router']->aliasMiddleware($name, $class);
+        }
+    }
+
+    private function getUserPackageServiceProvider()
+    {
+        $driver = config('asgard.user.config.driver', 'Sentinel');
+
+        if (! isset($this->providers[$driver])) {
+            throw new \Exception("Driver [{$driver}] does not exist");
+        }
+
+        return $this->providers[$driver];
+    }
 }

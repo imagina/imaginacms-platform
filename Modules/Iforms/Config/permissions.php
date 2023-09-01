@@ -29,9 +29,6 @@ return [
         'edit' => 'iforms::blocks.edit resource',
         'destroy' => 'iforms::blocks.destroy resource',
     ],
-// append
-
-
-
+    // append
 
 ];

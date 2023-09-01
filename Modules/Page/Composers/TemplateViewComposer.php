@@ -35,14 +35,14 @@ class TemplateViewComposer
 
         $templates = [];
 
-        foreach ($this->finder->excluding(config('asgard.page.config.template-ignored-directories', []))->allFiles($path . '/views') as $template) {
+        foreach ($this->finder->excluding(config('asgard.page.config.template-ignored-directories', []))->allFiles($path.'/views') as $template) {
             $relativePath = $template->getRelativePath();
 
             $templateName = $this->getTemplateName($template);
             $file = $this->removeExtensionsFromFilename($template);
 
             if ($this->hasSubdirectory($relativePath)) {
-                $templates[str_replace('/', '.', $relativePath) . '.' . $file] = $templateName;
+                $templates[str_replace('/', '.', $relativePath).'.'.$file] = $templateName;
             } else {
                 $templates[$file] = $templateName;
             }
@@ -53,24 +53,18 @@ class TemplateViewComposer
 
     /**
      * Get the base path of the current theme.
-     *
-     * @return string
      */
-    private function getCurrentThemeBasePath()
+    private function getCurrentThemeBasePath(): string
     {
         return $this->themeManager->find(setting('core::template'))->getPath();
     }
 
     /**
      * Read template name defined in comments.
-     *
-     * @param $template
-     *
-     * @return string
      */
-    private function getTemplateName($template)
+    private function getTemplateName($template): string
     {
-        preg_match("/{{-- Template: (.*) --}}/", $template->getContents(), $templateName);
+        preg_match('/{{-- Template: (.*) --}}/', $template->getContents(), $templateName);
 
         if (count($templateName) > 1) {
             return $templateName[1];
@@ -82,7 +76,6 @@ class TemplateViewComposer
     /**
      * If the template name is not defined in comments, build a default.
      *
-     * @param $template
      *
      * @return mixed
      */
@@ -91,13 +84,12 @@ class TemplateViewComposer
         $relativePath = $template->getRelativePath();
         $fileName = $this->removeExtensionsFromFilename($template);
 
-        return $this->hasSubdirectory($relativePath) ? $relativePath . '/' . $fileName : $fileName;
+        return $this->hasSubdirectory($relativePath) ? $relativePath.'/'.$fileName : $fileName;
     }
 
     /**
      * Remove the extension from the filename.
      *
-     * @param $template
      *
      * @return mixed
      */
@@ -108,12 +100,8 @@ class TemplateViewComposer
 
     /**
      * Check if the relative path is not empty (meaning the template is in a directory).
-     *
-     * @param $relativePath
-     *
-     * @return bool
      */
-    private function hasSubdirectory($relativePath)
+    private function hasSubdirectory($relativePath): bool
     {
         return ! empty($relativePath);
     }

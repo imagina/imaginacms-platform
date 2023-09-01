@@ -25,5 +25,4 @@ Route::group(['prefix' => '/addresses','middleware' => ['auth:api']], function (
     'as' => $locale . 'api.iprofile.addresses.show',
     'uses' => 'AddressApiController@show',
   ]);
-  
 });

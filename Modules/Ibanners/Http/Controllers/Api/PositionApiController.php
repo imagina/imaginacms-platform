@@ -4,14 +4,13 @@ namespace Modules\Ibanners\Http\Controllers\Api;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
+use Modules\Ibanners\Http\Requests\UpdatePositionRequest;
 use Modules\Ibanners\Repositories\Eloquent\EloquentPositionRepository;
 use Modules\Ibanners\Repositories\PositionRepository;
 use Modules\Ibanners\Services\BannerOrderer;
 use Modules\Ibanners\Transformers\PositionApiTransformer;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Modules\Ibanners\Http\Requests\UpdatePositionRequest;
 
 class PositionApiController extends BaseApiController
 {
@@ -19,10 +18,12 @@ class PositionApiController extends BaseApiController
      * @var Repository
      */
     private $cache;
+
     /**
      * @var BannerOrderer
      */
     private $bannerOrderer;
+
     /**
      * @var EloquentPositionRepository
      */
@@ -50,49 +51,49 @@ class PositionApiController extends BaseApiController
 
             //Response
             $response = [
-                "data" => PositionApiTransformer::collection($positions)
+                'data' => PositionApiTransformer::collection($positions),
             ];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($positions)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($positions)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
         return response()->json($response, $status ?? 200);
     }
 
-
     /**
      * Show banner by id
      */
     public function show($criteria, Request $request)
     {
-      try {
-        //Get Parameters from URL.
-        $params = $this->getParamsRequest($request);
-        //Request to Repository
-        $position = $this->position->getItem($criteria, $params);
-        //Break if no found item
-        if (!$position) throw new Exception('Item not found', 204);
-        //Response
-        $response = ["data" => new PositionApiTransformer($position)];
-        //If request pagination add meta-page
-        $params->page ? $response["meta"] = ["page" => $this->pageTransformer($position)] : false;
-      } catch (\Exception $e) {
-        $status = $this->getStatusError($e->getCode());
-        $response = ["errors" => $e->getMessage()];
-      }
-      //Return response
-      return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        try {
+            //Get Parameters from URL.
+            $params = $this->getParamsRequest($request);
+            //Request to Repository
+            $position = $this->position->getItem($criteria, $params);
+            //Break if no found item
+            if (! $position) {
+                throw new Exception('Item not found', 204);
+            }
+            //Response
+            $response = ['data' => new PositionApiTransformer($position)];
+            //If request pagination add meta-page
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($position)] : false;
+        } catch (\Exception $e) {
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
+        //Return response
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
@@ -109,12 +110,12 @@ class PositionApiController extends BaseApiController
             $this->position->create($data);
 
             //Response
-            $response = ["data" => ""];
+            $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
         return response()->json($response, $status ?? 200);
@@ -123,8 +124,6 @@ class PositionApiController extends BaseApiController
     /**
      * UPDATE ITEM
      *
-     * @param $criteria
-     * @param Request $request
      * @return mixed
      */
     public function update($criteria, Request $request)
@@ -141,53 +140,52 @@ class PositionApiController extends BaseApiController
             $params = $this->getParamsRequest($request);
             $dataEntity = $this->position->getItem($criteria, $params);
 
-            if (!$dataEntity) throw new Exception('Item not found', 204);
+            if (! $dataEntity) {
+                throw new Exception('Item not found', 204);
+            }
 
             //Request to Repository
             $this->position->update($dataEntity, $data);
 
-
-            if (isset($data["banners"])) {
-                $this->bannerOrderer->handle(json_encode($data["banners"]));
+            if (isset($data['banners'])) {
+                $this->bannerOrderer->handle(json_encode($data['banners']));
             }
 
             //Response
-            $response = ["data" => 'Item Updated'];
-            \DB::commit();//Commit to DataBase
+            $response = ['data' => 'Item Updated'];
+            \DB::commit(); //Commit to DataBase
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
         return response()->json($response, $status ?? 200);
     }
 
-
     /**
      * DELETE A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function delete($criteria, Request $request)
     {
-      \DB::beginTransaction();
-      try {
-        //Get params
-        $params = $this->getParamsRequest($request);
-        //Delete data
-        $this->position->deleteBy($criteria, $params);
-        //Response
-        $response = ['data' => ''];
-        \DB::commit(); //Commit to Data Base
-      } catch (\Exception $e) {
-        \DB::rollback();//Rollback to Data Base
-        $status = $this->getStatusError($e->getCode());
-        $response = ["errors" => $e->getMessage()];
-      }
-      return response()->json($response, $status ?? 200);
-    }
+        \DB::beginTransaction();
+        try {
+            //Get params
+            $params = $this->getParamsRequest($request);
+            //Delete data
+            $this->position->deleteBy($criteria, $params);
+            //Response
+            $response = ['data' => ''];
+            \DB::commit(); //Commit to Data Base
+        } catch (\Exception $e) {
+            \DB::rollback(); //Rollback to Data Base
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
 
+        return response()->json($response, $status ?? 200);
+    }
 }

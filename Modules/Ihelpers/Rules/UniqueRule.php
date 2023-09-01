@@ -12,48 +12,46 @@ class UniqueRule implements Rule
      * @return void
      */
     public $table;
+
     public $id;
+
     public $columnId;
+
     public $message;
-    
-    public function __construct($table, $id = null, $columnId = "", $message = "")
+
+    public function __construct($table, $id = null, $columnId = '', $message = '')
     {
-      $this->table = $table;
-      $this->id = $id;
-      $this->columnId = $columnId;
-      $this->message = !empty($message) ? $message : 'There are another register with the same email.';
+        $this->table = $table;
+        $this->id = $id;
+        $this->columnId = $columnId;
+        $this->message = ! empty($message) ? $message : 'There are another register with the same email.';
     }
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
-     * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
-  
-      $explodeAttributes = explode(".",$attribute);
+        $explodeAttributes = explode('.', $attribute);
 
-      $items = \DB::connection(env('DB_CONNECTION', 'mysql'))->table($this->table)
-        ->where($explodeAttributes[0],$value);
-      
-      if($this->id){
-        $items = $items->where($this->columnId, "!=", $this->id);
-      }
+        $items = \DB::connection(env('DB_CONNECTION', 'mysql'))->table($this->table)
+          ->where($explodeAttributes[0], $value);
 
-      $items = $items->first();
+        if ($this->id) {
+            $items = $items->where($this->columnId, '!=', $this->id);
+        }
 
-      return !$items;
+        $items = $items->first();
+
+        return ! $items;
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
-    public function message()
+    public function message(): string
     {
         return $this->message;
     }

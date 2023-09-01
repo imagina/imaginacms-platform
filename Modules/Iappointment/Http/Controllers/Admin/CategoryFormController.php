@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\CategoryForm;
 use Modules\Iappointment\Http\Requests\CreateCategoryFormRequest;
 use Modules\Iappointment\Http\Requests\UpdateCategoryFormRequest;
 use Modules\Iappointment\Repositories\CategoryFormRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CategoryFormController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CategoryFormController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$categoryforms = $this->categoryform->all();
 
@@ -38,21 +35,16 @@ class CategoryFormController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.categoryforms.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCategoryFormRequest $request
-     * @return Response
      */
-    public function store(CreateCategoryFormRequest $request)
+    public function store(CreateCategoryFormRequest $request): Response
     {
         $this->categoryform->create($request->all());
 
@@ -62,23 +54,16 @@ class CategoryFormController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  CategoryForm $categoryform
-     * @return Response
      */
-    public function edit(CategoryForm $categoryform)
+    public function edit(CategoryForm $categoryform): Response
     {
         return view('iappointment::admin.categoryforms.edit', compact('categoryform'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  CategoryForm $categoryform
-     * @param  UpdateCategoryFormRequest $request
-     * @return Response
      */
-    public function update(CategoryForm $categoryform, UpdateCategoryFormRequest $request)
+    public function update(CategoryForm $categoryform, UpdateCategoryFormRequest $request): Response
     {
         $this->categoryform->update($categoryform, $request->all());
 
@@ -88,11 +73,8 @@ class CategoryFormController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  CategoryForm $categoryform
-     * @return Response
      */
-    public function destroy(CategoryForm $categoryform)
+    public function destroy(CategoryForm $categoryform): Response
     {
         $this->categoryform->destroy($categoryform);
 

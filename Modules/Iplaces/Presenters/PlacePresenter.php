@@ -12,7 +12,9 @@ class PlacePresenter extends Presenter
      * @var \Modules\Iplaces\Entities\Status
      */
     protected $status;
+
     protected $weather;
+
     /**
      * @var \Modules\Iplaces\Repositories\PlaceRepository
      */
@@ -23,17 +25,17 @@ class PlacePresenter extends Presenter
         parent::__construct($entity);
         $this->place = app('Modules\Iplaces\Repositories\PlaceRepository');
         $this->status = app('Modules\Iplaces\Entities\Status');
-        $this->weather=app('Modules\Iplaces\Entities\Weather');
+        $this->weather = app('Modules\Iplaces\Entities\Weather');
     }
 
     /**
      * Get the post status
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
+
     public function weather()
     {
         return $this->weather->get($this->entity->weather);
@@ -41,9 +43,8 @@ class PlacePresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::INACTIVE:
@@ -59,6 +60,7 @@ class PlacePresenter extends Presenter
                 break;
         }
     }
+
     public function weatherLabelClass()
     {
         switch ($this->entity->weather) {

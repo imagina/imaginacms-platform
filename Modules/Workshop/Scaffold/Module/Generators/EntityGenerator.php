@@ -30,11 +30,8 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the given entities
-     *
-     * @param array $entities
-     * @param bool $regenerateSidebar
      */
-    public function generate(array $entities, $regenerateSidebar = true)
+    public function generate(array $entities, bool $regenerateSidebar = true)
     {
         $entityType = strtolower($this->entityType);
         $entityTypeStub = "entity-{$entityType}.stub";
@@ -66,14 +63,14 @@ class EntityGenerator extends Generator
             $this->generateLanguageFilesFor($entity);
             $this->appendBindingsToServiceProviderFor($entity);
 
-            //=============== Admin Routes 
+            //=============== Admin Routes
             //$this->appendResourceRoutesToRoutesFileFor($entity);
-           
+
             $this->appendPermissionsFor($entity);
-            
+
             //=============== Admin Links Sidebar
             //$this->appendSidebarLinksFor($entity);
-            
+
             // Requests
             $this->generateRequestsFor($entity);
 
@@ -84,19 +81,16 @@ class EntityGenerator extends Generator
 
             // Append Api Routes for Entity
             $this->appendResourceApiRoutesToRoutesFileFor($entity);
-
         }
     }
 
     /**
      * Generate the repositories for the given entity
-     *
-     * @param string $entity
      */
-    private function generateRepositoriesFor($entity)
+    private function generateRepositoriesFor(string $entity)
     {
-        if (! $this->finder->isDirectory($this->getModulesPath('Repositories/' . $this->entityType))) {
-            $this->finder->makeDirectory($this->getModulesPath('Repositories/' . $this->entityType));
+        if (! $this->finder->isDirectory($this->getModulesPath('Repositories/'.$this->entityType))) {
+            $this->finder->makeDirectory($this->getModulesPath('Repositories/'.$this->entityType));
         }
 
         $entityType = strtolower($this->entityType);
@@ -116,10 +110,8 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the controller for the given entity
-     *
-     * @param string $entity
      */
-    private function generateControllerFor($entity)
+    private function generateControllerFor(string $entity)
     {
         $path = $this->getModulesPath('Http/Controllers/Admin');
         if (! $this->finder->isDirectory($path)) {
@@ -133,10 +125,8 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the Api controller for the given entity
-     *
-     * @param string $entity
      */
-    private function generateApiControllerFor($entity)
+    private function generateApiControllerFor(string $entity)
     {
         $path = $this->getModulesPath('Http/Controllers/Api');
         if (! $this->finder->isDirectory($path)) {
@@ -150,10 +140,8 @@ class EntityGenerator extends Generator
 
     /**
      * Generate the requests for the given entity
-     *
-     * @param string $entity
      */
-    private function generateRequestsFor($entity)
+    private function generateRequestsFor(string $entity)
     {
         $path = $this->getModulesPath('Http/Requests');
         if (! $this->finder->isDirectory($path)) {
@@ -171,10 +159,8 @@ class EntityGenerator extends Generator
 
     /**
      * Generate views for the given entity
-     *
-     * @param string $entity
      */
-    private function generateViewsFor($entity)
+    private function generateViewsFor(string $entity)
     {
         $lowerCasePluralEntity = strtolower(Str::plural($entity));
         $this->finder->makeDirectory($this->getModulesPath("Resources/views/admin/{$lowerCasePluralEntity}/partials"), 0755, true);
@@ -190,13 +176,12 @@ class EntityGenerator extends Generator
 
     /**
      * Generate language files for the given entity
-     * @param string $entity
      */
-    private function generateLanguageFilesFor($entity)
+    private function generateLanguageFilesFor(string $entity)
     {
         $lowerCaseEntity = Str::plural(strtolower($entity));
         $path = $this->getModulesPath('Resources/lang/en');
-        if (!$this->finder->isDirectory($path)) {
+        if (! $this->finder->isDirectory($path)) {
             $this->finder->makeDirectory($path);
         }
         $this->writeFile(
@@ -207,52 +192,45 @@ class EntityGenerator extends Generator
 
     /**
      * Generate migrations file for eloquent entities
-     *
-     * @param string $entity
      */
-    private function generateMigrationsFor($entity)
+    private function generateMigrationsFor(string $entity)
     {
         usleep(250000);
         $lowercasePluralEntityName = strtolower(Str::plural($entity));
         $lowercaseModuleName = strtolower($this->name);
-        $migrationName = $this->getDateTimePrefix() . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
+        $migrationName = $this->getDateTimePrefix()."create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-table-migration.stub', $entity)
         );
         usleep(250000);
         $lowercaseEntityName = strtolower($entity);
-        $migrationName = $this->getDateTimePrefix() . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
+        $migrationName = $this->getDateTimePrefix()."create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-translation-table-migration.stub', $entity)
         );
     }
 
-     /**
+    /**
      * Generate Api Routes for the given entity
-     * @param string $entity
      */
-    private function generateApiRoutesFilesFor($entity)
+    private function generateApiRoutesFilesFor(string $entity)
     {
-
         // Check if exist apiRoutes.php
         $pathApi = $this->getModulesPath('Http/apiRoutes');
-        if (!$this->finder->isFile($pathApi.'.php')){
+        if (! $this->finder->isFile($pathApi.'.php')) {
             $this->writeFile(
                 $pathApi,
-                $this->getContentForStub('routes-api.stub',$entity)
+                $this->getContentForStub('routes-api.stub', $entity)
             );
         }
-
     }
 
     /**
      * Generate the Transformers for the given entity
-     *
-     * @param string $entity
      */
-    private function generateTransformerFor($entity)
+    private function generateTransformerFor(string $entity)
     {
         $path = $this->getModulesPath('Transformers');
         if (! $this->finder->isDirectory($path)) {
@@ -265,12 +243,12 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * Append the api routes 
+     * Append the api routes
      *
-     * @param  string                                       $entity
+     *
      * @throws FileNotFoundException
      */
-    private function appendResourceApiRoutesToRoutesFileFor($entity)
+    private function appendResourceApiRoutesToRoutesFileFor(string $entity)
     {
         $routeContent = $this->finder->get($this->getModulesPath('Http/apiRoutes.php'));
         $content = $this->getContentForStub('route-resource-api.stub', $entity);
@@ -281,10 +259,10 @@ class EntityGenerator extends Generator
     /**
      * Append the IoC bindings for the given entity to the Service Provider
      *
-     * @param  string                                       $entity
+     *
      * @throws FileNotFoundException
      */
-    private function appendBindingsToServiceProviderFor($entity)
+    private function appendBindingsToServiceProviderFor(string $entity)
     {
         $moduleProviderContent = $this->finder->get($this->getModulesPath("Providers/{$this->name}ServiceProvider.php"));
         $binding = $this->getContentForStub('bindings.stub', $entity);
@@ -295,10 +273,10 @@ class EntityGenerator extends Generator
     /**
      * Append the routes for the given entity to the routes file
      *
-     * @param  string                                       $entity
+     *
      * @throws FileNotFoundException
      */
-    private function appendResourceRoutesToRoutesFileFor($entity)
+    private function appendResourceRoutesToRoutesFileFor(string $entity)
     {
         $routeContent = $this->finder->get($this->getModulesPath('Http/backendRoutes.php'));
         $content = $this->getContentForStub('route-resource.stub', $entity);
@@ -307,10 +285,9 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * @param  string                                       $entity
      * @throws FileNotFoundException
      */
-    private function appendPermissionsFor($entity)
+    private function appendPermissionsFor(string $entity)
     {
         $permissionsContent = $this->finder->get($this->getModulesPath('Config/permissions.php'));
         $content = $this->getContentForStub('permissions-append.stub', $entity);
@@ -318,10 +295,7 @@ class EntityGenerator extends Generator
         $this->finder->put($this->getModulesPath('Config/permissions.php'), $permissionsContent);
     }
 
-    /**
-     * @param string $entity
-     */
-    private function appendSidebarLinksFor($entity)
+    private function appendSidebarLinksFor(string $entity)
     {
         $sidebarComposerContent = $this->finder->get($this->getModulesPath("Listeners/Register{$this->name}Sidebar.php"));
         $content = $this->getContentForStub('append-sidebar-extender.stub', $entity);
@@ -330,10 +304,7 @@ class EntityGenerator extends Generator
         $this->finder->put($this->getModulesPath("Listeners/Register{$this->name}Sidebar.php"), $sidebarComposerContent);
     }
 
-    /**
-     * @param string $entity
-     */
-    private function appendBackendTranslations($entity)
+    private function appendBackendTranslations(string $entity)
     {
         $moduleProviderContent = $this->finder->get($this->getModulesPath("Providers/{$this->name}ServiceProvider.php"));
 
@@ -345,7 +316,6 @@ class EntityGenerator extends Generator
     /**
      * Generate a filled sidebar view composer
      * Or an empty one of no entities
-     * @param $entities
      */
     private function generateSidebarExtender($entities)
     {
@@ -366,7 +336,6 @@ class EntityGenerator extends Generator
 
     /**
      * Generate a sidebar event listener
-     * @param $entities
      */
     public function generateSidebarListener($entities)
     {
@@ -387,14 +356,13 @@ class EntityGenerator extends Generator
 
     /**
      * Get the current time with microseconds
-     * @return string
      */
-    private function getDateTimePrefix()
+    private function getDateTimePrefix(): string
     {
         $t = microtime(true);
-        $micro = sprintf("%06d", ($t - floor($t)) * 1000000);
-        $d = new \DateTime(date('Y-m-d H:i:s.' . $micro, $t));
+        $micro = sprintf('%06d', ($t - floor($t)) * 1000000);
+        $d = new \DateTime(date('Y-m-d H:i:s.'.$micro, $t));
 
-        return $d->format("Y_m_d_Hisu_");
+        return $d->format('Y_m_d_Hisu_');
     }
 }

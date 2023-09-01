@@ -16,8 +16,6 @@ class RegisterIblogSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,11 +28,7 @@ class RegisterIblogSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('iblog::common.iblog'), function (Item $item) {
@@ -61,9 +55,8 @@ class RegisterIblogSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 });
 
                 $item->authorize(
-                    $this->auth->hasAccess('iblog.posts.index')  || $this->auth->hasAccess('iblog.categories.index')
+                    $this->auth->hasAccess('iblog.posts.index') || $this->auth->hasAccess('iblog.categories.index')
                 );
-
             });
         });
 

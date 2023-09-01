@@ -13,7 +13,6 @@ return [
         'edit' => 'icommercecredibanco::transactions.edit resource',
         'destroy' => 'icommercecredibanco::transactions.destroy resource',
     ],
-// append
-
+    // append
 
 ];

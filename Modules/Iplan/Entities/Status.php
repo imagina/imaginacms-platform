@@ -2,10 +2,10 @@
 
 namespace Modules\Iplan\Entities;
 
-
 class Status
 {
     const INACTIVE = 0;
+
     const ACTIVE = 1;
 
     private $statuses = [];
@@ -14,7 +14,7 @@ class Status
     {
         $this->statuses = [
             self::INACTIVE => trans('iplan::subscriptions.status.inactive'),
-            self::ACTIVE => trans('iplan::subscriptions.status.active')
+            self::ACTIVE => trans('iplan::subscriptions.status.active'),
         ];
     }
 
@@ -22,7 +22,6 @@ class Status
     {
         return $this->statuses;
     }
-
 
     public function get($statusId)
     {
@@ -39,10 +38,9 @@ class Status
         $response = [];
         //AMp status
         foreach ($this->statuses as $key => $status) {
-          array_push($response, ['id' => $key, 'title' => $status]);
+            array_push($response, ['id' => $key, 'title' => $status]);
         }
         //Repsonse
         return collect($response);
     }
-    
 }

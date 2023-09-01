@@ -8,16 +8,16 @@ class UpdateRecommendationRequest extends BaseFormRequest
 {
     public function rules()
     {
-      return [
-        'name' => 'required',
-      ];
+        return [
+            'name' => 'required',
+        ];
     }
 
     public function translationRules()
     {
         return [
-          'title' => 'required',
-          'description' => 'required',
+            'title' => 'required',
+            'description' => 'required',
         ];
     }
 

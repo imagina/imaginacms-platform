@@ -12,6 +12,7 @@ class TranslationsService
      * @var FileTranslationRepository
      */
     private $fileTranslations;
+
     /**
      * @var TranslationRepository
      */
@@ -25,9 +26,8 @@ class TranslationsService
 
     /**
      * Get the file translations & the database translations, overwrite the file translations by db translations
-     * @return TranslationGroup
      */
-    public function getFileAndDatabaseMergedTranslations()
+    public function getFileAndDatabaseMergedTranslations(): TranslationGroup
     {
         $allFileTranslations = $this->fileTranslations->all();
         $allDatabaseTranslations = $this->databaseTranslations->allFormatted();
@@ -52,7 +52,6 @@ class TranslationsService
 
     /**
      * Filter out the non-active locales
-     * @param array $allFileTranslations
      */
     private function filterOnlyActiveLocales(array &$allFileTranslations)
     {
@@ -67,9 +66,8 @@ class TranslationsService
 
     /**
      * Get the currently active locales
-     * @return array
      */
-    private function getActiveLocales()
+    private function getActiveLocales(): array
     {
         $locales = [];
 
@@ -80,10 +78,6 @@ class TranslationsService
         return $locales;
     }
 
-    /**
-     * @param array $allFileTranslations
-     * @param array $allDatabaseTranslations
-     */
     private function addDatabaseOnlyTranslations(array &$allFileTranslations, array $allDatabaseTranslations)
     {
         foreach ($allDatabaseTranslations as $locale => $group) {

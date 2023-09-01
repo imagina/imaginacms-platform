@@ -9,11 +9,7 @@ use Modules\Core\Sidebar\AbstractAdminSidebar;
 
 class RegisterPageSidebar extends AbstractAdminSidebar
 {
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('page::pages.pages'), function (Item $item) {

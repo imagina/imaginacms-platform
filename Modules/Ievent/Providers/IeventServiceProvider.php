@@ -2,16 +2,17 @@
 
 namespace Modules\Ievent\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ievent\Events\Handlers\RegisterIeventSidebar;
-use Illuminate\Support\Arr;
 
 class IeventServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IeventServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIeventSidebar::class);
@@ -37,34 +36,26 @@ class IeventServiceProvider extends ServiceProvider
             $event->load('attendants', Arr::dot(trans('ievent::attendants')));
             $event->load('comments', Arr::dot(trans('ievent::comments')));
             // append translations
-
-
-
-
-
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('ievent', 'config');
         $this->publishConfig('ievent', 'permissions');
 
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsPages'), "asgard.ievent.cmsPages");
-      $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsSidebar'), "asgard.ievent.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsPages'), 'asgard.ievent.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ievent', 'cmsSidebar'), 'asgard.ievent.cmsSidebar');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -141,12 +132,6 @@ class IeventServiceProvider extends ServiceProvider
                 return new \Modules\Ievent\Repositories\Cache\CacheCommentDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
-
+        // add bindings
     }
 }

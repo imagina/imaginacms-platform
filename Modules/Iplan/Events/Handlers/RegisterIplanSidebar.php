@@ -16,8 +16,6 @@ class RegisterIplanSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIplanSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('iplan::iplan.title.iplan'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('iplan::plans.title.plans'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -70,10 +64,7 @@ class RegisterIplanSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('iplan.planusers.index')
                     );
                 });
-// append
-
-
-
+                // append
             });
         });
 

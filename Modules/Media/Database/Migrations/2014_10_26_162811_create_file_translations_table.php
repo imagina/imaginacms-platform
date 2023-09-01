@@ -7,10 +7,8 @@ class CreateFileTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create(
             'media__file_translations',
@@ -30,10 +28,8 @@ class CreateFileTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('media__file_translations');
     }

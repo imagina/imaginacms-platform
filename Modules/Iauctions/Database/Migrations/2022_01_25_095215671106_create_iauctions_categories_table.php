@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIauctionsCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iauctions__categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,7 +24,6 @@ class CreateIauctionsCategoriesTable extends Migration
             $table->integer('bid_form_id')->unsigned()->nullable();
             $table->foreign('bid_form_id')->references('id')->on('iforms__forms')->onDelete('restrict');
 
-            
             // Audit fields
             $table->timestamps();
             $table->auditStamps();
@@ -35,10 +32,8 @@ class CreateIauctionsCategoriesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iauctions__categories');
     }

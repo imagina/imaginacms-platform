@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Modules\Iad\Events;
 
 class AdWasUpdated

@@ -8,17 +8,17 @@ use Spatie\Feed\FeedItem;
 
 class PostTranslation extends EntityPostTranslation implements Feedable
 {
-  public function toFeedItem(): FeedItem
-  {
-    return FeedItem::create([
-      'title' => $this->title,
-      'summary' => $this->summary,
-      'link' => $this->url
-    ]);
-  }
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create([
+            'title' => $this->title,
+            'summary' => $this->summary,
+            'link' => $this->url,
+        ]);
+    }
 
-  public static function getFeedItems()
-  {
-    return Post::orderBy('created_at', 'desc')->get();
-  }
+    public static function getFeedItems()
+    {
+        return Post::orderBy('created_at', 'desc')->get();
+    }
 }

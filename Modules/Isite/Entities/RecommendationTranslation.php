@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class RecommendationTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
-      'title',
-      'description'
+        'title',
+        'description',
     ];
+
     protected $table = 'isite__recommendation_translations';
 }

@@ -37,9 +37,6 @@ class EnvFileWriter
      */
     protected $file = '.env';
 
-    /**
-     * @param Filesystem $finder
-     */
     public function __construct(Filesystem $finder)
     {
         $this->finder = $finder;
@@ -48,10 +45,10 @@ class EnvFileWriter
     /**
      * Create a new .env file using the contents of .env.example
      *
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     * @return void
      */
-    public function create()
+    public function create(): void
     {
         $environmentFile = $this->finder->get($this->template);
 
@@ -61,20 +58,19 @@ class EnvFileWriter
     /**
      * Update the .env file
      *
-     * @param array $vars
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     * @return void
      */
-    public function write($vars)
+    public function write(array $vars): void
     {
-        if (!empty($vars)) {
+        if (! empty($vars)) {
             $environmentFile = $this->finder->get($this->file);
 
             foreach ($vars as $key => $value) {
                 if (isset($this->setable_variables[$key])) {
                     $env_var_name = explode('=', $this->setable_variables[$key])[0];
 
-                    $value = $env_var_name . '=' . $value;
+                    $value = $env_var_name.'='.$value;
 
                     $environmentFile = str_replace($this->setable_variables[$key], $value, $environmentFile);
                 }

@@ -9,8 +9,11 @@ use Illuminate\Support\Collection as BaseCollection;
 class NestedFoldersCollection extends Collection
 {
     private $total;
+
     private $parentColumn;
+
     private $removeItemsWithMissingAncestor = true;
+
     private $indentChars = '&nbsp;&nbsp;&nbsp;&nbsp;';
 
     public function __construct($items = [])
@@ -22,6 +25,7 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Nest items.
+     *
      * @return mixed NestableCollection
      */
     public function nest()
@@ -65,29 +69,24 @@ class NestedFoldersCollection extends Collection
     /**
      * Recursive function that flatten a nested Collection
      * with characters (default is four spaces).
-     * @param string $column
-     * @param BaseCollection|null $collection
-     * @param int $level
-     * @param array &$flattened
-     * @param string|null $indentChars
-     * @param string|boolen|null $parent_string
-     * @return array
+     *
+     * @param  string|boolen|null  $parent_string
      */
     public function listsFlattened(
-        $column = 'title',
+        string $column = 'title',
         BaseCollection $collection = null,
-        $level = 0,
+        int $level = 0,
         array &$flattened = [],
-        $indentChars = null,
+        ?string $indentChars = null,
         $parent_string = null
-    ) {
+    ): array {
         $collection = $collection ?: $this;
         $indentChars = $indentChars ?: $this->indentChars;
         foreach ($collection as $item) {
             if ($parent_string) {
-                $item_string = ($parent_string === true) ? $item->$column : $parent_string . $indentChars . $item->$column;
+                $item_string = ($parent_string === true) ? $item->$column : $parent_string.$indentChars.$item->$column;
             } else {
-                $item_string = str_repeat($indentChars, $level) . $item->$column;
+                $item_string = str_repeat($indentChars, $level).$item->$column;
             }
             $flattened[$item->id] = $item_string;
             if ($item->items) {
@@ -107,29 +106,21 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Returns a fully qualified version of listsFlattened.
-     * @param BaseCollection|null $collection
-     * @param string $column
-     * @param int $level
-     * @param array &$flattened
-     * @param string $indentChars
-     * @return array
      */
     public function listsFlattenedQualified(
-        $column = 'title',
+        string $column = 'title',
         BaseCollection $collection = null,
-        $level = 0,
+        int $level = 0,
         array &$flattened = [],
-        $indentChars = null
-    ) {
+        string $indentChars = null
+    ): array {
         return $this->listsFlattened($column, $collection, $level, $flattened, $indentChars, true);
     }
 
     /**
      * Change the default indent characters when flattening lists.
-     * @param string $indentChars
-     * @return $this
      */
-    public function setIndent(string $indentChars)
+    public function setIndent(string $indentChars): static
     {
         $this->indentChars = $indentChars;
 
@@ -138,9 +129,8 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Force keeping items that have a missing ancestor.
-     * @return NestableCollection
      */
-    public function noCleaning()
+    public function noCleaning(): NestableCollection
     {
         $this->removeItemsWithMissingAncestor = false;
 
@@ -149,10 +139,8 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Check if an ancestor is missing.
-     * @param $item
-     * @return bool
      */
-    public function anAncestorIsMissing($item)
+    public function anAncestorIsMissing($item): bool
     {
         $parentColumn = $this->parentColumn;
         if (! $item->$parentColumn) {
@@ -168,18 +156,16 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Get total items in nested collection.
-     * @return int
      */
-    public function total()
+    public function total(): int
     {
         return $this->total;
     }
 
     /**
      * Get total items for laravel 4 compatibility.
-     * @return int
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return $this->total();
     }

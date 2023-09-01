@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\UserDepartment;
 use Modules\Iprofile\Http\Requests\CreateUserDepartmentRequest;
 use Modules\Iprofile\Http\Requests\UpdateUserDepartmentRequest;
 use Modules\Iprofile\Repositories\UserDepartmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UserDepartmentController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$userdepartments = $this->userdepartment->all();
 
@@ -38,21 +35,16 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.userdepartments.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateUserDepartmentRequest $request
-     * @return Response
      */
-    public function store(CreateUserDepartmentRequest $request)
+    public function store(CreateUserDepartmentRequest $request): Response
     {
         $this->userdepartment->create($request->all());
 
@@ -62,23 +54,16 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  UserDepartment $userdepartment
-     * @return Response
      */
-    public function edit(UserDepartment $userdepartment)
+    public function edit(UserDepartment $userdepartment): Response
     {
         return view('Iprofile::admin.userdepartments.edit', compact('userdepartment'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  UserDepartment $userdepartment
-     * @param  UpdateUserDepartmentRequest $request
-     * @return Response
      */
-    public function update(UserDepartment $userdepartment, UpdateUserDepartmentRequest $request)
+    public function update(UserDepartment $userdepartment, UpdateUserDepartmentRequest $request): Response
     {
         $this->userdepartment->update($userdepartment, $request->all());
 
@@ -88,11 +73,8 @@ class UserDepartmentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  UserDepartment $userdepartment
-     * @return Response
      */
-    public function destroy(UserDepartment $userdepartment)
+    public function destroy(UserDepartment $userdepartment): Response
     {
         $this->userdepartment->destroy($userdepartment);
 

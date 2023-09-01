@@ -2,17 +2,17 @@
 
 namespace Modules\Iappointment\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Iappointment\Listeners\RegisterIappointmentSidebar;
 
 class IappointmentServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -22,10 +22,8 @@ class IappointmentServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIappointmentSidebar::class);
@@ -38,18 +36,10 @@ class IappointmentServiceProvider extends ServiceProvider
             $event->load('categoryforms', Arr::dot(trans('iappointment::categoryforms')));
             $event->load('providers', Arr::dot(trans('iappointment::providers')));
             // append translations
-
-
-
-
-
-
         });
-
-
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('iappointment', 'config');
         $this->publishConfig('iappointment', 'crud-fields');
@@ -57,8 +47,8 @@ class IappointmentServiceProvider extends ServiceProvider
         $this->publishConfig('iappointment', 'settings');
         $this->publishConfig('iappointment', 'settings-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iappointment', 'cmsPages'), "asgard.iappointment.cmsPages");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iappointment', 'cmsSidebar'), "asgard.iappointment.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iappointment', 'cmsPages'), 'asgard.iappointment.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('iappointment', 'cmsSidebar'), 'asgard.iappointment.cmsSidebar');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
@@ -67,12 +57,10 @@ class IappointmentServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -125,8 +113,7 @@ class IappointmentServiceProvider extends ServiceProvider
                 return new \Modules\Iappointment\Repositories\Cache\CacheProviderDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
 
         $this->app->bind(
             'Modules\Iappointment\Repositories\AppointmentStatusHistoryRepository',
@@ -141,7 +128,6 @@ class IappointmentServiceProvider extends ServiceProvider
             }
         );
 
-
         $this->app->bind(
             'Modules\Iappointment\Repositories\AppointmentLeadRepository',
             function () {
@@ -154,20 +140,13 @@ class IappointmentServiceProvider extends ServiceProvider
                 return new \Modules\Iappointment\Repositories\Cache\CacheAppointmentLeadDecorator($repository);
             }
         );
-
-
-
-
-
     }
 
     /**
      * Register Blade components
      */
-
-    private function registerComponents(){
+    private function registerComponents()
+    {
         Blade::componentNamespace("Modules\Iappointment\View\Components", 'iappointment');
     }
-
-
 }

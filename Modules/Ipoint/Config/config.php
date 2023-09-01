@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'name' => 'Ipoint',
-	'paymentName' => 'ipoint',
+    'name' => 'Ipoint',
+    'paymentName' => 'ipoint',
 ];

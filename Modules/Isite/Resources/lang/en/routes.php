@@ -1,13 +1,12 @@
 <?php
 
 return [
-  
-  'organizations' => [
-    'index' => [
-      'index' => 'organizations',
-      'category' => 'organizations/c/{categorySlug}',
-    ]
-  ]
 
+    'organizations' => [
+        'index' => [
+            'index' => 'organizations',
+            'category' => 'organizations/c/{categorySlug}',
+        ],
+    ],
 
 ];

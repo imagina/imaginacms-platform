@@ -12,6 +12,7 @@ class PublicMiddleware
      * @var Request
      */
     private $request;
+
     /**
      * @var MenuItemRepository
      */
@@ -26,11 +27,9 @@ class PublicMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
      * @return mixed
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         $locale = $this->request->segment(1) ?: App::getLocale();
         $item = $this->menuItem->findByUriInLanguage($this->request->segment(2), $locale);
@@ -44,10 +43,8 @@ class PublicMiddleware
 
     /**
      * Checks if the given menu item is offline
-     * @param  object $item
-     * @return bool
      */
-    private function isOffline($item)
+    private function isOffline(object $item): bool
     {
         return is_null($item);
     }

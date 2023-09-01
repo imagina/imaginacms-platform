@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIpayConfigTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ipay__config', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -18,21 +16,21 @@ class CreateIpayConfigTable extends Migration
             // fields
             $table->boolean('status')->nullable();
 
-            $table->string('title',255);
+            $table->string('title', 255);
 
             $table->integer('merchantid');
 
             $table->integer('accountid');
 
-            $table->string('apikey',255);
-            
-            $table->string('currency',10);
+            $table->string('apikey', 255);
+
+            $table->string('currency', 10);
 
             $table->boolean('mode')->nullable();
 
-            $table->string('replyurl',255);
+            $table->string('replyurl', 255);
 
-            $table->string('confirmationurl',255);
+            $table->string('confirmationurl', 255);
 
             $table->text('options')->nullable();
 
@@ -43,10 +41,8 @@ class CreateIpayConfigTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('ipay__config');
     }

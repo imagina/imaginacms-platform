@@ -11,6 +11,7 @@ class CategoryPresenter extends Presenter
      * @var \Modules\Iplaces\Entities\Status
      */
     protected $status;
+
     /**
      * @var \Modules\Iplaces\Repositories\CategoryRepository
      */
@@ -25,18 +26,16 @@ class CategoryPresenter extends Presenter
 
     /**
      * Get the post status
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
 
     /**
      * Getting the label class for the appropriate status
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::INACTIVE:

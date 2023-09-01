@@ -24,10 +24,8 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
     /**
      * Find the page set as homepage
-     *
-     * @return object
      */
-    public function findHomepage()
+    public function findHomepage(): object
     {
         return $this->remember(function () {
             return $this->repository->findHomepage();
@@ -36,21 +34,15 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
     /**
      * Count all records
-     * @return int
      */
-    public function countAll()
+    public function countAll(): int
     {
         return $this->remember(function () {
             return $this->repository->countAll();
         });
     }
 
-    /**
-     * @param $slug
-     * @param $locale
-     * @return object
-     */
-    public function findBySlugInLocale($slug, $locale)
+    public function findBySlugInLocale($slug, $locale): object
     {
         return $this->remember(function () use ($slug, $locale) {
             return $this->repository->findBySlugInLocale($slug, $locale);
@@ -59,8 +51,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
 
     /**
      * Paginating, ordering and searching through pages for server side index table
-     * @param Request $request
-     * @return LengthAwarePaginator
      */
     public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
     {
@@ -70,7 +60,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
         $perPage = $request->get('per_page');
         $search = $request->get('search');
 
-        $key = $this->getBaseKey() . "serverPaginationFilteringFor.{$page}-{$order}-{$orderBy}-{$perPage}-{$search}";
+        $key = $this->getBaseKey()."serverPaginationFilteringFor.{$page}-{$order}-{$orderBy}-{$perPage}-{$search}";
 
         return $this->remember(function () use ($request) {
             return $this->repository->serverPaginationFilteringFor($request);
@@ -78,7 +68,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     }
 
     /**
-     * @param Page $page
      * @return mixed
      */
     public function markAsOnlineInAllLocales(Page $page)
@@ -89,7 +78,6 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     }
 
     /**
-     * @param Page $page
      * @return mixed
      */
     public function markAsOfflineInAllLocales(Page $page)
@@ -100,7 +88,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     }
 
     /**
-     * @param array $pageIds [int]
+     * @param  array  $pageIds [int]
      * @return mixed
      */
     public function markMultipleAsOnlineInAllLocales(array $pageIds)
@@ -111,7 +99,7 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
     }
 
     /**
-     * @param array $pageIds [int]
+     * @param  array  $pageIds [int]
      * @return mixed
      */
     public function markMultipleAsOfflineInAllLocales(array $pageIds)
@@ -121,74 +109,59 @@ class CachePageDecorator extends BaseCacheDecorator implements PageRepository
         return $this->repository->markMultipleAsOfflineInAllLocales($pageIds);
     }
 
-
-    /**
-     * List or resources
-     *
-     * @param $params
-     * @return collection
-     */
-  public function getItemsBy($params)
+  /**
+   * List or resources
+   */
+  public function getItemsBy($params): collection
   {
-    return $this->remember(function () use ($params) {
-      return $this->repository->getItemsBy($params);
-    });
+      return $this->remember(function () use ($params) {
+          return $this->repository->getItemsBy($params);
+      });
   }
 
-
-    /**
-     * find a resource by id or slug
-     *
-     * @param $criteria
-     * @param $params
-     * @return object
-     */
-  public function getItem($criteria, $params = false)
+  /**
+   * find a resource by id or slug
+   */
+  public function getItem($criteria, $params = false): object
   {
-    return $this->remember(function () use ($criteria, $params) {
-      return $this->repository->getItem($criteria, $params);
-    });
+      return $this->remember(function () use ($criteria, $params) {
+          return $this->repository->getItem($criteria, $params);
+      });
   }
 
-
-    /**
-     * create a resource
-     *
-     * @param $data
-     * @return mixed
-     */
+  /**
+   * create a resource
+   *
+   * @return mixed
+   */
   public function create($data)
   {
-    $this->clearCache();
-    return $this->repository->create($data);
+      $this->clearCache();
+
+      return $this->repository->create($data);
   }
 
-    /**
-     * update a resource
-     *
-     * @param $criteria
-     * @param $data
-     * @param $params
-     * @return mixed
-     */
+  /**
+   * update a resource
+   *
+   * @return mixed
+   */
   public function updateBy($criteria, $data, $params = false)
   {
-    $this->clearCache();
+      $this->clearCache();
 
-    return $this->repository->updateBy($criteria, $data, $params = false);
+      return $this->repository->updateBy($criteria, $data, $params = false);
   }
 
-    /**
-     * destroy a resource
-     *
-     * @param $criteria
-     * @param $params
-     * @return mixed
-     */
+  /**
+   * destroy a resource
+   *
+   * @return mixed
+   */
   public function deleteBy($criteria, $params = false)
   {
-    $this->clearCache();
+      $this->clearCache();
 
-    return $this->repository->deleteBy($criteria, $params);
+      return $this->repository->deleteBy($criteria, $params);
   }
 }

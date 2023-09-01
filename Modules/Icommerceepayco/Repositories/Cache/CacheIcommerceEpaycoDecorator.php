@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerceepayco\Repositories\Cache;
 
-use Modules\Icommerceepayco\Repositories\IcommerceEpaycoRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerceepayco\Repositories\IcommerceEpaycoRepository;
 
 class CacheIcommerceEpaycoDecorator extends BaseCacheDecorator implements IcommerceEpaycoRepository
 {
@@ -14,12 +14,10 @@ class CacheIcommerceEpaycoDecorator extends BaseCacheDecorator implements Icomme
         $this->repository = $icommerceepayco;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-
-    
 }

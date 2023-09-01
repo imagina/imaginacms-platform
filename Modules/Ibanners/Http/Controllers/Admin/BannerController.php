@@ -1,14 +1,14 @@
-<?php namespace Modules\Ibanners\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Ibanners\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Ibanners\Entities\Position;
 use Modules\Ibanners\Entities\Banner;
+use Modules\Ibanners\Entities\Position;
 use Modules\Ibanners\Http\Requests\CreateBannerRequest;
 use Modules\Ibanners\Http\Requests\UpdateBannerRequest;
 use Modules\Ibanners\Repositories\BannerRepository;
-use Modules\Page\Repositories\PageRepository;
 use Modules\Media\Repositories\FileRepository;
 
 class BannerController extends AdminBaseController
@@ -18,14 +18,12 @@ class BannerController extends AdminBaseController
      */
     private $banner;
 
-
-
     /**
      * @var FileRepository
      */
     private $file;
 
-    public function __construct(BannerRepository $banner,  FileRepository $file)
+    public function __construct(BannerRepository $banner, FileRepository $file)
     {
         parent::__construct();
         $this->banner = $banner;
@@ -34,7 +32,6 @@ class BannerController extends AdminBaseController
 
     public function create(Position $position)
     {
-
         return view('ibanners::admin.banners.create')
             ->with([
                 'position' => $position,
@@ -52,12 +49,11 @@ class BannerController extends AdminBaseController
 
     public function edit(Position $position, Banner $banner)
     {
-
         return view('ibanners::admin.banners.edit')
             ->with([
                 'position' => $position,
                 'banner' => $banner,
-                'bannerimage' => $this->file->findFileByZoneForEntity('bannerimage', $banner)
+                'bannerimage' => $this->file->findFileByZoneForEntity('bannerimage', $banner),
             ]);
     }
 
@@ -70,12 +66,7 @@ class BannerController extends AdminBaseController
             ->withSuccess(trans('ibanners::messages.banner updated'));
     }
 
-    /**
-     * @param  Position $position
-     * @param  \Illuminate\Foundation\Http\FormRequest $request
-     * @return array
-     */
-    private function addPositionId(Position $position, FormRequest $request)
+    private function addPositionId(Position $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);
     }

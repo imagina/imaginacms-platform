@@ -1,15 +1,13 @@
 <?php
 
-
 namespace Modules\Iplan\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
-
+use Illuminate\Support\ServiceProvider;
 
 class ScheduleServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
@@ -21,8 +19,6 @@ class ScheduleServiceProvider extends ServiceProvider
             $schedule->call(function () {
                 \Modules\Iplan\Jobs\FinishedSubscriptions::dispatch();
             })->everyMinute();
-            
         });
-
     }
 }

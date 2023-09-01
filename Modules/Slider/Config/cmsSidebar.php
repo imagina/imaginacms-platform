@@ -1,6 +1,6 @@
 <?php
 
 return [
-  "admin" => ["slider_cms_admin_index"],
-  "panel" => [],
+    'admin' => ['slider_cms_admin_index'],
+    'panel' => [],
 ];

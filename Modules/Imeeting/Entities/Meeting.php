@@ -2,13 +2,12 @@
 
 namespace Modules\Imeeting\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Icrud\Entities\CrudModel;
 
 class Meeting extends CrudModel
 {
-   
     public $transformer = 'Modules\Imeeting\Transformers\MeetingTransformer';
+
     public $requestValidation = [
         'create' => 'Modules\Imeeting\Http\Requests\CreateMeetingRequest',
         'update' => 'Modules\Imeeting\Http\Requests\UpdateMeetingRequest',
@@ -23,11 +22,11 @@ class Meeting extends CrudModel
         'join_url',
         'password',
         'entity_id',
-        'entity_type'
+        'entity_type',
     ];
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
 
     public function getOptionsAttribute($value)
@@ -40,12 +39,8 @@ class Meeting extends CrudModel
         $this->attributes['options'] = json_encode($value);
     }
 
-    
     public function meetingable()
     {
         return $this->morphTo();
     }
-   
-
-
 }

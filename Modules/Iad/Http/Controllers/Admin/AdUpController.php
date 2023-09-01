@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\AdUp;
 use Modules\Iad\Http\Requests\CreateAdUpRequest;
 use Modules\Iad\Http\Requests\UpdateAdUpRequest;
 use Modules\Iad\Repositories\AdUpRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AdUpController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class AdUpController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$adups = $this->adup->all();
 
@@ -38,21 +35,16 @@ class AdUpController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.adups.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateAdUpRequest $request
-     * @return Response
      */
-    public function store(CreateAdUpRequest $request)
+    public function store(CreateAdUpRequest $request): Response
     {
         $this->adup->create($request->all());
 
@@ -62,23 +54,16 @@ class AdUpController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  AdUp $adup
-     * @return Response
      */
-    public function edit(AdUp $adup)
+    public function edit(AdUp $adup): Response
     {
         return view('iad::admin.adups.edit', compact('adup'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  AdUp $adup
-     * @param  UpdateAdUpRequest $request
-     * @return Response
      */
-    public function update(AdUp $adup, UpdateAdUpRequest $request)
+    public function update(AdUp $adup, UpdateAdUpRequest $request): Response
     {
         $this->adup->update($adup, $request->all());
 
@@ -88,11 +73,8 @@ class AdUpController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  AdUp $adup
-     * @return Response
      */
-    public function destroy(AdUp $adup)
+    public function destroy(AdUp $adup): Response
     {
         $this->adup->destroy($adup);
 

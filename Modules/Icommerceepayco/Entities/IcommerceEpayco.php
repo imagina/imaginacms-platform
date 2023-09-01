@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class IcommerceEpayco extends Model
 {
-   
     protected $table = 'icommerceepayco__icommerceepaycos';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

@@ -1,7 +1,5 @@
 <?php
 
-use Modules\Ihelpers\Other\CacheImaginaRequests;
-
 return [
     /**
      *  This is the master switch to enable of disable the response cache. If set to
@@ -47,5 +45,5 @@ return [
     /*
      * You can define routes to pass to the function $request->is(). Example (backend*) (auth*)
      */
-    'nocache' => array('backend*','auth*','isearch*','find-redirect*','index.php/*')
+    'nocache' => ['backend*', 'auth*', 'isearch*', 'find-redirect*', 'index.php/*'],
 ];

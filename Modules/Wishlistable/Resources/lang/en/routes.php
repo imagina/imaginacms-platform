@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'wishlist' => [
-    'index' => "account/wishlist"
-  ]
+    'wishlist' => [
+        'index' => 'account/wishlist',
+    ],
 ];

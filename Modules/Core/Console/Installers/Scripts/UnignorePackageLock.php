@@ -12,14 +12,13 @@ class UnignorePackageLock implements SetupScript
     /**
      * Fire the install script
      *
-     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
     {
         $gitignorePath = base_path('.gitignore');
 
-        if (!$this->gitignoreContainsPackageLock($gitignorePath)) {
+        if (! $this->gitignoreContainsPackageLock($gitignorePath)) {
             return;
         }
 
@@ -30,20 +29,12 @@ class UnignorePackageLock implements SetupScript
         }
     }
 
-    /**
-     * @param $gitignorePath
-     * @return bool
-     */
-    private function gitignoreContainsPackageLock($gitignorePath)
+    private function gitignoreContainsPackageLock($gitignorePath): bool
     {
         return file_exists($gitignorePath) && strpos(file_get_contents($gitignorePath), self::PACKAGE_LOCK) !== false;
     }
 
-    /**
-     * @param $gitignorePath
-     * @return array
-     */
-    private function getGitignoreLinesButPackageLock($gitignorePath)
+    private function getGitignoreLinesButPackageLock($gitignorePath): array
     {
         $data = file($gitignorePath);
         $out = [];
@@ -56,10 +47,6 @@ class UnignorePackageLock implements SetupScript
         return $out;
     }
 
-    /**
-     * @param $gitignorePath
-     * @param $out
-     */
     private function writeNewGitignore($gitignorePath, $out)
     {
         $fp = fopen($gitignorePath, 'wb+');

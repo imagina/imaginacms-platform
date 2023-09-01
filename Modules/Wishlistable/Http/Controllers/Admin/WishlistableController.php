@@ -2,13 +2,12 @@
 
 namespace Modules\Wishlistable\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Wishlistable\Entities\Wishlistable;
 use Modules\Wishlistable\Http\Requests\CreateWishlistableRequest;
 use Modules\Wishlistable\Http\Requests\UpdateWishlistableRequest;
 use Modules\Wishlistable\Repositories\WishlistableRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class WishlistableController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$wishlistables = $this->wishlistable->all();
 
@@ -38,21 +35,16 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('wishlistable::admin.wishlistables.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateWishlistableRequest $request
-     * @return Response
      */
-    public function store(CreateWishlistableRequest $request)
+    public function store(CreateWishlistableRequest $request): Response
     {
         $this->wishlistable->create($request->all());
 
@@ -62,23 +54,16 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Wishlistable $wishlistable
-     * @return Response
      */
-    public function edit(Wishlistable $wishlistable)
+    public function edit(Wishlistable $wishlistable): Response
     {
         return view('wishlistable::admin.wishlistables.edit', compact('wishlistable'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Wishlistable $wishlistable
-     * @param  UpdateWishlistableRequest $request
-     * @return Response
      */
-    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request)
+    public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request): Response
     {
         $this->wishlistable->update($wishlistable, $request->all());
 
@@ -88,11 +73,8 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Wishlistable $wishlistable
-     * @return Response
      */
-    public function destroy(Wishlistable $wishlistable)
+    public function destroy(Wishlistable $wishlistable): Response
     {
         $this->wishlistable->destroy($wishlistable);
 

@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIauctionsAuctionsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iauctions__auctions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -39,7 +37,6 @@ class CreateIauctionsAuctionsTable extends Migration
 
             $table->text('options')->nullable();
 
-
             // Audit fields
             $table->timestamps();
             $table->auditStamps();
@@ -48,10 +45,8 @@ class CreateIauctionsAuctionsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('iauctions__auctions');
     }

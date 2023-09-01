@@ -9,6 +9,6 @@ return [
         'destroy' => 'rateable::ratings.destroy resource',
         'restore' => 'rateable::ratings.restore resource',
     ],
-// append
+    // append
 
 ];

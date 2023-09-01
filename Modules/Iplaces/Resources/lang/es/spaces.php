@@ -14,17 +14,17 @@ return [
         'create space' => 'Crear un espacio',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Titulo',
-        'slug'=>'Slug',
-        'status'=>'Status',
+        'id' => 'Id',
+        'title' => 'Titulo',
+        'slug' => 'Slug',
+        'status' => 'Status',
     ],
     'form' => [
         'spaces' => 'Espacios',
-        'title'=>'Titulo',
-        'slug'=>'Slug',
-        'description'=>'Descripcion',
-        'principal'=>'Principal'
+        'title' => 'Titulo',
+        'slug' => 'Slug',
+        'description' => 'Descripcion',
+        'principal' => 'Principal',
     ],
     'messages' => [
     ],

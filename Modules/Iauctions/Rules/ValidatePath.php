@@ -20,22 +20,17 @@ class ValidatePath implements Rule
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute - Example: Attribute name:
-     * @param  mixed  $value - Example Path. 
-     * @return bool
+     * @param  mixed  $value - Example Path.
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
-        
-        return app($value);  
-
+        return app($value);
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'Path not found';
     }

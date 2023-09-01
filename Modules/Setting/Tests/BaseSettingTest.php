@@ -34,7 +34,7 @@ abstract class BaseSettingTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = __DIR__ . '/..';
+        $app['path.base'] = __DIR__.'/..';
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
@@ -81,7 +81,7 @@ abstract class BaseSettingTest extends TestCase
         ]);
         $this->artisan('migrate', [
             '--database' => 'sqlite',
-            '--path'     => 'Modules/Media/Database/Migrations',
+            '--path' => 'Modules/Media/Database/Migrations',
         ]);
     }
 }

@@ -4,12 +4,12 @@ namespace Modules\Icommercepayu\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Icommerce\Repositories\PaymentMethodRepository;
 use Modules\Icommercepayu\Entities\IcommercePayu;
 use Modules\Icommercepayu\Http\Requests\CreateIcommercePayuRequest;
 use Modules\Icommercepayu\Http\Requests\UpdateIcommercePayuRequest;
 use Modules\Icommercepayu\Repositories\IcommercePayuRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Icommerce\Repositories\PaymentMethodRepository;
 
 class IcommercePayuController extends AdminBaseController
 {
@@ -17,12 +17,13 @@ class IcommercePayuController extends AdminBaseController
      * @var IcommercePayuRepository
      */
     private $icommercepayu;
+
     private $paymentMethod;
 
     public function __construct(
         IcommercePayuRepository $icommercepayu,
         PaymentMethodRepository $paymentMethod
-    ){
+    ) {
         parent::__construct();
 
         $this->icommercepayu = $icommercepayu;
@@ -31,10 +32,8 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercepayus = $this->icommercepayu->all();
 
@@ -43,21 +42,16 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercepayu::admin.icommercepayus.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommercePayuRequest $request
-     * @return Response
      */
-    public function store(CreateIcommercePayuRequest $request)
+    public function store(CreateIcommercePayuRequest $request): Response
     {
         $this->icommercepayu->create($request->all());
 
@@ -67,11 +61,8 @@ class IcommercePayuController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommercePayu $icommercepayu
-     * @return Response
      */
-    public function edit(IcommercePayu $icommercepayu)
+    public function edit(IcommercePayu $icommercepayu): Response
     {
         return view('icommercepayu::admin.icommercepayus.edit', compact('icommercepayu'));
     }
@@ -79,36 +70,30 @@ class IcommercePayuController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommercePayu $icommercepayu
-     * @param  UpdateIcommercePayuRequest $request
-     * @return Response
+     * @param  IcommercePayu  $icommercepayu
      */
-    public function update($id, UpdateIcommercePayuRequest $request)
+    public function update($id, UpdateIcommercePayuRequest $request): Response
     {
-
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
 
         //Add status request
-        if($request->status=='on')
-            $request['status'] = "1";
-        else
-            $request['status'] = "0";
+        if ($request->status == 'on') {
+            $request['status'] = '1';
+        } else {
+            $request['status'] = '0';
+        }
 
-        $this->icommercepayu->update($paymentMethod,$request->all());
+        $this->icommercepayu->update($paymentMethod, $request->all());
 
         return redirect()->route('admin.icommerce.paymentmethod.index')
             ->withSuccess(trans('core::core.messages.resource updated', ['name' => trans('icommercepayu::icommercepayus.single')]));
-
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommercePayu $icommercepayu
-     * @return Response
      */
-    public function destroy(IcommercePayu $icommercepayu)
+    public function destroy(IcommercePayu $icommercepayu): Response
     {
         $this->icommercepayu->destroy($icommercepayu);
 

@@ -2,8 +2,8 @@
 
 namespace Modules\Ipoint\Repositories\Cache;
 
-use Modules\Ipoint\Repositories\PointRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ipoint\Repositories\PointRepository;
 
 class CachePointDecorator extends BaseCacheCrudDecorator implements PointRepository
 {
@@ -14,11 +14,10 @@ class CachePointDecorator extends BaseCacheCrudDecorator implements PointReposit
         $this->repository = $point;
     }
 
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
+        return $this->remember(function () use ($parameters, $conf) {
             return $this->repository->calculate($parameters, $conf);
         });
     }
-    
 }

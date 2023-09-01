@@ -30,7 +30,7 @@ return [
     ],
     'validation' => [
     ],
-    'frequencies' =>[
+    'frequencies' => [
         'unique' => 'Unica',
         'diary' => 'Diario',
         'weekly' => 'Semanal',
@@ -43,6 +43,6 @@ return [
     ],
     'types' => [
         'principal' => 'Principal',
-        'extra' => 'Extra'
+        'extra' => 'Extra',
     ],
 ];

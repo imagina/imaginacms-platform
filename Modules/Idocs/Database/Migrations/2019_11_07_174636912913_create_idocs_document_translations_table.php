@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIdocsDocumentTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('idocs__document_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,10 +25,8 @@ class CreateIdocsDocumentTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('idocs__document_translations', function (Blueprint $table) {
             $table->dropForeign(['document_id']);

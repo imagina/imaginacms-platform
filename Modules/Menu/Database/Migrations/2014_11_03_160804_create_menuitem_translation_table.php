@@ -7,10 +7,8 @@ class CreateMenuitemTranslationTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('menu__menuitem_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,10 +29,8 @@ class CreateMenuitemTranslationTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('menu__menuitem_translations');
     }

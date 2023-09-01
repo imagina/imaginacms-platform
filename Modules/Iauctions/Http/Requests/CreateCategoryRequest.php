@@ -3,7 +3,6 @@
 namespace Modules\Iauctions\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
-
 use Modules\Iauctions\Rules\ValidatePath;
 
 class CreateCategoryRequest extends BaseFormRequest
@@ -12,7 +11,7 @@ class CreateCategoryRequest extends BaseFormRequest
     {
         return [
             'system_name' => 'required',
-            'bid_service' => new ValidatePath 
+            'bid_service' => new ValidatePath,
         ];
     }
 
@@ -31,7 +30,7 @@ class CreateCategoryRequest extends BaseFormRequest
     public function messages()
     {
         return [
-            'system_name.required' => trans('iauctions::common.messages.field required')
+            'system_name.required' => trans('iauctions::common.messages.field required'),
         ];
     }
 
@@ -39,12 +38,12 @@ class CreateCategoryRequest extends BaseFormRequest
     {
         return [
             'title.required' => trans('iauctions::common.messages.field required'),
-            'title.min:2' => trans('iauctions::common.messages.min 2 characters')
+            'title.min:2' => trans('iauctions::common.messages.min 2 characters'),
         ];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
-    
 }

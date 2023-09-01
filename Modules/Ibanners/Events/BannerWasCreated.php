@@ -7,7 +7,6 @@ use Modules\Media\Contracts\StoringMedia;
 
 class BannerWasCreated implements StoringMedia
 {
-
     /**
      * @var array
      */
@@ -18,29 +17,24 @@ class BannerWasCreated implements StoringMedia
      */
     public $banner;
 
-
     public function __construct($banner, array $data)
     {
         $this->data = $data;
         $this->banner = $banner;
     }
 
-
     /**
      * Return the entity
-     * @return Banner
      */
-    public function getEntity()
+    public function getEntity(): Banner
     {
         return $this->banner;
     }
 
-
     /**
      * Return the ALL data sent
-     * @return array
      */
-    public function getSubmissionData()
+    public function getSubmissionData(): array
     {
         return $this->data;
     }

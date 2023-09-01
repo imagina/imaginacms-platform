@@ -6,58 +6,101 @@ use Illuminate\View\Component;
 
 class Lists extends Component
 {
-
-
     public $items;
+
     public $view;
+
     public $itemLayout;
+
     public $id;
+
     public $class;
+
     public $repository;
+
     public $layout;
+
     public $title;
+
     public $subTitle;
+
     public $params;
+
     public $margin;
+
     public $buttonTitle;
 
     public $titleAlign;
-    public $titleColor;
-    public $titleVineta;
-    public $titleVinetaColor;
-    public $titleSize;
-    public $titleWeight;
-    public $titleTransform;
-    public $titleLetterSpacing;
-    public $titleLineMarginY;
-    public $columnLeft;
-    public $columnRight;
-    public $orderColumnMain; // 0 - 1
-    public $preListContentView;
-    public $postListContentView;
-    public $emptyItems;
-    public $itemComponent;
-    public $itemComponentAttributesMain;
-    public $itemComponentAttributesList;
-    public $itemComponentNamespace;
-    public $titleUrl;
-    public $titleTarget;
-    public $itemComponentAttributes;
-    public $titleClasses;
-    public $subtitle;
-    public $subtitleSize;
-    public $subtitleColor;
-    public $subtitleWeight;
-    public $subtitleTransform;
-    public $subtitleLetterSpacing;
-    public $subtitleClasses;
-    public $textPosition;
-    public $textAlign;
-    public $columnLayout;
-    public $columns;
-    public $withLineTitle;
-    public $lineTitleConfig;
 
+    public $titleColor;
+
+    public $titleVineta;
+
+    public $titleVinetaColor;
+
+    public $titleSize;
+
+    public $titleWeight;
+
+    public $titleTransform;
+
+    public $titleLetterSpacing;
+
+    public $titleLineMarginY;
+
+    public $columnLeft;
+
+    public $columnRight;
+
+    public $orderColumnMain; // 0 - 1
+
+    public $preListContentView;
+
+    public $postListContentView;
+
+    public $emptyItems;
+
+    public $itemComponent;
+
+    public $itemComponentAttributesMain;
+
+    public $itemComponentAttributesList;
+
+    public $itemComponentNamespace;
+
+    public $titleUrl;
+
+    public $titleTarget;
+
+    public $itemComponentAttributes;
+
+    public $titleClasses;
+
+    public $subtitle;
+
+    public $subtitleSize;
+
+    public $subtitleColor;
+
+    public $subtitleWeight;
+
+    public $subtitleTransform;
+
+    public $subtitleLetterSpacing;
+
+    public $subtitleClasses;
+
+    public $textPosition;
+
+    public $textAlign;
+
+    public $columnLayout;
+
+    public $columns;
+
+    public $withLineTitle;
+
+    public $lineTitleConfig;
 
     /**
      * Create a new component instance.
@@ -71,21 +114,21 @@ class Lists extends Component
                                 $buttonTitle = 'Ver Más',
                                 $margin = 10,
                                 $layout = 'lists-layout-1',
-                                $title = "",
-                                $subTitle = "",
+                                $title = '',
+                                $subTitle = '',
                                 $view = null,
-                                $columnLeft = "col-lg-8",
-                                $columnRight = "col-lg-4",
+                                $columnLeft = 'col-lg-8',
+                                $columnRight = 'col-lg-4',
                                 $orderColumnMain = 0,
-                                $preListContentView="",
-                                $postListContentView="",
-                                $titleAlign = "text-left",
-                                $titleLineMarginY= "mt-3 mb-4",
+                                $preListContentView = '',
+                                $postListContentView = '',
+                                $titleAlign = 'text-left',
+                                $titleLineMarginY = 'mt-3 mb-4',
                                 $titleColor = null,
                                 $titleVineta = null,
                                 $titleVinetaColor = null,
                                 $titleSize = null,
-                                $titleWeight = "font-weight-normal",
+                                $titleWeight = 'font-weight-normal',
                                 $titleTransform = null,
                                 $titleLetterSpacing = 0,
                                 $itemComponent = null,
@@ -93,25 +136,23 @@ class Lists extends Component
                                 $itemComponentAttributesList = [],
                                 $itemComponentNamespace = null,
                                 $titleUrl = null,
-                                $titleTarget = "_self",
+                                $titleTarget = '_self',
                                 $itemLayout = null,
                                 $itemComponentAttributes = [],
-                                $subtitle = "",
+                                $subtitle = '',
                                 $subtitleSize = null,
-                                $subtitleWeight = "font-weight-normal",
+                                $subtitleWeight = 'font-weight-normal',
                                 $subtitleTransform = null,
                                 $subtitleLetterSpacing = 0,
                                 $textPosition = 2,
-                                $textAlign = "",
+                                $textAlign = '',
                                 $subtitleColor = null,
-                                $titleClasses = "",
-                                $subtitleClasses = "",
-                                $columns = "",
+                                $titleClasses = '',
+                                $subtitleClasses = '',
+                                $columns = '',
                                 $withLineTitle = 0,
                                 $lineTitleConfig = []
-    )
-    {
-
+    ) {
         $this->id = $id ?? 'itemList';
         $this->margin = $margin;
         $this->repository = $repository;
@@ -122,15 +163,15 @@ class Lists extends Component
         $this->class = $class;
         $this->buttonTitle = $buttonTitle ?? 'Ver más';
 
-        $this->itemLayout = $itemLayout ?? $itemComponentAttributes["itemLayout"] ?? null;
-        $this->itemComponent = $itemComponent ?? "isite::item-list";
+        $this->itemLayout = $itemLayout ?? $itemComponentAttributes['itemLayout'] ?? null;
+        $this->itemComponent = $itemComponent ?? 'isite::item-list';
         $this->view = "isite::frontend.components.lists.layouts.{$this->layout}.index";
         $this->emptyItems = false;
         $this->columnLeft = $columnLeft;
         $this->columnRight = $columnRight;
         $this->orderColumnMain = $orderColumnMain;
-        $this->preListContentView  = $preListContentView;
-        $this->postListContentView  = $postListContentView;
+        $this->preListContentView = $preListContentView;
+        $this->postListContentView = $postListContentView;
         $this->titleAlign = $titleAlign;
         $this->titleLineMarginY = $titleLineMarginY;
         $this->titleColor = $titleColor;
@@ -140,7 +181,7 @@ class Lists extends Component
         $this->titleWeight = $titleWeight;
         $this->titleTransform = $titleTransform;
         $this->titleLetterSpacing = $titleLetterSpacing;
-        $this->itemComponentNamespace =  $itemComponentNamespace ?? "Modules\Isite\View\Components\ItemList";
+        $this->itemComponentNamespace = $itemComponentNamespace ?? "Modules\Isite\View\Components\ItemList";
         $this->itemComponentAttributesMain = count($itemComponentAttributesMain) ? $itemComponentAttributesMain : config('asgard.isite.config.indexItemListAttributesMain');
         $this->itemComponentAttributesList = count($itemComponentAttributesList) ? $itemComponentAttributesList : config('asgard.isite.config.indexItemListAttributesList');
         $this->itemComponentAttributes = $itemComponentAttributes;
@@ -156,44 +197,40 @@ class Lists extends Component
         $this->subtitleColor = $subtitleColor;
         $this->titleClasses = $titleClasses;
         $this->subtitleClasses = $subtitleClasses;
-        $this->columnLayout = explode(",",$columns);
-        if($layout=="lists-layout-5" && empty($columns)) {
+        $this->columnLayout = explode(',', $columns);
+        if ($layout == 'lists-layout-5' && empty($columns)) {
             $this->columnLayout = [$columnLeft];
         }
         $this->withLineTitle = $withLineTitle;
-        $this->lineTitleConfig = !empty($lineTitleConfig) ? $lineTitleConfig : [
-            "background" => "var(--primary)",
-            "height" => "2px",
-            "width" => "10%",
-            "margin" => "0 auto"];
+        $this->lineTitleConfig = ! empty($lineTitleConfig) ? $lineTitleConfig : [
+            'background' => 'var(--primary)',
+            'height' => '2px',
+            'width' => '10%',
+            'margin' => '0 auto'];
         $this->getItems();
     }
 
-    private
-    function makeParamsFunction()
+    private function makeParamsFunction()
     {
-
         return [
-            "include" => $this->params["include"] ?? ['files'],
-            "take" => $this->params["take"] ?? 12,
-            "page" => $this->params["page"] ?? 1,
-            "filter" => $this->params["filter"] ?? [],
-            "order" => $this->params["order"] ?? null
+            'include' => $this->params['include'] ?? ['files'],
+            'take' => $this->params['take'] ?? 12,
+            'page' => $this->params['page'] ?? 1,
+            'filter' => $this->params['filter'] ?? [],
+            'order' => $this->params['order'] ?? null,
         ];
     }
 
-    private
-    function getItems()
+    private function getItems()
     {
-
         $this->items = app($this->repository)->getItemsBy(json_decode(json_encode($this->makeParamsFunction())));
         switch ($this->repository) {
             case 'Modules\Icommerce\Repositories\ProductRepository':
-                !$this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
-                if (is_module_enabled("Icommerce") && $this->itemComponent == "isite::item-list") {
-                    $this->itemComponent = "icommerce::product-list-item";
+                ! $this->itemLayout ? $this->itemLayout = setting('icommerce::productListItemLayout') : false;
+                if (is_module_enabled('Icommerce') && $this->itemComponent == 'isite::item-list') {
+                    $this->itemComponent = 'icommerce::product-list-item';
                     $this->itemComponentNamespace = "Modules\Icommerce\View\Components\ProductListItem";
-                    $this->itemComponentAttributes["layout"]="product-list-item-layout-1";
+                    $this->itemComponentAttributes['layout'] = 'product-list-item-layout-1';
                 }
                 break;
         }
@@ -207,8 +244,7 @@ class Lists extends Component
      *
      * @return \Illuminate\Contracts\View\View|string
      */
-    public
-    function render()
+    public function render()
     {
         return view($this->view);
     }

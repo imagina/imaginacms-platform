@@ -18,7 +18,7 @@ class ModuleAssets implements SetupScript
 
     /**
      * Fire the install script
-     * @param  Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -30,6 +30,7 @@ class ModuleAssets implements SetupScript
         foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:publish', ['module' => $module]);
+
                 continue;
             }
             $command->callSilent('module:publish', ['module' => $module]);

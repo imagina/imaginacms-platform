@@ -7,29 +7,27 @@ use Modules\Ichat\Entities\Message;
 
 class MessageWasSaved
 {
-  use SerializesModels;
+    use SerializesModels;
 
-  public $message;
+    public $message;
 
-  /**
-   * Create a new event instance.
-   *
-   * @return void
-   */
-  public function __construct($message)
-  {
-    $this->message = Message::with(['user', 'conversation.users', 'conversation.conversationUsers'])
-      ->where('id', $message->id)
-      ->first();
-  }
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct($message)
+    {
+        $this->message = Message::with(['user', 'conversation.users', 'conversation.conversationUsers'])
+          ->where('id', $message->id)
+          ->first();
+    }
 
-  /**
-   * Get the channels the event should be broadcast on.
-   *
-   * @return array
-   */
-  public function broadcastOn()
-  {
-    return [];
-  }
+    /**
+     * Get the channels the event should be broadcast on.
+     */
+    public function broadcastOn(): array
+    {
+        return [];
+    }
 }

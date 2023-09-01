@@ -8,8 +8,8 @@ return [
             'type' => 'input',
             'isTranslatable' => true,
             'props' => [
-               'label' => 'icommerce::common.title'
-            ]
+                'label' => 'icommerce::common.title',
+            ],
         ],
         'description' => [
             'value' => null,
@@ -20,7 +20,7 @@ return [
                 'label' => 'icommerce::common.description',
                 'type' => 'textarea',
                 'rows' => 3,
-            ]
+            ],
         ],
         'status' => [
             'value' => 0,
@@ -34,27 +34,27 @@ return [
                 'hideDropdownIcon' => true,
                 'newValueMode' => 'add-unique',
                 'options' => [
-                    ['label' => 'Activo','value' => 1],
-                    ['label' => 'Inactivo','value' => 0],
-                ]
-            ]
+                    ['label' => 'Activo', 'value' => 1],
+                    ['label' => 'Inactivo', 'value' => 0],
+                ],
+            ],
         ],
         'mainimage' => [
-            'value' => (object)[],
+            'value' => (object) [],
             'name' => 'mediasSingle',
             'type' => 'media',
             'props' => [
                 'label' => 'Image',
                 'zone' => 'mainimage',
                 'entity' => "Modules\Icommerce\Entities\PaymentMethod",
-                'entityId' => null
-            ]
+                'entityId' => null,
+            ],
         ],
         'init' => [
             'value' => 'Modules\Icommercecheckmo\Http\Controllers\Api\IcommerceCheckmoApiController',
             'name' => 'init',
-            'isFakeField' => true
-        ]
-    ]
-	
+            'isFakeField' => true,
+        ],
+    ],
+
 ];

@@ -11,7 +11,7 @@ yarn-error.log
 composer.lock
 package-lock.json
 yarn.lock
-.phpunit.result.cache
+/.phpunit.cache
 .php_cs.cache
 .idea
 /storage

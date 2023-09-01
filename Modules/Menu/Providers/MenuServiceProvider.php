@@ -25,216 +25,200 @@ use Nwidart\Menus\MenuItem as PingpongMenuItem;
 
 class MenuServiceProvider extends ServiceProvider
 {
-  use CanPublishConfiguration, CanGetSidebarClassForModule;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
 
-  /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
-  /**
-   * Register the service provider.
-   *
-   * @return void
-   */
-  public function register()
-  {
-    $this->registerBindings();
+    /**
+     * Register the service provider.
+     */
+    public function register(): void
+    {
+        $this->registerBindings();
 
-    $this->app->bind('menu.menu.directive', function () {
-      return new MenuDirective();
-    });
+        $this->app->bind('menu.menu.directive', function () {
+            return new MenuDirective();
+        });
 
-    $this->app['events']->listen(
-      BuildingSidebar::class,
-      $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
-    );
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('menu', RegisterMenuSidebar::class)
+        );
 
-    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-      $event->load('menu', Arr::dot(trans('menu::menu')));
-      $event->load('menu-items', Arr::dot(trans('menu::menu-items')));
-    });
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('menu', Arr::dot(trans('menu::menu')));
+            $event->load('menu-items', Arr::dot(trans('menu::menu-items')));
+        });
 
-    app('router')->bind('menu', function ($id) {
-      return app(MenuRepository::class)->find($id);
-    });
-    app('router')->bind('menuitem', function ($id) {
-      return app(MenuItemRepository::class)->find($id);
-    });
-  }
-
-  /**
-   * Register all online menus on the Pingpong/Menu package
-   */
-  public function boot()
-  {
-    $this->registerMenus();
-    $this->registerBladeTags();
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'permissions'), "asgard.menu.permissions");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsPages'), "asgard.menu.cmsPages");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsSidebar'), "asgard.menu.cmsSidebar");
-    $this->publishConfig('menu', 'config');
-    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-  }
-
-  /**
-   * Get the services provided by the provider.
-   *
-   * @return array
-   */
-  public function provides()
-  {
-    return [];
-  }
-
-  /**
-   * Register class binding
-   */
-  private function registerBindings()
-  {
-    $this->app->bind(MenuRepository::class, function () {
-      $repository = new EloquentMenuRepository(new Menu());
-
-      if (!config('app.cache')) {
-        return $repository;
-      }
-
-      return new CacheMenuDecorator($repository);
-    });
-
-    $this->app->bind(MenuItemRepository::class, function () {
-      $repository = new EloquentMenuItemRepository(new Menuitem());
-
-      if (!config('app.cache')) {
-        return $repository;
-      }
-
-      return new CacheMenuItemDecorator($repository);
-    });
-  }
-
-  /**
-   * Add a menu item to the menu
-   * @param Menuitem $item
-   * @param Builder $menu
-   */
-  public function addItemToMenu(Menuitem $item, Builder $menu)
-  {
-    if ($this->hasChildren($item)) {
-      $this->addChildrenToMenu(
-        $item->title,
-        $item->items,
-        $menu,
-        [
-          'id' => $item->id,
-          'organization_id' => $item->organization_id,
-          'icon' => $item->icon,
-          'target' => $item->target,
-          'class' => $item->class,
-        ]
-      );
-    } else {
-      $localisedUri = ltrim(parse_url(LaravelLocalization::localizeURL($item->uri), PHP_URL_PATH), '/');
-      $target = $item->link_type != 'external' ? $localisedUri : $item->url;
-
-      $menu->url(
-        $target,
-        $item->title,
-        [
-          'id' => $item->id,
-          'organization_id' => $item->organization_id,
-          'target' => $item->target,
-          'icon' => $item->icon,
-          'class' => $item->class,
-        ]
-      );
-    }
-  }
-
-  /**
-   * Add children to menu under the give name
-   *
-   * @param string $name
-   * @param object $children
-   * @param Builder|MenuItem $menu
-   */
-  private function addChildrenToMenu($name, $children, $menu, $attribs = [])
-  {
-    $menu->dropdown($name, function (PingpongMenuItem $subMenu) use ($children) {
-      foreach ($children as $child) {
-        $this->addSubItemToMenu($child, $subMenu);
-      }
-    }, 0, $attribs);
-  }
-
-  /**
-   * Add children to the given menu recursively
-   * @param Menuitem $child
-   * @param PingpongMenuItem $sub
-   */
-  private function addSubItemToMenu(Menuitem $child, PingpongMenuItem $sub)
-  {
-    if ($this->hasChildren($child)) {
-      $this->addChildrenToMenu($child->title, $child->items, $sub);
-    } else {
-      $target = $child->link_type != 'external' ? $child->locale . '/' . $child->uri : $child->url;
-      $sub->url($target, $child->title, 0, ['icon' => $child->icon, 'target' => $child->target, 'class' => $child->class]);
-    }
-  }
-
-  /**
-   * Check if the given menu item has children
-   *
-   * @param object $item
-   * @return bool
-   */
-  private function hasChildren($item)
-  {
-    return $item->items->count() > 0;
-  }
-
-  /**
-   * Register the active menus
-   */
-  private function registerMenus()
-  {
-    if ($this->app['asgard.isInstalled'] === false ||
-      $this->app['asgard.onBackend'] === true ||
-      $this->app->runningInConsole() === true
-    ) {
-      return;
+        app('router')->bind('menu', function ($id) {
+            return app(MenuRepository::class)->find($id);
+        });
+        app('router')->bind('menuitem', function ($id) {
+            return app(MenuItemRepository::class)->find($id);
+        });
     }
 
-    $menu = $this->app->make(MenuRepository::class);
-    $menuItem = $this->app->make(MenuItemRepository::class);
- 
-    foreach ($menu->allOnline() as $menu) {
-    
-      $menuTree = $menuItem->getTreeForMenu($menu->id);
-      
-      MenuFacade::create($menu->name, function (Builder $menu) use ($menuTree) {
-        foreach ($menuTree as $menuItem) {
-          $this->addItemToMenu($menuItem, $menu);
+    /**
+     * Register all online menus on the Pingpong/Menu package
+     */
+    public function boot(): void
+    {
+        $this->registerMenus();
+        $this->registerBladeTags();
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'permissions'), 'asgard.menu.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsPages'), 'asgard.menu.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsSidebar'), 'asgard.menu.cmsSidebar');
+        $this->publishConfig('menu', 'config');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    }
+
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array
+    {
+        return [];
+    }
+
+    /**
+     * Register class binding
+     */
+    private function registerBindings()
+    {
+        $this->app->bind(MenuRepository::class, function () {
+            $repository = new EloquentMenuRepository(new Menu());
+
+            if (! config('app.cache')) {
+                return $repository;
+            }
+
+            return new CacheMenuDecorator($repository);
+        });
+
+        $this->app->bind(MenuItemRepository::class, function () {
+            $repository = new EloquentMenuItemRepository(new Menuitem());
+
+            if (! config('app.cache')) {
+                return $repository;
+            }
+
+            return new CacheMenuItemDecorator($repository);
+        });
+    }
+
+    /**
+     * Add a menu item to the menu
+     */
+    public function addItemToMenu(Menuitem $item, Builder $menu)
+    {
+        if ($this->hasChildren($item)) {
+            $this->addChildrenToMenu(
+                $item->title,
+                $item->items,
+                $menu,
+                [
+                    'id' => $item->id,
+                    'organization_id' => $item->organization_id,
+                    'icon' => $item->icon,
+                    'target' => $item->target,
+                    'class' => $item->class,
+                ]
+            );
+        } else {
+            $localisedUri = ltrim(parse_url(LaravelLocalization::localizeURL($item->uri), PHP_URL_PATH), '/');
+            $target = $item->link_type != 'external' ? $localisedUri : $item->url;
+
+            $menu->url(
+                $target,
+                $item->title,
+                [
+                    'id' => $item->id,
+                    'organization_id' => $item->organization_id,
+                    'target' => $item->target,
+                    'icon' => $item->icon,
+                    'class' => $item->class,
+                ]
+            );
         }
-      });
-    }
-    
-
-  }
-
-  /**
-   * Register menu blade tags
-   */
-  protected function registerBladeTags()
-  {
-    if (app()->environment() === 'testing') {
-      return;
     }
 
-    $this->app['blade.compiler']->directive('menu', function ($arguments) {
-      return "<?php echo MenuDirective::show([$arguments]); ?>";
-    });
-  }
+    /**
+     * Add children to menu under the give name
+     *
+     * @param  Builder|MenuItem  $menu
+     */
+    private function addChildrenToMenu(string $name, object $children, $menu, $attribs = [])
+    {
+        $menu->dropdown($name, function (PingpongMenuItem $subMenu) use ($children) {
+            foreach ($children as $child) {
+                $this->addSubItemToMenu($child, $subMenu);
+            }
+        }, 0, $attribs);
+    }
+
+    /**
+     * Add children to the given menu recursively
+     */
+    private function addSubItemToMenu(Menuitem $child, PingpongMenuItem $sub)
+    {
+        if ($this->hasChildren($child)) {
+            $this->addChildrenToMenu($child->title, $child->items, $sub);
+        } else {
+            $target = $child->link_type != 'external' ? $child->locale.'/'.$child->uri : $child->url;
+            $sub->url($target, $child->title, 0, ['icon' => $child->icon, 'target' => $child->target, 'class' => $child->class]);
+        }
+    }
+
+    /**
+     * Check if the given menu item has children
+     */
+    private function hasChildren(object $item): bool
+    {
+        return $item->items->count() > 0;
+    }
+
+    /**
+     * Register the active menus
+     */
+    private function registerMenus()
+    {
+        if ($this->app['asgard.isInstalled'] === false ||
+          $this->app['asgard.onBackend'] === true ||
+          $this->app->runningInConsole() === true
+        ) {
+            return;
+        }
+
+        $menu = $this->app->make(MenuRepository::class);
+        $menuItem = $this->app->make(MenuItemRepository::class);
+
+        foreach ($menu->allOnline() as $menu) {
+            $menuTree = $menuItem->getTreeForMenu($menu->id);
+
+            MenuFacade::create($menu->name, function (Builder $menu) use ($menuTree) {
+                foreach ($menuTree as $menuItem) {
+                    $this->addItemToMenu($menuItem, $menu);
+                }
+            });
+        }
+    }
+
+    /**
+     * Register menu blade tags
+     */
+    protected function registerBladeTags()
+    {
+        if (app()->environment() === 'testing') {
+            return;
+        }
+
+        $this->app['blade.compiler']->directive('menu', function ($arguments) {
+            return "<?php echo MenuDirective::show([$arguments]); ?>";
+        });
+    }
 }

@@ -10,6 +10,8 @@ class IcommerceBraintree extends Model
     use Translatable;
 
     protected $table = 'icommercebraintree__icommercebraintrees';
+
     public $translatedAttributes = [];
+
     protected $fillable = [];
 }

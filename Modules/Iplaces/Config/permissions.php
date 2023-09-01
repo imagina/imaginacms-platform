@@ -50,10 +50,6 @@ return [
         'edit' => 'iplaces::cities.edit resource',
         'destroy' => 'iplaces::cities.destroy resource',
     ],
-// append
-
-
-
-
+    // append
 
 ];

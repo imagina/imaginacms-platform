@@ -4,14 +4,15 @@ namespace Modules\Icommercecheckmo\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercecheckmo\Events\Handlers\RegisterIcommercecheckmoSidebar;
 
 class IcommercecheckmoServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercecheckmoSidebar::class);
@@ -32,11 +31,10 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercecheckmos', Arr::dot(trans('icommercecheckmo::icommercecheckmos')));
             // append translations
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercecheckmo', 'permissions');
         $this->publishConfig('icommercecheckmo', 'config');
@@ -47,12 +45,10 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +65,6 @@ class IcommercecheckmoServiceProvider extends ServiceProvider
                 return new \Modules\Icommercecheckmo\Repositories\Cache\CacheIcommerceCheckmoDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

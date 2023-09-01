@@ -5,20 +5,16 @@ namespace Modules\Iappointment\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 // Base Api
 use Modules\Iappointment\Http\Requests\CreateProviderRequest;
 use Modules\Iappointment\Http\Requests\UpdateProviderRequest;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Iappointment\Repositories\ProviderRepository;
 // Transformers
 use Modules\Iappointment\Transformers\ProviderTransformer;
-
 // Entities
-use Modules\Iappointment\Entities\Provider;
 
 // Repositories
-use Modules\Iappointment\Repositories\ProviderRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class ProviderApiController extends BaseApiController
 {
@@ -44,23 +40,22 @@ class ProviderApiController extends BaseApiController
             $categories = $this->provider->getItemsBy($params);
 
             //Response
-            $response = ["data" => ProviderTransformer::collection($categories)];
+            $response = ['data' => ProviderTransformer::collection($categories)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($categories)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($categories)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -73,33 +68,34 @@ class ProviderApiController extends BaseApiController
             $provider = $this->provider->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$provider) throw new \Exception('Item not found', 404);
+            if (! $provider) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new ProviderTransformer($provider)];
+            $response = ['data' => new ProviderTransformer($provider)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($provider)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($provider)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
     {
         \DB::beginTransaction();
         try {
-            $data = $request->input('attributes') ?? [];//Get data
+            $data = $request->input('attributes') ?? []; //Get data
             //Validate Request
 
             $this->validateRequestApi(new CreateProviderRequest($data));
@@ -108,26 +104,22 @@ class ProviderApiController extends BaseApiController
             $provider = $this->provider->create($data);
 
             //Response
-            $response = ["data" => new ProviderTransformer($provider)];
+            $response = ['data' => new ProviderTransformer($provider)];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
-
-
         \DB::beginTransaction();
         try {
             $params = $this->getParamsRequest($request);
@@ -137,24 +129,24 @@ class ProviderApiController extends BaseApiController
             $this->validateRequestApi(new UpdateProviderRequest($data));
 
             //Update data
-            $provider = $this->provider->updateBy($criteria, $data,$params);
+            $provider = $this->provider->updateBy($criteria, $data, $params);
 
             //Response
             $response = ['data' => 'Item Updated'];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
     /**
      * Remove the specified resource from storage.
-     * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -168,10 +160,11 @@ class ProviderApiController extends BaseApiController
             $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 }

@@ -6,9 +6,6 @@ use Illuminate\Support\Arr;
 
 class CdnAsset implements AssetType
 {
-    /**
-     * @var
-     */
     private $path;
 
     public function __construct($path)
@@ -18,9 +15,8 @@ class CdnAsset implements AssetType
 
     /**
      * Get the URL
-     * @return string
      */
-    public function url()
+    public function url(): string
     {
         return Arr::get($this->path, 'cdn');
     }

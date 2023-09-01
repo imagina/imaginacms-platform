@@ -2,8 +2,8 @@
 
 namespace Modules\Icommerceflatrate\Repositories\Cache;
 
-use Modules\Icommerceflatrate\Repositories\IcommerceFlatrateRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommerceflatrate\Repositories\IcommerceFlatrateRepository;
 
 class CacheIcommerceFlatrateDecorator extends BaseCacheDecorator implements IcommerceFlatrateRepository
 {
@@ -14,16 +14,15 @@ class CacheIcommerceFlatrateDecorator extends BaseCacheDecorator implements Icom
         $this->repository = $icommerceflatrate;
     }
 
-     /**
+    /**
      * List or resources
      *
      * @return mixed
      */
-    public function calculate($parameters,$conf)
+    public function calculate($parameters, $conf)
     {
-        return $this->remember(function () use ($parameters,$conf) {
-            return $this->repository->calculate($parameters,$conf);
+        return $this->remember(function () use ($parameters, $conf) {
+            return $this->repository->calculate($parameters, $conf);
         });
     }
-
 }

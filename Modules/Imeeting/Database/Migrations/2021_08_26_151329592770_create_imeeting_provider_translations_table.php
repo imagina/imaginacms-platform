@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateImeetingProviderTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('imeeting__provider_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -29,10 +27,8 @@ class CreateImeetingProviderTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('imeeting__provider_translations', function (Blueprint $table) {
             $table->dropForeign(['provider_id']);

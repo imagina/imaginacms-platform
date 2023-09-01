@@ -1,9 +1,9 @@
 <?php
 
 return [
-  'status' => [
-    'published' => 'Publicado',
-    'cancelled' => 'Cancelado',
-  ],
+    'status' => [
+        'published' => 'Publicado',
+        'cancelled' => 'Cancelado',
+    ],
 
 ];

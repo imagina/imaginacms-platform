@@ -11,8 +11,6 @@ class PermissionManager
      */
     private $module;
 
-    /**
-     */
     public function __construct()
     {
         $this->module = app('modules');
@@ -20,13 +18,12 @@ class PermissionManager
 
     /**
      * Get the permissions from all the enabled modules
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         $permissions = [];
         foreach ($this->module->allEnabled() as $enabledModule) {
-            $configuration = config(strtolower('asgard.' . $enabledModule->getName()) . '.permissions');
+            $configuration = config(strtolower('asgard.'.$enabledModule->getName()).'.permissions');
             if ($configuration) {
                 $permissions[$enabledModule->getName()] = $configuration;
             }
@@ -37,12 +34,10 @@ class PermissionManager
 
     /**
      * Return a correctly type casted permissions array
-     * @param $permissions
-     * @return array
      */
-    public function clean($permissions)
+    public function clean($permissions): array
     {
-        if (!$permissions) {
+        if (! $permissions) {
             return [];
         }
         $cleanedPermissions = [];
@@ -55,11 +50,7 @@ class PermissionManager
         return $cleanedPermissions;
     }
 
-    /**
-     * @param $checkedPermission
-     * @return bool
-     */
-    protected function getState($checkedPermission)
+    protected function getState($checkedPermission): bool
     {
         if ($checkedPermission === '1' || $checkedPermission === 1) {
             return true;
@@ -74,10 +65,10 @@ class PermissionManager
 
     /**
      * Are all of the permissions passed of false value?
-     * @param array $permissions    Permissions array
-     * @return bool
+     *
+     * @param  array  $permissions    Permissions array
      */
-    public function permissionsAreAllFalse(array $permissions)
+    public function permissionsAreAllFalse(array $permissions): bool
     {
         $uniquePermissions = array_unique($permissions);
 

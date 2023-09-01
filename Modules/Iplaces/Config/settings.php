@@ -3,8 +3,8 @@
 return [
 
     'api-maps' => [
-        'description'  => 'iplaces::common.settings.apimaps',
-        'view'         => 'text',
+        'description' => 'iplaces::common.settings.apimaps',
+        'view' => 'text',
     ],
 
 ];

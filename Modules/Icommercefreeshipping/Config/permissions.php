@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercefreeshipping::icommercefreeshippings.edit resource',
         'destroy' => 'icommercefreeshipping::icommercefreeshippings.destroy resource',
     ],
-// append
+    // append
 
 ];

@@ -5,8 +5,8 @@ namespace Modules\Iplaces\Entities;
 class Servtype
 {
     const PRINCIPAL = 0;
-    const OTHERS = 1;
 
+    const OTHERS = 1;
 
     /**
      * @var array
@@ -24,20 +24,17 @@ class Servtype
 
     /**
      * Get the available statuses
-     * @return array
      */
     /*listar*/
-    public function lists()
+    public function lists(): array
     {
         return $this->servtypes;
     }
 
     /**
      * Get the post status
-     * @param int $statusId
-     * @return string
      */
-    public function get($statusId)
+    public function get(int $statusId): string
     {
         if (isset($this->servtypes[$statusId])) {
             return $this->servtypes[$statusId];

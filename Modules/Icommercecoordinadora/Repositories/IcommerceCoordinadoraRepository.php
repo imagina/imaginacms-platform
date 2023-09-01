@@ -6,7 +6,5 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface IcommerceCoordinadoraRepository extends BaseRepository
 {
-
-    public function calculate($parameters,$conf);
-    
+    public function calculate($parameters, $conf);
 }

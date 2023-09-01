@@ -16,8 +16,6 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
         //$sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommercecredibanco::icommercecredibancos.title.icommercecredibancos'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercecredibanco::icommercecredibancos.title.icommercecredibancos'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -61,9 +55,7 @@ class RegisterIcommercecredibancoSidebar implements \Maatwebsite\Sidebar\Sidebar
                         $this->auth->hasAccess('icommercecredibanco.transactions.index')
                     );
                 });
-// append
-
-
+                // append
             });
         });
 

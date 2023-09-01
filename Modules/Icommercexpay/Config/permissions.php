@@ -7,6 +7,6 @@ return [
         'edit' => 'icommercexpay::icommercexpays.edit resource',
         'destroy' => 'icommercexpay::icommercexpays.destroy resource',
     ],
-// append
+    // append
 
 ];

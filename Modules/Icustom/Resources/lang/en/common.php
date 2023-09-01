@@ -3,7 +3,6 @@
 return [
     'icustom' => 'App Content',
 
-
     'title' => [
         'products' => 'Product',
         'create product' => 'Create a product',

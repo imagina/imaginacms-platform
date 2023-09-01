@@ -12,5 +12,4 @@ Route::group(['prefix' => 'pin-ups'], function (Router $router) {
     'as' => 'api.iad.ad-ups.show',
     'uses' => 'AdUpApiController@show',
   ]);
-
 });

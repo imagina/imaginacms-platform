@@ -15,14 +15,17 @@ class AssetsViewComposer
      * @var AssetManager
      */
     protected $assetManager;
+
     /**
      * @var AssetPipeline
      */
     protected $assetPipeline;
+
     /**
      * @var AssetTypeFactory
      */
     protected $assetFactory;
+
     /**
      * @var Request
      */

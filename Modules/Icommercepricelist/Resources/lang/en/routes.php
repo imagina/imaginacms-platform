@@ -1,6 +1,7 @@
 <?php
+
 return [
     'pricelists' => [
-        'index' => 'store/price-lists'
-    ]
+        'index' => 'store/price-lists',
+    ],
 ];

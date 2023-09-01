@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIplacesSpaceTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('iplaces__space_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -34,10 +32,8 @@ class CreateIplacesSpaceTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('iplaces__space_translations', function (Blueprint $table) {
             $table->dropForeign(['space_id']);

@@ -28,5 +28,5 @@ return [
     'messages' => [
     ],
     'validation' => [
-    ]
+    ],
 ];

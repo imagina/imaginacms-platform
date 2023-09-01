@@ -9,7 +9,7 @@ class CreateOrganizationRequest extends BaseFormRequest
     public function rules()
     {
         return [
-          'title' => 'required|min:2',
+            'title' => 'required|min:2',
         ];
     }
 

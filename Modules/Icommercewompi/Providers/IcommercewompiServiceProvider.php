@@ -2,16 +2,17 @@
 
 namespace Modules\Icommercewompi\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Arr;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icommercewompi\Events\Handlers\RegisterIcommercewompiSidebar;
 
 class IcommercewompiServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IcommercewompiServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercewompiSidebar::class);
@@ -32,11 +31,10 @@ class IcommercewompiServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('icommercewompis', Arr::dot(trans('icommercewompi::icommercewompis')));
             // append translations
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icommercewompi', 'permissions');
         $this->publishConfig('icommercewompi', 'config');
@@ -47,12 +45,10 @@ class IcommercewompiServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -69,7 +65,6 @@ class IcommercewompiServiceProvider extends ServiceProvider
                 return new \Modules\Icommercewompi\Repositories\Cache\CacheIcommerceWompiDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

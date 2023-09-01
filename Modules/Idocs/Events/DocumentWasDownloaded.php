@@ -2,15 +2,13 @@
 
 namespace Modules\Idocs\Events;
 
-use Modules\Idocs\Entities\Document;
-use Modules\Media\Contracts\StoringMedia;
-
 class DocumentWasDownloaded
 {
     /**
      * @var array
      */
     public $key;
+
     /**
      * @var Post
      */
@@ -21,5 +19,4 @@ class DocumentWasDownloaded
         $this->key = $key;
         $this->document = $document;
     }
-    
 }

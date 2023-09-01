@@ -2,39 +2,33 @@
 
 namespace Modules\Ischedulable\Repositories\Eloquent;
 
-use Modules\Ischedulable\Repositories\DayRepository;
 use Modules\Core\Icrud\Repositories\Eloquent\EloquentCrudRepository;
+use Modules\Ischedulable\Repositories\DayRepository;
 
 class EloquentDayRepository extends EloquentCrudRepository implements DayRepository
 {
-
-	/**
-   	* Filter name to replace
-   	* @var array
-   	*/
-  	protected $replaceFilters = [];
-
-  	/**
-   	* Filter query
-   	*
-   	* @param $query
-   	* @param $filter
-     * @param $params
-   	* @return mixed
-   	*/
-  	public function filterQuery($query, $filter, $params)
-  	{
+    /**
+     * Filter name to replace
+     *
+     * @var array
+     */
+    protected $replaceFilters = [];
 
     /**
-     * Note: Add filter name to replaceFilters attribute to replace it
+     * Filter query
      *
-     * Example filter Query
-     * if (isset($filter->status)) $query->where('status', $filter->status);
-     *
+     * @return mixed
      */
+    public function filterQuery($query, $filter, $params)
+    {
+        /**
+         * Note: Add filter name to replaceFilters attribute to replace it
+         *
+         * Example filter Query
+         * if (isset($filter->status)) $query->where('status', $filter->status);
+         */
 
-    	//Response
-    	return $query;
-  	}
-
+        //Response
+        return $query;
+    }
 }

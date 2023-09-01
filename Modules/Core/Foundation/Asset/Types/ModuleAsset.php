@@ -7,9 +7,6 @@ use Nwidart\Modules\Facades\Module;
 
 class ModuleAsset implements AssetType
 {
-    /**
-     * @var
-     */
     private $path;
 
     public function __construct($path)
@@ -19,9 +16,8 @@ class ModuleAsset implements AssetType
 
     /**
      * Get the URL
-     * @return string
      */
-    public function url()
+    public function url(): string
     {
         return Module::asset($this->getPath());
     }

@@ -7,42 +7,37 @@ use Modules\Ibanners\Entities\Position;
 
 class BannerAdsPresenter extends AbstractAdsPresenter implements BannerAdsPresenterInterface
 {
-
     /**
      * renders slider.
-     * @param string|Position $position
+     *
+     * @param  string|Position  $position
      * pass Position instance to render specific slider
      * pass string to automatically retrieve slider from repository
-     * @param string $template blade template to render slider
+     * @param  string  $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($position, $template = 'ibanners::frontend.banners.banner_ads', $options=array())
+    public function render($position, string $template = 'ibanners::frontend.banners.banner_ads', $options = []): string
     {
-        if (!$position instanceof Position) {
+        if (! $position instanceof Position) {
             $position = $this->getPositionFromRepository($position);
             if ($position && $position->active == false) {    // inactive slider must not render
                 return '';
             }
         }
-        if (!$position) {
+        if (! $position) {
             return '';
         }
 
         $view = View::make($template)
             ->with([
                 'position' => $position,
-                'options'=>$options
+                'options' => $options,
             ]);
 
         return $view->render();
     }
 
-
-    /**
-     * @param $systemName
-     * @return Position
-     */
-    private function getPositionFromRepository($systemName)
+    private function getPositionFromRepository($systemName): Position
     {
         return $this->positionRepository->findBySystemName($systemName);
     }

@@ -9,11 +9,8 @@ class FilesGenerator extends Generator
 {
     /**
      * Generate the given files
-     *
-     * @param  array $files
-     * @return void
      */
-    public function generate(array $files)
+    public function generate(array $files): void
     {
         foreach ($files as $stub => $file) {
             $this->writeFile(
@@ -25,9 +22,8 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module service provider
-     * @return $this
      */
-    public function generateModuleProvider()
+    public function generateModuleProvider(): static
     {
         $this->writeFile(
             $this->getModulesPath("Providers/{$this->name}ServiceProvider"),
@@ -39,12 +35,11 @@ class FilesGenerator extends Generator
 
     /**
      * Generate the base module event provider
-     * @return $this
      */
-    public function generateEventProvider()
+    public function generateEventProvider(): static
     {
         $this->writeFile(
-            $this->getModulesPath("Providers/EventServiceProvider"),
+            $this->getModulesPath('Providers/EventServiceProvider'),
             $this->getContentFor('module-event-provider.stub')
         );
 
@@ -54,11 +49,10 @@ class FilesGenerator extends Generator
     /**
      * Get the content for the given file
      *
-     * @param $stub
-     * @return string
+     *
      * @throws FileNotFoundException
      */
-    private function getContentFor($stub)
+    private function getContentFor($stub): string
     {
         $stub = $this->finder->get($this->getStubPath($stub));
 
@@ -69,7 +63,7 @@ class FilesGenerator extends Generator
                 '$PLURAL_MODULE$',
                 '$UPPERCASE_PLURAL_MODULE$',
                 '$SIDEBAR_LISTENER_NAME$',
-                '$LOWERCASE_MODULE_NAME$'
+                '$LOWERCASE_MODULE_NAME$',
             ],
             [
                 $this->name,
@@ -77,7 +71,7 @@ class FilesGenerator extends Generator
                 strtolower(Str::plural($this->name)),
                 Str::plural($this->name),
                 "Register{$this->name}Sidebar",
-                strtolower($this->name)
+                strtolower($this->name),
             ],
             $stub
         );

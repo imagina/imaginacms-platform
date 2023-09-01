@@ -16,8 +16,6 @@ class RegisterIadSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIadSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('iad::iads.title.iads'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('iad::categories.title.categories'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -106,14 +100,7 @@ class RegisterIadSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('iad.uplogs.index')
                     );
                 });
-// append
-
-
-
-
-
-
-
+                // append
             });
         });
 

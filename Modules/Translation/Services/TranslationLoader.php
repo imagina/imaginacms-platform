@@ -9,9 +9,8 @@ class TranslationLoader extends FileLoader
 {
     /**
      * Get all Paths where Translations could be found.
-     * @return array
      */
-    public function paths()
+    public function paths(): array
     {
         return array_merge(
             [$this->path],
@@ -21,14 +20,8 @@ class TranslationLoader extends FileLoader
 
     /**
      * Load the messages for the given locale.
-     *
-     * @param string $locale
-     * @param string $group
-     * @param string $namespace
-     *
-     * @return array
      */
-    public function load($locale, $group, $namespace = null)
+    public function load($locale,  $group, $namespace = null)
     {
         $fileTranslations = parent::load($locale, $group, $namespace);
 

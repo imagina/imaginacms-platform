@@ -10,7 +10,7 @@ class UpdateCategoryRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'bid_service' => new ValidatePath 
+            'bid_service' => new ValidatePath,
         ];
     }
 
@@ -34,7 +34,8 @@ class UpdateCategoryRequest extends BaseFormRequest
         return [];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
 }

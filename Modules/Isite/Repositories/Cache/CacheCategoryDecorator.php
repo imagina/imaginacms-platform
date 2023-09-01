@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\CategoryRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Isite\Repositories\CategoryRepository;
 
 class CacheCategoryDecorator extends BaseCacheCrudDecorator implements CategoryRepository
 {

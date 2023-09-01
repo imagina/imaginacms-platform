@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'  => 'Position',
+    'title' => 'Position',
     'titles' => [
         'position' => 'Position management',
         'create position' => 'Create position',
@@ -23,7 +23,7 @@ return [
     'table' => [
         'name' => 'Name',
         'title' => 'Title',
-        'system name' => 'System name'
+        'system name' => 'System name',
     ],
     'form' => [
         'title' => 'Title',
@@ -35,17 +35,17 @@ return [
         'url' => 'URL',
         'external image url' => 'External Image URL',
         'placeholder' => [
-            'external image url' => 'http://www.example.com/link/to/image.jpg'
-        ]
+            'external image url' => 'http://www.example.com/link/to/image.jpg',
+        ],
 
     ],
     'navigation' => [
-        'back to index' => 'Go back to the position index'
+        'back to index' => 'Go back to the position index',
     ],
     'list resource' => 'List Position',
     'create resource' => 'Create Position',
     'edit resource' => 'Edit Position',
     'destroy resource' => 'Delete Position',
-    'store resource'=>'Store Position',
-    'update resource'=>'Update Position'
+    'store resource' => 'Store Position',
+    'update resource' => 'Update Position',
 ];

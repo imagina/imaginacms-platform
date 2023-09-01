@@ -2,14 +2,16 @@
 
 namespace Modules\Iauctions\Entities;
 
-
 class Status
 {
     const PENDING = 0;
+
     const ACTIVE = 1;
+
     const FINISHED = 2;
+
     const CANCELED = 3;
-    
+
     private $statuses = [];
 
     public function __construct()
@@ -27,7 +29,6 @@ class Status
         return $this->statuses;
     }
 
-   
     public function get($statusId)
     {
         if (isset($this->statuses[$statusId])) {
@@ -36,5 +37,4 @@ class Status
 
         return $this->statuses[self::PENDING];
     }
-    
 }

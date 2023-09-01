@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\AppointmentField;
 use Modules\Iappointment\Http\Requests\CreateAppointmentFieldRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentFieldRequest;
 use Modules\Iappointment\Repositories\AppointmentFieldRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AppointmentFieldController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class AppointmentFieldController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$appointmentfields = $this->appointmentfield->all();
 
@@ -38,21 +35,16 @@ class AppointmentFieldController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.appointmentfields.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateAppointmentFieldRequest $request
-     * @return Response
      */
-    public function store(CreateAppointmentFieldRequest $request)
+    public function store(CreateAppointmentFieldRequest $request): Response
     {
         $this->appointmentfield->create($request->all());
 
@@ -62,23 +54,16 @@ class AppointmentFieldController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  AppointmentField $appointmentfield
-     * @return Response
      */
-    public function edit(AppointmentField $appointmentfield)
+    public function edit(AppointmentField $appointmentfield): Response
     {
         return view('iappointment::admin.appointmentfields.edit', compact('appointmentfield'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  AppointmentField $appointmentfield
-     * @param  UpdateAppointmentFieldRequest $request
-     * @return Response
      */
-    public function update(AppointmentField $appointmentfield, UpdateAppointmentFieldRequest $request)
+    public function update(AppointmentField $appointmentfield, UpdateAppointmentFieldRequest $request): Response
     {
         $this->appointmentfield->update($appointmentfield, $request->all());
 
@@ -88,11 +73,8 @@ class AppointmentFieldController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  AppointmentField $appointmentfield
-     * @return Response
      */
-    public function destroy(AppointmentField $appointmentfield)
+    public function destroy(AppointmentField $appointmentfield): Response
     {
         $this->appointmentfield->destroy($appointmentfield);
 

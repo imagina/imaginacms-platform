@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'   => 'Műhely',
+    'title' => 'Műhely',
     'modules' => 'Modulok',
     'themes' => 'Témák',
     'show sidebar group' => 'Oldalsáv csoport mutatása',

@@ -7,13 +7,13 @@ use Modules\Icommerce\Transformers\ProductTransformer;
 
 class PriceListTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,
             'name' => $this->name ?? '',
             'status' => $this->status ?? '0',
-            'criteria' => $this->when($this->criteria,$this->criteria),
+            'criteria' => $this->when($this->criteria, $this->criteria),
             'value' => $this->value ?? '0',
             'operationPrefix' => $this->when($this->operation_prefix, $this->operation_prefix),
             'price' => $this->when(isset($this->pivot), $this->pivot->price ?? 0),
@@ -25,22 +25,22 @@ class PriceListTransformer extends JsonResource
         ];
 
         $request->input('entity') ?
-            $data['entity'] = $this->entity  : false;
+            $data['entity'] = $this->entity : false;
 
         $filter = json_decode($request->filter);
 
         // Return data with available translations
-        if (isset($filter->allTranslations) && $filter->allTranslations){
-
+        if (isset($filter->allTranslations) && $filter->allTranslations) {
             // Get langs avaliables
             $languages = \LaravelLocalization::getSupportedLocales();
 
-            foreach ($languages as  $key => $value){
+            foreach ($languages as  $key => $value) {
                 if ($this->hasTranslation($key)) {
                     $data[$key]['name'] = $this->translate("$key")['name'];
                 }
             }
         }
+
         return $data;
     }
 }

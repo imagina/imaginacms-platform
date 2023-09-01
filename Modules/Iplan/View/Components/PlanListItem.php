@@ -7,9 +7,10 @@ use Modules\Iplan\Repositories\PlanRepository;
 
 class PlanListItem extends Component
 {
-
     public $view;
+
     public $item;
+
     public $price;
 
     /**
@@ -21,25 +22,23 @@ class PlanListItem extends Component
     {
 //    $this->item = $item;
         $this->item = $item;
-        $this->view = "iplan::frontend.components.plan-list-item.layout.". ( $layout ?? 'iplan-list-item-1').".index";
+        $this->view = 'iplan::frontend.components.plan-list-item.layout.'.($layout ?? 'iplan-list-item-1').'.index';
         $this->initCategories();
     }
 
-
-    function getParentAttributes($parentAttributes)
+    public function getParentAttributes($parentAttributes)
     {
-        isset($parentAttributes["mediaImage"]) ? $this->mediaImage = $parentAttributes["mediaImage"] : false;
-
+        isset($parentAttributes['mediaImage']) ? $this->mediaImage = $parentAttributes['mediaImage'] : false;
     }
 
-    private function makeParamsFunction(){
-
+    private function makeParamsFunction()
+    {
         return [
-            "include" => $this->params["include"] ?? [],
-            "take" => $this->params["take"] ?? 12,
-            "page" => $this->params["page"] ?? 1,
-            "filter" => $this->params["filter"] ?? [],
-            "order" => $this->params["order"] ?? null
+            'include' => $this->params['include'] ?? [],
+            'take' => $this->params['take'] ?? 12,
+            'page' => $this->params['page'] ?? 1,
+            'filter' => $this->params['filter'] ?? [],
+            'order' => $this->params['order'] ?? null,
         ];
     }
 
@@ -51,14 +50,11 @@ class PlanListItem extends Component
         $this->categories = $this->categoryRepository()->getItemsBy(json_decode(json_encode(['include' => ['*'], 'take' => false])));
     }
 
-
-    /**
-     * @return PlanRepository
-     */
-    private function categoryRepository()
+    private function categoryRepository(): PlanRepository
     {
         return app('Modules\Iplan\Repositories\CategoryRepository');
     }
+
     /**
      * Get the view / contents that represent the component.
      *

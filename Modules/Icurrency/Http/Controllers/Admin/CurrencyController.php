@@ -2,13 +2,12 @@
 
 namespace Modules\Icurrency\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icurrency\Entities\Currency;
 use Modules\Icurrency\Http\Requests\CreateCurrencyRequest;
 use Modules\Icurrency\Http\Requests\UpdateCurrencyRequest;
 use Modules\Icurrency\Repositories\CurrencyRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CurrencyController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CurrencyController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$currencies = $this->currency->all();
 
@@ -38,21 +35,16 @@ class CurrencyController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icurrency::admin.currencies.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCurrencyRequest $request
-     * @return Response
      */
-    public function store(CreateCurrencyRequest $request)
+    public function store(CreateCurrencyRequest $request): Response
     {
         $this->currency->create($request->all());
 
@@ -62,23 +54,16 @@ class CurrencyController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Currency $currency
-     * @return Response
      */
-    public function edit(Currency $currency)
+    public function edit(Currency $currency): Response
     {
         return view('icurrency::admin.currencies.edit', compact('currency'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Currency $currency
-     * @param  UpdateCurrencyRequest $request
-     * @return Response
      */
-    public function update(Currency $currency, UpdateCurrencyRequest $request)
+    public function update(Currency $currency, UpdateCurrencyRequest $request): Response
     {
         $this->currency->update($currency, $request->all());
 
@@ -88,11 +73,8 @@ class CurrencyController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Currency $currency
-     * @return Response
      */
-    public function destroy(Currency $currency)
+    public function destroy(Currency $currency): Response
     {
         $this->currency->destroy($currency);
 

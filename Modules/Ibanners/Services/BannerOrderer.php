@@ -1,6 +1,7 @@
-<?php namespace Modules\Ibanners\Services;
+<?php
 
-use Modules\Ibanners\Entities\Banner;
+namespace Modules\Ibanners\Services;
+
 use Modules\Ibanners\Repositories\BannerRepository;
 
 class BannerOrderer
@@ -10,17 +11,11 @@ class BannerOrderer
      */
     private $bannerRepository;
 
-    /**
-     * @param BannerRepository $banner
-     */
     public function __construct(BannerRepository $banner)
     {
         $this->bannerRepository = $banner;
     }
 
-    /**
-     * @param $data
-     */
     public function handle($data)
     {
         $data = $this->convertToArray(json_decode($data));
@@ -32,10 +27,8 @@ class BannerOrderer
 
     /**
      * Order recursively the bannerr items
-     * @param $order
-     * @param array $item
      */
-    private function order($order, $item)
+    private function order($order, array $item)
     {
         $banner = $this->bannerRepository->find($item['id']);
         $this->saveOrder($banner, $order);
@@ -43,20 +36,16 @@ class BannerOrderer
 
     /**
      * Save the given order on the bannerr item
-     * @param object $banner
-     * @param int    $order
      */
-    private function saveOrder($banner, $order)
+    private function saveOrder(object $banner, int $order)
     {
         $this->bannerRepository->update($banner, ['order' => $order]);
     }
 
     /**
      * Convert the object to array
-     * @param $data
-     * @return array
      */
-    private function convertToArray($data)
+    private function convertToArray($data): array
     {
         $data = json_decode(json_encode($data), true);
 

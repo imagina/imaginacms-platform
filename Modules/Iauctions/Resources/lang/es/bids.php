@@ -22,7 +22,7 @@ return [
         'amount' => 'Monto',
         'winner' => 'Ganador',
         'description' => 'Nombre Comercial',
-        'create at' => 'Creado en'
+        'create at' => 'Creado en',
     ],
     'form' => [
     ],
@@ -34,6 +34,6 @@ return [
 
     'status' => [
         'declined' => 'Declinado',
-        'received' => 'Recibido'
-    ]
+        'received' => 'Recibido',
+    ],
 ];

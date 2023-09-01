@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Http\Requests;
+<?php
+
+namespace Modules\Ibanners\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,7 +25,7 @@ class UpdatePositionRequest extends FormRequest
     {
         return [
             'name.required' => trans('ibanners::validation.name is required'),
-            'system_name.required' => trans('ibanners::validation.system name is required')
+            'system_name.required' => trans('ibanners::validation.system name is required'),
         ];
     }
 }

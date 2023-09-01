@@ -5,13 +5,13 @@ namespace Modules\Iplaces\Presenters;
 use Laracasts\Presenter\Presenter;
 use Modules\Iplaces\Entities\Status;
 
-
 class SpacePresenter extends Presenter
 {
     /**
      * @var \Modules\Iplaces\Entities\Status
      */
     protected $status;
+
     private $space;
 
     public function __construct($entity)
@@ -23,18 +23,16 @@ class SpacePresenter extends Presenter
 
     /**
      * Get the post status
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         return $this->status->get($this->entity->status);
     }
 
     /**
      * Getting the label class for the appropriate status
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case Status::INACTIVE:

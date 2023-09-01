@@ -10,6 +10,7 @@ class BannerWasDeleted implements DeletingMedia
      * @var string
      */
     private $bannerClass;
+
     /**
      * @var int
      */
@@ -23,18 +24,16 @@ class BannerWasDeleted implements DeletingMedia
 
     /**
      * Get the entity ID
-     * @return int
      */
-    public function getEntityId()
+    public function getEntityId(): int
     {
         return $this->bannerId;
     }
 
     /**
      * Get the class name the imageables
-     * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->bannerClass;
     }

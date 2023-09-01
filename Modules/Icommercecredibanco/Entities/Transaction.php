@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-   
     protected $table = 'icommercecredibanco__transactions';
-    
+
     protected $fillable = [
         'order_id',
         'order_status',
@@ -24,7 +23,6 @@ class Transaction extends Model
         'errorCode',
         'errorMessage',
         'authorizationCode',
-        'authorizationResult'
+        'authorizationResult',
     ];
-
 }

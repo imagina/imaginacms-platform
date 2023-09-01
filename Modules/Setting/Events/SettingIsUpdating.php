@@ -7,8 +7,11 @@ use Modules\Setting\Entities\Setting;
 class SettingIsUpdating
 {
     private $settingName;
+
     private $settingValues;
+
     private $original;
+
     /**
      * @var Setting
      */
@@ -39,7 +42,7 @@ class SettingIsUpdating
     }
 
     /**
-     * @param mixed $settingValues
+     * @param  mixed  $settingValues
      */
     public function setSettingValues($settingValues)
     {
@@ -54,10 +57,7 @@ class SettingIsUpdating
         return $this->original;
     }
 
-    /**
-     * @return Setting
-     */
-    public function getSetting()
+    public function getSetting(): Setting
     {
         return $this->setting;
     }

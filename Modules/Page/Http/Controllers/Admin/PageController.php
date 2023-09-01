@@ -29,21 +29,16 @@ class PageController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('page::admin.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreatePageRequest $request
-     * @return Response
      */
-    public function store(CreatePageRequest $request)
+    public function store(CreatePageRequest $request): Response
     {
         $this->page->create($request->all());
 
@@ -53,23 +48,16 @@ class PageController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param Page $page
-     * @return Response
      */
-    public function edit(Page $page)
+    public function edit(Page $page): Response
     {
         return view('page::admin.edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param Page $page
-     * @param  UpdatePageRequest $request
-     * @return Response
      */
-    public function update(Page $page, UpdatePageRequest $request)
+    public function update(Page $page, UpdatePageRequest $request): Response
     {
         $this->page->update($page, $request->all());
 
@@ -84,11 +72,8 @@ class PageController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param Page $page
-     * @return Response
      */
-    public function destroy(Page $page)
+    public function destroy(Page $page): Response
     {
         $this->page->destroy($page);
 

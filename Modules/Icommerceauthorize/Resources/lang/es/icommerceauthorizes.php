@@ -19,7 +19,7 @@ return [
         'apiLogin' => 'Api Login',
         'transactionKey' => 'Transaction Key',
         'clientKey' => 'Client Key',
-        'mode' => 'Mode'
+        'mode' => 'Mode',
     ],
     'form' => [
     ],

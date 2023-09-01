@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class LocalityTranslation extends Model
 {
-  public $timestamps = false;
-  protected $fillable = [
-    'name'
-  ];
-  protected $table = 'ilocations__locality_translations';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+    ];
+
+    protected $table = 'ilocations__locality_translations';
 }

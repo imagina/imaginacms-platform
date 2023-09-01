@@ -2,8 +2,8 @@
 
 namespace Modules\Iblog\Widgets;
 
-use Modules\Iblog\Repositories\PostRepository;
 use Modules\Dashboard\Foundation\Widgets\BaseWidget;
+use Modules\Iblog\Repositories\PostRepository;
 
 class PostsWidget extends BaseWidget
 {
@@ -19,36 +19,32 @@ class PostsWidget extends BaseWidget
 
     /**
      * Get the widget name
-     * @return string
      */
-    protected function name()
+    protected function name(): string
     {
         return 'PostsWidget';
     }
 
     /**
      * Get the widget view
-     * @return string
      */
-    protected function view()
+    protected function view(): string
     {
         return 'iblog::admin.widgets.posts';
     }
 
     /**
      * Get the widget data to send to the view
-     * @return string
      */
-    protected function data()
+    protected function data(): string
     {
         return ['postCount' => $this->post->all()->count()];
     }
 
-     /**
+    /**
      * Get the widget type
-     * @return string
      */
-    protected function options()
+    protected function options(): string
     {
         return [
             'width' => '2',

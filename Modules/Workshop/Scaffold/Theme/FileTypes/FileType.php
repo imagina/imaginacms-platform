@@ -6,6 +6,7 @@ interface FileType
 {
     /**
      * Generate the current file type
+     *
      * @return string
      */
     public function generate();

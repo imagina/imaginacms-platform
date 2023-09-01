@@ -2,13 +2,12 @@
 
 namespace Modules\Icommerceagree\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommerceagree\Entities\IcommerceAgree;
 use Modules\Icommerceagree\Http\Requests\CreateIcommerceAgreeRequest;
 use Modules\Icommerceagree\Http\Requests\UpdateIcommerceAgreeRequest;
 use Modules\Icommerceagree\Repositories\IcommerceAgreeRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceAgreeController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class IcommerceAgreeController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceagrees = $this->icommerceagree->all();
 
@@ -38,21 +35,16 @@ class IcommerceAgreeController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceagree::admin.icommerceagrees.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommerceAgreeRequest $request
-     * @return Response
      */
-    public function store(CreateIcommerceAgreeRequest $request)
+    public function store(CreateIcommerceAgreeRequest $request): Response
     {
         $this->icommerceagree->create($request->all());
 
@@ -62,23 +54,16 @@ class IcommerceAgreeController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommerceAgree $icommerceagree
-     * @return Response
      */
-    public function edit(IcommerceAgree $icommerceagree)
+    public function edit(IcommerceAgree $icommerceagree): Response
     {
         return view('icommerceagree::admin.icommerceagrees.edit', compact('icommerceagree'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  IcommerceAgree $icommerceagree
-     * @param  UpdateIcommerceAgreeRequest $request
-     * @return Response
      */
-    public function update(IcommerceAgree $icommerceagree, UpdateIcommerceAgreeRequest $request)
+    public function update(IcommerceAgree $icommerceagree, UpdateIcommerceAgreeRequest $request): Response
     {
         $this->icommerceagree->update($icommerceagree, $request->all());
 
@@ -88,11 +73,8 @@ class IcommerceAgreeController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommerceAgree $icommerceagree
-     * @return Response
      */
-    public function destroy(IcommerceAgree $icommerceagree)
+    public function destroy(IcommerceAgree $icommerceagree): Response
     {
         $this->icommerceagree->destroy($icommerceagree);
 

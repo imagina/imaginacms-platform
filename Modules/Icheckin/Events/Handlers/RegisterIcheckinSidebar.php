@@ -16,8 +16,6 @@ class RegisterIcheckinSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIcheckinSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icheckin::icheckins.title.icheckins'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icheckin::jobs.title.jobs'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -70,7 +64,7 @@ class RegisterIcheckinSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('icheckin.shifts.index')
                     );
                 });
-             
+
                 $item->item(trans('icheckin::approvals.title.approvals'), function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
@@ -80,12 +74,7 @@ class RegisterIcheckinSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('icheckin.approvals.index')
                     );
                 });
-// append
-
-
-
-
-
+                // append
             });
         });
 

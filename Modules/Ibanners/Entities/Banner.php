@@ -1,13 +1,12 @@
-<?php namespace Modules\Ibanners\Entities;
+<?php
+
+namespace Modules\Ibanners\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Media\Support\Traits\MediaRelation;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\App;
-use Modules\Page\Entities\Page;
-
 use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Banner extends Model
 {
@@ -35,6 +34,7 @@ class Banner extends Model
         'external_image_url',
         'custom_html',
     ];
+
     protected $table = 'ibanners__banners';
 
     /**
@@ -52,18 +52,17 @@ class Banner extends Model
         return $this->belongsTo(Position::class);
     }
 
-
-
     /**
      * returns slider image src
+     *
      * @return string|null full image path if image exists or null if no image is set
      */
-    public function getImageUrl()
+    public function getImageUrl(): ?string
     {
-        if($this->imageUrl === null) {
-            if (!empty($this->external_image_url)) {
+        if ($this->imageUrl === null) {
+            if (! empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
-            } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
+            } elseif (isset($this->files[0]) && ! empty($this->files[0]->path)) {
                 $this->imageUrl = $this->filesByZone('bannerimage')->first()->path_string;
             }
         }
@@ -71,18 +70,16 @@ class Banner extends Model
         return $this->imageUrl;
     }
 
-
     /**
      * returns slider link URL
-     * @return string|null
      */
-    public function getLinkUrl()
+    public function getLinkUrl(): ?string
     {
         if ($this->linkUrl === null) {
-            if (!empty($this->url)) {
+            if (! empty($this->url)) {
                 $this->linkUrl = $this->url;
-            } elseif (!empty($this->uri)) {
-                $this->linkUrl = '/' . locale() . '/' . $this->uri;
+            } elseif (! empty($this->uri)) {
+                $this->linkUrl = '/'.locale().'/'.$this->uri;
             }
         }
 

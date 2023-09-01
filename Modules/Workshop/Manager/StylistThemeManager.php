@@ -21,10 +21,7 @@ class StylistThemeManager implements ThemeManager
         $this->finder = $finder;
     }
 
-    /**
-     * @return array
-     */
-    public function all()
+    public function all(): array
     {
         $directories = $this->getDirectories();
 
@@ -37,11 +34,9 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
-     * @param string $themeName
-     * @return Theme
      * @throws ThemeNotFoundException
      */
-    public function find($themeName)
+    public function find(string $themeName): Theme
     {
         foreach ($this->getDirectories() as $directory) {
             if (strtolower(basename($directory)) !== strtolower($themeName)) {
@@ -54,11 +49,7 @@ class StylistThemeManager implements ThemeManager
         throw new ThemeNotFoundException($themeName);
     }
 
-    /**
-     * @param string $directory
-     * @return Theme
-     */
-    private function getThemeInfoForPath($directory)
+    private function getThemeInfoForPath(string $directory): Theme
     {
         $themeJson = new Json($directory);
 
@@ -78,9 +69,8 @@ class StylistThemeManager implements ThemeManager
 
     /**
      * Get all theme directories
-     * @return array
      */
-    private function getDirectories()
+    private function getDirectories(): array
     {
         $themePath = config('stylist.themes.paths', [base_path('/Themes')]);
 
@@ -88,17 +78,15 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
-     * @param string $directory
-     * @return array
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getChangelog($directory)
+    private function getChangelog(string $directory): array
     {
-        if (! $this->finder->isFile($directory . '/changelog.yml')) {
+        if (! $this->finder->isFile($directory.'/changelog.yml')) {
             return [];
         }
 
-        $yamlFile = $this->finder->get($directory . '/changelog.yml');
+        $yamlFile = $this->finder->get($directory.'/changelog.yml');
 
         $yamlParser = new Parser();
 
@@ -111,20 +99,16 @@ class StylistThemeManager implements ThemeManager
 
     /**
      * Limit the versions to the last 5
-     * @param array $versions
-     * @return array
      */
-    private function limitLastVersionsAmount(array $versions)
+    private function limitLastVersionsAmount(array $versions): array
     {
         return array_slice($versions, 0, 5);
     }
 
     /**
      * Check if the theme is active based on its type
-     * @param Theme $theme
-     * @return bool
      */
-    private function getStatus(Theme $theme)
+    private function getStatus(Theme $theme): bool
     {
         if ($theme->type !== 'Backend') {
             return setting('core::template') === $theme->getName();

@@ -10,10 +10,8 @@ class ShiftWasCheckedIn
 
     /**
      * Create a new event instance.
-     *
-     * @param Shift $model
      */
-    public function __construct($model)
+    public function __construct(Shift $model)
     {
         $this->model = $model;
     }

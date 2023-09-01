@@ -13,18 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Cloud Filesystem Disk
-    |--------------------------------------------------------------------------
-    |
-    | Many applications store files both locally and in the cloud. For this
-    | reason, you may specify a default "cloud" driver here. This driver
-    | will be bound as the Cloud disk implementation in the container.
-    |
-    */
+    'default' => env('FILESYSTEM_DISK', 'local'),
 
     'cloud' => env('FILESYSTEM_CLOUD', 's3'),
 
@@ -35,7 +24,7 @@ return [
     |
     | Here you may configure as many filesystem "disks" as you wish, and you
     | may even configure multiple disks of the same driver. Defaults have
-    | been setup for each driver as an example of the required options.
+    | been set up for each driver as an example of the required values.
     |
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
@@ -58,11 +47,12 @@ return [
             ],
             'url' => env('APP_URL'),
             'visibility' => 'public',
+            'throw' => false,
         ],
 
         'publicmedia' => [
             'driver' => 'local',
-            'root'   => public_path(),
+            'root' => public_path(),
             'permissions' => [
                 'file' => [
                     'public' => 0777,
@@ -71,16 +61,15 @@ return [
                 'dir' => [
                     'public' => 0777,
                     'private' => 0700,
-                ]
+                ],
             ],
             'url' => env('APP_URL'),
             'visibility' => 'public',
         ],
 
-
         'privatemedia' => [
             'driver' => 'local',
-            'root'   => storage_path('app/private'),
+            'root' => storage_path('app/private'),
             'permissions' => [
                 'file' => [
                     'public' => 0777,
@@ -89,19 +78,18 @@ return [
                 'dir' => [
                     'public' => 0777,
                     'private' => 0700,
-                ]
+                ],
             ],
-            'url' => env('APP_URL'). '/storage',
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-
-
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+            'throw' => false,
         ],
 
         'content' => [
@@ -117,6 +105,8 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
         ],
 
     ],

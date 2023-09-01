@@ -23,30 +23,24 @@ class RolesController extends BaseUserModuleController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('user::admin.roles.index');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('user::admin.roles.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     * @param  UpdateRoleRequest $request
-     * @return Response
      */
-    public function store(UpdateRoleRequest $request)
+    public function store(UpdateRoleRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -58,21 +52,16 @@ class RolesController extends BaseUserModuleController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
-    public function edit()
+    public function edit(): Response
     {
         return view('user::admin.roles.edit');
     }
 
     /**
      * Update the specified resource in storage.
-     * @param  int          $id
-     * @param  UpdateRoleRequest $request
-     * @return Response
      */
-    public function update($id, UpdateRoleRequest $request)
+    public function update(int $id, UpdateRoleRequest $request): Response
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -84,11 +73,8 @@ class RolesController extends BaseUserModuleController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int      $id
-     * @return Response
      */
-    public function destroy($id)
+    public function destroy(int $id): Response
     {
         $this->role->delete($id);
 

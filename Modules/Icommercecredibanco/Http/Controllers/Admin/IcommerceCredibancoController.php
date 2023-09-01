@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercecredibanco\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercecredibanco\Entities\IcommerceCredibanco;
 use Modules\Icommercecredibanco\Http\Requests\CreateIcommerceCredibancoRequest;
 use Modules\Icommercecredibanco\Http\Requests\UpdateIcommerceCredibancoRequest;
 use Modules\Icommercecredibanco\Repositories\IcommerceCredibancoRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceCredibancoController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class IcommerceCredibancoController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercecredibancos = $this->icommercecredibanco->all();
 
@@ -38,21 +35,16 @@ class IcommerceCredibancoController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecredibanco::admin.icommercecredibancos.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommerceCredibancoRequest $request
-     * @return Response
      */
-    public function store(CreateIcommerceCredibancoRequest $request)
+    public function store(CreateIcommerceCredibancoRequest $request): Response
     {
         $this->icommercecredibanco->create($request->all());
 
@@ -62,23 +54,16 @@ class IcommerceCredibancoController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommerceCredibanco $icommercecredibanco
-     * @return Response
      */
-    public function edit(IcommerceCredibanco $icommercecredibanco)
+    public function edit(IcommerceCredibanco $icommercecredibanco): Response
     {
         return view('icommercecredibanco::admin.icommercecredibancos.edit', compact('icommercecredibanco'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  IcommerceCredibanco $icommercecredibanco
-     * @param  UpdateIcommerceCredibancoRequest $request
-     * @return Response
      */
-    public function update(IcommerceCredibanco $icommercecredibanco, UpdateIcommerceCredibancoRequest $request)
+    public function update(IcommerceCredibanco $icommercecredibanco, UpdateIcommerceCredibancoRequest $request): Response
     {
         $this->icommercecredibanco->update($icommercecredibanco, $request->all());
 
@@ -88,11 +73,8 @@ class IcommerceCredibancoController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommerceCredibanco $icommercecredibanco
-     * @return Response
      */
-    public function destroy(IcommerceCredibanco $icommercecredibanco)
+    public function destroy(IcommerceCredibanco $icommercecredibanco): Response
     {
         $this->icommercecredibanco->destroy($icommercecredibanco);
 

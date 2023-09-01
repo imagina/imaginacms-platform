@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\RecurrenceDay;
 use Modules\Ievent\Http\Requests\CreateRecurrenceDayRequest;
 use Modules\Ievent\Http\Requests\UpdateRecurrenceDayRequest;
 use Modules\Ievent\Repositories\RecurrenceDayRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RecurrenceDayController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class RecurrenceDayController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$recurrencedays = $this->recurrenceday->all();
 
@@ -38,21 +35,16 @@ class RecurrenceDayController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.recurrencedays.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateRecurrenceDayRequest $request
-     * @return Response
      */
-    public function store(CreateRecurrenceDayRequest $request)
+    public function store(CreateRecurrenceDayRequest $request): Response
     {
         $this->recurrenceday->create($request->all());
 
@@ -62,23 +54,16 @@ class RecurrenceDayController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  RecurrenceDay $recurrenceday
-     * @return Response
      */
-    public function edit(RecurrenceDay $recurrenceday)
+    public function edit(RecurrenceDay $recurrenceday): Response
     {
         return view('ievent::admin.recurrencedays.edit', compact('recurrenceday'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  RecurrenceDay $recurrenceday
-     * @param  UpdateRecurrenceDayRequest $request
-     * @return Response
      */
-    public function update(RecurrenceDay $recurrenceday, UpdateRecurrenceDayRequest $request)
+    public function update(RecurrenceDay $recurrenceday, UpdateRecurrenceDayRequest $request): Response
     {
         $this->recurrenceday->update($recurrenceday, $request->all());
 
@@ -88,11 +73,8 @@ class RecurrenceDayController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  RecurrenceDay $recurrenceday
-     * @return Response
      */
-    public function destroy(RecurrenceDay $recurrenceday)
+    public function destroy(RecurrenceDay $recurrenceday): Response
     {
         $this->recurrenceday->destroy($recurrenceday);
 

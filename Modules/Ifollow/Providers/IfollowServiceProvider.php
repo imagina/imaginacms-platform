@@ -2,14 +2,13 @@
 
 namespace Modules\Ifollow\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Livewire\Livewire;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ifollow\Listeners\RegisterIfollowSidebar;
-use Illuminate\Support\Facades\Blade;
-use Livewire\Livewire;
 
 class IfollowServiceProvider extends ServiceProvider
 {
@@ -24,10 +23,8 @@ class IfollowServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIfollowSidebar::class);
@@ -35,19 +32,16 @@ class IfollowServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
-
-
     }
 
-    public function boot()
+    public function boot(): void
     {
-
         $this->publishConfig('ifollow', 'config');
         $this->publishConfig('ifollow', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'settings'), "asgard.ifollow.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'settings-fields'), "asgard.ifollow.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'permissions'), "asgard.ifollow.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'settings'), 'asgard.ifollow.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'settings-fields'), 'asgard.ifollow.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ifollow', 'permissions'), 'asgard.ifollow.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
@@ -57,12 +51,10 @@ class IfollowServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -72,22 +64,20 @@ class IfollowServiceProvider extends ServiceProvider
             function () {
                 $repository = new \Modules\Ifollow\Repositories\Eloquent\EloquentFollowerRepository(new \Modules\Ifollow\Entities\Follower());
 
-                if (!config('app.cache')) {
+                if (! config('app.cache')) {
                     return $repository;
                 }
 
                 return new \Modules\Ifollow\Repositories\Cache\CacheFollowerDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 
     private function registerComponents()
     {
         Blade::componentNamespace("Modules\Ifollow\View\Components", 'ifollow');
     }
-
 
     private function registerComponentsLivewire()
     {

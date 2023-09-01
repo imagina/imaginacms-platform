@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Ad;
 use Modules\Iad\Http\Requests\CreateAdRequest;
 use Modules\Iad\Http\Requests\UpdateAdRequest;
 use Modules\Iad\Repositories\AdRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AdController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class AdController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$ads = $this->ad->all();
 
@@ -38,21 +35,16 @@ class AdController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.ads.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateAdRequest $request
-     * @return Response
      */
-    public function store(CreateAdRequest $request)
+    public function store(CreateAdRequest $request): Response
     {
         $this->ad->create($request->all());
 
@@ -62,23 +54,16 @@ class AdController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Ad $ad
-     * @return Response
      */
-    public function edit(Ad $ad)
+    public function edit(Ad $ad): Response
     {
         return view('iad::admin.ads.edit', compact('ad'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Ad $ad
-     * @param  UpdateAdRequest $request
-     * @return Response
      */
-    public function update(Ad $ad, UpdateAdRequest $request)
+    public function update(Ad $ad, UpdateAdRequest $request): Response
     {
         $this->ad->update($ad, $request->all());
 
@@ -88,11 +73,8 @@ class AdController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Ad $ad
-     * @return Response
      */
-    public function destroy(Ad $ad)
+    public function destroy(Ad $ad): Response
     {
         $this->ad->destroy($ad);
 

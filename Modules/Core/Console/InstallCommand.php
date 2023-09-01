@@ -34,7 +34,6 @@ class InstallCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param Installer $installer
      * @internal param Filesystem $finder
      * @internal param Application $app
      * @internal param Composer $composer
@@ -48,10 +47,8 @@ class InstallCommand extends Command
 
     /**
      * Execute the actions
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 

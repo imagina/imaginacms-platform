@@ -2,10 +2,10 @@
 
 namespace Modules\Igamification\Entities;
 
-
 class Status
 {
     const INACTIVE = 0;
+
     const ACTIVE = 1;
 
     private $statuses = [];
@@ -13,8 +13,8 @@ class Status
     public function __construct()
     {
         $this->statuses = [
-             self::INACTIVE => trans('igamification::activities.status.inactive'),
-            self::ACTIVE => trans('igamification::activities.status.active')
+            self::INACTIVE => trans('igamification::activities.status.inactive'),
+            self::ACTIVE => trans('igamification::activities.status.active'),
         ];
     }
 
@@ -22,7 +22,6 @@ class Status
     {
         return $this->statuses;
     }
-
 
     public function get($statusId)
     {
@@ -35,13 +34,13 @@ class Status
 
   public function index()
   {
-    //Instance response
-    $response = [];
-    //AMp status
-    foreach ($this->statuses as $key => $status) {
-      array_push($response, ['id' => $key, 'title' => $status]);
-    }
-    //Repsonse
-    return collect($response);
+      //Instance response
+      $response = [];
+      //AMp status
+      foreach ($this->statuses as $key => $status) {
+          array_push($response, ['id' => $key, 'title' => $status]);
+      }
+      //Repsonse
+      return collect($response);
   }
 }

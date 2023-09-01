@@ -8,10 +8,8 @@ class MakeSettingValueNullable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('setting__setting_translations', function (Blueprint $table) {
             $table->string('value')->nullable()->change();
@@ -20,10 +18,8 @@ class MakeSettingValueNullable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('setting__setting_translations', function (Blueprint $table) {
             $table->string('value')->nullable(false)->change();

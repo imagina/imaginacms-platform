@@ -8,14 +8,11 @@ use Modules\Workshop\Scaffold\Theme\FileTypes\FileType;
 class ThemeGeneratorFactory
 {
     /**
-     * @param string $file
-     * @param array $options
-     * @return FileType
      * @throws FileTypeNotFoundException
      */
-    public function make($file, array $options)
+    public function make(string $file, array $options): FileType
     {
-        $class = 'Modules\Workshop\Scaffold\Theme\FileTypes\\' . ucfirst($file);
+        $class = 'Modules\Workshop\Scaffold\Theme\FileTypes\\'.ucfirst($file);
 
         if (! class_exists($class)) {
             throw new FileTypeNotFoundException();

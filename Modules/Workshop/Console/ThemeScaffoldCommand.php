@@ -8,7 +8,9 @@ use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
 class ThemeScaffoldCommand extends Command
 {
     protected $signature = 'asgard:theme:scaffold';
+
     protected $description = 'Scaffold a new theme';
+
     /**
      * @var ThemeScaffold
      */
@@ -20,10 +22,10 @@ class ThemeScaffoldCommand extends Command
         $this->themeScaffold = $themeScaffold;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $themeName = $this->ask('Please enter the theme name in the following format: vendor/name');
-        list($vendor, $name) = $this->separateVendorAndName($themeName);
+        [$vendor, $name] = $this->separateVendorAndName($themeName);
 
         $type = $this->choice('Would you like to create a front end or backend theme ?', ['Frontend', 'Backend'], 0);
 
@@ -34,10 +36,8 @@ class ThemeScaffoldCommand extends Command
 
     /**
      * Extract the vendor and module name as two separate values
-     * @param  string $fullName
-     * @return array
      */
-    private function separateVendorAndName($fullName)
+    private function separateVendorAndName(string $fullName): array
     {
         $explodedFullName = explode('/', $fullName);
 

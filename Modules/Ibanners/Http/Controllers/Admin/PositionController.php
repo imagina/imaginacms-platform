@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Ibanners\Http\Controllers\Admin;
 
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ibanners\Entities\Position;
@@ -29,8 +31,7 @@ class PositionController extends AdminBaseController
         PositionRepository $position,
         BannerRepository $banner,
         PositionRenderer $positionRenderer
-    )
-    {
+    ) {
         parent::__construct();
         $this->position = $position;
         $this->banner = $banner;
@@ -43,7 +44,7 @@ class PositionController extends AdminBaseController
 
         return view('ibanners::admin.positions.index')
             ->with([
-                'positions' => $positions
+                'positions' => $positions,
             ]);
     }
 
@@ -67,9 +68,8 @@ class PositionController extends AdminBaseController
         return view('ibanners::admin.positions.edit')
             ->with([
                 'position' => $position,
-                'banners' => $positionStructure
+                'banners' => $positionStructure,
             ]);
-
     }
 
     public function update(Position $position, UpdatePositionRequest $request)

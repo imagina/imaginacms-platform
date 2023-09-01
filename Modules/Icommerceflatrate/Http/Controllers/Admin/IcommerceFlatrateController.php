@@ -2,13 +2,12 @@
 
 namespace Modules\Icommerceflatrate\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommerceflatrate\Entities\IcommerceFlatrate;
 use Modules\Icommerceflatrate\Http\Requests\CreateIcommerceFlatrateRequest;
 use Modules\Icommerceflatrate\Http\Requests\UpdateIcommerceFlatrateRequest;
 use Modules\Icommerceflatrate\Repositories\IcommerceFlatrateRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceFlatrateController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommerceflatrates = $this->icommerceflatrate->all();
 
@@ -38,21 +35,16 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommerceFlatrateRequest $request
-     * @return Response
      */
-    public function store(CreateIcommerceFlatrateRequest $request)
+    public function store(CreateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->create($request->all());
 
@@ -62,23 +54,16 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommerceFlatrate $icommerceflatrate
-     * @return Response
      */
-    public function edit(IcommerceFlatrate $icommerceflatrate)
+    public function edit(IcommerceFlatrate $icommerceflatrate): Response
     {
         return view('icommerceflatrate::admin.icommerceflatrates.edit', compact('icommerceflatrate'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  IcommerceFlatrate $icommerceflatrate
-     * @param  UpdateIcommerceFlatrateRequest $request
-     * @return Response
      */
-    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request)
+    public function update(IcommerceFlatrate $icommerceflatrate, UpdateIcommerceFlatrateRequest $request): Response
     {
         $this->icommerceflatrate->update($icommerceflatrate, $request->all());
 
@@ -88,11 +73,8 @@ class IcommerceFlatrateController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommerceFlatrate $icommerceflatrate
-     * @return Response
      */
-    public function destroy(IcommerceFlatrate $icommerceflatrate)
+    public function destroy(IcommerceFlatrate $icommerceflatrate): Response
     {
         $this->icommerceflatrate->destroy($icommerceflatrate);
 

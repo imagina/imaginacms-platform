@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IfeedController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +14,6 @@
 |
 */
 
-Route::prefix('ifeed')->group(function() {
-    Route::get('/', 'IfeedController@index');
+Route::prefix('ifeed')->group(function () {
+    Route::get('/', [IfeedController::class, 'index']);
 });
-
-

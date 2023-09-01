@@ -8,16 +8,16 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class AppointmentTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,
             'description' => $this->description ?? '',
-            'statusId' => (string)$this->status_id,
+            'statusId' => (string) $this->status_id,
             'categoryId' => $this->category_id,
             'customerId' => $this->customer_id,
             'assignedTo' => $this->assigned_to,
-            'options' =>  $this->options,
+            'options' => $this->options,
             'createdAt' => $this->when($this->created_at, $this->created_at),
             'updatedAt' => $this->when($this->updated_at, $this->updated_at),
             'options' => $this->options,
@@ -25,11 +25,11 @@ class AppointmentTransformer extends JsonResource
             'status' => new AppointmentStatusTransformer($this->whenLoaded('status')),
             'fields' => AppointmentLeadTransformer::collection($this->whenLoaded('fields')),
             'customer' => new UserTransformer($this->whenLoaded('customer')),
-            'assigned' => new UserTransformer($this->whenLoaded('assigned'))
+            'assigned' => new UserTransformer($this->whenLoaded('assigned')),
         ];
-        
-        if(is_module_enabled("Ichat")){
-          $data["conversation"] = new ConversationTransformer($this->whenLoaded('conversation'));
+
+        if (is_module_enabled('Ichat')) {
+            $data['conversation'] = new ConversationTransformer($this->whenLoaded('conversation'));
         }
 
         $filter = json_decode($request->filter);
@@ -44,6 +44,7 @@ class AppointmentTransformer extends JsonResource
                     $this->translate("$lang")['description'] ?? '' : '';
             }
         }
+
         return $data;
     }
 }

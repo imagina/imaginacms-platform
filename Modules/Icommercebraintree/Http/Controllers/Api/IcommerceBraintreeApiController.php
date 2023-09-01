@@ -5,33 +5,30 @@ namespace Modules\Icommercebraintree\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Modules\Icommercebraintree\Http\Requests\InitRequest;
-
+use Modules\Icommerce\Entities\Transaction as TransEnti;
 // Base Api
 use Modules\Icommerce\Http\Controllers\Api\OrderApiController;
 use Modules\Icommerce\Http\Controllers\Api\TransactionApiController;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
-use Modules\Icommercebraintree\Http\Controllers\Api\BraintreeApiController;
-
+use Modules\Icommerce\Repositories\OrderRepository;
 // Repositories
-use Modules\Icommercebraintree\Repositories\IcommerceBraintreeRepository;
-
 use Modules\Icommerce\Repositories\PaymentMethodRepository;
 use Modules\Icommerce\Repositories\TransactionRepository;
-use Modules\Icommerce\Repositories\OrderRepository;
-
-use Modules\Icommerce\Entities\Transaction as TransEnti;
+use Modules\Icommercebraintree\Http\Requests\InitRequest;
+use Modules\Icommercebraintree\Repositories\IcommerceBraintreeRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class IcommerceBraintreeApiController extends BaseApiController
 {
-
     private $icommercebraintree;
+
     private $paymentMethod;
+
     private $order;
+
     private $orderController;
+
     private $transaction;
+
     private $transactionController;
 
     private $braintreeApi;
@@ -44,7 +41,7 @@ class IcommerceBraintreeApiController extends BaseApiController
         TransactionRepository $transaction,
         TransactionApiController $transactionController,
         BraintreeApiController $braintreeApi
-    ){
+    ) {
         $this->icommerceebraintree = $icommerceebraintree;
         $this->paymentMethod = $paymentMethod;
         $this->order = $order;
@@ -56,16 +53,15 @@ class IcommerceBraintreeApiController extends BaseApiController
 
     /**
      * ROUTE - Init data
+     *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
-    public function init(Request $request){
-
+    public function init(Request $request): route
+    {
         try {
-  
             $data = $request->all();
-           
+
             $this->validateRequestApi(new InitRequest($data));
 
             $orderID = $request->orderId;
@@ -79,63 +75,56 @@ class IcommerceBraintreeApiController extends BaseApiController
             $statusOrder = 1; // Processing
 
             // Validate minimum amount order
-            if(isset($paymentMethod->options->minimunAmount) && $order->total<$paymentMethod->options->minimunAmount)
-              throw new \Exception(trans("icommercebraintree::icommercebraintrees.messages.minimum")." :".$paymentMethod->options->minimunAmount, 204);
+            if (isset($paymentMethod->options->minimunAmount) && $order->total < $paymentMethod->options->minimunAmount) {
+                throw new \Exception(trans('icommercebraintree::icommercebraintrees.messages.minimum').' :'.$paymentMethod->options->minimunAmount, 204);
+            }
 
             // Create Transaction
             $transaction = $this->validateResponseApi(
-                $this->transactionController->create(new Request( ["attributes" => [
+                $this->transactionController->create(new Request(['attributes' => [
                     'order_id' => $order->id,
                     'payment_method_id' => $paymentMethod->id,
                     'amount' => $order->total,
-                    'status' => $statusOrder
+                    'status' => $statusOrder,
                 ]]))
             );
 
             // Encri
-            $eUrl = braintree_encriptUrl($order->id,$transaction->id);
-        
-            $redirectRoute = route('icommercebraintree',[$eUrl]);
+            $eUrl = braintree_encriptUrl($order->id, $transaction->id);
+
+            $redirectRoute = route('icommercebraintree', [$eUrl]);
 
             // Response
-            $response = [ 'data' => [
-                  "redirectRoute" => $redirectRoute,
-                  "external" => false
+            $response = ['data' => [
+                'redirectRoute' => $redirectRoute,
+                'external' => false,
             ]];
-
-
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             $status = 500;
             $response = [
-                'errors' => $e->getMessage()
+                'errors' => $e->getMessage(),
             ];
         }
 
-
         return response()->json($response, $status ?? 200);
-
     }
 
-
     /**
-    * ROUTE - GET Client Token
-    * @return Token
-    */
-    public function getClientToken(){
-
+     * ROUTE - GET Client Token
+     */
+    public function getClientToken(): Token
+    {
         try {
-
             $token = $this->braintreeApi->generateClientToken();
-            
-            $response = [ 'data' => [
-                  "token" => $token
-            ]];
 
-        }catch(\Exception $e){
+            $response = ['data' => [
+                'token' => $token,
+            ]];
+        } catch(\Exception $e) {
             $status = 500;
             $response = [
-              'errors' => $e->getMessage()
+                'errors' => $e->getMessage(),
             ];
             \Log::error('Module Icommercebraintree: Get Client Token - Message: '.$e->getMessage());
             \Log::error('Module Icommercebraintree: Get Client Token - Code: '.$e->getCode());
@@ -145,19 +134,18 @@ class IcommerceBraintreeApiController extends BaseApiController
     }
 
     /**
-    * ROUTE - POST Process Payment
-    * @param OrderId
-    * @param nonce 
-    * @return response
-    */
-    public function processPayment(Request $request){
-
+     * ROUTE - POST Process Payment
+     *
+     * @param OrderId
+     * @param nonce
+     */
+    public function processPayment(Request $request): response
+    {
         try {
-
-            $data = $request['attributes'] ?? [];//Get data
+            $data = $request['attributes'] ?? []; //Get data
 
             $orderId = $data['orderId'];
-            $transactionId = TransEnti::where('order_id',$orderId)->latest()->first()->id;
+            $transactionId = TransEnti::where('order_id', $orderId)->latest()->first()->id;
 
             $order = $this->order->find($orderId);
             \Log::info('Icommercebraintree: processPayment - OrderID: '.$order->id);
@@ -169,80 +157,72 @@ class IcommerceBraintreeApiController extends BaseApiController
             $type = 1; //Transaction
 
             //Suscription Braintree
-            if(isset($data['planId']) && !empty($data['planId'])){
-                $result= $this->braintreeApi->createSuscription($order,$data);
+            if (isset($data['planId']) && ! empty($data['planId'])) {
+                $result = $this->braintreeApi->createSuscription($order, $data);
                 $type = 2;
-            }else{
-
-            //Transaction Braintree
-                $result = $this->braintreeApi->createTransaction($order,$data['clientNonce']);   
+            } else {
+                //Transaction Braintree
+                $result = $this->braintreeApi->createTransaction($order, $data['clientNonce']);
             }
 
             // Success Response
-            if($result->success) {
-                
+            if ($result->success) {
                 // Transaction
-                if($type==1)
+                if ($type == 1) {
                     $transactionBraintree = $result->transaction;
-                else
+                } else {
                     $transactionBraintree = $result->subscription->transactions[0];
+                }
 
                 // Get Status Order
                 $newStatusOrder = $braintreeService->getStatusOrder($transactionBraintree->status);
 
                 // Update Order and Transaction
-                $this->updateInformation($order->id,$transactionId,$newStatusOrder,$transactionBraintree);
+                $this->updateInformation($order->id, $transactionId, $newStatusOrder, $transactionBraintree);
 
                 // Response Result Transaction Braintree
-                $response = [ 'data' => $result ];
-
-            }else{
-
+                $response = ['data' => $result];
+            } else {
                 // Failed
                 $newStatusOrder = 7;
 
                 // Get Errors Information from Result Braintree
                 $errors = $braintreeService->getErrors($result->errors->deepAll());
-                
+
                 // Update Order and Transaction
-                $this->updateInformation($order->id,$transactionId,$newStatusOrder,null,$errors);
+                $this->updateInformation($order->id, $transactionId, $newStatusOrder, null, $errors);
 
                 throw new \Exception($errors['string'], 204);
-
             }
-
-        }catch(\Exception $e){
+        } catch(\Exception $e) {
             $status = 500;
             $response = [
-              'errors' => $e->getMessage()
+                'errors' => $e->getMessage(),
             ];
             \Log::error('Module Icommercebraintree: Process Payment - Message: '.$e->getMessage());
             \Log::error('Module Icommercebraintree: Process Payment - Code: '.$e->getCode());
         }
 
         return response()->json($response, $status ?? 200);
-
     }
 
     /**
-    * ROUTE - GET Transaction
-    * @param Id Transaction Braintree
-    * @return transaction
-    */
-    public function findTransaction($id){
-
+     * ROUTE - GET Transaction
+     *
+     * @param Id Transaction Braintree
+     */
+    public function findTransaction($id): transaction
+    {
         try {
-
             $transaction = $this->braintreeApi->getTransaction($id);
-            
-            $response = [ 'data' => [
-                  "transaction" => $transaction
-            ]];
 
-        }catch(\Exception $e){
+            $response = ['data' => [
+                'transaction' => $transaction,
+            ]];
+        } catch(\Exception $e) {
             $status = 500;
             $response = [
-              'errors' => $e->getMessage()
+                'errors' => $e->getMessage(),
             ];
             \Log::error('Module Icommercebraintree: Find Transaction - Message: '.$e->getMessage());
             \Log::error('Module Icommercebraintree: Find Transaction - Code: '.$e->getCode());
@@ -251,49 +231,43 @@ class IcommerceBraintreeApiController extends BaseApiController
         return response()->json($response, $status ?? 200);
     }
 
-
     /**
-    * Update Information (Order and Transaction)
-    */
-    public function updateInformation($orderId,$transactionId,$newStatusOrder,
-        $transactionBraintree=null,$errors=null){
-
-        if(is_null($transactionBraintree)){
+     * Update Information (Order and Transaction)
+     */
+    public function updateInformation($orderId, $transactionId, $newStatusOrder,
+        $transactionBraintree = null, $errors = null)
+    {
+        if (is_null($transactionBraintree)) {
             $externalStatus = $errors['msj'];
             $externalCode = $errors['code'];
-        }else{
+        } else {
             $externalStatus = $transactionBraintree->status;
             $externalCode = $transactionBraintree->id;
         }
 
         // Update Transaction
         $transaction = $this->validateResponseApi(
-            $this->transactionController->update($transactionId,new Request([
+            $this->transactionController->update($transactionId, new Request([
                 'status' => $newStatusOrder,
                 'external_status' => $externalStatus,
-                'external_code' => $externalCode
+                'external_code' => $externalCode,
             ]))
         );
 
-       
         $suscriptionId = null;
-        if(isset($transactionBraintree->subscriptionId)){
+        if (isset($transactionBraintree->subscriptionId)) {
             $suscriptionId = $transactionBraintree->subscriptionId;
             \Log::info('Module Icommercebraintree: SuscriptionId: '.$suscriptionId);
         }
 
         // Update Order Process
         $orderUP = $this->validateResponseApi(
-            $this->orderController->update($orderId,new Request(
-                ["attributes" =>[
+            $this->orderController->update($orderId, new Request(
+                ['attributes' => [
                     'status_id' => $newStatusOrder,
-                    'suscription_id' => $suscriptionId
-                ]
-            ]))
+                    'suscription_id' => $suscriptionId,
+                ],
+                ]))
         );
-
     }
-
-
-   
 }

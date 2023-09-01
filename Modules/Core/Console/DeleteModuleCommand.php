@@ -23,6 +23,7 @@ class DeleteModuleCommand extends Command
      * @var string
      */
     protected $description = 'Delete a module and optionally its migrations';
+
     /**
      * @var Filesystem
      */
@@ -37,10 +38,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $module = $this->argument('module');
 
@@ -54,7 +53,7 @@ class DeleteModuleCommand extends Command
             return;
         }
 
-        $modulePath = config('modules.paths.modules') . '/' . $module;
+        $modulePath = config('modules.paths.modules').'/'.$module;
 
         if ($this->finder->exists($modulePath) === false) {
             $this->error('This module does not exist');
@@ -87,10 +86,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['module', InputArgument::REQUIRED, 'The module name'],
@@ -99,10 +96,8 @@ class DeleteModuleCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['migrations', 'm', InputOption::VALUE_NONE, 'Reset the module migrations', null],

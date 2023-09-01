@@ -13,7 +13,6 @@ return [
         'edit' => 'imeeting::providers.edit resource',
         'destroy' => 'imeeting::providers.destroy resource',
     ],
-// append
-
+    // append
 
 ];

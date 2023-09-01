@@ -1,6 +1,7 @@
 <?php
+
 return [
     'next' => 'Next',
     'previous' => 'Previous',
-    "invalidSlider" => "Invalid Slider"
+    'invalidSlider' => 'Invalid Slider',
 ];

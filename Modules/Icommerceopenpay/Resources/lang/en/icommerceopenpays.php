@@ -20,19 +20,19 @@ return [
         'mode' => 'Mode',
     ],
     'form' => [
-        'select payment mode' => 'Seleccione el modo en que desea pagar'
+        'select payment mode' => 'Seleccione el modo en que desea pagar',
     ],
     'formFields' => [
         'merchant id' => 'Merchant Id',
         'public key' => 'Public Key',
         'private key' => 'Private Key',
-        'Webhook Verification Code' => 'Codigo de Verificación para Webhooks'
+        'Webhook Verification Code' => 'Codigo de Verificación para Webhooks',
     ],
     'formHints' => [
-        'Webhook Verification Code' => 'El código se guardará cuando se agregue la URL del webhook en el panel del usuario en Openpay'
+        'Webhook Verification Code' => 'El código se guardará cuando se agregue la URL del webhook en el panel del usuario en Openpay',
     ],
     'messages' => [
     ],
     'validation' => [
-    ]
+    ],
 ];

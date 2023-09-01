@@ -2,8 +2,8 @@
 
 namespace Modules\Isite\Repositories\Cache;
 
-use Modules\Isite\Repositories\OrganizationFieldRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Isite\Repositories\OrganizationFieldRepository;
 
 class CacheOrganizationFieldDecorator extends BaseCacheCrudDecorator implements OrganizationFieldRepository
 {

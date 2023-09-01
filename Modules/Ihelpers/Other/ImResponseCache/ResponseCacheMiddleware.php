@@ -18,13 +18,7 @@ class ResponseCacheMiddleware
         $this->responseCache = $responseCache;
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     *
-     * @return Request
-     */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Request
     {
         if ($this->responseCache->hasCached($request)) {
             return $this->responseCache->getCachedResponseFor($request);

@@ -10,6 +10,7 @@ class DocumentPresenter extends Presenter
      * @var \Modules\Idocs\Entities\Status
      */
     protected $status;
+
     /**
      * @var \Modules\Idocs\Repositories\DocRepository
      */
@@ -21,24 +22,22 @@ class DocumentPresenter extends Presenter
         $this->document = app('Modules\Idocs\Repositories\DocumentRepository');
     }
 
-
     /**
      * Get the doc status
-     * @return string
      */
-    public function status()
+    public function status(): string
     {
         if ($this->entity->status) {
             return trans('idocs::documents.status.active');
         }
-        return trans('idocs::documents.status.inactive');
 
+        return trans('idocs::documents.status.inactive');
     }
 
     public function icon()
     {
         if ($this->entity->iconImage) {
-            return '<img src="' . $this->entity->iconImage->path .' " width="50px">';
+            return '<img src="'.$this->entity->iconImage->path.' " width="50px">';
         }
         if (isset($this->entity->file->mimeType)) {
             switch ($this->entity->file->mimeType) {
@@ -56,14 +55,14 @@ class DocumentPresenter extends Presenter
                     break;
             }
         }
+
         return '<i class="fa fa-times-circle" aria-hidden="true" style="font-size: 32px"></i>';
     }
 
     /**
      * Getting the label class for the appropriate status
-     * @return string
      */
-    public function statusLabelClass()
+    public function statusLabelClass(): string
     {
         switch ($this->entity->status) {
             case 0:

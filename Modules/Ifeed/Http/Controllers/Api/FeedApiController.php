@@ -9,12 +9,13 @@ use Modules\Ifeed\Repositories\FeedRepository;
 
 class FeedApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(Feed $model, FeedRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(Feed $model, FeedRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

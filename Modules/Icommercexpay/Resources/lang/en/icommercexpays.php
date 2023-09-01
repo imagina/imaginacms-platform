@@ -19,7 +19,7 @@ return [
         'user' => 'Usuario',
         'pass' => 'Contraseña',
         'mode' => 'Modo',
-        'token' => 'Token'
+        'token' => 'Token',
     ],
     'form' => [
     ],

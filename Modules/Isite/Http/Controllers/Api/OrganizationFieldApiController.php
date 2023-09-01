@@ -9,12 +9,13 @@ use Modules\Isite\Repositories\OrganizationFieldRepository;
 
 class OrganizationFieldApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(OrganizationField $model, OrganizationFieldRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(OrganizationField $model, OrganizationFieldRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

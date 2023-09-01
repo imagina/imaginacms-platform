@@ -2,8 +2,8 @@
 
 namespace Modules\Icommercecheckmo\Repositories\Cache;
 
-use Modules\Icommercecheckmo\Repositories\IcommerceCheckmoRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Icommercecheckmo\Repositories\IcommerceCheckmoRepository;
 
 class CacheIcommerceCheckmoDecorator extends BaseCacheDecorator implements IcommerceCheckmoRepository
 {

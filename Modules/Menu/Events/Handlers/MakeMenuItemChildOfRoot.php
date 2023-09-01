@@ -28,10 +28,8 @@ class MakeMenuItemChildOfRoot
 
     /**
      * Check if the given menu item is not already a root menu item
-     * @param  object $menuItem
-     * @return bool
      */
-    private function isRoot($menuItem)
+    private function isRoot(object $menuItem): bool
     {
         return (bool) $menuItem->is_root;
     }

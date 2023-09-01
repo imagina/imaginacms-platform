@@ -6,7 +6,6 @@ use Modules\Media\Contracts\DeletingMedia;
 
 class CategoryWasDeleted implements DeletingMedia
 {
-
     /**
      * @var categoryClass
      */
@@ -17,7 +16,7 @@ class CategoryWasDeleted implements DeletingMedia
      */
     public $categoryId;
 
-    public function __construct($categoryId,$categoryClass)
+    public function __construct($categoryId, $categoryClass)
     {
         $this->categoryClass = $categoryClass;
         $this->categoryId = $categoryId;
@@ -25,18 +24,16 @@ class CategoryWasDeleted implements DeletingMedia
 
     /**
      * Get the entity ID
-     * @return int
      */
-    public function getEntityId()
+    public function getEntityId(): int
     {
         return $this->categoryId;
     }
 
     /**
      * Get the class name the imageables
-     * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->categoryClass;
     }

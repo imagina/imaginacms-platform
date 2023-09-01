@@ -5,20 +5,16 @@ namespace Modules\Iappointment\Http\Controllers\Api;
 // Requests & Response
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 // Base Api
 use Modules\Iappointment\Http\Requests\CreateAppointmentStatusRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentStatusRequest;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Iappointment\Repositories\AppointmentStatusRepository;
 // Transformers
 use Modules\Iappointment\Transformers\AppointmentStatusTransformer;
-
 // Entities
-use Modules\Iappointment\Entities\AppointmentStatus;
 
 // Repositories
-use Modules\Iappointment\Repositories\AppointmentStatusRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class AppointmentStatusApiController extends BaseApiController
 {
@@ -44,23 +40,22 @@ class AppointmentStatusApiController extends BaseApiController
             $categories = $this->appointmentStatus->getItemsBy($params);
 
             //Response
-            $response = ["data" => AppointmentStatusTransformer::collection($categories)];
+            $response = ['data' => AppointmentStatusTransformer::collection($categories)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($categories)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($categories)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * GET A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function show($criteria, Request $request)
@@ -73,33 +68,34 @@ class AppointmentStatusApiController extends BaseApiController
             $appointmentStatus = $this->appointmentStatus->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$appointmentStatus) throw new \Exception('Item not found', 404);
+            if (! $appointmentStatus) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new AppointmentStatusTransformer($appointmentStatus)];
+            $response = ['data' => new AppointmentStatusTransformer($appointmentStatus)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($appointmentStatus)] : false;
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($appointmentStatus)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * CREATE A ITEM
      *
-     * @param Request $request
      * @return mixed
      */
     public function create(Request $request)
     {
         \DB::beginTransaction();
         try {
-            $data = $request->input('attributes') ?? [];//Get data
+            $data = $request->input('attributes') ?? []; //Get data
             //Validate Request
 
             $this->validateRequestApi(new CreateAppointmentStatusRequest($data));
@@ -108,26 +104,22 @@ class AppointmentStatusApiController extends BaseApiController
             $appointmentStatus = $this->appointmentStatus->create($data);
 
             //Response
-            $response = ["data" => new AppointmentStatusTransformer($appointmentStatus)];
+            $response = ['data' => new AppointmentStatusTransformer($appointmentStatus)];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
-
-
         \DB::beginTransaction();
         try {
             $params = $this->getParamsRequest($request);
@@ -137,24 +129,24 @@ class AppointmentStatusApiController extends BaseApiController
             $this->validateRequestApi(new UpdateAppointmentStatusRequest($data));
 
             //Update data
-            $appointmentStatus = $this->appointmentStatus->updateBy($criteria, $data,$params);
+            $appointmentStatus = $this->appointmentStatus->updateBy($criteria, $data, $params);
 
             //Response
             $response = ['data' => 'Item Updated'];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
     /**
      * Remove the specified resource from storage.
-     * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
         \DB::beginTransaction();
         try {
@@ -168,10 +160,11 @@ class AppointmentStatusApiController extends BaseApiController
             $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
+
         return response()->json($response, $status ?? 200);
     }
 }

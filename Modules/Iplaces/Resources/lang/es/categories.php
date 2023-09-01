@@ -14,20 +14,19 @@ return [
         'create category' => 'Crear una categoria',
     ],
     'table' => [
-        'id'=>'Id',
-        'title'=>'Titulo',
-        'slug'=>'Slug',
-
+        'id' => 'Id',
+        'title' => 'Titulo',
+        'slug' => 'Slug',
 
     ],
     'form' => [
-        'title'=>'Titulo',
-        'description'=>'Descripcion',
-        'status'=>'Status',
-        'slug'=>'Slug',
-        'content'=>'Content',
-        'metatitle'=>'MetaTitle',
-        'metakeywords'=>'Metakeywords'
+        'title' => 'Titulo',
+        'description' => 'Descripcion',
+        'status' => 'Status',
+        'slug' => 'Slug',
+        'content' => 'Content',
+        'metatitle' => 'MetaTitle',
+        'metakeywords' => 'Metakeywords',
     ],
     'messages' => [
     ],

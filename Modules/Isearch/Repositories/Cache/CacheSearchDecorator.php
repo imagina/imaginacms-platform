@@ -2,10 +2,9 @@
 
 namespace Modules\Isearch\Repositories\Cache;
 
-use Modules\Isearch\Repositories\Collection;
+use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Iblog\Entities\Post;
 use Modules\Isearch\Repositories\SearchRepository;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
 class CacheSearchDecorator extends BaseCacheDecorator implements SearchRepository
 {
@@ -18,8 +17,8 @@ class CacheSearchDecorator extends BaseCacheDecorator implements SearchRepositor
 
     public function whereSearch($searchphrase)
     {
-        return $this->posts->where('title','LIKE',"%{$searchphrase}%")
-            ->orWhere('description','LIKE',"%{$searchphrase}%")
+        return $this->posts->where('title', 'LIKE', "%{$searchphrase}%")
+            ->orWhere('description', 'LIKE', "%{$searchphrase}%")
             ->orderBy('created_at', 'DESC')->paginate(12);
     }
 
@@ -29,5 +28,4 @@ class CacheSearchDecorator extends BaseCacheDecorator implements SearchRepositor
             return $this->repository->getRepositoriesFromSetting($params);
         });
     }
-
 }

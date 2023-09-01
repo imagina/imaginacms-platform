@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateIcurrencyCurrencyTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('icurrency__currency_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -25,10 +23,8 @@ class CreateIcurrencyCurrencyTranslationsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('icurrency__currency_translations', function (Blueprint $table) {
             $table->dropForeign(['currency_id']);

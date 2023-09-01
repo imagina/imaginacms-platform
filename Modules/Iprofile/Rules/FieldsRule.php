@@ -11,41 +11,36 @@ class FieldsRule implements Rule
      *
      * @return void
      */
-  private $setting;
-  public function __construct()
-  {
-    
-    $this->setting = app('Modules\Setting\Contracts\Setting');
-  }
+    private $setting;
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function passes($attribute, $value)
+    public function __construct()
     {
-      
-      foreach ($value as $fieldName => $fieldValue){
-        if($this->setting->get('iprofile::registerUserWithPoliticsOfPrivacy')){
-          if($fieldName == "confirmPolytics" && !$fieldValue){
-            return false;
+        $this->setting = app('Modules\Setting\Contracts\Setting');
+    }
+
+      /**
+       * Determine if the validation rule passes.
+       *
+       * @param  mixed  $value
+       */
+      public function passes(string $attribute, $value): bool
+      {
+          foreach ($value as $fieldName => $fieldValue) {
+              if ($this->setting->get('iprofile::registerUserWithPoliticsOfPrivacy')) {
+                  if ($fieldName == 'confirmPolytics' && ! $fieldValue) {
+                      return false;
+                  }
+              }
           }
-        }
+
+          return true;
       }
 
-      return true;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'Debe aceptar los términos y condiciones';
-    }
+      /**
+       * Get the validation error message.
+       */
+      public function message(): string
+      {
+          return 'Debe aceptar los términos y condiciones';
+      }
 }

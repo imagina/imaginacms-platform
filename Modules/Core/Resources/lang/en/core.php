@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "name" => "Core",
+    'name' => 'Core',
     'modal' => [
         'title' => 'Confirmation',
         'confirmation-message' => 'Are you sure you want to delete this record?',

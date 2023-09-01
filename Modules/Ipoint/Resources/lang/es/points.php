@@ -22,7 +22,7 @@ return [
     'messages' => [
     ],
     'validation' => [
-        'no point' => 'Puntos Insuficientes | Tus Puntos: :pointsUser - Puntos necesarios: :pointsItems |'
+        'no point' => 'Puntos Insuficientes | Tus Puntos: :pointsUser - Puntos necesarios: :pointsItems |',
     ],
     'settings' => [
         'moneyForPoint' => 'Dinero por Punto (Equivalencia con el total de la Orden)',
@@ -30,6 +30,6 @@ return [
     ],
     'settingHints' => [
         'moneyForPoint' => 'Ejemplo: Si el total de la orden es 10000, y cada punto tiene un valor de:1000, se ganarían: 10ptos',
-        'roundPoints' => 'Ejemplo: Si el total de puntos es 7.5 se redondeara a 8 - Si no esta activo ganaría 7'
+        'roundPoints' => 'Ejemplo: Si el total de puntos es 7.5 se redondeara a 8 - Si no esta activo ganaría 7',
     ],
 ];

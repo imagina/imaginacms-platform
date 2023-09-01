@@ -26,7 +26,7 @@ class ModuleSeeders implements SetupScript
 
     /**
      * Fire the install script
-     * @param  Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -38,6 +38,7 @@ class ModuleSeeders implements SetupScript
         foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:seed', ['module' => $module]);
+
                 continue;
             }
             $command->callSilent('module:seed', ['module' => $module]);

@@ -15,6 +15,7 @@ class NavigationViewComposer
      * @var MenuRepository
      */
     private $menu;
+
     /**
      * @var MenuItemRepository
      */
@@ -40,8 +41,6 @@ class NavigationViewComposer
 
     /**
      * Add a menu item to the menu
-     * @param MenuitemEntity $item
-     * @param Builder $menu
      */
     public function addItemToMenu(MenuitemEntity $item, Builder $menu)
     {
@@ -60,11 +59,9 @@ class NavigationViewComposer
     /**
      * Add children to menu under the give name
      *
-     * @param string $name
-     * @param object $children
-     * @param Builder|MenuItem $menu
+     * @param  Builder|MenuItem  $menu
      */
-    private function addChildrenToMenu($name, $children, $menu)
+    private function addChildrenToMenu(string $name, object $children, $menu)
     {
         $menu->dropdown($name, function (MenuItem $subMenu) use ($children) {
             foreach ($children as $child) {
@@ -75,9 +72,6 @@ class NavigationViewComposer
 
     /**
      * Add children to the given menu recursively
-     *
-     * @param MenuitemEntity   $child
-     * @param MenuItem $sub
      */
     private function addSubItemToMenu(MenuitemEntity $child, MenuItem $sub)
     {
@@ -90,11 +84,8 @@ class NavigationViewComposer
 
     /**
      * Check if the given menu item has children
-     *
-     * @param  object $item
-     * @return bool
      */
-    private function hasChildren($item)
+    private function hasChildren(object $item): bool
     {
         return $item->items->count() > 0;
     }

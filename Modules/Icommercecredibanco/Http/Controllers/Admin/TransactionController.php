@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercecredibanco\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercecredibanco\Entities\Transaction;
 use Modules\Icommercecredibanco\Http\Requests\CreateTransactionRequest;
 use Modules\Icommercecredibanco\Http\Requests\UpdateTransactionRequest;
 use Modules\Icommercecredibanco\Repositories\TransactionRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class TransactionController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class TransactionController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$transactions = $this->transaction->all();
 
@@ -38,21 +35,16 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercecredibanco::admin.transactions.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateTransactionRequest $request
-     * @return Response
      */
-    public function store(CreateTransactionRequest $request)
+    public function store(CreateTransactionRequest $request): Response
     {
         $this->transaction->create($request->all());
 
@@ -62,23 +54,16 @@ class TransactionController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Transaction $transaction
-     * @return Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(Transaction $transaction): Response
     {
         return view('icommercecredibanco::admin.transactions.edit', compact('transaction'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Transaction $transaction
-     * @param  UpdateTransactionRequest $request
-     * @return Response
      */
-    public function update(Transaction $transaction, UpdateTransactionRequest $request)
+    public function update(Transaction $transaction, UpdateTransactionRequest $request): Response
     {
         $this->transaction->update($transaction, $request->all());
 
@@ -88,11 +73,8 @@ class TransactionController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Transaction $transaction
-     * @return Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Transaction $transaction): Response
     {
         $this->transaction->destroy($transaction);
 

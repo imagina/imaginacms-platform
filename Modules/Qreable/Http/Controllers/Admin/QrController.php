@@ -2,13 +2,12 @@
 
 namespace Modules\Qreable\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Qreable\Entities\Qr;
 use Modules\Qreable\Http\Requests\CreateQrRequest;
 use Modules\Qreable\Http\Requests\UpdateQrRequest;
 use Modules\Qreable\Repositories\QrRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class QrController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class QrController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$locations = $this->qr->all();
 
@@ -38,21 +35,16 @@ class QrController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('qreable::admin.locations.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateQrRequest $request
-     * @return Response
      */
-    public function store(CreateQrRequest $request)
+    public function store(CreateQrRequest $request): Response
     {
         $this->qr->create($request->all());
 
@@ -62,23 +54,16 @@ class QrController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Qr $qr
-     * @return Response
      */
-    public function edit(Qr $qr)
+    public function edit(Qr $qr): Response
     {
         return view('qreable::admin.locations.edit', compact('qr'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Qr $qr
-     * @param  UpdateQrRequest $request
-     * @return Response
      */
-    public function update(Qr $qr, UpdateQrRequest $request)
+    public function update(Qr $qr, UpdateQrRequest $request): Response
     {
         $this->qr->update($qr, $request->all());
 
@@ -88,11 +73,8 @@ class QrController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Qr $qr
-     * @return Response
      */
-    public function destroy(Qr $qr)
+    public function destroy(Qr $qr): Response
     {
         $this->qr->destroy($qr);
 

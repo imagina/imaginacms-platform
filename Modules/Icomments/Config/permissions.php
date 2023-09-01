@@ -9,6 +9,6 @@ return [
         'destroy' => 'icomments::comments.destroy resource',
         'restore' => 'icomments::comments.restore resource',
     ],
-// append
+    // append
 
 ];

@@ -7,13 +7,13 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class AppointmentStatusHistoryTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->id,
             'comment' => $this->comment ?? '',
-            'assignedTo' => (int)$this->assigned_to,
-            'appointmentId' => (int)$this->appointment_id,
+            'assignedTo' => (int) $this->assigned_to,
+            'appointmentId' => (int) $this->appointment_id,
             'assigned' => new UserTransformer($this->whenLoaded('assigned')),
             'appointment' => new AppointmentTransformer($this->whenLoaded('appointment')),
             'createdAt' => $this->when($this->created_at, $this->created_at),
@@ -32,6 +32,7 @@ class AppointmentStatusHistoryTransformer extends JsonResource
                     $this->translate("$lang")['comment'] : '';
             }
         }
+
         return $data;
     }
 }

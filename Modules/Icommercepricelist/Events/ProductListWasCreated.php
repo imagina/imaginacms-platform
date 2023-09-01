@@ -7,7 +7,9 @@ use Illuminate\Queue\SerializesModels;
 class ProductListWasCreated
 {
     use SerializesModels;
+
     public $productList;
+
     /**
      * Create a new event instance.
      *
@@ -15,15 +17,13 @@ class ProductListWasCreated
      */
     public function __construct($productList)
     {
-      $this->productList = $productList;
+        $this->productList = $productList;
     }
 
     /**
      * Get the channels the event should be broadcast on.
-     *
-     * @return array
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
         return [];
     }

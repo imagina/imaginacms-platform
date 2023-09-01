@@ -2,13 +2,12 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Department;
 use Modules\Iprofile\Http\Requests\CreateDepartmentRequest;
 use Modules\Iprofile\Http\Requests\UpdateDepartmentRequest;
 use Modules\Iprofile\Repositories\DepartmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class DepartmentController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class DepartmentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$departments = $this->department->all();
 
@@ -38,21 +35,16 @@ class DepartmentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('Iprofile::admin.departments.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateDepartmentRequest $request
-     * @return Response
      */
-    public function store(CreateDepartmentRequest $request)
+    public function store(CreateDepartmentRequest $request): Response
     {
         $this->department->create($request->all());
 
@@ -62,23 +54,16 @@ class DepartmentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Department $department
-     * @return Response
      */
-    public function edit(Department $department)
+    public function edit(Department $department): Response
     {
         return view('Iprofile::admin.departments.edit', compact('department'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Department $department
-     * @param  UpdateDepartmentRequest $request
-     * @return Response
      */
-    public function update(Department $department, UpdateDepartmentRequest $request)
+    public function update(Department $department, UpdateDepartmentRequest $request): Response
     {
         $this->department->update($department, $request->all());
 
@@ -88,11 +73,8 @@ class DepartmentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Department $department
-     * @return Response
      */
-    public function destroy(Department $department)
+    public function destroy(Department $department): Response
     {
         $this->department->destroy($department);
 

@@ -8,6 +8,6 @@ return [
         'create' => 'iredirect::redirect.create',
         'edit' => 'iredirect::redirect.edit',
         'destroy' => 'iredirect::redirect.destroy',
-    ]
+    ],
 
 ];

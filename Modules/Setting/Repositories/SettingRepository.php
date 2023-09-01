@@ -8,14 +8,14 @@ interface SettingRepository extends BaseRepository
 {
     /**
      * Create or update the settings
-     * @param $settings
+     *
      * @return mixed
      */
     public function createOrUpdate($settings);
 
     /**
      * Find a setting by its name
-     * @param $settingName
+     *
      * @return mixed
      */
     public function findByName($settingName, $central = false, $organizationId = null);
@@ -23,43 +23,46 @@ interface SettingRepository extends BaseRepository
     /**
      * Return all modules that have settings
      * with its settings
-     * @param  array|string $modules
+     *
+     * @param  array|string  $modules
      * @return array
      */
-    public function moduleSettings($modules);
+    public function moduleSettings($modules): array;
 
     /**
      * Return the saved module settings
-     * @param $module
+     *
      * @return mixed
      */
     public function savedModuleSettings($module);
 
     /**
      * Find settings by module name
-     * @param  string $module
+     *
+     * @param  string  $module
      * @return mixed
      */
-    public function findByModule($module);
+    public function findByModule(string $module);
 
     /**
      * Find the given setting name for the given module
-     * @param  string $settingName
+     *
+     * @param  string  $settingName
      * @return mixed
      */
-    public function get($settingName);
+    public function get(string $settingName);
 
     /**
      * Return the translatable module settings
-     * @param $module
+     *
      * @return array
      */
     public function translatableModuleSettings($module);
 
     /**
      * Return the non translatable module settings
-     * @param $module
+     *
      * @return array
      */
-    public function plainModuleSettings($module);
+    public function plainModuleSettings($module): array;
 }

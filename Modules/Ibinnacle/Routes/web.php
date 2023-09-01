@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IbinnacleController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('ibinnacle')->group(function() {
-    Route::get('/', 'IbinnacleController@index');
+Route::prefix('ibinnacle')->group(function () {
+    Route::get('/', [IbinnacleController::class, 'index']);
 });

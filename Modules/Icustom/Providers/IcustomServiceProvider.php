@@ -8,6 +8,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 class IcustomServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -17,15 +18,13 @@ class IcustomServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icustom', 'permissions');
         $this->publishConfig('icustom', 'config');
@@ -33,18 +32,14 @@ class IcustomServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
     {
-
         // add bindings
-
     }
 }

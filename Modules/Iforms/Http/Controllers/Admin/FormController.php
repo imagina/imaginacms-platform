@@ -2,13 +2,12 @@
 
 namespace Modules\Iforms\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iforms\Entities\Form;
 use Modules\Iforms\Http\Requests\CreateFormRequest;
 use Modules\Iforms\Http\Requests\UpdateFormRequest;
 use Modules\Iforms\Repositories\FormRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class FormController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class FormController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$forms = $this->form->all();
 
@@ -38,21 +35,16 @@ class FormController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iforms::admin.forms.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateFormRequest $request
-     * @return Response
      */
-    public function store(CreateFormRequest $request)
+    public function store(CreateFormRequest $request): Response
     {
         $this->form->create($request->all());
 
@@ -62,23 +54,16 @@ class FormController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Form $form
-     * @return Response
      */
-    public function edit(Form $form)
+    public function edit(Form $form): Response
     {
         return view('iforms::admin.forms.edit', compact('form'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Form $form
-     * @param  UpdateFormRequest $request
-     * @return Response
      */
-    public function update(Form $form, UpdateFormRequest $request)
+    public function update(Form $form, UpdateFormRequest $request): Response
     {
         $this->form->update($form, $request->all());
 
@@ -88,11 +73,8 @@ class FormController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Form $form
-     * @return Response
      */
-    public function destroy(Form $form)
+    public function destroy(Form $form): Response
     {
         $this->form->destroy($form);
 

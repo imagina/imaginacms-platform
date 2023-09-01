@@ -11,10 +11,10 @@ return [
     'form' => [
     ],
     'messages' => [
-        'from is required'=>'The from is required',
-        'from min 2'=>'From must contain at least two characters',
-        'to is required'=>'To is required',
-        'to min 2'=>'The to must contain at least two characters',
+        'from is required' => 'The from is required',
+        'from min 2' => 'From must contain at least two characters',
+        'to is required' => 'To is required',
+        'to min 2' => 'The to must contain at least two characters',
     ],
     'validation' => [
     ],
@@ -32,13 +32,13 @@ return [
     'categories' => 'Categories',
 
     'title' => 'Títle',
-    'slug'=>'Slug',
+    'slug' => 'Slug',
     'description' => 'Description',
-    'metatitle' =>'Meta Title',
-    'metadescription' =>'Meta Description',
+    'metatitle' => 'Meta Title',
+    'metadescription' => 'Meta Description',
 
-    'date'      =>  'Date and Time',
-    'optional'  =>  '(Optional)',
+    'date' => 'Date and Time',
+    'optional' => '(Optional)',
 
     'summary' => 'Sumary',
     'content' => 'Content',
@@ -50,7 +50,5 @@ return [
     'admin_notes' => 'Admin`s notes',
     'created_at' => 'Creation date',
     'parent' => 'Parent',
-
-
 
 ];

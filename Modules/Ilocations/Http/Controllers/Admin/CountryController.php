@@ -2,13 +2,12 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Country;
 use Modules\Ilocations\Http\Requests\CreateCountryRequest;
 use Modules\Ilocations\Http\Requests\UpdateCountryRequest;
 use Modules\Ilocations\Repositories\CountryRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class CountryController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class CountryController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$countries = $this->country->all();
 
@@ -38,21 +35,16 @@ class CountryController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ilocations::admin.countries.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateCountryRequest $request
-     * @return Response
      */
-    public function store(CreateCountryRequest $request)
+    public function store(CreateCountryRequest $request): Response
     {
         $this->country->create($request->all());
 
@@ -62,23 +54,16 @@ class CountryController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Country $country
-     * @return Response
      */
-    public function edit(Country $country)
+    public function edit(Country $country): Response
     {
         return view('ilocations::admin.countries.edit', compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Country $country
-     * @param  UpdateCountryRequest $request
-     * @return Response
      */
-    public function update(Country $country, UpdateCountryRequest $request)
+    public function update(Country $country, UpdateCountryRequest $request): Response
     {
         $this->country->update($country, $request->all());
 
@@ -88,11 +73,8 @@ class CountryController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Country $country
-     * @return Response
      */
-    public function destroy(Country $country)
+    public function destroy(Country $country): Response
     {
         $this->country->destroy($country);
 

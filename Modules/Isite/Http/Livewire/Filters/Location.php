@@ -6,39 +6,62 @@ use Livewire\Component;
 
 class Location extends Component
 {
-	
     /*
     * Attributes From Config
     */
     public $title;
+
     public $name;
+
     public $status;
+
     public $isExpanded;
+
     public $type;
+
     public $repository;
+
     public $emitTo;
+
     public $repoAction;
+
     public $repoAttribute;
+
     public $listener;
+
     public $repoMethod;
+
     public $layout;
+
     public $classes;
+
     public $params;
+
     public $radio;
+
     public $startGeolocation;
+
     public $findByLngLat;
-   
+
     /*
     * Attributes
     */
     public $lat;
+
     public $lng;
+
     public $selectedRadio;
+
     public $inputSearchLocation;
+
     public $country;
+
     public $countryCode;
+
     public $province;
+
     public $city;
+
     public $neighborhood;
 
     /*
@@ -46,15 +69,17 @@ class Location extends Component
     *
     */
     public $options;
-    public $selectedOption;
-    public $selectedOptionName = "";
 
-	/*
+    public $selectedOption;
+
+    public $selectedOptionName = '';
+
+    /*
     * Runs once, immediately after the component is instantiated,
     * but before render() is called
     */
-	public function mount($title,$name,$status=true,$isExpanded=true,$type="location",$repository,$emitTo,$repoAction,$repoAttribute,$listener,$repoMethod='getItemsBy',$layout='location-layout-1',$classes='col-12', $params = [], $radio = [], $startGeolocation=false,$findByLngLat=false){
-		
+    public function mount($title, $name, $status, $isExpanded, $type, $repository, $emitTo, $repoAction, $repoAttribute, $listener, $repoMethod = 'getItemsBy', $layout = 'location-layout-1', $classes = 'col-12', $params = [], $radio = [], $startGeolocation = false, $findByLngLat = false)
+    {
         $this->title = trans($title);
         $this->name = $name;
         $this->status = $status;
@@ -72,106 +97,98 @@ class Location extends Component
         $this->radio = $radio;
         $this->startGeolocation = $startGeolocation;
         $this->findByLngLat = $findByLngLat;
-        
-        $this->initValues();
-        
-	}
 
-    /* 
+        $this->initValues();
+    }
+
+    /*
     * Init Values Attributes
-    * 
+    *
     */
-    public function initValues(){
+    public function initValues()
+    {
         $this->lat = 0;
         $this->lng = 0;
         $this->selectedRadio = $this->radio['defaultValue'] ?? 'all';
-        $this->inputSearchLocation = "";
+        $this->inputSearchLocation = '';
 
         /* Init Values to type 2*/
-        if($this->type=="location-2"){
-
+        if ($this->type == 'location-2') {
             $this->options = $this->cityRepository()->getItemsBy();
 
             $optionId = request()->session()->get('cityIdSelected');
-            
-            if(!empty($optionId)){
+
+            if (! empty($optionId)) {
                 $this->selectedOption = $optionId;
                 $this->setValueOptionName();
             }
         }
-
     }
 
-    /* 
+    /*
     * When updated Lng Attribute
     * type location
     */
-    public function updatedLng(){
-
+    public function updatedLng()
+    {
         $this->emitToFilter();
     }
 
-    /* 
+    /*
     * When updated CountryCode Attribute
     * Only Type location-2
     * Just First Request
     */
-    public function updatedCountryCode(){
+    public function updatedCountryCode()
+    {
+        $option = $this->options->firstWhere('name', strtoupper($this->city));
 
-        $option = $this->options->firstWhere('name',strtoupper($this->city));
-
-        if(!empty($option)){
+        if (! empty($option)) {
             $this->selectedOption = $option->id;
             $this->selectedOptionName = $option->name;
-        }else{
+        } else {
             $this->selectedOption = 0;
             $this->selectedOptionName = trans('isite::frontend.filter-location.all');
         }
-        
-        if($this->selectedOption!=0)
+
+        if ($this->selectedOption != 0) {
             $this->emitToFilter();
-
+        }
     }
 
-    /* 
+    /*
     * When updated selectedRadio Attribute
-    * 
+    *
     */
-    public function updatedSelectedRadio(){
-
+    public function updatedSelectedRadio()
+    {
         $this->emitToFilter();
-      
     }
 
-    /* 
+    /*
     * When updated selectedOption Attribute
-    * 
+    *
     */
-    public function updatedSelectedOption(){
-
+    public function updatedSelectedOption()
+    {
         $this->emitToFilter();
-      
     }
 
-
-    /* 
+    /*
     * Emit To Filter
-    * 
+    *
     */
-    public function emitToFilter(){
-
+    public function emitToFilter()
+    {
         $emitInfor = [];
 
-        if($this->type=="location-2"){
-
+        if ($this->type == 'location-2') {
             request()->session()->put('cityIdSelected', $this->selectedOption);
 
             $this->setValueOptionName();
 
-            $emitInfor = (int)$this->selectedOption;
-
-        }else{
-
+            $emitInfor = (int) $this->selectedOption;
+        } else {
             $emitInfor['country'] = $this->country;
             $emitInfor['province'] = $this->province;
             $emitInfor['city'] = $this->city;
@@ -182,35 +199,32 @@ class Location extends Component
             $emitInfor['findByLngLat'] = $this->findByLngLat;
         }
 
-        
-        
         // Emit To (config file - parent filter or items list)
-        $this->emit($this->emitTo,[
+        $this->emit($this->emitTo, [
             'name' => $this->name,
             $this->repoAction => [
-                $this->repoAttribute => $emitInfor
+                $this->repoAttribute => $emitInfor,
             ],
-            'eventUpdateItemsList' => $this->startGeolocation
+            'eventUpdateItemsList' => $this->startGeolocation,
         ]);
-
-
     }
 
     /*
     * Set Value Option Name
     *
     */
-    private function setValueOptionName($param='id'){
-
-        $option = $this->options->firstWhere($param,strtoupper($this->selectedOption));
-        $this->selectedOptionName = $option->name;   
+    private function setValueOptionName($param = 'id')
+    {
+        $option = $this->options->firstWhere($param, strtoupper($this->selectedOption));
+        $this->selectedOptionName = $option->name;
     }
 
     /*
     * Get Repository
     *
     */
-    private function getRepository(){
+    private function getRepository()
+    {
         return app($this->repository);
     }
 
@@ -218,34 +232,33 @@ class Location extends Component
     * Get Listener From Config
     *
     */
-    protected function getListeners(){
-        if(!empty($this->listener)){
-            return [ 
-                $this->listener => 'getData', 
-                'filtersClearValues' => 'clearValues'
+    protected function getListeners()
+    {
+        if (! empty($this->listener)) {
+            return [
+                $this->listener => 'getData',
+                'filtersClearValues' => 'clearValues',
             ];
-        }else{
-            return [ 'filtersClearValues' => 'clearValues'];
+        } else {
+            return ['filtersClearValues' => 'clearValues'];
         }
     }
 
     /*
-    * Listener 
+    * Listener
     * Item List Rendered
     */
-    public function getData($params){
-
-        
+    public function getData($params)
+    {
     }
 
     /*
-    * Listener 
+    * Listener
     * Filter Clear Values
     */
-    public function clearValues(){
-      
-      $this->initValues(); 
-
+    public function clearValues()
+    {
+        $this->initValues();
     }
 
     /*
@@ -262,16 +275,13 @@ class Location extends Component
     */
     public function render()
     {
-
-       
         $tpl = 'isite::frontend.livewire.filters.location.layouts.'.$this->layout.'.index';
-       
-        $ttpl = $this->layout;
-        if (view()->exists($ttpl))
-            $tpl = $ttpl;
-            
-        return view($tpl);
-			
-    }
 
+        $ttpl = $this->layout;
+        if (view()->exists($ttpl)) {
+            $tpl = $ttpl;
+        }
+
+        return view($tpl);
+    }
 }

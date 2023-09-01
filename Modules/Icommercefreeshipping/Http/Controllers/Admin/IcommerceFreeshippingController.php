@@ -2,13 +2,12 @@
 
 namespace Modules\Icommercefreeshipping\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icommercefreeshipping\Entities\IcommerceFreeshipping;
 use Modules\Icommercefreeshipping\Http\Requests\CreateIcommerceFreeshippingRequest;
 use Modules\Icommercefreeshipping\Http\Requests\UpdateIcommerceFreeshippingRequest;
 use Modules\Icommercefreeshipping\Repositories\IcommerceFreeshippingRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class IcommerceFreeshippingController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercefreeshippings = $this->icommercefreeshipping->all();
 
@@ -38,21 +35,16 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercefreeshipping::admin.icommercefreeshippings.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommerceFreeshippingRequest $request
-     * @return Response
      */
-    public function store(CreateIcommerceFreeshippingRequest $request)
+    public function store(CreateIcommerceFreeshippingRequest $request): Response
     {
         $this->icommercefreeshipping->create($request->all());
 
@@ -62,23 +54,16 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
-     * @return Response
      */
-    public function edit(IcommerceFreeshipping $icommercefreeshipping)
+    public function edit(IcommerceFreeshipping $icommercefreeshipping): Response
     {
         return view('icommercefreeshipping::admin.icommercefreeshippings.edit', compact('icommercefreeshipping'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
-     * @param  UpdateIcommerceFreeshippingRequest $request
-     * @return Response
      */
-    public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request)
+    public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request): Response
     {
         $this->icommercefreeshipping->update($icommercefreeshipping, $request->all());
 
@@ -88,11 +73,8 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommerceFreeshipping $icommercefreeshipping
-     * @return Response
      */
-    public function destroy(IcommerceFreeshipping $icommercefreeshipping)
+    public function destroy(IcommerceFreeshipping $icommercefreeshipping): Response
     {
         $this->icommercefreeshipping->destroy($icommercefreeshipping);
 

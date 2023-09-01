@@ -14,11 +14,6 @@ class Installer
      */
     protected $scripts = [];
 
-    /**
-     * @param Filesystem  $finder
-     * @param Application $app
-     * @param Composer    $composer
-     */
     public function __construct(Application $app, Filesystem $finder, Composer $composer)
     {
         $this->finder = $finder;
@@ -26,11 +21,7 @@ class Installer
         $this->composer = $composer;
     }
 
-    /**
-     * @param  array $scripts
-     * @return $this
-     */
-    public function stack(array $scripts)
+    public function stack(array $scripts): static
     {
         $this->scripts = $scripts;
 
@@ -39,10 +30,8 @@ class Installer
 
     /**
      * Fire install scripts
-     * @param  Command $command
-     * @return bool
      */
-    public function install(Command $command)
+    public function install(Command $command): bool
     {
         foreach ($this->scripts as $script) {
             try {

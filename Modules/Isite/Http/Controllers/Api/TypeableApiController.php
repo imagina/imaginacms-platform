@@ -9,12 +9,13 @@ use Modules\Isite\Repositories\TypeableRepository;
 
 class TypeableApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(Typeable $model, TypeableRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(Typeable $model, TypeableRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

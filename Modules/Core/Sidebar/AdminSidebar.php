@@ -13,6 +13,7 @@ use Nwidart\Modules\Contracts\RepositoryInterface;
 class AdminSidebar implements Sidebar, ShouldCache
 {
     use CacheableTrait;
+
     /**
      * @var Menu
      */
@@ -28,11 +29,6 @@ class AdminSidebar implements Sidebar, ShouldCache
      */
     protected $container;
 
-    /**
-     * @param Menu                $menu
-     * @param RepositoryInterface $modules
-     * @param Container           $container
-     */
     public function __construct(Menu $menu, RepositoryInterface $modules, Container $container)
     {
         $this->menu = $menu;
@@ -52,20 +48,20 @@ class AdminSidebar implements Sidebar, ShouldCache
             if ($this->hasCustomSidebar($lowercaseModule) === true) {
                 $class = config("asgard.{$lowercaseModule}.config.custom-sidebar");
                 $this->addToSidebar($class);
+
                 continue;
             }
 
             $name = $module->get('name');
-            $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
+            $class = 'Modules\\'.$name.'\\Sidebar\\SidebarExtender';
             $this->addToSidebar($class);
         }
     }
 
     /**
      * Add the given class to the sidebar collection
-     * @param string $class
      */
-    private function addToSidebar($class)
+    private function addToSidebar(string $class)
     {
         if (class_exists($class) === false) {
             return;
@@ -75,10 +71,7 @@ class AdminSidebar implements Sidebar, ShouldCache
         $this->menu->add($extender->extendWith($this->menu));
     }
 
-    /**
-     * @return Menu
-     */
-    public function getMenu()
+    public function getMenu(): Menu
     {
         $this->build();
 
@@ -87,10 +80,8 @@ class AdminSidebar implements Sidebar, ShouldCache
 
     /**
      * Check if the module has a custom sidebar class configured
-     * @param string $module
-     * @return bool
      */
-    private function hasCustomSidebar($module)
+    private function hasCustomSidebar(string $module): bool
     {
         $config = config("asgard.{$module}.config.custom-sidebar");
 

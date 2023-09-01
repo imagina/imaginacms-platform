@@ -2,8 +2,8 @@
 
 namespace Modules\Ichat\Repositories\Cache;
 
-use Modules\Ichat\Repositories\MessageRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Ichat\Repositories\MessageRepository;
 
 class CacheMessageDecorator extends BaseCacheDecorator implements MessageRepository
 {
@@ -16,26 +16,22 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
 
   /**
    * List or resources
-   *
-   * @return collection
    */
-  public function getItemsBy($params)
+  public function getItemsBy($params): collection
   {
-    return $this->remember(function () use ($params) {
-      return $this->repository->getItemsBy($params);
-    });
+      return $this->remember(function () use ($params) {
+          return $this->repository->getItemsBy($params);
+      });
   }
 
   /**
    * find a resource by id or slug
-   *
-   * @return object
    */
-  public function getItem($criteria, $params = false)
+  public function getItem($criteria, $params = false): object
   {
-    return $this->remember(function () use ($criteria, $params) {
-      return $this->repository->getItem($criteria, $params);
-    });
+      return $this->remember(function () use ($criteria, $params) {
+          return $this->repository->getItem($criteria, $params);
+      });
   }
 
   /**
@@ -45,9 +41,9 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
    */
   public function create($data)
   {
-    $this->clearCache();
+      $this->clearCache();
 
-    return $this->repository->create($data);
+      return $this->repository->create($data);
   }
 
   /**
@@ -57,9 +53,9 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
    */
   public function updateBy($criteria, $data, $params = false)
   {
-    $this->clearCache();
+      $this->clearCache();
 
-    return $this->repository->updateBy($criteria, $data, $params);
+      return $this->repository->updateBy($criteria, $data, $params);
   }
 
   /**
@@ -69,9 +65,8 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
    */
   public function deleteBy($criteria, $params = false)
   {
-    $this->clearCache();
+      $this->clearCache();
 
-    return $this->repository->deleteBy($criteria, $params);
+      return $this->repository->deleteBy($criteria, $params);
   }
-
 }

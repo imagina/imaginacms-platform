@@ -2,73 +2,62 @@
 
 namespace Modules\Icommerceepayco\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 use Modules\Icommerce\Entities\PaymentMethod;
 
 class IcommerceepaycoDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-      
-      Model::unguard();
-  
-      $this->call(IcommerceepaycoModuleTableSeeder::class);
-      $name = config('asgard.icommerceepayco.config.paymentName');
-      $result = PaymentMethod::where('name',$name)->first();
+        Model::unguard();
 
-      if(!$result){
+        $this->call(IcommerceepaycoModuleTableSeeder::class);
+        $name = config('asgard.icommerceepayco.config.paymentName');
+        $result = PaymentMethod::where('name', $name)->first();
 
-        $options['init'] = "Modules\Icommerceepayco\Http\Controllers\Api\IcommerceEpaycoApiController";
-        $options['mainimage'] = null;
-        $options['publicKey'] = null;
-        $options['clientId'] = null;
-        $options['pKey'] = null;
-        $options['autoClick'] = true;
-        $options['test'] = true;
-        $options['minimunAmount'] = 15000;
-        $options['showInCurrencies'] = ["COP"];
-  
-        $titleTrans = 'Epayco';
-        $descriptionTrans = 'icommerceepayco::icommerceepaycos.description';
+        if (! $result) {
+            $options['init'] = "Modules\Icommerceepayco\Http\Controllers\Api\IcommerceEpaycoApiController";
+            $options['mainimage'] = null;
+            $options['publicKey'] = null;
+            $options['clientId'] = null;
+            $options['pKey'] = null;
+            $options['autoClick'] = true;
+            $options['test'] = true;
+            $options['minimunAmount'] = 15000;
+            $options['showInCurrencies'] = ['COP'];
 
-        $params = array(
-          'name' => $name,
-          'status' => 1,
-          'options' => $options
-        );
-        $paymentMethod = PaymentMethod::create($params);
+            $titleTrans = 'Epayco';
+            $descriptionTrans = 'icommerceepayco::icommerceepaycos.description';
 
-        $this->addTranslation($paymentMethod,'en',$titleTrans,$descriptionTrans);
-        $this->addTranslation($paymentMethod,'es',$titleTrans,$descriptionTrans);
+            $params = [
+                'name' => $name,
+                'status' => 1,
+                'options' => $options,
+            ];
+            $paymentMethod = PaymentMethod::create($params);
 
-      }else{
-
-        $this->command->alert("This method has already been installed !!");
-
-      }
-   
+            $this->addTranslation($paymentMethod, 'en', $titleTrans, $descriptionTrans);
+            $this->addTranslation($paymentMethod, 'es', $titleTrans, $descriptionTrans);
+        } else {
+            $this->command->alert('This method has already been installed !!');
+        }
     }
-
 
     /*
     * Add Translations
     * PD: New Alternative method due to problems with astronomic translatable
     **/
-    public function addTranslation($paymentMethod,$locale,$title,$description){
-
-      \DB::table('icommerce__payment_method_translations')->insert([
-          'title' => $title,
-          'description' => trans($description,[],$locale),
-          'payment_method_id' => $paymentMethod->id,
-          'locale' => $locale
-      ]);
-
+    public function addTranslation($paymentMethod, $locale, $title, $description)
+    {
+        \DB::table('icommerce__payment_method_translations')->insert([
+            'title' => $title,
+            'description' => trans($description, [], $locale),
+            'payment_method_id' => $paymentMethod->id,
+            'locale' => $locale,
+        ]);
     }
-
 }

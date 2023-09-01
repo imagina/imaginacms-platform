@@ -3,22 +3,18 @@
 namespace Modules\Icommercepricelist\Http\Controllers\Api;
 
 // Requests & Response
-use Modules\Icommercepricelist\Http\Requests\PriceListRequest;
-use Modules\Icommercepricelist\Http\Requests\UpdatePriceListRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use Modules\Icommercepricelist\Http\Requests\PriceListRequest;
+use Modules\Icommercepricelist\Http\Requests\UpdatePriceListRequest;
 // Base Api
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-
+use Modules\Icommercepricelist\Repositories\PriceListRepository;
 // Transformers
 use Modules\Icommercepricelist\Transformers\PriceListTransformer;
-
 // Entities
-use Modules\Icommercepricelist\Entities\PriceList;
 
 // Repositories
-use Modules\Icommercepricelist\Repositories\PriceListRepository;
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class PriceListApiController extends BaseApiController
 {
@@ -31,9 +27,8 @@ class PriceListApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         try {
             //Request to Repository
@@ -43,19 +38,19 @@ class PriceListApiController extends BaseApiController
             $response = ['data' => PriceListTransformer::collection($priceLists)];
             //If request pagination add meta-page
             $request->page ? $response['meta'] = ['page' => $this->pageTransformer($priceLists)] : false;
-
         } catch (\Exception $e) {
             //Message Error
             $status = 500;
             $response = [
-                'errors' => $e->getMessage()
+                'errors' => $e->getMessage(),
             ];
         }
+
         return response()->json($response, $status ?? 200);
     }
 
     /** SHOW
-     * @param Request $request
+     * @param  Request  $request
      *  URL GET:
      *  &fields = type string
      *  &include = type string
@@ -68,63 +63,61 @@ class PriceListApiController extends BaseApiController
             $criteria = $this->priceList->getItem($criteria, $params);
 
             //Break if no found item
-            if (!$criteria) throw new \Exception('Item not found', 404);
+            if (! $criteria) {
+                throw new \Exception('Item not found', 404);
+            }
 
             //Response
-            $response = ["data" => new PriceListTransformer($criteria)];
+            $response = ['data' => new PriceListTransformer($criteria)];
 
             //If request pagination add meta-page
-            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($criteria)] : false;
-
+            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($criteria)] : false;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Show the form for creating a new resource.
-     * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         \DB::beginTransaction();
         try {
-            $data = $request->input('attributes') ?? [];//Get data
+            $data = $request->input('attributes') ?? []; //Get data
             //Validate Request
             $this->validateRequestApi(new PriceListRequest($data));
 
             //Create item
             $entity = $this->priceList->create($data);
             //Fresh data
-            $entity=$entity->fresh();
+            $entity = $entity->fresh();
             //Job
-            if(isset($data['productIds']) && $entity->criteria=="percentage"){
-                \Modules\Icommerce\Jobs\SaveProductsPriceLists::dispatch(json_decode($data['productIds']),$entity);
+            if (isset($data['productIds']) && $entity->criteria == 'percentage') {
+                \Modules\Icommerce\Jobs\SaveProductsPriceLists::dispatch(json_decode($data['productIds']), $entity);
             }
 
             //Response
-            $response = ["data" => new PriceListTransformer($entity)];
+            $response = ['data' => new PriceListTransformer($entity)];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
             \Log::error($e);
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
-        return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+        return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
      */
-    public function update($criteria, Request $request)
+    public function update($criteria, Request $request): Response
     {
-
         \DB::beginTransaction();
         try {
             $params = $this->getParamsRequest($request);
@@ -134,27 +127,25 @@ class PriceListApiController extends BaseApiController
             $this->validateRequestApi(new UpdatePriceListRequest($data));
 
             //Update data
-            $category = $this->priceList->updateBy($criteria, $data,$params);
+            $category = $this->priceList->updateBy($criteria, $data, $params);
 
             //Response
             $response = ['data' => 'Item Updated'];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
-        return response()->json($response, $status ?? 200);
 
+        return response()->json($response, $status ?? 200);
     }
 
     /**
      * Remove the specified resource from storage.
-     * @return Response
      */
-    public function delete($criteria, Request $request)
+    public function delete($criteria, Request $request): Response
     {
-
         \DB::beginTransaction();
         try {
             //Get params
@@ -167,11 +158,11 @@ class PriceListApiController extends BaseApiController
             $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
-        return response()->json($response, $status ?? 200);
 
+        return response()->json($response, $status ?? 200);
     }
 }

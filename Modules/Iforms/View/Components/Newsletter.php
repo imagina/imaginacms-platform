@@ -1,41 +1,51 @@
 <?php
 
-
 namespace Modules\Iforms\View\Components;
 
 use Illuminate\View\Component;
 
 class Newsletter extends Component
 {
-
     public $id;
+
     public $layout;
+
     public $form;
+
     public $title;
+
     public $description;
+
     public $postDescription;
+
     public $submitLabel;
+
     public $view;
+
     public $central;
+
     public $titleClasses;
+
     public $descriptionClasses;
+
     public $postDescriptionClasses;
+
     public $buttonClasses;
+
     public $inputClasses;
 
     public function __construct($layout = 'newsletter-layout-1',
                                 $title = '',
                                 $description = '',
                                 $submitLabel = '',
-                                $postDescription = "",
+                                $postDescription = '',
                                 $central = false,
                                 $titleClasses = 'mb-0',
                                 $descriptionClasses = 'mb-3',
-                                $postDescriptionClasses = "mb-3",
-                                $buttonClasses = "btn btn-primary px-3",
-                                $inputClasses = "bg-transparent"
-    )
-    {
+                                $postDescriptionClasses = 'mb-3',
+                                $buttonClasses = 'btn btn-primary px-3',
+                                $inputClasses = 'bg-transparent'
+    ) {
         $this->layout = $layout ?? 'newsletter-layout-1';
         $this->view = "iforms::frontend.components.newsletter.layouts.{$this->layout}.index";
         $this->title = $title ?? '';
@@ -51,21 +61,23 @@ class Newsletter extends Component
         $this->getOrAddForm();
     }
 
-    public function getOrAddForm(){
+    public function getOrAddForm()
+    {
         $params = [
             'include' => ['fields'],
             'filter' => [
-                'field' => 'system_name'
+                'field' => 'system_name',
             ],
             'fields' => [],
         ];
 
-        if($this->central)
-            $params["filter"]["notOrganization"] = true;
-    
-        $this->form = app('Modules\\Iforms\\Repositories\\FormRepository')->getItem('newsletter',json_decode(json_encode($params)));
+        if ($this->central) {
+            $params['filter']['notOrganization'] = true;
+        }
 
-        if(empty($this->form)){
+        $this->form = app('Modules\\Iforms\\Repositories\\FormRepository')->getItem('newsletter', json_decode(json_encode($params)));
+
+        if (empty($this->form)) {
             $formData = [
                 'system_name' => 'newsletter',
                 'title' => $this->title,
@@ -82,9 +94,7 @@ class Newsletter extends Component
                 'form_id' => $this->form->id,
             ];
             app('Modules\\Iforms\\Repositories\\FieldRepository')->create($newFieldData);
-
         }
-        
     }
 
     public function render()

@@ -2,8 +2,8 @@
 
 namespace Modules\Ilocations\Repositories\Cache;
 
-use Modules\Ilocations\Repositories\LocalityRepository;
 use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Ilocations\Repositories\LocalityRepository;
 
 class CacheLocalityDecorator extends BaseCacheCrudDecorator implements LocalityRepository
 {

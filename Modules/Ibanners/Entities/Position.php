@@ -1,4 +1,6 @@
-<?php namespace Modules\Ibanners\Entities;
+<?php
+
+namespace Modules\Ibanners\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -6,26 +6,22 @@ use Modules\Core\Icrud\Transformers\CrudResource;
 
 class PlanTransformer extends CrudResource
 {
-  /**
-  * Method to merge values with response
-  *
-  * @return array
-  */
-  public function modelAttributes($request)
-  {
+    /**
+     * Method to merge values with response
+     */
+    public function modelAttributes($request): array
+    {
+        $data['typeName'] = $this->typeName;
 
-    $data['typeName'] = $this->typeName;
+        if (is_module_enabled('Icommerce')) {
+            $productTransformer = 'Modules\\Icommerce\\Transformers\\ProductTransformer';
+            $data['productId'] = $this->product ? (string) $this->product->id : '';
+            $data['product'] = new $productTransformer($this->whenLoaded('product'));
+        }
 
-    if(is_module_enabled('Icommerce')){
-      $productTransformer = 'Modules\\Icommerce\\Transformers\\ProductTransformer';
-      $data['productId'] = $this->product ? (string)$this->product->id : '';
-      $data['product'] = new $productTransformer($this->whenLoaded('product'));
+        $data['priceFormat'] = formatMoney($this->price, true);
+        $data['frequency'] = $this->frequency_label;
+
+        return $data;
     }
-
-    $data['priceFormat'] = formatMoney($this->price,true);
-    $data['frequency'] = $this->frequency_label;
-
-    return $data;
-
-  }
 }

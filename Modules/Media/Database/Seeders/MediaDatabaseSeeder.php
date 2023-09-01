@@ -8,18 +8,16 @@ use Modules\Isite\Jobs\ProcessSeeds;
 
 class MediaDatabaseSeeder extends Seeder
 {
-  /**
-   * Run the database seeds.
-   *
-   * @return void
-   */
-  public function run()
-  {
-    Model::unguard();
-    Model::unguard();
-    ProcessSeeds::dispatch([
-      "baseClass" => "\Modules\Media\Database\Seeders",
-      "seeds" => ["MediaModuleTableSeeder", "DeleteSvgOfImageTypes"]
-    ]);
-  }
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Model::unguard();
+        Model::unguard();
+        ProcessSeeds::dispatch([
+            'baseClass' => "\Modules\Media\Database\Seeders",
+            'seeds' => ['MediaModuleTableSeeder', 'DeleteSvgOfImageTypes'],
+        ]);
+    }
 }

@@ -7,21 +7,21 @@ use Modules\Icommerce\Entities\Product;
 
 class ProductList extends Model
 {
-
     protected $table = 'icommercepricelist__product_lists';
 
     protected $fillable = [
         'product_id',
         'price_list_id',
-        'price'
+        'price',
     ];
 
-    public function product(){
+    public function product()
+    {
         $this->belongsTo(Product::class);
     }
 
-    public function priceList(){
+    public function priceList()
+    {
         $this->belongsTo(PriceList::class);
     }
-
 }

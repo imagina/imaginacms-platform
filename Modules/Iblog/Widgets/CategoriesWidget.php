@@ -2,8 +2,8 @@
 
 namespace Modules\Iblog\Widgets;
 
-use Modules\Iblog\Repositories\CategoryRepository;
 use Modules\Dashboard\Foundation\Widgets\BaseWidget;
+use Modules\Iblog\Repositories\CategoryRepository;
 
 class CategoriesWidget extends BaseWidget
 {
@@ -19,36 +19,32 @@ class CategoriesWidget extends BaseWidget
 
     /**
      * Get the widget name
-     * @return string
      */
-    protected function name()
+    protected function name(): string
     {
         return 'CategoriesWidget';
     }
 
     /**
      * Get the widget view
-     * @return string
      */
-    protected function view()
+    protected function view(): string
     {
         return 'iblog::admin.widgets.categories';
     }
 
     /**
      * Get the widget data to send to the view
-     * @return string
      */
-    protected function data()
+    protected function data(): string
     {
         return ['categoryCount' => $this->category->all()->count()];
     }
 
     /**
      * Get the widget type
-     * @return string
      */
-    protected function options()
+    protected function options(): string
     {
         return [
             'width' => '2',

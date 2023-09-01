@@ -2,13 +2,12 @@
 
 namespace Modules\Ievent\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ievent\Entities\Event;
 use Modules\Ievent\Http\Requests\CreateEventRequest;
 use Modules\Ievent\Http\Requests\UpdateEventRequest;
 use Modules\Ievent\Repositories\EventRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class EventController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class EventController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$events = $this->event->all();
 
@@ -38,21 +35,16 @@ class EventController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('ievent::admin.events.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateEventRequest $request
-     * @return Response
      */
-    public function store(CreateEventRequest $request)
+    public function store(CreateEventRequest $request): Response
     {
         $this->event->create($request->all());
 
@@ -62,23 +54,16 @@ class EventController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Event $event
-     * @return Response
      */
-    public function edit(Event $event)
+    public function edit(Event $event): Response
     {
         return view('ievent::admin.events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Event $event
-     * @param  UpdateEventRequest $request
-     * @return Response
      */
-    public function update(Event $event, UpdateEventRequest $request)
+    public function update(Event $event, UpdateEventRequest $request): Response
     {
         $this->event->update($event, $request->all());
 
@@ -88,11 +73,8 @@ class EventController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Event $event
-     * @return Response
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event): Response
     {
         $this->event->destroy($event);
 

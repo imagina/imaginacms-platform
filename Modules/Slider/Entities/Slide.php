@@ -4,147 +4,141 @@ namespace Modules\Slider\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Media\Support\Traits\MediaRelation;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\App;
+use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Isite\Traits\RevisionableTrait;
+use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Page\Entities\Page;
 use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
-use Modules\Isite\Traits\RevisionableTrait;
-
-use Modules\Core\Support\Traits\AuditTrait;
 
 class Slide extends Model
 {
+    use Translatable, MediaRelation, BelongsToTenant, AuditTrait, RevisionableTrait;
 
-  use Translatable, MediaRelation, BelongsToTenant, AuditTrait, RevisionableTrait;
+    public $transformer = 'Modules\Slider\Transformers\SlideApiTransformer';
 
-  public $transformer = 'Modules\Slider\Transformers\SlideApiTransformer';
-  public $entity = 'Modules\Slider\Entities\Slide';
-  public $repository = 'Modules\Slider\Repositories\SlideApiRepository';
+    public $entity = 'Modules\Slider\Entities\Slide';
 
-  public $translatedAttributes = [
-    'title',
-    'caption',
-    'uri',
-    'url',
-    'active',
-    'custom_html',
-    'summary',
-  ];
+    public $repository = 'Modules\Slider\Repositories\SlideApiRepository';
 
-  protected $fillable = [
-    'slider_id',
-    'page_id',
-    'position',
-    'target',
-    'title',
-    'caption',
-    'uri',
-    'url',
-    'type',
-    'active',
-    'external_image_url',
-    'custom_html',
-    'responsive',
-    'options'
-  ];
-  protected $table = 'slider__slides';
+    public $translatedAttributes = [
+        'title',
+        'caption',
+        'uri',
+        'url',
+        'active',
+        'custom_html',
+        'summary',
+    ];
 
-  /**
-   * @var string
-   */
-  private $linkUrl;
+    protected $fillable = [
+        'slider_id',
+        'page_id',
+        'position',
+        'target',
+        'title',
+        'caption',
+        'uri',
+        'url',
+        'type',
+        'active',
+        'external_image_url',
+        'custom_html',
+        'responsive',
+        'options',
+    ];
 
-  /**
-   * @var string
-   */
-  private $imageUrl;
+    protected $table = 'slider__slides';
 
-  public function slider()
-  {
-    return $this->belongsTo(Slider::class);
-  }
+    /**
+     * @var string
+     */
+    private $linkUrl;
 
-  /**
-   * Check if page_id is empty and returning null instead empty string
-   * @return number
-   */
-  public function setPageIdAttribute($value)
-  {
-    $this->attributes['page_id'] = !empty($value) ? $value : null;
-  }
+    /**
+     * @var string
+     */
+    private $imageUrl;
 
-  /**
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-   */
-  public function page()
-  {
-    return $this->belongsTo(Page::class);
-  }
-
-  /**
-   * returns slider image src
-   * @return string|null full image path if image exists or null if no image is set
-   */
-  public function getImageUrl()
-  {
-    if ($this->imageUrl === null) {
-      if (!empty($this->external_image_url)) {
-        $this->imageUrl = $this->external_image_url;
-      } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
-        $this->imageUrl = $this->filesByZone('slideimage')->first()->path;
-      }
+    public function slider()
+    {
+        return $this->belongsTo(Slider::class);
     }
 
-    return $this->imageUrl;
-  }
-  
-  
-  /**
-   * returns slider link URL
-   * @return string|null
-   */
-  public function getLinkUrl()
-  {
-    if ($this->linkUrl === null) {
-      if (!empty($this->url)) {
-        $this->linkUrl = $this->url;
-      } elseif (!empty($this->uri)) {
-        $this->linkUrl = '/' . locale() . '/' . $this->uri;
-      } elseif (!empty($this->page)) {
-        $this->linkUrl = route('page', ['uri' => $this->page->slug]);
-      }
+    /**
+     * Check if page_id is empty and returning null instead empty string
+     */
+    public function setPageIdAttribute($value): number
+    {
+        $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
-    
-    return $this->linkUrl;
-  }
-  
-  /**
-   * returns slider link URL
-   * @return string|null
-   */
-  public function getUrlAttribute()
-  {
-    $url = "";
-      if (!empty($this->attributes["url"])) {
-        $url = $this->attributes["url"];
-      } elseif (!empty($this->uri)) {
-        $url = \LaravelLocalization::localizeUrl('/'. $this->uri);
-      } elseif (!empty($this->page)) {
-        $url = route('page', ['uri' => $this->page->slug]);
-      }
-    
-    
-    return $url;
-  }
 
-  protected function setOptionsAttribute($value)
-  {
-    $this->attributes['options'] = json_encode($value);
-  }
+    public function page(): BelongsTo
+    {
+        return $this->belongsTo(Page::class);
+    }
 
-  public function getOptionsAttribute($value)
-  {
-    return json_decode($value);
-  }
+    /**
+     * returns slider image src
+     *
+     * @return string|null full image path if image exists or null if no image is set
+     */
+    public function getImageUrl(): ?string
+    {
+        if ($this->imageUrl === null) {
+            if (! empty($this->external_image_url)) {
+                $this->imageUrl = $this->external_image_url;
+            } elseif (isset($this->files[0]) && ! empty($this->files[0]->path)) {
+                $this->imageUrl = $this->filesByZone('slideimage')->first()->path;
+            }
+        }
+
+        return $this->imageUrl;
+    }
+
+    /**
+     * returns slider link URL
+     */
+    public function getLinkUrl(): ?string
+    {
+        if ($this->linkUrl === null) {
+            if (! empty($this->url)) {
+                $this->linkUrl = $this->url;
+            } elseif (! empty($this->uri)) {
+                $this->linkUrl = '/'.locale().'/'.$this->uri;
+            } elseif (! empty($this->page)) {
+                $this->linkUrl = route('page', ['uri' => $this->page->slug]);
+            }
+        }
+
+        return $this->linkUrl;
+    }
+
+    /**
+     * returns slider link URL
+     */
+    public function getUrlAttribute(): ?string
+    {
+        $url = '';
+        if (! empty($this->attributes['url'])) {
+            $url = $this->attributes['url'];
+        } elseif (! empty($this->uri)) {
+            $url = \LaravelLocalization::localizeUrl('/'.$this->uri);
+        } elseif (! empty($this->page)) {
+            $url = route('page', ['uri' => $this->page->slug]);
+        }
+
+        return $url;
+    }
+
+    protected function setOptionsAttribute($value)
+    {
+        $this->attributes['options'] = json_encode($value);
+    }
+
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

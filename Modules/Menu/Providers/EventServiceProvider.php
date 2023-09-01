@@ -14,9 +14,9 @@ class EventServiceProvider extends ServiceProvider
         MenuWasCreated::class => [
             RootMenuItemCreator::class,
         ],
-  
+
         Events\TenancyInitialized::class => [
-          RegisterMenusInCache::class
-        ]
+            RegisterMenusInCache::class,
+        ],
     ];
 }

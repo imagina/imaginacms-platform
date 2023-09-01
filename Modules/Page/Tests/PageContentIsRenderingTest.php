@@ -11,7 +11,7 @@ class PageContentIsRenderingTest extends BasePageTest
     public function it_can_change_final_content()
     {
         Event::listen(PageContentIsRendering::class, function (PageContentIsRendering $event) {
-            $event->setBody('<strong>' . $event->getOriginal() . '</strong>');
+            $event->setBody('<strong>'.$event->getOriginal().'</strong>');
         });
 
         $page = $this->createPage();

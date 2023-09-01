@@ -11,10 +11,9 @@ class BuildTranslationsCacheCommand extends Command
     use DispatchesJobs;
 
     protected $name = 'asgard:build:translations';
+
     protected $description = 'Build the translations cache';
-    /**
-     * @var
-     */
+
     private $translation;
 
     public function __construct(TranslationRepository $translation)
@@ -23,7 +22,7 @@ class BuildTranslationsCacheCommand extends Command
         $this->translation = $translation;
     }
 
-    public function handle()
+    public function handle(): void
     {
         foreach ($this->translation->all() as $translation) {
             foreach (config('laravellocalization.supportedLocales') as $locale => $language) {

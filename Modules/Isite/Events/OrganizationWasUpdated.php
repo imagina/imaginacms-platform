@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Modules\Isite\Events;
-
 
 class OrganizationWasUpdated
 {
     public $params;
-   
+
     /*
     *  updatedWithBindings Params - From Entity
     */
@@ -15,5 +13,4 @@ class OrganizationWasUpdated
     {
         $this->params = $params;
     }
-
 }

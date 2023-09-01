@@ -4,14 +4,15 @@ namespace Modules\Icurrency\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Icurrency\Events\Handlers\RegisterIcurrencySidebar;
 
 class IcurrencyServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +22,8 @@ class IcurrencyServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcurrencySidebar::class);
@@ -32,11 +31,10 @@ class IcurrencyServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('currencies', Arr::dot(trans('icurrency::currencies')));
             // append translations
-
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishConfig('icurrency', 'permissions');
 
@@ -45,12 +43,10 @@ class IcurrencyServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
@@ -67,7 +63,6 @@ class IcurrencyServiceProvider extends ServiceProvider
                 return new \Modules\Icurrency\Repositories\Cache\CacheCurrencyDecorator($repository);
             }
         );
-// add bindings
-
+        // add bindings
     }
 }

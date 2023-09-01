@@ -48,6 +48,6 @@ return [
         'edit' => 'ievent::comments.edit resource',
         'destroy' => 'ievent::comments.destroy resource',
     ],
-// append
+    // append
 
 ];

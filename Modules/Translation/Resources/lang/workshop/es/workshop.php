@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'   => 'Workshop',
+    'title' => 'Workshop',
     'modules' => 'Módulos',
     'themes' => 'Temas',
     'show sidebar group' => 'Ver el grupo de la barra lateral',

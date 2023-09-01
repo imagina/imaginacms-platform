@@ -4,12 +4,12 @@ namespace Modules\Icommercewompi\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Icommerce\Repositories\PaymentMethodRepository;
 use Modules\Icommercewompi\Entities\IcommerceWompi;
 use Modules\Icommercewompi\Http\Requests\CreateIcommerceWompiRequest;
 use Modules\Icommercewompi\Http\Requests\UpdateIcommerceWompiRequest;
 use Modules\Icommercewompi\Repositories\IcommerceWompiRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Icommerce\Repositories\PaymentMethodRepository;
 
 class IcommerceWompiController extends AdminBaseController
 {
@@ -17,12 +17,13 @@ class IcommerceWompiController extends AdminBaseController
      * @var IcommerceWompiRepository
      */
     private $icommercewompi;
+
     private $paymentMethod;
 
     public function __construct(
         IcommerceWompiRepository $icommercewompi,
         PaymentMethodRepository $paymentMethod
-    ){
+    ) {
         parent::__construct();
 
         $this->icommercewompi = $icommercewompi;
@@ -31,10 +32,8 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$icommercewompis = $this->icommercewompi->all();
 
@@ -43,21 +42,16 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icommercewompi::admin.icommercewompis.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateIcommerceWompiRequest $request
-     * @return Response
      */
-    public function store(CreateIcommerceWompiRequest $request)
+    public function store(CreateIcommerceWompiRequest $request): Response
     {
         $this->icommercewompi->create($request->all());
 
@@ -67,11 +61,8 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  IcommerceWompi $icommercewompi
-     * @return Response
      */
-    public function edit(IcommerceWompi $icommercewompi)
+    public function edit(IcommerceWompi $icommercewompi): Response
     {
         return view('icommercewompi::admin.icommercewompis.edit', compact('icommercewompi'));
     }
@@ -79,36 +70,30 @@ class IcommerceWompiController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  IcommerceWompi $icommercewompi
-     * @param  UpdateIcommerceWompiRequest $request
-     * @return Response
+     * @param  IcommerceWompi  $icommercewompi
      */
-    public function update($id, UpdateIcommerceWompiRequest $request)
+    public function update($id, UpdateIcommerceWompiRequest $request): Response
     {
-
         //Find payment Method
         $paymentMethod = $this->paymentMethod->find($id);
 
         //Add status request
-        if($request->status=='on')
-            $request['status'] = "1";
-        else
-            $request['status'] = "0";
+        if ($request->status == 'on') {
+            $request['status'] = '1';
+        } else {
+            $request['status'] = '0';
+        }
 
-        $this->icommercewompi->update($paymentMethod,$request->all());
+        $this->icommercewompi->update($paymentMethod, $request->all());
 
         return redirect()->route('admin.icommerce.paymentmethod.index')
             ->withSuccess(trans('core::core.messages.resource updated', ['name' => trans('icommercewompi::icommercewompis.single')]));
-
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  IcommerceWompi $icommercewompi
-     * @return Response
      */
-    public function destroy(IcommerceWompi $icommercewompi)
+    public function destroy(IcommerceWompi $icommercewompi): Response
     {
         $this->icommercewompi->destroy($icommercewompi);
 

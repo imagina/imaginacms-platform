@@ -1,34 +1,28 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddTelephoneColumnInAddressTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-      Schema::table('iprofile__addresses', function (Blueprint $table) {
-        
-        $table->string('telephone')->nullable();
-    
-      });
+        Schema::table('iprofile__addresses', function (Blueprint $table) {
+            $table->string('telephone')->nullable();
+        });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-      Schema::table('iprofile__addresses', function($table) {
-        $table->dropColumn('telephone');
-      });
+        Schema::table('iprofile__addresses', function ($table) {
+            $table->dropColumn('telephone');
+        });
     }
 }

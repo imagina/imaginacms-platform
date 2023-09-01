@@ -10,19 +10,18 @@ use Modules\Idocs\Events\Handlers\SendDocument;
 use Modules\Idocs\Events\Handlers\SyncUsersInDocument;
 use Modules\Idocs\Events\Handlers\TrackingDocument;
 
-
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-      DocumentWasCreated::class=>[
-        //SendDocument::class,
-        SyncUsersInDocument::class
-      ],
-      DocumentWasUpdated::class => [
-        SyncUsersInDocument::class
-      ],
-      DocumentWasDownloaded::class=>[
-        TrackingDocument::class,
-      ]
+        DocumentWasCreated::class => [
+            //SendDocument::class,
+            SyncUsersInDocument::class,
+        ],
+        DocumentWasUpdated::class => [
+            SyncUsersInDocument::class,
+        ],
+        DocumentWasDownloaded::class => [
+            TrackingDocument::class,
+        ],
     ];
 }

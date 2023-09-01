@@ -2,13 +2,12 @@
 
 namespace Modules\Requestable\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Requestable\Entities\Requestable;
 use Modules\Requestable\Http\Requests\CreateRequestableRequest;
 use Modules\Requestable\Http\Requests\UpdateRequestableRequest;
 use Modules\Requestable\Repositories\RequestableRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RequestableController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class RequestableController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$requestables = $this->requestable->all();
 
@@ -38,21 +35,16 @@ class RequestableController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('requestable::admin.requestables.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateRequestableRequest $request
-     * @return Response
      */
-    public function store(CreateRequestableRequest $request)
+    public function store(CreateRequestableRequest $request): Response
     {
         $this->requestable->create($request->all());
 
@@ -62,23 +54,16 @@ class RequestableController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Requestable $requestable
-     * @return Response
      */
-    public function edit(Requestable $requestable)
+    public function edit(Requestable $requestable): Response
     {
         return view('requestable::admin.requestables.edit', compact('requestable'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Requestable $requestable
-     * @param  UpdateRequestableRequest $request
-     * @return Response
      */
-    public function update(Requestable $requestable, UpdateRequestableRequest $request)
+    public function update(Requestable $requestable, UpdateRequestableRequest $request): Response
     {
         $this->requestable->update($requestable, $request->all());
 
@@ -88,11 +73,8 @@ class RequestableController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Requestable $requestable
-     * @return Response
      */
-    public function destroy(Requestable $requestable)
+    public function destroy(Requestable $requestable): Response
     {
         $this->requestable->destroy($requestable);
 

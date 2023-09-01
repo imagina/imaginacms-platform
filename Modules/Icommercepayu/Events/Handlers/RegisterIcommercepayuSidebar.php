@@ -2,8 +2,6 @@
 
 namespace Modules\Icommercepayu\Events\Handlers;
 
-use Maatwebsite\Sidebar\Group;
-use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\User\Contracts\Authentication;
@@ -16,8 +14,6 @@ class RegisterIcommercepayuSidebar implements \Maatwebsite\Sidebar\SidebarExtend
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,11 +26,7 @@ class RegisterIcommercepayuSidebar implements \Maatwebsite\Sidebar\SidebarExtend
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         return $menu;
     }

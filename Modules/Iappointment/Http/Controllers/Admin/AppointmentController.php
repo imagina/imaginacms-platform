@@ -2,13 +2,12 @@
 
 namespace Modules\Iappointment\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iappointment\Entities\Appointment;
 use Modules\Iappointment\Http\Requests\CreateAppointmentRequest;
 use Modules\Iappointment\Http\Requests\UpdateAppointmentRequest;
 use Modules\Iappointment\Repositories\AppointmentRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AppointmentController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class AppointmentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$appointments = $this->appointment->all();
 
@@ -38,21 +35,16 @@ class AppointmentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iappointment::admin.appointments.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateAppointmentRequest $request
-     * @return Response
      */
-    public function store(CreateAppointmentRequest $request)
+    public function store(CreateAppointmentRequest $request): Response
     {
         $this->appointment->create($request->all());
 
@@ -62,23 +54,16 @@ class AppointmentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Appointment $appointment
-     * @return Response
      */
-    public function edit(Appointment $appointment)
+    public function edit(Appointment $appointment): Response
     {
         return view('iappointment::admin.appointments.edit', compact('appointment'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Appointment $appointment
-     * @param  UpdateAppointmentRequest $request
-     * @return Response
      */
-    public function update(Appointment $appointment, UpdateAppointmentRequest $request)
+    public function update(Appointment $appointment, UpdateAppointmentRequest $request): Response
     {
         $this->appointment->update($appointment, $request->all());
 
@@ -88,11 +73,8 @@ class AppointmentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Appointment $appointment
-     * @return Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Appointment $appointment): Response
     {
         $this->appointment->destroy($appointment);
 

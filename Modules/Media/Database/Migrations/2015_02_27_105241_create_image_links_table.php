@@ -7,9 +7,8 @@ class CreateImageLinksTable extends Migration
 {
     /**
      * Run the migrations.
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('media__imageables', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -24,9 +23,8 @@ class CreateImageLinksTable extends Migration
 
     /**
      * Reverse the migrations.
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('media__imageables');
     }

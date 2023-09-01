@@ -15,10 +15,12 @@ class ApiUserControllerTest extends BaseUserTestCase
      * @var UserRepository
      */
     private $user;
+
     /**
      * @var PermissionManager
      */
     private $permissions;
+
     /**
      * @var UserTokenRepository
      */

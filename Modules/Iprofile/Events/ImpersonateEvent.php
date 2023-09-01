@@ -6,9 +6,12 @@ use Illuminate\Queue\SerializesModels;
 
 class ImpersonateEvent
 {
-  use SerializesModels;
-  public $userIdImpersonate;
-  public $ip;
+    use SerializesModels;
+
+    public $userIdImpersonate;
+
+    public $ip;
+
     /**
      * Create a new event instance.
      *
@@ -16,7 +19,7 @@ class ImpersonateEvent
      */
     public function __construct($userIdImpersonate, $ip)
     {
-      $this->userIdImpersonate = $userIdImpersonate;
-      $this->ip = $ip;
+        $this->userIdImpersonate = $userIdImpersonate;
+        $this->ip = $ip;
     }
 }

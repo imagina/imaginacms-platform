@@ -6,33 +6,25 @@ use Modules\Core\Providers\RoutingServiceProvider as CoreRoutingServiceProvider;
 
 class RouteServiceProvider extends CoreRoutingServiceProvider
 {
-  /**
-   * The root namespace to assume when generating URLs to actions.
-   * @var string
-   */
-  protected $namespace = 'Modules\Iwhmcs\Http\Controllers';
+    /**
+     * The root namespace to assume when generating URLs to actions.
+     *
+     * @var string
+     */
+    protected $namespace = 'Modules\Iwhmcs\Http\Controllers';
 
-  /**
-   * @return string
-   */
-  protected function getFrontendRoute()
-  {
-    return false;
-  }
+    protected function getFrontendRoute(): string
+    {
+        return false;
+    }
 
-  /**
-   * @return string
-   */
-  protected function getBackendRoute()
-  {
-    return false;
-  }
+    protected function getBackendRoute(): string
+    {
+        return false;
+    }
 
-  /**
-   * @return string
-   */
-  protected function getApiRoute()
-  {
-    return __DIR__ . '/../Http/apiRoutes.php';
-  }
+    protected function getApiRoute(): string
+    {
+        return __DIR__.'/../Http/apiRoutes.php';
+    }
 }

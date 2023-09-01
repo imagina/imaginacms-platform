@@ -2,13 +2,12 @@
 
 namespace Modules\Notification\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Notification\Entities\Provider;
 use Modules\Notification\Http\Requests\CreateProviderRequest;
 use Modules\Notification\Http\Requests\UpdateProviderRequest;
 use Modules\Notification\Repositories\ProviderRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ProviderController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class ProviderController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$providers = $this->provider->all();
 
@@ -38,21 +35,16 @@ class ProviderController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.providers.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateProviderRequest $request
-     * @return Response
      */
-    public function store(CreateProviderRequest $request)
+    public function store(CreateProviderRequest $request): Response
     {
         $this->provider->create($request->all());
 
@@ -62,23 +54,16 @@ class ProviderController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Provider $provider
-     * @return Response
      */
-    public function edit(Provider $provider)
+    public function edit(Provider $provider): Response
     {
         return view('notification::admin.providers.edit', compact('provider'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Provider $provider
-     * @param  UpdateProviderRequest $request
-     * @return Response
      */
-    public function update(Provider $provider, UpdateProviderRequest $request)
+    public function update(Provider $provider, UpdateProviderRequest $request): Response
     {
         $this->provider->update($provider, $request->all());
 
@@ -88,11 +73,8 @@ class ProviderController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Provider $provider
-     * @return Response
      */
-    public function destroy(Provider $provider)
+    public function destroy(Provider $provider): Response
     {
         $this->provider->destroy($provider);
 

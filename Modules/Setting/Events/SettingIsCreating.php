@@ -5,7 +5,9 @@ namespace Modules\Setting\Events;
 class SettingIsCreating
 {
     private $settingName;
+
     private $settingValues;
+
     private $original;
 
     public function __construct($settingName, $settingValues)
@@ -32,7 +34,7 @@ class SettingIsCreating
     }
 
     /**
-     * @param mixed $settingValues
+     * @param  mixed  $settingValues
      */
     public function setSettingValues($settingValues)
     {

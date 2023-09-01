@@ -9,20 +9,16 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
 {
     /**
      * Find the saved state of widgets for the given user id
-     * @param int $userId
-     * @return string
      */
-    public function findForUser($userId)
+    public function findForUser(int $userId): string
     {
         return $this->model->whereUserId($userId)->first();
     }
 
     /**
      * Update or create the given widgets for given user
-     * @param array $widgets
-     * @return void
      */
-    public function updateOrCreateForUser($widgets, $userId)
+    public function updateOrCreateForUser(array $widgets, $userId): void
     {
         $widget = $this->findForUser($userId);
 

@@ -10,12 +10,14 @@ class Recommendation extends Model
     use Translatable;
 
     protected $table = 'isite__recommendations';
+
     public $translatedAttributes = [
-      'title',
-      'description'
+        'title',
+        'description',
     ];
+
     protected $fillable = [
-      'name',
-      'icon',
+        'name',
+        'icon',
     ];
 }

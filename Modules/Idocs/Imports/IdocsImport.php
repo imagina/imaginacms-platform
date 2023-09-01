@@ -2,25 +2,27 @@
 
 namespace Modules\Idocs\Imports;
 
-use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Modules\Idocs\Repositories\DocumentRepository;
 
-class IdocsImport implements WithMultipleSheets,WithChunkReading,ShouldQueue {
-
+class IdocsImport implements WithMultipleSheets, WithChunkReading, ShouldQueue
+{
     private $documnet;
-    private $info;
-    public function __construct(DocumentRepository $documnet, $info){
 
+    private $info;
+
+    public function __construct(DocumentRepository $documnet, $info)
+    {
         $this->documnet = $documnet;
-        $this->info=$info;
+        $this->info = $info;
     }
 
     public function sheets(): array
     {
         return [
-            'Documents'=>new DocumentsImport($this->product,$this->info)
+            'Documents' => new DocumentsImport($this->product, $this->info),
         ];
     }
 

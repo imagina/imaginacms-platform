@@ -3,8 +3,8 @@
 namespace Modules\Tag\Providers;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
@@ -20,93 +20,88 @@ use Modules\Tag\Repositories\TagRepository;
 
 class TagServiceProvider extends ServiceProvider
 {
-  use CanPublishConfiguration, CanGetSidebarClassForModule;
-  
-  /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
-  
-  /**
-   * Register the service provider.
-   *
-   * @return void
-   */
-  public function register()
-  {
-    $this->registerBindings();
-    
-    $this->app->singleton('tag.widget.directive', function ($app) {
-      return new TagWidget($app[TagRepository::class]);
-    });
-    $this->app['events']->listen(
-      BuildingSidebar::class,
-      $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
-    );
-    
-    $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-      $event->load('tags', Arr::dot(trans('tag::tags')));
-    });
-    
-    app('router')->bind('tag__tag', function ($id) {
-      return app(TagRepository::class)->find($id);
-    });
-  }
-  
-  public function boot()
-  {
-    
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('tag', 'permissions'), "asgard.tag.permissions");
-    $this->publishConfig('tag', 'config');
-    $this->registerBladeTags();
-    //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-    $this->registerComponents();
-  }
-  
-  /**
-   * Get the services provided by the provider.
-   *
-   * @return array
-   */
-  public function provides()
-  {
-    return [];
-  }
-  
-  private function registerBindings()
-  {
-    $this->app->bind(TagRepository::class, function () {
-      $repository = new EloquentTagRepository(new Tag());
-      
-      if (!config('app.cache')) {
-        return $repository;
-      }
-      
-      return new CacheTagDecorator($repository);
-    });
-    
-    $this->app->singleton(TagManager::class, function () {
-      return new TagManagerRepository();
-    });
-  }
-  
-  protected function registerBladeTags()
-  {
-    if (app()->environment() === 'testing') {
-      return;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
+
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
+
+    /**
+     * Register the service provider.
+     */
+    public function register(): void
+    {
+        $this->registerBindings();
+
+        $this->app->singleton('tag.widget.directive', function ($app) {
+            return new TagWidget($app[TagRepository::class]);
+        });
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('tag', RegisterTagSidebar::class)
+        );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('tags', Arr::dot(trans('tag::tags')));
+        });
+
+        app('router')->bind('tag__tag', function ($id) {
+            return app(TagRepository::class)->find($id);
+        });
     }
-    $this->app['blade.compiler']->directive('tags', function ($value) {
-      return "<?php echo TagWidget::show([$value]); ?>";
-    });
-  }
 
-  /**
-   * Register Blade components
-   */
+    public function boot(): void
+    {
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('tag', 'permissions'), 'asgard.tag.permissions');
+        $this->publishConfig('tag', 'config');
+        $this->registerBladeTags();
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->registerComponents();
+    }
 
-  private function registerComponents(){
-    Blade::componentNamespace("Modules\Tag\View\Components", 'tag');
-  }
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array
+    {
+        return [];
+    }
+
+    private function registerBindings()
+    {
+        $this->app->bind(TagRepository::class, function () {
+            $repository = new EloquentTagRepository(new Tag());
+
+            if (! config('app.cache')) {
+                return $repository;
+            }
+
+            return new CacheTagDecorator($repository);
+        });
+
+        $this->app->singleton(TagManager::class, function () {
+            return new TagManagerRepository();
+        });
+    }
+
+    protected function registerBladeTags()
+    {
+        if (app()->environment() === 'testing') {
+            return;
+        }
+        $this->app['blade.compiler']->directive('tags', function ($value) {
+            return "<?php echo TagWidget::show([$value]); ?>";
+        });
+    }
+
+    /**
+     * Register Blade components
+     */
+    private function registerComponents()
+    {
+        Blade::componentNamespace("Modules\Tag\View\Components", 'tag');
+    }
 }

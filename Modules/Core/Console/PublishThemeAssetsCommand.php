@@ -8,13 +8,14 @@ use Symfony\Component\Console\Input\InputArgument;
 class PublishThemeAssetsCommand extends Command
 {
     protected $name = 'asgard:publish:theme';
+
     protected $description = 'Publish theme assets';
 
-    public function handle()
+    public function handle(): void
     {
         $theme = $this->argument('theme', null);
 
-        if (!empty($theme)) {
+        if (! empty($theme)) {
             $this->call('stylist:publish', ['theme' => $this->argument('theme')]);
         } else {
             $this->call('stylist:publish');

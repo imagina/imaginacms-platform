@@ -2,13 +2,12 @@
 
 namespace Modules\Icheckin\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Icheckin\Entities\Approvals;
 use Modules\Icheckin\Http\Requests\CreateApprovalRequest;
 use Modules\Icheckin\Http\Requests\UpdateApprovalRequest;
 use Modules\Icheckin\Repositories\ApprovalRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ApprovalController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$approvals = $this->approval->all();
 
@@ -38,21 +35,16 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('icheckin::admin.approvals.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateApprovalRequest $request
-     * @return Response
      */
-    public function store(CreateApprovalRequest $request)
+    public function store(CreateApprovalRequest $request): Response
     {
         $this->approval->create($request->all());
 
@@ -62,23 +54,16 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Approvals $approval
-     * @return Response
      */
-    public function edit(Approvals $approval)
+    public function edit(Approvals $approval): Response
     {
         return view('icheckin::admin.approvals.edit', compact('approval'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Approvals $approval
-     * @param  UpdateApprovalRequest $request
-     * @return Response
      */
-    public function update(Approvals $approval, UpdateApprovalRequest $request)
+    public function update(Approvals $approval, UpdateApprovalRequest $request): Response
     {
         $this->approval->update($approval, $request->all());
 
@@ -88,11 +73,8 @@ class ApprovalController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Approvals $approval
-     * @return Response
      */
-    public function destroy(Approvals $approval)
+    public function destroy(Approvals $approval): Response
     {
         $this->approval->destroy($approval);
 

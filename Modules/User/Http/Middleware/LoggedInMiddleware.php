@@ -2,12 +2,11 @@
 
 namespace Modules\User\Http\Middleware;
 
+use Illuminate\Http\Request;
 use Modules\User\Contracts\Authentication;
 
 /**
  * Class LoggedInMiddleware
- * @package Modules\User\Http\Middleware
- * Middleware to make sure affected routes need a logged in user
  */
 class LoggedInMiddleware
 {
@@ -23,11 +22,10 @@ class LoggedInMiddleware
 
     /**
      * Handle an incoming request.
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     *
      * @return mixed
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         if ($this->auth->check() === false) {
             return redirect()->route(config('asgard.user.config.redirect_route_not_logged_in', 'login'));

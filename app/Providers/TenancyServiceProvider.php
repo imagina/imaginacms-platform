@@ -7,16 +7,12 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Modules\Isite\Jobs\MigrateAndSeedOrganization;
 use Stancl\JobPipeline\JobPipeline;
-use App\Bootstrappers;
 use Stancl\Tenancy\Events;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
-use Modules\Core\Console\Installers\Scripts\ModuleMigrator;
-use Modules\Core\Console\Installers\Scripts\ModuleSeeders;
-use Modules\Core\Console\Installers\Scripts\PostInstallCommands;
-use Modules\Isite\Jobs\MigrateAndSeedOrganization;
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -40,7 +36,7 @@ class TenancyServiceProvider extends ServiceProvider
                 ])->send(function (Events\TenantCreated $event) {
                     return $event->tenant;
                 })->shouldBeQueued(false), // `false` by default, but you probably want to make this `true` for production.
-            //  MigrateAndSeedOrganization::class
+                //  MigrateAndSeedOrganization::class
             ],
             Events\SavingTenant::class => [],
             Events\TenantSaved::class => [],
@@ -75,7 +71,7 @@ class TenancyServiceProvider extends ServiceProvider
             // Tenancy events
             Events\InitializingTenancy::class => [],
             Events\TenancyInitialized::class => [
-                Listeners\BootstrapTenancy::class
+                Listeners\BootstrapTenancy::class,
             ],
 
             Events\EndingTenancy::class => [],
@@ -98,12 +94,12 @@ class TenancyServiceProvider extends ServiceProvider
         ];
     }
 
-    public function register()
+    public function register(): void
     {
         //
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->bootEvents();
         $this->mapRoutes();
@@ -127,8 +123,7 @@ class TenancyServiceProvider extends ServiceProvider
     protected function mapRoutes()
     {
         if (file_exists(base_path('routes/tenant.php'))) {
-            Route::namespace(static::$controllerNamespace)
-                ->group(base_path('routes/tenant.php'));
+            Route::group(base_path('routes/tenant.php'));
         }
     }
 
@@ -139,8 +134,8 @@ class TenancyServiceProvider extends ServiceProvider
             Middleware\PreventAccessFromCentralDomains::class,
 
             Middleware\InitializeTenancyByDomain::class,
-//            Middleware\InitializeTenancyBySubdomain::class,
-//            Middleware\InitializeTenancyByDomainOrSubdomain::class,
+            //            Middleware\InitializeTenancyBySubdomain::class,
+            //            Middleware\InitializeTenancyByDomainOrSubdomain::class,
             Middleware\InitializeTenancyByPath::class,
             Middleware\InitializeTenancyByRequestData::class,
         ];

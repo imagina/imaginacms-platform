@@ -19,289 +19,266 @@ use Modules\User\Repositories\UserRepository;
 
 class SentinelUserRepository implements UserRepository
 {
-  /**
-   * @var \Modules\User\Entities\Sentinel\User
-   */
-  protected $user;
-  /**
-   * @var \Cartalyst\Sentinel\Roles\EloquentRole
-   */
-  protected $role;
+    /**
+     * @var \Modules\User\Entities\Sentinel\User
+     */
+    protected $user;
 
-  public function __construct()
-  {
-    $this->user = Sentinel::getUserRepository()->createModel();
-    $this->role = Sentinel::getRoleRepository()->createModel();
-  }
+    /**
+     * @var \Cartalyst\Sentinel\Roles\EloquentRole
+     */
+    protected $role;
 
-  /**
-   * Returns all the users
-   * @return object
-   */
-  public function all()
-  {
-    return $this->user->all();
-  }
-
-  /**
-   * Create a user resource
-   * @param array $data
-   * @param bool $activated
-   * @return mixed
-   */
-  public function create(array $data, $activated = false)
-  {
-    $this->hashPassword($data);
-
-    event($event = new UserIsCreating($data));
-
-    $user = $this->user->create($event->getAttributes());
-
-    if ($activated) {
-      $this->activateUser($user);
-      event(new UserWasCreated($user));
-    } else {
-      event(new UserHasRegistered($user));
-    }
-    app(\Modules\User\Repositories\UserTokenRepository::class)->generateFor($user->id);
-
-    return $user;
-  }
-
-  /**
-   * Create a user and assign roles to it
-   * @param array $data
-   * @param array $roles
-   * @param bool $activated
-   * @return User
-   */
-  public function createWithRoles($data, $roles, $activated = false)
-  {
-
-    $user = $this->create((array)$data, $activated);
-
-    if (!empty($roles)) {
-      $user->roles()->attach($roles);
+    public function __construct()
+    {
+        $this->user = Sentinel::getUserRepository()->createModel();
+        $this->role = Sentinel::getRoleRepository()->createModel();
     }
 
-    return $user;
-  }
-
-  /**
-   * Create a user and assign roles to it
-   * But don't fire the user created event
-   * @param array $data
-   * @param array $roles
-   * @param bool $activated
-   * @return User
-   */
-  public function createWithRolesFromCli($data, $roles, $activated = false)
-  {
-    $this->hashPassword($data);
-    $user = $this->user->create((array)$data);
-
-    if (!empty($roles)) {
-      $user->roles()->attach($roles);
+    /**
+     * Returns all the users
+     */
+    public function all(): object
+    {
+        return $this->user->all();
     }
 
-    if ($activated) {
-      $this->activateUser($user);
+    /**
+     * Create a user resource
+     *
+     * @return mixed
+     */
+    public function create(array $data, bool $activated = false)
+    {
+        $this->hashPassword($data);
+
+        event($event = new UserIsCreating($data));
+
+        $user = $this->user->create($event->getAttributes());
+
+        if ($activated) {
+            $this->activateUser($user);
+            event(new UserWasCreated($user));
+        } else {
+            event(new UserHasRegistered($user));
+        }
+        app(\Modules\User\Repositories\UserTokenRepository::class)->generateFor($user->id);
+
+        return $user;
     }
 
-    return $user;
-  }
+    /**
+     * Create a user and assign roles to it
+     */
+    public function createWithRoles(array $data, array $roles, bool $activated = false): User
+    {
+        $user = $this->create((array) $data, $activated);
 
-  /**
-   * Find a user by its ID
-   * @param $id
-   * @return mixed
-   */
-  public function find($id)
-  {
-    return $this->user->find($id);
-  }
+        if (! empty($roles)) {
+            $user->roles()->attach($roles);
+        }
 
-  /**
-   * Update a user
-   * @param $user
-   * @param $data
-   * @return mixed
-   */
-  public function update($user, $data)
-  {
-    $this->checkForNewPassword($data);
-
-    event($event = new UserIsUpdating($user, $data));
-
-    $user->fill($event->getAttributes());
-    $user->save();
-
-    event(new UserWasUpdated($user));
-
-    return $user;
-  }
-
-  /**
-   * @param $userId
-   * @param $data
-   * @param $roles
-   * @return mixed
-   * @internal param $user
-   */
-  public function updateAndSyncRoles($userId, $data, $roles)
-  {
-    $user = $this->user->find($userId);
-
-    $this->checkForNewPassword($data);
-
-    $this->checkForManualActivation($user, $data);
-
-    event($event = new UserIsUpdating($user, $data));
-
-    $user->fill($event->getAttributes());
-    $user->save();
-
-    event(new UserWasUpdated($user));
-
-    if (!empty($roles)) {
-      $user->roles()->sync($roles);
-    }
-  }
-
-  /**
-   * Deletes a user
-   * @param $id
-   * @return mixed
-   * @throws UserNotFoundException
-   */
-  public function delete($id)
-  {
-    if ($user = $this->user->find($id)) {
-      return $user->delete();
+        return $user;
     }
 
-    throw new UserNotFoundException();
-  }
+    /**
+     * Create a user and assign roles to it
+     * But don't fire the user created event
+     */
+    public function createWithRolesFromCli(array $data, array $roles, bool $activated = false): User
+    {
+        $this->hashPassword($data);
+        $user = $this->user->create((array) $data);
 
-  /**
-   * Find a user by its credentials
-   * @param array $credentials
-   * @return mixed
-   */
-  public function findByCredentials(array $credentials)
-  {
-    return Sentinel::findByCredentials($credentials);
-  }
+        if (! empty($roles)) {
+            $user->roles()->attach($roles);
+        }
 
-  /**
-   * Paginating, ordering and searching through pages for server side index table
-   * @param Request $request
-   * @return LengthAwarePaginator
-   */
-  public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
-  {
-    $roles = $this->allWithBuilder();
+        if ($activated) {
+            $this->activateUser($user);
+        }
 
-    if ($request->get('search') !== null) {
-      $term = $request->get('search');
-      $roles->where('first_name', 'LIKE', "%{$term}%")
-        ->orWhere('last_name', 'LIKE', "%{$term}%")
-        ->orWhere('email', 'LIKE', "%{$term}%")
-        ->orWhere('id', $term);
+        return $user;
     }
 
-    if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
-      $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
-
-      $roles->orderBy($request->get('order_by'), $order);
-    } else {
-      $roles->orderBy('created_at', 'desc');
+    /**
+     * Find a user by its ID
+     *
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return $this->user->find($id);
     }
 
-    return $roles->paginate($request->get('per_page', 10));
-  }
+    /**
+     * Update a user
+     *
+     * @return mixed
+     */
+    public function update($user, $data)
+    {
+        $this->checkForNewPassword($data);
 
-  public function allWithBuilder(): Builder
-  {
-    return $this->user->newQuery();
-  }
+        event($event = new UserIsUpdating($user, $data));
 
-  /**
-   * Hash the password key
-   * @param array $data
-   */
-  private function hashPassword(array &$data)
-  {
-    $data['password'] = Hash::make($data['password']);
-  }
+        $user->fill($event->getAttributes());
+        $user->save();
 
-  /**
-   * Check if there is a new password given
-   * If not, unset the password field
-   * @param array $data
-   */
-  private function checkForNewPassword(array &$data)
-  {
-    if (array_key_exists('password', $data) === false) {
-      return;
+        event(new UserWasUpdated($user));
+
+        return $user;
     }
 
-    if ($data['password'] === '' || $data['password'] === null) {
-      unset($data['password']);
+    /**
+     * @return mixed
+     *
+     * @internal param $user
+     */
+    public function updateAndSyncRoles($userId, $data, $roles)
+    {
+        $user = $this->user->find($userId);
 
-      return;
+        $this->checkForNewPassword($data);
+
+        $this->checkForManualActivation($user, $data);
+
+        event($event = new UserIsUpdating($user, $data));
+
+        $user->fill($event->getAttributes());
+        $user->save();
+
+        event(new UserWasUpdated($user));
+
+        if (! empty($roles)) {
+            $user->roles()->sync($roles);
+        }
     }
 
-    $data['password'] = Hash::make($data['password']);
-  }
+    /**
+     * Deletes a user
+     *
+     * @return mixed
+     *
+     * @throws UserNotFoundException
+     */
+    public function delete($id)
+    {
+        if ($user = $this->user->find($id)) {
+            return $user->delete();
+        }
 
-  /**
-   * Check and manually activate or remove activation for the user
-   * @param $user
-   * @param array $data
-   */
-  private function checkForManualActivation($user, array &$data)
-  {
-    if (Activation::completed($user) && !$data['is_activated']) {
-      return Activation::remove($user);
+        throw new UserNotFoundException();
     }
 
-    if (!Activation::completed($user) && $data['is_activated']) {
-      $activation = Activation::create($user);
-
-      return Activation::complete($user, $activation->code);
-    }
-  }
-
-  /**
-   * Activate a user automatically
-   *
-   * @param $user
-   */
-  private function activateUser($user)
-  {
-    $activation = Activation::create($user);
-    Activation::complete($user, $activation->code);
-  }
-
-  /**
-   * Standard Api Method
-   * @param $criteria
-   * @param bool $params
-   * @return mixed
-   */
-  public function getItem($criteria, $params = false)
-  {
-    //Initialize query
-    $query = $this->user->query();
-
-
-    if (!isset($params->filter->field)) {
-      $query->where('id', $criteria);
+    /**
+     * Find a user by its credentials
+     *
+     * @return mixed
+     */
+    public function findByCredentials(array $credentials)
+    {
+        return Sentinel::findByCredentials($credentials);
     }
 
-    /*== REQUEST ==*/
-    return $query->first();
+    /**
+     * Paginating, ordering and searching through pages for server side index table
+     */
+    public function serverPaginationFilteringFor(Request $request): LengthAwarePaginator
+    {
+        $roles = $this->allWithBuilder();
 
-  }
+        if ($request->get('search') !== null) {
+            $term = $request->get('search');
+            $roles->where('first_name', 'LIKE', "%{$term}%")
+              ->orWhere('last_name', 'LIKE', "%{$term}%")
+              ->orWhere('email', 'LIKE', "%{$term}%")
+              ->orWhere('id', $term);
+        }
+
+        if ($request->get('order_by') !== null && $request->get('order') !== 'null') {
+            $order = $request->get('order') === 'ascending' ? 'asc' : 'desc';
+
+            $roles->orderBy($request->get('order_by'), $order);
+        } else {
+            $roles->orderBy('created_at', 'desc');
+        }
+
+        return $roles->paginate($request->get('per_page', 10));
+    }
+
+    public function allWithBuilder(): Builder
+    {
+        return $this->user->newQuery();
+    }
+
+    /**
+     * Hash the password key
+     */
+    private function hashPassword(array &$data)
+    {
+        $data['password'] = Hash::make($data['password']);
+    }
+
+    /**
+     * Check if there is a new password given
+     * If not, unset the password field
+     */
+    private function checkForNewPassword(array &$data)
+    {
+        if (array_key_exists('password', $data) === false) {
+            return;
+        }
+
+        if ($data['password'] === '' || $data['password'] === null) {
+            unset($data['password']);
+
+            return;
+        }
+
+        $data['password'] = Hash::make($data['password']);
+    }
+
+    /**
+     * Check and manually activate or remove activation for the user
+     */
+    private function checkForManualActivation($user, array &$data)
+    {
+        if (Activation::completed($user) && ! $data['is_activated']) {
+            return Activation::remove($user);
+        }
+
+        if (! Activation::completed($user) && $data['is_activated']) {
+            $activation = Activation::create($user);
+
+            return Activation::complete($user, $activation->code);
+        }
+    }
+
+    /**
+     * Activate a user automatically
+     */
+    private function activateUser($user)
+    {
+        $activation = Activation::create($user);
+        Activation::complete($user, $activation->code);
+    }
+
+    /**
+     * Standard Api Method
+     *
+     * @return mixed
+     */
+    public function getItem($criteria, bool $params = false)
+    {
+        //Initialize query
+        $query = $this->user->query();
+
+        if (! isset($params->filter->field)) {
+            $query->where('id', $criteria);
+        }
+
+        /*== REQUEST ==*/
+        return $query->first();
+    }
 }

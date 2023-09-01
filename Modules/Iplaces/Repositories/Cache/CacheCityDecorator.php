@@ -2,8 +2,8 @@
 
 namespace Modules\Iplaces\Repositories\Cache;
 
-use Modules\Iplaces\Repositories\CityRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Modules\Iplaces\Repositories\CityRepository;
 
 class CacheCityDecorator extends BaseCacheDecorator implements CityRepository
 {
@@ -27,7 +27,6 @@ class CacheCityDecorator extends BaseCacheDecorator implements CityRepository
             return $this->repository->getItem($criteria, $params);
         });
     }
-
 
     public function updateBy($criteria, $data, $params = false)
     {

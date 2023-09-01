@@ -9,6 +9,6 @@ return [
         'destroy' => 'ipoint::points.destroy resource',
         'restore' => 'ipoint::points.restore resource',
     ],
-// append
+    // append
 
 ];

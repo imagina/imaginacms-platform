@@ -2,13 +2,12 @@
 
 namespace Modules\Notification\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Notification\Entities\Template;
 use Modules\Notification\Http\Requests\CreateTemplateRequest;
 use Modules\Notification\Http\Requests\UpdateTemplateRequest;
 use Modules\Notification\Repositories\TemplateRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class TemplateController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class TemplateController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$templates = $this->template->all();
 
@@ -38,21 +35,16 @@ class TemplateController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('notification::admin.templates.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateTemplateRequest $request
-     * @return Response
      */
-    public function store(CreateTemplateRequest $request)
+    public function store(CreateTemplateRequest $request): Response
     {
         $this->template->create($request->all());
 
@@ -62,23 +54,16 @@ class TemplateController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Template $template
-     * @return Response
      */
-    public function edit(Template $template)
+    public function edit(Template $template): Response
     {
         return view('notification::admin.templates.edit', compact('template'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Template $template
-     * @param  UpdateTemplateRequest $request
-     * @return Response
      */
-    public function update(Template $template, UpdateTemplateRequest $request)
+    public function update(Template $template, UpdateTemplateRequest $request): Response
     {
         $this->template->update($template, $request->all());
 
@@ -88,11 +73,8 @@ class TemplateController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Template $template
-     * @return Response
      */
-    public function destroy(Template $template)
+    public function destroy(Template $template): Response
     {
         $this->template->destroy($template);
 

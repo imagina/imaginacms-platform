@@ -1,6 +1,6 @@
 <?php
 
 return [
-  'title' => 'Copyright ©',
-  'text' => '.Alle Rechte vorbehalten',
+    'title' => 'Copyright ©',
+    'text' => '.Alle Rechte vorbehalten',
 ];

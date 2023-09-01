@@ -18,18 +18,18 @@ return [
         'create redirect' => 'Create a Redirect',
     ],
     'table' => [
-        'title' => 'Title'
+        'title' => 'Title',
     ],
-    'from'=>'Redirect from',
-    'to'=>'Redirect to',
-    'redirect_type'=> 'Redirect Type',
-    '301 redirect'=> '301 redirect',
-    '302 redirect'=> '302 redirect',
+    'from' => 'Redirect from',
+    'to' => 'Redirect to',
+    'redirect_type' => 'Redirect Type',
+    '301 redirect' => '301 redirect',
+    '302 redirect' => '302 redirect',
     'messages' => [
     ],
     'validation' => [
     ],
-    'latest redirects'=>'Latest Redirects',
+    'latest redirects' => 'Latest Redirects',
     'widget' => [
         'redirectcount' => 'Count Redirect',
     ],

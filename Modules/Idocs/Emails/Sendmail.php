@@ -11,31 +11,26 @@ class Sendmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-
     public $document;
+
     public $subject;
+
     public $view;
 
     /**
      * Create a new message instance.
-     *
-     * @param $document
-     * @param $subject
-     * @param $view
      */
     public function __construct($document, $subject, $view)
     {
-        $this->document=$document;
-        $this->subject=$subject;
-        $this->view=$view;
+        $this->document = $document;
+        $this->subject = $subject;
+        $this->view = $view;
     }
 
     /**
      * Build the message.
-     *
-     * @return $this
      */
-    public function build()
+    public function build(): static
     {
         return $this->view($this->view)->subject($this->subject);
     }

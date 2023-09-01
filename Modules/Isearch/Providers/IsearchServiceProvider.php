@@ -10,68 +10,60 @@ use Modules\Isearch\Repositories\Cache\CacheSearchDecorator;
 use Modules\Isearch\Repositories\Eloquent\EloquentSearchRepository;
 use Modules\Isearch\Repositories\SearchRepository;
 
-
 class IsearchServiceProvider extends ServiceProvider
 {
-  use CanPublishConfiguration;
+    use CanPublishConfiguration;
 
-  /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
-  /**
-   * Register the service provider.
-   *
-   * @return void
-   */
-  public function register()
-  {
-    $this->registerBindings();
-  }
+    /**
+     * Register the service provider.
+     */
+    public function register(): void
+    {
+        $this->registerBindings();
+    }
 
-  public function boot()
-  {
+    public function boot(): void
+    {
+        $this->publishConfig('isearch', 'config');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings'), 'asgard.isearch.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings-fields'), 'asgard.isearch.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'permissions'), 'asgard.isearch.permissions');
+        $this->registerComponentsLivewire();
+    }
 
-    $this->publishConfig('isearch', 'config');
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings'), "asgard.isearch.settings");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'settings-fields'), "asgard.isearch.settings-fields");
-    $this->mergeConfigFrom($this->getModuleConfigFilePath('isearch', 'permissions'), "asgard.isearch.permissions");
-    $this->registerComponentsLivewire();
-  }
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array
+    {
+        return [];
+    }
 
-  /**
-   * Get the services provided by the provider.
-   *
-   * @return array
-   */
-  public function provides()
-  {
-    return array();
-  }
+    private function registerBindings()
+    {
+        $this->app->bind(SearchRepository::class, function () {
+            $repository = new EloquentSearchRepository(new Post());
 
-  private function registerBindings()
-  {
+            if (config('app.cache') === false) {
+                return $repository;
+            }
 
-    $this->app->bind(SearchRepository::class, function () {
-      $repository = new EloquentSearchRepository(new Post());
+            return new CacheSearchDecorator($repository);
+        });
+    }
 
-      if (config('app.cache') === false) {
-        return $repository;
-      }
-
-      return new CacheSearchDecorator($repository);
-    });
-
-  }
-
-  /**
-   * Register components Livewire
-   */
-  private function registerComponentsLivewire()
-  {
-    Livewire::component('isearch::search', \Modules\Isearch\Http\Livewire\Search::class);
-  }
+    /**
+     * Register components Livewire
+     */
+    private function registerComponentsLivewire()
+    {
+        Livewire::component('isearch::search', \Modules\Isearch\Http\Livewire\Search::class);
+    }
 }

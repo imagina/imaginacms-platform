@@ -10,7 +10,6 @@ use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 
 class BannerApiController extends BaseApiController
 {
-
     private $banner;
 
     public function __construct(BannerRepository $banner)
@@ -18,64 +17,65 @@ class BannerApiController extends BaseApiController
         $this->banner = $banner;
     }
 
- /**
+   /**
     * GET ITEMS
     *
     * @return mixed
     */
    public function index(Request $request)
    {
-     try {
-       //Get Parameters from URL.
-       $params = $this->getParamsRequest($request);
-
-       //Request to Repository
-       $dataEntity = $this->banner->getItemsBy($params);
-
-       //Response
-       $response = ["data" => EntityTranformer::collection($dataEntity)];
-
-       //If request pagination add meta-page
-       $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
-     } catch (\Exception $e) {
-       $status = $this->getStatusError($e->getCode());
-       $response = ["errors" => $e->getMessage()];
-     }
-
-     //Return response
-     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
-   }
-
-   /**
-      * GET A ITEM
-      *
-      * @param $criteria
-      * @return mixed
-      */
-     public function show($criteria,Request $request)
-     {
        try {
-         //Get Parameters from URL.
-         $params = $this->getParamsRequest($request);
+           //Get Parameters from URL.
+           $params = $this->getParamsRequest($request);
 
-         //Request to Repository
-         $dataEntity = $this->banner->getItem($criteria, $params);
+           //Request to Repository
+           $dataEntity = $this->banner->getItemsBy($params);
 
-         //Break if no found item
-         if(!$dataEntity) throw new Exception('Item not found',204);
+           //Response
+           $response = ['data' => EntityTranformer::collection($dataEntity)];
 
-         //Response
-         $response = ["data" => new EntityTranformer($dataEntity)];
-
-         //If request pagination add meta-page
-         $params->page ? $response["meta"] = ["page" => $this->pageTransformer($dataEntity)] : false;
+           //If request pagination add meta-page
+           $params->page ? $response['meta'] = ['page' => $this->pageTransformer($dataEntity)] : false;
        } catch (\Exception $e) {
-         $status = $this->getStatusError($e->getCode());
-         $response = ["errors" => $e->getMessage()];
+           $status = $this->getStatusError($e->getCode());
+           $response = ['errors' => $e->getMessage()];
        }
 
        //Return response
-       return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+       return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
+   }
+
+     /**
+      * GET A ITEM
+      *
+      * @return mixed
+      */
+     public function show($criteria, Request $request)
+     {
+         try {
+             //Get Parameters from URL.
+             $params = $this->getParamsRequest($request);
+
+             //Request to Repository
+             $dataEntity = $this->banner->getItem($criteria, $params);
+
+             //Break if no found item
+             if (! $dataEntity) {
+                 throw new Exception('Item not found', 204);
+             }
+
+             //Response
+             $response = ['data' => new EntityTranformer($dataEntity)];
+
+             //If request pagination add meta-page
+             $params->page ? $response['meta'] = ['page' => $this->pageTransformer($dataEntity)] : false;
+         } catch (\Exception $e) {
+             $status = $this->getStatusError($e->getCode());
+             $response = ['errors' => $e->getMessage()];
+         }
+
+         //Return response
+         return response()->json($response ?? ['data' => 'Request successful'], $status ?? 200);
      }
 
     public function create(Request $request)
@@ -86,18 +86,18 @@ class BannerApiController extends BaseApiController
             $data = $request->input('attributes');
 
             //Validate Request
-            $this->validateRequestApi(new CreateBannerRequest((array)$data));
+            $this->validateRequestApi(new CreateBannerRequest((array) $data));
 
             //Create item
             $this->banner->create($data);
 
             //Response
-            $response = ["data" => ""];
+            $response = ['data' => ''];
             \DB::commit(); //Commit to Data Base
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
         //Return response
         return response()->json($response, $status ?? 200);
@@ -106,8 +106,6 @@ class BannerApiController extends BaseApiController
     /**
      * UPDATE ITEM
      *
-     * @param $criteria
-     * @param Request $request
      * @return mixed
      */
     public function update($criteria, Request $request)
@@ -118,39 +116,34 @@ class BannerApiController extends BaseApiController
             $data = $request->input('attributes');
 
             //Validate Request
-            $this->validateRequestApi(new CreateBannerRequest((array)$data));
+            $this->validateRequestApi(new CreateBannerRequest((array) $data));
 
             //Get Parameters from URL.
             $params = $this->getParamsRequest($request);
 
             $dataEntity = $this->banner->getItem($criteria, $params);
 
-            if (!$dataEntity) throw new Exception('Item not found', 204);
+            if (! $dataEntity) {
+                throw new Exception('Item not found', 204);
+            }
 
             //Request to Repository
             $this->banner->update($dataEntity, $data);
 
-
-
             //Response
-            $response = ["data" => 'Item Updated'];
-            \DB::commit();//Commit to DataBase
+            $response = ['data' => 'Item Updated'];
+            \DB::commit(); //Commit to DataBase
         } catch (\Exception $e) {
-            \DB::rollback();//Rollback to Data Base
+            \DB::rollback(); //Rollback to Data Base
             $status = $this->getStatusError($e->getCode());
-            $response = ["errors" => $e->getMessage()];
+            $response = ['errors' => $e->getMessage()];
         }
 
         //Return response
         return response()->json($response, $status ?? 200);
     }
 
-    /**
-     * @param  Ibanners $position
-     * @param  \Illuminate\Foundation\Http\FormRequest $request
-     * @return array
-     */
-    private function addIbannersId(Ibanners $position, FormRequest $request)
+    private function addIbannersId(Ibanners $position, FormRequest $request): array
     {
         return array_merge($request->all(), ['position_id' => $position->id]);
     }
@@ -158,27 +151,25 @@ class BannerApiController extends BaseApiController
     /**
      * DELETE A ITEM
      *
-     * @param $criteria
      * @return mixed
      */
     public function delete($criteria, Request $request)
     {
-      \DB::beginTransaction();
-      try {
-        //Get params
-        $params = $this->getParamsRequest($request);
-        //Delete data
-        $this->banner->deleteBy($criteria, $params);
-        //Response
-        $response = ['data' => ''];
-        \DB::commit(); //Commit to Data Base
-      } catch (\Exception $e) {
-        \DB::rollback();//Rollback to Data Base
-        $status = $this->getStatusError($e->getCode());
-        $response = ["errors" => $e->getMessage()];
-      }
-      return response()->json($response, $status ?? 200);
+        \DB::beginTransaction();
+        try {
+            //Get params
+            $params = $this->getParamsRequest($request);
+            //Delete data
+            $this->banner->deleteBy($criteria, $params);
+            //Response
+            $response = ['data' => ''];
+            \DB::commit(); //Commit to Data Base
+        } catch (\Exception $e) {
+            \DB::rollback(); //Rollback to Data Base
+            $status = $this->getStatusError($e->getCode());
+            $response = ['errors' => $e->getMessage()];
+        }
+
+        return response()->json($response, $status ?? 200);
     }
-
-
 }

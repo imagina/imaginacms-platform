@@ -16,8 +16,6 @@ class RegisterIcommercepaymentezSidebar implements \Maatwebsite\Sidebar\SidebarE
     protected $auth;
 
     /**
-     * @param Authentication $auth
-     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -30,18 +28,14 @@ class RegisterIcommercepaymentezSidebar implements \Maatwebsite\Sidebar\SidebarE
         //$sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    /**
-     * @param Menu $menu
-     * @return Menu
-     */
-    public function extendWith(Menu $menu)
+    public function extendWith(Menu $menu): Menu
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('icommercepaymentez::icommercepaymentezs.title.icommercepaymentezs'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                     /* append */
+                    /* append */
                 );
                 $item->item(trans('icommercepaymentez::icommercepaymentezs.title.icommercepaymentezs'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -52,8 +46,7 @@ class RegisterIcommercepaymentezSidebar implements \Maatwebsite\Sidebar\SidebarE
                         $this->auth->hasAccess('icommercepaymentez.icommercepaymentezs.index')
                     );
                 });
-// append
-
+                // append
             });
         });
 

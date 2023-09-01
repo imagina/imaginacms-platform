@@ -8,32 +8,26 @@ class IsearchRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'search' => 'required|min:2'
+            'search' => 'required|min:2',
         ];
     }
 
     /**
      * Get the validation attributes that apply to the request.
-     *
-     * @return array
      */
-    public function attributes()
+    public function attributes(): array
     {
         return [
             //
@@ -42,14 +36,12 @@ class IsearchRequest extends Request
 
     /**
      * Get the validation messages that apply to the request.
-     *
-     * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'search.required' => trans('isearch::common.messages.search is required'),
-            'search.min:2'=> trans('isearch::common.messages.search min 2 ')
+            'search.min:2' => trans('isearch::common.messages.search min 2 '),
         ];
     }
 }

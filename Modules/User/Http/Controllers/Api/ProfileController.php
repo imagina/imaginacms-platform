@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Http\Requests\UpdateProfileRequest;
@@ -14,6 +15,7 @@ class ProfileController extends Controller
      * @var Authentication
      */
     private $auth;
+
     /**
      * @var UserRepository
      */
@@ -30,7 +32,7 @@ class ProfileController extends Controller
         return new UserProfileTransformer($this->auth->user());
     }
 
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request): JsonResponse
     {
         $user = $this->auth->user();
 

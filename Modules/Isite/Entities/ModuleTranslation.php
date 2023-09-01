@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ModuleTranslation extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
-      "name"
+        'name',
     ];
+
     protected $table = 'isite__module_translations';
 }

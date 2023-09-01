@@ -23,7 +23,7 @@ return [
     ],
     'defaults' => [
         'panel_home' => [
-            'title' => 'Hi, ¡Welcome to '
-        ]
+            'title' => 'Hi, ¡Welcome to ',
+        ],
     ],
 ];

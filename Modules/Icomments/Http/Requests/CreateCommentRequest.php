@@ -11,7 +11,7 @@ class CreateCommentRequest extends BaseFormRequest
         return [
             'comment' => 'required',
             'commentable_type' => 'required',
-            'commentable_id' => 'required'
+            'commentable_id' => 'required',
         ];
     }
 
@@ -30,7 +30,7 @@ class CreateCommentRequest extends BaseFormRequest
         return [
             'comment.required' => trans('requestable::common.messages.field required'),
             'commentable_type.required' => trans('requestable::common.messages.field required'),
-            'commentable_id.required' => trans('requestable::common.messages.field required')
+            'commentable_id.required' => trans('requestable::common.messages.field required'),
         ];
     }
 
@@ -39,8 +39,8 @@ class CreateCommentRequest extends BaseFormRequest
         return [];
     }
 
-    public function getValidator(){
+    public function getValidator()
+    {
         return $this->getValidatorInstance();
     }
-    
 }

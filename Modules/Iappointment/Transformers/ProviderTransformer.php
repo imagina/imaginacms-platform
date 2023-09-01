@@ -2,14 +2,13 @@
 
 namespace Modules\Iappointment\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Isite\Http\Controllers\Api\ConfigsApiController;
 
 class ProviderTransformer extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $data = [
             'id' => $this->when($this->id, $this->id),
@@ -21,17 +20,17 @@ class ProviderTransformer extends JsonResource
             'options' => $this->when($this->options, $this->options),
             'mediaFiles' => $this->mediaFiles(),
             'createdAt' => $this->when($this->created_at, $this->created_at),
-            'updatedAt' => $this->when($this->updated_at, $this->updated_at)
+            'updatedAt' => $this->when($this->updated_at, $this->updated_at),
         ];
 
-         // Add Crud Fields from Provider
-        if (isset($this->name) && !empty($this->name)) {
-          $config = ucfirst($data['name']) . ".crud-fields.formFields";
+        // Add Crud Fields from Provider
+        if (isset($this->name) && ! empty($this->name)) {
+            $config = ucfirst($data['name']).'.crud-fields.formFields';
 
-          $fieldsController = new ConfigsApiController();
-          $data['crudFields'] = $fieldsController->validateResponseApi($fieldsController->index(new Request([
-            'filter' => json_encode(['configName' => $config])
-          ])));
+            $fieldsController = new ConfigsApiController();
+            $data['crudFields'] = $fieldsController->validateResponseApi($fieldsController->index(new Request([
+                'filter' => json_encode(['configName' => $config]),
+            ])));
         }
 
         $filter = json_decode($request->filter);
@@ -48,6 +47,7 @@ class ProviderTransformer extends JsonResource
                     $this->translate("$lang")['description'] ?? '' : '';
             }
         }
+
         return $data;
     }
 }

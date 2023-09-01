@@ -11,6 +11,7 @@ class MediaThumbnailDirective
      * @var string
      */
     private $path;
+
     /**
      * @var string
      */
@@ -35,7 +36,6 @@ class MediaThumbnailDirective
 
     /**
      * Extract the possible arguments as class properties
-     * @param array $arguments
      */
     private function extractArguments(array $arguments)
     {

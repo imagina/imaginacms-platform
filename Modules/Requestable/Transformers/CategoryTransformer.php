@@ -6,16 +6,14 @@ use Modules\Core\Icrud\Transformers\CrudResource;
 
 class CategoryTransformer extends CrudResource
 {
-  /**
-  * Method to merge values with response
-  *
-  * @return array
-  */
-  public function modelAttributes($request)
-  {
-    return [
-      "form" => $this->form,
-      "formId" => $this->form->id
-    ];
-  }
+    /**
+     * Method to merge values with response
+     */
+    public function modelAttributes($request): array
+    {
+        return [
+            'form' => $this->form,
+            'formId' => $this->form->id,
+        ];
+    }
 }

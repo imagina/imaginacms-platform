@@ -2,13 +2,12 @@
 
 namespace Modules\Iad\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iad\Entities\Up;
 use Modules\Iad\Http\Requests\CreateUpRequest;
 use Modules\Iad\Http\Requests\UpdateUpRequest;
 use Modules\Iad\Repositories\UpRepository;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class UpsController extends AdminBaseController
 {
@@ -26,10 +25,8 @@ class UpsController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //$ups = $this->ups->all();
 
@@ -38,21 +35,16 @@ class UpsController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return view('iad::admin.ups.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  CreateUpRequest $request
-     * @return Response
      */
-    public function store(CreateUpRequest $request)
+    public function store(CreateUpRequest $request): Response
     {
         $this->ups->create($request->all());
 
@@ -62,23 +54,16 @@ class UpsController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Up $ups
-     * @return Response
      */
-    public function edit(Up $ups)
+    public function edit(Up $ups): Response
     {
         return view('iad::admin.ups.edit', compact('ups'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Up $ups
-     * @param  UpdateUpRequest $request
-     * @return Response
      */
-    public function update(Up $ups, UpdateUpRequest $request)
+    public function update(Up $ups, UpdateUpRequest $request): Response
     {
         $this->ups->update($ups, $request->all());
 
@@ -88,11 +73,8 @@ class UpsController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Up $ups
-     * @return Response
      */
-    public function destroy(Up $ups)
+    public function destroy(Up $ups): Response
     {
         $this->ups->destroy($ups);
 

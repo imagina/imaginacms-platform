@@ -1,14 +1,13 @@
 <?php
 
 namespace Modules\Iauctions\Jobs;
+
 // CHECK THIS
 use Illuminate\Bus\Queueable;
-
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Modules\Iauctions\Entities\Auction;
 use Modules\Iauctions\Events\AuctionRemainingDay;
 
@@ -28,33 +27,27 @@ class CheckDaysToStartAuction implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        
         $nowDate = date('Y-m-d');
-        \Log::info("Iauctions: Jobs|CheckDaysToStartAuction");
+        \Log::info('Iauctions: Jobs|CheckDaysToStartAuction');
 
         $result = Auction::select(
             \DB::raw("DATEDIFF(start_at, '$nowDate') as days_remaining"),
-            "id",
-            "status"
-        )->where("status", 0) // INACTIVE
+            'id',
+            'status'
+        )->where('status', 0) // INACTIVE
         ->whereRaw(\DB::raw("DATEDIFF(start_at, '$nowDate') = 1"))
         ->get();
 
-        if(count($result) > 0) {
+        if (count($result) > 0) {
             foreach ($result as $item) {
-
                 $auction = Auction::find($item->id);
                 event(new AuctionRemainingDay($auction));
-                
+
                 \Log::info("Iauctions: Jobs|CheckDaysToStartAuction|Auction: ID $auction->id");
-                
             }
         }
-
     }
 }

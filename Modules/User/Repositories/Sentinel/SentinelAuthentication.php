@@ -10,16 +10,18 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Events\UserHasActivatedAccount;
+use Modules\User\Repositories\RoleRepository;
+use Modules\User\Repositories\UserRepository;
 
 class SentinelAuthentication implements Authentication
 {
     /**
      * Authenticate a user
-     * @param  array $credentials
+     *
      * @param  bool  $remember    Remember the user
      * @return mixed
      */
-    public function login(array $credentials, $remember = false)
+    public function login(array $credentials, bool $remember = false)
     {
         try {
             if (Sentinel::authenticate($credentials, $remember)) {
@@ -38,41 +40,36 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Register a new user.
-     * @param  array $user
-     * @return bool
      */
-    public function register(array $user)
+    public function register(array $user): bool
     {
         return Sentinel::getUserRepository()->create((array) $user);
     }
 
     /**
      * Assign a role to the given user.
-     * @param  \Modules\User\Repositories\UserRepository $user
-     * @param  \Modules\User\Repositories\RoleRepository $role
+     *
      * @return mixed
      */
-    public function assignRole($user, $role)
+    public function assignRole(UserRepository $user, RoleRepository $role)
     {
         return $role->users()->attach($user);
     }
 
     /**
      * Log the user out of the application.
-     * @return bool
      */
-    public function logout()
+    public function logout(): bool
     {
         return Sentinel::logout();
     }
 
     /**
      * Activate the given used id
-     * @param  int    $userId
-     * @param  string $code
+     *
      * @return mixed
      */
-    public function activate($userId, $code)
+    public function activate(int $userId, string $code)
     {
         $user = Sentinel::findById($userId);
 
@@ -86,20 +83,20 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Create an activation code for the given user
-     * @param  \Modules\User\Repositories\UserRepository $user
+     *
      * @return mixed
      */
-    public function createActivation($user)
+    public function createActivation(UserRepository $user)
     {
         return Activation::create($user)->code;
     }
 
     /**
      * Create a reminders code for the given user
-     * @param  \Modules\User\Repositories\UserRepository $user
+     *
      * @return mixed
      */
-    public function createReminderCode($user)
+    public function createReminderCode(UserRepository $user)
     {
         $reminder = Reminder::exists($user) ?: Reminder::create($user);
 
@@ -108,22 +105,16 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Completes the reset password process
-     * @param $user
-     * @param  string $code
-     * @param  string $password
-     * @return bool
      */
-    public function completeResetPassword($user, $code, $password)
+    public function completeResetPassword($user, string $code, string $password): bool
     {
         return Reminder::complete($user, $code, $password);
     }
 
     /**
      * Determines if the current user has access to given permission
-     * @param $permission
-     * @return bool
      */
-    public function hasAccess($permission) : bool
+    public function hasAccess($permission): bool
     {
         if (! Sentinel::check()) {
             return false;
@@ -134,9 +125,8 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Check if the user is logged in
-     * @return bool
      */
-    public function check() : bool
+    public function check(): bool
     {
         $user = Sentinel::check();
 
@@ -149,18 +139,16 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Get the currently logged in user
-     * @return \Modules\User\Entities\UserInterface
      */
-    public function user()
+    public function user(): \Modules\User\Entities\UserInterface
     {
         return Sentinel::getUser();
     }
 
     /**
      * Get the ID for the currently authenticated user
-     * @return int
      */
-    public function id() : int
+    public function id(): int
     {
         $user = $this->user();
 
@@ -171,7 +159,7 @@ class SentinelAuthentication implements Authentication
         return $user->id;
     }
 
-    public function logUserIn(UserInterface $user) : UserInterface
+    public function logUserIn(UserInterface $user): UserInterface
     {
         return Sentinel::login($user);
     }

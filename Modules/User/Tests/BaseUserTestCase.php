@@ -29,7 +29,7 @@ abstract class BaseUserTestCase extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = __DIR__ . '/..';
+        $app['path.base'] = __DIR__.'/..';
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
@@ -37,7 +37,7 @@ abstract class BaseUserTestCase extends TestCase
             'prefix' => '',
         ]);
         $app['config']->set('translatable.locales', ['en', 'fr']);
-        $app['config']->set('modules.paths.modules', __DIR__ . '/../Modules');
+        $app['config']->set('modules.paths.modules', __DIR__.'/../Modules');
         $app['config']->set('cartalyst.sentinel.users.model', \Modules\User\Entities\Sentinel\User::class);
         $app['config']->set('asgard.user.config.fillable', [
             'email',

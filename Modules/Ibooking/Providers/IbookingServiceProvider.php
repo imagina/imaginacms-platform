@@ -2,18 +2,17 @@
 
 namespace Modules\Ibooking\Providers;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Ibooking\Listeners\RegisterIbookingSidebar;
-
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ibooking\Console\CheckStatusReservations;
+use Modules\Ibooking\Listeners\RegisterIbookingSidebar;
 
 class IbookingServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -23,10 +22,8 @@ class IbookingServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIbookingSidebar::class);
@@ -38,44 +35,39 @@ class IbookingServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
-    public function boot()
+    public function boot(): void
     {
-
         $this->publishConfig('ibooking', 'config');
         $this->publishConfig('ibooking', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'settings'), "asgard.ibooking.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'settings-fields'), "asgard.ibooking.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'permissions'), "asgard.ibooking.permissions");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'cmsPages'), "asgard.ibooking.cmsPages");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'cmsSidebar'), "asgard.ibooking.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'settings'), 'asgard.ibooking.settings');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'settings-fields'), 'asgard.ibooking.settings-fields');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'permissions'), 'asgard.ibooking.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'cmsPages'), 'asgard.ibooking.cmsPages');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibooking', 'cmsSidebar'), 'asgard.ibooking.cmsSidebar');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return array();
+        return [];
     }
 
     /**
-   * Register all commands for this module
-   */
+     * Register all commands for this module
+     */
     private function registerCommands()
     {
         $this->registerCheckStatusReservationsCommand();
     }
 
-
     private function registerCheckStatusReservationsCommand()
     {
-
-        $this->app['command.ibooking.check-status-reservations'] = $this->app->make(CheckStatusReservations::class);;
+        $this->app['command.ibooking.check-status-reservations'] = $this->app->make(CheckStatusReservations::class);
         $this->commands(['command.ibooking.check-status-reservations']);
     }
 
@@ -141,14 +133,6 @@ class IbookingServiceProvider extends ServiceProvider
                 return new \Modules\Ibooking\Repositories\Cache\CacheReservationItemDecorator($repository);
             }
         );
-// add bindings
-
-
-
-
-
-
+        // add bindings
     }
-
-
 }

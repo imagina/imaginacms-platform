@@ -1,16 +1,16 @@
 <?php
 
 return [
-  //Media Fillables
-  'mediaFillable' => [
-    'activity' => [
-      'mainimage' => 'single'
+    //Media Fillables
+    'mediaFillable' => [
+        'activity' => [
+            'mainimage' => 'single',
+        ],
+        'category' => [
+            'mainimage' => 'single',
+        ],
     ],
-    'category' => [
-      'mainimage' => 'single'
-    ]
-  ],
-  'documentation' => [
-    'categories' => "igamification::cms.documentation.categories",
-  ]
+    'documentation' => [
+        'categories' => 'igamification::cms.documentation.categories',
+    ],
 ];

@@ -6,27 +6,25 @@ use Illuminate\Queue\SerializesModels;
 
 class MessageWasRetrieved
 {
-  use SerializesModels;
+    use SerializesModels;
 
-  public $message;
+    public $message;
 
-  /**
-   * Create a new event instance.
-   *
-   * @return void
-   */
-  public function __construct($message)
-  {
-    $this->message = $message;
-  }
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct($message)
+    {
+        $this->message = $message;
+    }
 
-  /**
-   * Get the channels the event should be broadcast on.
-   *
-   * @return array
-   */
-  public function broadcastOn()
-  {
-    return [];
-  }
+    /**
+     * Get the channels the event should be broadcast on.
+     */
+    public function broadcastOn(): array
+    {
+        return [];
+    }
 }

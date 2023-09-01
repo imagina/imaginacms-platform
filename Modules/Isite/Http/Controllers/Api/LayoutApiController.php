@@ -9,12 +9,13 @@ use Modules\Isite\Repositories\LayoutRepository;
 
 class LayoutApiController extends BaseCrudController
 {
-  public $model;
-  public $modelRepository;
+    public $model;
 
-  public function __construct(Layout $model, LayoutRepository $modelRepository)
-  {
-    $this->model = $model;
-    $this->modelRepository = $modelRepository;
-  }
+    public $modelRepository;
+
+    public function __construct(Layout $model, LayoutRepository $modelRepository)
+    {
+        $this->model = $model;
+        $this->modelRepository = $modelRepository;
+    }
 }

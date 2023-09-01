@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IcreditController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,6 @@
 |
 */
 
-Route::prefix('icredit')->group(function() {
-    Route::get('/', 'IcreditController@index');
+Route::prefix('icredit')->group(function () {
+    Route::get('/', [IcreditController::class, 'index']);
 });

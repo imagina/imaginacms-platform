@@ -21,20 +21,20 @@ return [
     ],
     'validation' => [
     ],
-  'status' => [
-    'pending' => "Pendiente",
-    'enabled' => "Activa",
-    'disabled' => "Inactiva",
-  ],
-  'alerts' => [
-    'adUpForSellOut' => "Tu plan de subidas está por agotarse",
-    "adUpSoldOut" => "Tu plan de subidas se ha agotado"
-  ],
-'messages' => [
-  'adUpSoldOut'      => 'Tu plan de subidas <b>:upName</b> en tu anuncio <b>:adName</b>, ha <b>terminado</b>',
-  'adUpForSellOut'      => 'Te queda(n) <b>:days</b> día(s) del plan de subidas <b>:upName</b> en tu anuncio: <b>:adName</b>',
-],
-  "button" => [
-    'buy' => 'Ver Planes de subidas',
-  ]
+    'status' => [
+        'pending' => 'Pendiente',
+        'enabled' => 'Activa',
+        'disabled' => 'Inactiva',
+    ],
+    'alerts' => [
+        'adUpForSellOut' => 'Tu plan de subidas está por agotarse',
+        'adUpSoldOut' => 'Tu plan de subidas se ha agotado',
+    ],
+    'messages' => [
+        'adUpSoldOut' => 'Tu plan de subidas <b>:upName</b> en tu anuncio <b>:adName</b>, ha <b>terminado</b>',
+        'adUpForSellOut' => 'Te queda(n) <b>:days</b> día(s) del plan de subidas <b>:upName</b> en tu anuncio: <b>:adName</b>',
+    ],
+    'button' => [
+        'buy' => 'Ver Planes de subidas',
+    ],
 ];

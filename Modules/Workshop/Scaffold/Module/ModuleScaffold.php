@@ -15,24 +15,32 @@ class ModuleScaffold
 {
     /**
      * Contains the vendor name
+     *
      * @var string
      */
     protected $vendor;
+
     /**
      * Contains the Module name
+     *
      * @var string
      */
     protected $name;
+
     /**
      * Contains an array of entities to generate
+     *
      * @var array
      */
     protected $entities;
+
     /**
      * Contains an array of value objects to generate
+     *
      * @var array
      */
     protected $valueObjects;
+
     /**
      * @var array of files to generate
      */
@@ -45,30 +53,37 @@ class ModuleScaffold
         'routes-api.stub' => 'Http/apiRoutes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',
     ];
+
     /**
      * @var string The type of entities to generate [Eloquent or Doctrine]
      */
     protected $entityType;
+
     /**
      * @var Kernel
      */
     private $artisan;
+
     /**
      * @var Filesystem
      */
     private $finder;
+
     /**
      * @var Repository
      */
     private $config;
+
     /**
      * @var EntityGenerator
      */
     private $entityGenerator;
+
     /**
      * @var ValueObjectGenerator
      */
     private $valueObjectGenerator;
+
     /**
      * @var FilesGenerator
      */
@@ -89,16 +104,13 @@ class ModuleScaffold
         $this->filesGenerator = $filesGenerator;
     }
 
-    /**
-     *
-     */
     public function scaffold()
     {
         if ($this->finder->isDirectory($this->getModulesPath())) {
             throw new ModuleExistsException();
         }
 
-        $this->artisan->call("module:make", ['name' => [$this->name]]);
+        $this->artisan->call('module:make', ['name' => [$this->name]]);
 
         $this->addDataToComposerFile();
         $this->removeUnneededFiles();
@@ -115,22 +127,14 @@ class ModuleScaffold
         $this->valueObjectGenerator->forModule($this->getName())->type($this->entityType)->generate($this->valueObjects);
     }
 
-    /**
-     * @param  string $vendor
-     * @return $this
-     */
-    public function vendor($vendor)
+    public function vendor(string $vendor): static
     {
         $this->vendor = $vendor;
 
         return $this;
     }
 
-    /**
-     * @param  string $name
-     * @return $this
-     */
-    public function name($name)
+    public function name(string $name): static
     {
         $this->name = $name;
 
@@ -139,42 +143,30 @@ class ModuleScaffold
 
     /**
      * Get the name of module will created. By default in studly case.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return Str::studly($this->name);
     }
 
     /**
      * Set the entity type [Eloquent, Doctrine]
-     * @param  string $entityType
-     * @return $this
      */
-    public function setEntityType($entityType)
+    public function setEntityType(string $entityType): static
     {
         $this->entityType = $entityType;
 
         return $this;
     }
 
-    /**
-     * @param  array $entities
-     * @return $this
-     */
-    public function withEntities(array $entities)
+    public function withEntities(array $entities): static
     {
         $this->entities = $entities;
 
         return $this;
     }
 
-    /**
-     * @param  array $valueObjects
-     * @return $this
-     */
-    public function withValueObjects(array $valueObjects)
+    public function withValueObjects(array $valueObjects): static
     {
         $this->valueObjects = $valueObjects;
 
@@ -183,12 +175,10 @@ class ModuleScaffold
 
     /**
      * Return the current module path
-     * @param  string $path
-     * @return string
      */
-    private function getModulesPath($path = '')
+    private function getModulesPath(string $path = ''): string
     {
-        return $this->config->get('modules.paths.modules') . "/{$this->getName()}/$path";
+        return $this->config->get('modules.paths.modules')."/{$this->getName()}/$path";
     }
 
     /**
@@ -239,10 +229,8 @@ class ModuleScaffold
 
     /**
      * Load the routing service provider
-     * @param string $content
-     * @return string
      */
-    private function loadProviders($content)
+    private function loadProviders(string $content): string
     {
         $newProviders = <<<JSON
 "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
@@ -250,29 +238,25 @@ class ModuleScaffold
         "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
 JSON;
 
-        $oldProvider = '"Modules\\\\' . $this->name . '\\\\Providers\\\\' . $this->name . 'ServiceProvider"';
+        $oldProvider = '"Modules\\\\'.$this->name.'\\\\Providers\\\\'.$this->name.'ServiceProvider"';
 
         return  str_replace($oldProvider, $newProviders, $content);
     }
 
     /**
      * Set the module order to 1
-     * @param string $content
-     * @return string
      */
-    private function setModuleOrderOrder($content)
+    private function setModuleOrderOrder(string $content): string
     {
         return str_replace('"priority": 0,', '"priority": 1,', $content);
     }
 
     /**
      * Set the module version to 1.0.0 by default
-     * @param string $content
-     * @return string
      */
-    private function setModuleVersion($content)
+    private function setModuleVersion(string $content): string
     {
-        return str_replace("\"description\"", "\"version\": \"1.0.0\",\n\t\"description\"", $content);
+        return str_replace('"description"', "\"version\": \"1.0.0\",\n\t\"description\"", $content);
     }
 
     /**
@@ -290,6 +274,7 @@ JSON;
      * - package requirements
      * - minimum stability
      * - prefer stable
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function addDataToComposerFile()
@@ -298,7 +283,7 @@ JSON;
 
         $name = ucfirst($this->name);
 
-        $search = <<<JSON
+        $search = <<<'JSON'
 "description": "",
 JSON;
         $replace = <<<JSON
@@ -329,17 +314,18 @@ JSON;
 
     /**
      * Adding the module name to the .gitignore file so that it can be committed
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function addModuleToIgnoredExceptions()
     {
         $modulePath = $this->config->get('modules.paths.modules');
 
-        if ($this->finder->exists($modulePath . '/.gitignore') === false) {
+        if ($this->finder->exists($modulePath.'/.gitignore') === false) {
             return;
         }
-        $moduleGitIgnore = $this->finder->get($modulePath . '/.gitignore');
-        $moduleGitIgnore .= '!' . $this->getName() . PHP_EOL;
-        $this->finder->put($modulePath . '/.gitignore', $moduleGitIgnore);
+        $moduleGitIgnore = $this->finder->get($modulePath.'/.gitignore');
+        $moduleGitIgnore .= '!'.$this->getName().PHP_EOL;
+        $this->finder->put($modulePath.'/.gitignore', $moduleGitIgnore);
     }
 }
