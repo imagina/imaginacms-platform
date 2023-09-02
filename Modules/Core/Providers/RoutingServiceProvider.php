@@ -49,7 +49,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
     {
         $this->loadApiRoutes($router);
 
-        Route::prefix(LaravelLocalization::setLocale())->middleware('localeSessionRedirect', 'localizationRedirect', 'web')->group(function (Router $router) {
+        \Route::prefix(LaravelLocalization::setLocale())->middleware('localeSessionRedirect', 'localizationRedirect', 'web')->group(function (Router $router) {
             $this->loadBackendRoutes($router);
             $this->loadFrontendRoutes($router);
         });
@@ -60,7 +60,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $frontend = $this->getFrontendRoute();
 
         if ($frontend && file_exists($frontend)) {
-            Route::middleware(config('asgard.core.core.middleware.frontend', []))->group(function (Router $router) use ($frontend) {
+            \Route::middleware(config('asgard.core.core.middleware.frontend', []))->group(function (Router $router) use ($frontend) {
                 require $frontend;
             });
         }
@@ -71,7 +71,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $backend = $this->getBackendRoute();
 
         if ($backend && file_exists($backend)) {
-            Route::prefix(config('asgard.core.core.admin-prefix'))->middleware(config('asgard.core.core.middleware.backend', []))->group(function (Router $router) use ($backend) {
+            \Route::prefix(config('asgard.core.core.admin-prefix'))->middleware(config('asgard.core.core.middleware.backend', []))->group(function (Router $router) use ($backend) {
                 require $backend;
             });
         }
@@ -82,7 +82,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $api = $this->getApiRoute();
 
         if ($api && file_exists($api)) {
-            Route::prefix(LaravelLocalization::setLocale().'/api')->middleware(config('asgard.core.core.middleware.api', []))->group(function (Router $router) use ($api) {
+            \Route::prefix(LaravelLocalization::setLocale().'/api')->middleware(config('asgard.core.core.middleware.api', []))->group(function (Router $router) use ($api) {
                 require $api;
             });
         }

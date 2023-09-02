@@ -4,20 +4,20 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 Route::middleware('api.token')->group(function (Router $router) {
-    $router->get('folder', [
-        'uses' => 'AllNestableFolderController',
-        'as' => 'api.media.folders.all-nestable',
-        'middleware' => 'token-can:media.folders.index',
-    ]);
+//    $router->get('folder', [
+//        'uses' => 'AllNestableFolderController',
+//        'as' => 'api.media.folders.all-nestable',
+//        'middleware' => 'token-can:media.folders.index',
+//    ]);
     $router->post('folder', [
         'uses' => 'FolderController@store',
         'as' => 'api.media.folders.store',
         'middleware' => 'token-can:media.folders.create',
     ]);
-    $router->get('folder/breadcrumb/{folder}', [
-        'uses' => 'FolderBreadcrumbController',
-        'as' => 'api.media.folders.breadcrumb',
-    ]);
+//    $router->get('folder/breadcrumb/{folder}', [
+//        'uses' => 'FolderBreadcrumbController',
+//        'as' => 'api.media.folders.breadcrumb',
+//    ]);
     $router->post('folder/{folder}', [
         'uses' => 'FolderController@update',
         'as' => 'api.media.folders.update',
@@ -47,10 +47,10 @@ Route::middleware('api.token')->group(function (Router $router) {
         'uses' => 'MediaController@unlinkMedia',
         'as' => 'api.media.unlink',
     ]);
-    $router->post('media/move', [
-        'uses' => 'MoveMediaController',
-        'as' => 'api.media.media.move',
-    ]);
+//    $router->post('media/move', [
+//        'uses' => 'MoveMediaController',
+//        'as' => 'api.media.media.move',
+//    ]);
     $router->get('media/all', [
         'uses' => 'MediaController@all',
         'as' => 'api.media.all',
@@ -90,11 +90,11 @@ Route::middleware('api.token')->group(function (Router $router) {
         'middleware' => 'token-can:media.medias.destroy',
     ]);
 
-    $router->post('batch-destroy', [
-        'uses' => 'BatchDestroyController',
-        'as' => 'api.media.media.batch-destroy',
-        'middleware' => 'token-can:media.medias.destroy',
-    ]);
+//    $router->post('batch-destroy', [
+//        'uses' => 'BatchDestroyController',
+//        'as' => 'api.media.media.batch-destroy',
+//        'middleware' => 'token-can:media.medias.destroy',
+//    ]);
 });
 
 /**

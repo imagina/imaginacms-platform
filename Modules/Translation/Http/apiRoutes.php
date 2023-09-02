@@ -17,10 +17,10 @@ Route::prefix('/translation')->middleware('api.token')->group(function (Router $
         'uses' => 'TranslationController@revisions',
         'as' => 'api.translation.translations.revisions',
     ]);
-    $router->get('/', [
-        'uses' => 'AllTranslationController',
-        'as' => 'api.translation.translations.all',
-    ]);
+//    $router->get('/', [
+//        'uses' => 'AllTranslationController',
+//        'as' => 'api.translation.translations.all',
+//    ]);
     $router->get('list-locales-for-select', [
         'uses' => 'LocaleController@listLocalesForSelect',
         'as' => 'api.translation.translations.list-locales-for-select',

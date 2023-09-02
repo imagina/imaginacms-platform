@@ -113,4 +113,13 @@ class Sentinel implements LaravelGuard
 
         return $this->login($user);
     }
+  
+  /**
+   * Determine if the guard has a user instance.
+   *
+   * @return bool
+   */
+  public function hasUser(){
+    return SentinelFacade::hasUser();
+  }
 }

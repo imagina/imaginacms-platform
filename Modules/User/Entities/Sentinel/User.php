@@ -49,9 +49,9 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         if (config()->has('asgard.user.config.presenter')) {
             $this->presenter = config('asgard.user.config.presenter', UserPresenter::class);
         }
-        if (config()->has('asgard.user.config.dates')) {
-            $this->dates = config('asgard.user.config.dates', []);
-        }
+//        if (config()->has('asgard.user.config.dates')) {
+//            $this->dates = config('asgard.user.config.dates', []);
+//        }
         if (config()->has('asgard.user.config.casts')) {
             $this->casts = config('asgard.user.config.casts', []);
         }
