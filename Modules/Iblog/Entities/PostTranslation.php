@@ -33,7 +33,7 @@ class PostTranslation extends Model
     /**
      * Return the sluggable configuration array for this model.
      */
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

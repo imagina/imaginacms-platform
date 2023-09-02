@@ -35,14 +35,14 @@ Route::prefix(LaravelLocalization::setLocale())->group(function (Router $router)
     ]);
 });
 
-$router->get('/', [
+Route::get('/', [
     'uses' => '\Modules\Page\Http\Controllers\PublicController@homepage',
     'as' => $locale.'.homepage',
     'middleware' => $middlewares,
 ]);
 
-$router->any('{uri}', [
-    'uses' => 'PublicController@uri',
+Route::any('{uri}', [
+    'uses' => '\Modules\Isite\Http\Controllers\PublicController@uri',
     'as' => $locale.'.site',
     'middleware' => $middlewares,
 ])->where('uri', '.*');

@@ -92,7 +92,7 @@ class PublicController extends BaseApiController
         ]]);
     }
 
-    public function uri($slug, Request $request): View
+    public function uri($slug, Request $request)
     {
         try {
             //revoke api routes

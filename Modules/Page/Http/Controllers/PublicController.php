@@ -35,7 +35,7 @@ class PublicController extends BasePublicController
     /**
      * DEPRECATED
      */
-    public function uri($page, $slug, Request $request): View
+    public function uri($page, $slug, Request $request)
     {
         $this->throw404IfNotFound($page);
 
