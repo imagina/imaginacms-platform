@@ -9,7 +9,7 @@ class CategoryTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         $user = \Auth::user();
 

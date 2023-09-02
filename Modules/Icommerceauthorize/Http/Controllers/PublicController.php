@@ -55,7 +55,7 @@ class PublicController extends BasePublicController
      *
      * @param Requests request
      */
-    public function index($eURL): route
+    public function index($eURL)
     {
         try {
             // Decr
@@ -104,7 +104,7 @@ class PublicController extends BasePublicController
      *
      * @param orderId
      */
-    public function payment($orderId, $transactionId, $oval, $odes): redirect
+    public function payment($orderId, $transactionId, $oval, $odes)
     {
         $order = $this->order->find($orderId);
         $transaction = $this->transaction->find($transactionId);

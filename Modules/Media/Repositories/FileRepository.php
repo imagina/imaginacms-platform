@@ -17,7 +17,7 @@ interface FileRepository extends BaseRepository
      * @param  string  $disk
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file, int $parentId = 0, string $disk = null);
+    public function createFromFile(UploadedFile $file, $parentId = 0, $disk = null);
 
     /**
      * Find a file for the entity by zone
@@ -26,7 +26,7 @@ interface FileRepository extends BaseRepository
      * @param  object  $entity
      * @return object
      */
-    public function findFileByZoneForEntity($zone, object $entity): object;
+    public function findFileByZoneForEntity($zone, $entity);
 
     /**
      * Find multiple files for the given zone and entity
@@ -35,7 +35,7 @@ interface FileRepository extends BaseRepository
      * @param  object  $entity
      * @return object
      */
-    public function findMultipleFilesByZoneForEntity(string $zone, object $entity): object;
+    public function findMultipleFilesByZoneForEntity($zone, $entity);
 
     /**
      * @return mixed
@@ -45,7 +45,7 @@ interface FileRepository extends BaseRepository
     /**
      * @param  int  $folderId
      */
-    public function allChildrenOf(int $folderId): Collection;
+    public function allChildrenOf($folderId): Collection;
 
     public function findForVirtualPath($criteria);
 

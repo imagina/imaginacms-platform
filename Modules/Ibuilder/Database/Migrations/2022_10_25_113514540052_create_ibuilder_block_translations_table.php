@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbuilderBlockTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ibuilder__block_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -25,11 +25,11 @@ class CreateIbuilderBlockTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('ibuilder__block_translations', function (Blueprint $table) {
             $table->dropForeign(['block_id']);
         });
         Schema::dropIfExists('ibuilder__block_translations');
     }
-}
+};

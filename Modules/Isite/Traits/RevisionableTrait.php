@@ -100,7 +100,7 @@ trait RevisionableTrait
      *
      * @return mixed
      */
-    public static function classRevisions(int $limit = 100, string $order = 'desc')
+    public static function classRevisions($limit = 100, $order = 'desc')
     {
         $model = Revisionable::newModel();
 
@@ -111,7 +111,7 @@ trait RevisionableTrait
     /**
      * Invoked before a model is saved. Return false to abort the operation.
      */
-    public function preSave(): bool
+    public function preSave()
     {
         if (! isset($this->revisionEnabled) || $this->revisionEnabled) {
             // if there's no revisionEnabled. Or if there is, if it's true
@@ -314,7 +314,7 @@ trait RevisionableTrait
      *
      * @return array fields with new data, that should be recorded
      */
-    private function changedRevisionableFields(): array
+    private function changedRevisionableFields()
     {
         $changes_to_record = [];
         foreach ($this->dirtyData as $key => $value) {
@@ -339,7 +339,7 @@ trait RevisionableTrait
     /**
      * Check if this field should have a revision kept
      */
-    private function isRevisionable(string $key): bool
+    private function isRevisionable($key)
     {
         // If the field is explicitly revisionable, then return true.
         // If it's explicitly not revisionable, return false.
@@ -358,7 +358,7 @@ trait RevisionableTrait
     /**
      * Check if soft deletes are currently enabled on this model
      */
-    private function isSoftDelete(): bool
+    private function isSoftDelete()
     {
         // check flag variable used in laravel 4.2+
         if (isset($this->forceDeleting)) {
@@ -398,7 +398,7 @@ trait RevisionableTrait
      *
      * @return string an identifying name for the model
      */
-    public function identifiableName(): string
+    public function identifiableName()
     {
         return $this->getKey();
     }
@@ -412,7 +412,7 @@ trait RevisionableTrait
      *
      * @return string an identifying name for the model
      */
-    public function getRevisionNullString(): string
+    public function getRevisionNullString()
     {
         return isset($this->revisionNullString) ? $this->revisionNullString : 'nothing';
     }
@@ -425,7 +425,7 @@ trait RevisionableTrait
      *
      * @return string an identifying name for the model
      */
-    public function getRevisionUnknownString(): string
+    public function getRevisionUnknownString()
     {
         return isset($this->revisionUnknownString) ? $this->revisionUnknownString : 'unknown';
     }
@@ -437,7 +437,7 @@ trait RevisionableTrait
      *
      * @param  mixed  $field
      */
-    public function disableRevisionField($field): void
+    public function disableRevisionField($field)
     {
         if (! isset($this->dontKeepRevisionOf)) {
             $this->dontKeepRevisionOf = [];

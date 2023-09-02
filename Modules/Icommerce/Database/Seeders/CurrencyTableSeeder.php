@@ -11,7 +11,7 @@ class CurrencyTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
         $copSeed = Currency::where('code', 'COP')->first();

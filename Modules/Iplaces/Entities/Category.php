@@ -142,7 +142,7 @@ class Category extends Model
     /**
      * Check if the post is in draft
      */
-    public function scopeActive(Builder $query): Builder
+    public function scopeActive(Builder $query)
     {
         return $query->whereStatus(Status::ACTIVE);
     }
@@ -150,7 +150,7 @@ class Category extends Model
     /**
      * Check if the post is pending review
      */
-    public function scopeInactive(Builder $query): Builder
+    public function scopeInactive(Builder $query)
     {
         return $query->whereStatus(Status::INACTIVE);
     }

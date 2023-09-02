@@ -15,7 +15,7 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
         $this->repository = $recipe;
     }
 
-    public function findByKeyAndLocale(string $key, string $locale = null): string
+    public function findByKeyAndLocale($key, $locale = null)
     {
         $cleanKey = $this->cleanKey($key);
 
@@ -66,7 +66,7 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
      *
      * @return mixed
      */
-    public function updateFromImport(string $key, array $data)
+    public function updateFromImport($key, array $data)
     {
         app('cache')->driver('translations')->flush();
 
@@ -76,11 +76,11 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
     /**
      * Set the given value on the given TranslationTranslation
      */
-    public function updateTranslationToValue(TranslationTranslation $translationTranslation, string $value): void
+    public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value)
     {
         app('cache')->driver('translations')->flush();
 
-        $this->repository->updateTranslationToValue($translationTranslation, $value);
+        return $this->repository->updateTranslationToValue($translationTranslation, $value);
     }
 
     /**
@@ -88,7 +88,7 @@ class CacheTranslationDecorator extends BaseCacheDecorator implements Translatio
      *
      * @param  string  $key   Potentially unsafe key
      */
-    protected function cleanKey(string $key): string
+    protected function cleanKey(string $key)
     {
         return str_replace(' ', '--', $key);
     }

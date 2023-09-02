@@ -81,7 +81,7 @@ trait AuditTrait
     /**
      * Has the model loaded the SoftDeletes trait.
      */
-    public static function usingSoftDeletes(): bool
+    public static function usingSoftDeletes()
     {
         static $usingSoftDeletes;
 
@@ -95,7 +95,7 @@ trait AuditTrait
     /**
      * Get the name of the "created by" column.
      */
-    public function getCreatedByColumn(): string
+    public function getCreatedByColumn()
     {
         return defined('static::CREATED_BY') ? static::CREATED_BY : 'created_by';
     }
@@ -103,7 +103,7 @@ trait AuditTrait
     /**
      * Get the name of the "updated by" column.
      */
-    public function getUpdatedByColumn(): string
+    public function getUpdatedByColumn()
     {
         return defined('static::UPDATED_BY') ? static::UPDATED_BY : 'updated_by';
     }
@@ -111,7 +111,7 @@ trait AuditTrait
     /**
      * Get the name of the "deleted by" column.
      */
-    public function getDeletedByColumn(): string
+    public function getDeletedByColumn()
     {
         return defined('static::DELETED_BY') ? static::DELETED_BY : 'deleted_by';
     }
@@ -150,7 +150,7 @@ trait AuditTrait
     /**
      * Check if we're maintaing Userstamps on the model.
      */
-    public function isUserstamping(): bool
+    public function isUserstamping()
     {
         return $this->userstamping;
     }
@@ -158,7 +158,7 @@ trait AuditTrait
     /**
      * Check if we're maintaing Userstamps on the model.
      */
-    public function isSoftDeleting(): bool
+    public function isSoftDeleting()
     {
         return true; //$this->softdeleting ?? false;
     }

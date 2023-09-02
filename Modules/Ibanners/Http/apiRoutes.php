@@ -3,9 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-
-Route::group(['prefix' => '/v1/ibanners'], function (Router $router) {
-
+Route::prefix('/v1/ibanners')->group(function (Router $router) {
     $router->post('banners/update', [
         'as' => 'api.banner.update',
         'uses' => 'BannerController@update',

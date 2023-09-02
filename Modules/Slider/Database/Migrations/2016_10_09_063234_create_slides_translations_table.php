@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSlidesTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('slider__slide_translations', function (Blueprint $table) {
             $table->increments('id');
@@ -29,8 +29,8 @@ class CreateSlidesTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::drop('slider__slide_translations');
     }
-}
+};

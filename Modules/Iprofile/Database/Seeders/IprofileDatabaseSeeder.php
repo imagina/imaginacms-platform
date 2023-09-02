@@ -9,7 +9,7 @@ class IprofileDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $this->call(IprofileModuleTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);

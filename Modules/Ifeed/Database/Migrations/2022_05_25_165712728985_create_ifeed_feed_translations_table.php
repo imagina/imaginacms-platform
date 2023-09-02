@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIfeedFeedTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class CreateIfeedFeedTranslationsTable extends Migration
         });
         Schema::dropIfExists('ifeed__feed_translations');
     }
-}
+};

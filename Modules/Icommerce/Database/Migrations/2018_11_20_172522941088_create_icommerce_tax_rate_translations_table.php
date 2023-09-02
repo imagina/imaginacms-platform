@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceTaxRateTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('icommerce__tax_rate_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,11 +27,11 @@ class CreateIcommerceTaxRateTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('icommerce__tax_rate_translations', function (Blueprint $table) {
             $table->dropForeign(['tax_rate_id']);
         });
         Schema::dropIfExists('icommerce__tax_rate_translations');
     }
-}
+};

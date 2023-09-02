@@ -30,7 +30,7 @@ class AdStatus
     /**
      * Get the available statuses
      */
-    public function get(): array
+    public function get()
     {
         return $this->statuses;
     }

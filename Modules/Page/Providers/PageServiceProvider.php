@@ -33,7 +33,7 @@ class PageServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
 
@@ -51,7 +51,7 @@ class PageServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('page', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('page', 'permissions'), 'asgard.page.permissions');
@@ -70,7 +70,7 @@ class PageServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

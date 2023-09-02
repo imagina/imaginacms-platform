@@ -12,7 +12,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ScheduleTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'id' => $this->when(isset($this->id), $this->id),

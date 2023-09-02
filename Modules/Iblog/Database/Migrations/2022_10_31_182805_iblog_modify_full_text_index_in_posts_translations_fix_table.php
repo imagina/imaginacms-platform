@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class IblogModifyFullTextIndexInPostsTranslationsFixTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
         $indexesFound = array_change_key_case($sm->listTableIndexes('iblog__post_translations'), CASE_LOWER);
@@ -35,8 +35,8 @@ class IblogModifyFullTextIndexInPostsTranslationsFixTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
     //
     }
-}
+};

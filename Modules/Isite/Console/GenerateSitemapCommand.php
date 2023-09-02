@@ -13,7 +13,7 @@ class GenerateSitemapCommand extends Command
 
     protected $description = 'Generate the sitemap.';
 
-    public function handle(): void
+    public function handle()
     {
         // modify this to your own needs
         SitemapGenerator::create(config('app.url'))

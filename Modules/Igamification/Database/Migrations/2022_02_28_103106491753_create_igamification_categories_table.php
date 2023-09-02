@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIgamificationCategoriesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('igamification__categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,9 +27,9 @@ class CreateIgamificationCategoriesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('igamification__category_user');
         Schema::dropIfExists('igamification__categories');
     }
-}
+};

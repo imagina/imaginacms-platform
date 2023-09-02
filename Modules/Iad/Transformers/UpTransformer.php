@@ -9,7 +9,7 @@ class UpTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         $data = [];
         if (is_module_enabled('Icommerce')) {

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcurrencyCurrencyTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -31,4 +31,4 @@ class CreateIcurrencyCurrencyTranslationsTable extends Migration
         });
         Schema::dropIfExists('icurrency__currency_translations');
     }
-}
+};

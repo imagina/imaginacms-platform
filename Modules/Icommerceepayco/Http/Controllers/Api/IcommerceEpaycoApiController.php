@@ -75,7 +75,7 @@ class IcommerceEpaycoApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderId
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();
@@ -133,7 +133,7 @@ class IcommerceEpaycoApiController extends BaseApiController
      *
      * @param Requests request
      */
-    public function confirmation(Request $request): route
+    public function confirmation(Request $request)
     {
         \Log::info('Module Icommerceepayco: Confirmation - INIT - '.time());
         \Log::info('Module Icommerceepayco: id_invoice: '.$request->x_id_invoice);

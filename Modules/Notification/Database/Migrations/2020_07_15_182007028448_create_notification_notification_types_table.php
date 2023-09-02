@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateNotificationNotificationTypesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('notification__notification_types', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -25,8 +25,8 @@ class CreateNotificationNotificationTypesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('notification__notification_types');
     }
-}
+};

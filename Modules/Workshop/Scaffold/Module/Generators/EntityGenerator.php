@@ -285,6 +285,7 @@ class EntityGenerator extends Generator
     }
 
     /**
+     *
      * @throws FileNotFoundException
      */
     private function appendPermissionsFor(string $entity)

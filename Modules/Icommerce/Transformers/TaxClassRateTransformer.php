@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaxClassRateTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'taxRateId' => $this->when($this->tax_rate_id, $this->tax_rate_id),

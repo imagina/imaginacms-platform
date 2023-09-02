@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class UpdateIbuilderBlockStatusMobileAttributesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('ibuilder__blocks', function (Blueprint $table) {
             $table->integer('status')->default(1)->after('system_name')->unsigned();
@@ -19,7 +19,7 @@ class UpdateIbuilderBlockStatusMobileAttributesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
     }
-}
+};

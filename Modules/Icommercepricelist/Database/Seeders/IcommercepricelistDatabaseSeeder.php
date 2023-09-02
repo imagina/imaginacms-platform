@@ -11,7 +11,7 @@ class IcommercepricelistDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
         ProcessSeeds::dispatch([

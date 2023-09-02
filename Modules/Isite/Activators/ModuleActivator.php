@@ -115,7 +115,7 @@ class ModuleActivator implements ActivatorInterface
         $module = Cache::store(config('cache.default'))->remember('isite_module_'.Str::lower($name).(isset(tenant()->domain) ? tenant()->domain : request()->getHost() ?? ''), 60 * 60 * 24 * 30, function () use ($name, $allModules) {
           try {
             if (! \Schema::hasTable('isite__modules')) {
-              return false;
+                return false;
             }
           }catch(\Exception $e){
             return false;
@@ -285,9 +285,9 @@ class ModuleActivator implements ActivatorInterface
 
         return Cache::store(config('cache.default'))->remember('isite_module_all_modules'.(isset(tenant()->domain) ? tenant()->domain : $domain ?? ''), 60 * 60 * 24 * 30, function () use ($domain) {
          try {
-           if (! \Schema::hasTable('isite__organizations')) {
-             return '';
-           }
+            if (! \Schema::hasTable('isite__organizations')) {
+                return '';
+            }
          }catch(\Exception $e){
            return '';
          }

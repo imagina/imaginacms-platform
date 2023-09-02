@@ -2,8 +2,6 @@
 
 namespace Modules\Icommerce\Events;
 
-use Illuminate\Database\Eloquent\Model;
-
 class CouponIsDeleting
 {
     public $model;
@@ -16,7 +14,7 @@ class CouponIsDeleting
     /**
      * Return the entity
      */
-    public function getEntity(): Model
+    public function getEntity()
     {
         return $this->model;
     }
@@ -24,7 +22,7 @@ class CouponIsDeleting
     /**
      * Return the ALL data sent
      */
-    public function getSubmissionData(): array
+    public function getSubmissionData()
     {
         return [];
     }

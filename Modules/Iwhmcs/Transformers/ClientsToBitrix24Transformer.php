@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClientsToBitrix24Transformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         //Cases contact types by client group
         $casesContactTypesByClientGroup = [

@@ -82,7 +82,7 @@ class IcommercePaypalApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderID
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();

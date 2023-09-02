@@ -37,7 +37,7 @@ class IcommerceCoordinadoraApiController extends BaseApiController
      * Float price
      * Boolean priceShow
      */
-    public function init(Request $request): response
+    public function init(Request $request)
     {
         try {
             \Log::info('Module IcommerceCoordinadora: ========= INIT =========');

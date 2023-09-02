@@ -39,7 +39,7 @@ class TranslationServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->registerConsoleCommands();
@@ -61,7 +61,7 @@ class TranslationServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('translation', 'config');
 
@@ -84,7 +84,7 @@ class TranslationServiceProvider extends ServiceProvider
     /**
      * Should we register the Custom Translator?
      */
-    protected function shouldRegisterCustomTranslator(): bool
+    protected function shouldRegisterCustomTranslator()
     {
         if (false === config('app.translations-gui', true)) {
             return false;
@@ -104,7 +104,7 @@ class TranslationServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

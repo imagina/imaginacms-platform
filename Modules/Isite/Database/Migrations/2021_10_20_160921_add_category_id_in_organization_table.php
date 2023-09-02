@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryIdInOrganizationTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('isite__organizations', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->nullable()->after('data');
@@ -24,7 +24,7 @@ class AddCategoryIdInOrganizationTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
     }
-}
+};

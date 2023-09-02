@@ -47,7 +47,7 @@ class NotificationMailable extends Mailable implements ShouldQueue
     /**
      * Build the message.
      */
-    public function build(): static
+    public function build()
     {
         try {
             return $this->from($this->fromAddress ?? env('MAIL_FROM_ADDRESS'), $this->fromName ?? env('MAIL_FROM_NAME'))

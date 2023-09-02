@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
       Route::group([
         'as' => 'passport.',
         'middleware' => [
-          'universal',
+            'universal',
 					\Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class
         ],
         'prefix' => config('passport.path', 'oauth'),

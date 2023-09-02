@@ -28,7 +28,7 @@ class MediaTransformer extends JsonResource
         $this->thumbnailManager = app(ThumbnailManager::class);
     }
 
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'id' => $this->id,

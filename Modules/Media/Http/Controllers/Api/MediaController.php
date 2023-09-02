@@ -152,7 +152,7 @@ class MediaController extends Controller
         return response()->json($savedFile->toArray());
     }
 
-    public function update(File $file, Request $request): JsonResponse
+    public function update(File $file, Request $request)
     {
         $data = $request->except(['filename', 'path', 'extension', 'size', 'id', 'thumbnails']);
 
@@ -244,7 +244,7 @@ class MediaController extends Controller
         return response()->json(['error' => false, 'message' => 'The items have been reorder.']);
     }
 
-    public function destroy(File $file): JsonResponse
+    public function destroy(File $file)
     {
         $this->imagy->deleteAllFor($file);
         $this->file->destroy($file);
@@ -258,7 +258,7 @@ class MediaController extends Controller
     /**
      * Get the path for the given file and type
      */
-    private function getThumbnailPathFor(string $mediaType, File $file): string
+    private function getThumbnailPathFor($mediaType, File $file): string
     {
         if ($mediaType === 'image') {
             return $this->imagy->getThumbnail($file, 'mediumThumb');

@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductOptionPivotTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         //Transformer only data base
         $data = [

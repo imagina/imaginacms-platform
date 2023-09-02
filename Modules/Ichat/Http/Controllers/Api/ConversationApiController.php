@@ -100,7 +100,7 @@ class ConversationApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         \DB::beginTransaction();
         try {
@@ -126,7 +126,7 @@ class ConversationApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         \DB::beginTransaction();
         try {

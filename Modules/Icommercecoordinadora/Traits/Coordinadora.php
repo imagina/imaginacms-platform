@@ -9,7 +9,7 @@ trait Coordinadora
      *
      * @param  int  $type (cotizacion)
      */
-    private function getApiUrl(int $type)
+    private function getApiUrl($type)
     {
         $mode = 'sandbox';
         if ($this->methodConfiguration->options->mode == 'production') {
@@ -30,7 +30,7 @@ trait Coordinadora
      *
      * @param  int  $type (cotizacion)
      */
-    public function initClientSoap(int $type = 1): client
+    public function initClientSoap($type = 1)
     {
         // Params
         $opts = [

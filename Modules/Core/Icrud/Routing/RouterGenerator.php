@@ -21,7 +21,7 @@ class RouterGenerator
      *
      * @param  array  $params [module,prefix,controller]
      */
-    public function apiCrud(array $params)
+    public function apiCrud($params)
     {
         //Get routes
         $crudRoutes = isset($params['staticEntity']) ? $this->getStaticApiRoutes($params) :
@@ -38,7 +38,7 @@ class RouterGenerator
     /**
      * Return routes to standar API
      */
-    private function getStandardApiRoutes($params): array
+    private function getStandardApiRoutes($params)
     {
         return [
             (object) [//Route create
@@ -110,7 +110,7 @@ class RouterGenerator
     /**
      * Return the static api routes to static entities
      */
-    private function getStaticApiRoutes($params): array
+    private function getStaticApiRoutes($params)
     {
         //Instance controller
         $controller = new BaseCrudController();

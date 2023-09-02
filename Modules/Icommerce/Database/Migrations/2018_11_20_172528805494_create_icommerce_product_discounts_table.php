@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceProductDiscountsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('icommerce__product_discounts', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -40,8 +40,8 @@ class CreateIcommerceProductDiscountsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('icommerce__product_discounts');
     }
-}
+};

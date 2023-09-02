@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Cartalyst\Sentinel\Roles\EloquentRole;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -57,7 +57,7 @@ class Menuitem extends Model
     /**
      * Check if the current menu item is the root
      */
-    public function isRoot(): bool
+    public function isRoot()
     {
         return (bool) $this->is_root;
     }
@@ -65,7 +65,7 @@ class Menuitem extends Model
     /**
      * Check if page_id is empty and returning null instead empty string
      */
-    public function setPageIdAttribute($value): number
+    public function setPageIdAttribute($value)
     {
         $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
@@ -73,7 +73,7 @@ class Menuitem extends Model
     /**
      * Check if parent_id is empty and returning null instead empty string
      */
-    public function setParentIdAttribute($value): number
+    public function setParentIdAttribute($value)
     {
         $this->attributes['parent_id'] = ! empty($value) ? $value : null;
     }

@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddIgamificationAttributesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('igamification__categories', function (Blueprint $table) {
             $table->integer('status')->default(1)->unsigned();
@@ -22,7 +22,7 @@ class AddIgamificationAttributesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('igamification__categories', function (Blueprint $table) {
             $table->dropColumn(['status']);
@@ -31,4 +31,4 @@ class AddIgamificationAttributesTable extends Migration
             $table->dropColumn(['type']);
         });
     }
-}
+};

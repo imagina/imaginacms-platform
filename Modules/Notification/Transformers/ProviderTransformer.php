@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProviderTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         //if($this->system_name == "firebase") dd($this);
         $data = [

@@ -27,7 +27,7 @@ class SetGroupToClients implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle()
     {
         try {
             //Get clients without group

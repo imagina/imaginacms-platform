@@ -39,7 +39,7 @@ class PublicController extends BasePublicController
      *
      * @param Requests request
      */
-    public function index($eURL): route
+    public function index($eURL)
     {
         try {
             // Decr

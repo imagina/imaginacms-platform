@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
 
     protected $listen = [];
 
-    public function boot(): void
+    public function boot()
     {
         $this->module = app('modules');
 

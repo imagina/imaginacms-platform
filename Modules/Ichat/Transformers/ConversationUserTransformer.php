@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class ConversationUserTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'id' => $this->id,

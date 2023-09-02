@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIplanPlanTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('iplan__plan_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,11 +27,11 @@ class CreateIplanPlanTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('iplan__plan_translations', function (Blueprint $table) {
             $table->dropForeign(['plan_id']);
         });
         Schema::dropIfExists('iplan__plan_translations');
     }
-}
+};

@@ -56,7 +56,7 @@ class PublicController extends BasePublicController
      *
      * @param Requests request
      */
-    public function index($eURL): route
+    public function index($eURL)
     {
         try {
             // Decr
@@ -132,7 +132,7 @@ class PublicController extends BasePublicController
   /**
    * Button Back PayU
    */
-  public function back(Request $request): redirect
+  public function back(Request $request)
   {
       $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
       $isQuasarAPP = env('QUASAR_APP', false);

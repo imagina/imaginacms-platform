@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class IcommerceAddLocaleColumnInCurrencyTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('icommerce__currencies', function (Blueprint $table) {
             $table->string('locale')->nullable()->after('default_currency');
@@ -22,7 +22,7 @@ class IcommerceAddLocaleColumnInCurrencyTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('icommerce__currencies', function (Blueprint $table) {
             $table->dropColumn('locale');
@@ -30,4 +30,4 @@ class IcommerceAddLocaleColumnInCurrencyTable extends Migration
             $table->dropColumn('thousands_separator');
         });
     }
-}
+};

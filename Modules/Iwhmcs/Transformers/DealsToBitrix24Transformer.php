@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class DealsToBitrix24Transformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'ID' => $this->bitrixId,

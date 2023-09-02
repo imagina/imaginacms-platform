@@ -15,7 +15,7 @@ class WompiService
      *
      * @return object Configuration
      */
-    public function create($paymentMethod, $order, $transaction, $urls): object
+    public function create($paymentMethod, $order, $transaction, $urls)
     {
         $wompi = new WompiEntity();
 
@@ -37,7 +37,7 @@ class WompiService
      * @param Requests request
      * @param Payment Method
      */
-    public function makeSignature($request, $paymentMethod): signature
+    public function makeSignature($request, $paymentMethod)
     {
         $transaction = $request->data['transaction'];
         $signatureProps = $request->signature['properties'];
@@ -60,7 +60,7 @@ class WompiService
      *
      * @param int cod
      */
-    public function getStatusOrder($cod): int
+    public function getStatusOrder($cod)
     {
         switch ($cod) {
             case 'APPROVED': // Aceptada

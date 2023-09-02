@@ -11,7 +11,7 @@ class CategoryTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         return [
             'auctionForm' => new FormTransformer($this->getDataForm($this->auction_form_id)),

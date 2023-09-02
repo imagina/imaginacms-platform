@@ -126,7 +126,7 @@ class EloquentManufacturerRepository extends EloquentBaseRepository implements M
     /**
      * Find a resource by the given slug
      */
-    public function findBySlug(string $slug): object
+    public function findBySlug($slug)
     {
         if (method_exists($this->model, 'translations')) {
             return $this->model->whereHas('translations', function (Builder $q) use ($slug) {

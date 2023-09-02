@@ -13,7 +13,7 @@ class CrudResource extends JsonResource
     /**
      * Method to merge values to response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         return [];
     }
@@ -21,7 +21,7 @@ class CrudResource extends JsonResource
     /**
      * Transform the resource into an array.
      */
-    public function toArray($request): array
+    public function toArray($request)
     {
         $response = []; //Default Response
         $translatableAttributes = $this->translatedAttributes ?? []; //Get translatable attributes

@@ -56,7 +56,7 @@ trait isFillable
     /**
      * Validate data to keep only fields to sync
      */
-    public function validateExtraFillable(array $extraFields = []): array
+    public function validateExtraFillable($extraFields = [])
     {
         //Instance response
         $response = [];
@@ -95,7 +95,7 @@ trait isFillable
     /**
      * Format extra fillable to save in data base
      */
-    public function formatFillableToDataBase(array $extraFields = [])
+    public function formatFillableToDataBase($extraFields = [])
     {
         //Instance response
         $response = [];
@@ -126,7 +126,7 @@ trait isFillable
     /**
      * Format fillable to response in model
      */
-    public function formatFillableToModel(array $extraFields = [])
+    public function formatFillableToModel($extraFields = [])
     {
         //instance response
         $response = [];

@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIlocationsCityTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ilocations__city_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,11 +26,11 @@ class CreateIlocationsCityTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('ilocations__city_translations', function (Blueprint $table) {
             $table->dropForeign(['city_id']);
         });
         Schema::dropIfExists('ilocations__city_translations');
     }
-}
+};

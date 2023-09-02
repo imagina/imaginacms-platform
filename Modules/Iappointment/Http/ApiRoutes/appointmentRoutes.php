@@ -2,8 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/appointments'], function (Router $router) {
-
+Route::prefix('/appointments')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iappointment.appointments.create',
         'uses' => 'AppointmentApiController@create',
@@ -27,7 +26,6 @@ Route::group(['prefix' => '/appointments'], function (Router $router) {
     $router->delete('/{criteria}', [
         'as' => 'api.iappointment.appointments.delete',
         'uses' => 'AppointmentApiController@delete',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
-
 });

@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ZoneTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'id' => $this->when($this->id, $this->id),

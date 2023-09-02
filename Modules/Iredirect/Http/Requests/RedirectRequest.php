@@ -9,7 +9,7 @@ class RedirectRequest extends BaseFormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'from' => 'required',
@@ -31,7 +31,7 @@ class RedirectRequest extends BaseFormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }

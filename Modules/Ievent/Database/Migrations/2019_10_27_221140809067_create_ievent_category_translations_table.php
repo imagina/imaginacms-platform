@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIeventCategoryTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ievent__category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -28,11 +28,11 @@ class CreateIeventCategoryTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('ievent__category_translations', function (Blueprint $table) {
             $table->dropForeign(['category_id']);
         });
         Schema::dropIfExists('ievent__category_translations');
     }
-}
+};

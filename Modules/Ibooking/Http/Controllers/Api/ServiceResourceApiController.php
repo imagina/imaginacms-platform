@@ -25,7 +25,7 @@ class ServiceResourceApiController extends BaseCrudController
      *
      * @return false
      */
-    public function modelCreateRequest($modelData): bool
+    public function modelCreateRequest($modelData)
     {
         return new CreateServiceResourceRequest($modelData);
     }
@@ -35,7 +35,7 @@ class ServiceResourceApiController extends BaseCrudController
      *
      * @return false
      */
-    public function modelUpdateRequest($modelData): bool
+    public function modelUpdateRequest($modelData)
     {
         return new UpdateServiceResourceRequest($modelData);
     }

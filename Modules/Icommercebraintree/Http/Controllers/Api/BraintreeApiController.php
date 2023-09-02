@@ -23,7 +23,7 @@ class BraintreeApiController extends BaseApiController
     /**
      * Braintree API - Get gateway
      */
-    public function getGateway(): gateway
+    public function getGateway()
     {
         // Payment Method Configuration
         $paymentMethod = braintree_getPaymentMethodConfiguration();
@@ -43,7 +43,7 @@ class BraintreeApiController extends BaseApiController
     /**
      * Braintree API - Generate Client Token
      */
-    public function generateClientToken(): token
+    public function generateClientToken()
     {
         $clientToken = $this->gateway->clientToken()->generate();
 
@@ -54,7 +54,7 @@ class BraintreeApiController extends BaseApiController
      * Braintree API - Create Transaction
      */
     //https://developer.paypal.com/braintree/docs/reference/request/transaction/submit-for-settlement
-    public function createTransaction($order, $nonceFromTheClient): result
+    public function createTransaction($order, $nonceFromTheClient)
     {
         //Optional
         $customer = [
@@ -79,7 +79,7 @@ class BraintreeApiController extends BaseApiController
     /**
      * Braintree API - Get Transaction
      */
-    public function getTransaction($id): transaction
+    public function getTransaction($id)
     {
         $transaction = $this->gateway->transaction()->find($id);
 

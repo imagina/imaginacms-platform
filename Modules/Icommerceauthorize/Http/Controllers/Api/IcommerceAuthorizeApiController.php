@@ -71,7 +71,7 @@ class IcommerceAuthorizeApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderid
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();
@@ -129,7 +129,7 @@ class IcommerceAuthorizeApiController extends BaseApiController
      *
      * @param Requests request
      */
-    public function response(Request $request): route
+    public function response(Request $request)
     {
         try {
             \Log::info('Module Icommerceauthorize: Response - '.time());

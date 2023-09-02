@@ -27,7 +27,7 @@ class PublicController extends BasePublicController
     /**
      * Show Voucher
      */
-    public function voucherShow(Request $request): view
+    public function voucherShow(Request $request)
     {
         \Log::info('Module Icommercecredibanco: VoucherShow - '.time());
 

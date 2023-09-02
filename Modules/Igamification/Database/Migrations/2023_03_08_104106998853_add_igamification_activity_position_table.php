@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddIgamificationActivityPositionTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('igamification__activities', function (Blueprint $table) {
             $table->integer('position')->after('options')->unsigned()->default(0);
@@ -18,10 +18,10 @@ class AddIgamificationActivityPositionTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('igamification__activities', function (Blueprint $table) {
             $table->dropColumn(['position']);
         });
     }
-}
+};

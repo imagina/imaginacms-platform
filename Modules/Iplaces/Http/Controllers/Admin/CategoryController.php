@@ -7,6 +7,7 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iplaces\Entities\Category;
 use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Http\Requests\CreateCategoryRequest;
+use Modules\Iplaces\Http\Requests\UpdateCategoryRequest;
 use Modules\Iplaces\Repositories\CategoryRepository;
 
 class CategoryController extends AdminBaseController
@@ -31,7 +32,7 @@ class CategoryController extends AdminBaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         $categories = $this->category->all();
 
@@ -41,7 +42,7 @@ class CategoryController extends AdminBaseController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -52,7 +53,7 @@ class CategoryController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateCategoryRequest $request): Response
+    public function store(CreateCategoryRequest $request)
     {
         // dd($request);
         try {
@@ -71,7 +72,7 @@ class CategoryController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category): Response
+    public function edit(Category $category)
     {
         //dd($category->mainimage);
         $statuses = $this->status->lists();
@@ -83,7 +84,7 @@ class CategoryController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Category $category, CreateCategoryRequest $request): Response
+    public function update(Category $category, CreateCategoryRequest $request)
     {
         try {
             if (isset($request['options'])) {
@@ -109,7 +110,7 @@ class CategoryController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category): Response
+    public function destroy(Category $category)
     {
         try {
             $this->category->destroy($category);

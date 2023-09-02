@@ -25,7 +25,7 @@ class LeadWasCreated
     /**
      * Return the ALL data sent
      */
-    public function getSubmissionData(): array
+    public function getSubmissionData()
     {
         return $this->data;
     }

@@ -72,7 +72,7 @@ class PaymentApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderId
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();

@@ -23,12 +23,12 @@ class IredirectServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('iredirect', 'config');
         //$this->publishConfig('iredirect', 'settings');
@@ -40,7 +40,7 @@ class IredirectServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

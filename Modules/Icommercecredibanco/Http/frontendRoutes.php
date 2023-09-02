@@ -2,14 +2,11 @@
 
 use Illuminate\Routing\Router;
 
-    Route::group(['prefix'=>'icommercecredibanco'],function (Router $router){
-        $locale = LaravelLocalization::setLocale() ?: App::getLocale();
+Route::prefix('icommercecredibanco')->group(function (Router $router) {
+    $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
-    
-        $router->get('voucher/order/{id}/{tid?}', [
-            'as' => 'icommercecredibanco.voucher.show',
-            'uses' => 'PublicController@voucherShow',
-        ]);
-       
-
-    });
+    $router->get('voucher/order/{id}/{tid?}', [
+        'as' => 'icommercecredibanco.voucher.show',
+        'uses' => 'PublicController@voucherShow',
+    ]);
+});

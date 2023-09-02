@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIdocsCategoryTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -38,4 +38,4 @@ class CreateIdocsCategoryTranslationsTable extends Migration
         });
         Schema::dropIfExists('idocs__category_translations');
     }
-}
+};

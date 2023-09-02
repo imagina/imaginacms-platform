@@ -23,7 +23,7 @@ class MessageWasRetrieved
     /**
      * Get the channels the event should be broadcast on.
      */
-    public function broadcastOn(): array
+    public function broadcastOn()
     {
         return [];
     }

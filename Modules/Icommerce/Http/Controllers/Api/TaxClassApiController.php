@@ -27,7 +27,7 @@ class TaxClassApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         try {
             //Request to Repository
@@ -76,7 +76,7 @@ class TaxClassApiController extends BaseApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         try {
             $data = $request->input('attributes') ?? []; //Get data
@@ -98,7 +98,7 @@ class TaxClassApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         \DB::beginTransaction(); //DB Transaction
         try {
@@ -133,7 +133,7 @@ class TaxClassApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         try {
             $this->taxClass->deleteBy($criteria, $this->getParamsRequest($request));

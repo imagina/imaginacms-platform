@@ -30,7 +30,7 @@ class IbannersServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->registerBindings();
@@ -46,7 +46,7 @@ class IbannersServiceProvider extends ServiceProvider
     /**
      * Register all online positions on the Pingpong/Menu package
      */
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('ibanners', 'config');
         $this->publishConfig('ibanners', 'permissions');
@@ -62,7 +62,7 @@ class IbannersServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return ['bannersAds'];
     }

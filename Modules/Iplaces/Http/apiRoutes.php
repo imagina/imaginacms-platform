@@ -2,25 +2,22 @@
 
 use Illuminate\Routing\Router;
 
+Route::prefix('iplaces/v1')->group(function (Router $router) {
+    //======  PLACES
+    require 'ApiRoutes/placesRoutes.php';
 
-Route::group(['prefix' => 'iplaces/v1'], function (Router $router) {
+    //======  CATEGORIES
+    require 'ApiRoutes/categoriesRoutes.php';
 
-  //======  PLACES
-  require('ApiRoutes/placesRoutes.php');
+    //======  SCHEDULES
+    require 'ApiRoutes/schedulesRoutes.php';
 
-  //======  CATEGORIES
-  require('ApiRoutes/categoriesRoutes.php');
+    //======  SERVICES
+    require 'ApiRoutes/servicesRoutes.php';
 
-  //======  SCHEDULES
-  require('ApiRoutes/schedulesRoutes.php');
+    //======  SPACES
+    require 'ApiRoutes/spacesRoutes.php';
 
-  //======  SERVICES
-  require('ApiRoutes/servicesRoutes.php');
-
-  //======  SPACES
-  require('ApiRoutes/spacesRoutes.php');
-
-  //======  ZONES
-  require('ApiRoutes/zonesRoutes.php');
-
+    //======  ZONES
+    require 'ApiRoutes/zonesRoutes.php';
 });

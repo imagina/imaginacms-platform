@@ -2,7 +2,6 @@
 
 namespace Modules\Tag\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Tag\Events\TagIsCreating;
 use Modules\Tag\Events\TagIsUpdating;
@@ -15,7 +14,7 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
     /**
      * Get all the tags in the given namespace
      */
-    public function allForNamespace(string $namespace): Collection
+    public function allForNamespace($namespace)
     {
         return $this->model->with('translations')->where('namespace', $namespace)->get();
     }

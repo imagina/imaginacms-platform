@@ -34,6 +34,7 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
+     *
      * @throws ThemeNotFoundException
      */
     public function find(string $themeName): Theme
@@ -78,6 +79,7 @@ class StylistThemeManager implements ThemeManager
     }
 
     /**
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function getChangelog(string $directory): array

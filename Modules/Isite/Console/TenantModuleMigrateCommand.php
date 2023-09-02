@@ -80,7 +80,7 @@ class TenantModuleMigrateCommand extends MigrateCommand
     /**
      * Get the console command arguments.
      */
-    protected function getArguments(): array
+    protected function getArguments()
     {
         return [
             ['tenant', InputArgument::REQUIRED, 'Tenant id.'],

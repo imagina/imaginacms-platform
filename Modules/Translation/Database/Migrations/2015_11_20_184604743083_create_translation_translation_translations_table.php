@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTranslationTranslationTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class CreateTranslationTranslationTranslationsTable extends Migration
     {
         Schema::drop('translation__translation_translations');
     }
-}
+};

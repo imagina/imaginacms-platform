@@ -51,7 +51,7 @@ class MediaServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
 
@@ -82,7 +82,7 @@ class MediaServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(DispatcherContract $events): void
+    public function boot(DispatcherContract $events)
     {
         $this->publishConfig('media', 'config');
         $this->publishConfig('media', 'assets');
@@ -112,7 +112,7 @@ class MediaServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

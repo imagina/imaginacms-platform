@@ -24,7 +24,7 @@ class TransactionApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         try {
             //Request to Repository
@@ -104,7 +104,7 @@ class TransactionApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         try {
             $data = $this->transaction->updateBy($criteria, $request->all(), $this->getParamsRequest($request));
@@ -124,7 +124,7 @@ class TransactionApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         try {
             $this->transaction->deleteBy($criteria, $this->getParamsRequest($request));

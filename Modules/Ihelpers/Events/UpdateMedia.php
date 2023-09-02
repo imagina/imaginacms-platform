@@ -2,7 +2,6 @@
 
 namespace Modules\Ihelpers\Events;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Contracts\StoringMedia;
 
 class UpdateMedia implements StoringMedia
@@ -20,7 +19,7 @@ class UpdateMedia implements StoringMedia
     /**
      * Return the entity
      */
-    public function getEntity(): Model
+    public function getEntity()
     {
         return $this->post;
     }
@@ -28,7 +27,7 @@ class UpdateMedia implements StoringMedia
     /**
      * Return the ALL data sent
      */
-    public function getSubmissionData(): array
+    public function getSubmissionData()
     {
         return $this->data;
     }

@@ -87,7 +87,7 @@ class RegisterMenusInCache
      *
      * @param  Builder|MenuItem  $menu
      */
-    private function addChildrenToMenu(string $name, object $children, $menu, $attribs = [])
+    private function addChildrenToMenu($name, $children, $menu, $attribs = [])
     {
         $menu->dropdown($name, function (PingpongMenuItem $subMenu) use ($children) {
             foreach ($children as $child) {
@@ -112,7 +112,7 @@ class RegisterMenusInCache
     /**
      * Check if the given menu item has children
      */
-    private function hasChildren(object $item): bool
+    private function hasChildren($item)
     {
         return $item->items->count() > 0;
     }

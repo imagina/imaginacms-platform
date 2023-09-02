@@ -9,7 +9,7 @@ class NwidartModuleTransformer extends JsonResource
     /**
      * Method to merge values with response
      */
-    public function toArray($request): array
+    public function toArray($request)
     {
         $title = $this->getName() == 'Icustom' ? trans('isite::isite.icustom') : trans($this->getAlias().'::'.$this->getAlias().'.name');
 

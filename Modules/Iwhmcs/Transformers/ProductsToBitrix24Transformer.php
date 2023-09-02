@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductsToBitrix24Transformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         //Instance column price name by product group
         $columnPriceByGroup = [

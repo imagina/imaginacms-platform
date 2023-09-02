@@ -2,12 +2,12 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddFulltextIndiceInPostTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         \DB::statement('ALTER TABLE iblog__post_translations ADD FULLTEXT full(title)');
     }
@@ -15,7 +15,7 @@ class AddFulltextIndiceInPostTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
     }
-}
+};

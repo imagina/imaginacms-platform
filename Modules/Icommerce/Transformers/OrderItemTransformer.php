@@ -7,7 +7,7 @@ use Modules\Icurrency\Support\Facades\Currency;
 
 class OrderItemTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $item = [
             'id' => $this->when($this->id, $this->id),

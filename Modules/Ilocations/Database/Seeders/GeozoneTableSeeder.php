@@ -12,7 +12,7 @@ class GeozoneTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
         $path = base_path('/Modules/Ilocations/Assets/js/geozone.json');

@@ -7,7 +7,7 @@ use Modules\Icurrency\Support\Facades\Currency;
 
 class ProductListTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $item = [
             'id' => $this->id,

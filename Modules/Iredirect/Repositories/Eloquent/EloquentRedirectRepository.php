@@ -8,7 +8,11 @@ use Modules\Iredirect\Repositories\RedirectRepository;
 
 class EloquentRedirectRepository extends EloquentBaseRepository implements RedirectRepository
 {
-    public function find(int $id): object
+    /**
+     * @param  int  $id
+     * @return object
+     */
+    public function find($id)
     {
         return $this->model->with('tags')->find($id);
     }
@@ -16,7 +20,7 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
     /**
      * Create a iredirect redirect
      */
-    public function create(array $data): Redirect
+    public function create($data)
     {
         $redirect = $this->model->create($data);
 
@@ -28,7 +32,7 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
     /**
      * Find a resource by the given slug
      */
-    public function findBySlug(string $slug): object
+    public function findBySlug($slug)
     {
         return $this->model->where('slug', $slug)->first();
     }

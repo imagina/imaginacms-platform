@@ -37,7 +37,7 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
 
@@ -66,7 +66,7 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Register all online menus on the Pingpong/Menu package
      */
-    public function boot(): void
+    public function boot()
     {
         $this->registerMenus();
         $this->registerBladeTags();
@@ -80,7 +80,7 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }
@@ -152,7 +152,7 @@ class MenuServiceProvider extends ServiceProvider
      *
      * @param  Builder|MenuItem  $menu
      */
-    private function addChildrenToMenu(string $name, object $children, $menu, $attribs = [])
+    private function addChildrenToMenu($name, $children, $menu, $attribs = [])
     {
         $menu->dropdown($name, function (PingpongMenuItem $subMenu) use ($children) {
             foreach ($children as $child) {
@@ -177,7 +177,7 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Check if the given menu item has children
      */
-    private function hasChildren(object $item): bool
+    private function hasChildren($item)
     {
         return $item->items->count() > 0;
     }

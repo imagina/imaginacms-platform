@@ -27,7 +27,7 @@ class TaxRateApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         //return $request;
         try {
@@ -79,7 +79,7 @@ class TaxRateApiController extends BaseApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         \DB::beginTransaction();
         try {
@@ -104,7 +104,7 @@ class TaxRateApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         \DB::beginTransaction(); //DB Transaction
         try {
@@ -131,7 +131,7 @@ class TaxRateApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         \DB::beginTransaction();
         try {

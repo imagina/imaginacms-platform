@@ -4,8 +4,6 @@ namespace Modules\Media\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Modules\Core\Traits\NamespacedEntity;
 use Modules\Isite\Traits\Tokenable;

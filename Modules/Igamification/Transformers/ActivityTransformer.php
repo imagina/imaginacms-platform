@@ -11,7 +11,7 @@ class ActivityTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         //Get request Filters
         $filter = json_decode($request->filter);

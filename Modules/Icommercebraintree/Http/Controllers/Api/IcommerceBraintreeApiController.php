@@ -57,7 +57,7 @@ class IcommerceBraintreeApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderId
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();
@@ -113,7 +113,7 @@ class IcommerceBraintreeApiController extends BaseApiController
     /**
      * ROUTE - GET Client Token
      */
-    public function getClientToken(): Token
+    public function getClientToken()
     {
         try {
             $token = $this->braintreeApi->generateClientToken();
@@ -139,7 +139,7 @@ class IcommerceBraintreeApiController extends BaseApiController
      * @param OrderId
      * @param nonce
      */
-    public function processPayment(Request $request): response
+    public function processPayment(Request $request)
     {
         try {
             $data = $request['attributes'] ?? []; //Get data
@@ -211,7 +211,7 @@ class IcommerceBraintreeApiController extends BaseApiController
      *
      * @param Id Transaction Braintree
      */
-    public function findTransaction($id): transaction
+    public function findTransaction($id)
     {
         try {
             $transaction = $this->braintreeApi->getTransaction($id);

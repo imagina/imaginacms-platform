@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRequestableStatusTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('requestable__status_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,11 +27,11 @@ class CreateRequestableStatusTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('requestable__status_translations', function (Blueprint $table) {
             $table->dropForeign(['status_id']);
         });
         Schema::dropIfExists('requestable__status_translations');
     }
-}
+};

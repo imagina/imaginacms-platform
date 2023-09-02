@@ -37,7 +37,7 @@ class ModuleScaffoldCommand extends Command
         $this->moduleScaffold = $moduleScaffold;
     }
 
-    public function handle(): void
+    public function handle()
     {
         $moduleName = $this->ask('Please enter the module name in the following format: vendor/name');
         [$vendor, $name] = $this->separateVendorAndName($moduleName);
@@ -83,7 +83,7 @@ class ModuleScaffoldCommand extends Command
     /**
      * Extract the vendor and module name as two separate values
      */
-    private function separateVendorAndName(string $fullName): array
+    private function separateVendorAndName($fullName)
     {
         $explodedFullName = explode('/', $fullName);
 
@@ -96,7 +96,7 @@ class ModuleScaffoldCommand extends Command
     /**
      * Check if the given module name does not already exists
      */
-    private function checkForModuleUniqueness(string $name)
+    private function checkForModuleUniqueness($name)
     {
         /** @var \Illuminate\Filesystem\Filesystem $files */
         $files = app('Illuminate\Filesystem\Filesystem');

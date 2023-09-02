@@ -422,7 +422,7 @@ class Product extends Model implements TaggableInterface
     /**
      * URL product
      */
-    public function getUrlAttribute($locale = null): string
+    public function getUrlAttribute($locale = null)
     {
         $url = '';
 
@@ -469,7 +469,7 @@ class Product extends Model implements TaggableInterface
     /**
      * Is New product
      */
-    public function getIsNewAttribute(): bool
+    public function getIsNewAttribute()
     {
         $isNew = false;
         $daysEnabledForNewProducts = setting('icommerce::daysEnabledForNewProducts');
@@ -486,7 +486,7 @@ class Product extends Model implements TaggableInterface
     /**
      * Is Sold Out
      */
-    public function getIsSoldOutAttribute(): bool
+    public function getIsSoldOutAttribute()
     {
         return ($this->quantity <= 0 && $this->subtract) || (! $this->stock_status);
     }
@@ -494,7 +494,7 @@ class Product extends Model implements TaggableInterface
     /**
      * Is New product
      */
-    public function getIsAvailableAttribute(): number
+    public function getIsAvailableAttribute()
     {
         $isAvailable = false;
 

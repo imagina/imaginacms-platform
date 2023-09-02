@@ -8,7 +8,7 @@ use Modules\User\Entities\Sentinel\User;
 
 class ByShiftsReportTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $hoursElapsed = round($this->total_period_elapsed / 3600, 2);
         $hoursApproved = round($this->period_approved / 3600, 2);

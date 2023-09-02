@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddIprofileFieldsAddressesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('iprofile__addresses', function (Blueprint $table) {
             $table->integer('country_id')->unsigned()->nullable();
@@ -22,7 +22,7 @@ class AddIprofileFieldsAddressesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('iprofile__addresses', function ($table) {
             $table->dropColumn('country_id');
@@ -32,4 +32,4 @@ class AddIprofileFieldsAddressesTable extends Migration
             $table->dropColumn('neighborhood');
         });
     }
-}
+};

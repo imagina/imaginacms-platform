@@ -24,7 +24,7 @@ class IadServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIadSidebar::class);
@@ -41,7 +41,7 @@ class IadServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('iad', 'permissions');
         $this->publishConfig('iad', 'config');
@@ -62,7 +62,7 @@ class IadServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

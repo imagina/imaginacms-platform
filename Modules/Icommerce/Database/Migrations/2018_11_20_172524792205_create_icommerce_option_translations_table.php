@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceOptionTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('icommerce__option_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,11 +27,11 @@ class CreateIcommerceOptionTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('icommerce__option_translations', function (Blueprint $table) {
             $table->dropForeign(['option_id']);
         });
         Schema::dropIfExists('icommerce__option_translations');
     }
-}
+};

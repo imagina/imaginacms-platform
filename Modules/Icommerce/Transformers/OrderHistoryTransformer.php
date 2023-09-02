@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderHistoryTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $item = [
             'id' => $this->when($this->id, $this->id),

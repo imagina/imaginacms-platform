@@ -187,7 +187,7 @@ class LeadApiController extends BaseApiController
     /**
      * Update the specified lead in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         \DB::beginTransaction();
         try {
@@ -249,7 +249,7 @@ class LeadApiController extends BaseApiController
     /**
      * Remove the specified lead from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         \DB::beginTransaction();
         try {

@@ -8,7 +8,7 @@ use Modules\Isite\Transformers\RevisionTransformer;
 
 class FormTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $data = [
             'id' => $this->when($this->id, $this->id),

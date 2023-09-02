@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIformsFormTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('iforms__form_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -24,11 +24,11 @@ class CreateIformsFormTranslationsTable extends Migration
       /**
        * Reverse the migrations.
        */
-      public function down(): void
+      public function down()
       {
           Schema::table('iforms__form_translations', function (Blueprint $table) {
               $table->dropForeign(['form_id']);
           });
           Schema::dropIfExists('iforms__form_translations');
       }
-}
+};

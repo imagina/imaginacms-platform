@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddIformsFormsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('iforms__forms', function (Blueprint $table) {
             $table->string('system_name', 40);
@@ -17,7 +17,7 @@ class AddIformsFormsTable extends Migration
         });
     }
 
-    public function down(): void
+    public function down()
     {
     }
-}
+};

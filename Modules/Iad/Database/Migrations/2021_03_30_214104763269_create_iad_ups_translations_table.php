@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIadUpsTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('iad__ups_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -27,11 +27,11 @@ class CreateIadUpsTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('iad__ups_translations', function (Blueprint $table) {
             $table->dropForeign(['ups_id']);
         });
         Schema::dropIfExists('iad__ups_translations');
     }
-}
+};

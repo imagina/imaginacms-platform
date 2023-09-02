@@ -10,7 +10,7 @@ class IgamificationDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         ProcessSeeds::dispatch([
             'baseClass' => "\Modules\Igamification\Database\Seeders",

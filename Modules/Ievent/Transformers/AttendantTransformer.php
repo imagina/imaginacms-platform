@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class AttendantTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $mainImage = $this->user->fields()->where('name', 'mainImage')->first();
         $defaultImage = \URL::to('/modules/iprofile/img/default.jpg');

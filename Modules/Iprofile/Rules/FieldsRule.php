@@ -23,7 +23,7 @@ class FieldsRule implements Rule
        *
        * @param  mixed  $value
        */
-      public function passes(string $attribute, $value): bool
+      public function passes($attribute, $value)
       {
           foreach ($value as $fieldName => $fieldValue) {
               if ($this->setting->get('iprofile::registerUserWithPoliticsOfPrivacy')) {
@@ -39,7 +39,7 @@ class FieldsRule implements Rule
       /**
        * Get the validation error message.
        */
-      public function message(): string
+      public function message()
       {
           return 'Debe aceptar los términos y condiciones';
       }

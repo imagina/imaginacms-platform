@@ -9,7 +9,7 @@ class TranslationApiTransformer extends JsonResource
 {
     public $preserveKeys = true;
 
-    public function toArray($request): array
+    public function toArray($request)
     {
         //Validate data
         if (is_null($this->resource)) {

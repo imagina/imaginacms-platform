@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class TagTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         /*datos*/
         $data = [

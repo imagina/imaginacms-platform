@@ -10,7 +10,7 @@ class MenuDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
         //Seed cms pages

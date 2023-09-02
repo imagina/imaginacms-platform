@@ -17,7 +17,7 @@ class MessageWasRetrievedListener
     /**
      * Handle the event.
      */
-    public function handle(object $event): void
+    public function handle($event)
     {
         //Get message
         $message = $event->message;

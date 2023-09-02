@@ -14,6 +14,7 @@ use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Entities\StatusYN;
 use Modules\Iplaces\Entities\Weather;
 use Modules\Iplaces\Http\Requests\CreatePlaceRequest;
+use Modules\Iplaces\Http\Requests\UpdatePlaceRequest;
 use Modules\Iplaces\Repositories\CategoryRepository;
 use Modules\Iplaces\Repositories\CityRepository as SiteRepository;
 use Modules\Iplaces\Repositories\PlaceRepository;
@@ -93,7 +94,7 @@ class PlaceController extends AdminBaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         $places = $this->place->all();
 
@@ -103,7 +104,7 @@ class PlaceController extends AdminBaseController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -127,7 +128,7 @@ class PlaceController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreatePlaceRequest $request): Response
+    public function store(CreatePlaceRequest $request)
     {
         try {
             $this->place->create($request->all());
@@ -146,7 +147,7 @@ class PlaceController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Place $place): Response
+    public function edit(Place $place)
     {//dd($place->services);
         $statuses = $this->status->lists();
         $categories = $this->category->all();
@@ -172,7 +173,7 @@ class PlaceController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Place $place, CreatePlaceRequest $request): Response
+    public function update(Place $place, CreatePlaceRequest $request)
     {//dd($request);
         try {
             if (isset($request['options'])) {
@@ -199,7 +200,7 @@ class PlaceController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Place $place): Response
+    public function destroy(Place $place)
     {
         try {
             $this->place->destroy($place);

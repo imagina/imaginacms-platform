@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => '/page'], function (Router $router) {
+Route::prefix('/page')->group(function (Router $router) {
     $router->get('pages', [
         'as' => 'admin.page.page.index',
         'uses' => 'PageController@index',

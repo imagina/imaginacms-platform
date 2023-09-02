@@ -32,7 +32,7 @@ class SettingServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
 
@@ -59,7 +59,7 @@ class SettingServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('setting', 'permissions'), 'asgard.setting.permissions');
         $this->publishConfig('setting', 'config');
@@ -70,7 +70,7 @@ class SettingServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

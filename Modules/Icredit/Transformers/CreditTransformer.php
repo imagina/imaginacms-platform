@@ -9,7 +9,7 @@ class CreditTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         $filter = json_decode($request->filter);
 

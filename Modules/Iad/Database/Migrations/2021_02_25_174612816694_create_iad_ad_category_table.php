@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIadAdCategoryTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('iad__ad_category', function (Blueprint $table) {
             $table->increments('id');
@@ -20,8 +20,8 @@ class CreateIadAdCategoryTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::drop('iad__ad_category');
     }
-}
+};

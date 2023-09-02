@@ -19,7 +19,7 @@ class CreateReservationItem
     /**
      * Handle the event.
      */
-    public function handle(ReservationSaved $event): void
+    public function handle(ReservationSaved $event)
     {
         dd('AJDKSJDKJKAS', $event);
     }

@@ -27,7 +27,7 @@ class ZoneWasCreated implements StoringMedia
     /**
      * Return the ALL data sent
      */
-    public function getSubmissionData(): array
+    public function getSubmissionData()
     {
         return $this->data;
     }

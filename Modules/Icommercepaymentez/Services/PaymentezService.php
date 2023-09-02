@@ -13,7 +13,7 @@ class PaymentezService
      *
      * @return object Configuration
      */
-    public function makeConfiguration($paymentMethod, $order, $transaction): object
+    public function makeConfiguration($paymentMethod, $order, $transaction)
     {
         $conf['clientAppCode'] = $paymentMethod->options->clientAppCode ?? null;
         $conf['clientAppKey'] = $paymentMethod->options->clientAppKey ?? null;
@@ -77,7 +77,7 @@ class PaymentezService
      *
      * @param Paymentez Status
      */
-    public function getStatusOrder($cod): int
+    public function getStatusOrder($cod)
     {
         switch ($cod) {
             case 'success': // Aceptada
@@ -104,7 +104,7 @@ class PaymentezService
      * @param Paymentez Status Detail
      * @return string Status Detail, int New Status to Order
      */
-    public function getStatusDetail($cod): string
+    public function getStatusDetail($cod)
     {
         \Log::info('Icommercepaymentez: Get Status Detail');
 
@@ -161,7 +161,7 @@ class PaymentezService
      * @param request user
      * @param payment method
      */
-    public function generateStoken($transaction, $user, $paymentMethod): stoken
+    public function generateStoken($transaction, $user, $paymentMethod)
     {
         \Log::info('Icommercepaymentez: Generate Stoken');
 

@@ -46,7 +46,7 @@ class PublicController extends BasePublicController
      *
      * @param Requests request
      */
-    public function index($eURL): route
+    public function index($eURL)
     {
         try {
             // Decr
@@ -83,7 +83,7 @@ class PublicController extends BasePublicController
     /**
      * @return redirect new link to Onboarding Account
      */
-    public function connectRefreshUrl(): redirect
+    public function connectRefreshUrl()
     {
         //Get Stripe Configuration to Logged User
         $payoutStripeConfig = $this->stripeService->findPayoutConfigUser();

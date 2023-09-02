@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class DealProductsToBitrix24Transformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'PRODUCT_ID' => (strpos($this->type, 'Domain') !== false) ? 863/*Dominio Registrado*/ :

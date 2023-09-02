@@ -5,7 +5,6 @@ namespace Modules\Menu\Presenters;
 use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Isite\Entities\Organization;
-use Nwidart\Menus\MenuItem;
 use Nwidart\Menus\Presenters\Presenter;
 
 class NavbarPresenter extends Presenter
@@ -70,7 +69,7 @@ class NavbarPresenter extends Presenter
     /**
      * Get active state on child items.
      */
-    public function getActiveStateOnChild($item, string $state = 'active'): ?string
+    public function getActiveStateOnChild($item, $state = 'active')
     {
         return $item->hasActiveOnChild() ? $state : null;
     }
@@ -111,7 +110,7 @@ class NavbarPresenter extends Presenter
     /**
      * Get multilevel menu wrapper.
      */
-    public function getMultiLevelDropdownWrapper(MenuItem $item): string
+    public function getMultiLevelDropdownWrapper($item)
     {
         return '<li class="nav-item dropdown'.$this->getActiveStateOnChild($item, ' active').'">
 		          <a href="#" class="nav-link dropdown-toggle '.($item->attributes['class'] ?? '').'" data-toggle="dropdown">

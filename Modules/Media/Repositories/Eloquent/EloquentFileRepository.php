@@ -41,7 +41,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
      *
      * @return mixed
      */
-    public function createFromFile(UploadedFile $file, int $parentId = 0, string $disk = null)
+    public function createFromFile(UploadedFile $file, $parentId = 0, $disk = null)
     {
         $fileName = FileHelper::slug($file->getClientOriginalName());
 
@@ -90,7 +90,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Find a file for the entity by zone
      */
-    public function findFileByZoneForEntity($zone, object $entity): object
+    public function findFileByZoneForEntity($zone, $entity)
     {
         foreach ($entity->files as $file) {
             if ($file->pivot->zone == $zone) {
@@ -104,7 +104,7 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Find multiple files for the given zone and entity
      */
-    public function findMultipleFilesByZoneForEntity(string $zone, object $entity): object
+    public function findMultipleFilesByZoneForEntity($zone, $entity)
     {
         $files = [];
         foreach ($entity->files as $file) {
@@ -116,7 +116,10 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         return new Collection($files);
     }
 
-    private function getNewUniqueFilename($fileName): string
+    /**
+     * @return string
+     */
+    private function getNewUniqueFilename($fileName)
     {
         $fileNameOnly = pathinfo($fileName, PATHINFO_FILENAME);
         $extension = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -164,7 +167,10 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
         return $media->paginate($request->get('per_page', 10));
     }
 
-    public function allChildrenOf(int $folderId): Collection
+    /**
+     * @param  int  $folderId
+     */
+    public function allChildrenOf($folderId): Collection
     {
         return $this->model->where('folder_id', $folderId)->get();
     }

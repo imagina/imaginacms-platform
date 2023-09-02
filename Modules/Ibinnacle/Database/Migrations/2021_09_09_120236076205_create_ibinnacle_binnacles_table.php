@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbinnacleBinnaclesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ibinnacle__binnacles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -28,8 +28,8 @@ class CreateIbinnacleBinnaclesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('ibinnacle__binnacles');
     }
-}
+};

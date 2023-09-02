@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -19,4 +19,4 @@ class IplacesAddFulltextTitleIndexInPlaceTable extends Migration
     {
         //
     }
-}
+};

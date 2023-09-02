@@ -45,7 +45,7 @@ class PublicController extends BasePublicController
      *
      * @param Requests request
      */
-    public function index($eURL): route
+    public function index($eURL)
     {
         try {
             // Decr
@@ -88,7 +88,7 @@ class PublicController extends BasePublicController
      *
      * @param    $request (transaction wompi id)
      */
-    public function response(Request $request, $orderId): redirect
+    public function response(Request $request, $orderId)
     {
         $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
         $isQuasarAPP = env('QUASAR_APP', false);

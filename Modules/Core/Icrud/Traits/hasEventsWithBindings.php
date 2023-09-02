@@ -26,7 +26,7 @@ trait hasEventsWithBindings
      * @param  array  $data
      * @return mixed
      */
-    public function fireModelEvent($event, $halt = true, $bindings = [])
+    protected function fireModelEvent($event, $halt = true, array $bindings = [])
     {
         //Save Event bindings
         $this->eventBindings[$event] = $bindings;
@@ -37,7 +37,7 @@ trait hasEventsWithBindings
     /**
      * Get the event bindings by event name
      */
-    public function getEventBindings(string $event): ?array
+    public function getEventBindings(string $event)
     {
         //Add data to eventData
         if (array_key_exists($event, $this->eventBindings)) {
@@ -53,7 +53,7 @@ trait hasEventsWithBindings
     /**
      * Register event to moel was retrieved
      */
-    public static function retrievedIndexWithBindings($callback): void
+    public static function retrievedIndexWithBindings($callback)
     {
         static::registerModelEvent('retrievedIndexWithBindings', $callback);
     }
@@ -61,7 +61,7 @@ trait hasEventsWithBindings
     /**
      * Register event to moel was retrieved
      */
-    public static function retrievedShowWithBindings($callback): void
+    public static function retrievedShowWithBindings($callback)
     {
         static::registerModelEvent('retrievedShowWithBindings', $callback);
     }
@@ -71,7 +71,7 @@ trait hasEventsWithBindings
      *
      * @param  \Closure|string  $callback
      */
-    public static function creatingWithBindings($callback): void
+    public static function creatingWithBindings($callback)
     {
         static::registerModelEvent('creatingWithBindings', $callback);
     }
@@ -81,7 +81,7 @@ trait hasEventsWithBindings
      *
      * @param  \Closure|string  $callback
      */
-    public static function createdWithBindings($callback): void
+    public static function createdWithBindings($callback)
     {
         static::registerModelEvent('createdWithBindings', $callback);
     }
@@ -91,7 +91,7 @@ trait hasEventsWithBindings
      *
      * @param  \Closure|string  $callback
      */
-    public static function updatingWithBindings($callback): void
+    public static function updatingWithBindings($callback)
     {
         static::registerModelEvent('updatingWithBindings', $callback);
     }
@@ -101,7 +101,7 @@ trait hasEventsWithBindings
      *
      * @param  \Closure|string  $callback
      */
-    public static function updatedWithBindings($callback): void
+    public static function updatedWithBindings($callback)
     {
         static::registerModelEvent('updatedWithBindings', $callback);
     }
@@ -111,7 +111,7 @@ trait hasEventsWithBindings
     /**
      * Method to fire event when model was retrieved
      */
-    public function retrievedIndexCrudModel($bindings = []): void
+    public function retrievedIndexCrudModel($bindings = [])
     {
         // fire custom event on the model
         $this->fireModelEvent('retrievedIndexWithBindings', false, $bindings);
@@ -120,7 +120,7 @@ trait hasEventsWithBindings
     /**
      * Method to fire event when model was retrieved
      */
-    public function retrievedShowCrudModel($bindings = []): void
+    public function retrievedShowCrudModel($bindings = [])
     {
         // fire custom event on the model
         $this->fireModelEvent('retrievedShowWithBindings', false, $bindings);

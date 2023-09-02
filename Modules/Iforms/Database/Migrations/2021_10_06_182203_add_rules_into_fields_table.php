@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRulesIntoFieldsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('iforms__fields', function (Blueprint $table) {
             $table->text('rules')->nullable();
@@ -19,10 +19,10 @@ class AddRulesIntoFieldsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('iforms__fields', function (Blueprint $table) {
             $table->dropColumn(['rules']);
         });
     }
-}
+};

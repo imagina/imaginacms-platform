@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIgamificationActivityUserTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -34,4 +34,4 @@ class CreateIgamificationActivityUserTable extends Migration
     {
         Schema::dropIfExists('igamification__activity_user');
     }
-}
+};

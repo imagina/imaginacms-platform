@@ -20,7 +20,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
      *
      * @param  object  $redirect
      */
-    public function findBySlug($slug): object
+    public function findBySlug($slug)
     {
         return $this->cache
           ->tags([$this->entityName, 'global'])
@@ -34,7 +34,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
     /**
      * Get the next redirect of the given redirect
      */
-    public function find(object $id): object
+    public function find($id)
     {
         return $this->cache
           ->tags([$this->entityName, 'global'])
@@ -48,7 +48,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
     /**
      * List or resources
      */
-    public function getItemsBy($params): collection
+    public function getItemsBy($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getItemsBy($params);
@@ -58,7 +58,7 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
     /**
      * find a resource by id or slug
      */
-    public function getItem($criteria, $params = false): object
+    public function getItem($criteria, $params = false)
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);

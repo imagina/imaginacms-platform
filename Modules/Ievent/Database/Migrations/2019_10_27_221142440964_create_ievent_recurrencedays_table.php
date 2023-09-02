@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIeventRecurrenceDaysTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class CreateIeventRecurrenceDaysTable extends Migration
     {
         Schema::dropIfExists('ievent__recurrence_days');
     }
-}
+};

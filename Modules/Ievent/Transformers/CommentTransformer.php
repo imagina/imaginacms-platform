@@ -7,7 +7,7 @@ use Modules\Iprofile\Transformers\UserTransformer;
 
 class CommentTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->when($this->id, $this->id),

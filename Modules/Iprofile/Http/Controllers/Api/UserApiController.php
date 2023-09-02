@@ -4,7 +4,6 @@ namespace Modules\Iprofile\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -491,7 +490,7 @@ class UserApiController extends BaseApiController
     /**
      * Change password
      */
-    public function changePassword(Request $request): JsonResponse
+    public function changePassword(Request $request)
     {
         \DB::beginTransaction(); //DB Transaction
         try {

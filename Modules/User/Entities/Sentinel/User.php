@@ -2,6 +2,10 @@
 
 namespace Modules\User\Entities\Sentinel;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Eloquent\Relations\HasMany;
+>>>>>>> shift-93023
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
@@ -58,6 +62,7 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         }
 
         parent::__construct($attributes);
+<<<<<<< HEAD
     }
 
     /**
@@ -74,19 +79,28 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
     public function hasRoleSlug($slug)
     {
         return $this->roles()->whereSlug($slug)->count() >= 1;
+=======
+>>>>>>> shift-93023
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function hasRoleName($name)
     {
         return $this->roles()->whereName($name)->count() >= 1;
+=======
+    public function hasRoleId($roleId)
+    {
+        return $this->roles()->whereId($roleId)->count() >= 1;
+>>>>>>> shift-93023
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function isActivated()
     {
         if (is_int($this->getKey()) && Activation::completed($this)) {
@@ -97,6 +111,68 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
     }
 
     public function api_keys(): HasMany
+    {
+        return $this->hasMany(UserToken::class);
+=======
+    public function hasRoleSlug($slug)
+    {
+        return $this->roles()->whereSlug($slug)->count() >= 1;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasRoleName($name)
+    {
+        return $this->roles()->whereName($name)->count() >= 1;
+>>>>>>> shift-93023
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+<<<<<<< HEAD
+    public function getFirstApiKey()
+    {
+        $userToken = $this->api_keys->first();
+
+        if ($userToken === null) {
+            return '';
+        }
+
+        return $userToken->access_token;
+    }
+
+    public function organizations()
+    {
+        return $this->belongsToMany(
+            \Modules\Isite\Entities\Organization::class,
+            'isite__user_organization');
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(
+            \Modules\Iprofile\Entities\Address::class);
+    }
+
+    public function fields()
+    {
+        return $this->hasMany(
+            \Modules\Iprofile\Entities\Field::class);
+    }
+
+=======
+    public function isActivated()
+    {
+        if (is_int($this->getKey()) && Activation::completed($this)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function api_keys()
     {
         return $this->hasMany(UserToken::class);
     }
@@ -134,11 +210,13 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
             \Modules\Iprofile\Entities\Field::class);
     }
 
+>>>>>>> shift-93023
     public function settings()
     {
         return $this->hasMany(
             \Modules\Iprofile\Entities\Setting::class, 'related_id')->where('entity_name', 'user');
     }
+<<<<<<< HEAD
 
     public function departments()
     {
@@ -163,6 +241,32 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
 //        //i: No relation found, return the call to parent (Eloquent) to handle it.
 //        return parent::__call($method, $parameters);
 //    }
+=======
+
+    public function departments()
+    {
+        return $this->belongsToMany(
+            \Modules\Iprofile\Entities\Department::class,
+            'iprofile__user_department');
+    }
+
+    public function __call($method, $parameters)
+    {
+        //i: Convert array to dot notation
+        $config = implode('.', ['asgard.user.config.relations', $method]);
+
+        //i: Relation method resolver
+        if (config()->has($config)) {
+            $function = config()->get($config);
+            $bound = $function->bindTo($this);
+
+            return $bound();
+        }
+
+        //i: No relation found, return the call to parent (Eloquent) to handle it.
+        return parent::__call($method, $parameters);
+    }
+>>>>>>> shift-93023
 
     /**
      * {@inheritdoc}

@@ -27,7 +27,7 @@ class CurrencyApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         try {
             //Request to Repository
@@ -78,7 +78,7 @@ class CurrencyApiController extends BaseApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         \DB::beginTransaction();
 
@@ -141,7 +141,7 @@ class CurrencyApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         try {
             \DB::beginTransaction();

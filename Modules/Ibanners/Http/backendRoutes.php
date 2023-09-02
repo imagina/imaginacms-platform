@@ -10,7 +10,7 @@ $router->bind('banner', function ($id) {
     return app(\Modules\Ibanners\Repositories\BannerRepository::class)->find($id);
 });
 
-Route::group(['prefix' => '/ibanners'], function (Router $router) {
+Route::prefix('/ibanners')->group(function (Router $router) {
     $router->get('positions', [
         'as' => 'admin.ibanners.position.index',
         'uses' => 'PositionController@index',

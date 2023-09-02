@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIcommerceOrderStatusTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         // OJO : toco esta tabla reducirle el nombre a trans porque excedia
         // el max de caracteres de mysql al momento de generar la llave unique
@@ -29,11 +29,11 @@ class CreateIcommerceOrderStatusTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('icommerce__order_status_trans', function (Blueprint $table) {
             $table->dropForeign(['order_status_id']);
         });
         Schema::dropIfExists('icommerce__order_status_trans');
     }
-}
+};

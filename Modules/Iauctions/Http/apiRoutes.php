@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' =>'/iauctions/v1'], function (Router $router) {
+Route::prefix('/iauctions/v1')->group(function (Router $router) {
     $router->apiCrud([
         'module' => 'iauctions',
         'prefix' => 'auctions',

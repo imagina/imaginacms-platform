@@ -24,7 +24,7 @@ class IdocsServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIdocsSidebar::class);
@@ -36,7 +36,7 @@ class IdocsServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->mergeConfigFrom($this->getModuleConfigFilePath('idocs', 'permissions'), 'asgard.idocs.permissions');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('idocs', 'cmsPages'), 'asgard.idocs.cmsPages');
@@ -50,7 +50,7 @@ class IdocsServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

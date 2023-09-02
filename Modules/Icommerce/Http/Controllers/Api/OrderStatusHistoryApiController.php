@@ -26,7 +26,7 @@ class OrderStatusHistoryApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         try {
             //Get Parameters from URL.
@@ -77,7 +77,7 @@ class OrderStatusHistoryApiController extends BaseApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         try {
             $data = $request->input('attributes');
@@ -98,7 +98,7 @@ class OrderStatusHistoryApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         try {
             $this->orderHistory->updateBy($criteria, $request->all(), $this->getParamsRequest($request));
@@ -117,7 +117,7 @@ class OrderStatusHistoryApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         try {
             $this->orderHistory->deleteBy($criteria, $this->getParamsRequest($request));

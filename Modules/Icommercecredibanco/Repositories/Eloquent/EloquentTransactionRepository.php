@@ -43,7 +43,7 @@ class EloquentTransactionRepository extends EloquentBaseRepository implements Tr
 
     }
     */
-    public function findByOrder($id): transaction
+    public function findByOrder($id)
     {
         return $this->model->where('order_id', '=', $id)->first();
     }

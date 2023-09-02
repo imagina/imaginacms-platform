@@ -120,7 +120,7 @@ class EloquentShippingMethodRepository extends EloquentBaseRepository implements
     /**
      * @param $request
      */
-    public function getCalculations($data, $params): Response
+    public function getCalculations($data, $params)
     {
         /* Init query */
         $query = $this->model->query();

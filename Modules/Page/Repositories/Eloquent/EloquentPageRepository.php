@@ -35,7 +35,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     /**
      * Find the page set as homepage
      */
-    public function findHomepage(): object
+    public function findHomepage()
     {
         return $this->model->where('is_home', 1)->first();
     }
@@ -43,7 +43,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     /**
      * Count all records
      */
-    public function countAll(): int
+    public function countAll()
     {
         return $this->model->count();
     }
@@ -51,7 +51,7 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
     /**
      * @param  mixed  $data
      */
-    public function create($data): object
+    public function create($data)
     {
         if (Arr::get($data, 'is_home') === '1') {
             $this->removeOtherHomepage();
@@ -81,7 +81,11 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         return $page;
     }
 
-    public function update($model, $data): object
+    /**
+     * @param  array  $data
+     * @return object
+     */
+    public function update($model, $data)
     {
         if (Arr::get($data, 'is_home') === '1') {
             $this->removeOtherHomepage($model->id);
@@ -106,7 +110,10 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
         return $page->delete();
     }
 
-    public function findBySlugInLocale($slug, $locale): object
+    /**
+     * @return object
+     */
+    public function findBySlugInLocale($slug, $locale)
     {
         if (method_exists($this->model, 'translations')) {
             return $this->model->whereHas('translations', function (Builder $q) use ($slug, $locale) {

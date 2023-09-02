@@ -23,7 +23,7 @@ class RateableServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterRateableSidebar::class);
@@ -36,7 +36,7 @@ class RateableServiceProvider extends ServiceProvider
         $this->instanceMediaDisk();
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('rateable', 'config');
         $this->publishConfig('rateable', 'crud-fields');
@@ -53,7 +53,7 @@ class RateableServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

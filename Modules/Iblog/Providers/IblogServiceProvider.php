@@ -34,7 +34,7 @@ class IblogServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIblogSidebar::class);
@@ -46,7 +46,7 @@ class IblogServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('iblog', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('iblog', 'settings'), 'asgard.iblog.settings');
@@ -67,7 +67,7 @@ class IblogServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

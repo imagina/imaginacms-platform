@@ -32,7 +32,7 @@ class NotificationServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->registerViewComposers();
@@ -49,7 +49,7 @@ class NotificationServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('notification', 'config');
         $this->mergeConfigFrom($this->getModuleConfigFilePath('notification', 'permissions'), 'asgard.notification.permissions');
@@ -63,7 +63,7 @@ class NotificationServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

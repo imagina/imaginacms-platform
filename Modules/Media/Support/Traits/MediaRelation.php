@@ -11,7 +11,7 @@ trait MediaRelation
     /**
      * Make the Many To Many Morph To Relation
      */
-    public function files(): object
+    public function files()
     {
         $tenantWithCentralData = config('asgard.media.config.tenantWithCentralData.imageable');
 
@@ -25,7 +25,7 @@ trait MediaRelation
     /**
      * Make the Many to Many Morph to Relation with specific zone
      */
-    public function filesByZone(string $zone): object
+    public function filesByZone($zone)
     {
         return $this->morphToMany(File::class, 'imageable', 'media__imageables')
           ->withPivot('zone', 'id')
@@ -37,7 +37,7 @@ trait MediaRelation
     /**
      * Order and transform all files data
      */
-    public function mediaFiles(): array
+    public function mediaFiles()
     {
         $files = $this->files; //Get files
 

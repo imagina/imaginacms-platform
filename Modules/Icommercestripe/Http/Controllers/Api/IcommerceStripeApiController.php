@@ -90,7 +90,7 @@ class IcommerceStripeApiController extends BaseApiController
      *
      * @param Request - orderId
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         \Log::info('Icommercestripe: INIT: '.time());
 
@@ -154,7 +154,7 @@ class IcommerceStripeApiController extends BaseApiController
      *
      * @param Request request
      */
-    public function response(Request $request): route
+    public function response(Request $request)
     {
         // Default Response
         $response = ['status' => 'error'];
@@ -194,7 +194,7 @@ class IcommerceStripeApiController extends BaseApiController
      *
      * @param Request request
      */
-    public function connectCreateAccountLinkOnboarding(Request $request): url
+    public function connectCreateAccountLinkOnboarding(Request $request)
     {
         \Log::info('Icommercestripe: Connect|CreateAccountLinkOnboarding');
 
@@ -262,7 +262,7 @@ class IcommerceStripeApiController extends BaseApiController
      *
      * @param Request request
      */
-    public function connectGetAccount(Request $request): url
+    public function connectGetAccount(Request $request)
     {
         \Log::info('Icommercestripe: Connect|GetAccount');
 
@@ -340,7 +340,7 @@ class IcommerceStripeApiController extends BaseApiController
      *
      * @param Request - attributes['accountId']
      */
-    public function connectCreateLoginLink(Request $request): url
+    public function connectCreateLoginLink(Request $request)
     {
         \Log::info('Icommercestripe: Connect|CreateLoginLink');
 
@@ -406,7 +406,7 @@ class IcommerceStripeApiController extends BaseApiController
      * @param Request - attributes['countryCode']
      * @return Countries Stripe
      */
-    public function connectGetCountry(Request $request): Countries
+    public function connectGetCountry(Request $request)
     {
         \Log::info('Icommercestripe: Connect|GetCountry');
 
@@ -444,7 +444,7 @@ class IcommerceStripeApiController extends BaseApiController
      * @param Request - attributes['transferId']
      * @return Transfer Stripe
      */
-    public function connectGetTransfer(Request $request): Transfer
+    public function connectGetTransfer(Request $request)
     {
         \Log::info('Icommercestripe: Connect|GetTransfer');
 
@@ -473,7 +473,7 @@ class IcommerceStripeApiController extends BaseApiController
      * @param Request - attributes['balanceIdTransaction']
      * @return Balance Transaction Stripe
      */
-    public function connectGetBalanceTransaction(Request $request): Balance
+    public function connectGetBalanceTransaction(Request $request)
     {
         \Log::info('Icommercestripe: Connect|GetBalanceTransaction');
 

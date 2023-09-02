@@ -107,7 +107,7 @@ class TranslationApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($key, Request $request): Response
+    public function delete($key, Request $request)
     {
         \DB::beginTransaction();
         try {

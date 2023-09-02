@@ -17,7 +17,7 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
     /**
      * List or resources
      */
-    public function getItemsBy($params): collection
+    public function getItemsBy($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getItemsBy($params);
@@ -27,7 +27,7 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
     /**
      * find a resource by id or slug
      */
-    public function getItem($criteria, $params = false): object
+    public function getItem($criteria, $params = false)
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);
@@ -73,7 +73,7 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
     /**
      * Min and Max Price
      */
-    public function getPriceRange($params): collection
+    public function getPriceRange($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getPriceRange($params);
@@ -83,7 +83,7 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
     /**
      * Get Manufactures From Products Filtered
      */
-    public function getManufacturers($params): collection
+    public function getManufacturers($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getManufacturers($params);
@@ -93,7 +93,7 @@ class CacheProductDecorator extends BaseCacheDecorator implements ProductReposit
     /**
      * Get Product Options From Products Filtered
      */
-    public function getProductOptions($params): collection
+    public function getProductOptions($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getProductOptions($params);

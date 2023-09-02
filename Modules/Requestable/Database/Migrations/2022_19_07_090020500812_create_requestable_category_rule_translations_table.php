@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRequestableCategoryRuleTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -34,4 +34,4 @@ class CreateRequestableCategoryRuleTranslationsTable extends Migration
         });
         Schema::dropIfExists('requestable__category_rule_translations');
     }
-}
+};

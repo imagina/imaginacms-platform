@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddLinkTypeColymnToMenuitemsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -25,4 +25,4 @@ class AddLinkTypeColymnToMenuitemsTable extends Migration
             $table->dropColumn('link_type');
         });
     }
-}
+};

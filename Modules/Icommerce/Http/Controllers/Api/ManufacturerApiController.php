@@ -25,7 +25,7 @@ class ManufacturerApiController extends BaseApiController
       /**
        * Get List Products
        */
-      public function index(Request $request): Response
+      public function index(Request $request)
       {
           try {
               //Get Parameters from URL.

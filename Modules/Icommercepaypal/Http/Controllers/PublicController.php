@@ -37,7 +37,7 @@ class PublicController extends BasePublicController
      *
      * @param    $request ()
      */
-    public function response(Request $request, $orderId, $transactionId): redirect
+    public function response(Request $request, $orderId, $transactionId)
     {
         $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
         $isQuasarAPP = env('QUASAR_APP', false);

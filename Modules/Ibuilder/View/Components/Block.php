@@ -122,7 +122,7 @@ class Block extends Component
     /**
      * Instance the component attributes
      */
-    public function instanceGeneralAttributes($params): void
+    public function instanceGeneralAttributes($params)
     {
         $this->id = $params['id'] ?? uniqid();
         $this->container = $params['container'];
@@ -159,7 +159,7 @@ class Block extends Component
     /**
      * Instance the Background attribute
      */
-    public function instanceBackgroundAttribute($params): void
+    public function instanceBackgroundAttribute($params)
     {
         $this->backgrounds = json_encode($params['backgrounds'] ?? [
             'position' => 'center',
@@ -173,7 +173,7 @@ class Block extends Component
     /**
      * Instance the block config
      */
-    public function instanceBlockConfig($params): void
+    public function instanceBlockConfig($params)
     {
         //If not get blockConfig then search by systemName
         if (! is_array($this->blockConfig) || ! count($this->blockConfig)) {
@@ -207,7 +207,7 @@ class Block extends Component
     /**
      * Instance the Media files related to the block
      */
-    public function instanceBlockConfigFiles($params): void
+    public function instanceBlockConfigFiles($params)
     {
         //Instance the media attributes
         $componentAttrs = $this->blockConfig->attributes->componentAttributes;
@@ -250,7 +250,7 @@ class Block extends Component
     /**
      * Validate and instance if the dynamic component is Liveware or Blade
      */
-    public function instanceComponentType($params): void
+    public function instanceComponentType($params)
     {
         $systemName = $this->blockConfig->component->systemName ?? null;
         $nameSpace = $this->blockConfig->component->nameSpace ?? null;
@@ -281,7 +281,7 @@ class Block extends Component
     /**
      * Instance the component config
      */
-    public function instanceComponentConfig(): void
+    public function instanceComponentConfig()
     {
         if ($this->componentType) {
             //Instance the default config
@@ -345,7 +345,7 @@ class Block extends Component
     /**
      * Get the inherit content for components
      */
-    public function getInheritcontent(): void
+    public function getInheritcontent()
     {
         //Return the attribute inherit content
         if ($this->inheritContent) {

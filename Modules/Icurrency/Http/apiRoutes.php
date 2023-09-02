@@ -2,9 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/icurrency/v1'], function (Router $router) {
-
-  /*currencies*/
-  require ('ApiRoutes/currencyRoutes.php');
-
+Route::prefix('/icurrency/v1')->group(function (Router $router) {
+    /*currencies*/
+    require 'ApiRoutes/currencyRoutes.php';
 });

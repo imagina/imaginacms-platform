@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIbannersBannersTables extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ibanners__banners', function (Blueprint $table) {
             $table->increments('id');
@@ -25,8 +25,8 @@ class CreateIbannersBannersTables extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::drop('ibanners__banners');
     }
-}
+};

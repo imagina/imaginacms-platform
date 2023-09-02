@@ -2,8 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => 'icommercebraintree'], function (Router $router) {
-    
+Route::prefix('icommercebraintree')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'icommercebraintree.api.braintree.init',
         'uses' => 'IcommerceBraintreeApiController@init',
@@ -23,5 +22,4 @@ Route::group(['prefix' => 'icommercebraintree'], function (Router $router) {
         'as' => 'icommercebraintree.api.braintree.findTransaction',
         'uses' => 'IcommerceBraintreeApiController@findTransaction',
     ]);
-
 });

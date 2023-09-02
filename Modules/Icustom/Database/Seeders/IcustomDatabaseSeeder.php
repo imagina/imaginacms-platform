@@ -10,7 +10,7 @@ class IcustomDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
         $this->call(IcustomModuleTableSeeder::class);

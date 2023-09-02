@@ -21,7 +21,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class MigrationCartalystSentinel extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -117,4 +117,4 @@ class MigrationCartalystSentinel extends Migration
         Schema::drop('throttle');
         Schema::drop('users');
     }
-}
+};

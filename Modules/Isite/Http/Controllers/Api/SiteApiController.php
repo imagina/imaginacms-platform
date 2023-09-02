@@ -297,7 +297,7 @@ class SiteApiController extends BaseApiController
     /**
      * check if
      */
-    private function isJson($string): bool
+    private function isJson($string)
     {
         return ((is_string($string) &&
           (is_object(json_decode($string)) ||

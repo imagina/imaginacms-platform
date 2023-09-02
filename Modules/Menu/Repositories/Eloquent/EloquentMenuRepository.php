@@ -37,7 +37,7 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
     /**
      * Get all online menus
      */
-    public function allOnline(): object
+    public function allOnline()
     {
         $locale = App::getLocale();
 

@@ -23,7 +23,7 @@ class IbuilderServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIbuilderSidebar::class);
@@ -33,7 +33,7 @@ class IbuilderServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('ibuilder', 'config');
         $this->publishConfig('ibuilder', 'crud-fields');
@@ -52,7 +52,7 @@ class IbuilderServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

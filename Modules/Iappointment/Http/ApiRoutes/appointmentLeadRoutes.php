@@ -2,12 +2,11 @@
 
 use Illuminate\Routing\Router;
 
-Route::group(['prefix' => '/appointment-leads'], function (Router $router) {
-
+Route::prefix('/appointment-leads')->group(function (Router $router) {
     $router->post('/', [
         'as' => 'api.iappointment.appointmentLeads.create',
         'uses' => 'AppointmentLeadApiController@create',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->get('/', [
         'as' => 'api.iappointment.appointmentLeads.index',
@@ -20,12 +19,11 @@ Route::group(['prefix' => '/appointment-leads'], function (Router $router) {
     $router->put('/{criteria}', [
         'as' => 'api.iappointment.appointmentLeads.update',
         'uses' => 'AppointmentLeadApiController@update',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
     $router->delete('/{criteria}', [
         'as' => 'api.iappointment.appointmentLeads.delete',
         'uses' => 'AppointmentLeadApiController@delete',
-        'middleware' => ['auth:api']
+        'middleware' => ['auth:api'],
     ]);
-
 });

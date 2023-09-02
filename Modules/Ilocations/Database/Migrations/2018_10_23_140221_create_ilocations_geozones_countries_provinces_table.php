@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIlocationsGeozonesCountriesProvincesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ilocations__geozones_countries_provinces', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -31,7 +31,7 @@ class CreateIlocationsGeozonesCountriesProvincesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('ilocations__geozones_countries_provinces', function (Blueprint $table) {
             $table->dropForeign(['geozone_id']);
@@ -40,4 +40,4 @@ class CreateIlocationsGeozonesCountriesProvincesTable extends Migration
         });
         Schema::dropIfExists('ilocations__geozones_countries_provinces');
     }
-}
+};

@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class FieldTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         if ($this->name == 'mainImage' && ! empty($this->value)) {
             $this->value .= '?'.uniqid();

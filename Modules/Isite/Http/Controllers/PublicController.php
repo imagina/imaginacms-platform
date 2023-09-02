@@ -2,9 +2,9 @@
 
 namespace Modules\Isite\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
 use Modules\Iblog\Entities\Post;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
 use Modules\Isite\Repositories\CategoryRepository;

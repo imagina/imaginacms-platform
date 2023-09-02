@@ -3,9 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-
-Route::group(['prefix' => 'lugares'], function (Router $router) {
-
+Route::prefix('lugares')->group(function (Router $router) {
     $router->get('/', [
         'as' => 'iplaces.place.index',
         'uses' => 'OldPublicController@index',
@@ -18,10 +16,9 @@ Route::group(['prefix' => 'lugares'], function (Router $router) {
         'as' => 'iplaces.place.show',
         'uses' => 'OldPublicController@show',
     ]);
-
 });
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localize']], function (Router $router) {
+Route::prefix(LaravelLocalization::setLocale())->middleware('localize')->group(function (Router $router) {
     $locale = LaravelLocalization::setLocale() ?: App::getLocale();
 
     $router->get(trans('iplaces::routes.places.index.index'), [
@@ -29,13 +26,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         'uses' => 'PublicController@index',
     ]);
     $router->get(trans('iplaces::routes.places.index.category'), [
-        'as' => $locale .'.iplaces.place.category',
+        'as' => $locale.'.iplaces.place.category',
         'uses' => 'PublicController@index',
     ]);
     $router->get(trans('iplaces::routes.places.index.place'), [
         'as' => $locale.'.iplaces.place.show',
         'uses' => 'PublicController@show',
     ]);
-
 });
-

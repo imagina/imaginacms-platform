@@ -27,7 +27,7 @@ class Status
     /**
      * Get the available statuses
      */
-    public function lists(): array
+    public function lists()
     {
         return $this->statuses;
     }
@@ -35,7 +35,7 @@ class Status
     /**
      * Get the post status
      */
-    public function get(int $statusId): string
+    public function get($statusId)
     {
         if (isset($this->statuses[$statusId])) {
             return $this->statuses[$statusId];

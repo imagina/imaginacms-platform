@@ -2,12 +2,12 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddFulltextIndiceInProductTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         \DB::statement('ALTER TABLE icommerce__product_translations ADD FULLTEXT full(name)');
     }
@@ -15,7 +15,7 @@ class AddFulltextIndiceInProductTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
     }
-}
+};

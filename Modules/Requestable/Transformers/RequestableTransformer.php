@@ -10,7 +10,7 @@ class RequestableTransformer extends CrudResource
     /**
      * Method to merge values with response
      */
-    public function modelAttributes($request): array
+    public function modelAttributes($request)
     {
         if (! empty($this->requestable_type) && ! empty($this->requestable_id)) {
             $model = $this->requestable_type::find($this->requestable_id);

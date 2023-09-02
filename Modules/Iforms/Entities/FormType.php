@@ -34,7 +34,7 @@ class FormType extends Model
     /**
      * Get the available statuses
      */
-    public function lists(): array
+    public function lists()
     {
         return $this->types;
     }
@@ -42,7 +42,7 @@ class FormType extends Model
     /**
      * Get the post status
      */
-    public function get(int $id): string
+    public function get($id)
     {
         $id--;
         if (isset($this->types[$id])) {

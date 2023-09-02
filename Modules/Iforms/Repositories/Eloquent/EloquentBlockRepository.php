@@ -13,7 +13,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      *
      * @return mixed
      */
-    public function getItemsBy(bool $params = false)
+    public function getItemsBy($params = false)
     {
         /*== initialize query ==*/
         $query = $this->model->query();
@@ -94,7 +94,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      *
      * @return mixed
      */
-    public function getItem($criteria, bool $params = false)
+    public function getItem($criteria, $params = false)
     {
         //Initialize query
         $query = $this->model->query();
@@ -159,7 +159,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     /**
      * Standard Api Method
      */
-    public function updateBy($criteria, $data, bool $params = false): bool
+    public function updateBy($criteria, $data, $params = false)
     {
         /*== initialize query ==*/
         $query = $this->model->query();

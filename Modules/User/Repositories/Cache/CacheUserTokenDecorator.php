@@ -3,8 +3,8 @@
 namespace Modules\User\Repositories\Cache;
 
 use Illuminate\Database\Eloquent\Collection;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\User\Entities\UserToken;
+use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\User\Repositories\UserTokenRepository;
 
 class CacheUserTokenDecorator extends BaseCacheDecorator implements UserTokenRepository

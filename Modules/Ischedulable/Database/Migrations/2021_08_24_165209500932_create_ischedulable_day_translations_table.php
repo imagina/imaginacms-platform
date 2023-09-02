@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIschedulableDayTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ischedulable__day_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,11 +26,11 @@ class CreateIschedulableDayTranslationsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('ischedulable__day_translations', function (Blueprint $table) {
             $table->dropForeign(['day_id']);
         });
         Schema::dropIfExists('ischedulable__day_translations');
     }
-}
+};

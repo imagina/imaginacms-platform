@@ -233,7 +233,7 @@ class Coupon
      *
      * @return array (Product Id , Discount)
      */
-    public function applyDiscount($coupon, $cartProduct): array
+    public function applyDiscount($coupon, $cartProduct)
     {
         $discount = $this->calcDiscount($coupon->type_discount, $coupon->discount, $cartProduct->total);
 
@@ -250,7 +250,7 @@ class Coupon
      *
      * @return array (Product Id , Discount)
      */
-    public function getDiscountByProducts($cart, $totalDiscount): array
+    public function getDiscountByProducts($cart, $totalDiscount)
     {
         $discounts = [];
 

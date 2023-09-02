@@ -51,7 +51,7 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle()
     {
         //$this->removeDealsFromBitrix();
         //dd(CRest::call('crm.deal.get', ["id" => '94749', "select" => ["STAGE_ID"]]));
@@ -72,7 +72,7 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
     /**
      * Get the due hostings
      */
-    public function getDueItems(): void
+    public function getDueItems()
     {
         try {
             //Get the invoices
@@ -134,7 +134,7 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
      *
      * @param $clientsId
      */
-    public function getClients(): void
+    public function getClients()
     {
         try {
             $this->clients = \DB::connection('whmcs')->table('tblclients')
@@ -154,7 +154,7 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
     /**
      * Get all relations between deals(bitrix) and hosting(whmcs)
      */
-    public function getRelatedDueDeals(): void
+    public function getRelatedDueDeals()
     {
         try {
             $this->relatedDueDeals = \DB::connection('whmcs')->table('tblimoptions')

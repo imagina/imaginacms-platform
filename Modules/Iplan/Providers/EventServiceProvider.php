@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
 
     protected $listen = [];
 
-    public function register(): void
+    public function register()
     {
         $this->module = app('modules'); //Get modules
         $entities = []; //Default entities

@@ -47,7 +47,7 @@ class Frequency
     /**
      * Get the available statuses
      */
-    public function lists(): array
+    public function lists()
     {
         return $this->frequencies;
     }
@@ -57,7 +57,7 @@ class Frequency
      *
      * @param  int  $statusId
      */
-    public function get($frequencyId): string
+    public function get($frequencyId)
     {
         $frequencies = collect($this->frequencies);
         $frequency = $frequencies->where('id', $frequencyId)->first() ?? $frequencies->where('id', self::MONTHLY)->first();

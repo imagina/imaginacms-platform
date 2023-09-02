@@ -1,41 +1,41 @@
 <?php
 
 use Illuminate\Routing\Router;
-/** @var Router $router */
 
-Route::group(['prefix' =>'/iforms'], function (Router $router) {
+/** @var Router $router */
+Route::prefix('/iforms')->group(function (Router $router) {
     $router->bind('form', function ($id) {
         return app('Modules\Iforms\Repositories\FormRepository')->find($id);
     });
     $router->get('forms', [
         'as' => 'admin.iforms.form.index',
         'uses' => 'FormController@index',
-        'middleware' => 'can:iforms.forms.index'
+        'middleware' => 'can:iforms.forms.index',
     ]);
     $router->get('forms/create', [
         'as' => 'admin.iforms.form.create',
         'uses' => 'FormController@create',
-        'middleware' => 'can:iforms.forms.create'
+        'middleware' => 'can:iforms.forms.create',
     ]);
     $router->post('forms', [
         'as' => 'admin.iforms.form.store',
         'uses' => 'FormController@store',
-        'middleware' => 'can:iforms.forms.create'
+        'middleware' => 'can:iforms.forms.create',
     ]);
     $router->get('forms/{form}/edit', [
         'as' => 'admin.iforms.form.edit',
         'uses' => 'FormController@edit',
-        'middleware' => 'can:iforms.forms.edit'
+        'middleware' => 'can:iforms.forms.edit',
     ]);
     $router->put('forms/{form}', [
         'as' => 'admin.iforms.form.update',
         'uses' => 'FormController@update',
-        'middleware' => 'can:iforms.forms.edit'
+        'middleware' => 'can:iforms.forms.edit',
     ]);
     $router->delete('forms/{form}', [
         'as' => 'admin.iforms.form.destroy',
         'uses' => 'FormController@destroy',
-        'middleware' => 'can:iforms.forms.destroy'
+        'middleware' => 'can:iforms.forms.destroy',
     ]);
     $router->bind('field', function ($id) {
         return app('Modules\Iforms\Repositories\FieldRepository')->find($id);
@@ -43,32 +43,32 @@ Route::group(['prefix' =>'/iforms'], function (Router $router) {
     $router->get('fields', [
         'as' => 'admin.iforms.field.index',
         'uses' => 'FieldController@index',
-        'middleware' => 'can:iforms.fields.index'
+        'middleware' => 'can:iforms.fields.index',
     ]);
     $router->get('fields/create', [
         'as' => 'admin.iforms.field.create',
         'uses' => 'FieldController@create',
-        'middleware' => 'can:iforms.fields.create'
+        'middleware' => 'can:iforms.fields.create',
     ]);
     $router->post('fields', [
         'as' => 'admin.iforms.field.store',
         'uses' => 'FieldController@store',
-        'middleware' => 'can:iforms.fields.create'
+        'middleware' => 'can:iforms.fields.create',
     ]);
     $router->get('fields/{field}/edit', [
         'as' => 'admin.iforms.field.edit',
         'uses' => 'FieldController@edit',
-        'middleware' => 'can:iforms.fields.edit'
+        'middleware' => 'can:iforms.fields.edit',
     ]);
     $router->put('fields/{field}', [
         'as' => 'admin.iforms.field.update',
         'uses' => 'FieldController@update',
-        'middleware' => 'can:iforms.fields.edit'
+        'middleware' => 'can:iforms.fields.edit',
     ]);
     $router->delete('fields/{field}', [
         'as' => 'admin.iforms.field.destroy',
         'uses' => 'FieldController@destroy',
-        'middleware' => 'can:iforms.fields.destroy'
+        'middleware' => 'can:iforms.fields.destroy',
     ]);
     $router->bind('lead', function ($id) {
         return app('Modules\Iforms\Repositories\LeadRepository')->find($id);
@@ -76,32 +76,32 @@ Route::group(['prefix' =>'/iforms'], function (Router $router) {
     $router->get('leads', [
         'as' => 'admin.iforms.lead.index',
         'uses' => 'LeadController@index',
-        'middleware' => 'can:iforms.leads.index'
+        'middleware' => 'can:iforms.leads.index',
     ]);
     $router->get('leads/create', [
         'as' => 'admin.iforms.lead.create',
         'uses' => 'LeadController@create',
-        'middleware' => 'can:iforms.leads.create'
+        'middleware' => 'can:iforms.leads.create',
     ]);
     $router->post('leads', [
         'as' => 'admin.iforms.lead.store',
         'uses' => 'LeadController@store',
-        'middleware' => 'can:iforms.leads.create'
+        'middleware' => 'can:iforms.leads.create',
     ]);
     $router->get('leads/{lead}/edit', [
         'as' => 'admin.iforms.lead.edit',
         'uses' => 'LeadController@edit',
-        'middleware' => 'can:iforms.leads.edit'
+        'middleware' => 'can:iforms.leads.edit',
     ]);
     $router->put('leads/{lead}', [
         'as' => 'admin.iforms.lead.update',
         'uses' => 'LeadController@update',
-        'middleware' => 'can:iforms.leads.edit'
+        'middleware' => 'can:iforms.leads.edit',
     ]);
     $router->delete('leads/{lead}', [
         'as' => 'admin.iforms.lead.destroy',
         'uses' => 'LeadController@destroy',
-        'middleware' => 'can:iforms.leads.destroy'
+        'middleware' => 'can:iforms.leads.destroy',
     ]);
     $router->bind('block', function ($id) {
         return app('Modules\Iforms\Repositories\BlockRepository')->find($id);
@@ -109,36 +109,32 @@ Route::group(['prefix' =>'/iforms'], function (Router $router) {
     $router->get('blocks', [
         'as' => 'admin.iforms.block.index',
         'uses' => 'BlockController@index',
-        'middleware' => 'can:iforms.blocks.index'
+        'middleware' => 'can:iforms.blocks.index',
     ]);
     $router->get('blocks/create', [
         'as' => 'admin.iforms.block.create',
         'uses' => 'BlockController@create',
-        'middleware' => 'can:iforms.blocks.create'
+        'middleware' => 'can:iforms.blocks.create',
     ]);
     $router->post('blocks', [
         'as' => 'admin.iforms.block.store',
         'uses' => 'BlockController@store',
-        'middleware' => 'can:iforms.blocks.create'
+        'middleware' => 'can:iforms.blocks.create',
     ]);
     $router->get('blocks/{block}/edit', [
         'as' => 'admin.iforms.block.edit',
         'uses' => 'BlockController@edit',
-        'middleware' => 'can:iforms.blocks.edit'
+        'middleware' => 'can:iforms.blocks.edit',
     ]);
     $router->put('blocks/{block}', [
         'as' => 'admin.iforms.block.update',
         'uses' => 'BlockController@update',
-        'middleware' => 'can:iforms.blocks.edit'
+        'middleware' => 'can:iforms.blocks.edit',
     ]);
     $router->delete('blocks/{block}', [
         'as' => 'admin.iforms.block.destroy',
         'uses' => 'BlockController@destroy',
-        'middleware' => 'can:iforms.blocks.destroy'
+        'middleware' => 'can:iforms.blocks.destroy',
     ]);
-// append
-
-
-
-
+    // append
 });

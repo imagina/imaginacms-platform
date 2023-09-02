@@ -72,7 +72,7 @@ class IcommerceXpayApiController extends BaseApiController
      *
      * @param Requests orderid
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();
@@ -129,7 +129,7 @@ class IcommerceXpayApiController extends BaseApiController
      *
      * @param Requests
      */
-    public function getTokenLogin(Request $request): token
+    public function getTokenLogin(Request $request)
     {
         //\Log::info('Module Icommercexpay: GetTokenLogin');
         try {
@@ -172,7 +172,7 @@ class IcommerceXpayApiController extends BaseApiController
      * @param Requests Order
      * @return array currencies
      */
-    public function getCurrencies(Request $request): array
+    public function getCurrencies(Request $request)
     {
         try {
             $paymentMethod = $this->getPaymentMethodConfiguration();
@@ -210,7 +210,7 @@ class IcommerceXpayApiController extends BaseApiController
      * @param Requests exchangeId
      * @return Json Information
      */
-    public function createPayment(Request $request): Json
+    public function createPayment(Request $request)
     {
         try {
             $data = $request['attributes'] ?? []; //Get data
@@ -263,7 +263,7 @@ class IcommerceXpayApiController extends BaseApiController
      * @param Requests order
      * @return Json Information
      */
-    public function createTransaction($paymentMethod, $data, $order): Json
+    public function createTransaction($paymentMethod, $data, $order)
     {
         if ($paymentMethod->options->mode == 'sandbox') {
             $endPoint = self::URL_SANDBOX.$this->urls['createPayment'];
@@ -300,7 +300,7 @@ class IcommerceXpayApiController extends BaseApiController
      * @param Requests
      * @return Json Information
      */
-    public function response(Request $request): Json
+    public function response(Request $request)
     {
         try {
             \Log::info('Module Icommercexpay: Response - Request ID: '.$request->id);
@@ -328,7 +328,7 @@ class IcommerceXpayApiController extends BaseApiController
     /**
      * Get Payment Method Configuration
      */
-    public function getPaymentMethodConfiguration(): collection
+    public function getPaymentMethodConfiguration()
     {
         $paymentName = config('asgard.icommercexpay.config.paymentName');
         $attribute = ['name' => $paymentName];
@@ -340,7 +340,7 @@ class IcommerceXpayApiController extends BaseApiController
     /**
      * Update Information
      */
-    public function updateInformation($request, $transaction): orderUpdated
+    public function updateInformation($request, $transaction)
     {
         $orderStatus = $request->status;
         $xpayId = $request->id;

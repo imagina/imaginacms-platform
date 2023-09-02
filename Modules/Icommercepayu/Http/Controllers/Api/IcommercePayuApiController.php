@@ -57,7 +57,7 @@ class IcommercePayuApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderID
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $orderID = $request->orderID;
@@ -120,7 +120,7 @@ class IcommercePayuApiController extends BaseApiController
      *
      * @param Requests request
      */
-    public function response(Request $request): route
+    public function response(Request $request)
     {
         try {
             \Log::info('Icommercepayu: Response|time: '.time());

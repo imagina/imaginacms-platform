@@ -11,7 +11,7 @@ class IcommercecheckmoSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run($methodsFromOther = null): void
+    public function run($methodsFromOther = null)
     {
         Model::unguard();
 

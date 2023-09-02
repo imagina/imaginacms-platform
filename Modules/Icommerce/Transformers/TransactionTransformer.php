@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class TransactionTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         /*datos*/
         $data = [

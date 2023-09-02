@@ -7,7 +7,7 @@ use Modules\Iplaces\Entities\Servtype;
 
 class ServiceTransformer extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $servtype = new Servtype();
 

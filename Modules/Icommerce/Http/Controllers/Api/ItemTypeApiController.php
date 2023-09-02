@@ -24,7 +24,7 @@ class ItemTypeApiController extends BaseApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         try {
             //Request to Repository
@@ -75,7 +75,7 @@ class ItemTypeApiController extends BaseApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         try {
             $this->itemType->create($request->all());
@@ -95,7 +95,7 @@ class ItemTypeApiController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update($criteria, Request $request): Response
+    public function update($criteria, Request $request)
     {
         try {
             \DB::beginTransaction();
@@ -122,7 +122,7 @@ class ItemTypeApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function delete($criteria, Request $request): Response
+    public function delete($criteria, Request $request)
     {
         try {
             $this->itemType->deleteBy($criteria, $this->getParamsRequest($request));

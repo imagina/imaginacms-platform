@@ -76,7 +76,7 @@ class IcommerceOpenpayApiController extends BaseApiController
      * @param Requests request
      * @param Requests orderId
      */
-    public function init(Request $request): route
+    public function init(Request $request)
     {
         try {
             $data = $request->all();
@@ -136,7 +136,7 @@ class IcommerceOpenpayApiController extends BaseApiController
      * @param clientToken
      * @param deviceId
      */
-    public function processPayment(Request $request): response
+    public function processPayment(Request $request)
     {
         \Log::info('Icommerceopenpay: processPayment');
 
@@ -172,7 +172,7 @@ class IcommerceOpenpayApiController extends BaseApiController
      *
      * @param OrderId
      */
-    public function processPaymentPse(Request $request): response
+    public function processPaymentPse(Request $request)
     {
         \Log::info('Icommerceopenpay: processPaymentPse');
 
@@ -205,7 +205,7 @@ class IcommerceOpenpayApiController extends BaseApiController
      *
      * @param Requests request
      */
-    public function confirmation(Request $request): route
+    public function confirmation(Request $request)
     {
         \Log::info('IcommerceOpenpay: CONFIRMATION|requestType: '.$request->type);
 

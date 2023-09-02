@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::group(['prefix' => 'tag'], function (Router $router) {
+Route::prefix('tag')->group(function (Router $router) {
     $router->get('tags', [
         'as' => 'admin.tag.tag.index',
         'uses' => 'TagController@index',

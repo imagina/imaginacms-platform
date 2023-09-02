@@ -10,7 +10,7 @@ $router->bind('slide', function ($id) {
     return app(\Modules\Slider\Repositories\SlideRepository::class)->find($id);
 });
 
-Route::group(['prefix' => '/slider'], function (Router $router) {
+Route::prefix('/slider')->group(function (Router $router) {
     $router->get('sliders', ['as' => 'admin.slider.slider.index', 'uses' => 'SliderController@index']);
     $router->get('sliders/create', ['as' => 'admin.slider.slider.create', 'uses' => 'SliderController@create']);
     $router->post('sliders', ['as' => 'admin.slider.slider.store', 'uses' => 'SliderController@store']);
