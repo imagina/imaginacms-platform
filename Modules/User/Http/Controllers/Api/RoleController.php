@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Cartalyst\Sentinel\Roles\EloquentRole;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -50,7 +51,7 @@ class RoleController extends Controller
         return new FullRoleTransformer($role);
     }
 
-    public function store(CreateRoleRequest $request)
+    public function store(CreateRoleRequest $request): JsonResponse
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -62,7 +63,7 @@ class RoleController extends Controller
         ]);
     }
 
-    public function update(EloquentRole $role, UpdateRoleRequest $request)
+    public function update(EloquentRole $role, UpdateRoleRequest $request): JsonResponse
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -74,7 +75,7 @@ class RoleController extends Controller
         ]);
     }
 
-    public function destroy(EloquentRole $role)
+    public function destroy(EloquentRole $role): JsonResponse
     {
         $this->role->delete($role->id);
 
@@ -84,10 +85,7 @@ class RoleController extends Controller
         ]);
     }
 
-    /**
-     * @return array
-     */
-    private function mergeRequestWithPermissions(Request $request)
+    private function mergeRequestWithPermissions(Request $request): array
     {
         $permissions = $this->permissions->clean($request->get('permissions'));
 

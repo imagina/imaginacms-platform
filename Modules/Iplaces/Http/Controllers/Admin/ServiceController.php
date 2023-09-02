@@ -33,8 +33,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -45,8 +43,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -59,8 +55,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateServiceRequest $request)
     {
@@ -79,8 +73,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Service $service)
     {//dd($service);
@@ -93,8 +85,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Service $service, UpdateServiceRequest $request)
     {
@@ -113,8 +103,6 @@ class ServiceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Service $service)
     {

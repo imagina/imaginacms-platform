@@ -24,8 +24,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll()
     {
@@ -34,8 +32,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Get all available sliders
-     *
-     * @return object
      */
     public function allOnline()
     {

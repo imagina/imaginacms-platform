@@ -26,8 +26,6 @@ class StockStatus
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function lists()
     {
@@ -36,9 +34,6 @@ class StockStatus
 
     /**
      * Get the post status
-     *
-     * @param  int  $statusId
-     * @return string
      */
     public function get($statusId)
     {

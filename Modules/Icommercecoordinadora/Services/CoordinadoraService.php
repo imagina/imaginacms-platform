@@ -31,7 +31,6 @@ class CoordinadoraService
 
     /**
      * @param Request Array  products(items,total)
-     * @return array
      */
     public function getInforCotizar($products, $methodConfig, $address)
     {

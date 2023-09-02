@@ -34,8 +34,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * Find the page set as homepage
-     *
-     * @return object
      */
     public function findHomepage()
     {
@@ -44,8 +42,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll()
     {
@@ -54,7 +50,6 @@ class EloquentPageRepository extends EloquentBaseRepository implements PageRepos
 
     /**
      * @param  mixed  $data
-     * @return object
      */
     public function create($data)
     {

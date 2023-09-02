@@ -52,7 +52,7 @@ class CoreServiceProvider extends ServiceProvider
         ],
     ];
 
-    public function boot()
+    public function boot(): void
     {
         // Hot fix livewire endpoints prioritizing locale
         if (Str::contains(request()->path(), ['livewire/message'])) {
@@ -79,10 +79,8 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('asgard.isInstalled', function () {
             return true === config('asgard.core.core.is_installed');
@@ -114,20 +112,16 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }
 
     /**
      * Register the filters.
-     *
-     * @return void
      */
-    public function registerMiddleware(Router $router)
+    public function registerMiddleware(Router $router): void
     {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
@@ -257,9 +251,8 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * @param $package
-     * @return string
      */
-    private function getConfigFilename($file)
+    private function getConfigFilename($file): string
     {
         return preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
     }
@@ -342,31 +335,23 @@ class CoreServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * @param  string  $path
-     * @return bool
-     */
-    private function hasPublishedTranslations($path)
+    private function hasPublishedTranslations(string $path): bool
     {
         return is_dir($path);
     }
 
     /**
      * Does a Module have it's Translations centralised in the Translation module?
-     *
-     * @return bool
      */
-    private function moduleHasCentralisedTranslations(Module $module)
+    private function moduleHasCentralisedTranslations(Module $module): bool
     {
         return is_dir($this->getCentralisedTranslationPath($module));
     }
 
     /**
      * Get the absolute path to the Centralised Translations for a Module (via the Translations module)
-     *
-     * @return string
      */
-    private function getCentralisedTranslationPath(Module $module)
+    private function getCentralisedTranslationPath(Module $module): string
     {
         $path = config('modules.paths.modules').'/Translation';
 
@@ -399,10 +384,8 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Checks if the current url matches the configured backend uri
-     *
-     * @return bool
      */
-    private function onBackend()
+    private function onBackend(): bool
     {
         $url = app(Request::class)->path();
         if (Str::contains($url, config('asgard.core.core.admin-prefix'))) {
@@ -414,10 +397,8 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Get argument array from argument string.
-     *
-     * @return array
      */
-    private function getArguments($argumentString)
+    private function getArguments($argumentString): array
     {
         return str_getcsv($argumentString, ',', "'");
     }

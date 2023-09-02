@@ -2,6 +2,7 @@
 
 namespace Modules\Page\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\BasePublicController;
@@ -33,10 +34,8 @@ class PublicController extends BasePublicController
 
     /**
      * DEPRECATED
-     *
-     * @return \Illuminate\View\View
      */
-    public function uri($page, $slug, Request $request)
+    public function uri($page, $slug, Request $request): View
     {
         $this->throw404IfNotFound($page);
 
@@ -71,10 +70,7 @@ class PublicController extends BasePublicController
         return view($template, compact('page', 'pageContent', 'organization', 'transformedPage'));
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function homepage(Request $request)
+    public function homepage(Request $request): View
     {
         //Validation with lang from URL
         $result = validateLocaleFromUrl($request);
@@ -107,11 +103,8 @@ class PublicController extends BasePublicController
     /**
      * Find a page for the given slug.
      * The slug can be a 'composed' slug via the Menu
-     *
-     * @param  string  $slug
-     * @return Page
      */
-    private function findPageForSlug($slug)
+    private function findPageForSlug(string $slug): Page
     {
         $menuItem = app(MenuItemRepository::class)->findByUriInLanguage($slug, locale());
 
@@ -125,10 +118,8 @@ class PublicController extends BasePublicController
     /**
      * Return the template for the given page
      * or the default template if none found
-     *
-     * @return string
      */
-    private function getTemplateForPage($page)
+    private function getTemplateForPage($page): string
     {
         return (! empty($page->template) && view()->exists($page->template)) ? $page->template :
           (view()->exists('default') ? 'default' :
@@ -148,11 +139,8 @@ class PublicController extends BasePublicController
 
     /**
      * Create a key=>value array for alternate links
-     *
-     *
-     * @return array
      */
-    private function getAlternateMetaData($page)
+    private function getAlternateMetaData($page): array
     {
         $supportedLocales = config('laravellocalization.supportedLocales');
 
@@ -173,10 +161,8 @@ class PublicController extends BasePublicController
 
     /**
      * Get the page content validation
-     *
-     * @return string
      */
-    private function getContentForPage($page)
+    private function getContentForPage($page): string
     {
         $tpl = 'page::frontend.page.content.default';
         $ttpl = 'pages.content.default';

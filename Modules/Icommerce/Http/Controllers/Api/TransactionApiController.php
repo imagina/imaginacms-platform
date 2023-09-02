@@ -23,8 +23,6 @@ class TransactionApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request)
     {
@@ -105,8 +103,6 @@ class TransactionApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update($criteria, Request $request)
     {
@@ -127,8 +123,6 @@ class TransactionApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request)
     {

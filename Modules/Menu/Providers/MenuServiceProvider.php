@@ -36,8 +36,6 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -81,8 +79,6 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides()
     {
@@ -154,8 +150,6 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Add children to menu under the give name
      *
-     * @param  string  $name
-     * @param  object  $children
      * @param  Builder|MenuItem  $menu
      */
     private function addChildrenToMenu($name, $children, $menu, $attribs = [])
@@ -182,9 +176,6 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Check if the given menu item has children
-     *
-     * @param  object  $item
-     * @return bool
      */
     private function hasChildren($item)
     {

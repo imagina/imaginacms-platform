@@ -2,6 +2,8 @@
 
 namespace Modules\User\Repositories\Cache;
 
+use Illuminate\Database\Eloquent\Collection;
+use Modules\User\Entities\UserToken;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\User\Repositories\UserTokenRepository;
 
@@ -21,22 +23,15 @@ class CacheUserTokenDecorator extends BaseCacheDecorator implements UserTokenRep
 
     /**
      * Get all tokens for the given user
-     *
-     * @param  int  $userId
-     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function allForUser($userId)
+    public function allForUser(int $userId): Collection
     {
         $this->remember(function () use ($userId) {
             return $this->repository->allForUser($userId);
         });
     }
 
-    /**
-     * @param  int  $userId
-     * @return \Modules\User\Entities\UserToken
-     */
-    public function generateFor($userId)
+    public function generateFor(int $userId): UserToken
     {
         $this->clearCache();
 

@@ -14,8 +14,6 @@ class RemoveModulePermissionsCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
@@ -28,8 +26,6 @@ class RemoveModulePermissionsCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments()
     {
@@ -40,8 +36,6 @@ class RemoveModulePermissionsCommand extends Command
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions()
     {

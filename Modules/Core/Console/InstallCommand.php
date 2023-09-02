@@ -47,8 +47,6 @@ class InstallCommand extends Command
 
     /**
      * Execute the actions
-     *
-     * @return mixed
      */
     public function handle()
     {

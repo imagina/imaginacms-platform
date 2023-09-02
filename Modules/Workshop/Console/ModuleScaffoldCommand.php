@@ -82,9 +82,6 @@ class ModuleScaffoldCommand extends Command
 
     /**
      * Extract the vendor and module name as two separate values
-     *
-     * @param  string  $fullName
-     * @return array
      */
     private function separateVendorAndName($fullName)
     {
@@ -98,8 +95,6 @@ class ModuleScaffoldCommand extends Command
 
     /**
      * Check if the given module name does not already exists
-     *
-     * @param  string  $name
      */
     private function checkForModuleUniqueness($name)
     {

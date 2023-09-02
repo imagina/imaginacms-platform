@@ -24,8 +24,6 @@ class SlideWasCreated implements StoringMedia
 
     /**
      * Return the entity
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntity()
     {
@@ -34,8 +32,6 @@ class SlideWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData()
     {

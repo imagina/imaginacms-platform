@@ -46,8 +46,6 @@ class Frequency
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function lists()
     {
@@ -58,7 +56,6 @@ class Frequency
      * Get the post status
      *
      * @param  int  $statusId
-     * @return string
      */
     public function get($frequencyId)
     {

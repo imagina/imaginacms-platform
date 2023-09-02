@@ -25,8 +25,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -37,8 +35,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -49,8 +45,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateZoneRequest $request)
     {//dd($request);
@@ -69,8 +63,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Zone $zone)
     {//dd($zone);
@@ -81,8 +73,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Zone $zone, UpdateZoneRequest $request)
     {//dd($zone);
@@ -107,8 +97,6 @@ class ZoneController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Zone $zone)
     {

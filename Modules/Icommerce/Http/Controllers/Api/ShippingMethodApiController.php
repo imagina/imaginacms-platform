@@ -192,8 +192,6 @@ class ShippingMethodApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function calculations(Request $request)
     {

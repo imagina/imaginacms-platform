@@ -57,8 +57,6 @@ trait Productable
 
     /**
      * Make the Productable morph relation
-     *
-     * @return object
      */
     public function products()
     {

@@ -77,7 +77,6 @@ class IcommerceWompiApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
     public function init(Request $request)
     {
@@ -136,7 +135,6 @@ class IcommerceWompiApiController extends BaseApiController
      * Response Api Method - Confirmation
      *
      * @param Requests request
-     * @return route
      */
     public function confirmation(Request $request)
     {

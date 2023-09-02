@@ -7,7 +7,6 @@ trait Relationable
     /**
      * Magic Method modification to allow dynamic relations to other entities.
      *
-     * @return string
      *
      * @var
      * @var

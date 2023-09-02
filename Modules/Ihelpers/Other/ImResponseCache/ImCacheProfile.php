@@ -11,9 +11,6 @@ class ImCacheProfile extends BaseCacheProfile implements CacheProfile
 {
     /**
      * Determine if the given request should be cached;.
-     *
-     *
-     * @return bool
      */
     public function shouldCacheRequest(Request $request)
     {
@@ -43,9 +40,6 @@ class ImCacheProfile extends BaseCacheProfile implements CacheProfile
 
     /**
      * Determine if the given response should be cached.
-     *
-     *
-     * @return bool
      */
     public function shouldCacheResponse(Response $response)
     {

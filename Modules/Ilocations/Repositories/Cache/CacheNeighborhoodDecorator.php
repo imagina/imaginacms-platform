@@ -16,9 +16,6 @@ class CacheNeighborhoodDecorator extends BaseCacheDecorator implements Neighborh
 
     /**
      * Get all the read notifications for the given filters
-     *
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItemsBy($params)
     {
@@ -35,10 +32,6 @@ class CacheNeighborhoodDecorator extends BaseCacheDecorator implements Neighborh
 
     /**
      * Get the read notification for the given filters
-     *
-     * @param  string  $criteria
-     * @param  array  $params
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getItem($criteria, $params = false)
     {

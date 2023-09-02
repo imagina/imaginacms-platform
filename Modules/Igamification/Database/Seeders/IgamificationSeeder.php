@@ -11,8 +11,6 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -53,8 +51,6 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Seed the categories
-     *
-     * @return void
      */
     public function seedCategories($data)
     {
@@ -95,8 +91,6 @@ class IgamificationSeeder extends Seeder
 
     /**
      * Seed the activities
-     *
-     * @return void
      */
     public function seedActivities($data)
     {

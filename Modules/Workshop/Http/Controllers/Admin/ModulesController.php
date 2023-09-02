@@ -34,8 +34,6 @@ class ModulesController extends AdminBaseController
 
     /**
      * Display a list of all modules
-     *
-     * @return View
      */
     public function index()
     {
@@ -46,8 +44,6 @@ class ModulesController extends AdminBaseController
 
     /**
      * Display module info
-     *
-     * @return View
      */
     public function show(Module $module)
     {
@@ -104,8 +100,6 @@ class ModulesController extends AdminBaseController
 
     /**
      * Check if the given module is a core module that should be be disabled
-     *
-     * @return bool
      */
     private function isCoreModule(Module $module)
     {

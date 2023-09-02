@@ -20,8 +20,6 @@ class AuctionTypes
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function lists()
     {

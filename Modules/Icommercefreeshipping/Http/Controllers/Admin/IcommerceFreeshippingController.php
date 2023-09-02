@@ -25,8 +25,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -37,8 +35,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -47,8 +43,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommerceFreeshippingRequest $request)
     {
@@ -60,8 +54,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommerceFreeshipping $icommercefreeshipping)
     {
@@ -70,8 +62,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(IcommerceFreeshipping $icommercefreeshipping, UpdateIcommerceFreeshippingRequest $request)
     {
@@ -83,8 +73,6 @@ class IcommerceFreeshippingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommerceFreeshipping $icommercefreeshipping)
     {

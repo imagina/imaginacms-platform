@@ -57,8 +57,6 @@ class BannerController extends Controller
 
     /**
      * Delete a banner
-     *
-     * @return mixed
      */
     public function delete(Request $request)
     {

@@ -50,7 +50,6 @@ class EpaycoService
      * Show Values Vars in Log File
      *
      * @param Requests request
-     * @return signature
      */
     public function showVarsLog($request)
     {
@@ -68,7 +67,6 @@ class EpaycoService
      *
      * @param Requests request
      * @param Payment Method
-     * @return signature
      */
     public function makeSignature($request, $paymentMethod)
     {
@@ -89,7 +87,6 @@ class EpaycoService
      * Get Status to Order
      *
      * @param int cod
-     * @return int
      */
     public function getStatusOrder($cod)
     {

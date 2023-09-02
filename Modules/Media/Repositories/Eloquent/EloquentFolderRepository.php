@@ -25,9 +25,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
 
     /**
      * Find a folder by its ID
-     *
-     * @param  int  $folderId
-     * @return File|null
      */
     public function findFolder($folderId)
     {
@@ -124,8 +121,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     /**
      * Find the folder by ID or return a root folder
      * which is an instantiated File class
-     *
-     * @param  int  $folderId
      */
     public function findFolderOrRoot($folderId): File
     {
@@ -173,7 +168,6 @@ class EloquentFolderRepository extends EloquentBaseRepository implements FolderR
     }
 
   /**
-   * @param  bool  $params
    * @return mixed
    */
   public function getItemsBy($params = false)

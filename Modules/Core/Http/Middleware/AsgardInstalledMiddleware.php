@@ -11,7 +11,6 @@ class AsgardInstalledMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  Request  $request
      * @return mixed
      *
      * @throws \Exception

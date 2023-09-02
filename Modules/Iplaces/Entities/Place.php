@@ -232,8 +232,6 @@ class Place extends Model implements TaggableInterface
 
     /**
      * Check if the post is in draft
-     *
-     * @return Builder
      */
     public function scopeActive(Builder $query)
     {
@@ -242,8 +240,6 @@ class Place extends Model implements TaggableInterface
 
     /**
      * Check if the post is pending review
-     *
-     * @return Builder
      */
     public function scopeCloudy(Builder $query)
     {

@@ -2,6 +2,7 @@
 
 namespace Modules\Isite\Exports;
 
+use Illuminate\Support\Collection;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -32,10 +33,7 @@ class RepositoryExport implements FromQuery, WithEvents, ShouldQueue, WithHeadin
         $this->inotification = app('Modules\Notification\Services\Inotification');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function query()
+    public function query(): Collection
     {
         //Init Repo
         $repository = app("Modules\\{$this->exportParams->moduleName}\\Repositories\\{$this->exportParams->repositoryName}");

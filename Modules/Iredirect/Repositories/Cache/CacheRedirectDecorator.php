@@ -19,7 +19,6 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
      * Get the previous redirect of the given redirect
      *
      * @param  object  $redirect
-     * @return object
      */
     public function findBySlug($slug)
     {
@@ -34,9 +33,6 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
 
     /**
      * Get the next redirect of the given redirect
-     *
-     * @param  object  $id
-     * @return object
      */
     public function find($id)
     {
@@ -51,8 +47,6 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params)
     {
@@ -63,8 +57,6 @@ class CacheRedirectDecorator extends BaseCacheDecorator implements RedirectRepos
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false)
     {

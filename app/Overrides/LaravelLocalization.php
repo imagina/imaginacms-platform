@@ -412,8 +412,6 @@ class LaravelLocalization
 
     /**
      * Returns default locale.
-     *
-     * @return string
      */
     public function getDefaultLocale()
     {
@@ -422,8 +420,6 @@ class LaravelLocalization
 
     /**
      * Return locales mapping.
-     *
-     * @return array
      */
     public function getLocalesMapping()
     {
@@ -436,9 +432,6 @@ class LaravelLocalization
 
     /**
      * Returns a locale from the mapping.
-     *
-     * @param  string|null  $locale
-     * @return string|null
      */
     public function getLocaleFromMapping($locale)
     {
@@ -447,9 +440,6 @@ class LaravelLocalization
 
     /**
      * Returns inversed locale from the mapping.
-     *
-     * @param  string|null  $locale
-     * @return string|null
      */
     public function getInversedLocaleFromMapping($locale)
     {
@@ -459,7 +449,6 @@ class LaravelLocalization
     /**
      * Return an array of all supported Locales.
      *
-     * @return array
      *
      * @throws SupportedLocalesNotDefined
      */
@@ -483,8 +472,6 @@ class LaravelLocalization
     /**
      * Return an array of all supported Locales but in the order the user
      * has specified in the config file. Useful for the language selector.
-     *
-     * @return array
      */
     public function getLocalesOrder()
     {
@@ -848,8 +835,6 @@ class LaravelLocalization
 
     /**
      * Returns serialized translated routes for caching purposes.
-     *
-     * @return string
      */
     public function getSerializedTranslatedRoutes()
     {
@@ -859,8 +844,6 @@ class LaravelLocalization
     /**
      * Sets the translated routes list.
      * Only useful from a cached routes context.
-     *
-     * @param  string  $serializedRoutes
      */
     public function setSerializedTranslatedRoutes($serializedRoutes)
     {
@@ -875,7 +858,6 @@ class LaravelLocalization
      * Extract attributes for current url.
      *
      * @param  bool|false|null|string  $url    to extract attributes, if not present, the system will look for attributes in the current call
-     * @param  string  $locale
      * @return array Array with attributes
      */
     protected function extractAttributes($url = false, $locale = '')
@@ -1031,8 +1013,6 @@ class LaravelLocalization
 
     /**
      * Returns the forced environment set route locale.
-     *
-     * @return string|null
      */
     protected function getForcedLocale()
     {

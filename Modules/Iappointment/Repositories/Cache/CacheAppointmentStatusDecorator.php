@@ -16,8 +16,6 @@ class CacheAppointmentStatusDecorator extends BaseCacheDecorator implements Appo
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params)
     {
@@ -28,8 +26,6 @@ class CacheAppointmentStatusDecorator extends BaseCacheDecorator implements Appo
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false)
     {

@@ -41,8 +41,6 @@ class AddressForm extends Component
 
     /**
      * Create a new component instance.
-     *
-     * @return void
      */
     public function mount($embedded = false, $route = false, $type = null, $openInModal = false,
                         $withButtonSubmit = true, $livewireEvent = null, $addressGuest = [])

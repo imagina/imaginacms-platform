@@ -8,8 +8,6 @@ use Modules\Workshop\Scaffold\Theme\FileTypes\FileType;
 class ThemeGeneratorFactory
 {
     /**
-     * @param  string  $file
-     * @return FileType
      *
      * @throws FileTypeNotFoundException
      */

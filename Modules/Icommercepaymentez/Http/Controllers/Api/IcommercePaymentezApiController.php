@@ -80,7 +80,6 @@ class IcommercePaymentezApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
     public function init(Request $request)
     {
@@ -144,7 +143,6 @@ class IcommercePaymentezApiController extends BaseApiController
      * Response
      *
      * @param Requests request
-     * @return route
      */
     public function response(Request $request)
     {

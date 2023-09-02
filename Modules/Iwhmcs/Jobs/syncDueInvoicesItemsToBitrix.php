@@ -50,8 +50,6 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -73,8 +71,6 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
 
     /**
      * Get the due hostings
-     *
-     * @return void
      */
     public function getDueItems()
     {
@@ -137,7 +133,6 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
      * Retur the clients data from an array of id
      *
      * @param $clientsId
-     * @return void
      */
     public function getClients()
     {
@@ -158,8 +153,6 @@ class syncDueInvoicesItemsToBitrix implements ShouldQueue
 
     /**
      * Get all relations between deals(bitrix) and hosting(whmcs)
-     *
-     * @return void
      */
     public function getRelatedDueDeals()
     {

@@ -26,8 +26,6 @@ class CategoryWasCreated implements StoringMedia
 
     /**
      * Return the ALL data sent
-     *
-     * @return array
      */
     public function getSubmissionData()
     {

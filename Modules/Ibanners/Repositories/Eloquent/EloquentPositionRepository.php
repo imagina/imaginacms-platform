@@ -23,8 +23,6 @@ class EloquentPositionRepository extends EloquentBaseRepository implements Posit
 
     /**
      * Count all records
-     *
-     * @return int
      */
     public function countAll()
     {
@@ -33,8 +31,6 @@ class EloquentPositionRepository extends EloquentBaseRepository implements Posit
 
     /**
      * Get all available positions
-     *
-     * @return object
      */
     public function allOnline()
     {

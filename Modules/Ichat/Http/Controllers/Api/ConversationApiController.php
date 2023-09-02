@@ -99,8 +99,6 @@ class ConversationApiController extends BaseApiController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update($criteria, Request $request)
     {
@@ -127,8 +125,6 @@ class ConversationApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request)
     {

@@ -32,8 +32,6 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -44,8 +42,6 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -54,8 +50,6 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateIcommerceWompiRequest $request)
     {
@@ -67,8 +61,6 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(IcommerceWompi $icommercewompi)
     {
@@ -79,7 +71,6 @@ class IcommerceWompiController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  IcommerceWompi  $icommercewompi
-     * @return Response
      */
     public function update($id, UpdateIcommerceWompiRequest $request)
     {
@@ -101,8 +92,6 @@ class IcommerceWompiController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(IcommerceWompi $icommercewompi)
     {

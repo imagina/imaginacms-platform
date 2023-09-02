@@ -13,8 +13,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -25,8 +23,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -36,8 +32,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register config.
-     *
-     * @return void
      */
     protected function registerConfig()
     {
@@ -76,8 +70,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register views.
-     *
-     * @return void
      */
     public function registerViews()
     {
@@ -96,8 +88,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Register translations.
-     *
-     * @return void
      */
     public function registerTranslations()
     {
@@ -109,8 +99,6 @@ class IcommercepricelistServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides()
     {

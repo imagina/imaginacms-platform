@@ -35,8 +35,6 @@ class OptionApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request)
     {

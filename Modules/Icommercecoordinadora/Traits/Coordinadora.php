@@ -29,7 +29,6 @@ trait Coordinadora
      * Init Client
      *
      * @param  int  $type (cotizacion)
-     * @return client
      */
     public function initClientSoap($type = 1)
     {

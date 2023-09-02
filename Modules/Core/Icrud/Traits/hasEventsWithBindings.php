@@ -23,8 +23,6 @@ trait hasEventsWithBindings
     /**
      * Re-write method to Fire the given event for the model.
      *
-     * @param  string  $event
-     * @param  bool  $halt
      * @param  array  $data
      * @return mixed
      */
@@ -38,8 +36,6 @@ trait hasEventsWithBindings
 
     /**
      * Get the event bindings by event name
-     *
-     * @return array|null
      */
     public function getEventBindings(string $event)
     {
@@ -56,8 +52,6 @@ trait hasEventsWithBindings
 
     /**
      * Register event to moel was retrieved
-     *
-     * @return void
      */
     public static function retrievedIndexWithBindings($callback)
     {
@@ -66,8 +60,6 @@ trait hasEventsWithBindings
 
     /**
      * Register event to moel was retrieved
-     *
-     * @return void
      */
     public static function retrievedShowWithBindings($callback)
     {
@@ -78,7 +70,6 @@ trait hasEventsWithBindings
      * Register event to before create model
      *
      * @param  \Closure|string  $callback
-     * @return void
      */
     public static function creatingWithBindings($callback)
     {
@@ -89,7 +80,6 @@ trait hasEventsWithBindings
      * Register event to after create model
      *
      * @param  \Closure|string  $callback
-     * @return void
      */
     public static function createdWithBindings($callback)
     {
@@ -100,7 +90,6 @@ trait hasEventsWithBindings
      * Register event to before update model
      *
      * @param  \Closure|string  $callback
-     * @return void
      */
     public static function updatingWithBindings($callback)
     {
@@ -111,7 +100,6 @@ trait hasEventsWithBindings
      * Register event to after update model
      *
      * @param  \Closure|string  $callback
-     * @return void
      */
     public static function updatedWithBindings($callback)
     {
@@ -122,8 +110,6 @@ trait hasEventsWithBindings
 
     /**
      * Method to fire event when model was retrieved
-     *
-     * @return void
      */
     public function retrievedIndexCrudModel($bindings = [])
     {
@@ -133,8 +119,6 @@ trait hasEventsWithBindings
 
     /**
      * Method to fire event when model was retrieved
-     *
-     * @return void
      */
     public function retrievedShowCrudModel($bindings = [])
     {

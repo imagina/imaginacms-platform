@@ -17,7 +17,6 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItemsBy($params = false)
@@ -117,7 +116,6 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, $params = false)
@@ -191,9 +189,6 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
-     * @return bool
      */
     public function updateBy($criteria, $data, $params = false)
     {
@@ -232,8 +227,6 @@ class EloquentAppointmentRepository extends EloquentBaseRepository implements Ap
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
      */
     public function deleteBy($criteria, $params = false)
     {

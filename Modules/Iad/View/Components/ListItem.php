@@ -39,10 +39,7 @@ class ListItem extends Component
         $this->categories = $this->categoryRepository()->getItemsBy(json_decode(json_encode([])));
     }
 
-    /**
-     * @return currencyRepository
-     */
-    private function categoryRepository()
+    private function categoryRepository(): currencyRepository
     {
         return app('Modules\Iad\Repositories\CategoryRepository');
     }

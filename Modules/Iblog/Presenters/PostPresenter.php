@@ -26,8 +26,6 @@ class PostPresenter extends Presenter
 
     /**
      * Get the previous post of the current post
-     *
-     * @return object
      */
     public function previous()
     {
@@ -36,8 +34,6 @@ class PostPresenter extends Presenter
 
     /**
      * Get the next post of the current post
-     *
-     * @return object
      */
     public function next()
     {
@@ -46,8 +42,6 @@ class PostPresenter extends Presenter
 
     /**
      * Get the post status
-     *
-     * @return string
      */
     public function status()
     {
@@ -56,8 +50,6 @@ class PostPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
     public function statusLabelClass()
     {

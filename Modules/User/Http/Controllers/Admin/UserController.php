@@ -44,8 +44,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -54,8 +52,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -64,8 +60,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateUserRequest $request)
     {
@@ -79,8 +73,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit()
     {
@@ -89,9 +81,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
      */
     public function update($id, UpdateUserRequest $request)
     {
@@ -110,9 +99,6 @@ class UserController extends BaseUserModuleController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
      */
     public function destroy($id)
     {

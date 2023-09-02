@@ -54,8 +54,6 @@ class PageTemplatesController extends Controller
 
     /**
      * Get the base path of the current theme.
-     *
-     * @return string
      */
     private function getCurrentThemeBasePath()
     {
@@ -64,9 +62,6 @@ class PageTemplatesController extends Controller
 
     /**
      * Read template name defined in comments.
-     *
-     *
-     * @return string
      */
     private function getTemplateName($template)
     {
@@ -106,9 +101,6 @@ class PageTemplatesController extends Controller
 
     /**
      * Check if the relative path is not empty (meaning the template is in a directory).
-     *
-     *
-     * @return bool
      */
     private function hasSubdirectory($relativePath)
     {

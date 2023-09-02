@@ -47,8 +47,6 @@ class Revision extends CrudModel
 
     /**
      * Instance the revision model
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public static function newModel()
     {
@@ -92,9 +90,6 @@ class Revision extends CrudModel
      * Format field name.
      *
      * Allow overrides for field names.
-     *
-     *
-     * @return bool
      */
     private function formatFieldName($key)
     {
@@ -210,8 +205,6 @@ class Revision extends CrudModel
 
     /**
      * Return true if the key is for a related model.
-     *
-     * @return bool
      */
     private function isRelated()
     {
@@ -230,8 +223,6 @@ class Revision extends CrudModel
 
     /**
      * Return the name of the related model.
-     *
-     * @return string
      */
     private function getRelatedModel()
     {

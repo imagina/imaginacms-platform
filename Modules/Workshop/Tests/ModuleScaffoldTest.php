@@ -48,9 +48,6 @@ class ModuleScaffoldTest extends BaseTestCase
 
     /**
      * Recursively remove the given directory
-     *
-     * @param  string  $dir
-     * @return bool
      */
     public static function delTree($dir)
     {
@@ -562,7 +559,6 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get the contents of composer.json file
      *
-     * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -576,7 +572,6 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get the contents of module.json file
      *
-     * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -590,7 +585,6 @@ class ModuleScaffoldTest extends BaseTestCase
     /**
      * Get a Controller
      *
-     * @param  string  $controllerName
      * @return mixed
      */
     private function getAdminControllerFile($controllerName = 'Post')

@@ -36,8 +36,6 @@ class DashboardController extends AdminBaseController
 
     /**
      * Display the dashboard with its widgets
-     *
-     * @return \Illuminate\View\View
      */
     public function index()
     {

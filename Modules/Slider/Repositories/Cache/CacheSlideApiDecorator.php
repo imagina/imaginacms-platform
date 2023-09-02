@@ -54,8 +54,6 @@ class CacheSlideApiDecorator extends BaseCacheDecorator implements SlideApiRepos
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params)
     {
@@ -66,8 +64,6 @@ class CacheSlideApiDecorator extends BaseCacheDecorator implements SlideApiRepos
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false)
     {

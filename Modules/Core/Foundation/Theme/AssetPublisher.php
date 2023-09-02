@@ -24,20 +24,14 @@ class AssetPublisher
         $this->theme = $theme;
     }
 
-    /**
-     * @return $this
-     */
-    public function setFinder($finder)
+    public function setFinder($finder): static
     {
         $this->finder = $finder;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function setRepository($repository)
+    public function setRepository($repository): static
     {
         $this->repository = $repository;
 
@@ -63,20 +57,16 @@ class AssetPublisher
 
     /**
      * Get the original source path
-     *
-     * @return string
      */
-    public function getSourcePath()
+    public function getSourcePath(): string
     {
         return $this->theme->getPath().'/assets';
     }
 
     /**
      * Get the destination path
-     *
-     * @return string
      */
-    public function getDestinationPath()
+    public function getDestinationPath(): string
     {
         return $this->repository->getAssetPath($this->theme->getLowerName());
     }

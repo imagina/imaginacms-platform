@@ -18,10 +18,8 @@ class PermissionManager
 
     /**
      * Get the permissions from all the enabled modules
-     *
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         $permissions = [];
         foreach ($this->module->allEnabled() as $enabledModule) {
@@ -36,10 +34,8 @@ class PermissionManager
 
     /**
      * Return a correctly type casted permissions array
-     *
-     * @return array
      */
-    public function clean($permissions)
+    public function clean($permissions): array
     {
         if (! $permissions) {
             return [];
@@ -54,10 +50,7 @@ class PermissionManager
         return $cleanedPermissions;
     }
 
-    /**
-     * @return bool
-     */
-    protected function getState($checkedPermission)
+    protected function getState($checkedPermission): bool
     {
         if ($checkedPermission === '1' || $checkedPermission === 1) {
             return true;
@@ -74,9 +67,8 @@ class PermissionManager
      * Are all of the permissions passed of false value?
      *
      * @param  array  $permissions    Permissions array
-     * @return bool
      */
-    public function permissionsAreAllFalse(array $permissions)
+    public function permissionsAreAllFalse(array $permissions): bool
     {
         $uniquePermissions = array_unique($permissions);
 

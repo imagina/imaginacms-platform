@@ -24,8 +24,6 @@ class Status
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     /*listar*/
     public function lists()
@@ -35,9 +33,6 @@ class Status
 
     /**
      * Get the post status
-     *
-     * @param  int  $statusId
-     * @return string
      */
     public function get($statusId)
     {

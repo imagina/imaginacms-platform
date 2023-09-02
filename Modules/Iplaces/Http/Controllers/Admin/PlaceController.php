@@ -93,8 +93,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -105,8 +103,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -131,8 +127,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreatePlaceRequest $request)
     {
@@ -152,8 +146,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Place $place)
     {//dd($place->services);
@@ -180,9 +172,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  UpdatePlaceRequest  $request
-     * @return Response
      */
     public function update(Place $place, CreatePlaceRequest $request)
     {//dd($request);
@@ -210,8 +199,6 @@ class PlaceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Place $place)
     {

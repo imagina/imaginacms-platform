@@ -25,8 +25,6 @@ class PaymentMethodApiController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request)
     {
@@ -139,8 +137,6 @@ class PaymentMethodApiController extends BaseApiController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request)
     {

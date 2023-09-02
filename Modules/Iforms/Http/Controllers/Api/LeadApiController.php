@@ -186,8 +186,6 @@ class LeadApiController extends BaseApiController
 
     /**
      * Update the specified lead in storage.
-     *
-     * @return Response
      */
     public function update($criteria, Request $request)
     {
@@ -250,8 +248,6 @@ class LeadApiController extends BaseApiController
 
     /**
      * Remove the specified lead from storage.
-     *
-     * @return Response
      */
     public function delete($criteria, Request $request)
     {

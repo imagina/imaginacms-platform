@@ -57,8 +57,6 @@ class SlideController extends Controller
 
     /**
      * Delete a slide
-     *
-     * @return mixed
      */
     public function delete(Request $request)
     {

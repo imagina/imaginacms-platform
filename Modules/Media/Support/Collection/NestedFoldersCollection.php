@@ -70,11 +70,7 @@ class NestedFoldersCollection extends Collection
      * Recursive function that flatten a nested Collection
      * with characters (default is four spaces).
      *
-     * @param  string  $column
-     * @param  int  $level
-     * @param  string|null  $indentChars
      * @param  string|boolen|null  $parent_string
-     * @return array
      */
     public function listsFlattened(
         $column = 'title',
@@ -110,11 +106,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Returns a fully qualified version of listsFlattened.
-     *
-     * @param  string  $column
-     * @param  int  $level
-     * @param  string  $indentChars
-     * @return array
      */
     public function listsFlattenedQualified(
         $column = 'title',
@@ -128,8 +119,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Change the default indent characters when flattening lists.
-     *
-     * @return $this
      */
     public function setIndent(string $indentChars)
     {
@@ -140,8 +129,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Force keeping items that have a missing ancestor.
-     *
-     * @return NestableCollection
      */
     public function noCleaning()
     {
@@ -152,8 +139,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Check if an ancestor is missing.
-     *
-     * @return bool
      */
     public function anAncestorIsMissing($item)
     {
@@ -171,8 +156,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Get total items in nested collection.
-     *
-     * @return int
      */
     public function total()
     {
@@ -181,8 +164,6 @@ class NestedFoldersCollection extends Collection
 
     /**
      * Get total items for laravel 4 compatibility.
-     *
-     * @return int
      */
     public function getTotal()
     {

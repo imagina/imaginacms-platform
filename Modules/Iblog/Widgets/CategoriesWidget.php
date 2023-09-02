@@ -19,8 +19,6 @@ class CategoriesWidget extends BaseWidget
 
     /**
      * Get the widget name
-     *
-     * @return string
      */
     protected function name()
     {
@@ -29,8 +27,6 @@ class CategoriesWidget extends BaseWidget
 
     /**
      * Get the widget view
-     *
-     * @return string
      */
     protected function view()
     {
@@ -39,8 +35,6 @@ class CategoriesWidget extends BaseWidget
 
     /**
      * Get the widget data to send to the view
-     *
-     * @return string
      */
     protected function data()
     {
@@ -49,8 +43,6 @@ class CategoriesWidget extends BaseWidget
 
     /**
      * Get the widget type
-     *
-     * @return string
      */
     protected function options()
     {

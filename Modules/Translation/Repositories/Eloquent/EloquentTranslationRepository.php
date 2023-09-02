@@ -72,7 +72,6 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
     /**
      * Update the given translation key with the given data
      *
-     * @param  string  $key
      * @return mixed
      */
     public function updateFromImport($key, array $data)
@@ -83,9 +82,6 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
     /**
      * Set the given value on the given TranslationTranslation
-     *
-     * @param  string  $value
-     * @return void
      */
     public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value)
     {

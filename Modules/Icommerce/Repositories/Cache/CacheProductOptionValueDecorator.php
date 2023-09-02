@@ -16,8 +16,6 @@ class CacheProductOptionValueDecorator extends BaseCacheDecorator implements Pro
 
   /**
    * List or resources
-   *
-   * @return collection
    */
   public function getItemsBy($params)
   {
@@ -28,8 +26,6 @@ class CacheProductOptionValueDecorator extends BaseCacheDecorator implements Pro
 
   /**
    * find a resource by id or slug
-   *
-   * @return object
    */
   public function getItem($criteria, $params = false)
   {

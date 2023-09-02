@@ -42,8 +42,6 @@ class ModuleManager
 
     /**
      * Return all modules
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function all()
     {
@@ -65,8 +63,6 @@ class ModuleManager
 
     /**
      * Return all the enabled modules
-     *
-     * @return array
      */
     public function enabled()
     {
@@ -88,8 +84,6 @@ class ModuleManager
 
     /**
      * Get the enabled modules, with the module name as the key
-     *
-     * @return array
      */
     public function getFlippedEnabledModules()
     {
@@ -131,8 +125,6 @@ class ModuleManager
 
     /**
      * Get the changelog for the given module
-     *
-     * @return array
      */
     public function changelogFor(Module $module)
     {
@@ -152,8 +144,6 @@ class ModuleManager
 
     /**
      * Limit the versions to the last 5
-     *
-     * @return array
      */
     private function limitLastVersionsAmount(array $versions)
     {

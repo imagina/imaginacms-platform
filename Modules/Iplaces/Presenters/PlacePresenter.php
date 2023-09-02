@@ -30,8 +30,6 @@ class PlacePresenter extends Presenter
 
     /**
      * Get the post status
-     *
-     * @return string
      */
     public function status()
     {
@@ -45,8 +43,6 @@ class PlacePresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
     public function statusLabelClass()
     {

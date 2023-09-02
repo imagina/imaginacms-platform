@@ -38,7 +38,6 @@ class PublicController extends BasePublicController
      * Index data
      *
      * @param Requests request
-     * @return route
      */
     public function index($eURL)
     {

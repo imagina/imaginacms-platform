@@ -29,8 +29,6 @@ class AdStatus
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function get()
     {

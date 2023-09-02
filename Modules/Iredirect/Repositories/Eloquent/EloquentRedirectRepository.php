@@ -19,9 +19,6 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
 
     /**
      * Create a iredirect redirect
-     *
-     * @param  array  $data
-     * @return Redirect
      */
     public function create($data)
     {
@@ -34,9 +31,6 @@ class EloquentRedirectRepository extends EloquentBaseRepository implements Redir
 
     /**
      * Find a resource by the given slug
-     *
-     * @param  string  $slug
-     * @return object
      */
     public function findBySlug($slug)
     {

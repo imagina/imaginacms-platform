@@ -10,7 +10,7 @@ class ReservationService
     /**
      * @return cart service created
      */
-    public function createCheckoutCart($data, $reservation = null)
+    public function createCheckoutCart($data, $reservation = null): cart
     {
         $cartService = app("Modules\Icommerce\Services\CartService");
         $products = [];
@@ -36,10 +36,7 @@ class ReservationService
         return $cartService;
     }
 
-    /**
-     * @return reservation
-     */
-    public function createReservation($data)
+    public function createReservation($data): reservation
     {
         // Get Customer Id if exist
         if (isset($data['customer_id'])) {
@@ -77,7 +74,7 @@ class ReservationService
      *
      * @return array - [service,reservationItem]
      */
-    public function createReservationItemData($item, $reservationData)
+    public function createReservationItemData($item, $reservationData): array
     {
         $reservationItem = [];
         $response = [];

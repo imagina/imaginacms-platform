@@ -118,8 +118,6 @@ class Ad extends CrudModel
 
     /**
      * URL product
-     *
-     * @return string
      */
     public function getUrlAttribute()
     {

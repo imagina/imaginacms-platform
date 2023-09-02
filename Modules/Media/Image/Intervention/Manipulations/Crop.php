@@ -16,8 +16,6 @@ class Crop implements ImageHandlerInterface
     /**
      * Handle the image manipulation request
      *
-     * @param  \Intervention\Image\Image  $image
-     * @param  array  $options
      * @return mixed
      */
     public function handle($image, $options)

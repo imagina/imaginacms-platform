@@ -49,8 +49,6 @@ class DefaultStatus
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function lists()
     {
@@ -59,9 +57,6 @@ class DefaultStatus
 
     /**
      * Get the request status
-     *
-     * @param  int  $statusId
-     * @return string
      */
     public function get($statusId)
     {

@@ -75,7 +75,6 @@ class IcommerceOpenpayApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
     public function init(Request $request)
     {
@@ -136,7 +135,6 @@ class IcommerceOpenpayApiController extends BaseApiController
      * @param OrderId
      * @param clientToken
      * @param deviceId
-     * @return response
      */
     public function processPayment(Request $request)
     {
@@ -173,7 +171,6 @@ class IcommerceOpenpayApiController extends BaseApiController
      * ROUTE - POST Process Payment PSE
      *
      * @param OrderId
-     * @return response
      */
     public function processPaymentPse(Request $request)
     {
@@ -207,7 +204,6 @@ class IcommerceOpenpayApiController extends BaseApiController
      * Confirmation response - After payment
      *
      * @param Requests request
-     * @return route
      */
     public function confirmation(Request $request)
     {

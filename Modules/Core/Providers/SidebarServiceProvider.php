@@ -11,8 +11,6 @@ class SidebarServiceProvider extends ServiceProvider implements DeferrableProvid
 {
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {

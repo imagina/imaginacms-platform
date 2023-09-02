@@ -9,9 +9,6 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
 {
     /**
      * Find the saved state of widgets for the given user id
-     *
-     * @param  int  $userId
-     * @return string
      */
     public function findForUser($userId)
     {
@@ -20,9 +17,6 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
 
     /**
      * Update or create the given widgets for given user
-     *
-     * @param  array  $widgets
-     * @return void
      */
     public function updateOrCreateForUser($widgets, $userId)
     {

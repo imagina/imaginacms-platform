@@ -13,7 +13,6 @@ class EloquentProviderRepository extends EloquentBaseRepository implements Provi
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItemsBy($params = false)
@@ -89,7 +88,6 @@ class EloquentProviderRepository extends EloquentBaseRepository implements Provi
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, $params = false)
@@ -159,9 +157,6 @@ class EloquentProviderRepository extends EloquentBaseRepository implements Provi
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
-     * @return bool
      */
     public function updateBy($criteria, $data, $params = false)
     {
@@ -187,8 +182,6 @@ class EloquentProviderRepository extends EloquentBaseRepository implements Provi
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
      */
     public function deleteBy($criteria, $params = false)
     {

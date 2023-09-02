@@ -21,7 +21,6 @@ class ValidatePath implements Rule
      *
      * @param  string  $attribute - Example: Attribute name:
      * @param  mixed  $value - Example Path.
-     * @return bool
      */
     public function passes($attribute, $value)
     {
@@ -30,8 +29,6 @@ class ValidatePath implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message()
     {

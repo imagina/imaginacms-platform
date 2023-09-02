@@ -19,10 +19,6 @@ class TranslationRevisions
 
     /**
      * Get revisions for the given key and locale.
-     *
-     * @param  string  $key
-     * @param  string  $locale
-     * @return \Illuminate\Http\JsonResponse
      */
     public function get($key, $locale)
     {
@@ -42,8 +38,6 @@ class TranslationRevisions
 
     /**
      * Format revision history.
-     *
-     * @return array
      */
     private function formatRevisionHistory(Collection $revisionHistory)
     {

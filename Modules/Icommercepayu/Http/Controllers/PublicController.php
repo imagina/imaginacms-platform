@@ -55,7 +55,6 @@ class PublicController extends BasePublicController
      * Index data
      *
      * @param Requests request
-     * @return route
      */
     public function index($eURL)
     {
@@ -132,8 +131,6 @@ class PublicController extends BasePublicController
 
   /**
    * Button Back PayU
-   *
-   * @return redirect
    */
   public function back(Request $request)
   {

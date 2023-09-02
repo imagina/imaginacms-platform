@@ -2,6 +2,7 @@
 
 namespace Modules\User\Entities\Sentinel;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
@@ -95,9 +96,6 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         return false;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function api_keys()
     {
         return $this->hasMany(UserToken::class);

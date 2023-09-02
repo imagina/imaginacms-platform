@@ -165,8 +165,6 @@ class Post extends CrudModel implements TaggableInterface
 
     /**
      * URL post
-     *
-     * @return string
      */
     public function getUrlAttribute($locale = null)
     {
@@ -213,7 +211,6 @@ class Post extends CrudModel implements TaggableInterface
     /**
      * Magic Method modification to allow dynamic relations to other entities.
      *
-     * @return string
      *
      * @var
      * @var

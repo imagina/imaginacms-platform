@@ -98,8 +98,6 @@ trait RevisionableTrait
     /**
      * Generates a list of the last $limit revisions made to any objects of the class it is being called from.
      *
-     * @param  int  $limit
-     * @param  string  $order
      * @return mixed
      */
     public static function classRevisions($limit = 100, $order = 'desc')
@@ -112,8 +110,6 @@ trait RevisionableTrait
 
     /**
      * Invoked before a model is saved. Return false to abort the operation.
-     *
-     * @return bool
      */
     public function preSave()
     {
@@ -342,9 +338,6 @@ trait RevisionableTrait
 
     /**
      * Check if this field should have a revision kept
-     *
-     * @param  string  $key
-     * @return bool
      */
     private function isRevisionable($key)
     {
@@ -364,8 +357,6 @@ trait RevisionableTrait
 
     /**
      * Check if soft deletes are currently enabled on this model
-     *
-     * @return bool
      */
     private function isSoftDelete()
     {
@@ -445,7 +436,6 @@ trait RevisionableTrait
      * PHP bug https://bugs.php.net/bug.php?id=42030
      *
      * @param  mixed  $field
-     * @return void
      */
     public function disableRevisionField($field)
     {

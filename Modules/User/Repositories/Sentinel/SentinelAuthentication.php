@@ -38,8 +38,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Register a new user.
-     *
-     * @return bool
      */
     public function register(array $user)
     {
@@ -49,8 +47,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Assign a role to the given user.
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
-     * @param  \Modules\User\Repositories\RoleRepository  $role
      * @return mixed
      */
     public function assignRole($user, $role)
@@ -60,8 +56,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Log the user out of the application.
-     *
-     * @return bool
      */
     public function logout()
     {
@@ -71,8 +65,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Activate the given used id
      *
-     * @param  int  $userId
-     * @param  string  $code
      * @return mixed
      */
     public function activate($userId, $code)
@@ -90,7 +82,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Create an activation code for the given user
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
      * @return mixed
      */
     public function createActivation($user)
@@ -101,7 +92,6 @@ class SentinelAuthentication implements Authentication
     /**
      * Create a reminders code for the given user
      *
-     * @param  \Modules\User\Repositories\UserRepository  $user
      * @return mixed
      */
     public function createReminderCode($user)
@@ -113,10 +103,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Completes the reset password process
-     *
-     * @param  string  $code
-     * @param  string  $password
-     * @return bool
      */
     public function completeResetPassword($user, $code, $password)
     {
@@ -151,8 +137,6 @@ class SentinelAuthentication implements Authentication
 
     /**
      * Get the currently logged in user
-     *
-     * @return \Modules\User\Entities\UserInterface
      */
     public function user()
     {

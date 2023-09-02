@@ -29,18 +29,12 @@ class UnignoreComposerLock implements SetupScript
         }
     }
 
-    /**
-     * @return bool
-     */
-    private function gitignoreContainsComposerLock($gitignorePath)
+    private function gitignoreContainsComposerLock($gitignorePath): bool
     {
         return file_exists($gitignorePath) && strpos(file_get_contents($gitignorePath), self::COMPOSER_LOCK) !== false;
     }
 
-    /**
-     * @return array
-     */
-    private function getGitignoreLinesButComposerLock($gitignorePath)
+    private function getGitignoreLinesButComposerLock($gitignorePath): array
     {
         $data = file($gitignorePath);
         $out = [];

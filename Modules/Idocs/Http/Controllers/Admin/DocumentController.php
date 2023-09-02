@@ -40,8 +40,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index(Request $request)
     {
@@ -57,8 +55,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -70,8 +66,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateDocumentRequest $request)
     {
@@ -96,8 +90,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Document $document)
     {
@@ -109,8 +101,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Document $document, UpdateDocumentRequest $request)
     {
@@ -132,8 +122,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Document $document)
     {
@@ -155,8 +143,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function migration()
     {
@@ -167,8 +153,6 @@ class DocumentController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function import(Request $request)
     {

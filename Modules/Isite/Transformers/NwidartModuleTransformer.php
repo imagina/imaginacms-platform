@@ -8,8 +8,6 @@ class NwidartModuleTransformer extends JsonResource
 {
     /**
      * Method to merge values with response
-     *
-     * @return array
      */
     public function toArray($request)
     {

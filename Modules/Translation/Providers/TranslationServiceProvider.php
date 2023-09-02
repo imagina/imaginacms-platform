@@ -38,8 +38,6 @@ class TranslationServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -85,8 +83,6 @@ class TranslationServiceProvider extends ServiceProvider
 
     /**
      * Should we register the Custom Translator?
-     *
-     * @return bool
      */
     protected function shouldRegisterCustomTranslator()
     {
@@ -107,8 +103,6 @@ class TranslationServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides()
     {

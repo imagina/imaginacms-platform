@@ -10,8 +10,6 @@ class ComposerJson extends BaseFileType implements FileType
 
     /**
      * Generate the current file type
-     *
-     * @return string
      */
     public function generate()
     {

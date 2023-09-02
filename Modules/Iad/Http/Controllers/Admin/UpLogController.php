@@ -25,8 +25,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -37,8 +35,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -47,8 +43,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateUpLogRequest $request)
     {
@@ -60,8 +54,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(UpLog $uplog)
     {
@@ -70,8 +62,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(UpLog $uplog, UpdateUpLogRequest $request)
     {
@@ -83,8 +73,6 @@ class UpLogController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(UpLog $uplog)
     {

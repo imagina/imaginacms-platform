@@ -117,8 +117,6 @@ class Type extends Model
 
     /**
      * Get the available statuses
-     *
-     * @return array
      */
     public function lists()
     {
@@ -127,9 +125,6 @@ class Type extends Model
 
     /**
      * Get the post status
-     *
-     * @param  int  $id
-     * @return string
      */
     public function get($id)
     {

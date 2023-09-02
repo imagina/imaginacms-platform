@@ -71,7 +71,6 @@ class IcommerceXpayApiController extends BaseApiController
      * Init data
      *
      * @param Requests orderid
-     * @return route
      */
     public function init(Request $request)
     {
@@ -129,7 +128,6 @@ class IcommerceXpayApiController extends BaseApiController
      * XPAY API - Get Token Login
      *
      * @param Requests
-     * @return token
      */
     public function getTokenLogin(Request $request)
     {
@@ -329,8 +327,6 @@ class IcommerceXpayApiController extends BaseApiController
 
     /**
      * Get Payment Method Configuration
-     *
-     * @return collection
      */
     public function getPaymentMethodConfiguration()
     {
@@ -343,8 +339,6 @@ class IcommerceXpayApiController extends BaseApiController
 
     /**
      * Update Information
-     *
-     * @return orderUpdated
      */
     public function updateInformation($request, $transaction)
     {

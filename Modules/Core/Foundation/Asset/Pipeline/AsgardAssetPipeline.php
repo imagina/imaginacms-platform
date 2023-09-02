@@ -28,8 +28,6 @@ class AsgardAssetPipeline implements AssetPipeline
     /**
      * Add a javascript dependency on the view
      *
-     * @param  string  $dependency
-     * @return $this
      *
      * @throws AssetNotFoundException
      */
@@ -53,8 +51,6 @@ class AsgardAssetPipeline implements AssetPipeline
     /**
      * Add a CSS dependency on the view
      *
-     * @param  string  $dependency
-     * @return $this
      *
      * @throws AssetNotFoundException
      */
@@ -77,9 +73,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Add the dependency after another one
-     *
-     * @param  string  $dependency
-     * @return void
      */
     public function after($dependency)
     {
@@ -88,9 +81,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Add the dependency before another one
-     *
-     * @param  string  $dependency
-     * @return void
      */
     public function before($dependency)
     {
@@ -99,9 +89,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Insert a dependency before or after in the right dependency array
-     *
-     * @param  string  $dependency
-     * @param  string  $offset
      */
     private function insert($dependency, $offset = 'before')
     {
@@ -123,8 +110,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Return all css files to include
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function allCss()
     {
@@ -133,8 +118,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Return all js files to include
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function allJs()
     {
@@ -143,9 +126,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Find in which collection the given dependency exists
-     *
-     * @param  string  $dependency
-     * @return array
      */
     private function findDependenciesForKey($dependency)
     {
@@ -158,8 +138,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Get the last key and value the given array
-     *
-     * @return array
      */
     private function getLastKeyAndValueOf(array $dependencyArray)
     {
@@ -172,8 +150,6 @@ class AsgardAssetPipeline implements AssetPipeline
 
     /**
      * Return the position in the array of the given key
-     *
-     * @return int
      */
     private function getPositionInArray($dependency, array $dependencyArray)
     {
@@ -185,7 +161,6 @@ class AsgardAssetPipeline implements AssetPipeline
     /**
      * If asset was not found, throw an exception
      *
-     * @param  string  $assetPath
      *
      * @throws AssetNotFoundException
      */

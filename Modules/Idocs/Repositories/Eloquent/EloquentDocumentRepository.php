@@ -178,7 +178,6 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
 
     /**
      * @param $param
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function search($keys)
     {
@@ -195,9 +194,6 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
     /**
      * Standard Api Method
      * Create a iblog post
-     *
-     * @param  array  $data
-     * @return Post
      */
     public function create($data)
     {
@@ -212,7 +208,6 @@ class EloquentDocumentRepository extends EloquentBaseRepository implements Docum
      * Update a resource
      *
      * @param $documnet
-     * @param  array  $data
      * @return mixed
      */
     public function update($document, $data)

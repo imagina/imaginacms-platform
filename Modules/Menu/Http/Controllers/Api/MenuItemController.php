@@ -45,8 +45,6 @@ class MenuItemController extends Controller
 
     /**
      * Delete a menu item
-     *
-     * @return mixed
      */
     public function delete(Request $request)
     {

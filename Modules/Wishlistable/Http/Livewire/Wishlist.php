@@ -35,18 +35,12 @@ class Wishlist extends Component
         }
     }
 
-    /**
-     * @return wislistRepository
-     */
-    public function wishlistRepository()
+    public function wishlistRepository(): wislistRepository
     {
         return app('Modules\Wishlistable\Repositories\WishlistableRepository');
     }
 
-    /**
-     * @return wishListEntity
-     */
-    public function wishlistEntity()
+    public function wishlistEntity(): wishListEntity
     {
         return app('Modules\Wishlistable\Entities\Wishlistable');
     }

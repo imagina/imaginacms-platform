@@ -5,7 +5,6 @@ namespace Modules\Core\Foundation\Asset\Types;
 class AssetTypeFactory
 {
     /**
-     * @return \Modules\Core\Foundation\Asset\Types\AssetType
      *
      * @throws \InvalidArgumentException
      */

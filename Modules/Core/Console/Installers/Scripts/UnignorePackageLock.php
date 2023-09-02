@@ -29,18 +29,12 @@ class UnignorePackageLock implements SetupScript
         }
     }
 
-    /**
-     * @return bool
-     */
-    private function gitignoreContainsPackageLock($gitignorePath)
+    private function gitignoreContainsPackageLock($gitignorePath): bool
     {
         return file_exists($gitignorePath) && strpos(file_get_contents($gitignorePath), self::PACKAGE_LOCK) !== false;
     }
 
-    /**
-     * @return array
-     */
-    private function getGitignoreLinesButPackageLock($gitignorePath)
+    private function getGitignoreLinesButPackageLock($gitignorePath): array
     {
         $data = file($gitignorePath);
         $out = [];

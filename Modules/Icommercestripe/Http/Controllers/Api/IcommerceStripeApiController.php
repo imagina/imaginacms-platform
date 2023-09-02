@@ -89,7 +89,6 @@ class IcommerceStripeApiController extends BaseApiController
      * Init data to checkout
      *
      * @param Request - orderId
-     * @return route
      */
     public function init(Request $request)
     {
@@ -154,7 +153,6 @@ class IcommerceStripeApiController extends BaseApiController
      * Response
      *
      * @param Request request
-     * @return route
      */
     public function response(Request $request)
     {
@@ -195,7 +193,6 @@ class IcommerceStripeApiController extends BaseApiController
      * Create Account with Link to Onboarding proccess
      *
      * @param Request request
-     * @return url
      */
     public function connectCreateAccountLinkOnboarding(Request $request)
     {
@@ -264,7 +261,6 @@ class IcommerceStripeApiController extends BaseApiController
      * Get Account Data and Create urlPanel (Login Link) if it is not saved in profile field
      *
      * @param Request request
-     * @return url
      */
     public function connectGetAccount(Request $request)
     {
@@ -343,7 +339,6 @@ class IcommerceStripeApiController extends BaseApiController
      * Create login link
      *
      * @param Request - attributes['accountId']
-     * @return url
      */
     public function connectCreateLoginLink(Request $request)
     {

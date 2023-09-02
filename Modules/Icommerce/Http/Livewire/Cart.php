@@ -251,34 +251,22 @@ class Cart extends Component
     //|--------------------------------------------------------------------------
     //| Repositories
     //|--------------------------------------------------------------------------
-    /**
-     * @return cartRepository
-     */
-    private function cartRepository()
+    private function cartRepository(): cartRepository
     {
         return app('Modules\Icommerce\Repositories\CartRepository');
     }
 
-    /**
-     * @return cartProductRepository
-     */
-    private function cartProductRepository()
+    private function cartProductRepository(): cartProductRepository
     {
         return app('Modules\Icommerce\Repositories\CartProductRepository');
     }
 
-    /**
-     * @return productRepository
-     */
-    private function productRepository()
+    private function productRepository(): productRepository
     {
         return app('Modules\Icommerce\Repositories\ProductRepository');
     }
 
-    /**
-     * @return currencyRepository
-     */
-    private function currencyRepository()
+    private function currencyRepository(): currencyRepository
     {
         return app('Modules\Icommerce\Repositories\CurrencyRepository');
     }
@@ -286,18 +274,12 @@ class Cart extends Component
     //|--------------------------------------------------------------------------
     //| Services
     //|--------------------------------------------------------------------------
-    /**
-     * @return orderService
-     */
-    private function orderService()
+    private function orderService(): orderService
     {
         return app('Modules\Icommerce\Services\OrderService');
     }
 
-    /**
-     * @return PdfService
-     */
-    public function PdfService()
+    public function PdfService(): PdfService
     {
         return app('Modules\Isite\Services\PdfService');
     }

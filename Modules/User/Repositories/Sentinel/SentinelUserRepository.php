@@ -37,8 +37,6 @@ class SentinelUserRepository implements UserRepository
 
     /**
      * Returns all the users
-     *
-     * @return object
      */
     public function all()
     {
@@ -48,7 +46,6 @@ class SentinelUserRepository implements UserRepository
     /**
      * Create a user resource
      *
-     * @param  bool  $activated
      * @return mixed
      */
     public function create(array $data, $activated = false)
@@ -72,11 +69,6 @@ class SentinelUserRepository implements UserRepository
 
     /**
      * Create a user and assign roles to it
-     *
-     * @param  array  $data
-     * @param  array  $roles
-     * @param  bool  $activated
-     * @return User
      */
     public function createWithRoles($data, $roles, $activated = false)
     {
@@ -92,11 +84,6 @@ class SentinelUserRepository implements UserRepository
     /**
      * Create a user and assign roles to it
      * But don't fire the user created event
-     *
-     * @param  array  $data
-     * @param  array  $roles
-     * @param  bool  $activated
-     * @return User
      */
     public function createWithRolesFromCli($data, $roles, $activated = false)
     {
@@ -280,7 +267,6 @@ class SentinelUserRepository implements UserRepository
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, $params = false)

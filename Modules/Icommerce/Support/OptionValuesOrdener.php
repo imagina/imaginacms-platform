@@ -30,9 +30,6 @@ class OptionValuesOrdener
 
     /**
      * Order recursively the value
-     *
-     * @param  int  $position
-     * @param  array  $item
      */
     private function order($position, $item)
     {
@@ -48,9 +45,6 @@ class OptionValuesOrdener
         }
     }
 
-    /**
-     * @param  Menuitem  $parent
-     */
     private function handleChildrenForParent(OptionValue $parent, array $children)
     {
         foreach ($children as $position => $item) {
@@ -66,9 +60,6 @@ class OptionValuesOrdener
 
     /**
      * Save the given position on the value
-     *
-     * @param  object  $optionValue
-     * @param  int  $position
      */
     private function savePosition($optionValue, $position)
     {
@@ -80,9 +71,6 @@ class OptionValuesOrdener
 
     /**
      * Check if the value has children
-     *
-     * @param  array  $item
-     * @return bool
      */
     private function hasChildren($item)
     {
@@ -91,9 +79,6 @@ class OptionValuesOrdener
 
     /**
      * Set the given parent id on the given value
-     *
-     * @param  object  $item
-     * @param  int  $parent_id
      */
     private function makeItemChildOf($item, $parent_id)
     {
@@ -102,8 +87,6 @@ class OptionValuesOrdener
 
     /**
      * Convert the object to array
-     *
-     * @return array
      */
     private function convertToArray($data)
     {

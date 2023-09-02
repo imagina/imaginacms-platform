@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Repositories\Eloquent;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Modules\Isite\Entities\Module as ModuleEntity;
@@ -29,8 +30,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get all modules.
-     *
-     * @return EloquentCollection
      */
     public function all(): array
     {
@@ -78,8 +77,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get list of enabled modules.
-     *
-     * @return mixed
      */
     public function allEnabled(): array
     {
@@ -124,8 +121,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Get modules by the given status.
-     *
-     * @param  int  $status
      */
     public function getByStatus($status): array
     {
@@ -139,8 +134,6 @@ class LaravelEloquentRepository implements RepositoryInterface
 
     /**
      * Find a specific module.
-     *
-     * @return \Nwidart\Modules\Contracts\ModuleInterface
      */
     public function find($name): ?\Nwidart\Modules\Contracts\ModuleInterface
     {
@@ -203,7 +196,6 @@ class LaravelEloquentRepository implements RepositoryInterface
     /**
      * Delete a specific module.
      *
-     * @param  string  $name
      *
      * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
      */

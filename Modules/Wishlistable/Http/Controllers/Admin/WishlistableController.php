@@ -25,8 +25,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -37,8 +35,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -47,8 +43,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateWishlistableRequest $request)
     {
@@ -60,8 +54,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Wishlistable $wishlistable)
     {
@@ -70,8 +62,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Wishlistable $wishlistable, UpdateWishlistableRequest $request)
     {
@@ -83,8 +73,6 @@ class WishlistableController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Wishlistable $wishlistable)
     {

@@ -53,8 +53,6 @@ class TemplateViewComposer
 
     /**
      * Get the base path of the current theme.
-     *
-     * @return string
      */
     private function getCurrentThemeBasePath()
     {
@@ -63,9 +61,6 @@ class TemplateViewComposer
 
     /**
      * Read template name defined in comments.
-     *
-     *
-     * @return string
      */
     private function getTemplateName($template)
     {
@@ -105,9 +100,6 @@ class TemplateViewComposer
 
     /**
      * Check if the relative path is not empty (meaning the template is in a directory).
-     *
-     *
-     * @return bool
      */
     private function hasSubdirectory($relativePath)
     {

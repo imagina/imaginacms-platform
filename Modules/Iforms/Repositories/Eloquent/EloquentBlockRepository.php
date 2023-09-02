@@ -11,7 +11,6 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItemsBy($params = false)
@@ -93,7 +92,6 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     /**
      * Standard Api Method
      *
-     * @param  bool  $params
      * @return mixed
      */
     public function getItem($criteria, $params = false)
@@ -160,9 +158,6 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Standard Api Method
-     *
-     * @param  bool  $params
-     * @return bool
      */
     public function updateBy($criteria, $data, $params = false)
     {

@@ -257,8 +257,6 @@ class MediaController extends Controller
 
     /**
      * Get the path for the given file and type
-     *
-     * @param  string  $mediaType
      */
     private function getThumbnailPathFor($mediaType, File $file): string
     {

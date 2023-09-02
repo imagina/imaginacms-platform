@@ -20,28 +20,20 @@ class Theme
         $this->path = realpath($path);
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return ucfirst($this->name);
     }
 
-    /**
-     * @return string
-     */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
     /**
      * Get name in lower case.
-     *
-     * @return string
      */
-    public function getLowerName()
+    public function getLowerName(): string
     {
         return strtolower($this->name);
     }

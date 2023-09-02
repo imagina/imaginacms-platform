@@ -25,8 +25,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -37,8 +35,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
     public function create()
     {
@@ -47,8 +43,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
     public function store(CreateScheduleRequest $request)
     {
@@ -60,8 +54,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return Response
      */
     public function edit(Schedule $schedule)
     {
@@ -70,8 +62,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return Response
      */
     public function update(Schedule $schedule, UpdateScheduleRequest $request)
     {
@@ -83,8 +73,6 @@ class ScheduleController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
     public function destroy(Schedule $schedule)
     {

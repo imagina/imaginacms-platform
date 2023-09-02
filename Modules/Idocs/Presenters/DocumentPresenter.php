@@ -24,8 +24,6 @@ class DocumentPresenter extends Presenter
 
     /**
      * Get the doc status
-     *
-     * @return string
      */
     public function status()
     {
@@ -63,8 +61,6 @@ class DocumentPresenter extends Presenter
 
     /**
      * Getting the label class for the appropriate status
-     *
-     * @return string
      */
     public function statusLabelClass()
     {

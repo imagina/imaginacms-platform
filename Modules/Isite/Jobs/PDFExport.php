@@ -2,6 +2,7 @@
 
 namespace Modules\Isite\Jobs;
 
+use Illuminate\Support\Collection;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -38,10 +39,7 @@ class PDFExport implements ShouldQueue
         $this->pdfService = app('Modules\Isite\Services\PdfService');
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function query()
+    public function query(): Collection
     {
         //Init Repo
         $repository = app("Modules\\{$this->exportParams->moduleName}\\Repositories\\{$this->exportParams->repositoryName}");
@@ -54,10 +52,8 @@ class PDFExport implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->query();
 

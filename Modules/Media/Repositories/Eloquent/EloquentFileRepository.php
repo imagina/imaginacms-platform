@@ -22,7 +22,6 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Update a resource
      *
-     * @param  File  $file
      * @return mixed
      */
     public function update($file, $data)
@@ -40,8 +39,6 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
     /**
      * Create a file row from the given file
      *
-     * @param  int  $parentId
-     * @param  string  $disk
      * @return mixed
      */
     public function createFromFile(UploadedFile $file, $parentId = 0, $disk = null)
@@ -92,9 +89,6 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
     /**
      * Find a file for the entity by zone
-     *
-     * @param  object  $entity
-     * @return object
      */
     public function findFileByZoneForEntity($zone, $entity)
     {
@@ -109,10 +103,6 @@ class EloquentFileRepository extends EloquentBaseRepository implements FileRepos
 
     /**
      * Find multiple files for the given zone and entity
-     *
-     * @param  zone  $zone
-     * @param  object  $entity
-     * @return object
      */
     public function findMultipleFilesByZoneForEntity($zone, $entity)
     {

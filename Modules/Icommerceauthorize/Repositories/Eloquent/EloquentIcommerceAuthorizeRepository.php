@@ -60,8 +60,6 @@ class EloquentIcommerceAuthorizeRepository extends EloquentBaseRepository implem
 
     /**
      * Decript url to get data
-     *
-     * @return array
      */
     public function decriptUrl($eUrl)
     {

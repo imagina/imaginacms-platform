@@ -13,26 +13,17 @@ class RouteServiceProvider extends CoreRoutingServiceProvider
      */
     protected $namespace = 'Modules\Ichat\Http\Controllers';
 
-    /**
-     * @return string
-     */
-    protected function getFrontendRoute()
+    protected function getFrontendRoute(): string
     {
         return __DIR__.'/../Http/frontendRoutes.php';
     }
 
-    /**
-     * @return string
-     */
-    protected function getBackendRoute()
+    protected function getBackendRoute(): string
     {
         return false; //__DIR__ . '/../Http/backendRoutes.php';
     }
 
-    /**
-     * @return string
-     */
-    protected function getApiRoute()
+    protected function getApiRoute(): string
     {
         return __DIR__.'/../Http/apiRoutes.php';
     }

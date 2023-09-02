@@ -48,7 +48,6 @@ class Schedule extends CrudModel
     /**
      * Return schedule shifts
      *
-     * @param  array  $params
      * @return mixed
      */
     public function getShifts($params = [])

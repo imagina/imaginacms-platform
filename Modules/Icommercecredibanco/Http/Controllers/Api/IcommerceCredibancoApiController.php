@@ -66,7 +66,6 @@ class IcommerceCredibancoApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderid
-     * @return route
      */
     public function init(Request $request)
     {
@@ -134,7 +133,6 @@ class IcommerceCredibancoApiController extends BaseApiController
      * GetOrderStatus Api Method
      *
      * @param Requests request
-     * @return route
      */
     public function getUpdateOrder(Request $request)
     {
@@ -194,8 +192,6 @@ class IcommerceCredibancoApiController extends BaseApiController
 
     /**
      * CREDIBANCO API - Register Orderand GET URL
-     *
-     * @return collection
      */
     public function registerOrderCredibanco($paymentMethod, $order, $transaction)
     {
@@ -238,8 +234,6 @@ class IcommerceCredibancoApiController extends BaseApiController
 
     /**
      * CREDIBANCO API - Get Order Extended
-     *
-     * @return collection
      */
     public function getOrderStatusExtendedCredibanco($paymentMethod, $order, $transaction)
     {
@@ -337,8 +331,6 @@ class IcommerceCredibancoApiController extends BaseApiController
 
     /**
      * Get Payment Method Configuration
-     *
-     * @return collection
      */
     public function getPaymentMethodConfiguration()
     {
@@ -351,8 +343,6 @@ class IcommerceCredibancoApiController extends BaseApiController
 
     /**
      * Get Order Reference Commerce
-     *
-     * @return collection
      */
     public function getOrderRefCommerce($order, $transaction)
     {

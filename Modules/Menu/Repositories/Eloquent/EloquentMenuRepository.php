@@ -36,8 +36,6 @@ class EloquentMenuRepository extends EloquentBaseRepository implements MenuRepos
 
     /**
      * Get all online menus
-     *
-     * @return object
      */
     public function allOnline()
     {

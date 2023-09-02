@@ -16,8 +16,6 @@ class CacheFieldDecorator extends BaseCacheDecorator implements FieldRepository
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function getItemsBy($params)
     {
@@ -28,8 +26,6 @@ class CacheFieldDecorator extends BaseCacheDecorator implements FieldRepository
 
     /**
      * find a resource by id or slug
-     *
-     * @return object
      */
     public function getItem($criteria, $params = false)
     {
@@ -76,8 +72,6 @@ class CacheFieldDecorator extends BaseCacheDecorator implements FieldRepository
 
     /**
      * List or resources
-     *
-     * @return collection
      */
     public function usersBirthday($params = false)
     {

@@ -13,8 +13,6 @@ class StripeService
 
   /**
    * Make Configuration to Payment
-   *
-   * @return array
    */
   public function createConfigToTransferGroup($paymentMethod, $order, $transaction)
   {
@@ -46,8 +44,6 @@ class StripeService
 
     /**
      * Make Configuration Implementation Destination Charge
-     *
-     * @return array
      */
     public function createConfigToDestinationCharge($paymentMethod, $order, $transaction)
     {
@@ -91,8 +87,6 @@ class StripeService
 
   /**
    * Get Status to Order
-   *
-   * @return int
    */
   public function getStatusDetail($event)
   {
@@ -130,8 +124,6 @@ class StripeService
 
   /**
    * Get Line Items
-   *
-   * @return int
    */
   public function getLineItems($order, $currencyAccount)
   {
@@ -187,7 +179,6 @@ class StripeService
    * Values to save or update in Configuration Payout User Profile Field
    *
    * @param $payoutConfigValues - array
-   * @return Model
    */
   public function syncDataUserField($payoutConfigValues)
   {

@@ -55,9 +55,6 @@ class MenuPresenter extends Presenter
 
     /**
      * Get active state on child items.
-     *
-     * @param  string  $state
-     * @return null|string
      */
     public function getActiveStateOnChild($item, $state = 'active')
     {
@@ -83,9 +80,6 @@ class MenuPresenter extends Presenter
 
     /**
      * Get multilevel menu wrapper.
-     *
-     * @param  MenuItem  $item
-     * @return string`
      */
     public function getMultiLevelDropdownWrapper($item)
     {

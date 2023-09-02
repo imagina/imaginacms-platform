@@ -74,7 +74,6 @@ class IcommerceEpaycoApiController extends BaseApiController
      *
      * @param Requests request
      * @param Requests orderId
-     * @return route
      */
     public function init(Request $request)
     {
@@ -133,7 +132,6 @@ class IcommerceEpaycoApiController extends BaseApiController
      * Response Api Method
      *
      * @param Requests request
-     * @return route
      */
     public function confirmation(Request $request)
     {
