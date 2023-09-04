@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
-
+$namespace = "\Modules\Isite\Http\Controllers\Api";
 Route::prefix('/site')->group(function (Router $router) {
     $router->get('/version', [
         'as' => 'api.isite.version',

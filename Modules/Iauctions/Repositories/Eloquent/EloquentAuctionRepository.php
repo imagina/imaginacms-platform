@@ -35,9 +35,22 @@ class EloquentAuctionRepository extends EloquentCrudRepository implements Auctio
          * Example filter Query
          * if (isset($filter->status)) $query->where('status', $filter->status);
          */
-        if (isset($filter->auctionId)) {
+
+    // add filter by search
+    if (isset($filter->search)) {
+      //find search in columns
+      $query->where(function ($query) use ($filter) {
+        $query->whereHas('translations', function ($query) use ($filter) {
+          $query->where('locale', $filter->locale)
+            ->where('title', 'like', '%' . $filter->search . '%');
+        })->orWhere('id', 'like', '%' . $filter->search . '%')
+          ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+          ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+      });
+    }
+
+    if (isset($filter->auctionId))
             $query->where('auction_id', $filter->auctionId);
-        }
 
         // If doesn't have Permission to index-all
         if (\Auth::user() && ! \Auth::user()->hasAccess('iauctions.auctions.index-all')) {
@@ -46,7 +59,9 @@ class EloquentAuctionRepository extends EloquentCrudRepository implements Auctio
                 $q->where('iprofile__user_department.user_id', $userId);
             })->pluck('id')->toArray();
 
-            $query->whereIn('department_id', $departments);
+     
+      $query->whereIn("department_id",$departments);
+
         }
 
         //Response

@@ -26,7 +26,10 @@ return [
    | Define config to the mediaFillable trait for each entity
    |--------------------------------------------------------------------------
    */
-    'mediaFillable' => [
+  "mediaFillable" => [
+    'auction' => [
+      'mainimage' => 'single',
+    ],
         'bid' => [
             'mainimage' => 'single',
         ],

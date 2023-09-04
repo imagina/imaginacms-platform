@@ -34,6 +34,7 @@ class BidsExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, Wit
 
     public function __construct($params, $exportParams)
     {
+    $this->userId = \Auth::id();//Set for ReportQueue
         $this->params = $params;
         $this->exportParams = $exportParams;
         $this->inotification = app('Modules\Notification\Services\Inotification');
@@ -197,9 +198,14 @@ class BidsExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, Wit
     public function registerEvents(): array
     {
         return [
+      // Event gets raised at the start of the process.
+      BeforeExport::class => function (BeforeExport $event) {
+        $this->lockReport($this->exportParams->exportName);
+      },
             // Event gets raised at the end of the sheet process
 
             AfterSheet::class => function (AfterSheet $event) {
+        $this->unlockReport($this->exportParams->exportName);
                 //Send pusher notification
                 $this->inotification->to(['broadcast' => $this->params->user->id])->push([
                     'title' => 'New report',

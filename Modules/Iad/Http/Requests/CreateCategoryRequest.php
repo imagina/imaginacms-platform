@@ -9,16 +9,16 @@ class CreateCategoryRequest extends BaseFormRequest
 {
     public function rules()
     {
+      return [];
+    }
+
+    public function translationRules()
+    {
         return [
             'title' => 'required|min:2',
             'slug' => ['required', new UniqueSlugRule('iad__category_translations'), 'min:2'],
             'description' => 'required|min:2',
         ];
-    }
-
-    public function translationRules()
-    {
-        return [];
     }
 
     public function authorize()

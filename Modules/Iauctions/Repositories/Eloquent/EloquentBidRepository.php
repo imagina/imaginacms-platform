@@ -34,6 +34,17 @@ class EloquentBidRepository extends EloquentCrudRepository implements BidReposit
          * Example filter Query
          * if (isset($filter->status)) $query->where('status', $filter->status);
          */
+    // add filter by search
+    if (isset($filter->search)) {
+      //find search in columns
+      $query->where('id', 'like', '%' . $filter->search . '%')
+        ->orWhere('description', 'like', '%' . $filter->search . '%')
+        ->orWhere('amount', 'like', '%' . $filter->search . '%')
+        ->orWhere('points', 'like', '%' . $filter->search . '%')
+        ->orWhere('winner', 'like', '%' . $filter->search . '%')
+        ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+        ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+    }
 
         //Response
         return $query;
@@ -42,7 +53,7 @@ class EloquentBidRepository extends EloquentCrudRepository implements BidReposit
     /*
     * Order Query Default
     */
-    public function orderQuery($query, $order)
+  public function orderQuery($query, $order, $noSortOrder)
     {
         $orderField = $order->field ?? 'points'; //Default field
         $orderWay = $order->way ?? 'asc'; //Default way
@@ -50,9 +61,7 @@ class EloquentBidRepository extends EloquentCrudRepository implements BidReposit
         //Set order to query
         if (in_array($orderField, ($this->model->translatedAttributes ?? []))) {
             $query->orderByTranslation($orderField, $orderWay);
-        } else {
-            $query->orderBy($orderField, $orderWay);
-        }
+    } else $query->orderBy($orderField, $orderWay);
 
         //Return query with filters
         return $query;

@@ -20,6 +20,7 @@ class LayoutsBlogTableSeeder extends Seeder
                     [
                         'module_name' => 'Iblog',
                         'entity_name' => 'Post',
+            'is_internal' => '1',
                         'path' => "iblog::frontend.post.layouts.{$layout}.index",
                         'record_type' => 'master',
                         'status' => '1',
@@ -45,6 +46,7 @@ class LayoutsBlogTableSeeder extends Seeder
                     [
                         'module_name' => 'Iblog',
                         'entity_name' => 'Category',
+            'is_internal' => '1',
                         'path' => "iblog::frontend.category.layouts.{$layout}.index",
                         'record_type' => 'master',
                         'status' => '1',

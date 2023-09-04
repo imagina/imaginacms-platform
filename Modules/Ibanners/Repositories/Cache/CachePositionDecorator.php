@@ -23,7 +23,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
     /**
      * Get all online position
      */
-    public function allOnline(): object
+    public function allOnline()
     {
         return $this->cache
             ->tags($this->entityName, 'global')
@@ -37,7 +37,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
     /**
      * Get all the read notifications for the given filters
      */
-    public function getItemsBy(array $params): Collection
+    public function getItemsBy($params)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -53,7 +53,7 @@ class CachePositionDecorator extends BaseCacheDecorator implements PositionRepos
     /**
      * Get the read notification for the given filters
      */
-    public function getItem(string $criteria, array $params = false): Collection
+    public function getItem(string $criteria, $params = false)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

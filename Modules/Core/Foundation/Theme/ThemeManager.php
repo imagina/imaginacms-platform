@@ -121,12 +121,12 @@ class ThemeManager implements \Countable
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getThemeJsonFile($theme): string
+    private function getThemeJsonFile($theme)
     {
         return json_decode($this->getFinder()->get("$theme/theme.json"));
     }
 
-    private function isFrontendTheme($themeJson): bool
+    private function isFrontendTheme($themeJson)
     {
         return isset($themeJson->type) && $themeJson->type !== 'frontend' ? false : true;
     }

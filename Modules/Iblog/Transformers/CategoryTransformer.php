@@ -15,6 +15,7 @@ class CategoryTransformer extends CrudResource
             'url' => $this->url ?? '#',
             'mainImage' => $this->main_image,
             'secondaryImage' => $this->when($this->secondary_image, $this->secondary_image),
+      'layoutId' => $this->layoutId,
         ];
     }
 }

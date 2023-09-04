@@ -2,37 +2,37 @@
 
 return [
     'admin' => [
-        'index' => [
-            'permission' => 'ibanners.positions.manage',
-            'activated' => true,
-            'path' => '/banners/index',
-            'name' => 'qbanner.admin.positions',
-            'crud' => 'qbanner/_crud/positions',
-            'page' => 'qcrud/_pages/admin/crudPage',
-            'layout' => 'qsite/_layouts/master.vue',
-            'title' => 'ibanners.cms.sidebar.adminBanner',
-            'icon' => 'far fa-newspaper',
-            'authenticated' => true,
-            'subHeader' => [
-                'refresh' => true,
+    "index" => [
+      "permission" => "ibanners.positions.manage",
+      "activated" => true,
+      "path" => "/banners/index",
+      "name" => "qbanner.admin.positions",
+      "crud" => "qbanner/_crud/positions",
+      "page" => "qcrud/_pages/admin/crudPage",
+      "layout" => "qsite/_layouts/master.vue",
+      "title" => "ibanners.cms.sidebar.adminBanner",
+      "icon" => "far fa-newspaper",
+      "authenticated" => true,
+      "subHeader" => [
+        "refresh" => true
+      ]
             ],
-        ],
-        'showBanner' => [
-            'permission' => 'ibanners.banners.index',
-            'activated' => true,
-            'path' => '/banners/show/:id',
-            'name' => 'qbanner.admin.positions.show',
-            'page' => 'qbanner/_pages/admin/positions/form',
-            'layout' => 'qsite/_layouts/master.vue',
-            'title' => 'ibanners.cms.sidebar.adminBannerEdit',
-            'icon' => 'fas fa-image',
-            'authenticated' => true,
-            'subHeader' => [
-                'refresh' => true,
-                'breadcrumb' => [
-                    'ibanner_cms_admin_index',
-                ],
-            ],
+    "showBanner" => [
+      "permission" => "ibanners.banners.index",
+      "activated" => true,
+      "path" => "/banners/show/:id",
+      "name" => "qbanner.admin.positions.show",
+      "page" => "qbanner/_pages/admin/positions/form",
+      "layout" => "qsite/_layouts/master.vue",
+      "title" => "ibanners.cms.sidebar.adminBannerEdit",
+      "icon" => "fas fa-image",
+      "authenticated" => true,
+      "subHeader" => [
+        "refresh" => true,
+        "breadcrumb" => [
+          "ibanner_cms_admin_index"
+        ]
+      ]
         ],
         'createBanner' => [
             'permission' => 'ibanners.banners.create',

@@ -19,6 +19,7 @@ class PostTransformer extends CrudResource
             'secondaryImage' => $this->when($this->secondary_image, $this->secondary_image),
             'gallery' => $this->gallery,
             'editor' => new UserProfileTransformer($this->whenLoaded('user')),
+      'layoutId' => $this->layoutId,
         ];
     }
 }

@@ -18,7 +18,7 @@ class EloquentWidgetRepository extends EloquentBaseRepository implements WidgetR
     /**
      * Update or create the given widgets for given user
      */
-    public function updateOrCreateForUser(array $widgets, $userId): void
+    public function updateOrCreateForUser(array $widgets, $userId)
     {
         $widget = $this->findForUser($userId);
 
