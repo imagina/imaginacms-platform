@@ -141,12 +141,15 @@ if (! function_exists('currentCurrency')) {
             return $currency;
         });
 
-        $sessionCurrency = request()->session()->get('custom_currency_'.(tenant()->id ?? ''));
+      //trycatching this request->session() because is failing when the request comes from API, this only works for blade session
+      try{
+        $sessionCurrency = request()->session()->get('custom_currency_' . (tenant()->id ?? ""));
+      }catch(\Exception $e){
 
-        if (isset($sessionCurrency->id)) {
-            return $sessionCurrency;
         }
 
+   
+      if(isset($sessionCurrency->id)) return $sessionCurrency;
         return $currency;
     }
 }

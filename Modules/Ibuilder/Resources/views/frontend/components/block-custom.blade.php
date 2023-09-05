@@ -174,5 +174,25 @@
             grid-template-columns: repeat(1, minmax(0, 1fr));
         }
     }
+@endif
+@if($buttonLayout=="button-custom")
+    @php($hover = array())
+    #sectionCustom{{$id}} .button-custom {
+        @foreach($buttonConfig as $key => $value)
+            @php($pos = strpos($key,'-hover'))
+            @if($pos === false)
+                {{$key}}: {{$value}};
+            @else
+                @php($hover[substr($key,0,$pos)] = $value)
+            @endif
+       @endforeach
+    }
+    @if(!empty($hover))
+    #sectionCustom{{$id}} .button-custom:hover {
+        @foreach ($hover as $key => $value)
+            {{$key}}: {{$value}};
+        @endforeach
+    }
+    @endif
     @endif
 </style>

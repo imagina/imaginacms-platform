@@ -101,13 +101,41 @@ class Block extends Component
     $blockStyle = '',
     $row = '',
     $inheritContent = null,
-    $position = 'relative',
-    $top = 'unset',
-    $left = 'unset',
-    $right = 'unset',
-    $bottom = 'unset',
-    $zIndex = 0
-  ) {
+    $position = "relative",
+    $top = "unset",
+    $left = "unset",
+    $right = "unset",
+    $bottom = "unset",
+    $zIndex = 0,
+    $animateBlockName = "",
+    $animateBlockDelay = "",
+    $animateBlockDuration = "",
+    $animateBlockOffset = "",
+    $animateBlockEasing = "",
+    $animateBlockOnce = false,
+    $animateBlockMirror = false,
+    $blockStyleResponsive = [],
+    $withButton = false,
+    $buttonPosition = "1",
+    $buttonAlign = "text-left",
+    $buttonLayout = "border-0",
+    $buttonIcon = " ",
+    $buttonIconColor = null,
+    $buttonIconColorHover = null,
+    $buttonIconLR = "left",
+    $buttonColor = "primary",
+    $buttonMarginT = "mt-0",
+    $buttonMarginB = "mb-0",
+    $buttonSize = "button-normal",
+    $buttonTextSize = 16,
+    $buttonClasses = "",
+    $buttonShadow = "",
+    $buttonLabel = "",
+    $buttonUrl = "",
+    $buttonTarget = "",
+    $buttonConfig = []
+  )
+  {
         //Get all params
         $params = get_defined_vars();
         //Init
@@ -124,36 +152,63 @@ class Block extends Component
      */
     public function instanceGeneralAttributes($params)
     {
-        $this->id = $params['id'] ?? uniqid();
-        $this->container = $params['container'];
-        $this->columns = $params['columns'];
-        $this->backgrounds = $params['backgrounds'];
-        $this->borderForm = $params['borderForm'];
-        $this->display = $params['display'];
-        $this->width = $params['width'];
-        $this->height = $params['height'];
-        $this->paddingX = $params['paddingX'];
-        $this->paddingY = $params['paddingY'];
-        $this->marginX = $params['marginX'];
-        $this->marginY = $params['marginY'];
-        $this->overlay = $params['overlay'];
-        $this->backgroundColor = $params['backgroundColor'];
-        $this->componentIsite = $params['componentIsite'];
+    $this->id = $params["id"] ?? uniqid();
+    $this->container = $params["container"];
+    $this->columns = $params["columns"];
+    $this->backgrounds = $params["backgrounds"];
+    $this->borderForm = $params["borderForm"];
+    $this->display = $params["display"];
+    $this->width = $params["width"];
+    $this->height = $params["height"];
+    $this->paddingX = $params["paddingX"];
+    $this->paddingY = $params["paddingY"];
+    $this->marginX = $params["marginX"];
+    $this->marginY = $params["marginY"];
+    $this->overlay = $params["overlay"];
+    $this->backgroundColor = $params["backgroundColor"];
+    $this->componentIsite = $params["componentIsite"];
         $this->componentType = null;
         $this->isBlade = false;
-        $this->view = 'ibuilder::frontend.components.blocks';
-        $this->blockConfig = $params['blockConfig'];
-        $this->systemName = $params['systemName'];
-        $this->blockClasses = $params['blockClasses'];
-        $this->blockStyle = $params['blockStyle'];
-        $this->row = $params['row'];
-        $this->inheritContent = $params['inheritContent'];
-        $this->position = $params['position'];
-        $this->top = $params['top'];
-        $this->left = $params['left'];
-        $this->right = $params['right'];
-        $this->bottom = $params['bottom'];
-        $this->zIndex = $params['zIndex'];
+    $this->view = "ibuilder::frontend.components.blocks";
+    $this->blockConfig = $params["blockConfig"];
+    $this->systemName = $params["systemName"];
+    $this->blockClasses = $params["blockClasses"];
+    $this->blockStyle = $params["blockStyle"];
+    $this->row = $params["row"];
+    $this->inheritContent = $params["inheritContent"];
+    $this->position = $params["position"];
+    $this->top = $params["top"];
+    $this->left = $params["left"];
+    $this->right = $params["right"];
+    $this->bottom = $params["bottom"];
+    $this->zIndex = $params["zIndex"];
+    $this->animateBlockName = $params["animateBlockName"];
+    $this->animateBlockDelay = $params["animateBlockDelay"];
+    $this->animateBlockDuration = $params["animateBlockDuration"];
+    $this->animateBlockOffset = $params["animateBlockOffset"];
+    $this->animateBlockEasing = $params["animateBlockEasing"];
+    $this->animateBlockOnce = $params["animateBlockOnce"];
+    $this->animateBlockMirror = $params["animateBlockMirror"];
+    $this->blockStyleResponsive = $params["blockStyleResponsive"];
+    $this->withButton = $params["withButton"];
+    $this->buttonPosition = $params["buttonPosition"];
+    $this->buttonAlign = $params["buttonAlign"];
+    $this->buttonLayout = $params["buttonLayout"];
+    $this->buttonIcon = $params["buttonIcon"];
+    $this->buttonIconColor = $params["buttonIconColor"];
+    $this->buttonIconColorHover = $params["buttonIconColorHover"];
+    $this->buttonIconLR = $params["buttonIconLR"];
+    $this->buttonColor = $params["buttonColor"];
+    $this->buttonMarginT = $params["buttonMarginT"];
+    $this->buttonMarginB = $params["buttonMarginB"];
+    $this->buttonSize = $params["buttonSize"];
+    $this->buttonTextSize = $params["buttonTextSize"];
+    $this->buttonClasses = $params["buttonClasses"];
+    $this->buttonShadow = $params["buttonShadow"];
+    $this->buttonLabel = $params["buttonLabel"];
+    $this->buttonUrl = $params["buttonUrl"];
+    $this->buttonTarget = $params["buttonTarget"];
+    $this->buttonConfig = $params["buttonConfig"];
     }
 
     /**
@@ -161,12 +216,12 @@ class Block extends Component
      */
     public function instanceBackgroundAttribute($params)
     {
-        $this->backgrounds = json_encode($params['backgrounds'] ?? [
-            'position' => 'center',
-            'size' => 'cover',
-            'repeat' => 'no-repeat',
-            'color' => '',
-            'attachment' => '',
+    $this->backgrounds = json_encode($params["backgrounds"] ?? [
+      "position" => "center",
+      "size" => "cover",
+      "repeat" => "no-repeat",
+      "color" => "",
+      "attachment" => ""
         ]);
     }
 
@@ -178,13 +233,13 @@ class Block extends Component
         //If not get blockConfig then search by systemName
         if (! is_array($this->blockConfig) || ! count($this->blockConfig)) {
             if ($this->systemName) {
-                $block = BlockEntity::where('system_name', $this->systemName)->with('fields')->first();
+        $block = BlockEntity::where("system_name", $this->systemName)->with('fields')->first();
                 if ($block) {
                     //Parse block Attributes
                     $blockAttributes = $block->attributes->toArray();
                     //Get and add block Fields in attributes
-                    $blockFields = $block->formatFillableToModel(fieldTransformer::collection($block->fields));
-                    $blockAttributes['componentAttributes'] = array_merge(($blockAttributes['componentAttributes'] ?? []), $blockFields);
+          $blockFields = $block->formatFillableToModel($block->fields);
+          $blockAttributes["componentAttributes"] = array_merge(($blockAttributes["componentAttributes"] ?? []), $blockFields);
                     //nstance the blockConfig
                     $this->blockConfig = [
                         'component' => $block->component,

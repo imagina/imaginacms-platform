@@ -13,6 +13,9 @@ class RefreshProductPriceLists
 
     public function handle($event)
     {
+
+      if(\Schema::hasTable('icommercepricelist__price_lists')){
+
         $product = $event->entity;
         foreach ($product->priceLists as $priceList) {
             if ($priceList->criteria == 'percentage') {
@@ -28,5 +31,8 @@ class RefreshProductPriceLists
                 ]);
             }
         }
+        
+      }
+
     }//  handle
 }

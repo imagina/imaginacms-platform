@@ -292,6 +292,9 @@ return [
         'share' => 'Compartir',
     ],
     'offers' => [
-        'title' => 'Ofertas',
+    'title' => 'Ofertas'
+  ],
+  'featured' => [
+    'title' => 'Productos Destacados'
     ],
 ];

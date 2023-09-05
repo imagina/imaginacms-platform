@@ -27,6 +27,12 @@ Route::middleware(array_merge(['localize'], $customMiddlewares))->group(function
         'uses' => 'PublicController@indexOffers',
     ]);
 
+    $router->get(trans('icommerce::routes.store.index.featured',[],$locale), [
+      'as' => $locale . '.icommerce.store.index.featured',
+      'uses' => 'PublicController@indexFeatured',
+    ]);
+    
+    
     $router->get(trans('icommerce::routes.store.manufacturer.index', [], $locale), [
         'as' => $locale.'.icommerce.store.manufacturer.index',
         'uses' => 'ManufacturerController@index',

@@ -1197,7 +1197,19 @@ return [
                 ['label' => 'icommerce::common.search.settings.options.name', 'value' => 'name'],
                 ['label' => 'icommerce::common.search.settings.options.summary', 'value' => 'summary'],
                 ['label' => 'icommerce::common.search.settings.options.description', 'value' => 'description'],
+      ]
+    ]
             ],
-        ],
+	'checkoutRedirectUrl' => [
+		"onlySuperAdmin" => true,
+		'value' => null,
+		'name' => 'icommerce::checkoutRedirectUrl',
+		'type' => 'input',
+		'groupName' => 'checkoutPage',
+		'groupTitle' => 'icommerce::common.pages.checkout',
+		'props' => [
+			'type' => "text",
+			'label' => 'icommerce::common.settings.checkoutRedirectUrl'
+		]
     ],
 ];

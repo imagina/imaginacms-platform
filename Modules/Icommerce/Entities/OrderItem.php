@@ -78,4 +78,12 @@ class OrderItem extends Model
     {
         $this->attributes['discount'] = json_encode($value);
     }
+
+  public function getProductOptionsLabelAttribute()
+  {
+    return $this->orderOption()->get()->map(function ($item) {
+      return $item->option_description . ": " . $item->option_value_description;
+    })->implode(', ');
+  }
+
 }

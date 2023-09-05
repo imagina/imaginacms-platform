@@ -95,6 +95,9 @@ class Cart extends Component
     public function addToCart($productId, $quantity = 1, $productOptionValues = [], $isCall = false)
     {
         try {
+
+      if($quantity>0){
+
             $product = $this->productRepository()->getItem($productId);
 
             if (isset($product->id)) {
@@ -113,6 +116,9 @@ class Cart extends Component
             } else {
                 $this->alert('warning', trans('icommerce::cart.message.add'), config('asgard.isite.config.livewireAlerts'));
             }
+        
+      }
+
         } catch (\Exception $e) {
             switch ($e->getMessage()) {
                 case 'Invalid product':

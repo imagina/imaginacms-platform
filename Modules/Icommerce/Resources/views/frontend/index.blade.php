@@ -10,7 +10,7 @@
        class="page icommerce icommerce-index {{isset($category->id) ? 'icommerce-index-category icommerce-index-category-'.$category->id : ''}} py-5 {{isset($manufacturer->id) ? 'icommerce-index-manufacturer icommerce-index-manufacturer-'.$manufacturer->id : ''}}">
 	
     {{-- Banner Top--}}
-    @include("icommerce::frontend.partials.banner")
+    @includeFirst(["icommerce.partials.index.custom-banner","icommerce::frontend.partials.banner"])
 	
 	<div class="container">
 		<div class="row">

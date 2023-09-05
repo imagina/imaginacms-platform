@@ -260,5 +260,7 @@ return [
     'offers' => [
         'title' => 'Offers',
     ],
-
+  'featured' => [
+    'title' => 'Featured Products'
+  ]
 ];

@@ -12,15 +12,20 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Events\BeforeExport;
-use Maatwebsite\Excel\Events\BeforeSheet;
 use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Events\BeforeSheet;
+
+
 //Extra
+use Modules\Notification\Services\Inotification;
 use Modules\Icommerce\Entities\OrderItem;
 use Modules\Icommerce\Transformers\OrderTransformer;
 
+use Modules\Isite\Traits\ReportQueueTrait;
+
 class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, WithHeadings
 {
-    use Exportable;
+  use Exportable, ReportQueueTrait;
 
     private $params;
 
@@ -32,6 +37,7 @@ class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, W
 
     public function __construct($params, $exportParams)
     {
+    $this->userId = \Auth::id();//Set for ReportQueue
         $this->params = $params;
         $this->exportParams = $exportParams;
         $this->inotification = app('Modules\Notification\Services\Inotification');
@@ -103,6 +109,7 @@ class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, W
         return [
             // Event gets raised at the start of the process.
             BeforeExport::class => function (BeforeExport $event) {
+        $this->lockReport($this->exportParams->exportName);
             },
             // Event gets raised before the download/store starts.
             BeforeWriting::class => function (BeforeWriting $event) {
@@ -112,6 +119,7 @@ class OrdersExport implements FromQuery, WithEvents, ShouldQueue, WithMapping, W
             },
             // Event gets raised at the end of the sheet process
             AfterSheet::class => function (AfterSheet $event) {
+        $this->unlockReport($this->exportParams->exportName);
                 //Send pusher notification
                 $this->inotification->to(['broadcast' => $this->params->user->id])->push([
                     'title' => 'New report',
