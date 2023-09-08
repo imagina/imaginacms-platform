@@ -21,6 +21,11 @@
               @if($buttonSearch)
                 <div class="input-group-append">
                   <button class="btn btn-primary px-3 " wire:click="goToIndex" type="submit" id="button-addon2">
+                    @if($withLabelButton)
+                      <div class="label-button-search">
+                        {{$labelButton}}
+                      </div>
+                    @endif
                     <i class="{{ $icon }}"></i>
                   </button>
                 </div>

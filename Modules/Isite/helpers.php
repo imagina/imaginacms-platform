@@ -219,8 +219,125 @@ if (! function_exists('showDataConnection')) {
     function showDataConnection($inLog = true)
     {
         $dbname = \DB::connection()->getDatabaseName();
-        if ($inLog) {
-            \Log::info('Isite: Helper|ShowDataConnection|DB: '.$dbname);
-        }
+    if ($inLog)
+      \Log::info("********||||******** Isite: Helper|ShowDataConnection|DB: " . $dbname);
+  }
+
+}
+
+if (!function_exists('addQueryParamToUrl')) {
+  function addQueryParamToUrl($url, $paramName, $paramValue)
+  {
+    // Parse the URL
+    $parsedUrl = parse_url($url);
+
+    if (isset($parsedUrl['query'])) {
+      // URL already has query parameters
+      $queryParams = array();
+      parse_str($parsedUrl['query'], $queryParams);
+
+      // Add or update the query parameter
+      $queryParams[$paramName] = $paramValue;
+
+      // Build the updated query string
+      $updatedQuery = http_build_query($queryParams);
+
+      // Reconstruct the URL with the updated query string
+      $parsedUrl['query'] = $updatedQuery;
+      $scheme = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';
+      $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+      $port = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
+      $user = isset($parsedUrl['user']) ? $parsedUrl['user'] : '';
+      $pass = isset($parsedUrl['pass']) ? ':' . $parsedUrl['pass'] : '';
+      $pass = ($user || $pass) ? "$pass@" : '';
+      $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : '';
+      $query = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
+      $fragment = isset($parsedUrl['fragment']) ? '#' . $parsedUrl['fragment'] : '';
+      //Set URL
+      $url = "$scheme$user$pass$host$port$path$query$fragment";
+    } else {
+      // URL doesn't have query parameters, simply append the new query parameter
+      $url .= '?' . urlencode($paramName) . '=' . urlencode($paramValue);
     }
+
+    return $url;
+  }
+}
+
+/**
+ *
+ */
+if (!function_exists('forceInitializeTenant')) {
+  
+  function forceInitializeTenant($tenantId)
+  {
+
+    \Log::info("Isite: Helper|forceInitializeTenant|tenantId: ".$tenantId);
+
+    if (tenancy()->initialized) {
+        tenancy()->end();
+    }
+
+    tenancy()->initialize(tenancy()->find($tenantId));
+
+  }
+
+        }
+
+/**
+* @param $centralOrg (Central Organization has data to connect DB)
+*/
+if (!function_exists('switchDataConnection')) {
+
+  function switchDataConnection($centralOrg = null)
+  {
+
+    if (isset(tenant()->id)){
+      $tenantId = tenant()->id;
+      \Log::info("Isite: Helper|switchDataConnection|tenantId: " . $tenantId);
+
+      
+      if(!is_null($centralOrg)){
+        \Log::info("Isite: Helper|switchDataConnection|TenancyDb: ".$centralOrg->tenancy_db_name);
+
+        $currentDb = \DB::connection()->getDatabaseName();
+        \Log::info("Isite: Helper|switchDataConnection|CurrentDb: ".$currentDb);
+
+
+        if($currentDb!=$centralOrg->tenancy_db_name){
+
+          \Log::info("Isite: Helper|switchDataConnection|Switching....");
+
+          // Get mysql data to connection
+          $dataMySql = config('database.connections.mysql');
+          $dataMySqlTenant = [
+            "database" => $centralOrg->tenancy_db_name,
+            "username" => $centralOrg->tenancy_db_username,
+            "password" => $centralOrg->tenancy_db_password,
+            'table' => 'cache'
+          ];
+
+          // Add new data
+          $newDataConnection = array_merge($dataMySql,$dataMySqlTenant);
+
+          //\Log::info("Isite: Helper|switchDataConnection|NewData: ".json_encode($newDataConnection));
+
+          //Si cambia pero da un error al guardar datos luego
+          /*
+          Call to a member function beginTransaction() on null {"exception":"[object] (Error(code: 0): Call to a member function beginTransaction() on null
+            at /home/wygo/webapps/dev-weygo/icms/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php:175
+          */
+          \DB::purge('mysql');
+          \Config::set('database.connections.mysql',$newDataConnection);
+
+          showDataConnection();
+
+        }
+
+    }
+
+    }
+
+}
+
 }

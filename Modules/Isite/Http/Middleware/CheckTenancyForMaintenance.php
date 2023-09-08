@@ -19,7 +19,8 @@ class CheckTenancyForMaintenance extends CheckForMaintenanceMode
                 $tpl = $ttpl;
             }
 
-            return view($tpl);
+            return response(trans("isite::organizations.messages.not available"), 500);
+
         }
 
         return $next($request);

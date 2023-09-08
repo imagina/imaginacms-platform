@@ -13,10 +13,6 @@ $theme-color: map-merge(
     $theme-color
 );
 
-@function darken($color, $porcentaje) {
-  @return unquote('darken('+ $color +', '+ $porcentaje +')');
-}
-
 @each $color, $value in $theme-color {
   .btn-#{$color} {
     color: #ffffff;
@@ -55,7 +51,7 @@ $theme-color: map-merge(
     .show > &.dropdown-toggle {
       background-color: $value;
       border-color: $value;
-      color: #fff;
+      color: #fff !important;
     }
   }
 

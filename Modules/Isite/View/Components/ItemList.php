@@ -228,7 +228,8 @@ class ItemList extends Component
     public $imageWidth;
 
     public $imageHeight;
-
+  public $imageMaxHeight;
+  public $imageMinHeight;
     public $imageAlign;
 
     public $date;
@@ -308,20 +309,21 @@ class ItemList extends Component
     public $titleHead;
 
     public $summaryField;
+  public $itemDuration;
+  public $itemDelay;
+  public $itemDelayIn;
+  public $itemOffset;
+  public $itemEasing;
+  public $itemOne;
+  public $itemMirror;
+  public $itemAnimate;
+  public $titleColorCustom;
+  public $summaryColorCustom;
+  public $categoryColorCustom;
+  public $createdDateColorCustom;
+  public $userColorCustom;
 
-    /**
-     * Create a new component instance.
-     *
-     * @param  null  $parentAttributes
-     * @param  null  $editLink
-     * @param  null  $tooltipEditLink
-     * @param  null  $itemComponentView
-     * @param  null  $itemListLayout
-     * @param  null  $positionNumber
-     * @param  string  $imageBorderRadioUnit
-     * @param  string  $imageOpcityColor
-     * @param  string  $itemStyle
-     */
+
     public function __construct($item,
                               $mediaImage = 'mainimage',
                               $layout = 'item-list-layout-1',
@@ -435,6 +437,8 @@ class ItemList extends Component
                               $imageWidth = 100,
                               $imageAlign = 'left',
                               $imageHeight = '',
+                              $imageMaxHeight = '',
+                              $imageMinHeight = '',
                               $summaryField = null,
                               $summaryWithLimit = true,
                               $containerActive = false,
@@ -469,8 +473,22 @@ class ItemList extends Component
                               $videoAutoplay = false,
                               $videoMuted = false,
                               $videoControls = false,
-                              $titleHead = 'h3'
-  ) {
+                              $titleHead = 'h3',
+                              $itemDuration = null,
+                              $itemDelay = null,
+                              $itemDelayIn = 0,
+                              $itemOffset = null,
+                              $itemEasing = null,
+                              $itemOne = false,
+                              $itemMirror = false,
+                              $itemAnimate = "",
+                              $titleColorCustom = "",
+                              $summaryColorCustom = "",
+                              $categoryColorCustom = "",
+                              $createdDateColorCustom = "",
+                              $userColorCustom = ""
+  )
+  {
         $this->imageAspectMobile = $imageAspectMobile;
         $this->imageAspect = $imageAspect;
         $this->titleTextSizeMobile = $titleTextSizeMobile;
@@ -603,6 +621,8 @@ class ItemList extends Component
         $this->imageWidth = $imageWidth;
         $this->imageAlign = $imageAlign;
         $this->imageHeight = $imageHeight;
+    $this->imageMaxHeight = $imageMaxHeight;
+    $this->imageMinHeight = $imageMinHeight;
 
         $this->containerActive = $containerActive;
         $this->containerType = $containerType;
@@ -622,7 +642,6 @@ class ItemList extends Component
         $this->categoryClasses = $categoryClasses;
         $this->createdDateClasses = $createdDateClasses;
         $this->buttonItemClasses = $buttonItemClasses;
-        $this->itemClasses = $itemClasses;
         $this->buttonConfig = ! empty($buttonConfig) ? $buttonConfig : [
             'color' => 'var(--primary)',
             'background' => 'var(--white)',
@@ -649,6 +668,15 @@ class ItemList extends Component
         $this->videoMuted = $videoMuted;
         $this->videoControls = $videoControls;
         $this->titleHead = $titleHead;
+    $this->itemDuration = $itemDuration;
+    $this->itemDelay = $itemDelay;
+    $this->itemDelayIn = $itemDelayIn;
+    $this->itemOffset = $itemOffset;
+    $this->itemEasing = $itemEasing;
+    $this->itemOne = $itemOne;
+    $this->itemMirror = $itemMirror;
+    $this->itemAnimate = $itemAnimate;
+    $this->itemClasses = $this->itemMarginB." ".$itemClasses;
 
         if ($contentPadding > 0) {
             $this->contentPaddingL = $contentPadding;
@@ -660,6 +688,12 @@ class ItemList extends Component
         if ($this->buttonLayout == 'button-custom') {
             $this->buttonColor = '';
         }
+
+    $this->titleColorCustom = $titleColorCustom;
+    $this->summaryColorCustom = $summaryColorCustom;
+    $this->categoryColorCustom = $categoryColorCustom;
+    $this->createdDateColorCustom = $createdDateColorCustom;
+    $this->userColorCustom = $userColorCustom;
 
         //Define the summary field value
         if (! empty($summaryField)) {

@@ -194,6 +194,17 @@ class SettingApiController extends BaseApiController
                             $setting['translations'][] = ['locale' => $locale, 'value' => $setting['value']];
                         }
                     }
+
+          //Chequeando cache de un setting determinado
+          /*
+          if($settingName=="icommerce::productContentTitleFontSize"){
+            \Log::info("======== API setting value: ".$setting['plainValue']);
+            $setKey = "setting_icommerce::productContentTitleFontSize";
+            $tagGet = \Cache::tags("setting.settings")->get($setKey);
+            \Log::info("======== API Cache Setting: ".json_encode($tagGet));
+          }
+          */
+          
                 } else {
                     unset($module[$keySetting]);
                 }

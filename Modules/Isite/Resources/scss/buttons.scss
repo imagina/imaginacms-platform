@@ -32,10 +32,6 @@
   @return $colorNew;
 }
 
-@function darken-button($color, $porcentaje) {
-  @return unquote('darken('+ $color +', '+ $porcentaje +')');
-}
-
 @each $color, $value in $theme-color {
   .button-#{$color} {
     color: #ffffff;
@@ -49,7 +45,7 @@
     .show > &.dropdown-toggle {
       color: #ffffff !important;
       background-color: $value !important;
-      border-color: darken-button($value,30%) !important;
+      border-color: transparent !important;
     }
   }
 

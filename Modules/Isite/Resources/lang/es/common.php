@@ -21,6 +21,9 @@ return [
         'brandSecondary' => 'Color Secundario',
         'secondaryContrast' => 'Contraste Secundario',
         'brandTertiary' => 'Color Terciario',
+    'tertiaryContrast' => 'Contraste Terciario',
+    'brandQuaternary' => 'Color Cuaternario',
+    'quaternaryContrast' => 'Contraste Cuaternario',
         'brandPositive' => 'Color Positivo',
         'brandNegative' => 'Color Negativo',
         'brandFaded' => 'Color Desvanecido',
@@ -204,6 +207,7 @@ return [
         'mapsLabel' => 'Mapas en el sitio',
         'labelLocationSite' => 'Ubicación Sede Principal',
         'labelLocationName' => 'Nombre Sede Principal',
+    'labelIframeMap' => 'Iframe Mapa Ubicación Sede Principal',
     ],
     'feeds' => [
         'titlePosts' => 'Todas las nuevas publicaciones en ',
@@ -225,4 +229,12 @@ return [
         'titleAddress' => 'Dirección',
         'titleEmail' => 'Correo Electrónico',
     ],
+  'filters' => [
+    'autocomplete' => [
+      'labelButtonSearch' => 'Buscar',
+    ],
+  ],
+  'button' => [
+    'update' => 'Actualizar'
+  ],
 ];

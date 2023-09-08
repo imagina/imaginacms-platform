@@ -98,7 +98,10 @@
           </div>
 
           @endif
-
+          @if(!empty($itemComponentAttributes["itemDelay"]))
+            @php($delay = $itemComponentAttributes['itemDelay'])
+            @php($cont=0)
+          @endif
           <div class="@if($navPosition!="center" || ($nav==false && $navPosition=="center")) row py-3 @endif">
             <div id="{{$id}}Carousel" class="owl-carousel owl-theme {{$dotsStyle}}">
               @php($x = 0) {{-- iterador de items --}}
@@ -112,6 +115,12 @@
 
                     @while(isset($items[$x + $j]) && $j<$itemsBySlide)
     
+                      @if(!empty($itemComponentAttributes["itemDelay"]))
+                          @php($itemComponentAttributes["itemDelay"]=$delay+$cont)
+                          @if(!empty($itemComponentAttributes["itemDelayIn"]))
+                              @php($cont=$cont+intval($itemComponentAttributes['itemDelayIn']))
+                          @endif
+                      @endif
                       @include("isite::frontend.partials.item",["item" => $items[$x + $j], "position" => $x + $j])
 
                       @php($j++)
@@ -257,20 +266,89 @@
         }
     }
     @endif
+    @if($dots)
+    #{{$id}} .owl-carousel .owl-dots button:focus {
+         outline: 0 !important;
+    }
     @if($dotsStyle=="dots-linear")
+        @if(empty($dotsStyleColor)) @php($dotsStyleColor='primary') @endif
+        @if(empty($dotsSize)) @php($dotsSize='25') @endif
     #{{$id}} .dots-linear .owl-dots .owl-dot span {
-           width: 30px !important;
-           height: 5px !important;
-           margin: 0 5px !important;
+                 width: {{$dotsSize}}px;
+                 height: 5px;
+                 margin: 0 5px;
            border-radius: 0;
          }
     #{{$id}} .dots-linear .owl-dots .owl-dot.active span,
     #{{$id}} .dots-linear .owl-dots .owl-dot:hover span {
-       background: var(--primary) !important;
+         background: var(--{{$dotsStyleColor}});
+        }
+    @endif
+    @if($dotsStyle=="dots-circular")
+        @if(empty($dotsSize)) @php($dotsSize='10') @endif
+        #{{$id}} .dots-circular .owl-dots .owl-dot span {
+             width: {{$dotsSize}}px;
+             height: {{$dotsSize}}px;
+        }
+        #{{$id}} .dots-circular .owl-dots .owl-dot.active span,
+        #{{$id}} .dots-circular .owl-dots .owl-dot:hover span {
+            background:  var(--{{$dotsStyleColor}});
+        }
+    @endif
+    @if($dotsStyle=="dots-square")
+        @if(empty($dotsSize)) @php($dotsSize='10') @endif
+        #{{$id}} .dots-square .owl-dots .owl-dot span {
+             width: {{$dotsSize}}px;
+             height: {{$dotsSize}}px;
+             border-radius: 0;
+       }
+        #{{$id}} .dots-square .owl-dots .owl-dot.active span,
+        #{{$id}} .dots-square .owl-dots .owl-dot:hover span {
+            background:  var(--{{$dotsStyleColor}});
+        }
+    @endif
+    @if($dotsStyle=="dots-oval")
+        @if(empty($dotsSize)) @php($dotsSize='13') @endif
+        #{{$id}} .dots-oval .owl-dots .owl-dot span {
+             width: {{$dotsSize}}px;
+             height: 8px;
+             border-radius: 10px;
+        }
+        #{{$id}} .dots-oval .owl-dots .owl-dot.active span,
+        #{{$id}} .dots-oval .owl-dots .owl-dot:hover span {
+            background:  var(--{{$dotsStyleColor}});
+        }
+    @endif
+    @if($dotsStyle=="dots-circular-double" || $dotsStyle=="dots-square-double")
+        @if(empty($dotsStyleColor)) @php($dotsStyleColor='primary') @endif
+        @if(empty($dotsSize)) @php($dotsSize='13') @endif
+        #{{$id}} .{{$dotsStyle}} .owl-dots .owl-dot span {
+             width: {{$dotsSize}}px;
+             height: {{$dotsSize}}px;
+             margin: 5px;
+             border: 2px solid var(--{{$dotsStyleColor}});
+             background-color: var(--{{$dotsStyleColor}});
+             position: relative;
+             background-clip: border-box;
+             opacity: 1;
+             flex: 0 1 auto;
+             @if($dotsStyle=="dots-square-double") border-radius: 0; @endif
      }
-    #{{$id}} .dots-linear .owl-dots .owl-dot:focus {
-       outline: 0 !important;
+        #{{$id}} .{{$dotsStyle}} .owl-dots .owl-dot.active span {
+            border: 2px solid var(--{{$dotsStyleColor}});
+            background-color: transparent;
      }
+        #{{$id}} .{{$dotsStyle}} .owl-dots .owl-dot.active span:after{
+             width: {{$dotsSize - 8 }}px;
+             height: {{$dotsSize - 8 }}px;
+             background-color: var(--{{$dotsStyleColor}});
+             bottom: 2px !important;
+             left: 2px !important;
+             content: "";
+             position: absolute;
+             @if($dotsStyle=="dots-circular-double") border-radius: 50%; @endif
+        }
+    @endif
     @endif
     @if($navOld)
     #{{$id}} .owl-nav [class*=owl-]:hover,

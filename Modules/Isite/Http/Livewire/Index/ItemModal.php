@@ -57,7 +57,10 @@ class ItemModal extends Component
         //\Log::info("ItemModal - GETDATA : {$itemId} - {$idModalNew}");
 
         $item = $this->getItemRepository()->getItem($itemId, json_decode(json_encode($this->params)));
+    //\Log::info("ItemModal - : ".($item->id ?? 'asdasd')." $this->repository"." ". json_encode($this->params));
 
+    //TODO check why this method (getData) is called twice, in the meantime I'm doing this validation to avoid $item with null value in sometimes
+    if(isset($item->id)){
         //'item' => json_decode(json_encode($item), FALSE)
         $newHtml = view($this->view, [
             'item' => $item,
@@ -72,6 +75,9 @@ class ItemModal extends Component
             ]);
         }
     }
+    
+    
+  }
 
     /*
     * Get Item Repository

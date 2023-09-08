@@ -2,14 +2,18 @@
 
 namespace Modules\Isite\Services;
 
-use Modules\Core\Console\Installers\Scripts\UserProviders\SentinelInstaller;
-use Modules\Iprofile\Http\Controllers\Api\AuthApiController;
+use Modules\User\Entities\Sentinel\User;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Repositories\UserTokenRepository;
+use Modules\Iprofile\Entities\Role;
+use Modules\Core\Console\Installers\Scripts\UserProviders\SentinelInstaller;
+use Modules\Iprofile\Http\Controllers\Api\AuthApiController;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
     private $userTokenRepository;
+    private $log = "Isite:: UserService|";
 
     public function __construct(
         UserTokenRepository $userTokenRepository
@@ -76,13 +80,13 @@ class UserService
 
     public function configureModule($data)
     {
-        \Log::info('----------------------------------------------------------');
-        \Log::info('Configuring User Module');
-        \Log::info('----------------------------------------------------------');
 
-        if (! isset(tenant()->id)) {
-            tenancy()->initialize($data['organization_id']);
-        }
+        \Log::info("----------------------------------------------------------");
+        \Log::info("Configuring User Module");
+        \Log::info("----------------------------------------------------------");
+        
+        if (!isset(tenant()->id))
+        tenancy()->initialize($data["organization_id"]);
 
         $userProvider = app(SentinelInstaller::class);
 
@@ -98,16 +102,46 @@ class UserService
 
     public function authenticate($data)
     {
-        \Log::info('----------------------------------------------------------');
-        \Log::info('Authenticating user in the Tenant DB');
-        \Log::info('----------------------------------------------------------');
 
-        if (! isset(tenant()->id)) {
-            tenancy()->initialize($data['organization_id']);
-        }
+        \Log::info("----------------------------------------------------------");
+        \Log::info("Authenticating user in the Tenant DB");
+        \Log::info("----------------------------------------------------------");
+    
+        if (!isset(tenant()->id))
+        tenancy()->initialize($data["organization_id"]);
+        
+        if($type=="credentials"){
 
         $authApiController = app(AuthApiController::class);
+            return json_decode($authApiController->authAttempt($data["credentials"])->content());
+        
+        }else{
+        
+            //TODO check - Error using Wizard - With postman works fine
+            $user = Auth::loginUsingId($data['user']->id);
+            $token = $user->createToken('Laravel Password Grant Client');
 
-        return json_decode($authApiController->authAttempt($data['credentials'])->content());
+            $response = [
+                "token" => $token->accessToken,
+                'expiresAt' => $token->token->expires_at
+            ];
+
+            return $response;
+        }
+        
     }
+
+    public function updatePasswordInTenant($centralUser,$tenantUser)
+    {
+
+        \Log::info($this->log.'updatePasswordInTenant');
+
+        $password = $centralUser->password;
+
+        \DB::table("users")->where("id","=",$tenantUser->id)->update([
+            "password"=> $password
+        ]);
+        
+}
+
 }

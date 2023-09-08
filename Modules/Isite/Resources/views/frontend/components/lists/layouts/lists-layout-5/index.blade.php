@@ -25,8 +25,18 @@
             </div>
         </div>
     @endif
+    @if(!empty($itemComponentAttributes["itemDelay"]))
+        @php($delay = $itemComponentAttributes['itemDelay'])
+        @php($cont=0)
+    @endif
     <div class="row">
     @foreach ($items as $key => $item)
+        @if(!empty($itemComponentAttributes["itemDelay"]))
+            @php($itemComponentAttributes["itemDelay"]=$delay+$cont)
+            @if(!empty($itemComponentAttributes["itemDelayIn"]))
+            @php($cont=$cont+intval($itemComponentAttributes['itemDelayIn']))
+            @endif
+        @endif
         <div class="{{$columnLayout[$key%count($columnLayout)]}}">
             @include("isite::frontend.partials.item",["itemLayout" => $itemComponentAttributes['layout'],"itemComponentAttributes" => $itemComponentAttributes])
         </div>
