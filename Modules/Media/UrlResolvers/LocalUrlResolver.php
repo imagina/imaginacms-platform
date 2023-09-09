@@ -6,7 +6,7 @@ use League\Flysystem\Adapter\Local;
 
 class LocalUrlResolver
 {
-    public function resolve(Local $adapter, string $path): string
+    public function resolve(Local $adapter, $path)
     {
         return asset($path);
     }

@@ -9,6 +9,7 @@ use Modules\Media\Http\Requests\UploadMediaRequest;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Jobs\CreateThumbnails;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\ValueObjects\MediaPath;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Validator;
 
@@ -40,41 +41,64 @@ class FileService
 
     /**
      * @return mixed
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileExistsException
      */
-    public function store(UploadedFile $file, int $parentId = 0, string $disk = null, $createThumbnails = true)
-    {
-        $disk = $this->getConfiguredFilesystem($disk);
+  public function store(UploadedFile $file, $parentId = 0, $disk = null, $createThumbnails = true)
+  {
+    $disk = $this->getConfiguredFilesystem($disk);
+  
+    //validating avaiable extensions
+    $request = new UploadMediaRequest(['file' => $file]);
+    $validator = Validator::make($request->all(), $request->rules(), $request->messages());
+    //if get errors, throw errors
+    if ($validator->fails()) {
+      $errors = json_decode($validator->errors());
+      throw new \Exception(json_encode($errors), 400);
+    }
+    $savedFile = $this->file->createFromFile($file, $parentId, $disk);
+  
+    $this->resizeImages($file, $savedFile);
+  
+    $path = $this->getDestinationPath($savedFile->getRawOriginal('path'));
+    $stream = fopen($file->getRealPath(), 'r+');
+  
+    //call Method delete for all exist in the disk with the same filename
+    $this->imagy->deleteAllFor($savedFile);
+  
+    $organizationPrefix = mediaOrganizationPrefix($savedFile);
+  
+    $this->filesystem->disk($disk)->writeStream(($organizationPrefix) . $savedFile->path->getRelativeUrl(), $stream, [
+      'visibility' => 'public',
+      'mimetype' => $savedFile->mimetype,
+    ]);
+  
+    if ($createThumbnails) {
+      $this->createThumbnails($savedFile);
+    
+      return $savedFile;
+    }
+  }
 
-        //validating avaiable extensions
-        $request = new UploadMediaRequest(['file' => $file]);
-        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
-        //if get errors, throw errors
-        if ($validator->fails()) {
-            $errors = json_decode($validator->errors());
-            throw new \Exception(json_encode($errors), 400);
-        }
-        $savedFile = $this->file->createFromFile($file, $parentId, $disk);
+  /**
+   * @param $path - Url from External
+   * @param string $disk - External Name (splash)
+   * @return mixed
+   */
+  public function storeHotLinked($path, $disk = null)
+  {
 
-        $this->resizeImages($file, $savedFile);
+    $data = app("Modules\Media\Services\\".ucfirst($disk)."Service")->getDataFromUrl($path,$disk);
 
-        $path = $this->getDestinationPath($savedFile->getRawOriginal('path'));
-        $stream = fopen($file->getRealPath(), 'r+');
+    $data = [
+      'filename' => $data['fileName'],
+      'path' => $data['path'],
+      'extension' => $data['extension'] ?? null,
+      'folder_id' => 0,
+      'is_folder' => 0,
+      'disk' => $disk
+    ];
 
-        //call Method delete for all exist in the disk with the same filename
-        $this->imagy->deleteAllFor($savedFile);
-
-        $organizationPrefix = mediaOrganizationPrefix($savedFile);
-
-        $this->filesystem->disk($disk)->writeStream(($organizationPrefix).$savedFile->path->getRelativeUrl(), $stream, [
-            'visibility' => 'public',
-            'mimetype' => $savedFile->mimetype,
-        ]);
-
-        if ($createThumbnails) {
-            $this->createThumbnails($savedFile);
-        }
+    $savedFile = $this->file->create($data);
 
         return $savedFile;
     }
@@ -84,19 +108,19 @@ class FileService
      */
     private function resizeImages(UploadedFile $file, $savedFile)
     {
-        if ($savedFile->isImage()) {
-            $image = \Image::make(fopen($file->getRealPath(), 'r+'));
-
-            $imageSize = json_decode(setting('media::defaultImageSize', null, config('asgard.media.config.defaultImageSize')));
-
-            $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-
-            $filePath = $file->getPathName();
-            \File::put($filePath, $image->stream($savedFile->extension, $imageSize->quality));
-        }
+      if ($savedFile->isImage()) {
+        $image = \Image::make(fopen($file->getRealPath(), 'r+'));
+    
+        $imageSize = json_decode(setting('media::defaultImageSize', null, config('asgard.media.config.defaultImageSize')));
+    
+        $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+    
+        $filePath = $file->getPathName();
+        \File::put($filePath, $image->stream($savedFile->extension, $imageSize->quality));
+      }
     }
 
     /**
@@ -104,10 +128,10 @@ class FileService
      */
     private function createThumbnails(File $savedFile)
     {
-        $this->dispatch(new CreateThumbnails($savedFile->path, $savedFile->disk));
+    $this->dispatch(new CreateThumbnails($savedFile));
     }
 
-    private function getDestinationPath(string $path): string
+    private function getDestinationPath($path)
     {
         if ($this->getConfiguredFilesystem() === 'local') {
             return basename(public_path()).$path;
@@ -116,18 +140,15 @@ class FileService
         return $path;
     }
 
-    private function getConfiguredFilesystem($disk = 'publicmedia'): string
+    private function getConfiguredFilesystem($disk = 'publicmedia')
     {
-        $settingDisk = setting('media::filesystem', null, config('asgard.media.config.filesystem'));
-        if ($disk == 'publicmedia' && $settingDisk == 's3') {
-            return $settingDisk;
+    $settingDisk = setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    if($disk == "publicmedia" && $settingDisk == "s3") return $settingDisk;
+    return $disk ?? "publicmedia";
         }
 
-        return $disk ?? 'publicmedia';
-    }
+  public function addWatermark($file, $zone){
 
-    public function addWatermark($file, $zone)
-    {
         //if the watermark zone exist in DB and if is image exclusively
         if (isset($zone->mediaFiles()->watermark->id) && $file->isImage()) {
             //getting watermark file from the DB

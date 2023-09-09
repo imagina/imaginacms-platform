@@ -120,7 +120,7 @@ class NestedFoldersCollection extends Collection
     /**
      * Change the default indent characters when flattening lists.
      */
-    public function setIndent(string $indentChars): static
+    public function setIndent(string $indentChars)
     {
         $this->indentChars = $indentChars;
 
@@ -130,7 +130,7 @@ class NestedFoldersCollection extends Collection
     /**
      * Force keeping items that have a missing ancestor.
      */
-    public function noCleaning(): NestableCollection
+    public function noCleaning()
     {
         $this->removeItemsWithMissingAncestor = false;
 
@@ -140,7 +140,7 @@ class NestedFoldersCollection extends Collection
     /**
      * Check if an ancestor is missing.
      */
-    public function anAncestorIsMissing($item): bool
+    public function anAncestorIsMissing($item)
     {
         $parentColumn = $this->parentColumn;
         if (! $item->$parentColumn) {
@@ -157,7 +157,7 @@ class NestedFoldersCollection extends Collection
     /**
      * Get total items in nested collection.
      */
-    public function total(): int
+    public function total()
     {
         return $this->total;
     }
@@ -165,7 +165,7 @@ class NestedFoldersCollection extends Collection
     /**
      * Get total items for laravel 4 compatibility.
      */
-    public function getTotal(): int
+    public function getTotal()
     {
         return $this->total();
     }

@@ -29,6 +29,8 @@
                           :title="$title"
                           :minSearchChars="$minSearchChars"
                           :goToRouteAlias="$goToRouteAlias"
+                          :withLabelButton="$withLabelButton"
+                          :labelButton="$labelButton"
                         />
                     </div>
                 </div>

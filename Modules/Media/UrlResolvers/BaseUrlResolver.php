@@ -26,7 +26,7 @@ class BaseUrlResolver
     /**
      * Resolve the given path based on the set filesystem
      */
-    public function resolve(string $path, string $disk = null): string
+    public function resolve($path, $disk = null)
     {
         $factory = app(Factory::class);
         $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
@@ -35,7 +35,7 @@ class BaseUrlResolver
         return $this->resolvers[get_class($adapter)]->resolve($adapter, $path);
     }
 
-    private function getConfiguredFilesystem(): string
+    private function getConfiguredFilesystem()
     {
         return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
     }

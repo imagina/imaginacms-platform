@@ -39,10 +39,11 @@ class SentinelGroupSeedTableSeeder extends Seeder
       'en' => ['title' => trans("iprofile::roles.types.super admin",[],"en")],
       'es' => ['title' => trans("iprofile::roles.types.super admin",[],"es")]
     ];
-    $roleSAdmin = createOrUpdateRole($roleData);
-    
+      $roleSAdmin = createOrUpdateRole($roleData);
 
-        $permissions = $this->permissions->all();
+  
+  
+      $permissions = $this->permissions->all();
 
         $this->module = app('modules');
         $modules = array_keys($this->module->allEnabled());

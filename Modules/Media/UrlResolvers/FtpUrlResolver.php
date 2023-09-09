@@ -6,7 +6,7 @@ use League\Flysystem\Adapter\Ftp;
 
 class FtpUrlResolver
 {
-    public function resolve(Ftp $adapter, string $path): string
+    public function resolve(Ftp $adapter, $path)
     {
         return 'ftp://'.config('filesystems.disks.ftp.host').$path;
     }

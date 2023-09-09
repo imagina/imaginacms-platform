@@ -2,14 +2,15 @@
 
 namespace Modules\Media\Jobs;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Modules\Media\ValueObjects\MediaPath;
+use Modules\Media\Entities\File;
 
 class CreateThumbnails implements ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels;
+  use InteractsWithQueue, SerializesModels, Queueable;
 
     /**
      * @var MediaPath
@@ -20,11 +21,14 @@ class CreateThumbnails implements ShouldQueue
      * @var mixed|null
      */
     private $disk = null;
+  private $file;
 
-    public function __construct(MediaPath $path, $disk = null)
+  public function __construct(File $file)
     {
-        $this->path = $path;
-        $this->disk = $disk;
+    $this->path = $file->path;
+    $this->disk = $file->disk;
+    $this->file = $file;
+    $this->queue = "media";
     }
 
     public function handle()
@@ -34,5 +38,8 @@ class CreateThumbnails implements ShouldQueue
         app('log')->info('Generating thumbnails for path: '.$this->path.((! is_null($this->disk)) ? ' in disk: '.$this->disk : ''));
 
         $imagy->createAll($this->path, $this->disk);
+    //update attribute has_thumbnails
+    $this->file->has_thumbnails = true;
+    $this->file->update();
     }
 }

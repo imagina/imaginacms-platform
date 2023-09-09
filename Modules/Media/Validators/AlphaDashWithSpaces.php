@@ -11,7 +11,7 @@ class AlphaDashWithSpaces implements Rule
      *
      * @param  mixed  $value
      */
-    public function passes(string $attribute, $value): bool
+    public function passes(string $attribute, $value)
     {
         if (! is_string($value) && ! is_numeric($value)) {
             return false;
@@ -23,7 +23,7 @@ class AlphaDashWithSpaces implements Rule
     /**
      * Get the validation error message.
      */
-    public function message(): string
+    public function message()
     {
         return 'The :attribute may only contain letters, numbers, dashes and spaces.';
     }

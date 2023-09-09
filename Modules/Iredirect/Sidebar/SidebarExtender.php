@@ -20,7 +20,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
         $this->auth = $auth;
     }
 
-    public function extendWith(Menu $menu): Menu
+    public function extendWith(Menu $menu)
     {
         return $menu;
     }
