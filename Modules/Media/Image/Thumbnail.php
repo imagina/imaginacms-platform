@@ -92,7 +92,7 @@ class Thumbnail
     /**
      * Get the first found key in filters
      */
-    private function getFirst(string $key): int
+    private function getFirst(string $key)
     {
         foreach ($this->filters as $filter) {
             if (isset($filter[$key])) {
