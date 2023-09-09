@@ -2,11 +2,13 @@
 
 namespace Modules\Ischedulable\Providers;
 
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ischedulable\Listeners\RegisterIschedulableSidebar;
+use Illuminate\Support\Facades\Blade;
 
 class IschedulableServiceProvider extends ServiceProvider
 {
