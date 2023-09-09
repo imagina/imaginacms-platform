@@ -7,6 +7,7 @@ use Modules\Setting\Repositories\SettingRepository;
 class SettingService
 {
     private $settingRepository;
+    private $log = "Isite:: SettingService|";
 
     public function __construct(
         SettingRepository $settingRepository
@@ -32,19 +33,27 @@ class SettingService
 
     public function updateSetting($name, $value, $translatable = null)
     {
+        //\Log::info($this->log.'updateSetting|name:'.$name);
+
         $setting = $this->settingRepository->findByName($name, false);
 
         if (! is_null($setting) && ! empty($setting)) {
+            //\Log::info($this->log.'updateSetting|Update');
             //Update
             if (is_null($translatable)) {
                 $setting->update(['plainValue' => $value]);
             } else {
+
+                if(!is_null($setting->translate('en')))
                 $setting->translate('en')->value = $value;
+                
+                if(!is_null($setting->translate('es')))
                 $setting->translate('es')->value = $value;
                 $setting->save();
             }
         } else {
             //Create
+            //\Log::info($this->log.'updateSetting|Create');
             $dataToCreate = [
                 'name' => $name,
                 'plainValue' => (is_array($value)) ? json_encode($value) : $value,

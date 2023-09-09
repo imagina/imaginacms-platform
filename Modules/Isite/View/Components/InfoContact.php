@@ -206,12 +206,12 @@ class InfoContact extends Component
         $this->fontSizeTitleContact = $fontSizeTitleContact;
         $this->colorIcons = $colorIcons;
         $this->fontSizeIcons = $fontSizeIcons;
-        $this->orderInfo = ! empty($orderInfo) ? $orderInfo : ['phone' => 'order-0', 'address' => 'order-1', 'email' => 'order-2', 'socialNetworks' => 'order-3'];
+    $this->orderInfo = !empty($orderInfo) ? $orderInfo : ["phone" => "order-0", "address" => "order-1", "email" => "order-2", "socialNetworks" => "order-3"];
         $this->colorSubtitleSection = $colorSubtitleSection;
         $this->fontSizeSubtitleSection = $fontSizeSubtitleSection;
         $this->contentBorder = $contentBorder;
         $this->layout = $layout;
-        $this->view = 'isite::frontend.components.info-contact.layouts.'.$this->layout.'.index';
+    $this->view = "isite::frontend.components.info-contact.layouts." . $this->layout . ".index";
         $this->contentBorderColor = $contentBorderColor;
         $this->titlePaddingY = $titlePaddingY;
         $this->titlePaddingX = $titlePaddingX;

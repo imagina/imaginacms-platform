@@ -2,21 +2,29 @@
 
 namespace Modules\Iforms\Exports;
 
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithEvents;
-//Events
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use Maatwebsite\Excel\Events\AfterSheet;
+
+//Events
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
-use Maatwebsite\Excel\Events\BeforeSheet;
 use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Events\BeforeSheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+
 //Extra
+use Modules\Notification\Services\Inotification;
 use Modules\Iforms\Entities\Form;
+use Modules\Iforms\Exports\LeadsPerFormExport;
+
+use Modules\Isite\Traits\ReportQueueTrait;
 
 class LeadsExport implements WithEvents, WithMultipleSheets, ShouldQueue
 {
-    use Exportable;
+  use Exportable, ReportQueueTrait;
 
     private $params;
 
@@ -56,6 +64,7 @@ class LeadsExport implements WithEvents, WithMultipleSheets, ShouldQueue
         return [
             // Event gets raised at the start of the process.
             BeforeExport::class => function (BeforeExport $event) {
+        $this->lockReport($this->exportParams->exportName);
             },
             // Event gets raised before the download/store starts.
             BeforeWriting::class => function (BeforeWriting $event) {
@@ -65,6 +74,7 @@ class LeadsExport implements WithEvents, WithMultipleSheets, ShouldQueue
             },
             // Event gets raised at the end of the sheet process
             AfterSheet::class => function (AfterSheet $event) {
+        $this->unlockReport($this->exportParams->exportName);
                 //Send pusher notification
                 $this->inotification->to(['broadcast' => $this->params->user->id])->push([
                     'title' => 'New report',

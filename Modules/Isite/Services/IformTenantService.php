@@ -12,7 +12,7 @@ class IformTenantService
             //\Log::info("Checking to copy Form ID: ".$formIdLayoutBase);
 
             //Se busca por system name
-            $existRegister = \DB::table($table)->select('id')->where('system_name', '=', $data['system_name'])->get();
+        $existRegister = \DB::table($table)->select("id")->where("system_name","=",$data['system_name'])->get();
 
             //Not exist , so insert data
             if (count($existRegister) == 0) {

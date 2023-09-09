@@ -131,6 +131,8 @@ class OwlCarousel extends Component
     public $owlTitleClasses;
 
     public $owlSubtitleClasses;
+    public $dotsStyleColor;
+    public $dotsSize;
 
     /**
      * Create a new component instance.
@@ -194,9 +196,13 @@ class OwlCarousel extends Component
                                 $navOld = false,
                                 $owlWithLineTitle = 0,
                                 $owlLineTitleConfig = [],
-                                $owlTitleClasses = '',
-                                $owlSubtitleClasses = ''
-    ) {
+                                $owlTitleClasses = "",
+                                $owlSubtitleClasses = "",
+                                $dotsStyleColor = "",
+                                $dotsSize = ""
+    )
+    {
+
         $this->emptyItems = false;
         $this->loop = $loop;
         $this->id = $id ?? uniqid('owlc');

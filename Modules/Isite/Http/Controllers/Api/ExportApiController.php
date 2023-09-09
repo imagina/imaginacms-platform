@@ -49,6 +49,18 @@ class ExportApiController extends BaseApiController
                 'size' => Storage::disk($this->disk)->size($fileName),
                 'lastModified' => date('Y-m-d H:i:s', Storage::disk($this->disk)->lastModified($fileName)),
             ];
+
+      //Check reportQueue
+      $userId = $params->user->id ?? null;
+      $reportQueueDate = null;
+      if ($userId) {
+        $reportQueueRepository = app("Modules\Isite\Repositories\ReportQueueRepository");
+        $reportQueueParams = ["filter" => ["user_id" => $userId, "field" => "report"]];
+        $reportQueue = $reportQueueRepository->getItem($exportParams->exportName, json_decode(json_encode($reportQueueParams)));
+        $reportQueueDate = $reportQueue->start_date ?? null;
+      }
+      //Include to response
+      $response["reportQueue"] = $reportQueueDate;
         } catch (\Exception $e) {
             $status = $this->getStatusError($e->getCode());
             $response = ['errors' => $e->getMessage()];

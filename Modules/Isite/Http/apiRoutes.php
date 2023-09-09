@@ -64,5 +64,11 @@ Route::prefix('/isite/v1')->group(function (Router $router) {
         'controller' => 'RevisionApiController',
         //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
+    $router->apiCrud([
+      'module' => 'isite',
+      'prefix' => 'reportqueues',
+      'controller' => 'ReportQueueApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    ]);
     // append
 });

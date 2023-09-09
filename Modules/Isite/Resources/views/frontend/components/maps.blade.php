@@ -5,7 +5,10 @@
     </div>
   @endif
   <div class="section-map">
-    <div class="map bg-light">
+    <div class="map">
+      @if(isset($iframeMap) && !empty($iframeMap))
+        {!! $iframeMap !!}
+      @else
       @if($settingMap == 'googleMaps')
         <div class="content">
           <div id="{{$mapId}}" class="{{$classes}} maps-component"
@@ -15,6 +18,7 @@
         <div class="content">
           <div id="{{$mapId}}" class="map map-home" style="width:{{$mapWidth}}; height:{{$mapHeight}}"></div>
         </div>
+      @endif
       @endif
     </div>
   </div>

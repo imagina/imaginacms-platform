@@ -32,5 +32,17 @@ class EventServiceProvider extends ServiceProvider
                 [CreateOrganizationBySuscription::class, 'handle']
             );
         }
+
+      
+        Event::listen(
+            "Modules\\Isite\\Events\\OrganizationWasCreated",
+            [SendEmailOrganization::class, 'handle']
+        );
+        
+
+        Event::listen(
+            "Modules\\Isite\\Events\\OrganizationWasUpdated",
+            [SetMaintenanceMode::class, 'handle']
+        );
     }
 }

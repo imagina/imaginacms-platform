@@ -244,6 +244,18 @@ class IsiteServiceProvider extends ServiceProvider
                 return new \Modules\Isite\Repositories\Cache\CacheRevisionDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\Isite\Repositories\ReportQueueRepository',
+            function () {
+                $repository = new \Modules\Isite\Repositories\Eloquent\EloquentReportQueueRepository(new \Modules\Isite\Entities\ReportQueue());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Isite\Repositories\Cache\CacheReportQueueDecorator($repository);
+            }
+        );
         // add bindings
     }
 
@@ -293,6 +305,7 @@ class IsiteServiceProvider extends ServiceProvider
             GenerateSitemapCommand::class,
             TenantModuleMigrateCommand::class,
             TenantsScheduleCommand::class,
+      TenantAiCommand::class,
         ]);
     }
 }

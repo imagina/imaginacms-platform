@@ -31,14 +31,17 @@ class Menu extends Component
     public $homeIcon;
 
     public $collapsed;
+  public $central;
+
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $repository = null, $params = [], $layout = 'category-menu-layout-1', $title = 'Categorías',
-                              $menuBefore = null, $menuAfter = null, $withHome = true, $homeIcon = '', $collapsed = false)
+  public function __construct( $id,$repository = null, $params = [], $layout = 'category-menu-layout-1', $title = "Categorías",
+                              $menuBefore = null, $menuAfter = null, $withHome = true, $homeIcon = "",$collapsed = false,
+                              $central = false)
     {
         $this->id = $id;
         $this->repository = $repository;
@@ -49,8 +52,8 @@ class Menu extends Component
         $this->menuAfter = $menuAfter;
         $this->withHome = $withHome;
         $this->collapsed = $collapsed;
-        $this->homeIcon = $homeIcon ?? 'fa fa-home';
-
+    $this->homeIcon = $homeIcon ?? "fa fa-home";
+    $this->central = $central;
         $this->view = "isite::frontend.components.category-menu.layouts.{$layout}.index";
         $this->items = [];
 

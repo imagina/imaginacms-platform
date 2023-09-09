@@ -7,7 +7,8 @@ use Modules\Media\Image\ImageFactoryInterface;
 
 class InterventionFactory implements ImageFactoryInterface
 {
-    public function make($manipulation)
+
+    public function make(string $manipulation): ImageHandlerInterface
     {
         $class = 'Modules\\Media\\Image\\Intervention\\Manipulations\\'.ucfirst($manipulation);
 

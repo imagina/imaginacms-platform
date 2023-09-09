@@ -29,7 +29,7 @@
 				<div id="slider-range-{{$name}}" wire:ignore></div>
 
 				<button onClick="window.livewire.emit('updateRange',{'selValueMin' : document.getElementById('selValueMin-{{$name}}').value,'selValueMax' : document.getElementById('selValueMax-{{$name}}').value})" id="btnUpdatePrices" class="btn btn-outline-primary btn-sm btn-block mt-3">
-					{{trans('icommerce::common.button.update')}}
+					{{trans('isite::common.button.update')}}
 				</button>
 			</div>
 

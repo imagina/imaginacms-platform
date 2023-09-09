@@ -29,17 +29,17 @@ class ProcessLocations implements ShouldQueue
         app($baseClass."\CountryTableSeeder")->run();
         \Log::info('Ilocations: Jobs|ProcessLocations|CountryTableSeeder|OK');
 
-//        \Log::info('Ilocations: Jobs|ProcessLocations|ProvinceTableSeeder|Running...');
-//        app($baseClass."\ProvinceTableSeeder")->run();
-//        \Log::info('Ilocations: Jobs|ProcessLocations|ProvinceTableSeeder|OK');
-//
-//        \Log::info('Ilocations: Jobs|ProcessLocations|CityTableSeeder|Running...');
-//        app($baseClass."\CityTableSeeder")->run();
-//        \Log::info('Ilocations: Jobs|ProcessLocations|CityTableSeeder|OK');
-//
-//        \Log::info('Ilocations: Jobs|ProcessLocations|GeozoneTableSeeder|Running...');
-//        app($baseClass."\GeozoneTableSeeder")->run();
-//        \Log::info('Ilocations: Jobs|ProcessLocations|GeozoneTableSeeder|OK');
+        \Log::info('Ilocations: Jobs|ProcessLocations|ProvinceTableSeeder|Running...');
+        app($baseClass."\ProvinceTableSeeder")->run();
+        \Log::info('Ilocations: Jobs|ProcessLocations|ProvinceTableSeeder|OK');
+
+        \Log::info('Ilocations: Jobs|ProcessLocations|CityTableSeeder|Running...');
+        app($baseClass."\CityTableSeeder")->run();
+        \Log::info('Ilocations: Jobs|ProcessLocations|CityTableSeeder|OK');
+
+        \Log::info('Ilocations: Jobs|ProcessLocations|GeozoneTableSeeder|Running...');
+        app($baseClass."\GeozoneTableSeeder")->run();
+        \Log::info('Ilocations: Jobs|ProcessLocations|GeozoneTableSeeder|OK');
 
         \Log::info('Ilocations: Jobs|ProcessLocations|FINISHED ;)');
     }

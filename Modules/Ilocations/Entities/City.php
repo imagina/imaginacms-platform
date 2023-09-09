@@ -55,7 +55,6 @@ class City extends Model
             return $model->toArray()['name'] ?? '';
         }
 
-        return $currentTranslations->toArray()['name'];
     }
 
       public function __call($method, $parameters)

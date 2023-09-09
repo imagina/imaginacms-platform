@@ -76,7 +76,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header rounded-0">
-          <x-isite::logo name="logo1" imgClasses="mx-auto my-2"/>
+          <x-isite::logo name="logo1" central="central" imgClasses="mx-auto my-2"/>
           <button  type="button" class="close my-0" data-dismiss="modal" aria-label="Close">
             <i class="fa fa-times-circle text-white"></i>
           </button>

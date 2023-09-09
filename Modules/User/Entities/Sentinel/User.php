@@ -6,14 +6,15 @@ use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laracasts\Presenter\PresentableTrait;
-use Laravel\Passport\HasApiTokens;
-use Modules\Core\Support\Traits\AuditTrait;
-use Modules\Isite\Traits\RevisionableTrait;
 use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
 use Modules\User\Presenters\UserPresenter;
+use Laravel\Passport\HasApiTokens;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Isite\Traits\RevisionableTrait;
+
+use Modules\Core\Support\Traits\AuditTrait;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract
 {
@@ -96,11 +97,11 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         return false;
     }
 
-    public function api_keys()
+    public function api_keys(): HasMany
     {
-        return $this->hasMany(UserToken::class);
+      return $this->hasMany(UserToken::class);
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -163,6 +164,7 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
         //i: No relation found, return the call to parent (Eloquent) to handle it.
         return parent::__call($method, $parameters);
     }
+    
 
     /**
      * {@inheritdoc}
