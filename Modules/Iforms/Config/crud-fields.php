@@ -23,9 +23,11 @@ return [
             'type' => 'input',
             'fakeFieldName' => 'rules',
             'columns' => 'col-12 col-md-6',
+      'help' => [
+        'description' => 'iforms::fields.crudFields.hint.min',
+      ],
             'props' => [
-                'hint' => 'iforms::fields.crudFields.hint.min',
-                'label' => 'iforms::fields.crudFields.label.min',
+        'label' => 'iforms::fields.crudFields.label.min'
             ],
         ],
         'max' => [
@@ -34,9 +36,11 @@ return [
             'type' => 'input',
             'fakeFieldName' => 'rules',
             'columns' => 'col-12 col-md-6',
+      'help' => [
+        'description' => 'iforms::fields.crudFields.hint.max',
+      ],
             'props' => [
-                'hint' => 'iforms::fields.crudFields.hint.max',
-                'label' => 'iforms::fields.crudFields.label.max',
+        'label' => 'iforms::fields.crudFields.label.max'
             ],
         ],
         'maxlength' => [
@@ -45,9 +49,11 @@ return [
             'type' => 'input',
             'fakeFieldName' => 'rules',
             'columns' => 'col-12 col-md-6',
+      'help' => [
+        'description' => 'iforms::fields.crudFields.hint.maxlength',
+      ],
             'props' => [
-                'hint' => 'iforms::fields.crudFields.hint.maxlength',
-                'label' => 'iforms::fields.crudFields.label.maxlength',
+        'label' => 'iforms::fields.crudFields.label.maxlength'
             ],
         ],
         'mimes' => [
@@ -56,11 +62,13 @@ return [
             'type' => 'select',
             'fakeFieldName' => 'rules',
             'columns' => 'col-12 col-md-6',
+      'help' => [
+        'description' => 'iforms::fields.crudFields.hint.mimes',
+      ],
             'props' => [
                 'useInput' => true,
                 'useChips' => true,
                 'multiple' => true,
-                'hint' => 'iforms::fields.crudFields.hint.mimes',
                 'hideDropdownIcon' => true,
                 'newValueMode' => 'add-unique',
                 'label' => 'iforms::fields.crudFields.label.mimes',
@@ -72,9 +80,11 @@ return [
             'type' => 'input',
             'fakeFieldName' => 'options',
             'columns' => 'col-12 col-md-6',
+      'help' => [
+        'description' => 'iforms::fields.crudFields.hint.entity',
+      ],
             'props' => [
-                'hint' => 'iforms::fields.crudFields.hint.entity',
-                'label' => 'iforms::fields.crudFields.label.entity',
+        'label' => 'iforms::fields.crudFields.label.entity'
             ],
         ],
     ],

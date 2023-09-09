@@ -2,22 +2,31 @@
 
 namespace Modules\Iforms\Exports;
 
-use Illuminate\Support\Collection;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithEvents;
-//Events
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Events\AfterSheet;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithTitle;
+
+//Events
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
-use Maatwebsite\Excel\Events\BeforeSheet;
 use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Events\BeforeSheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithMapping;
+
 //Extra
+use Modules\Iforms\Repositories\LeadRepository;
+use Modules\Notification\Services\Inotification;
 use Modules\Iforms\Entities\Form;
+
+use Modules\Isite\Traits\ReportQueueTrait;
 
 class LeadsPerFormExport implements FromQuery, WithHeadings, WithMapping, ShouldQueue, WithEvents
 {
+  use ReportQueueTrait;
+
     private $params;
 
     private $exportParams;

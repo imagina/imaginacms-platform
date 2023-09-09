@@ -29,6 +29,14 @@ class SyncUsersInDocument
                     ]);
                 }
             }
+
+    $usersDocument = DocumentUser::where("document_id", $document->id)->get();
+    foreach ($usersDocument as $userDocument) {
+      if(!in_array($userDocument->user_id, $users)) {
+        $userDocument->delete();
+      }
+    }
+
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
 
