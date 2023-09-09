@@ -26,7 +26,7 @@ class Thumbnail
         $this->format = $format;
     }
 
-    public static function make($thumbnailDefinition, $format = 'jpg'): static
+    public static function make($thumbnailDefinition, $format = 'jpg')
     {
         $name = key($thumbnailDefinition);
 
@@ -36,7 +36,7 @@ class Thumbnail
     /**
      * Make multiple thumbnail classes with the given array
      */
-    public static function makeMultiple(array $thumbnailDefinitions): array
+    public static function makeMultiple(array $thumbnailDefinitions)
     {
         $thumbnails = [];
 
@@ -50,17 +50,17 @@ class Thumbnail
     /**
      * Return the thumbnail name
      */
-    public function name(): string
+    public function name()
     {
         return $this->name;
     }
 
-    public function filters(): array
+    public function filters()
     {
         return $this->filters;
     }
 
-    public function format(): string
+    public function format()
     {
         return $this->format;
     }
@@ -68,7 +68,7 @@ class Thumbnail
     /**
      * Return the first width option found in the filters
      */
-    public function width(): int
+    public function width()
     {
         return $this->getFirst('width');
     }
@@ -76,7 +76,7 @@ class Thumbnail
     /**
      * Return the first height option found in the filters
      */
-    public function height(): int
+    public function height()
     {
         return $this->getFirst('height');
     }
@@ -84,7 +84,7 @@ class Thumbnail
     /**
      * Get the thumbnail size in format: width x height
      */
-    public function size(): string
+    public function size()
     {
         return $this->width().'x'.$this->height();
     }
