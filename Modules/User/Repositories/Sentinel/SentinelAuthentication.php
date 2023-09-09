@@ -10,8 +10,6 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Events\UserHasActivatedAccount;
-use Modules\User\Repositories\RoleRepository;
-use Modules\User\Repositories\UserRepository;
 
 class SentinelAuthentication implements Authentication
 {
@@ -21,7 +19,7 @@ class SentinelAuthentication implements Authentication
      * @param  bool  $remember    Remember the user
      * @return mixed
      */
-    public function login(array $credentials, bool $remember = false)
+    public function login(array $credentials, $remember = false)
     {
         try {
             if (Sentinel::authenticate($credentials, $remember)) {
@@ -41,7 +39,7 @@ class SentinelAuthentication implements Authentication
     /**
      * Register a new user.
      */
-    public function register(array $user): bool
+    public function register(array $user)
     {
         return Sentinel::getUserRepository()->create((array) $user);
     }
@@ -51,7 +49,7 @@ class SentinelAuthentication implements Authentication
      *
      * @return mixed
      */
-    public function assignRole(UserRepository $user, RoleRepository $role)
+    public function assignRole($user, $role)
     {
         return $role->users()->attach($user);
     }
@@ -59,7 +57,7 @@ class SentinelAuthentication implements Authentication
     /**
      * Log the user out of the application.
      */
-    public function logout(): bool
+    public function logout()
     {
         return Sentinel::logout();
     }
@@ -69,7 +67,7 @@ class SentinelAuthentication implements Authentication
      *
      * @return mixed
      */
-    public function activate(int $userId, string $code)
+    public function activate($userId, $code)
     {
         $user = Sentinel::findById($userId);
 
@@ -86,7 +84,7 @@ class SentinelAuthentication implements Authentication
      *
      * @return mixed
      */
-    public function createActivation(UserRepository $user)
+    public function createActivation($user)
     {
         return Activation::create($user)->code;
     }
@@ -96,7 +94,7 @@ class SentinelAuthentication implements Authentication
      *
      * @return mixed
      */
-    public function createReminderCode(UserRepository $user)
+    public function createReminderCode($user)
     {
         $reminder = Reminder::exists($user) ?: Reminder::create($user);
 
@@ -106,7 +104,7 @@ class SentinelAuthentication implements Authentication
     /**
      * Completes the reset password process
      */
-    public function completeResetPassword($user, string $code, string $password): bool
+    public function completeResetPassword($user, $code, $password)
     {
         return Reminder::complete($user, $code, $password);
     }
@@ -140,7 +138,7 @@ class SentinelAuthentication implements Authentication
     /**
      * Get the currently logged in user
      */
-    public function user(): \Modules\User\Entities\UserInterface
+    public function user()
     {
         return Sentinel::getUser();
     }
