@@ -10,7 +10,7 @@ interface Setting
      * @param  string  $key
      * @return bool
      */
-    public function has(string $key): bool;
+    public function has($key);
 
     /**
      * Get the specified configuration value in the given language
@@ -20,7 +20,7 @@ interface Setting
      * @param  mixed  $default
      * @return string
      */
-    public function get(string $key, string $locale = null, string $default = null);
+    public function get($key, $locale = null, $default = null);
 
     /**
      * Set a given configuration value.
@@ -29,5 +29,5 @@ interface Setting
      * @param  mixed  $value
      * @return \Modules\Setting\Entities\Setting
      */
-    public function set(string $key, $value);
+    public function set($key, $value);
 }
