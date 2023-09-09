@@ -34,8 +34,8 @@ class AuthCan extends BaseApiController
         $this->auth = $auth;
         $this->passportToken = $passportToken;
     }
-
-    public function handle(Request $request, \Closure $next, string $permission): Response
+    
+  public function handle(Request $request, \Closure $next, $permission)
     {
         if ($request->header('Authorization') === null) {
             return new Response('Forbidden', Response::HTTP_FORBIDDEN);
@@ -52,8 +52,8 @@ class AuthCan extends BaseApiController
 
         return $next($request);
     }
-
-      private function getUserFromToken(string $token): UserInterface
+    
+    private function getUserFromToken($token)
       {
           $found = $this->userToken->findByAttributes(['access_token' => $this->parseToken($token)]);
 
@@ -71,7 +71,7 @@ class AuthCan extends BaseApiController
           return $user;
       }
 
-    private function parseToken(string $token): string
+    private function parseToken($token)
     {
         return str_replace('Bearer ', '', $token);
     }
