@@ -2,17 +2,19 @@
 
 namespace Modules\Iprofile\Entities;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Laracasts\Presenter\PresentableTrait;
-use Laravel\Passport\HasApiTokens;
-use Modules\Core\Support\Traits\AuditTrait;
 use Modules\User\Entities\UserInterface;
 use Modules\User\Entities\UserToken;
 use Modules\User\Presenters\UserPresenter;
+use Laravel\Passport\HasApiTokens;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+
+use Modules\Core\Support\Traits\AuditTrait;
 
 class User extends EloquentUser implements UserInterface, AuthenticatableContract
 {

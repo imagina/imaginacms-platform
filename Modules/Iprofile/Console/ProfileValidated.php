@@ -42,7 +42,7 @@ class ProfileValidated extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle()
     {
         try {
             $users = $this->user->getItemsBy((object) ['take' => false, 'filter' => ['field' => ['name' => 'validate', 'value' => true]], 'include' => []]);

@@ -6,7 +6,8 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface RoleApiRepository extends BaseRepository
 {
-    public function getItemsBy($params);
+  
+  public function getItemsBy($params  = false);
 
     public function getItem($criteria, $params = false);
 

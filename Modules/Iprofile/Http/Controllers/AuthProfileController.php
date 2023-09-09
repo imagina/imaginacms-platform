@@ -4,22 +4,36 @@ namespace Modules\Iprofile\Http\Controllers;
 
 use Cartalyst\Sentinel\Laravel\Facades\Reminder;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\MessageBag;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Modules\Iprofile\Entities\ProviderAccount;
-use Modules\Iprofile\Http\Controllers\Api\FieldApiController;
-use Modules\Setting\Contracts\Setting;
-use Modules\User\Entities\Sentinel\User;
+
+use Modules\Core\Http\Controllers\BasePublicController;
+
 use Modules\User\Events\UserHasRegistered;
 use Modules\User\Events\UserLoggedIn;
-use Modules\User\Http\Controllers\AuthController;
 use Modules\User\Http\Requests\LoginRequest;
 use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Requests\ResetCompleteRequest;
 use Modules\User\Http\Requests\ResetRequest;
+use Modules\User\Http\Controllers\AuthController;
 use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
+use Modules\User\Entities\Sentinel\User;
+use Modules\Setting\Contracts\Setting;
+use Lcobucci\JWT\Parser;
+use Validator;
+
 use Socialite;
+use Laravel\Socialite\Contracts\User as ProviderUser;
+
+use Modules\Iprofile\Http\Controllers\Api\FieldApiController;
+
+use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
+
+use Modules\Iprofile\Entities\ProviderAccount;
 
 //use Modules\Iprofile\Http\Requests\LoginRequestProfile;
 //use Modules\Iprofile\Entities\UserField;
@@ -69,14 +83,12 @@ class AuthProfileController extends AuthController
 
         request()->session()->put('url.intended', url()->previous());
 
-        $panel = config('asgard.iprofile.config.panel');
+    $panel = config("asgard.iprofile.config.panel");
 
-        if (! empty($panel) && $panel == 'quasar') {
-            return redirect('/ipanel/#/auth/login'.'?redirectTo='.url()->previous());
-        }
+    if(!empty($panel) && $panel == "quasar"){
 
-        if (view()->exists($ttpl)) {
-            $tpl = $ttpl;
+        return redirect("/ipanel/#/auth/login"."?redirectTo=".url()->previous());
+      
         }
 
         return view($tpl);

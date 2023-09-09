@@ -14,7 +14,11 @@ class Role extends EloquentRole
     protected $fillable = [
         'slug',
         'name',
-        'permissions',
+    'permissions'
+  ];
+
+  public $translatedAttributes = [
+    'title'
     ];
 
     public $tenantWithCentralData = false;
