@@ -162,8 +162,9 @@ class EloquentRoleApiRepository extends EloquentBaseRepository implements RoleAp
 
     public function create($data)
     {
+      
         $role = $this->model->create($data);
-
+      
         event(new SyncFormeable($role, $data));
 
         return $role;

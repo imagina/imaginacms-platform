@@ -8,8 +8,9 @@ class HandleFormeable
     {
         $data = $event->data;
         $entity = $event->entity;
-
-        if ($data['form_id']) {
+  
+        if(!\Schema::hasTable('iforms__formeable')) return;
+        if (isset($data['form_id'])) {
             $entity->forms()->sync([$data['form_id']]);
         } else {
             $entity->forms()->sync([]);

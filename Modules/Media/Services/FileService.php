@@ -44,39 +44,40 @@ class FileService
      * @throws \Illuminate\Contracts\Filesystem\FileExistsException
      */
   public function store(UploadedFile $file, $parentId = 0, $disk = null, $createThumbnails = true)
-    {
-        $disk = $this->getConfiguredFilesystem($disk);
-
-        //validating avaiable extensions
-        $request = new UploadMediaRequest(['file' => $file]);
-        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
-        //if get errors, throw errors
-        if ($validator->fails()) {
-            $errors = json_decode($validator->errors());
-            throw new \Exception(json_encode($errors), 400);
-        }
-        $savedFile = $this->file->createFromFile($file, $parentId, $disk);
-
-        $this->resizeImages($file, $savedFile);
-
-        $path = $this->getDestinationPath($savedFile->getRawOriginal('path'));
-        $stream = fopen($file->getRealPath(), 'r+');
-
-        //call Method delete for all exist in the disk with the same filename
-        $this->imagy->deleteAllFor($savedFile);
-
-        $organizationPrefix = mediaOrganizationPrefix($savedFile);
-
-        $this->filesystem->disk($disk)->writeStream(($organizationPrefix).$savedFile->path->getRelativeUrl(), $stream, [
-            'visibility' => 'public',
-            'mimetype' => $savedFile->mimetype,
-        ]);
-
-        if ($createThumbnails) {
-            $this->createThumbnails($savedFile);
-
-    return $savedFile;
-        }
+  {
+    $disk = $this->getConfiguredFilesystem($disk);
+  
+    //validating avaiable extensions
+    $request = new UploadMediaRequest(['file' => $file]);
+    $validator = Validator::make($request->all(), $request->rules(), $request->messages());
+    //if get errors, throw errors
+    if ($validator->fails()) {
+      $errors = json_decode($validator->errors());
+      throw new \Exception(json_encode($errors), 400);
+    }
+    $savedFile = $this->file->createFromFile($file, $parentId, $disk);
+  
+    $this->resizeImages($file, $savedFile);
+  
+    $path = $this->getDestinationPath($savedFile->getRawOriginal('path'));
+    $stream = fopen($file->getRealPath(), 'r+');
+  
+    //call Method delete for all exist in the disk with the same filename
+    $this->imagy->deleteAllFor($savedFile);
+  
+    $organizationPrefix = mediaOrganizationPrefix($savedFile);
+  
+    $this->filesystem->disk($disk)->writeStream(($organizationPrefix) . $savedFile->path->getRelativeUrl(), $stream, [
+      'visibility' => 'public',
+      'mimetype' => $savedFile->mimetype,
+    ]);
+  
+    if ($createThumbnails) {
+      $this->createThumbnails($savedFile);
+    
+      return $savedFile;
+    }
+  }
 
   /**
    * @param $path - Url from External
@@ -107,19 +108,19 @@ class FileService
      */
     private function resizeImages(UploadedFile $file, $savedFile)
     {
-        if ($savedFile->isImage()) {
-            $image = \Image::make(fopen($file->getRealPath(), 'r+'));
-
-            $imageSize = json_decode(setting('media::defaultImageSize', null, config('asgard.media.config.defaultImageSize')));
-
-            $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-
-            $filePath = $file->getPathName();
-            \File::put($filePath, $image->stream($savedFile->extension, $imageSize->quality));
-        }
+      if ($savedFile->isImage()) {
+        $image = \Image::make(fopen($file->getRealPath(), 'r+'));
+    
+        $imageSize = json_decode(setting('media::defaultImageSize', null, config('asgard.media.config.defaultImageSize')));
+    
+        $image->resize($imageSize->width, $imageSize->height, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+    
+        $filePath = $file->getPathName();
+        \File::put($filePath, $image->stream($savedFile->extension, $imageSize->quality));
+      }
     }
 
     /**
