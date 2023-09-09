@@ -12,7 +12,7 @@ interface MenuItemRepository extends BaseRepository
      * @param  int  $menuId
      * @return object
      */
-    public function rootsForMenu(int $menuId): object;
+    public function rootsForMenu(int $menuId);
 
     /**
      * Get all root elements
@@ -20,7 +20,7 @@ interface MenuItemRepository extends BaseRepository
      * @param  int  $menuId
      * @return object
      */
-    public function allRootsForMenu(int $menuId): object;
+    public function allRootsForMenu(int $menuId);
 
     /**
      * Get the menu items ready for routes
@@ -35,7 +35,7 @@ interface MenuItemRepository extends BaseRepository
      * @param  int  $menuId
      * @return object
      */
-    public function getRootForMenu(int $menuId): object;
+    public function getRootForMenu(int $menuId);
 
     /**
      * Return a complete tree for the given menu id
@@ -43,14 +43,14 @@ interface MenuItemRepository extends BaseRepository
      * @param  int  $menuId
      * @return object
      */
-    public function getTreeForMenu(int $menuId): object;
+    public function getTreeForMenu(int $menuId);
 
     /**
      * @param  string  $uri
      * @param  string  $locale
      * @return object
      */
-    public function findByUriInLanguage(string $uri, string $locale): object;
+    public function findByUriInLanguage(string $uri, string $locale);
 
     /**
      * @return mixed
