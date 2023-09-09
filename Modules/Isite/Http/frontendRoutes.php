@@ -42,7 +42,7 @@ Route::get('/', [
 ]);
 
 Route::any('{uri}', [
-    'uses' => 'PublicController@uri',
+    'uses' => '\Modules\Isite\Http\Controllers\PublicController@uri',
     'as' => $locale.'.site',
     'middleware' => $middlewares,
 ])->where('uri', '.*');

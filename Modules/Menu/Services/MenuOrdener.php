@@ -29,7 +29,7 @@ class MenuOrdener
     /**
      * Order recursively the menu items
      */
-    private function order(int $position, array $item)
+    private function order($position, $item)
     {
         $menuItem = $this->menuItemRepository->find($item['id']);
         if (0 === $position && false === $menuItem->isRoot()) {
@@ -59,7 +59,7 @@ class MenuOrdener
     /**
      * Save the given position on the menu item
      */
-    private function savePosition(object $menuItem, int $position)
+    private function savePosition($menuItem, $position)
     {
         $this->menuItemRepository->update($menuItem, compact('position'));
     }
@@ -67,7 +67,7 @@ class MenuOrdener
     /**
      * Check if the item has children
      */
-    private function hasChildren(array $item): bool
+    private function hasChildren($item)
     {
         return isset($item['children']);
     }
@@ -75,7 +75,7 @@ class MenuOrdener
     /**
      * Set the given parent id on the given menu item
      */
-    private function makeItemChildOf(object $item, int $parent_id)
+    private function makeItemChildOf($item, $parent_id)
     {
         $this->menuItemRepository->update($item, compact('parent_id'));
     }
@@ -83,7 +83,7 @@ class MenuOrdener
     /**
      * Convert the object to array
      */
-    private function convertToArray($data): array
+    private function convertToArray($data)
     {
         $data = json_decode(json_encode($data), true);
 

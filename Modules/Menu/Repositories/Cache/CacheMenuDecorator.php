@@ -22,7 +22,7 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
     /**
      * Get all online menus
      */
-    public function allOnline(): object
+    public function allOnline()
     {
         return $this->remember(function () {
             return $this->repository->allOnline();

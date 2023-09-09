@@ -13,13 +13,19 @@ class TranslationLoader extends FileLoader
     public function paths()
     {
         return array_merge(
-            [$this->path],
+            $this->paths,
             $this->hints
         );
     }
 
     /**
      * Load the messages for the given locale.
+     *
+     * @param string $locale
+     * @param string $group
+     * @param string $namespace
+     *
+     * @return array
      */
     public function load($locale,  $group, $namespace = null)
     {
