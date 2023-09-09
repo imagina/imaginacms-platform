@@ -24,7 +24,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
      *
      * @return mixed
      */
-    public function rootsForMenu(int $menuId)
+    public function rootsForMenu($menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->rootsForMenu($menuId);
@@ -46,7 +46,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Get the root menu item for the given menu id
      */
-    public function getRootForMenu(int $menuId): object
+    public function getRootForMenu($menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->getRootForMenu($menuId);
@@ -56,7 +56,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Return a complete tree for the given menu id
      */
-    public function getTreeForMenu(int $menuId): object
+    public function getTreeForMenu($menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->getTreeForMenu($menuId);
@@ -66,14 +66,14 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Get all root elements
      */
-    public function allRootsForMenu(int $menuId): object
+    public function allRootsForMenu($menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->allRootsForMenu($menuId);
         });
     }
 
-    public function findByUriInLanguage(string $uri, string $locale): object
+    public function findByUriInLanguage( $uri, $locale)
     {
         return $this->remember(function () use ($uri, $locale) {
             return $this->repository->findByUriInLanguage($uri, $locale);
@@ -143,7 +143,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Update the Menu Items for the given ids
      */
-    public function updateItems(array $criterias, array $data): bool
+    public function updateItems($criterias, $data)
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -153,7 +153,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Delete the Menu Items for the given ids
      */
-    public function deleteItems(array $criterias): bool
+    public function deleteItems($criterias)
     {
         $this->cache->tags($this->entityName)->flush();
 

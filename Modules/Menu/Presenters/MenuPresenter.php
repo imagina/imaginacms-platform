@@ -56,7 +56,7 @@ class MenuPresenter extends Presenter
     /**
      * Get active state on child items.
      */
-    public function getActiveStateOnChild($item, string $state = 'active'): ?string
+    public function getActiveStateOnChild($item, $state = 'active')
     {
         return $item->hasActiveOnChild() ? $state : null;
     }
@@ -81,7 +81,7 @@ class MenuPresenter extends Presenter
     /**
      * Get multilevel menu wrapper.
      */
-    public function getMultiLevelDropdownWrapper(MenuItem $item): string
+    public function getMultiLevelDropdownWrapper($item)
     {
         return '<li class="dropdown'.$this->getActiveStateOnChild($item, ' active').'">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
