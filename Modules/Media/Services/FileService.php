@@ -9,6 +9,7 @@ use Modules\Media\Http\Requests\UploadMediaRequest;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Jobs\CreateThumbnails;
 use Modules\Media\Repositories\FileRepository;
+use Modules\Media\ValueObjects\MediaPath;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Validator;
 
@@ -40,10 +41,9 @@ class FileService
 
     /**
      * @return mixed
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileExistsException
      */
-    public function store(UploadedFile $file, int $parentId = 0, string $disk = null, $createThumbnails = true)
+  public function store(UploadedFile $file, $parentId = 0, $disk = null, $createThumbnails = true)
     {
         $disk = $this->getConfiguredFilesystem($disk);
 
@@ -74,7 +74,30 @@ class FileService
 
         if ($createThumbnails) {
             $this->createThumbnails($savedFile);
+
+    return $savedFile;
         }
+
+  /**
+   * @param $path - Url from External
+   * @param string $disk - External Name (splash)
+   * @return mixed
+   */
+  public function storeHotLinked($path, $disk = null)
+  {
+
+    $data = app("Modules\Media\Services\\".ucfirst($disk)."Service")->getDataFromUrl($path,$disk);
+
+    $data = [
+      'filename' => $data['fileName'],
+      'path' => $data['path'],
+      'extension' => $data['extension'] ?? null,
+      'folder_id' => 0,
+      'is_folder' => 0,
+      'disk' => $disk
+    ];
+
+    $savedFile = $this->file->create($data);
 
         return $savedFile;
     }
@@ -104,10 +127,10 @@ class FileService
      */
     private function createThumbnails(File $savedFile)
     {
-        $this->dispatch(new CreateThumbnails($savedFile->path, $savedFile->disk));
+    $this->dispatch(new CreateThumbnails($savedFile));
     }
 
-    private function getDestinationPath(string $path): string
+    private function getDestinationPath($path)
     {
         if ($this->getConfiguredFilesystem() === 'local') {
             return basename(public_path()).$path;
@@ -116,18 +139,15 @@ class FileService
         return $path;
     }
 
-    private function getConfiguredFilesystem($disk = 'publicmedia'): string
+    private function getConfiguredFilesystem($disk = 'publicmedia')
     {
-        $settingDisk = setting('media::filesystem', null, config('asgard.media.config.filesystem'));
-        if ($disk == 'publicmedia' && $settingDisk == 's3') {
-            return $settingDisk;
+    $settingDisk = setting('media::filesystem', null, config("asgard.media.config.filesystem"));
+    if($disk == "publicmedia" && $settingDisk == "s3") return $settingDisk;
+    return $disk ?? "publicmedia";
         }
 
-        return $disk ?? 'publicmedia';
-    }
+  public function addWatermark($file, $zone){
 
-    public function addWatermark($file, $zone)
-    {
         //if the watermark zone exist in DB and if is image exclusively
         if (isset($zone->mediaFiles()->watermark->id) && $file->isImage()) {
             //getting watermark file from the DB

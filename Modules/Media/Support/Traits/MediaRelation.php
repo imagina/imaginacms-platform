@@ -5,6 +5,7 @@ namespace Modules\Media\Support\Traits;
 use Modules\Media\Entities\File;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Image\ThumbnailManager;
+use Modules\Media\Transformers\NewTransformers\MediaTransformer;
 
 trait MediaRelation
 {
@@ -83,38 +84,11 @@ trait MediaRelation
         return (object) $response;
     }
 
-    public function transformFile($file, $defaultPath = null)
+  public function transformFile($file, $defaultPath)
     {
-        $imagy = app(Imagy::class);
-        //Instance the transformed file
-        $transformedFile = (object) [
-            'id' => $file->id ?? null,
-            'filename' => $file->filename ?? null,
-            'mimeType' => $file->mimetype ?? null,
-            'fileSize' => $file->filesize ?? null,
-            'path' => ($file ? ($file->is_folder ? $file->path->getRelativeUrl() : (string) $file->path).'?u='.($file->updated_at->timestamp ?? '') : $defaultPath),
-            'relativePath' => $file ? $file->path->getRelativeUrl() : '',
-            'isImage' => $file ? $file->isImage() : false,
-            'isVideo' => $file ? $file->isVideo() : false,
-            'isFolder' => $file ? $file->isFolder() : false,
-            'mediaType' => $file->media_type ?? null,
-            'createdAt' => $file->created_at ?? null,
-            'folderId' => $file->folder_id ?? null,
-            'description' => $file->description ?? null,
-            'alt' => $file->alt_attribute ?? null,
-            'updatedAt' => $file->updated_at ?? null,
-            'createdBy' => $file->created_by ?? null,
-        ];
-
-        //Add imagy
-        $thumbnails = app(ThumbnailManager::class)->all();
-        foreach ($thumbnails as $thumbnail) {
-            $name = $thumbnail->name();
-            $transformedFile->{$name} = $file && $file->isImage() ? $imagy->getThumbnail($file, $name) : $defaultPath;
-            $transformedFile->{'relative'.ucfirst($name)} = $file && $file->isImage() ? str_replace(url('/'), '', $imagy->getThumbnail($file, $name)) : $defaultPath;
-        }
-
-        //Response
-        return $transformedFile;
+    //Create a mokup of a file if not exist
+    if (!$file) $file = new File(['path' => $defaultPath, 'is_folder' => 0]);
+    //Transform the file
+    return json_decode(json_encode(new MediaTransformer($file)));
     }
 }

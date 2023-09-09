@@ -50,13 +50,14 @@ class File extends CrudModel implements TaggableInterface, Responsable
         'folder_id',
         'created_by',
         'has_watermark',
-        'disk',
+    'has_thumbnails',
+    'disk'
     ];
 
     protected $appends = ['path_string', 'media_type'];
 
     protected $casts = ['is_folder' => 'boolean'];
-
+  protected $with = ["createdBy","tags"];
     protected static $entityNamespace = 'asgardcms/media';
 
     public function parent_folder()

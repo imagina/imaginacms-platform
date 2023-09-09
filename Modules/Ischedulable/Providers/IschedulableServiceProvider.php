@@ -42,6 +42,8 @@ class IschedulableServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'permissions'), 'asgard.ischedulable.permissions');
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+      $this->registerComponents();
     }
 
     /**
@@ -92,4 +94,13 @@ class IschedulableServiceProvider extends ServiceProvider
         );
         // add bindings
     }
+
+  /**
+   * Register Blade components
+   */
+
+  private function registerComponents(){
+    Blade::componentNamespace("Modules\Ischedulable\View\Components", 'ischedulable');
+  }
+
 }
