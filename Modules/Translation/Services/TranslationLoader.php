@@ -10,7 +10,7 @@ class TranslationLoader extends FileLoader
     /**
      * Get all Paths where Translations could be found.
      */
-    public function paths(): array
+    public function paths()
     {
         return array_merge(
             [$this->path],

@@ -3,17 +3,19 @@
 namespace Modules\Isite\Entities;
 
 use Astrotomic\Translatable\Translatable;
-use Modules\Core\Icrud\Traits\hasEventsWithBindings;
-use Modules\Core\Support\Traits\AuditTrait;
-use Modules\Ifillable\Traits\isFillable;
-use Modules\Ischedulable\Support\Traits\Schedulable;
-use Modules\Media\Support\Traits\MediaRelation;
-use Modules\Setting\Entities\Setting;
-use Stancl\Tenancy\Contracts\TenantWithDatabase;
-use Stancl\Tenancy\Database\Concerns\HasDatabase;
-use Stancl\Tenancy\Database\Concerns\HasDomains;
-use Stancl\Tenancy\Database\Concerns\MaintenanceMode;
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
+use Stancl\Tenancy\Contracts\TenantWithDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDomains;
+use Stancl\Tenancy\Database\Concerns\HasDatabase;
+use Modules\Core\Support\Traits\AuditTrait;
+use Illuminate\Support\Str;
+use Modules\Media\Support\Traits\MediaRelation;
+use Modules\Ischedulable\Support\Traits\Schedulable;
+use Modules\Core\Icrud\Traits\hasEventsWithBindings;
+use Modules\Ifillable\Traits\isFillable;
+use Modules\Setting\Entities\Setting;
+use Stancl\Tenancy\Database\Concerns\MaintenanceMode;
+use Modules\Isite\Entities\Status;
 
 class Organization extends BaseTenant implements TenantWithDatabase
 {

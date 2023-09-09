@@ -2,19 +2,23 @@
 
 namespace Modules\Isite\Exports;
 
-use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithEvents;
+
 //Events
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\BeforeWriting;
 use Maatwebsite\Excel\Events\BeforeSheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+
+use Modules\Isite\Entities\ReportQueue;
+use Modules\Isite\Traits\ReportQueueTrait;
 
 //Extra
+use Modules\Notification\Services\Inotification;
 
 class RepositoryExport implements FromQuery, WithEvents, ShouldQueue, WithHeadings
 {

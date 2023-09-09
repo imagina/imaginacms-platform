@@ -27,7 +27,7 @@ class TranslationsService
     /**
      * Get the file translations & the database translations, overwrite the file translations by db translations
      */
-    public function getFileAndDatabaseMergedTranslations(): TranslationGroup
+    public function getFileAndDatabaseMergedTranslations()
     {
         $allFileTranslations = $this->fileTranslations->all();
         $allDatabaseTranslations = $this->databaseTranslations->allFormatted();
@@ -67,7 +67,7 @@ class TranslationsService
     /**
      * Get the currently active locales
      */
-    private function getActiveLocales(): array
+    private function getActiveLocales()
     {
         $locales = [];
 

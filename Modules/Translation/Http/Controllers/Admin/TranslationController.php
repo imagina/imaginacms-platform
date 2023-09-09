@@ -36,7 +36,7 @@ class TranslationController extends AdminBaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         $translations = $this->translationsService->getFileAndDatabaseMergedTranslations();
 

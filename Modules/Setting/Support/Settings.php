@@ -22,7 +22,7 @@ class Settings implements Setting
      *
      * @return mixed
      */
-    public function get(string $name, string $locale = null, string $default = null, $central = false)
+    public function get($name, $locale = null, $default = null, $central = false)
     {
         $defaultFromConfig = $this->getDefaultFromConfigFor($name);
 
@@ -63,7 +63,7 @@ class Settings implements Setting
     /**
      * Determine if the given configuration value exists.
      */
-    public function has(string $name): bool
+    public function has($name)
     {
         $default = microtime(true);
 
@@ -75,7 +75,7 @@ class Settings implements Setting
      *
      * @param  mixed  $value
      */
-    public function set(string $key, $value): \Modules\Setting\Entities\Setting
+    public function set($key, $value)
     {
         return $this->setting->create([
             'name' => $key,
@@ -87,7 +87,7 @@ class Settings implements Setting
      * Get the default value from the settings configuration file,
      * for the given setting name.
      */
-    private function getDefaultFromConfigFor(string $name): string
+    private function getDefaultFromConfigFor($name)
     {
         [$module, $settingName] = explode('::', $name);
 
