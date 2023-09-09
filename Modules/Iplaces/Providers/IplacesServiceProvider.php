@@ -23,7 +23,7 @@ class IplacesServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIplacesSidebar::class);
@@ -37,7 +37,7 @@ class IplacesServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('iplaces', 'permissions');
         $this->publishConfig('iplaces', 'settings');
@@ -51,7 +51,7 @@ class IplacesServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

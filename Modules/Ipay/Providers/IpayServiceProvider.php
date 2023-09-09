@@ -19,12 +19,12 @@ class IpayServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
     }
 
-    public function boot(): void
+    public function boot()
     {
         $this->publishConfig('ipay', 'permissions');
     }
@@ -32,7 +32,7 @@ class IpayServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
+    public function provides()
     {
         return [];
     }

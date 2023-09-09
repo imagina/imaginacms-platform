@@ -16,6 +16,7 @@ use Modules\Iplaces\Entities\Status;
 use Modules\Iplaces\Entities\StatusYN;
 use Modules\Iplaces\Entities\Weather;
 use Modules\Isite\Transformers\RevisionTransformer;
+use Modules\Ischedulable\Transformers\ScheduleTransformer;
 
 class PlaceTransformer extends JsonResource
 {
@@ -58,12 +59,12 @@ class PlaceTransformer extends JsonResource
             'cityId' => $this->city_id,
             'provinceId' => $this->province_id,
             'zone' => $this->zone_id,
-            'schedule' => $this->schedule_id,
+      'schedule' => new ScheduleTransformer($this->whenLoaded('schedule')),
             'categoryId' => $this->category_id,
             'options' => $this->options,
-            'schedules' => $this->schedules,
             'mediaFiles' => $this->mediaFiles(),
             'rating' => $this->rating,
+      'sortOrder' => $this->sort_order ?? 0,
             //Relations
             'services' => ServiceTransformer::collection($this->whenLoaded('services')),
             'category' => new CategoryTransformer($this->whenLoaded('category')),

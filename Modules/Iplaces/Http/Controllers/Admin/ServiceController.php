@@ -34,7 +34,7 @@ class ServiceController extends AdminBaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         $services = $this->service->all();
 
@@ -44,7 +44,7 @@ class ServiceController extends AdminBaseController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         $statuses = $this->status->lists();
         $servtypes = $this->servtype->lists();
@@ -56,7 +56,7 @@ class ServiceController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateServiceRequest $request): Response
+    public function store(CreateServiceRequest $request)
     {
         try {
             $this->service->create($request->all());
@@ -74,7 +74,7 @@ class ServiceController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service): Response
+    public function edit(Service $service)
     {//dd($service);
         //$services = $this->service->paginate(20);
         $statuses = $this->status->lists();
@@ -86,7 +86,7 @@ class ServiceController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Service $service, UpdateServiceRequest $request): Response
+    public function update(Service $service, UpdateServiceRequest $request)
     {
         try {
             $this->service->update($service, $request->all());
@@ -104,7 +104,7 @@ class ServiceController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service): Response
+    public function destroy(Service $service)
     {
         try {
             $this->service->destroy($service);

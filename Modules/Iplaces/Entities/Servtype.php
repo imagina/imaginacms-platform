@@ -26,7 +26,7 @@ class Servtype
      * Get the available statuses
      */
     /*listar*/
-    public function lists(): array
+    public function lists()
     {
         return $this->servtypes;
     }
@@ -34,7 +34,7 @@ class Servtype
     /**
      * Get the post status
      */
-    public function get(int $statusId): string
+    public function get($statusId)
     {
         if (isset($this->servtypes[$statusId])) {
             return $this->servtypes[$statusId];

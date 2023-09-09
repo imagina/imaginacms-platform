@@ -24,7 +24,7 @@ class SpacePresenter extends Presenter
     /**
      * Get the post status
      */
-    public function status(): string
+    public function status()
     {
         return $this->status->get($this->entity->status);
     }
@@ -32,7 +32,7 @@ class SpacePresenter extends Presenter
     /**
      * Getting the label class for the appropriate status
      */
-    public function statusLabelClass(): string
+    public function statusLabelClass()
     {
         switch ($this->entity->status) {
             case Status::INACTIVE:
