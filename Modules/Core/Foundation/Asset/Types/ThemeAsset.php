@@ -17,7 +17,7 @@ class ThemeAsset implements AssetType
     /**
      * Get the URL
      */
-    public function url(): string
+    public function url()
     {
         return Theme::url($this->getPath());
     }

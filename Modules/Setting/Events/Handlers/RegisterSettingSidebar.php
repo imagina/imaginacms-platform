@@ -12,7 +12,7 @@ class RegisterSettingSidebar extends AbstractAdminSidebar
     /**
      * Method used to define your sidebar menu groups and items
      */
-    public function extendWith(Menu $menu): Menu
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->item(trans('setting::settings.title.settings'), function (Item $item) {

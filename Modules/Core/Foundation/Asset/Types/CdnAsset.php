@@ -16,7 +16,7 @@ class CdnAsset implements AssetType
     /**
      * Get the URL
      */
-    public function url(): string
+    public function url()
     {
         return Arr::get($this->path, 'cdn');
     }
