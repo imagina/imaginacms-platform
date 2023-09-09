@@ -9,7 +9,7 @@ class ThemeServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register(): void
+    public function register()
     {
         $this->registerAllThemes();
         $this->setActiveTheme();
@@ -38,7 +38,7 @@ class ThemeServiceProvider extends ServiceProvider
     /**
      * Check if we are in the administration
      */
-    private function inAdministration(): bool
+    private function inAdministration()
     {
         $segment = config('laravellocalization.hideDefaultLocaleInURL', false) ? 1 : 2;
 

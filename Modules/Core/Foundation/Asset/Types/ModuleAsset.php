@@ -17,7 +17,7 @@ class ModuleAsset implements AssetType
     /**
      * Get the URL
      */
-    public function url(): string
+    public function url()
     {
         return Module::asset($this->getPath());
     }
