@@ -30,7 +30,7 @@ class CityController extends AdminBaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         $cities = $this->city->all();
 
@@ -40,7 +40,7 @@ class CityController extends AdminBaseController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         $filter = json_decode(json_encode(['country_id' => 48]));
         $provinces = $this->province->index(null, null, $filter, [], []);
@@ -51,7 +51,7 @@ class CityController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateCityRequest $request): Response
+    public function store(CreateCityRequest $request)
     {
         try {
             $this->city->create($request->all());

@@ -4,22 +4,30 @@ namespace Modules\Iplaces\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Support\Str;
+use Modules\Iplaces\Entities\Category;
+use Modules\Iplaces\Entities\Schedule;
+use Modules\Iplaces\Entities\Zone;
 use Laracasts\Presenter\PresentableTrait;
-use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Iplaces\Presenters\PlacePresenter;
+use Modules\Iplaces\Events\PlaceWasCreated;
 use Modules\Core\Traits\NamespacedEntity;
+use Modules\Iplaces\Entities\City as Site;
 use Modules\Ilocations\Entities\City;
 use Modules\Ilocations\Entities\Province;
-use Modules\Iplaces\Entities\City as Site;
-use Modules\Iplaces\Presenters\PlacePresenter;
-use Modules\Isite\Traits\RevisionableTrait;
+use Modules\Iplaces\Entities\Range;
 use Modules\Media\Support\Traits\MediaRelation;
+use Modules\Media\Entities\File;
 use Modules\Tag\Contracts\TaggableInterface;
 use Modules\Tag\Traits\TaggableTrait;
+use Modules\Core\Support\Traits\AuditTrait;
+use Modules\Isite\Traits\RevisionableTrait;
+use Modules\Ischedulable\Support\Traits\Schedulable;
 
-class Place extends Model implements TaggableInterface
+class Place extends CrudModel implements TaggableInterface
 {
-    use Translatable, PresentableTrait, NamespacedEntity, MediaRelation, TaggableTrait, AuditTrait, RevisionableTrait;
+  use Translatable, PresentableTrait, NamespacedEntity, Schedulable, MediaRelation, TaggableTrait, AuditTrait, RevisionableTrait;
 
     public $transformer = 'Modules\Iplaces\Transformers\PlaceTransformer';
 
@@ -69,7 +77,6 @@ class Place extends Model implements TaggableInterface
         'validated',
         'order',
         'options',
-        'schedules',
     ];
 
     protected $fakeColumns = ['options', 'address'];
@@ -145,16 +152,6 @@ class Place extends Model implements TaggableInterface
     public function province()
     {
         return $this->belongsTo(Province::class);
-    }
-
-    public function schedule()
-    {
-        return $this->belongsTo(Schedule::class);
-    }
-
-    public function schedules()
-    {
-        return $this->belongstoMany(Schedule::class, 'iplaces__place_schedule');
     }
 
     /*

@@ -31,7 +31,11 @@ class AssetPublisher
         return $this;
     }
 
-    public function setRepository($repository): static
+    /**
+     * @param $repository
+     * @return $this
+     */
+    public function setRepository($repository)
     {
         $this->repository = $repository;
 
@@ -58,7 +62,7 @@ class AssetPublisher
     /**
      * Get the original source path
      */
-    public function getSourcePath(): string
+    public function getSourcePath()
     {
         return $this->theme->getPath().'/assets';
     }
@@ -66,7 +70,7 @@ class AssetPublisher
     /**
      * Get the destination path
      */
-    public function getDestinationPath(): string
+    public function getDestinationPath()
     {
         return $this->repository->getAssetPath($this->theme->getLowerName());
     }

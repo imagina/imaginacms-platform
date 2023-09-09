@@ -2,8 +2,6 @@
 
 namespace Modules\Core\Foundation\Theme;
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 
@@ -25,7 +23,11 @@ class ThemeManager implements \Countable
         $this->path = $path;
     }
 
-    public function find(string $name): ?Theme
+    /**
+     * @param  string     $name
+     * @return Theme|null
+     */
+    public function find($name)
     {
         foreach ($this->all() as $theme) {
             if ($theme->getLowerName() == strtolower($name)) {
@@ -37,7 +39,7 @@ class ThemeManager implements \Countable
     /**
      * Return all available themes
      */
-    public function all(): array
+    public function all()
     {
         $themes = [];
         if (! $this->getFinder()->isDirectory($this->path)) {
@@ -59,7 +61,7 @@ class ThemeManager implements \Countable
     /**
      * Get only the public themes
      */
-    public function allPublicThemes(): array
+    public function allPublicThemes()
     {
         $themes = [];
         if (! $this->getFinder()->isDirectory($this->path)) {
@@ -84,7 +86,7 @@ class ThemeManager implements \Countable
     /**
      * Get the theme directories
      */
-    private function getDirectories(): array
+    private function getDirectories()
     {
         return $this->getFinder()->directories($this->path);
     }
@@ -92,17 +94,23 @@ class ThemeManager implements \Countable
     /**
      * Return the theme assets path
      */
-    public function getAssetPath(string $theme): string
+    public function getAssetPath($theme)
     {
         return public_path($this->getConfig()->get('themify.themes_assets_path').'/'.$theme);
     }
 
-    protected function getFinder(): Filesystem
+    /**
+     * @return \Illuminate\Filesystem\Filesystem
+     */
+    protected function getFinder()
     {
         return $this->app['files'];
     }
 
-    protected function getConfig(): Repository
+    /**
+     * @return \Illuminate\Config\Repository
+     */
+    protected function getConfig()
     {
         return $this->app['config'];
     }

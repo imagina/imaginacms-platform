@@ -28,7 +28,7 @@ class RegisterIplacesSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    public function extendWith(Menu $menu): Menu
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('iplaces::common.iplaces'), function (Item $item) {

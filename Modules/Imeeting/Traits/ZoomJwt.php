@@ -62,7 +62,7 @@ trait ZoomJWT
     /**
      *  POST - REQUEST
      */
-    public function requestPost(string $path, array $body, $dataRequest)
+    public function requestPost(string $path, array $body = [],$dataRequest)
     {
         $url = $this->getApiUrl();
         $request = $this->getRequestWithHeaderToken($dataRequest);
@@ -73,7 +73,7 @@ trait ZoomJWT
     /**
      *  GET - REQUEST
      */
-    public function requestGet(string $path, array $body, $dataRequest)
+    public function requestGet(string $path, array $body = [],$dataRequest)
     {
         $url = $this->getApiUrl();
         $request = $this->getRequestWithHeaderToken($dataRequest);
