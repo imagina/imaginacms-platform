@@ -50,7 +50,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      *
      * @param  array|string  $modules
      */
-    public function moduleSettings($modules): array
+    public function moduleSettings($modules)
     {
         // return $this->remember(function () use ($modules) {
         return $this->repository->moduleSettings($modules);
@@ -74,7 +74,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      *
      * @return mixed
      */
-    public function findByModule(string $module)
+    public function findByModule($module)
     {
         return $this->remember(function () use ($module) {
             return $this->repository->findByModule($module);
@@ -86,7 +86,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
      *
      * @return mixed
      */
-    public function get(string $settingName)
+    public function get($settingName)
     {
         return $this->remember(function () use ($settingName) {
             return $this->repository->get($settingName);
@@ -96,7 +96,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     /**
      * Return the translatable module settings
      */
-    public function translatableModuleSettings($module): array
+    public function translatableModuleSettings($module)
     {
         return $this->remember(function () use ($module) {
             return $this->repository->translatableModuleSettings($module);
@@ -106,7 +106,7 @@ class CacheSettingDecorator extends BaseCacheDecorator implements SettingReposit
     /**
      * Return the non translatable module settings
      */
-    public function plainModuleSettings($module): array
+    public function plainModuleSettings($module)
     {
         return $this->remember(function () use ($module) {
             return $this->repository->plainModuleSettings($module);

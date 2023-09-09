@@ -4,19 +4,26 @@ namespace Modules\Isite\Providers;
 
 use Anhskohbo\NoCaptcha\NoCaptcha;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Core\Traits\CanPublishConfiguration;
+
 use Modules\Isite\Console\GenerateSitemapCommand;
 use Modules\Isite\Console\TenantModuleMigrateCommand;
 use Modules\Isite\Console\TenantsScheduleCommand;
+use Modules\Isite\Console\TenantAiCommand;
+
 use Modules\Isite\Events\Handlers\RegisterIsiteSidebar;
 use Modules\Isite\Http\Middleware\CaptchaMiddleware;
-use Modules\Isite\Http\Middleware\CheckIp;
+use Illuminate\Support\Facades\Blade;
+use Livewire\Livewire;
+use Modules\Isite\Http\Middleware\InitializeOrganizationByRequestDataMiddleware;
 use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Modules\Isite\View\Components\Multilang;
+use Modules\Isite\View\Components\Categorylist;
+
+use Modules\Isite\Http\Middleware\CheckIp;
 
 class IsiteServiceProvider extends ServiceProvider
 {

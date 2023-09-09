@@ -9,7 +9,7 @@ class LocaleCodeRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -17,7 +17,7 @@ class LocaleCodeRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'order_by' => ['required', 'string'],

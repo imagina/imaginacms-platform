@@ -21,7 +21,7 @@ class TranslationRevisions
     /**
      * Get revisions for the given key and locale.
      */
-    public function get(string $key, string $locale): JsonResponse
+    public function get($key, $locale)
     {
         $translation = $this->translation->findTranslationByKey($key);
         $translation = $translation->translate($locale);
@@ -40,7 +40,7 @@ class TranslationRevisions
     /**
      * Format revision history.
      */
-    private function formatRevisionHistory(Collection $revisionHistory): array
+    private function formatRevisionHistory(Collection $revisionHistory)
     {
         return $revisionHistory->reduce(function ($formattedHistory, $history) {
             $formattedHistory[] = view('translation::admin.translations.partials.revision', compact('history'))->render();
