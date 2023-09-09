@@ -73,4 +73,6 @@ return [
         // Read module views from /resources/views/asgard/<module-name>
         'resources' => false,
     ],
+
+    'userstamping' => true,
 ];

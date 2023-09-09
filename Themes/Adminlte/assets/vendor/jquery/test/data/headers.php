@@ -4,7 +4,7 @@ header( "Sample-Header: Hello World" );
 header( "Empty-Header: " );
 header( "Sample-Header2: Hello World 2" );
 
-$headers = [];
+$headers = array();
 
 foreach( $_SERVER as $key => $value ) {
 
