@@ -42,7 +42,7 @@ class ModuleMigrator implements SetupScript
             $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
         }
 
-        foreach ($this->modules as $module) {
+        foreach (config("asgard.core.config.CoreModules") as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:migrate', ['module' => $module]);
 
