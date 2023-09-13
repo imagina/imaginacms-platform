@@ -28,6 +28,7 @@ return [
         'ibuilder',
         'ilocations',
         'igamification',
+      
     ],
 
     /*

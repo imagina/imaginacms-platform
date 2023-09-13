@@ -29,9 +29,11 @@ class ModuleMigrator implements SetupScript
         'Iprofile',
         'Ilocations',
         'Iredirect',
+      'Igamification',
+      
     ];
 
-    /**
+    /**Q
      * Fire the install script
      *
      * @return mixed
@@ -42,7 +44,7 @@ class ModuleMigrator implements SetupScript
             $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
         }
 
-        foreach (config("asgard.core.config.CoreModules") as $module) {
+        foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:migrate', ['module' => $module]);
 
