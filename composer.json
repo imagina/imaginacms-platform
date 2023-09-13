@@ -14,11 +14,15 @@
         "php": "^8.1",
         "anhskohbo/no-captcha": "^3.5",
         "astrotomic/laravel-translatable": "^11.12",
+        "barryvdh/laravel-dompdf": "^2.0",
         "cartalyst/sentinel": "^7.0",
-        "cviebrock/eloquent-sluggable": "^10.0",
+        "composer/installers": "~1.0",
+        "cviebrock/eloquent-sluggable": "^8.0|^9.0|^10.0",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
+        "hisorange/browser-detect": "^4.4.0",
         "imagina/laravel-menus": "^10.0",
+        "imagina/laravel-sidebar": "^3.1",
         "imagina/stylist": "^4.0",
         "intervention/image": "^2.5",
         "jantinnerezo/livewire-alert": "^2.2",
@@ -29,30 +33,24 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "laravelcollective/html": "^6.4",
-        "livewire/livewire": "^2.11",
-        "imagina/laravel-sidebar": "^3.1",
-        "mcamara/laravel-localization": "^1.7",
-        "nwidart/laravel-modules": "^8.0",
-        "pusher/pusher-php-server": "^7.2",
-        "ramsey/uuid": "^4.1",
-        "symfony/yaml": "^6.2",
-        "tightenco/ziggy": "^0.9.4",
-        "typicms/nestablecollection": "^3.0",
-        "venturecraft/revisionable": "^1.40",
-        "yajra/laravel-datatables-oracle": "^10.3",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.11",
-        "jantinnerezo/livewire-alert": "^2.2",
-        "spatie/laravel-responsecache": "^7.4",
-        "hisorange/browser-detect": "^4.4.0",
         "maatwebsite/excel": "^3.1",
-        "stancl/tenancy": "^3.7",
-        "barryvdh/laravel-dompdf": "^2.0",
+        "mcamara/laravel-localization": "^1.7",
+        "nwidart/laravel-modules": "^10.0",
+        "predis/predis": "^2.2",
+        "pusher/pusher-php-server": "^7.2",
+        "ramsey/uuid": "^4.1",
+        "sentry/sentry-laravel": "^3.8",
+        "spatie/laravel-responsecache": "^7.4",
         "spatie/laravel-sitemap": "^6.3",
         "spatie/robots-txt": "^2.0",
-        "yajra/laravel-datatables-oracle": "^10.4",
+        "stancl/tenancy": "^3.7",
+        "symfony/yaml": "^6.2",
         "tightenco/ziggy": "^1.5",
-        "cviebrock/eloquent-sluggable":"^8.0|^9.0|^10.0"
+        "typicms/nestablecollection": "^3.0",
+        "venturecraft/revisionable": "^1.40",
+        "yajra/laravel-datatables-oracle": "^10.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
@@ -63,7 +61,6 @@
         "nunomaduro/collision": "^7.0",
         "orchestra/testbench": "^8.5",
         "phpunit/phpunit": "^9.5.10",
-        "predis/predis": "^1.1",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -92,12 +89,14 @@
         "post-install-cmd": [
             "@php artisan clear-compiled",
             "ln -s ../Themes/Adminlte/iadmin/ public/iadmin",
-            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme"
+            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme",
+            "php artisan module:seed isite"
         ],
         "pre-update-cmd": [],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan package:discover"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -109,8 +108,13 @@
         "optimize-autoloader": true,
         "platform": {
             "php": "8.1"
+        },
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "composer/installers": true
         }
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+
 }
