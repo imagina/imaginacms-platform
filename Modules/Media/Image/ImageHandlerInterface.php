@@ -1,7 +1,7 @@
 <?php
 
 namespace Modules\Media\Image;
-
+use \Intervention\Image\Image;
 interface ImageHandlerInterface
 {
     /**
@@ -11,5 +11,5 @@ interface ImageHandlerInterface
      * @param  array  $options
      * @return \Intervention\Image\Image
      */
-    public function handle($image, $options);
+    public function handle(Image $image, array $options): Image;
 }
