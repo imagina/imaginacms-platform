@@ -1,7 +1,7 @@
 <?php
 
 namespace Modules\Media\Image;
-
+use \Intervention\Image\Image;
 interface ImageHandlerInterface
 {
     /**
