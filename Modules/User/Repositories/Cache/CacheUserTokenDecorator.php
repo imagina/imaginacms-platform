@@ -24,7 +24,7 @@ class CacheUserTokenDecorator extends BaseCacheDecorator implements UserTokenRep
     /**
      * Get all tokens for the given user
      */
-    public function allForUser(int $userId): Collection
+    public function allForUser($userId)
     {
         $this->remember(function () use ($userId) {
             return $this->repository->allForUser($userId);
