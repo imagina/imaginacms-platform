@@ -18,7 +18,7 @@ class CacheTagDecorator extends BaseCacheDecorator implements TagRepository
     /**
      * Get all the tags in the given namespace
      */
-    public function allForNamespace(string $namespace): Collection
+    public function allForNamespace($namespace)
     {
         return $this->remember(function () use ($namespace) {
             return $this->repository->allForNamespace($namespace);

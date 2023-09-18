@@ -15,7 +15,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
         $this->repository = $notification;
     }
 
-    public function latestForUser(int $userId): Collection
+    public function latestForUser($userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -31,7 +31,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Mark the given notification id as "read"
      */
-    public function markNotificationAsRead(int $notificationId): bool
+    public function markNotificationAsRead($notificationId)
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -41,7 +41,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Get all the notifications for the given user id
      */
-    public function allForUser(int $userId): Collection
+    public function allForUser($userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -57,7 +57,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Get all the read notifications for the given user id
      */
-    public function allReadForUser(int $userId): Collection
+    public function allReadForUser($userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -73,7 +73,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Get all the unread notifications for the given user id
      */
-    public function allUnreadForUser(int $userId): Collection
+    public function allUnreadForUser($userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -89,7 +89,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Delete all the notifications for the given user
      */
-    public function deleteAllForUser(int $userId): bool
+    public function deleteAllForUser($userId)
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -99,7 +99,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Mark all the notifications for the given user as read
      */
-    public function markAllAsReadForUser(int $userId): bool
+    public function markAllAsReadForUser($userId)
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -109,7 +109,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Get all the read notifications for the given filters
      */
-    public function getItemsBy(array $params): Collection
+    public function getItemsBy($params)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -125,7 +125,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Get the read notification for the given filters
      */
-    public function getItem(string $criteria, array $params = false): Collection
+    public function getItem($criteria, $params = false): Collection
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -141,7 +141,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Update the notifications for the given ids
      */
-    public function updateItems(array $criterias, array $data): bool
+    public function updateItems($criterias, $data)
     {
         $this->cache->tags($this->entityName)->flush();
 
@@ -151,7 +151,7 @@ class CacheNotificationDecorator extends BaseCacheDecorator implements Notificat
     /**
      * Delete the notifications for the given ids
      */
-    public function deleteItems(array $criterias): bool
+    public function deleteItems($criterias)
     {
         $this->cache->tags($this->entityName)->flush();
 

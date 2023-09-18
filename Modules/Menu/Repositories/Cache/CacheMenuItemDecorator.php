@@ -24,7 +24,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
      *
      * @return mixed
      */
-    public function rootsForMenu($menuId)
+    public function rootsForMenu(int $menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->rootsForMenu($menuId);

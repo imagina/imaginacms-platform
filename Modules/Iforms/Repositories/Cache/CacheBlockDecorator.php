@@ -17,7 +17,7 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     /**
      * List or resources
      */
-    public function getItemsBy($params): collection
+    public function getItemsBy($params)
     {
         return $this->remember(function () use ($params) {
             return $this->repository->getItemsBy($params);
@@ -27,7 +27,7 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     /**
      * find a resource by id or slug
      */
-    public function getItem($criteria, $params = false): object
+    public function getItem($criteria, $params = false)
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);

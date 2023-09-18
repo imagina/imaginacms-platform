@@ -16,6 +16,7 @@ yarn.lock
 .idea
 /storage
 
+
 #Ignore /public but not...
 /public/themes/adminlte
 /public/themes/flatly
@@ -34,3 +35,4 @@ yarn.lock
 
 #node_modules in every folder
 node_modules
+sftp-config.json

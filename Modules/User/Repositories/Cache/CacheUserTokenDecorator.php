@@ -31,7 +31,7 @@ class CacheUserTokenDecorator extends BaseCacheDecorator implements UserTokenRep
         });
     }
 
-    public function generateFor(int $userId): UserToken
+    public function generateFor($userId)
     {
         $this->clearCache();
 
