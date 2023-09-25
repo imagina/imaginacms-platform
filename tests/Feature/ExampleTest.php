@@ -6,12 +6,10 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
+   
     public function testBasicTest(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/nosotros');
 
         $response->assertStatus(200);
     }

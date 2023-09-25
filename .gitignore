@@ -36,3 +36,4 @@ yarn.lock
 #node_modules in every folder
 node_modules
 sftp-config.json
+.vscode/sftp.json
