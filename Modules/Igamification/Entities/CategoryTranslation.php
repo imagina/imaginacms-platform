@@ -20,7 +20,7 @@ class CategoryTranslation extends Model
 
     protected $table = 'igamification__category_translations';
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

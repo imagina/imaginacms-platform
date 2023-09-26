@@ -5,35 +5,35 @@ use Illuminate\Routing\Router;
 Route::prefix('/providers')->group(function (Router $router) {
     //Route create
     $router->post('/', [
-        'as' => 'api.notification.create',
+        'as' => 'api.provider.create',
         'uses' => 'ProviderApiController@create',
         'middleware' => ['auth:api'],
     ]);
 
     //Route index
     $router->get('/', [
-        'as' => 'api.notification.get.items.by',
+        'as' => 'api.provider.get.items.by',
         'uses' => 'ProviderApiController@index',
         'middleware' => ['auth:api'],
     ]);
 
     //Route show
     $router->get('/{criteria}', [
-        'as' => 'api.notification.get.item',
+        'as' => 'api.provider.get.item',
         'uses' => 'ProviderApiController@show',
         'middleware' => ['auth:api'],
     ]);
 
     //Route update
     $router->put('/{criteria}', [
-        'as' => 'api.notification.update',
+        'as' => 'api.provider.update',
         'uses' => 'ProviderApiController@update',
         'middleware' => ['auth:api'],
     ]);
 
     //Route delete
     $router->delete('/{criteria}', [
-        'as' => 'api.notification.delete',
+        'as' => 'api.provider.delete',
         'uses' => 'ProviderApiController@delete',
         'middleware' => ['auth:api'],
     ]);

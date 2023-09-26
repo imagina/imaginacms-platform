@@ -17,7 +17,7 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
     /**
      * Find the saved state of widgets for the given user id
      */
-    public function findForUser(int $userId): string
+    public function findForUser($userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -35,7 +35,7 @@ class CacheWidgetDecorator extends BaseCacheDecorator implements WidgetRepositor
      *
      * @return mixed|void
      */
-    public function updateOrCreateForUser(array $widgets, $userId)
+    public function updateOrCreateForUser($widgets, $userId)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])

@@ -15,7 +15,7 @@ class AssetFactoryTest extends BaseTestCase
 
     public function setUp(): void
     {
-        parent::__construct();
+        //parent::__construct();
         $this->refreshApplication();
         $this->assetFactory = app(AssetTypeFactory::class);
     }

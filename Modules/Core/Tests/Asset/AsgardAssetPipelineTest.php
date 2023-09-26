@@ -19,7 +19,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
 
     public function setUp(): void
     {
-        parent::__construct();
+        //parent::__construct();
         $this->refreshApplication();
         $this->assetPipeline = new AsgardAssetPipeline($this->app['Modules\Core\Foundation\Asset\Manager\AssetManager']);
         $this->assetManager = $this->app['Modules\Core\Foundation\Asset\Manager\AssetManager'];

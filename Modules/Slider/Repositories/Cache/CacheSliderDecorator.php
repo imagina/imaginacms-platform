@@ -22,7 +22,7 @@ class CacheSliderDecorator extends BaseCacheDecorator implements SliderRepositor
     /**
      * Get all online sliders
      */
-    public function allOnline(): object
+    public function allOnline()
     {
         return $this->cache
             ->tags($this->entityName, 'global')

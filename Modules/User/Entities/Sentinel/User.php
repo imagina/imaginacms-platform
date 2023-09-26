@@ -2,7 +2,6 @@
 
 namespace Modules\User\Entities\Sentinel;
 
-
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Auth\Authenticatable;
@@ -136,13 +135,11 @@ class User extends EloquentUser implements UserInterface, AuthenticatableContrac
             \Modules\Iprofile\Entities\Field::class);
     }
 
-
     public function settings()
     {
         return $this->hasMany(
             \Modules\Iprofile\Entities\Setting::class, 'related_id')->where('entity_name', 'user');
     }
-
 
     public function departments()
     {

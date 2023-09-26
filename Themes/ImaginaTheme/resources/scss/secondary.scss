@@ -1,0 +1,20 @@
+@import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "mixins";
+@import "../../../../Modules/Isite/Resources/scss/mixins";
+
+@import "extra";
+@import "modules-combined";
+@import "footer";
+
+//External css libraries. ~ = node_modules/
+@import "~animate.css/animate.css";
+
+@import "~owl.carousel/dist/assets/owl.carousel.css";
+@import "~owl.carousel/dist/assets/owl.theme.default.min.css";
+@import "~@fancyapps/fancybox/dist/jquery.fancybox.css";
+
+//Test the compilation
+//body {background-color:#AFD34F !important;}

@@ -27,7 +27,7 @@ class CacheOrderStatusDecorator extends BaseCacheDecorator implements OrderStatu
   /**
    * find a resource by id or slug
    */
-  public function getItem($criteria, $params = false): object
+  public function getItem($criteria, $params = false)
   {
       return $this->remember(function () use ($criteria, $params) {
           return $this->repository->getItem($criteria, $params);

@@ -1,0 +1,15 @@
+// Your variable overrides go here, e.g.:
+//$h1-font-size: 3rem;
+
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+//Bootswatch Theme
+//@import "~bootswatch/dist/journal/bootswatch";
+//@import "~bootswatch/dist/journal/bootswatch";
+@import "mixins";
+@import "../../../../Modules/Isite/Resources/scss/mixins";
+@import "general";
+@import "header";
+
+//Test the compilation
+//body {background-color:#FF0000 !important;}
