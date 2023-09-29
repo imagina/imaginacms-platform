@@ -50,23 +50,7 @@
         "tightenco/ziggy": "^1.5",
         "typicms/nestablecollection": "^3.0",
         "venturecraft/revisionable": "^1.40",
-        "yajra/laravel-datatables-oracle": "^10.4",
-        "authorizenet/authorizenet": "^2.0.2",
-        "braintree/braintree_php": "^6.13",
-        "openpay/sdk": "^3.0",
-        "paypal/rest-api-sdk-php": "^1.14",
-        "stripe/stripe-php": "^7.128",
-        "spatie/laravel-feed": "^4.3",
-        "paragonie/random_compat":"2.*",
-        "laravel/socialite": "^5.9.*",
-        "fruitcake/laravel-cors": "^2.0",
-        "jeroendesloovere/vcard": "^1.7",
-        "guzzlehttp/psr7": "^2.6.*",
-        "nwidart/laravel-menus": "^7.0",
-        "fzaninotto/faker": "^1.9.*",
-        "kawankoding/laravel-fcm": "^0.2.0",
-        "simplesoftwareio/simple-qrcode": "^4.*",
-        "league/csv": "^9.11.0"
+        "yajra/laravel-datatables-oracle": "^10.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
@@ -80,7 +64,7 @@
         "spatie/laravel-ignition": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.27.0",
         "scrutinizer/ocular": "^1.9",
-        "spatie/phpunit-snapshot-assertions": "^5.1.*"
+        "spatie/phpunit-snapshot-assertions": "^5.1"
     },
     "autoload": {
         "psr-4": {

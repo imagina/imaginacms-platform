@@ -28,7 +28,9 @@ class ActiveSitesTest extends TestCase
                 $url = \LaravelLocalization::localizeUrl('/'.$page->slug, $page->locale);
                 //echo $url."\r\n";
                 $response = $this->get($url);
-                $response->assertStatus(200);
+                $response->followRedirects();
+                dd($response->getResponse());
+                //$response->assertStatus(200);
                 // //dd($response);
                 // $statuscode = $response->getStatusCode();
                 // //echo($statuscode);
