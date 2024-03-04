@@ -74,5 +74,5 @@ return [
     /*
      * You can define routes to pass to the function $request->is(). Example (backend*) (auth*)
      */
-    'no_cache' => ['backend*', 'auth*', 'isearch*', 'find-redirect*', 'index.php/*'],
+  'no_cache' => array('backend*', 'auth*', 'isearch*', 'find-redirect*', 'index.php/*')
 ];
