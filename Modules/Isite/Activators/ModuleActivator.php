@@ -109,7 +109,12 @@ class ModuleActivator implements ActivatorInterface
   
   public function findModuleByName($name)
   {
+
     $allModules = $this->tenantModules();
+
+    if (!config('asgard.core.core.is_installed')) {
+      return [];
+    }
 
     //cached module entity for 30 days
     $module = $this->cache->tags($this->getTag())
@@ -256,7 +261,11 @@ class ModuleActivator implements ActivatorInterface
   
   private function tenantModules()
   {
-   
+
+    if (!config('asgard.core.core.is_installed')) {
+      return [];
+    }
+
     $domain = $this->currentDomain();
 
     return $this->cache->tags($this->getTag())
