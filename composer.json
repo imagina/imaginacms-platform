@@ -6,7 +6,7 @@
         "asgardcms",
         "multilingual",
         "laravel",
-        "laravel8"
+        "laravel10"
     ],
     "license": "MIT",
     "type": "project",
@@ -82,7 +82,7 @@
     "extra": {
         "branch-alias": {
             "dev-master": "4.0.x-dev",
-            "dev-imaginacms8.x": "v8.x-dev"
+            "dev-imaginacms10.x": "v10.x-dev"
         },
         "laravel": {
             "dont-discover": []
