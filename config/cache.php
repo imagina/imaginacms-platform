@@ -20,6 +20,17 @@ return [
 
     'default' => env('CACHE_DRIVER', 'file'),
 
+  /*
+       |--------------------------------------------------------------------------
+       | Default Cache Time
+       |--------------------------------------------------------------------------
+       |
+       | This option controls the default cache time that will use the BaseCacheDecorator
+       | in the Core Module, if this config doesn't exist, the default time will be 2592000 - it means 30 days
+       |
+       */
+  'time' => env("CACHE_TIME", 2592000),
+
     /*
     |--------------------------------------------------------------------------
     | Cache Stores

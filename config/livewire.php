@@ -81,9 +81,7 @@ return [
     |
     */
 
-    'middleware_group' => ['web','universal',
-      \Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain::class
-    ],
+    'middleware_group' => 'web',
 
     /*
     |--------------------------------------------------------------------------
