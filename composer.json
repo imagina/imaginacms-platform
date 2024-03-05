@@ -92,8 +92,7 @@
         "post-install-cmd": [
             "@php artisan clear-compiled",
             "ln -s ../Themes/Adminlte/iadmin/ public/iadmin",
-            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme",
-            "php artisan module:seed isite"
+            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme"
         ],
         "pre-update-cmd": [],
         "post-autoload-dump": [
