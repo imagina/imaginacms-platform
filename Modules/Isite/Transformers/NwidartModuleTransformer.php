@@ -11,13 +11,13 @@ class NwidartModuleTransformer extends JsonResource
      */
     public function toArray($request)
     {
-        $title = $this->getName() == 'Icustom' ? trans('isite::isite.icustom') : trans($this->getAlias().'::'.$this->getAlias().'.name');
+      $title = $this->getName() == 'Icustom' ? trans('isite::isite.icustom') : trans($this->get('alias').'::'.$this->get('alias').'.name');
 
         $data = [
             'name' => $this->getName(),
             'enabled' => $this->isEnabled(),
             'title' => $title,
-            'alias' => $this->getAlias(),
+            'alias' => $this->get('alias'),
         ];
 
         return $data;
