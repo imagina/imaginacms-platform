@@ -80,7 +80,7 @@ class Category extends CrudModel
     public function getOptionsAttribute($value)
     {
         try {
-            return json_decode(json_decode($value));
+            return json_decode($value);
         } catch (\Exception $e) {
             return json_decode($value);
         }

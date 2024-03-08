@@ -32,7 +32,7 @@ class UniqueSlugRule implements Rule
      *
      * @param  mixed  $value
      */
-    public function passes(string $attribute, $value): bool
+    public function passes($attribute, $value): bool
     {
         $explodeAttributes = explode('.', $attribute);
         $slugs = \DB::table($this->table)
