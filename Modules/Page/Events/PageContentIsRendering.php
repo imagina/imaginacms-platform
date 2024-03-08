@@ -17,12 +17,12 @@ class PageContentIsRendering
         $this->original = $body;
     }
 
-    public function getBody(): string
+    public function getBody()
     {
         return $this->body;
     }
 
-    public function setBody(string $body)
+    public function setBody($body)
     {
         $this->body = $body;
     }
