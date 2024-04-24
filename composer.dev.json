@@ -36,7 +36,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.11",
         "maatwebsite/excel": "^3.1",
-        "mcamara/laravel-localization": "^1.7",
+        "mcamara/laravel-localization": "^1.8",
         "nwidart/laravel-modules": "^10.0",
         "predis/predis": "^2.2",
         "pusher/pusher-php-server": "^7.2",
@@ -84,16 +84,16 @@
         "imagina/icommercepayzen-module": "v10.x-dev",
         "imagina/icommercepricelist-module": "v10.x-dev",
         "imagina/icommercestripe-module": "v10.x-dev",
-        "imagina/icommercewompi -module": "v10.x-dev",
+        "imagina/icommercewompi-module": "v10.x-dev",
         "imagina/icommercexpay-module": "v10.x-dev",
-        "imagina/icredit -module": "v10.x-dev",
+        "imagina/icredit-module": "v10.x-dev",
         "imagina/icurrency-module": "v10.x-dev",
         "imagina/idocs-module": "v10.x-dev",
         "imagina/ifeed-module": "v10.x-dev",
         "imagina/ifillable-module": "v10.x-dev",
         "imagina/ifollow-module": "v10.x-dev",
         "imagina/iforms-module": "v10.x-dev",
-        "imagina/igamification -module": "v10.x-dev",
+        "imagina/igamification-module": "v10.x-dev",
         "imagina/ihelpers-module": "v10.x-dev",
         "imagina/ilocations-module": "v10.x-dev",
         "imagina/imeeting-module": "v10.x-dev",
@@ -107,7 +107,7 @@
         "imagina/ischedulable-module": "v10.x-dev",
         "imagina/isearch-module": "v10.x-dev",
         "imagina/isite-module": "v10.x-dev",
-        "imagina/iwhmcs-module": "v10.x-dev",
+        "imagina/iwhmcs": "v10.x-dev",
         "imagina/media-module": "v10.x-dev",
         "imagina/menu-module": "v10.x-dev",
         "imagina/notification-module": "v10.x-dev",
@@ -190,7 +190,7 @@
             "composer/installers": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 
 }
