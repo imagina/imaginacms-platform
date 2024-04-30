@@ -119,6 +119,7 @@
         "imagina/tag-module": "v10.x-dev",
         "imagina/translation-module": "v10.x-dev",
         "imagina/user-module": "v10.x-dev",
+        "imagina/iwebhooks-module": "v10.x-dev",
         "imagina/wishlistable-module": "v10.x-dev",
         "imagina/workshop-module": "v10.x-dev",
 
