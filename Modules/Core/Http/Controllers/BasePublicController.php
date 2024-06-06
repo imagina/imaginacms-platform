@@ -12,9 +12,7 @@ abstract class BasePublicController extends Controller
      * @var Authentication
      */
     protected $auth;
-
     public $locale;
-
     public $alternateUrls = [];
 
     public function __construct()
@@ -27,6 +25,7 @@ abstract class BasePublicController extends Controller
     /**
      * Add alternate URLs to main array and inject it to the page
      *
+     * @param array $alternateUrls
      * @return void
      */
     protected function addAlternateUrls(array $alternateUrls)

@@ -11,8 +11,10 @@ class SentinelUserSeedTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
         Model::unguard();
 

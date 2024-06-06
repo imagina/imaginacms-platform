@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Routing\Router;
-
 /** @var Router $router */
-Route::prefix('/ihelpers')->group(function (Router $router) {
+
+$router->group(['prefix' =>'/ihelpers'], function (Router $router) {
+
     $router->get('clearcache', [
         'as' => 'admin.ihelpers.clearcache',
         'uses' => 'IhelpersController@clearcache',
@@ -20,4 +21,6 @@ Route::prefix('/ihelpers')->group(function (Router $router) {
         'uses' => 'IhelpersController@sitemapPost',
         'middleware' => 'can:dashboard.index',
     ]);
+
+
 });

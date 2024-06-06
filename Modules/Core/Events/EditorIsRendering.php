@@ -10,13 +10,9 @@ class EditorIsRendering
      * @var AssetPipeline
      */
     private $assetPipeline;
-
     private $editorClass;
-
     private $editorJsPartial;
-
     private $editorCssPartial;
-
     private $editorComponents = [
         'i18n' => 'core::components.i18n.textarea',
         'normal' => 'core::components.textarea',
@@ -50,7 +46,7 @@ class EditorIsRendering
     }
 
     /**
-     * @param  mixed  $editorClass
+     * @param mixed $editorClass
      */
     public function setEditorClass($editorClass)
     {
@@ -66,7 +62,7 @@ class EditorIsRendering
     }
 
     /**
-     * @param  mixed  $editorJsPartial
+     * @param mixed $editorJsPartial
      */
     public function setEditorJsPartial($editorJsPartial)
     {
@@ -82,7 +78,7 @@ class EditorIsRendering
     }
 
     /**
-     * @param  mixed  $editorCssPartial
+     * @param mixed $editorCssPartial
      */
     public function setEditorCssPartial($editorCssPartial)
     {

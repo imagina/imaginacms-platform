@@ -37,4 +37,5 @@ class SlideOrdererTest extends BaseSliderTest
 
         $this->assertEquals($newOrderArray, $newOrderCheckArray);
     }
+
 }

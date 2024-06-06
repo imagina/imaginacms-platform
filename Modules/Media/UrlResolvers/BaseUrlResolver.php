@@ -25,18 +25,22 @@ class BaseUrlResolver
 
     /**
      * Resolve the given path based on the set filesystem
+     * @param string $path
+     * @return string
      */
-    public function resolve($path, $disk = null)
+    public function resolve($path)
     {
         $factory = app(Factory::class);
-        $disk = is_null($disk) ? $this->getConfiguredFilesystem() : $disk;
-        $adapter = $factory->disk($disk)->getDriver()->getAdapter();
+        $adapter = $factory->disk($this->getConfiguredFilesystem())->getDriver()->getAdapter();
 
         return $this->resolvers[get_class($adapter)]->resolve($adapter, $path);
     }
 
+    /**
+     * @return string
+     */
     private function getConfiguredFilesystem()
     {
-        return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
+        return config('asgard.media.config.filesystem');
     }
 }

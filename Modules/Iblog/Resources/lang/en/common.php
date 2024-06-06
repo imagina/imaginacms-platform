@@ -4,93 +4,58 @@ return [
     'iblog' => 'Blog',
 
     'button' => [
-        'read more' => 'Read more',
+        "read more"=>"Read More"
     ],
     'table' => [
     ],
     'form' => [
     ],
     'messages' => [
-        'title is required' => 'Title is required',
-        'title min 2' => 'The title must contain at least two characters',
-        'description is required' => 'Description is required',
-        'description min 2' => 'The description must contain at least two characters',
-        'summary is required' => 'The Short Description required',
-        'summary min 2' => 'Short Description must contain at least two characters',
-        'resource updated' => 'Record Updated',
-        'resource deleted' => 'Record Deleted',
-        'resource created' => 'Record Created',
+        'title is required'=>'The title is required',
+        'title min 2'=>'Title must contain at least two characters',
+        'description is required'=>'The Description is required',
+        'description min 2'=>'The description must contain at least two characters',
+        'summary is required'=>'The summary is required',
+        'summary min 2'=>'The summary must contain at least two characters',
+        'resource updated'=>'Resource Updated',
+        'resource deleted'=>'Resource Deleted',
+        'resource created'=>'Resource Created'
     ],
     'validation' => [
     ],
     'status' => [
         'draft' => 'Draft',
-        'pending' => 'Pending Review',
-        'published' => 'Publicado',
+        'pending' => 'Pending review',
+        'published' => 'Published',
         'unpublished' => 'Unpublished',
     ],
 
-    'status_text' => 'Status',
+    'status_text' => 'Estatus',
 
     'image' => 'Image',
 
     'categories' => 'Categories',
 
-    'title' => 'Title',
-    'slug' => 'Permalink:',
+    'title' => 'Títle',
+    'slug'=>'Slug',
     'description' => 'Description',
-    'metatitle' => 'Meta Title',
-    'metadescription' => 'Meta Description',
+    'meta_title' =>'Meta Title',
+    'meta_description' =>'Meta Description',
 
-    'date' => 'Date and time',
-    'optional' => '(Optional)',
+    'date'      =>  'Date and Time',
+    'optional'  =>  '(Optional)',
 
-    'summary' => 'Summary',
+    'summary' => 'Sumary',
     'content' => 'Content',
-
+    'Posted on'=>'Posted on',
     'author' => 'Author',
-    'by' => 'by',
-    'Posted on' => 'Posted on',
-    'default_category' => 'Main Category',
+    'by'=>'by',
+    'default_category' => 'Default Category',
 
-    'admin_notes' => 'Admin Notes',
-    'created_at' => 'Date Created',
+    'admin_notes' => 'Admin`s notes',
+    'created_at' => 'Creation date',
     'parent' => 'Parent',
 
-    'social' => [
-        'share' => 'Share',
-    ],
-    'crudFieldsLabels' => [
-        'urlCoder' => 'Entry url',
-    ],
-    'crudFieldsHints' => [
-        'urlCoder' => 'Choose carefully how the final url of the post would be put together',
-    ],
-    'layouts' => [
-        'group_name' => 'Templates',
-        'label_posts' => 'Blog Post Template',
-        'label_categories' => 'Template for Blog Categories',
-        'titlePostRecent' => 'Recent Posts',
-        'viewMore' => 'View More',
-        'titleRelatedPosts' => 'Related Posts',
-        'titleArticles' => 'Articles',
-        'labelArrayItemComponentsAttributesBlog' => 'Item Settings For Blog Templates (Array)',
-        'posts' => [
-            'layout6' => [
-                'titleCarousel' => 'Related Articles',
-            ],
-        ],
-    ],
-    'groups' => [
-        'searcher' => 'Search engine',
-    ],
-    'settings' => [
-        'searcherOrder' => 'Search Ordering',
-        'searchFields' => 'Search fields for articles',
-        'options' => [
-            'title' => 'Item Title',
-            'summary' => 'Item Summary',
-            'description' => 'Item Description',
-        ],
-    ],
+
+
 ];

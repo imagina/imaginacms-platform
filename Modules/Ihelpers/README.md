@@ -105,6 +105,6 @@ In order to serve the static files directly once they've been cached, you need t
   
   ```php
     use Modules\Ihelpers\Traits\Transformeable;
-    class EntityTransformer extends JsonResource{
+    class EntityTransformer extends Resource{
       use Transformeable;
   ```  

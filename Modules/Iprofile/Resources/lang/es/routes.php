@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'account' => 'cuenta',
-
+  "account" => "cuenta"
+  
 ];

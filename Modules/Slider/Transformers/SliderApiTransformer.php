@@ -2,22 +2,21 @@
 
 namespace Modules\Slider\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Isite\Transformers\RevisionTransformer;
+use Illuminate\Http\Resources\Json\Resource;
+use Modules\User\Transformers\UserProfileTransformer;
 
-class SliderApiTransformer extends JsonResource
+class SliderApiTransformer extends Resource
 {
-    public function toArray($request)
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'systemName' => $this->system_name,
-            'active' => $this->active ? 1 : 0,
-            'createdAt' => $this->created_at,
-            'options' => $this->when($this->options, $this->options),
-            'slides' => SlideApiTransformer::collection($this->slides),
-            'revisions' => RevisionTransformer::collection($this->whenLoaded('revisions')),
-        ];
-    }
+  public function toArray($request)
+  {
+    return [
+      'id' => $this->id,
+      'name' => $this->name,
+      'systemName' => $this->system_name,
+      'active' => $this->active ? 1 : 0,
+      'createdAt' => $this->created_at,
+      'options' => $this->options,
+      'slides' => SlideApiTransformer::collection($this->slides),
+    ];
+  }
 }

@@ -4,11 +4,8 @@
         @if(!empty($slide->getLinkUrl()))
             <a href="{{ $slide->getLinkUrl() }}" target="{{ $slide->target }}"> </a>
         @endif
-    
-            <x-media::single-image :alt="$slide->title ?? setting::get('core::site-name')"
-                                  :title="$slide->title ?? setting::get('core::site-name')"
-                                  :url="$slide->uri ?? null" :isMedia="true"
-                                  :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+
+        <img src="" data-src="{!! $slide->getImageUrl() !!}" alt="{{ $slide->title }}"/>
 
         <div class="ms-info">
             <h3>{{ $slide->title }}</h3>

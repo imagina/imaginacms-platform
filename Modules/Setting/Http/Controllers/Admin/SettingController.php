@@ -13,17 +13,14 @@ use Nwidart\Modules\Module;
 class SettingController extends AdminBaseController
 {
     use CanRequireAssets;
-
     /**
      * @var SettingRepository
      */
     private $setting;
-
     /**
      * @var RepositoryInterface
      */
     private $module;
-
     /**
      * @var Store
      */

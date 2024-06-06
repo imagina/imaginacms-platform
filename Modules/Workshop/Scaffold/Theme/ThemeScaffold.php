@@ -21,12 +21,10 @@ class ThemeScaffold
         'resourcesFolder',
         'assetsFolder',
     ];
-
     /**
      * Options array containing:
      *  - name
      *  - type
-     *
      * @var array
      */
     protected $options;
@@ -35,7 +33,6 @@ class ThemeScaffold
      * @var ThemeGeneratorFactory
      */
     private $themeGeneratorFactory;
-
     /**
      * @var \Illuminate\Filesystem\Filesystem
      */
@@ -66,7 +63,11 @@ class ThemeScaffold
         $this->addThemeToIgnoredExceptions();
     }
 
-    public function setName($name): static
+    /**
+     * @param $name
+     * @return $this
+     */
+    public function setName($name)
     {
         if (empty($name)) {
             throw new \InvalidArgumentException('You must provide a name');
@@ -77,7 +78,11 @@ class ThemeScaffold
         return $this;
     }
 
-    public function forType(string $type): static
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function forType($type)
     {
         if (empty($type)) {
             throw new \InvalidArgumentException('You must provide a type');
@@ -101,6 +106,7 @@ class ThemeScaffold
 
     /**
      * Set the files array on the class
+     * @param array $files
      */
     public function setFiles(array $files)
     {
@@ -109,18 +115,17 @@ class ThemeScaffold
 
     /**
      * Adding the theme name to the .gitignore file so that it can be committed
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     private function addThemeToIgnoredExceptions()
     {
         $themePath = config('asgard.core.core.themes_path');
 
-        if ($this->finder->exists($themePath.'/.gitignore') === false) {
+        if ($this->finder->exists($themePath . '/.gitignore') === false) {
             return;
         }
-        $moduleGitIgnore = $this->finder->get($themePath.'/.gitignore');
-        $moduleGitIgnore .= '!'.$this->options['name'].PHP_EOL;
-        $this->finder->put($themePath.'/.gitignore', $moduleGitIgnore);
+        $moduleGitIgnore = $this->finder->get($themePath . '/.gitignore');
+        $moduleGitIgnore .= '!' . $this->options['name'] . PHP_EOL;
+        $this->finder->put($themePath . '/.gitignore', $moduleGitIgnore);
     }
 }

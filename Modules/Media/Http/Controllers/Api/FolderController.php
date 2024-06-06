@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\Media\Entities\File;
 use Modules\Media\Http\Requests\CreateFolderRequest;
@@ -20,7 +19,7 @@ class FolderController extends Controller
         $this->folder = $folder;
     }
 
-    public function store(CreateFolderRequest $request): JsonResponse
+    public function store(CreateFolderRequest $request)
     {
         $folder = $this->folder->create($request->all());
 
@@ -31,7 +30,7 @@ class FolderController extends Controller
         ]);
     }
 
-    public function update(File $folder, CreateFolderRequest $request): JsonResponse
+    public function update(File $folder, CreateFolderRequest $request)
     {
         $folder = $this->folder->update($folder, $request->all());
 
@@ -42,7 +41,7 @@ class FolderController extends Controller
         ]);
     }
 
-    public function destroy(File $folder): JsonResponse
+    public function destroy(File $folder)
     {
         $this->folder->destroy($folder);
 

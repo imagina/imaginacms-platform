@@ -10,7 +10,6 @@ final class PermissionsAdder
      * @var string
      */
     private $moduleName;
-
     /**
      * @var RoleRepository
      */
@@ -33,9 +32,12 @@ final class PermissionsAdder
         }
     }
 
-    private function buildPermissionList(): array
+    /**
+     * @return array
+     */
+    private function buildPermissionList() : array
     {
-        $permissionsConfig = config('asgard.'.strtolower($this->moduleName).'.permissions');
+        $permissionsConfig = config('asgard.' . strtolower($this->moduleName) . '.permissions');
         $list = [];
 
         if ($permissionsConfig === null) {
@@ -44,7 +46,7 @@ final class PermissionsAdder
 
         foreach ($permissionsConfig as $mainKey => $subPermissions) {
             foreach ($subPermissions as $key => $description) {
-                $list[] = $mainKey.'.'.$key;
+                $list[] = $mainKey . '.' . $key;
             }
         }
 

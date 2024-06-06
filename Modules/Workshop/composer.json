@@ -23,11 +23,11 @@
   "require": {
     "php": "^7.1.3",
     "composer/installers": "~1.0",
-    "symfony/yaml": "^5.1"
+    "symfony/yaml": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0",
-    "orchestra/testbench": "3.8.*",
+    "orchestra/testbench": "3.6.*",
     "spatie/phpunit-snapshot-assertions": "^1.0"
   },
   "autoload-dev": {
@@ -38,8 +38,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "4.0.x-dev",
-      "dev-v8.x": "8.0.x-dev"
+      "dev-master": "4.0.x-dev"
     }
   },
   "minimum-stability": "dev",

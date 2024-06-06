@@ -19,12 +19,10 @@ class MenuItemController extends AdminBaseController
      * @var MenuItemRepository
      */
     private $menuItem;
-
     /**
      * @var PageRepository
      */
     private $page;
-
     /**
      * @var MenuItemUriGenerator
      */
@@ -82,13 +80,19 @@ class MenuItemController extends AdminBaseController
 
     /**
      * @param Menu, $menuItemId
+     * @return array
      */
-    private function getMenuSelect($menu): array
+    private function getMenuSelect($menu)
     {
         return $menu->menuitems()->where('is_root', '!=', true)->get()->noCleaning()->nest()->listsFlattened('title');
     }
 
-    private function addMenuId(Menu $menu, FormRequest $request): array
+    /**
+     * @param  Menu $menu
+     * @param  \Illuminate\Foundation\Http\FormRequest $request
+     * @return array
+     */
+    private function addMenuId(Menu $menu, FormRequest $request)
     {
         $data = $request->all();
 

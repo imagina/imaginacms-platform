@@ -10,8 +10,8 @@ use Modules\Translation\Repositories\TranslationRepository;
 class EloquentTranslationRepository extends EloquentBaseRepository implements TranslationRepository
 {
     /**
-     * @param  string  $key
-     * @param  string  $locale
+     * @param string $key
+     * @param string $locale
      * @return string
      */
     public function findByKeyAndLocale($key, $locale = null)
@@ -27,7 +27,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
     public function getTranslationsForGroupAndNamespace($locale, $group, $namespace)
     {
-        $start = $namespace.'::'.$group;
+        $start = $namespace . '::' . $group;
 
         $test = $this->model->where('key', 'LIKE', "{$start}%")->whereHas('translations', function (Builder $query) use ($locale) {
             $query->where('locale', $locale);
@@ -35,7 +35,7 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
         $translations = [];
         foreach ($test as $item) {
-            $key = str_replace($start.'.', '', $item->key);
+            $key = str_replace($start . '.', '', $item->key);
             $translations[$key] = $item->translate($locale)->value;
         }
 
@@ -71,7 +71,8 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
     /**
      * Update the given translation key with the given data
-     *
+     * @param string $key
+     * @param array $data
      * @return mixed
      */
     public function updateFromImport($key, array $data)
@@ -82,20 +83,13 @@ class EloquentTranslationRepository extends EloquentBaseRepository implements Tr
 
     /**
      * Set the given value on the given TranslationTranslation
+     * @param TranslationTranslation $translationTranslation
+     * @param string $value
+     * @return void
      */
     public function updateTranslationToValue(TranslationTranslation $translationTranslation, $value)
     {
         $translationTranslation->value = $value;
         $translationTranslation->save();
-    }
-
-    /***
-     * delete translstion by key
-     * @param $criteria
-     */
-    public function deleteBy($criteria, $params = false)
-    {
-        $translation = $this->findTranslationByKey($criteria);
-        $translation->delete();
     }
 }

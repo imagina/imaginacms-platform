@@ -3,12 +3,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
+class MakeSettingsNameUnique extends Migration
 {
     /**
      * Run the migrations.
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('setting__settings', function (Blueprint $table) {
             $table->unique('name', 'setting__settings_name_unique');
@@ -18,12 +19,13 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('setting__settings', function (Blueprint $table) {
             $table->dropUnique('setting__settings_name_unique');
             $table->dropIndex('setting__settings_name_index');
         });
     }
-};
+}

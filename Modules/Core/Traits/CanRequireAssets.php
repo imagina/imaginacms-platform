@@ -8,16 +8,18 @@ trait CanRequireAssets
 {
     /**
      * Require a css asset from the asset pipeline
+     * @param string $name
      */
-    public function requireCss(string $name)
+    public function requireCss($name)
     {
         app(AssetPipeline::class)->requireCss($name);
     }
 
     /**
      * Require a js asset from the asset pipeline
+     * @param string $name
      */
-    public function requireJs(string $name)
+    public function requireJs($name)
     {
         app(AssetPipeline::class)->requireJs($name);
     }

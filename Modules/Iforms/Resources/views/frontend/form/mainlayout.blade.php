@@ -1,5 +1,6 @@
 @section('scripts-owl')
   @parent
+  <script src="https://www.google.com/recaptcha/api.js"></script>
   <style>
     #loading-form {
       display: none;
@@ -28,8 +29,11 @@
           $(formid).submit(function (event) {
               event.preventDefault();
               var info = objectifyForm($(this).serializeArray());
+              //console.warn(info);
+              info.captcha = {'version': '2', 'token': info['g-recaptcha-response']};
+              delete info['g-recaptcha-response'];
               $.ajax({
-                  type: '{{isset($method) ? $method : 'POST'}}',
+                  type: 'POST',
                   url: $(this).attr('action'),
                   dataType: 'json',
                   data: {attributes: info},
@@ -50,7 +54,10 @@
       });
 
       function objectifyForm(formArray) {//serialize data function
+
           var returnArray = {};
+
+
           for (var i = 0; i < formArray.length; i++) {
               var $obj = $("[name='"+formArray[i]['name']+"'] option:selected");
               var $val = []

@@ -4,38 +4,25 @@ namespace Modules\Igamification\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
-use Modules\Iforms\Support\Traits\Formeable;
-use Modules\Media\Support\Traits\MediaRelation;
 
 class Activity extends CrudModel
 {
-    use Translatable, MediaRelation, Formeable;
+    use Translatable;
 
     protected $table = 'igamification__activities';
-
     public $transformer = 'Modules\Igamification\Transformers\ActivityTransformer';
-
-    public $repository = 'Modules\Igamification\Repositories\ActivityRepository';
-
     public $requestValidation = [
         'create' => 'Modules\Igamification\Http\Requests\CreateActivityRequest',
         'update' => 'Modules\Igamification\Http\Requests\UpdateActivityRequest',
-    ];
-
-    public $translatedAttributes = ['title', 'description'];
-
+      ];
+    public $translatedAttributes = [];
     protected $fillable = [
-        'system_name',
-        'status',
         'url',
-        'category_id',
-        'type',
-        'options',
-        'position',
+        'category_id'
     ];
 
     protected $casts = [
-        'options' => 'array',
+        'options' => 'array'
     ];
 
     public $modelRelations = [
@@ -48,20 +35,15 @@ class Activity extends CrudModel
         return $this->belongsToMany(Category::class, 'igamification__activity_category');
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function users()
     {
         $driver = config('asgard.user.config.driver');
-
+        
         return $this->belongsToMany("Modules\\User\\Entities\\{$driver}\\User", 'igamification__activity_user');
     }
 
     //============== MUTATORS / ACCESORS ==============//
-
+    
     public function setOptionsAttribute($value)
     {
         $this->attributes['options'] = json_encode($value);
@@ -72,18 +54,4 @@ class Activity extends CrudModel
         return json_decode($value);
     }
 
-    public function getStatusNameAttribute()
-    {
-        $status = new Status();
-
-        return $status->get($this->status);
-    }
-
-    public function getTypeNameAttribute()
-    {
-        $typeClass = new Type();
-        $type = $typeClass->get($this->type);
-
-        return $type['title'];
-    }
 }

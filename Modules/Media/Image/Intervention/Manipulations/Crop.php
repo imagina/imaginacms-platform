@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Image\Intervention\Manipulations;
 
-use Intervention\Image\Image;
 use Modules\Media\Image\ImageHandlerInterface;
 
 class Crop implements ImageHandlerInterface
@@ -16,10 +15,11 @@ class Crop implements ImageHandlerInterface
 
     /**
      * Handle the image manipulation request
-     *
+     * @param  \Intervention\Image\Image $image
+     * @param  array                     $options
      * @return mixed
      */
-    public function handle(Image $image, array $options)
+    public function handle($image, $options)
     {
         $options = array_merge($this->defaults, $options);
 

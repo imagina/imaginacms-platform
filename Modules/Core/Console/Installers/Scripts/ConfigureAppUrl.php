@@ -9,6 +9,9 @@ use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 
 class ConfigureAppUrl implements SetupScript
 {
+    /**
+     * @var
+     */
     protected $config;
 
     /**
@@ -16,6 +19,10 @@ class ConfigureAppUrl implements SetupScript
      */
     protected $env;
 
+    /**
+     * @param Config        $config
+     * @param EnvFileWriter $env
+     */
     public function __construct(Config $config, EnvFileWriter $env)
     {
         $this->config = $config;
@@ -29,7 +36,7 @@ class ConfigureAppUrl implements SetupScript
 
     /**
      * Fire the install script
-     *
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
@@ -53,8 +60,10 @@ class ConfigureAppUrl implements SetupScript
      * Ensure that the APP_URL is valid
      *
      * e.g. http://localhost, http://192.168.0.10, https://www.example.com etc.
+     *
+     * @return string
      */
-    protected function askAppUrl(): string
+    protected function askAppUrl()
     {
         do {
             $str = $this->command->ask('Enter you application url (e.g. http://localhost, http://dev.example.com)', 'http://localhost');
@@ -64,11 +73,14 @@ class ConfigureAppUrl implements SetupScript
 
                 $str = false;
             }
-        } while (! $str);
+        } while (!$str);
 
         return $str;
     }
 
+    /**
+     * @param $vars
+     */
     protected function setLaravelConfiguration($vars)
     {
         $this->config['app.url'] = $vars['app_url'];

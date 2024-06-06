@@ -2,37 +2,39 @@
 
 use Illuminate\Routing\Router;
 
-Route::prefix('/polygons')->group(function (Router $router) {
-    //Route create
-    $router->post('/', [
-        'as' => 'api.ilocations.polygons.create',
-        'uses' => 'PolygonApiController@create',
-        'middleware' => ['auth:api'],
-    ]);
+$router->group(['prefix' => '/polygons'], function (Router $router) {
 
-    //Route index
-    $router->get('/', [
-        'as' => 'api.ilocations.polygons.index',
-        'uses' => 'PolygonApiController@index',
-    ]);
+  //Route create
+  $router->post('/', [
+    'as' => 'api.ilocations.polygons.create',
+    'uses' => 'PolygonApiController@create',
+    'middleware' => ['auth:api']
+  ]);
 
-    //Route show
-    $router->get('/{criteria}', [
-        'as' => 'api.ilocations.polygons.show',
-        'uses' => 'PolygonApiController@show',
-    ]);
+  //Route index
+  $router->get('/', [
+    'as' => 'api.ilocations.polygons.index',
+    'uses' => 'PolygonApiController@index',
+  ]);
 
-    //Route update
-    $router->put('/{criteria}', [
-        'as' => 'api.ilocations.polygons.update',
-        'uses' => 'PolygonApiController@update',
-        'middleware' => ['auth:api'],
-    ]);
+  //Route show
+  $router->get('/{criteria}', [
+    'as' => 'api.ilocations.polygons.show',
+    'uses' => 'PolygonApiController@show',
+  ]);
 
-    //Route delete
-    $router->delete('/{criteria}', [
-        'as' => 'api.ilocations.polygons.delete',
-        'uses' => 'PolygonApiController@delete',
-        'middleware' => ['auth:api'],
-    ]);
+  //Route update
+  $router->put('/{criteria}', [
+    'as' => 'api.ilocations.polygons.update',
+    'uses' => 'PolygonApiController@update',
+    'middleware' => ['auth:api']
+  ]);
+
+  //Route delete
+  $router->delete('/{criteria}', [
+    'as' => 'api.ilocations.polygons.delete',
+    'uses' => 'PolygonApiController@delete',
+    'middleware' => ['auth:api']
+  ]);
+
 });

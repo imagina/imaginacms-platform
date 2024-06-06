@@ -16,6 +16,8 @@ class RegisterIformsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
+     * @param Authentication $auth
+     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -28,14 +30,18 @@ class RegisterIformsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    public function extendWith(Menu $menu): Menu
+    /**
+     * @param Menu $menu
+     * @return Menu
+     */
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('iforms::common.iforms'), function (Item $item) {
                 $item->icon('fa fa-copy');
                 $item->weight(10);
                 $item->authorize(
-                    /* append */
+                     /* append */
                 );
                 $item->item(trans('iforms::forms.title.forms'), function (Item $item) {
                     $item->icon('fa fa-copy');
@@ -64,16 +70,10 @@ class RegisterIformsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('iforms.leads.index')
                     );
                 });
-                $item->item(trans('iforms::blocks.title.blocks'), function (Item $item) {
-                    $item->icon('fa fa-copy');
-                    $item->weight(0);
-                    $item->append('admin.iforms.block.create');
-                    $item->route('admin.iforms.block.index');
-                    $item->authorize(
-                        $this->auth->hasAccess('iforms.blocks.index')
-                    );
-                });
-                // append
+// append
+
+
+
             });
         });
 

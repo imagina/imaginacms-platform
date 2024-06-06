@@ -2,8 +2,8 @@
 
 namespace Modules\Iprofile\Repositories\Cache;
 
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Iprofile\Repositories\UserDepartmentRepository;
+use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
 class CacheUserDepartmentDecorator extends BaseCacheDecorator implements UserDepartmentRepository
 {

@@ -2,19 +2,25 @@
 
 namespace Modules\Iblog\Repositories\Cache;
 
-use Modules\Core\Icrud\Repositories\Cache\BaseCacheCrudDecorator;
+use Modules\Iblog\Repositories\Collection;
 use Modules\Iblog\Repositories\PostRepository;
+use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
-class CachePostDecorator extends BaseCacheCrudDecorator implements PostRepository
+class CachePostDecorator extends BaseCacheDecorator implements PostRepository
 {
     public function __construct(PostRepository $post)
     {
         parent::__construct();
-        $this->entityName = 'iblog.posts';
+        $this->entityName = 'posts';
         $this->repository = $post;
     }
 
-    public function whereCategory(object $id): object
+
+    /**
+     * @param object $id
+     * @return object
+     */
+    public function whereCategory($id)
     {
         return $this->remember(function () use ($id) {
             return $this->repository->whereCategory($id);
@@ -22,6 +28,7 @@ class CachePostDecorator extends BaseCacheCrudDecorator implements PostRepositor
     }
 
     /**
+     * @param $params
      * @return mixed
      */
     public function getItemsBy($params)
@@ -32,48 +39,15 @@ class CachePostDecorator extends BaseCacheCrudDecorator implements PostRepositor
     }
 
     /**
+     * @param $criteria
+     * @param $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, $params)
     {
         return $this->remember(function () use ($criteria, $params) {
             return $this->repository->getItem($criteria, $params);
         });
     }
 
-    /**
-     * create a resource
-     *
-     * @return mixed
-     */
-    public function create($data)
-    {
-        $this->clearCache();
-
-        return $this->repository->create($data);
-    }
-
-    /**
-     * destroy a resource
-     *
-     * @return mixed
-     */
-    public function deleteBy($criteria, $params = false)
-    {
-        $this->clearCache();
-
-        return $this->repository->deleteBy($criteria, $params);
-    }
-
-    /**
-     * update a resource
-     *
-     * @return mixed
-     */
-    public function updateBy($criteria, $data, $params = false)
-    {
-        $this->clearCache();
-
-        return $this->repository->updateBy($criteria, $data, $params);
-    }
 }

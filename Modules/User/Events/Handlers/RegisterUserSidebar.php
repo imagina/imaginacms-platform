@@ -11,8 +11,10 @@ class RegisterUserSidebar extends AbstractAdminSidebar
 {
     /**
      * Method used to define your sidebar menu groups and items
+     * @param Menu $menu
+     * @return Menu
      */
-    public function extendWith(Menu $menu): Menu
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->item(trans('user::users.title.users'), function (Item $item) {

@@ -9,12 +9,11 @@ class MenuDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
     public function run()
     {
         Model::unguard();
-        //Seed cms pages
-        $this->call(MenuModuleTableSeeder::class);
-        //$this->call(CMSSidebarDatabaseSeeder::class);
     }
 }

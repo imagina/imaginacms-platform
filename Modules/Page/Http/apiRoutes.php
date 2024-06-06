@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::prefix('/page')->middleware('api.token', 'auth.admin')->group(function (Router $router) {
+$router->group(['prefix' => '/page', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
     $router->get('pages', [
         'as' => 'api.page.page.index',
         'uses' => 'PageController@index',
@@ -14,11 +14,11 @@ Route::prefix('/page')->middleware('api.token', 'auth.admin')->group(function (R
         'uses' => 'PageController@indexServerSide',
         'middleware' => 'token-can:page.pages.index',
     ]);
-//    $router->get('mark-pages-status', [
-//        'as' => 'api.page.page.mark-status',
-//        'uses' => 'UpdatePageStatusController',
-//        'middleware' => 'token-can:page.pages.edit',
-//    ]);
+    $router->get('mark-pages-status', [
+        'as' => 'api.page.page.mark-status',
+        'uses' => 'UpdatePageStatusController',
+        'middleware' => 'token-can:page.pages.edit',
+    ]);
     $router->delete('pages/{page}', [
         'as' => 'api.page.page.destroy',
         'uses' => 'PageController@destroy',
@@ -39,10 +39,14 @@ Route::prefix('/page')->middleware('api.token', 'auth.admin')->group(function (R
         'uses' => 'PageController@update',
         'middleware' => 'token-can:page.pages.edit',
     ]);
-  //  $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
+    $router->get('templates', 'PageTemplatesController')->name('api.page.page-templates.index');
 });
 
-Route::prefix('page/v1')->group(function (Router $router) {
-    //======  PAGES
-    require 'ApiRoutes/pageRoutes.php';
+
+$router->group(['prefix' => 'page/v1'], function (Router $router) {
+  
+  //======  PAGES
+  require('ApiRoutes/pageRoutes.php');
+  
+  
 });

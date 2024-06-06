@@ -1,45 +1,32 @@
-<?php
-
-namespace Modules\Slider\Entities;
+<?php namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Support\Traits\AuditTrait;
-use Modules\Isite\Traits\RevisionableTrait;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Slider extends Model
 {
-    use BelongsToTenant, AuditTrait, RevisionableTrait;
+  protected $fillable = [
+    'name',
+    'system_name',
+    'options',
+    'active'
+  ];
+  protected $fakeColumns = ['options'];
 
-    public $transformer = 'Modules\Slider\Transformers\SliderApiTransformer';
+  protected $table = 'slider__sliders';
 
-    public $entity = 'Modules\Slider\Entities\Slider';
+  public function slides()
+  {
+    return $this->hasMany(Slide::class)->orderBy('position', 'asc');
+  }
 
-    public $repository = 'Modules\Slider\Repositories\SliderApiRepository';
+  protected function setOptionsAttribute($value)
+  {
+    $this->attributes['options'] = json_encode($value);
+  }
 
-    protected $fillable = [
-        'name',
-        'system_name',
-        'options',
-        'active',
-    ];
-
-    protected $fakeColumns = ['options'];
-
-    protected $table = 'slider__sliders';
-
-    public function slides()
-    {
-        return $this->hasMany(Slide::class)->with('translations')->orderBy('position', 'asc');
-    }
-
-    protected function setOptionsAttribute($value)
-    {
-        $this->attributes['options'] = json_encode($value);
-    }
-
-    public function getOptionsAttribute($value)
-    {
-        return json_decode($value);
-    }
+  public function getOptionsAttribute($value)
+  {
+    if ($value) return json_decode($value);
+    else return [];
+  }
 }

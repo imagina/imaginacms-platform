@@ -11,9 +11,6 @@ class ModuleMigrator implements SetupScript
      * @var array
      */
     protected $modules = [
-        'Isite',
-        'Ifillable',
-        'Ischedulable',
         'Setting',
         'Menu',
         'Media',
@@ -28,14 +25,12 @@ class ModuleMigrator implements SetupScript
         'Iforms',
         'Iprofile',
         'Ilocations',
-        'Iredirect',
-      'Igamification',
-      
+        'Iredirect'
     ];
 
-    /**Q
+    /**
      * Fire the install script
-     *
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
@@ -47,7 +42,6 @@ class ModuleMigrator implements SetupScript
         foreach ($this->modules as $module) {
             if ($command->option('verbose')) {
                 $command->call('module:migrate', ['module' => $module]);
-
                 continue;
             }
             $command->callSilent('module:migrate', ['module' => $module]);

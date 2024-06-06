@@ -4,12 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class MakeSettingValueNullable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('setting__setting_translations', function (Blueprint $table) {
             $table->string('value')->nullable()->change();
@@ -18,11 +20,13 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('setting__setting_translations', function (Blueprint $table) {
             $table->string('value')->nullable(false)->change();
         });
     }
-};
+}

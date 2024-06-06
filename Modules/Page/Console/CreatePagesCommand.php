@@ -10,9 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 class CreatePagesCommand extends Command
 {
     protected $name = 'asgard:create:test-pages';
-
     protected $description = 'Command description.';
-
     /**
      * @var PageRepository
      */
@@ -26,8 +24,10 @@ class CreatePagesCommand extends Command
 
     /**
      * Execute the console command.
+     *
+     * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         $total = 10000;
         $bar = $this->output->createProgressBar($total);
@@ -47,18 +47,18 @@ class CreatePagesCommand extends Command
             'is_home' => 0,
             'template' => 'default',
             'en' => [
-                'title' => $faker->name(),
-                'slug' => $faker->slug(),
+                'title' => $faker->name,
+                'slug' => $faker->slug,
                 'body' => $faker->paragraph(),
             ],
             'fr' => [
-                'title' => $faker->name(),
-                'slug' => $faker->slug(),
+                'title' => $faker->name,
+                'slug' => $faker->slug,
                 'body' => $faker->paragraph(),
             ],
             'nl' => [
-                'title' => $faker->name(),
-                'slug' => $faker->slug(),
+                'title' => $faker->name,
+                'slug' => $faker->slug,
                 'body' => $faker->paragraph(),
             ],
         ]);
@@ -66,8 +66,10 @@ class CreatePagesCommand extends Command
 
     /**
      * Get the console command arguments.
+     *
+     * @return array
      */
-    protected function getArguments(): array
+    protected function getArguments()
     {
         return [
             //['example', InputArgument::REQUIRED, 'An example argument.'],
@@ -76,8 +78,10 @@ class CreatePagesCommand extends Command
 
     /**
      * Get the console command options.
+     *
+     * @return array
      */
-    protected function getOptions(): array
+    protected function getOptions()
     {
         return [
             //['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

@@ -2,15 +2,15 @@
 
 namespace Modules\Translation\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class LocaleSelectTransformer extends JsonResource
+class LocaleSelectTransformer extends Resource
 {
     public function toArray($request)
     {
         return [
             'label' => $this['name'],
-            'code' => $this['code'],
+            'code'  => $this['code'],
         ];
     }
 }

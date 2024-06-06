@@ -2,12 +2,13 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Polygon;
 use Modules\Ilocations\Http\Requests\CreatePolygonRequest;
 use Modules\Ilocations\Http\Requests\UpdatePolygonRequest;
 use Modules\Ilocations\Repositories\PolygonRepository;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class PolygonController extends AdminBaseController
 {
@@ -25,8 +26,10 @@ class PolygonController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
+     *
+     * @return Response
      */
-    public function index(): Response
+    public function index()
     {
         //$polygons = $this->polygon->all();
 
@@ -35,16 +38,21 @@ class PolygonController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return Response
      */
-    public function create(): Response
+    public function create()
     {
         return view('ilocations::admin.polygons.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  CreatePolygonRequest $request
+     * @return Response
      */
-    public function store(CreatePolygonRequest $request): Response
+    public function store(CreatePolygonRequest $request)
     {
         $this->polygon->create($request->all());
 
@@ -54,16 +62,23 @@ class PolygonController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  Polygon $polygon
+     * @return Response
      */
-    public function edit(Polygon $polygon): Response
+    public function edit(Polygon $polygon)
     {
         return view('ilocations::admin.polygons.edit', compact('polygon'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  Polygon $polygon
+     * @param  UpdatePolygonRequest $request
+     * @return Response
      */
-    public function update(Polygon $polygon, UpdatePolygonRequest $request): Response
+    public function update(Polygon $polygon, UpdatePolygonRequest $request)
     {
         $this->polygon->update($polygon, $request->all());
 
@@ -73,8 +88,11 @@ class PolygonController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Polygon $polygon
+     * @return Response
      */
-    public function destroy(Polygon $polygon): Response
+    public function destroy(Polygon $polygon)
     {
         $this->polygon->destroy($polygon);
 

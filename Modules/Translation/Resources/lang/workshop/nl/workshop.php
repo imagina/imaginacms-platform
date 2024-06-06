@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Werkplaats',
+    'title'   => 'Werkplaats',
     'modules' => 'Modules',
     'themes' => 'Thema\'s',
     'show sidebar group' => 'Zijbalk groep weergeven',

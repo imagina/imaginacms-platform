@@ -3,12 +3,14 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
+class CreateRevisionsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('revisions', function (Blueprint $table) {
             $table->increments('id');
@@ -20,15 +22,17 @@ return new class extends Migration
             $table->text('new_value')->nullable();
             $table->timestamps();
 
-            $table->index(['revisionable_id', 'revisionable_type']);
+            $table->index(array('revisionable_id', 'revisionable_type'));
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::drop('revisions');
     }
-};
+}

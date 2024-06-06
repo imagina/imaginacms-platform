@@ -1,5 +1,6 @@
 <?php
 
+
 return [
     'name' => 'Dashboard',
     'edit grid' => 'Modifica griglia',
@@ -9,7 +10,7 @@ return [
     'add widget to dashboard' => 'Aggiungi widget alla dashboard',
     'reset not needed' => 'La dashboard non ha bisogno di reset',
     'dashboard reset' => 'La dashboard è stata resettata',
-    'list resource' => 'Visualizza dashboard',
+    'list resource' => 'View dashboard',
     'edit resource' => 'Aggiorna dashboard',
     'reset resource' => 'Ripristina dashboard',
     'welcome-title' => 'Titolo di benvenuto',
@@ -17,5 +18,5 @@ return [
     'welcome-enabled' => 'Abilitare il box di benvenuto?',
     'configure your website' => 'Configura il sito',
     'add pages' => 'Aggiungi pagine',
-    'add menus' => 'Aggiungi menu',
+    'add menus' => 'aggiungi menu',
 ];

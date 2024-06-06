@@ -2,17 +2,16 @@
 
 namespace Modules\Page\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class PageTransformer extends JsonResource
+class PageTransformer extends Resource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->resource->id,
             'is_home' => $this->resource->is_home,
             'template' => $this->resource->template,
-            'options' => $this->resource->options,
             'created_at' => $this->resource->created_at->format('d-m-Y'),
             'translations' => [
                 'title' => optional($this->resource->translate(locale()))->title,

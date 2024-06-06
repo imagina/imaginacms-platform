@@ -10,7 +10,6 @@ class FolderStartedMoving
      * @var File
      */
     public $folder;
-
     /**
      * @var array
      */

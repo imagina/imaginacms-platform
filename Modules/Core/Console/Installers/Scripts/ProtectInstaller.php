@@ -14,6 +14,9 @@ class ProtectInstaller implements SetupScript
      */
     protected $finder;
 
+    /**
+     * @param Filesystem $finder
+     */
     public function __construct(Filesystem $finder)
     {
         $this->finder = $finder;
@@ -21,9 +24,8 @@ class ProtectInstaller implements SetupScript
 
     /**
      * Fire the install script
-     *
+     * @param  Command   $command
      * @return mixed
-     *
      * @throws Exception
      */
     public function fire(Command $command)

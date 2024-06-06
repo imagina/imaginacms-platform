@@ -3,8 +3,8 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::prefix('/user')->middleware('api.token', 'auth.admin')->group(function (Router $router) {
-    Route::prefix('roles')->group(function (Router $router) {
+$router->group(['prefix' => '/user', 'middleware' => ['api.token', 'auth.admin']], function (Router $router) {
+    $router->group(['prefix' => 'roles'], function (Router $router) {
         $router->get('/', [
             'as' => 'api.user.role.index',
             'uses' => 'RoleController@index',
@@ -42,7 +42,7 @@ Route::prefix('/user')->middleware('api.token', 'auth.admin')->group(function (R
         ]);
     });
 
-    Route::prefix('users')->group(function (Router $router) {
+    $router->group(['prefix' => 'users'], function (Router $router) {
         $router->get('/', [
             'as' => 'api.user.user.index',
             'uses' => 'UserController@index',
@@ -80,7 +80,7 @@ Route::prefix('/user')->middleware('api.token', 'auth.admin')->group(function (R
         ]);
     });
 
-    Route::prefix('/account')->group(function (Router $router) {
+    $router->group(['prefix' => '/account'], function (Router $router) {
         $router->get('profile', [
             'as' => 'api.account.profile.find-current-user',
             'uses' => 'ProfileController@findCurrentUser',

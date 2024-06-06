@@ -5,7 +5,7 @@
     "keywords": [],
     "active": 1,
     "version": "0.3.2",
-    "priority": 1,
+    "order": 1,
     "providers": [
         "Modules\\Ilocations\\Providers\\IlocationsServiceProvider",
         "Modules\\Ilocations\\Providers\\RouteServiceProvider"

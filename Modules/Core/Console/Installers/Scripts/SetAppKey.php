@@ -24,7 +24,7 @@ class SetAppKey implements SetupScript
 
     /**
      * Fire the install script
-     *
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
@@ -47,18 +47,23 @@ class SetAppKey implements SetupScript
 
     /**
      * Generate a random key for the application.
+     *
+     * @return string
      */
-    protected function generateRandomKey(): string
+    protected function generateRandomKey()
     {
-        return 'base64:'.base64_encode(
-            Encrypter::generateKey(config('app.cipher'))
-        );
+        return 'base64:' . base64_encode(
+                Encrypter::generateKey(config('app.cipher'))
+            );
     }
 
     /**
      * Set the application key in the environment file.
+     *
+     * @param  string  $key
+     * @return bool
      */
-    protected function setKeyInEnvironmentFile(string $key): bool
+    protected function setKeyInEnvironmentFile($key)
     {
         $currentKey = config('app.key');
 
@@ -73,28 +78,35 @@ class SetAppKey implements SetupScript
 
     /**
      * Write a new environment file with the given key.
+     *
+     * @param  string  $key
+     * @return void
      */
-    protected function writeNewEnvironmentFileWith(string $key): void
+    protected function writeNewEnvironmentFileWith($key)
     {
         file_put_contents(app()->environmentFilePath(), preg_replace(
             $this->keyReplacementPattern(),
-            'APP_KEY='.$key,
+            'APP_KEY=' . $key,
             file_get_contents(app()->environmentFilePath())
         ));
     }
 
     /**
      * Get a regex pattern that will match env APP_KEY with any random key.
+     *
+     * @return string
      */
-    protected function keyReplacementPattern(): string
+    protected function keyReplacementPattern()
     {
-        $escaped = preg_quote('='.config('app.key'), '/');
+        $escaped = preg_quote('=' . config('app.key'), '/');
 
         return "/^APP_KEY{$escaped}/m";
     }
 
     /**
      * Get the default confirmation callback.
+     *
+     * @return \Closure
      */
     protected function getDefaultConfirmCallback(): callable
     {

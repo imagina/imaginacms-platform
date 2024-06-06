@@ -19,7 +19,10 @@ class MenuIsUpdating extends AbstractEntityHook implements EntityIsChanging
         parent::__construct($attributes);
     }
 
-    public function getMenu(): Menu
+    /**
+     * @return Menu
+     */
+    public function getMenu()
     {
         return $this->menu;
     }

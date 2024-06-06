@@ -2,21 +2,20 @@
 
 namespace Modules\Ibuilder\Database\Seeders;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
-use Modules\Isite\Jobs\ProcessSeeds;
+use Illuminate\Database\Eloquent\Model;
 
 class IbuilderDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
     public function run()
     {
         Model::unguard();
-        ProcessSeeds::dispatch([
-            'baseClass' => "\Modules\Ibuilder\Database\Seeders",
-            'seeds' => ['IbuilderModuleTableSeeder', 'FixBlocksMovedSeeder'],
-        ]);
+
+        // $this->call("OthersTableSeeder");
     }
 }

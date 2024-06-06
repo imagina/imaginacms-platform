@@ -13,7 +13,6 @@ class SendRegistrationConfirmationEmail
      * @var AuthenticationRepository
      */
     private $auth;
-
     /**
      * @var Mailer
      */

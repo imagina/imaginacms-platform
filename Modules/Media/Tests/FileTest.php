@@ -13,7 +13,7 @@ class FileTest extends MediaTestCase
      */
     private $file;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
@@ -85,8 +85,8 @@ class FileTest extends MediaTestCase
     {
         return File::create([
             'filename' => $fileName,
-            'path' => config('asgard.media.config.files-path').$fileName,
-            'extension' => substr(strrchr($fileName, '.'), 1),
+            'path' => config('asgard.media.config.files-path') . $fileName,
+            'extension' => substr(strrchr($fileName, "."), 1),
             'mimetype' => 'image/jpg',
             'filesize' => '1024',
             'folder_id' => 0,

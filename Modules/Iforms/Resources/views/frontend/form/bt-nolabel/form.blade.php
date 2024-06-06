@@ -1,5 +1,5 @@
 @php
-    $id=Str::slug($form->title).$options['rand'];;
+    $id=str_slug($form->title).$options['rand'];;
 @endphp
 
 <div class="content-form{{$options['rand']}}">

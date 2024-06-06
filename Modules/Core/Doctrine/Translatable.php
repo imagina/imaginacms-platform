@@ -8,6 +8,9 @@ use ReflectionClass;
 
 trait Translatable
 {
+    /**
+     * @param array $input
+     */
     public function fillTranslations(array $input)
     {
         foreach ($input as $locale => $attributes) {
@@ -19,15 +22,17 @@ trait Translatable
 
     /**
      * Create or update the given field name
+     * @param string $fieldName
+     * @param string $locale
+     * @param string $value
      */
-    public function createOrUpdateTranslation(string $fieldName, string $locale, string $value)
+    public function createOrUpdateTranslation($fieldName, $locale, $value)
     {
         $found = false;
         foreach ($this->translation as $translation) {
             if ($translation->locale == $locale) {
                 $translation->$fieldName = $value;
                 $found = true;
-
                 continue;
             }
         }
@@ -46,8 +51,11 @@ trait Translatable
 
     /**
      * Get the translation of the given field name
+     * @param  string      $fieldName
+     * @param  string|null $locale
+     * @return string
      */
-    public function translation(string $fieldName, ?string $locale = null): string
+    public function translation($fieldName, $locale = null)
     {
         $locale = $locale ?: App::getLocale();
 
@@ -59,9 +67,10 @@ trait Translatable
     }
 
     /**
+     * @param  string $fieldName
      * @return mixed
      */
-    public function translatableGetter(string $fieldName)
+    public function translatableGetter($fieldName)
     {
         if (in_array($fieldName, $this->getTranslatedFieldNamesForEntity())) {
             $result = $this->translation($fieldName);
@@ -73,6 +82,7 @@ trait Translatable
     }
 
     /**
+     * @param $name
      * @return mixed
      */
     public function getRawField($name)
@@ -80,7 +90,10 @@ trait Translatable
         return $this->$name;
     }
 
-    private function getTranslatedFieldNamesForEntity(): array
+    /**
+     * @return array
+     */
+    private function getTranslatedFieldNamesForEntity()
     {
         $cacheArray = [];
         $translatedEntityName = $this->getTranslationClass();
@@ -96,8 +109,9 @@ trait Translatable
 
     /**
      * Get the foreign key for the current class
+     * @return string
      */
-    private function getForeignKey(): string
+    private function getForeignKey()
     {
         $reflectionClass = new ReflectionClass(get_class($this));
         $foreignKey = strtolower($reflectionClass->getShortName());
@@ -107,9 +121,10 @@ trait Translatable
 
     /**
      * Get the Translations class name
+     * @return string
      */
-    private function getTranslationClass(): string
+    private function getTranslationClass()
     {
-        return get_class($this).'Translation';
+        return get_class($this) . 'Translation';
     }
 }

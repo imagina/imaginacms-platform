@@ -4,10 +4,10 @@ namespace Modules\User\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Laravel\Passport\TokenRepository;
-use Lcobucci\JWT\Parser;
 use Modules\User\Contracts\Authentication;
 use Modules\User\Repositories\UserTokenRepository;
+use Laravel\Passport\TokenRepository;
+use Lcobucci\JWT\Parser;
 
 class AuthorisedApiToken
 {
@@ -15,16 +15,15 @@ class AuthorisedApiToken
      * @var UserTokenRepository
      */
     private $userToken;
-
     /**
      * @var Authentication
      */
     private $auth;
 
-    /**
-     * @var passportToken
-     */
-    private $passportToken;
+  /**
+   * @var passportToken
+   */
+  private $passportToken;
 
     public function __construct(UserTokenRepository $userToken, Authentication $auth, TokenRepository $passportToken)
     {
@@ -51,18 +50,15 @@ class AuthorisedApiToken
         $found = $this->userToken->findByAttributes(['access_token' => $this->parseToken($token)]);
 
         if ($found === null) {
-            // Imagina Patch: Add validation with passport token
-            //$id = (new Parser())->parse($this->parseToken($token))->getHeader('jti');
-            $user = auth('api')->user(); //$this->passportToken->find($id);
-            if ($user === null) {
-                return false;
-            }
-        } else {
-            $user = $found->user;
+          // Imagina Patch: Add validation with passport token
+          $id = (new Parser())->parse($this->parseToken($token))->getHeader('jti');
+          $found = $this->passportToken->find($id);
+          if ($found === null)
+            return false;
         }
 
-        $this->auth->logUserIn($user);
-
+      	$this->auth->logUserIn($found->user);
+        
         return true;
     }
 

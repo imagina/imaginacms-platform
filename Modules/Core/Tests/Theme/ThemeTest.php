@@ -12,7 +12,7 @@ class ThemeTest extends BaseTestCase
      */
     protected $theme;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
@@ -39,6 +39,6 @@ class ThemeTest extends BaseTestCase
 
     private function getPath()
     {
-        return __DIR__.'/Fixture/Themes/demo';
+        return __DIR__ . '/Fixture/Themes/demo';
     }
 }

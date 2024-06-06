@@ -5,7 +5,6 @@ namespace Modules\Tag\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Support\Arr;
 use Modules\Tag\Entities\Tag;
 
 trait TaggableTrait
@@ -26,7 +25,7 @@ trait TaggableTrait
     {
         $query->with('translations');
 
-        foreach (Arr::wrap($tags) as $tag) {
+        foreach (array_wrap($tags) as $tag) {
             $query->whereHas('tags', function (Builder $query) use ($type, $tag) {
                 $query->whereHas('translations', function (Builder $query) use ($type, $tag) {
                     $query->where($type, $tag);
@@ -39,7 +38,7 @@ trait TaggableTrait
 
     public function scopeWithTag(Builder $query, $tags, string $type = 'slug'): Builder
     {
-        $tags = Arr::wrap($tags);
+        $tags = array_wrap($tags);
 
         $query->with('translations');
 
@@ -64,7 +63,7 @@ trait TaggableTrait
     {
         $instance = new static;
 
-        return self::createTagsModel()->with('translations');
+        return self::createTagsModel()->with('translations')->where('namespace', $instance->getEntityClassName());
     }
 
     public function setTags($tags, string $type = 'slug'): bool
@@ -95,7 +94,7 @@ trait TaggableTrait
 
     public function tag($tags): bool
     {
-        foreach (Arr::wrap($tags) as $tag) {
+        foreach (array_wrap($tags) as $tag) {
             $this->addTag($tag);
         }
 
@@ -164,16 +163,16 @@ trait TaggableTrait
         // Convert all dashes/underscores into separator
         $flip = $separator == '-' ? '_' : '-';
 
-        $name = preg_replace('!['.preg_quote($flip, '!').']+!u', $separator, $name);
+        $name = preg_replace('![' . preg_quote($flip, '!') . ']+!u', $separator, $name);
 
         // Replace @ with the word 'at'
-        $name = str_replace('@', $separator.'at'.$separator, $name);
+        $name = str_replace('@', $separator . 'at' . $separator, $name);
 
         // Remove all characters that are not the separator, letters, numbers, or whitespace.
-        $name = preg_replace('![^'.preg_quote($separator, '!').'\pL\pN\s]+!u', '', mb_strtolower($name));
+        $name = preg_replace('![^' . preg_quote($separator, '!') . '\pL\pN\s]+!u', '', mb_strtolower($name));
 
         // Replace all separator characters and whitespace by a single separator
-        $name = preg_replace('!['.preg_quote($separator, '!').'\s]+!u', $separator, $name);
+        $name = preg_replace('![' . preg_quote($separator, '!') . '\s]+!u', $separator, $name);
 
         return trim($name, $separator);
     }

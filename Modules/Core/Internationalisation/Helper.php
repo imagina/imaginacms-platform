@@ -4,11 +4,14 @@ namespace Modules\Core\Internationalisation;
 
 /**
  * Class Helper
+ * @package Modules\Core\Internationalisation
  */
 class Helper
 {
     /**
      * Save the given model properties in all given languages
+     * @param $model
+     * @param $data
      */
     public static function updateTranslated($model, $data)
     {
@@ -17,6 +20,8 @@ class Helper
 
     /**
      * Create the given model and save its translated attributes
+     * @param $model
+     * @param $data
      */
     public static function createTranslatedFields($model, $data)
     {
@@ -27,8 +32,10 @@ class Helper
 
     /**
      * Separate the input fields into their own language key
+     * @param $data
+     * @return array
      */
-    public static function separateLanguages($data): array
+    public static function separateLanguages($data)
     {
         $cleanedData = [];
         foreach ($data as $key => $value) {
@@ -46,6 +53,8 @@ class Helper
 
     /**
      * Save the given properties for the model
+     * @param $model
+     * @param $data
      */
     private static function saveTranslatedProperties($model, $data)
     {

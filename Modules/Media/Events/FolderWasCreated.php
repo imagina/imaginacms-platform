@@ -10,7 +10,6 @@ class FolderWasCreated
      * @var File
      */
     public $folder;
-
     /**
      * @var array
      */

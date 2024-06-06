@@ -13,10 +13,4 @@ return [
     ],
     'validation' => [
     ],
-    'settings' => [
-        'availableCountries' => 'Paises Habilitados',
-        'availableProvinces' => 'Provincias Habilitadas',
-        'availableCities' => 'Ciudades Habilitadas',
-        'countriesToSeedCities' => 'Paises para semillar ciudades',
-    ],
 ];

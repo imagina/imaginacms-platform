@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-Route::prefix('/menuitem')->group(function (Router $router) {
+$router->group(['prefix' => '/menuitem'], function (Router $router) {
     $router->post('/', [
         'as' => 'api.imenu.menuitem.create',
         //'middleware' => ['auth:api'],
@@ -30,19 +30,20 @@ Route::prefix('/menuitem')->group(function (Router $router) {
     $router->put('update-items/{criteria}', [
         'as' => 'api.imenu.menuitem.updateItems',
         'uses' => 'MenuItemApiController@updateItems',
-        'middleware' => ['auth:api'],
+        'middleware' => ['auth:api']
     ]);
 
     //Route delete
     $router->delete('delete-items/{criteria}', [
         'as' => 'api.imenu.menuitem.deleteItems',
         'uses' => 'MenuItemApiController@deleteItems',
-        'middleware' => ['auth:api'],
+        'middleware' => ['auth:api']
     ]);
 
     $router->post('/ordener', [
-        'as' => 'api.imenu.menuitem.update.ordener',
-        'uses' => 'MenuItemApiController@updateOrderner',
-        'middleware' => ['auth:api'],
+      'as' => 'api.imenu.menuitem.update.ordener',
+      'uses' => 'MenuItemApiController@updateOrderner',
+      'middleware' => ['auth:api']
     ]);
+
 });

@@ -1,5 +1,5 @@
 @php
-    $id=Str::slug($form->title).rand(1,999);
+    $id=str_slug($form->title).rand(1,999);
 @endphp
 
 <div class="content-form{{$id}}">

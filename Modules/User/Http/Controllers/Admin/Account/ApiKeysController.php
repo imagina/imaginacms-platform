@@ -13,7 +13,6 @@ class ApiKeysController extends AdminBaseController
      * @var Authentication
      */
     private $auth;
-
     /**
      * @var UserTokenRepository
      */
@@ -42,11 +41,6 @@ class ApiKeysController extends AdminBaseController
 
     public function destroy(UserToken $userToken)
     {
-        if ($this->userToken->allForUser($this->auth->id())->count() === 1) {
-            return redirect()->route('admin.account.api.index')
-                ->withFail(trans('user::users.last token can not be deleted'));
-        }
-
         $this->userToken->destroy($userToken);
 
         return redirect()->route('admin.account.api.index')

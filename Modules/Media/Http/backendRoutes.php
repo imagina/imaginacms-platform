@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::prefix('/media')->group(function (Router $router) {
+$router->group(['prefix' => '/media'], function (Router $router) {
     $router->get('media', [
         'as' => 'admin.media.media.index',
         'uses' => 'MediaController@index',

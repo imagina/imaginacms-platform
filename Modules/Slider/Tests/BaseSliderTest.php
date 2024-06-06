@@ -1,6 +1,4 @@
-<?php
-
-namespace Modules\Slider\Tests;
+<?php namespace Modules\Slider\Tests;
 
 use Faker\Factory;
 use Illuminate\Contracts\Console\Kernel;
@@ -16,6 +14,7 @@ use Modules\Slider\Providers\SliderServiceProvider;
 use Modules\Slider\Repositories\SlideRepository;
 use Modules\Slider\Repositories\SliderRepository;
 use Orchestra\Testbench\TestCase;
+use Pingpong\Modules\ModulesServiceProvider;
 
 abstract class BaseSliderTest extends TestCase
 {
@@ -34,7 +33,10 @@ abstract class BaseSliderTest extends TestCase
      */
     protected $faker;
 
-    public function setUp(): void
+    /**
+     *
+     */
+    public function setUp()
     {
         parent::setUp();
 
@@ -66,13 +68,13 @@ abstract class BaseSliderTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = __DIR__.'/..';
+        $app['path.base'] = __DIR__ . '/..';
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        $app['config']->set('database.connections.sqlite', array(
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ]);
+        ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
     }
 
@@ -84,7 +86,7 @@ abstract class BaseSliderTest extends TestCase
         // Makes sure the migrations table is created
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path' => $migrationsPath,
+            '--path'     => $migrationsPath,
         ]);
         // We empty all tables
         $artisan->call('migrate:reset', [
@@ -93,13 +95,13 @@ abstract class BaseSliderTest extends TestCase
         // Migrate
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path' => $migrationsPath,
+            '--path'     => $migrationsPath,
         ]);
     }
 
     /**
-     * @param  string  $name
-     * @param  string  $systemName
+     * @param string $name
+     * @param string $systemName
      * @return Slider
      */
     public function createSlider($name = 'Homepage Slider', $systemName = 'homepage')
@@ -107,16 +109,16 @@ abstract class BaseSliderTest extends TestCase
         $data = [
             'name' => $name,
             'system_name' => $systemName,
-            'active' => true,
+            'active' => true
         ];
 
         return $this->sliderRepository->create($data);
     }
 
     /**
-     * @param  string  $name
-     * @param  string  $systemName
-     * @param  int  $slides number of slides to be created
+     * @param string $name
+     * @param string $systemName
+     * @param int $slides number of slides to be created
      * @return Slider
      */
     public function createSliderWithSlides($name = 'Homepage Slider', $systemName = 'homepage', $slides = 2)
@@ -133,8 +135,8 @@ abstract class BaseSliderTest extends TestCase
     /**
      * Create a slide for the given Slider and position
      *
-     * @param  int  $sliderId
-     * @param  int  $position
+     * @param int $sliderId
+     * @param int $position
      * @return Slide
      */
     protected function createSlideForSlider($sliderId, $position)
@@ -143,8 +145,8 @@ abstract class BaseSliderTest extends TestCase
     }
 
     /**
-     * @param  int|null  $sliderId
-     * @param  int  $position
+     * @param int|null $sliderId
+     * @param int $position
      * @return array
      */
     protected function getSlideData($sliderId = null, $position = 1)
@@ -156,7 +158,7 @@ abstract class BaseSliderTest extends TestCase
         return [
             'slider_id' => $sliderId,
             'position' => $position,
-            'external_image_url' => sprintf('https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200', $title),
+            'external_image_url' => sprintf("https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200", $title),
             'en' => [
                 'title' => $title,
                 'caption' => $caption,

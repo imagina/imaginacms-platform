@@ -1,7 +1,0 @@
-<?php
-
-use Illuminate\Routing\Router;
-
-Route::group(['prefix' =>'/$LOWERCASE_MODULE_NAME$/v1'], function (Router $router) {
-// append
-});

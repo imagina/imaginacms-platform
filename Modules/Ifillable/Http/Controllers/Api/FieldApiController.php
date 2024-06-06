@@ -9,13 +9,12 @@ use Modules\Ifillable\Repositories\FieldRepository;
 
 class FieldApiController extends BaseCrudController
 {
-    public $model;
+  public $model;
+  public $modelRepository;
 
-    public $modelRepository;
-
-    public function __construct(Field $model, FieldRepository $modelRepository)
-    {
-        $this->model = $model;
-        $this->modelRepository = $modelRepository;
-    }
+  public function __construct(Field $model, FieldRepository $modelRepository)
+  {
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
+  }
 }

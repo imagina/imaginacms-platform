@@ -2,9 +2,7 @@
 
 namespace Modules\Workshop\Http\Controllers\Admin;
 
-use Illuminate\View\View;
 use FloatingPoint\Stylist\Theme\Theme;
-use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Manager\ThemeManager;
 
@@ -22,14 +20,21 @@ class ThemesController extends AdminBaseController
         $this->themeManager = $themeManager;
     }
 
-    public function index(): View
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
     {
         $themes = $this->themeManager->all();
 
         return view('workshop::admin.themes.index', compact('themes'));
     }
 
-    public function show(Theme $theme): View
+    /**
+     * @param Theme $theme
+     * @return \Illuminate\View\View
+     */
+    public function show(Theme $theme)
     {
         return view('workshop::admin.themes.show', compact('theme'));
     }

@@ -1,11 +1,8 @@
 <?php
 /**
  * Platform.
- *
  * @User nicolaswidart
- *
  * @Date 10/09/2017
- *
  * @Time 13:22
  */
 

@@ -4,7 +4,8 @@
             <div class="sc-table">
                 <div class="el-row">
                     <div class="title">
-                        <h3 v-if="singleModal === false">{{ trans('media.title.media') }}</h3>
+                        <h4 v-if="singleModal">{{ trans('media.choose file') }}</h4>
+                        <h3 v-else>{{ trans('media.title.media') }}</h3>
                         <div class="media-breadcrumb">
                             <el-breadcrumb v-if="!singleModal" separator="/">
                                 <el-breadcrumb-item>
@@ -255,7 +256,7 @@
                 this.tableIsLoading = true;
                 this.queryServer({ order_by: event.prop, order: event.order });
             },
-            performSearch: debounce(function (query) {
+            performSearch: debounce((query) => {
                 console.log(`searching:${query.target.value}`);
                 this.tableIsLoading = true;
                 this.queryServer({ search: query.target.value });

@@ -6,8 +6,11 @@ class ValueObjectGenerator extends Generator
 {
     /**
      * Generate the given files
+     *
+     * @param  array $valueObjects
+     * @return void
      */
-    public function generate(array $valueObjects): void
+    public function generate(array $valueObjects)
     {
         if (! $this->finder->isDirectory($this->getModulesPath('ValueObjects'))) {
             $this->finder->makeDirectory($this->getModulesPath('ValueObjects'));

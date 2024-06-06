@@ -11,6 +11,9 @@ class WidgetViewComposer
      */
     private $subViews = [];
 
+    /**
+     * @param View $view
+     */
     public function compose(View $view)
     {
         $view->with(['widgets' => $this->subViews]);
@@ -18,8 +21,11 @@ class WidgetViewComposer
 
     /**
      * Add the html of the widget view to the given widget name
+     * @param string $name
+     * @param string $view
+     * @return $this
      */
-    public function addSubview(string $name, string $view): static
+    public function addSubview($name, $view)
     {
         $this->subViews[$name]['html'] = $view;
 
@@ -28,8 +34,11 @@ class WidgetViewComposer
 
     /**
      * Add widget options to the given widget name
+     * @param $name
+     * @param array $options
+     * @return $this
      */
-    public function addWidgetOptions($name, array $options): static
+    public function addWidgetOptions($name, array $options)
     {
         $this->subViews[$name]['options'] = $options;
 
@@ -38,8 +47,10 @@ class WidgetViewComposer
 
     /**
      * Set the widget name
+     * @param string $name
+     * @return $this
      */
-    public function setWidgetName(string $name): static
+    public function setWidgetName($name)
     {
         $this->subViews[$name]['id'] = $name;
 

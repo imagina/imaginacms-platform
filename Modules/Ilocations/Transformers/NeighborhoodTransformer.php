@@ -2,38 +2,37 @@
 
 namespace Modules\Ilocations\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class NeighborhoodTransformer extends JsonResource
+class NeighborhoodTransformer extends Resource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
-        $data = [
-            'id' => $this->when($this->id, $this->id),
-            'name' => $this->when($this->name, $this->name),
-            'cityId' => $this->when($this->city_id, $this->city_id),
-            'provinceId' => $this->when($this->province_id, $this->province_id),
-            'countryId' => $this->when($this->country_id, $this->country_id),
-            'city' => new CityTransformer($this->whenLoaded('city')),
-            'province' => new ProvinceTransformer($this->whenLoaded('province')),
-            'country' => new CountryTransformer($this->whenLoaded('country')),
-            'geozones' => GeozoneTransformer::collection($this->whenLoaded('geozones')),
-            'updatedAt' => $this->when($this->updated_at, $this->updated_at),
-            'createdAt' => $this->when($this->created_at, $this->created_at),
-        ];
+      $data = [
+        'id' => $this->when($this->id, $this->id),
+        'name'=> $this->when($this->name,$this->name),
+        'cityId'=> $this->when($this->city_id,$this->city_id),
+        'provinceId'=> $this->when($this->province_id,$this->province_id),
+        'countryId'=> $this->when($this->country_id,$this->country_id),
+        'city' => new CityTransformer($this->whenLoaded('city')),
+        'geozones' => CityTransformer::collection($this->whenLoaded('geozones')),
+        'updatedAt' => $this->when($this->updated_at, $this->updated_at),
+        'createdAt' => $this->when($this->created_at, $this->created_at),
+      ];
 
-        $filter = json_decode($request->filter);
+      $filter = json_decode($request->filter);
 
-        // Return data with available translations
-        if (isset($filter->allTranslations) && $filter->allTranslations) {
-            // Get langs avaliables
-            $languages = \LaravelLocalization::getSupportedLocales();
+      // Return data with available translations
+      if (isset($filter->allTranslations) && $filter->allTranslations) {
+        // Get langs avaliables
+        $languages = \LaravelLocalization::getSupportedLocales();
 
-            foreach ($languages as $lang => $value) {
-                $data[$lang]['name'] = $this->hasTranslation($lang) ? $this->translate("$lang")['name'] : '';
-            }
+        foreach ($languages as $lang => $value) {
+          $data[$lang]['name'] = $this->hasTranslation($lang) ? $this->translate("$lang")['name'] : '';
         }
+      }
 
-        return $data;
+      return $data;
     }
 }

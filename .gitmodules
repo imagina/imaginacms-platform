@@ -1,9 +1,3 @@
-[submodule "Themes/Flatly"]
-	path = Themes/Flatly
-	url = https://github.com/imagina/imaginacms-theme.git
-[submodule "Themes/Adminlte"]
-	path = Themes/Adminlte
-	url = https://github.com/imagina/imaginacmsadmin-theme.git
 [submodule "Modules/Iblog"]
 	path = Modules/Iblog
 	url = https://github.com/imagina/imaginacms-iblog.git
@@ -11,8 +5,8 @@
 	path = Modules/Core
 	url = https://github.com/imagina/imaginacms-core.git
 [submodule "Modules/Isite"]
-    path = Modules/Isite
-    url = https://github.com/imagina/imaginacms-isite.git
+	path = Modules/Isite
+	url = https://github.com/imagina/imaginacms-isite.git
 [submodule "Modules/Iprofile"]
 	path = Modules/Iprofile
 	url = https://github.com/imagina/imaginacms-iprofile.git
@@ -36,7 +30,7 @@
 	url = https://github.com/imagina/imaginacms-imedia.git
 [submodule "Modules/Tag"]
 	path = Modules/Tag
-	url = https://github.com/imagina/imaginacms-tag
+	url = https://github.com/imagina/imaginacms-tag.git
 [submodule "Modules/Page"]
 	path = Modules/Page
 	url = https://github.com/imagina/imaginacms-page.git
@@ -70,3 +64,6 @@
 [submodule "Modules/Iqreable"]
 	path = Modules/Iqreable
 	url = https://github.com/imagina/imaginacms-iqreable.git
+[submodule "Modules/Slider"]
+	path = Modules/Slider
+	url = https://github.com/imagina/imaginacms-slider.git

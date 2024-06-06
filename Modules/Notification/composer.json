@@ -17,7 +17,7 @@
   "require": {
     "php": ">=7.0.0",
     "composer/installers": "~1.0",
-    "imagina/core-module": "v8.x-dev",
+    "imagina/core-module": "4.0.x-dev",
     "kawankoding/laravel-fcm": "~0.2"
   },
   "require-dev": {
@@ -38,8 +38,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "4.0.x-dev",
-      "dev-v8.x": "8.0.x-dev"
+      "dev-master": "4.0.x-dev"
     }
   },
   "suggest": {

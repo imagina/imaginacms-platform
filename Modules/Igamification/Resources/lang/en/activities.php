@@ -21,11 +21,4 @@ return [
     ],
     'validation' => [
     ],
-    'type' => [
-        'internalURL' => 'Internal URL',
-        'externalUrl' => 'External Url',
-        'internalForm' => 'Internal Form',
-        'formScript' => 'Form Script',
-        'tour' => 'Tour',
-    ],
 ];

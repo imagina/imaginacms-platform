@@ -19,7 +19,10 @@ class MenuItemIsUpdating extends AbstractEntityHook implements EntityIsChanging
         $this->menuItem = $menuItem;
     }
 
-    public function getMenuItem(): Menuitem
+    /**
+     * @return Menuitem
+     */
+    public function getMenuItem()
     {
         return $this->menuItem;
     }

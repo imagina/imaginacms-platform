@@ -1,6 +1,4 @@
-<?php
-
-namespace Modules\Slider\Http\Requests;
+<?php namespace Modules\Slider\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -10,7 +8,7 @@ class CreateSliderRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'system_name' => 'required',
+            'system_name' => 'required'
         ];
     }
 
@@ -23,7 +21,7 @@ class CreateSliderRequest extends FormRequest
     {
         return [
             'name.required' => trans('slider::validation.name is required'),
-            'system_name.required' => trans('slider::validation.system name is required'),
+            'system_name.required' => trans('slider::validation.system name is required')
         ];
     }
 }

@@ -2,22 +2,19 @@
 
 namespace Modules\Iblog\Database\Seeders;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
-use Modules\Isite\Jobs\ProcessSeeds;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Iblog\Database\Seeders\RoleTableSeeder;
 
 class IblogDatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run()
-    {
-        Model::unguard();
-        ProcessSeeds::dispatch([
-            'baseClass' => "\Modules\Iblog\Database\Seeders",
-            'seeds' => ['IblogModuleTableSeeder', 'RoleTableSeeder', 'SlugCheckerTableSeeder', 'LayoutsBlogTableSeeder',
-                'MoveStatusToPostsTranslationsTableSeeder', 'MoveStatusToCategoryTranslationsTable'],
-        ]);
-    }
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    $this->call(RoleTableSeeder::class);
+  }
 }

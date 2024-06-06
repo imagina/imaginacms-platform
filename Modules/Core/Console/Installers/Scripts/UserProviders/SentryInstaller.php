@@ -13,15 +13,15 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
 
     /**
      * Check if the user driver is correctly registered.
+     * @return bool
      */
-    public function checkIsInstalled(): bool
+    public function checkIsInstalled()
     {
         return class_exists('Cartalyst\Sentry\SentryServiceProvider');
     }
 
     /**
      * Not called
-     *
      * @return mixed
      */
     public function composer()
@@ -79,6 +79,7 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
     }
 
     /**
+     * @param $password
      * @return mixed
      */
     public function getHashedPassword($password)

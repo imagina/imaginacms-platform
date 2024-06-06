@@ -9,13 +9,14 @@ use Symfony\Component\Console\Input\InputArgument;
 class RemoveModulePermissionsCommand extends Command
 {
     protected $name = 'asgard:user:remove-permissions';
-
     protected $description = 'Remove all the permissions for given module from any role or user';
 
     /**
      * Execute the console command.
+     *
+     * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         $module = $this->argument('module');
 
@@ -26,8 +27,10 @@ class RemoveModulePermissionsCommand extends Command
 
     /**
      * Get the console command arguments.
+     *
+     * @return array
      */
-    protected function getArguments(): array
+    protected function getArguments()
     {
         return [
             ['module', InputArgument::REQUIRED, 'Module name'],
@@ -36,8 +39,10 @@ class RemoveModulePermissionsCommand extends Command
 
     /**
      * Get the console command options.
+     *
+     * @return array
      */
-    protected function getOptions(): array
+    protected function getOptions()
     {
         return [
         ];

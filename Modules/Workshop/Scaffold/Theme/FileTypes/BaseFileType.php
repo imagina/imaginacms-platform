@@ -8,7 +8,6 @@ abstract class BaseFileType
      * @var \Illuminate\Filesystem\Filesystem
      */
     protected $finder;
-
     /**
      * @var array
      */

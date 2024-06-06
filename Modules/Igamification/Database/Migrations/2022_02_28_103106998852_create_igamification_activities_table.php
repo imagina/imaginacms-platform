@@ -1,28 +1,28 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
+class CreateIgamificationActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('igamification__activities', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-
+            
             // Your fields...
-            $table->string('system_name')->unique()->nullable();
-            $table->text('url')->nullable();
-            $table->integer('status')->default(0)->unsigned();
+            $table->text('url');
             $table->text('options')->nullable();
 
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('igamification__categories')->onDelete('restrict');
-
+            
             // Audit fields
             $table->timestamps();
             $table->auditStamps();
@@ -31,9 +31,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('igamification__activities');
     }
-};
+}

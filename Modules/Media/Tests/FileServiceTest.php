@@ -12,7 +12,7 @@ final class FileServiceTest extends MediaTestCase
      */
     private $fileService;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->resetDatabase();
@@ -20,7 +20,7 @@ final class FileServiceTest extends MediaTestCase
         $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         if ($this->app['files']->isDirectory(public_path('assets')) === true) {
             $this->app['files']->deleteDirectory(public_path('assets'));

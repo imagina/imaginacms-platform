@@ -6,7 +6,6 @@ interface AssetType
 {
     /**
      * Get the URL
-     *
      * @return string
      */
     public function url();

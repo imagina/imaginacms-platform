@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\Media\Http\Requests\MoveMediaRequest;
 use Modules\Media\Repositories\FileRepository;
@@ -15,12 +14,10 @@ class MoveMediaController extends Controller
      * @var FileRepository
      */
     private $file;
-
     /**
      * @var FolderRepository
      */
     private $folder;
-
     /**
      * @var Mover
      */
@@ -36,7 +33,7 @@ class MoveMediaController extends Controller
         $this->mover = $mover;
     }
 
-    public function __invoke(MoveMediaRequest $request): JsonResponse
+    public function __invoke(MoveMediaRequest $request)
     {
         $destination = $this->folder->findFolderOrRoot($request->get('destinationFolder'));
 
@@ -52,7 +49,11 @@ class MoveMediaController extends Controller
         ]);
     }
 
-    protected function getResponseMessage(int $failedMoves): string
+    /**
+     * @param int $failedMoves
+     * @return string
+     */
+    protected function getResponseMessage(int $failedMoves) : string
     {
         if ($failedMoves > 0) {
             return trans('media::media.some files not moved');

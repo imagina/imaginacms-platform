@@ -2,19 +2,18 @@
 
 namespace Modules\Media\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Image\Imagy;
 use Modules\Media\Image\ThumbnailManager;
 
-class MediaTransformer extends JsonResource
+class MediaTransformer extends Resource
 {
     /**
      * @var Imagy
      */
     private $imagy;
-
     /**
      * @var ThumbnailManager
      */
@@ -40,9 +39,8 @@ class MediaTransformer extends JsonResource
             'fa_icon' => FileHelper::getFaIcon($this->resource->media_type),
             'created_at' => $this->resource->created_at,
             'folder_id' => $this->resource->folder_id,
-            'small_thumb' => $this->imagy->getThumbnail($this->resource->path, 'smallThumb', $this->resource->disk),
-            'medium_thumb' => $this->imagy->getThumbnail($this->resource->path, 'mediumThumb', $this->resource->disk),
-            'url' => $this->url ?? '#',
+            'small_thumb' => $this->imagy->getThumbnail($this->resource->path, 'smallThumb'),
+            'mediumThumb' => $this->imagy->getThumbnail($this->resource->path, 'mediumThumb'),
             'urls' => [
                 'delete_url' => $this->getDeleteUrl(),
             ],
@@ -53,7 +51,7 @@ class MediaTransformer extends JsonResource
 
             $data['thumbnails'][] = [
                 'name' => $thumbnailName,
-                'path' => $this->imagy->getThumbnail($this->resource->path, $thumbnailName, $this->resource->disk),
+                'path' => $this->imagy->getThumbnail($this->resource->path, $thumbnailName),
                 'size' => $thumbnail->size(),
             ];
         }

@@ -2,38 +2,33 @@
 
 namespace Modules\Media\Entities;
 
-use Astrotomic\Translatable\Translatable;
+use Dimsav\Translatable\Translatable;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Icrud\Entities\CrudModel;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Traits\NamespacedEntity;
-use Modules\Isite\Traits\Tokenable;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Image\Facade\Imagy;
 use Modules\Media\ValueObjects\MediaPath;
 use Modules\Tag\Contracts\TaggableInterface;
 use Modules\Tag\Traits\TaggableTrait;
 use Modules\User\Entities\Sentinel\User;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 /**
  * Class File
- *
+ * @package Modules\Media\Entities
  * @property \Modules\Media\ValueObjects\MediaPath path
  */
-class File extends CrudModel implements TaggableInterface, Responsable
+class File extends Model implements TaggableInterface, Responsable
 {
-    use Translatable, NamespacedEntity, TaggableTrait, BelongsToTenant, Tokenable;
+    use Translatable, NamespacedEntity, TaggableTrait;
+    /**
+     * All the different images types where thumbnails should be created
+     * @var array
+     */
+    private $imageExtensions = ['jpg', 'png', 'jpeg', 'gif'];
 
     protected $table = 'media__files';
-
-    public $transformer = 'Modules\Media\Transformers\MediaTransformer';
-
-    public $entity = 'Modules\Media\Entities\File';
-
-    public $repository = 'Modules\Media\Repositories\FileRepository';
-
     public $translatedAttributes = ['description', 'alt_attribute', 'keywords'];
-
     protected $fillable = [
         'id',
         'is_folder',
@@ -48,16 +43,10 @@ class File extends CrudModel implements TaggableInterface, Responsable
         'height',
         'filesize',
         'folder_id',
-        'created_by',
-        'has_watermark',
-    'has_thumbnails',
-    'disk'
+    'created_by',
     ];
-
     protected $appends = ['path_string', 'media_type'];
-
-    protected $casts = ['is_folder' => 'boolean'];
-  protected $with = ["createdBy","tags"];
+  protected $casts = ['is_folder' => 'boolean'];
     protected static $entityNamespace = 'asgardcms/media';
 
     public function parent_folder()
@@ -67,9 +56,7 @@ class File extends CrudModel implements TaggableInterface, Responsable
 
     public function getPathAttribute($value)
     {
-        $disk = is_null($this->disk) ? setting('media::filesystem', null, config('asgard.media.config.filesystem')) : $this->disk;
-
-        return new MediaPath($value, $disk, $this->organization_id, $this);
+        return new MediaPath($value);
     }
 
     public function getPathStringAttribute()
@@ -82,15 +69,6 @@ class File extends CrudModel implements TaggableInterface, Responsable
         return FileHelper::getTypeByMimetype($this->mimetype);
     }
 
-    public function getUrlAttribute()
-    {
-        if ($this->disk == 'privatemedia') {
-            return \URL::route('public.media.media.show', ['criteria' => $this->id]);
-        } else {
-            return (string) $this->path;
-        }
-    }
-
     public function isFolder(): bool
     {
         return $this->is_folder;
@@ -98,22 +76,13 @@ class File extends CrudModel implements TaggableInterface, Responsable
 
     public function isImage()
     {
-        $imageExtensions = json_decode(setting('media::allowedImageTypes', null, config('asgard.media.config.allowedImageTypes')));
-
-        return in_array(pathinfo($this->path, PATHINFO_EXTENSION), $imageExtensions);
-    }
-
-    public function isVideo()
-    {
-        $videoExtensions = json_decode(setting('media::allowedVideoTypes', null, config('asgard.media.config.allowedVideoTypes')));
-
-        return in_array(pathinfo($this->path, PATHINFO_EXTENSION), $videoExtensions);
+        return in_array(pathinfo($this->path, PATHINFO_EXTENSION), $this->imageExtensions);
     }
 
     public function getThumbnail($type)
     {
         if ($this->isImage() && $this->getKey()) {
-            return Imagy::getThumbnail($this, $type, $this->disk);
+            return Imagy::getThumbnail($this->path, $type);
         }
 
         return false;
@@ -121,42 +90,33 @@ class File extends CrudModel implements TaggableInterface, Responsable
 
     /**
      * Create an HTTP response that represents the object.
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     public function toResponse($request)
     {
         return response()
-          ->file(public_path($this->path->getRelativeUrl()), [
-              'Content-Type' => $this->mimetype,
-          ]);
+            ->file(public_path($this->path->getRelativeUrl()), [
+                'Content-Type' => $this->mimetype,
+            ]);
     }
-
-    /**
-     * Created by relation
-     *
-     * @return mixed
-     */
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    /**
-     * Imageable relation
-     *
-     * @return mixed
-     */
-    public function imageable()
-    {
-        return $this->hasMany(User::class, 'created_by');
-    }
-
-    /**
-     * Created by relation
-     *
-     * @return mixed
-     */
-    public function folder()
-    {
-        return $this->belongsTo(File::class, 'folder_id');
-    }
+  
+  /**
+   * Created by relation
+   * @return mixed
+   */
+  public function createdBy()
+  {
+    return $this->belongsTo(User::class, 'created_by');
+  }
+  /**
+   * Created by relation
+   * @return mixed
+   */
+  public function folder()
+  {
+    return $this->belongsTo(File::class, 'folder_id');
+  }
+  
+  
 }

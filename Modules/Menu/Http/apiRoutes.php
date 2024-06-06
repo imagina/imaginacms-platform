@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-Route::prefix('/menuitem')->middleware('api.token')->group(function (Router $router) {
+$router->group(['prefix' => '/menuitem', 'middleware' => 'api.token'], function (Router $router) {
     $router->post('/update', [
         'as' => 'api.menuitem.update',
         'uses' => 'MenuItemController@update',
@@ -15,13 +15,17 @@ Route::prefix('/menuitem')->middleware('api.token')->group(function (Router $rou
         'middleware' => 'token-can:menu.menuitems.destroy',
     ]);
 });
-Route::prefix('imenu')->group(function (Router $router) {
-    // menu Routes
-    require 'ApiRoutes/menuRoutes.php';
+$router->group(['prefix' => 'imenu'], function (Router $router) {
 
-    // menuItems Routes
-    require 'ApiRoutes/menuItemRoutes.php';
+  // menu Routes
+  require('ApiRoutes/menuRoutes.php');
 
-    // Legacy Api Routes
-    require 'ApiRoutes/menuLegacyApiRoutes.php';
+  // menuItems Routes
+  require('ApiRoutes/menuItemRoutes.php');
+
+  // Legacy Api Routes
+  require ('ApiRoutes/menuLegacyApiRoutes.php');
+
 });
+
+

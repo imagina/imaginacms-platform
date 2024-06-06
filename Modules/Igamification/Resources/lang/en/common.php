@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     'title' => [
     ],
     'button' => [
@@ -17,20 +17,7 @@ return [
     'validation' => [
     ],
     'settings' => [
-        'helpCenter' => [
-            'status' => 'Help Center Enabled',
-            'internalCategory' => 'Category as Help Center',
-            'internalCategoryDescription' => 'You can choose an internal gamification category to use as a help center instead of the Centralized Source',
-            'centralizedSource' => 'Centralized Source',
-            'centralizedSourceDescription' => 'Put here the URL for the centralized source where request the help center',
-        ],
     ],
     'settingHints' => [
-    ],
-    'settingGroups' => [
-        'helpCenter' => [
-            'title' => 'Help center',
-            'description' => 'Manage the help center loaded in the iadmin CMS',
-        ],
     ],
 ];

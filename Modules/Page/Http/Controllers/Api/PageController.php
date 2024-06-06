@@ -2,7 +2,6 @@
 
 namespace Modules\Page\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Entities\Page;
@@ -34,7 +33,7 @@ class PageController extends Controller
         return PageTransformer::collection($this->page->serverPaginationFilteringFor($request));
     }
 
-    public function store(CreatePageRequest $request): JsonResponse
+    public function store(CreatePageRequest $request)
     {
         $this->page->create($request->all());
 
@@ -49,7 +48,7 @@ class PageController extends Controller
         return new FullPageTransformer($page);
     }
 
-    public function update(Page $page, UpdatePageRequest $request): JsonResponse
+    public function update(Page $page, UpdatePageRequest $request)
     {
         $this->page->update($page, $request->all());
 
@@ -59,7 +58,7 @@ class PageController extends Controller
         ]);
     }
 
-    public function destroy(Page $page): JsonResponse
+    public function destroy(Page $page)
     {
         $this->page->destroy($page);
 

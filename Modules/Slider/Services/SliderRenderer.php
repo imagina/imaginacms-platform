@@ -1,6 +1,4 @@
-<?php
-
-namespace Modules\Slider\Services;
+<?php namespace Modules\Slider\Services;
 
 use Illuminate\Support\Facades\URL;
 
@@ -10,23 +8,25 @@ class SliderRenderer
      * @var int Id of the slider to render
      */
     protected $sliderId;
-
     /**
      * @var string
      */
     private $startTag = '<div class="dd">';
-
     /**
      * @var string
      */
     private $endTag = '</div>';
-
     /**
      * @var string
      */
     private $slides = '';
 
-    public function renderForSlider(Slider $slider, $slides): string
+    /**
+     * @param Slider $slider
+     * @param $slides
+     * @return string
+     */
+    public function renderForSlider($slider, $slides)
     {
         $this->sliderId = $slider->id;
 
@@ -39,6 +39,7 @@ class SliderRenderer
 
     /**
      * Generate the html for the given items
+     * @param $slides
      */
     private function generateHtmlFor($slides)
     {
@@ -62,4 +63,5 @@ HTML;
         }
         $this->slides .= '</ol>';
     }
+
 }

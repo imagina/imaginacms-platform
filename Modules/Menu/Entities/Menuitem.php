@@ -2,35 +2,33 @@
 
 namespace Modules\Menu\Entities;
 
-use Astrotomic\Translatable\Translatable;
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Support\Traits\AuditTrait;
-use Modules\Isite\Traits\RevisionableTrait;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 use TypiCMS\NestableTrait;
 
 class Menuitem extends Model
 {
-    use Translatable, NestableTrait, BelongsToTenant, AuditTrait, RevisionableTrait;
+    use Translatable, NestableTrait;
 
-    public $repository = 'Modules\Menu\Repositories\MenuItemRepository';
-
-    public $translatedAttributes = ['title', 'uri', 'url', 'status', 'locale', 'description'];
-
+    public $translatedAttributes = ['title', 'uri', 'url', 'status', 'locale'];
     protected $fillable = [
         'menu_id',
         'page_id',
-        'system_name',
         'parent_id',
         'position',
         'target',
         'module_name',
+        'title',
+        'uri',
+        'url',
+        'status',
         'is_root',
         'icon',
         'link_type',
+        'locale',
         'class',
+        'description',
     ];
-
     protected $table = 'menu__menuitems';
 
     /**
@@ -47,6 +45,7 @@ class Menuitem extends Model
 
     /**
      * Make the current menu item child of the given root item
+     * @param Menuitem $rootItem
      */
     public function makeChildOf(Menuitem $rootItem)
     {
@@ -56,6 +55,7 @@ class Menuitem extends Model
 
     /**
      * Check if the current menu item is the root
+     * @return bool
      */
     public function isRoot()
     {
@@ -64,6 +64,7 @@ class Menuitem extends Model
 
     /**
      * Check if page_id is empty and returning null instead empty string
+     * @return number
      */
     public function setPageIdAttribute($value)
     {
@@ -72,14 +73,10 @@ class Menuitem extends Model
 
     /**
      * Check if parent_id is empty and returning null instead empty string
+     * @return number
      */
     public function setParentIdAttribute($value)
     {
         $this->attributes['parent_id'] = ! empty($value) ? $value : null;
-    }
-
-    public function setSystemNameAttribute($value)
-    {
-        $this->attributes['system_name'] = ! empty($value) ? $value : \Str::slug($this->title, '-');
     }
 }

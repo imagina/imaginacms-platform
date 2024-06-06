@@ -16,7 +16,7 @@ class SentinelRoleRepositoryTest extends BaseUserTestCase
      */
     private $role;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->role = app(RoleRepository::class);

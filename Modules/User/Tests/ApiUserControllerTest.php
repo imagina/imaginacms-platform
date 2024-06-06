@@ -15,18 +15,16 @@ class ApiUserControllerTest extends BaseUserTestCase
      * @var UserRepository
      */
     private $user;
-
     /**
      * @var PermissionManager
      */
     private $permissions;
-
     /**
      * @var UserTokenRepository
      */
     private $userToken;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->user = app(UserRepository::class);

@@ -3,10 +3,12 @@
 namespace Modules\Core\Foundation\Asset\Types;
 
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
-use Illuminate\Support\Arr;
 
 class ThemeAsset implements AssetType
 {
+    /**
+     * @var
+     */
     private $path;
 
     public function __construct($path)
@@ -16,6 +18,7 @@ class ThemeAsset implements AssetType
 
     /**
      * Get the URL
+     * @return string
      */
     public function url()
     {
@@ -24,6 +27,6 @@ class ThemeAsset implements AssetType
 
     private function getPath()
     {
-        return Arr::get($this->path, 'theme');
+        return array_get($this->path, 'theme');
     }
 }

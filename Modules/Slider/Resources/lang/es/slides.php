@@ -6,7 +6,7 @@ return [
         'module' => 'Módulo',
         'target' => 'Destino',
         'same tab' => 'Mismo tab',
-        'new tab' => 'Nuevo tab',
+        'new tab' => 'Nuevo tab'
     ],
     'link-type' => [
         'link type' => 'Tipo de enlace',
@@ -18,6 +18,6 @@ return [
     'create resource' => 'Crear Slide',
     'edit resource' => 'Editar Slide',
     'destroy resource' => 'Eliminar Slide',
-    'store resource' => 'Guardar Slide',
-    'update resource' => 'Actualizar Slide',
+    'store resource'=>'Guardar Slide',
+    'update resource'=>'Actualizar Slide'
 ];

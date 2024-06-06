@@ -2,30 +2,31 @@
 
 namespace Modules\Igamification\Entities;
 
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class CategoryTranslation extends Model
 {
+
     use Sluggable;
 
     public $timestamps = false;
-
     protected $fillable = [
         'title',
         'description',
-        'slug',
-        'summary',
+        'slug'
     ];
-
     protected $table = 'igamification__category_translations';
 
-    public function sluggable(): array
+
+
+    public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'title',
-            ],
+                   'source' => 'title'
+            ]
         ];
     }
+
 }

@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Media\Image\Imagy;
@@ -15,12 +14,10 @@ class BatchDestroyController extends Controller
      * @var FileRepository
      */
     private $file;
-
     /**
      * @var FolderRepository
      */
     private $folder;
-
     /**
      * @var Imagy
      */
@@ -33,12 +30,11 @@ class BatchDestroyController extends Controller
         $this->imagy = $imagy;
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request)
     {
         foreach ($request->get('files') as $file) {
             if ($file['is_folder'] === true) {
                 $this->deleteFolder($file['id']);
-
                 continue;
             }
             $this->deleteFile($file['id']);

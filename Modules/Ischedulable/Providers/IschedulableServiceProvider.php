@@ -8,12 +8,10 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Ischedulable\Listeners\RegisterIschedulableSidebar;
-use Illuminate\Support\Facades\Blade;
 
 class IschedulableServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -23,8 +21,10 @@ class IschedulableServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         $this->registerBindings();
         $this->app['events']->listen(BuildingSidebar::class, RegisterIschedulableSidebar::class);
@@ -32,28 +32,31 @@ class IschedulableServiceProvider extends ServiceProvider
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             // append translations
         });
+
+
     }
 
-    public function boot(): void
+    public function boot()
     {
+
         $this->publishConfig('ischedulable', 'config');
         $this->publishConfig('ischedulable', 'crud-fields');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'settings'), 'asgard.ischedulable.settings');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'settings-fields'), 'asgard.ischedulable.settings-fields');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'permissions'), 'asgard.ischedulable.permissions');
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'settings'), "asgard.ischedulable.settings");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'settings-fields'), "asgard.ischedulable.settings-fields");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ischedulable', 'permissions'), "asgard.ischedulable.permissions");
 
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
-      $this->registerComponents();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
-    public function provides(): array
+    public function provides()
     {
-        return [];
+        return array();
     }
 
     private function registerBindings()
@@ -94,15 +97,12 @@ class IschedulableServiceProvider extends ServiceProvider
                 return new \Modules\Ischedulable\Repositories\Cache\CacheWorkTimeDecorator($repository);
             }
         );
-        // add bindings
+// add bindings
+
+
+
+
     }
 
-  /**
-   * Register Blade components
-   */
-
-  private function registerComponents(){
-    Blade::componentNamespace("Modules\Ischedulable\View\Components", 'ischedulable');
-  }
 
 }

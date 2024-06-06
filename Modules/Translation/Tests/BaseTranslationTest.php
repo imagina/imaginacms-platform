@@ -11,7 +11,7 @@ use Orchestra\Testbench\TestCase;
 
 abstract class BaseTranslationTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
@@ -36,13 +36,13 @@ abstract class BaseTranslationTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = __DIR__.'/..';
+        $app['path.base'] = __DIR__ . '/..';
         $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        $app['config']->set('database.connections.sqlite', array(
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ]);
+        ));
         $app['config']->set('translatable.locales', ['en', 'fr']);
         $app['config']->set('laravellocalization.supportedLocales', [
             'en' => [],

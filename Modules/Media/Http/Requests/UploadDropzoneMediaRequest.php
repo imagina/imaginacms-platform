@@ -9,10 +9,7 @@ class UploadDropzoneMediaRequest extends FormRequest
 {
     public function rules()
     {
-        $extensions = 'mimes:'.implode(',', setting('media::allowedImageTypes', null, config('asgard.media.config.allowedImageTypes')))
-          .implode(',', setting('media::allowedFileTypes', null, config('asgard.media.config.allowedFileTypes')))
-          .implode(',', setting('media::allowedVideoTypes', null, config('asgard.media.config.allowedVideoTypes')))
-          .implode(',', setting('media::allowedAudioTypes', null, config('asgard.media.config.allowedAudioTypes')));
+        $extensions = 'mimes:' . str_replace('.', '', config('asgard.media.config.allowed-types'));
         $maxFileSize = $this->getMaxFileSizeInKilobytes();
 
         return [
@@ -46,6 +43,6 @@ class UploadDropzoneMediaRequest extends FormRequest
 
     private function getMaxFileSize()
     {
-        return setting('media::maxFileSize', null, config('asgard.media.config.max-file-size'));
+        return config('asgard.media.config.max-file-size');
     }
 }

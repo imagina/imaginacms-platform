@@ -17,6 +17,10 @@ class SidebarViewCreator
      */
     protected $renderer;
 
+    /**
+     * @param AdminSidebar    $sidebar
+     * @param SidebarRenderer $renderer
+     */
     public function __construct(AdminSidebar $sidebar, SidebarRenderer $renderer)
     {
         $this->sidebar = $sidebar;

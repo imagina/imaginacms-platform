@@ -2,7 +2,7 @@
 
 namespace Modules\Notification\Entities;
 
-use Astrotomic\Translatable\Translatable;
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Template extends Model
@@ -10,12 +10,10 @@ class Template extends Model
     use Translatable;
 
     protected $table = 'notification__templates';
-
     public $translatedAttributes = [
-        'name',
+      'name'
     ];
-
     protected $fillable = [
-        'view',
+      'view'
     ];
 }

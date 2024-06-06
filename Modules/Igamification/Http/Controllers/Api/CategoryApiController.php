@@ -9,13 +9,12 @@ use Modules\Igamification\Repositories\CategoryRepository;
 
 class CategoryApiController extends BaseCrudController
 {
-    public $model;
+  public $model;
+  public $modelRepository;
 
-    public $modelRepository;
-
-    public function __construct(Category $model, CategoryRepository $modelRepository)
-    {
-        $this->model = $model;
-        $this->modelRepository = $modelRepository;
-    }
+  public function __construct(Category $model, CategoryRepository $modelRepository)
+  {
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
+  }
 }

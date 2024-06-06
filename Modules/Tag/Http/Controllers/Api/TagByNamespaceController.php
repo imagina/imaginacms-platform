@@ -2,7 +2,6 @@
 
 namespace Modules\Tag\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Tag\Repositories\TagRepository;
@@ -20,7 +19,7 @@ class TagByNamespaceController extends Controller
         $this->tag = $tag;
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request)
     {
         $availableTags = $this->tag->allForNamespace($request->get('namespace'));
 
