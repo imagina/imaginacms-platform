@@ -12,7 +12,7 @@ class EloquentTranslationRepositoryTest extends BaseTranslationTest
      */
     private $translation;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->translation = app(TranslationRepository::class);

@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\Media\Entities\File;
 use Modules\Media\Repositories\FolderRepository;
@@ -13,7 +12,6 @@ class FolderBreadcrumbController extends Controller
      * @var FolderRepository
      */
     private $folder;
-
     private $breadcrumb = [
         //0 => 'Home',
     ];
@@ -23,7 +21,7 @@ class FolderBreadcrumbController extends Controller
         $this->folder = $folder;
     }
 
-    public function __invoke(File $folder): JsonResponse
+    public function __invoke(File $folder)
     {
         if ($folder->folder_id !== 0) {
             $this->breadcrumb[] = ['id' => $folder->id, 'name' => $folder->filename];

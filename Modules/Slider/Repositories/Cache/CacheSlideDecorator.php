@@ -1,11 +1,9 @@
-<?php
-
-namespace Modules\Slider\Repositories\Cache;
+<?php namespace Modules\Slider\Repositories\Cache;
 
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Slider\Repositories\SlideRepository;
 
-class CacheSlideDecorator extends BaseCacheDecorator implements SlideRepository
+class CacheMSlideDecorator extends BaseCacheDecorator implements SlideRepository
 {
     /**
      * @var SlideRepository
@@ -18,4 +16,5 @@ class CacheSlideDecorator extends BaseCacheDecorator implements SlideRepository
         $this->entityName = 'slides';
         $this->repository = $slide;
     }
+
 }

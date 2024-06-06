@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DayTranslation extends Model
 {
-    public $timestamps = false;
-
-    protected $fillable = ['name'];
-
-    protected $table = 'ischedulable__day_translations';
+  public $timestamps = false;
+  protected $fillable = ['name'];
+  protected $table = 'ischedulable__day_translations';
 }

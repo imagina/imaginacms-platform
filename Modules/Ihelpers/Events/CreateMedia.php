@@ -6,29 +6,30 @@ use Modules\Media\Contracts\StoringMedia;
 
 class CreateMedia implements StoringMedia
 {
-    public $data;
+  public $data;
+  public $post;
 
-    public $post;
+  public function __construct($post, array $data)
+  {
+    $this->post = $post;
+    $this->data = $data;
+  }
 
-    public function __construct($post, array $data)
-    {
-        $this->post = $post;
-        $this->data = $data;
-    }
+  /**
+   * Return the entity
+   * @return \Illuminate\Database\Eloquent\Model
+   */
+  public function getEntity()
+  {
+    return $this->post;
+  }
 
-    /**
-     * Return the entity
-     */
-    public function getEntity()
-    {
-        return $this->post;
-    }
-
-    /**
-     * Return the ALL data sent
-     */
-    public function getSubmissionData()
-    {
-        return $this->data;
-    }
+  /**
+   * Return the ALL data sent
+   * @return array
+   */
+  public function getSubmissionData()
+  {
+    return $this->data;
+  }
 }

@@ -11,7 +11,7 @@ class UpdatePageRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            // 'template' => 'required',
+           // 'template' => 'required',
         ];
     }
 
@@ -19,7 +19,7 @@ class UpdatePageRequest extends BaseFormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required',
+            'slug' => 'required',         
         ];
     }
 

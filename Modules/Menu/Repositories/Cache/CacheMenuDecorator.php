@@ -21,6 +21,7 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
 
     /**
      * Get all online menus
+     * @return object
      */
     public function allOnline()
     {
@@ -30,9 +31,11 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
     }
 
     /**
+     * @param $criteria
+     * @param $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, $params)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -44,12 +47,14 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
     }
 
     /**
+     * @param $criteria
+     * @param $data
+     * @param $params
      * @return mixed
      */
-    public function updateBy($criteria, $data, $params = false)
+    public function updateBy($criteria, $data, $params)
     {
         $this->cache->tags($this->entityName)->flush();
-
         return $this->cache
             ->tags([$this->entityName, 'global'])
             ->remember("{$this->entityName}.getItem.{$criteria}", $this->cacheTime,
@@ -60,9 +65,10 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function getItemsBy($params = false)
+    public function getItemsBy($params)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -74,12 +80,13 @@ class CacheMenuDecorator extends BaseCacheDecorator implements MenuRepository
     }
 
     /**
+     * @param $criteria
+     * @param $params
      * @return mixed
      */
-    public function deleteBy($criteria, $params = false)
+    public function deleteBy($criteria, $params)
     {
         $this->cache->tags($this->entityName)->flush();
-
         return $this->cache
             ->tags([$this->entityName, 'global'])
             ->remember("{$this->entityName}.deleteBy.{$criteria}", $this->cacheTime,

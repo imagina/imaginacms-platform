@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Media\Tests;
+namespace Modules\Tests;
 
 use Modules\Media\Image\Thumbnail;
 

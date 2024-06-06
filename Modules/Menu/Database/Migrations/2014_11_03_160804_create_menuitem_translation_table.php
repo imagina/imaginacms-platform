@@ -3,12 +3,14 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
+class CreateMenuitemTranslationTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('menu__menuitem_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -29,9 +31,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::drop('menu__menuitem_translations');
     }
-};
+}

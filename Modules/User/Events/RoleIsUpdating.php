@@ -19,7 +19,10 @@ class RoleIsUpdating extends AbstractEntityHook implements EntityIsChanging
         parent::__construct($attributes);
     }
 
-    public function getRole(): RoleInterface
+    /**
+     * @return RoleInterface
+     */
+    public function getRole()
     {
         return $this->role;
     }

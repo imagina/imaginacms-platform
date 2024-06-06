@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Atölye',
+    'title'   => 'Atölye',
     'modules' => 'Modüller',
     'themes' => 'Temalar',
 ];

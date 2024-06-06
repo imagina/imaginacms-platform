@@ -1,23 +1,29 @@
 <?php
 
+
 namespace Modules\Ilocations\Http\Controllers\Api;
 
 // Libs
-use DB;
-use Exception;
-use Illuminate\Http\Request;
-use Log;
 use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Exception;
+use Log;
+use DB;
+
 // Custom Requests
 use Modules\Ilocations\Http\Requests\CreateNeighborhoodRequest;
 use Modules\Ilocations\Http\Requests\UpdateNeighborhoodRequest;
+
 // Transformers
-use Modules\Ilocations\Repositories\NeighborhoodRepository;
-// Repositories
 use Modules\Ilocations\Transformers\NeighborhoodTransformer;
+
+// Repositories
+use Modules\Ilocations\Repositories\NeighborhoodRepository;
 
 class NeighborhoodApiController extends BaseApiController
 {
+
     private $dataEntity;
 
     public function __construct(NeighborhoodRepository $dataEntity)
@@ -34,14 +40,14 @@ class NeighborhoodApiController extends BaseApiController
 
             $response = ['data' => NeighborhoodTransformer::collection($neighborhoods)];
 
-            $params->page ? $response['meta'] = ['page' => $this->pageTransformer($neighborhoods)] : false;
+            $params->page ? $response["meta"] = ["page" => $this->pageTransformer($neighborhoods)] : false;
+
         } catch (Exception $exception) {
             Log::Error($exception);
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
         }
-
-        return response()->json($response, $status ?? 200);
+        return response()->json($response,  $status ?? 200);
     }
 
     public function show($criteria, Request $request)
@@ -51,20 +57,19 @@ class NeighborhoodApiController extends BaseApiController
 
             $dataEntity = $this->neighborhood->getItem($criteria, $params);
 
-            if (! $dataEntity) {
-                throw new Exception('Item not found', 404);
-            }
+            if (!$dataEntity) throw new Exception('Item not found', 404);
 
             $response = ['data' => new NeighborhoodTransformer($dataEntity)];
+
         } catch (Exception $exception) {
+
             Log::Error($exception);
 
             $status = $this->getStatusError($exception->getCode());
 
             $response = ['errors' => $exception->getMessage()];
         }
-
-        return response()->json($response, $status ?? 200);
+        return response()->json($response,  $status ?? 200);
     }
 
     public function create(Request $request)
@@ -77,10 +82,11 @@ class NeighborhoodApiController extends BaseApiController
 
             $dataEntity = $this->neighborhood->create($data);
 
-            $response = ['data' => 'Request successful'];
+            $response = ["data" => "Request successful"];
 
             DB::commit();
         } catch (Exception $exception) {
+
             Log::Error($exception);
             DB::rollback();
 
@@ -88,8 +94,7 @@ class NeighborhoodApiController extends BaseApiController
 
             $response = ['errors' => $exception->getMessage()];
         }
-
-        return response()->json($response, $status ?? 200);
+        return response()->json($response,  $status ?? 200);
     }
 
     public function update($criteria, Request $request)
@@ -104,13 +109,11 @@ class NeighborhoodApiController extends BaseApiController
 
             $dataEntity = $this->neighborhood->getItem($criteria, $params);
 
-            if (! $dataEntity) {
-                throw new Exception('Item not found', 404);
-            }
+            if (!$dataEntity) throw new Exception('Item not found', 404);
 
             $this->neighborhood->update($dataEntity, $data);
 
-            $response = ['data' => 'Request successful'];
+            $response = ["data" => "Request successful"];
 
             DB::commit();
         } catch (Exception $exception) {
@@ -119,8 +122,7 @@ class NeighborhoodApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
         }
-
-        return response()->json($response, $status ?? 200);
+        return response()->json($response,  $status ?? 200);
     }
 
     public function delete($criteria, Request $request)
@@ -131,13 +133,11 @@ class NeighborhoodApiController extends BaseApiController
 
             $dataEntity = $this->neighborhood->getItem($criteria, $params);
 
-            if (! $dataEntity) {
-                throw new Exception('Item not found', 404);
-            }
+            if (!$dataEntity) throw new Exception('Item not found', 404);
 
             $this->neighborhood->destroy($dataEntity);
 
-            $response = ['data' => 'Request successful'];
+            $response = ["data" => "Request successful"];
 
             DB::commit();
         } catch (Exception $exception) {
@@ -146,7 +146,7 @@ class NeighborhoodApiController extends BaseApiController
             $status = $this->getStatusError($exception->getCode());
             $response = ['errors' => $exception->getMessage()];
         }
-
-        return response()->json($response, $status ?? 200);
+        return response()->json($response,  $status ?? 200);
     }
+
 }

@@ -20,22 +20,23 @@ class SettingDatabaseSeeder extends Seeder
 
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        Model::unguard();
-
-        $this->call(SettingModuleTableSeeder::class);
-        $settingsToCreate = [
-            'core::template' => 'ImaginaTheme',
-            'core::locales' => ['es'],
-        ];
-
-        foreach ($settingsToCreate as $key => $settingToCreate) {
-            $setting = $this->setting->findByName($key);
-            if (! isset($setting->id)) {
-                $this->setting->createOrUpdate([$key => $settingToCreate]);
-            }
+      Model::unguard();
+  
+      $settingsToCreate = [
+        'core::template' => 'Flatly',
+        'core::locales' => ['en'],
+      ];
+  
+      foreach ($settingsToCreate as $key => $settingToCreate){
+        $setting =  $this->setting->findByName($key);
+        if(!isset($setting->id)){
+          $this->setting->createOrUpdate([$key => $settingToCreate]);
         }
+      }
     }
 }

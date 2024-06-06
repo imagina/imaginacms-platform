@@ -8,6 +8,8 @@ class LocaleCodeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
     public function authorize()
     {
@@ -16,13 +18,15 @@ class LocaleCodeRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
+     *
+     * @return array
      */
     public function rules()
     {
         return [
             'order_by' => ['required', 'string'],
-            'order' => ['required', 'string', 'in:asc,desc'],
-            'search' => ['nullable', 'string', 'min:3'],
+            'order'    => ['required', 'string', 'in:asc,desc'],
+            'search'   => ['nullable', 'string', 'min:3'],
         ];
     }
 }

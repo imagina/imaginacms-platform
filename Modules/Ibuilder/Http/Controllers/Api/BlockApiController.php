@@ -2,7 +2,6 @@
 
 namespace Modules\Ibuilder\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use Modules\Core\Icrud\Controllers\BaseCrudController;
 //Model
 use Modules\Ibuilder\Entities\Block;
@@ -10,31 +9,12 @@ use Modules\Ibuilder\Repositories\BlockRepository;
 
 class BlockApiController extends BaseCrudController
 {
-    public $model;
+  public $model;
+  public $modelRepository;
 
-    public $modelRepository;
-
-    public function __construct(Block $model, BlockRepository $modelRepository)
-    {
-        $this->model = $model;
-        $this->modelRepository = $modelRepository;
-    }
-
-    /**
-     * Organization Index
-     */
-    public function blockPreview(Request $request)
-    {
-        $params = $request->all();
-
-        //Instance the blockConfig
-        $blockConfig = [
-            'component' => json_decode($params['component'] ?? '[]'),
-            'entity' => json_decode($params['entity'] ?? '[]'),
-            'attributes' => json_decode($params['attributes'] ?? '[]'),
-        ];
-
-        //Render view
-        return view('ibuilder::frontend.blocks', compact('blockConfig'));
-    }
+  public function __construct(Block $model, BlockRepository $modelRepository)
+  {
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
+  }
 }

@@ -15,6 +15,8 @@ abstract class AbstractAdminSidebar implements SidebarExtender
     protected $auth;
 
     /**
+     * @param Authentication $auth
+     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -29,7 +31,7 @@ abstract class AbstractAdminSidebar implements SidebarExtender
 
     /**
      * Method used to define your sidebar menu groups and items
-     *
+     * @param Menu $menu
      * @return Menu
      */
     abstract public function extendWith(Menu $menu);

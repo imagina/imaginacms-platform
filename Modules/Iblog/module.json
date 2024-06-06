@@ -5,7 +5,7 @@
     "keywords": [],
     "version": "4.0.26",
     "active": 1,
-    "priority": 10,
+    "order": 1,
     "providers": [
         "Modules\\Iblog\\Providers\\IblogServiceProvider",
         "Modules\\Iblog\\Providers\\RouteServiceProvider",

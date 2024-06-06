@@ -1,6 +1,4 @@
-<?php
-
-namespace Modules\Slider\Repositories\Cache;
+<?php namespace Modules\Slider\Repositories\Cache;
 
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Slider\Repositories\SliderRepository;
@@ -21,6 +19,7 @@ class CacheSliderDecorator extends BaseCacheDecorator implements SliderRepositor
 
     /**
      * Get all online sliders
+     * @return object
      */
     public function allOnline()
     {

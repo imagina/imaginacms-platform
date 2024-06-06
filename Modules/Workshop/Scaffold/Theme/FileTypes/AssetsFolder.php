@@ -10,10 +10,11 @@ class AssetsFolder extends BaseFileType implements FileType
 
     /**
      * Generate the current file type
+     * @return string
      */
-    public function generate(): string
+    public function generate()
     {
-        $stub = $this->finder->get(__DIR__.'/../stubs/gitignore.stub');
+        $stub = $this->finder->get(__DIR__ . '/../stubs/gitignore.stub');
 
         $this->finder->makeDirectory($this->themePathForFile($this->options['name'], '/assets/css'), 0755, true);
         $this->finder->makeDirectory($this->themePathForFile($this->options['name'], '/assets/js'), 0755, true);

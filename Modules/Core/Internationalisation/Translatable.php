@@ -4,9 +4,9 @@ namespace Modules\Core\Internationalisation;
 
 trait Translatable
 {
-    use \Astrotomic\Translatable\Translatable;
+    use \Dimsav\Translatable\Translatable;
 
-    public function save(array $options = [])
+    public function save(array $options = array())
     {
         $tempTranslations = $this->translations;
         if ($this->exists) {

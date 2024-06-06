@@ -39,6 +39,11 @@ abstract class ProviderInstaller implements SetupScript
      */
     protected $application;
 
+    /**
+     * @param Filesystem     $finder
+     * @param Composer       $composer
+     * @param Application    $application
+     */
     public function __construct(Filesystem $finder, Composer $composer, Application $application)
     {
         $this->finder = $finder;
@@ -49,7 +54,7 @@ abstract class ProviderInstaller implements SetupScript
 
     /**
      * Fire the install script
-     *
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
@@ -76,7 +81,7 @@ abstract class ProviderInstaller implements SetupScript
         $this->createFirstUser();
 
         if ($this->command->option('verbose')) {
-            $command->info($this->driver.' succesfully configured');
+            $command->info($this->driver . ' succesfully configured');
         }
     }
 
@@ -87,7 +92,6 @@ abstract class ProviderInstaller implements SetupScript
 
     /**
      * Check if the user driver is correctly registered.
-     *
      * @return bool
      */
     abstract public function checkIsInstalled();
@@ -113,11 +117,13 @@ abstract class ProviderInstaller implements SetupScript
     abstract public function configure();
 
     /**
+     * @param $password
      * @return mixed
      */
     abstract public function getHashedPassword($password);
 
     /**
+     * @param $command
      * @return mixed
      */
     private function migrateUserModule($command)
@@ -129,6 +135,10 @@ abstract class ProviderInstaller implements SetupScript
         return $command->callSilent('module:migrate', ['module' => 'User']);
     }
 
+    /**
+     * @param $search
+     * @param $Driver
+     */
     protected function replaceCartalystUserModelConfiguration($search, $Driver)
     {
         $driver = strtolower($Driver);
@@ -144,6 +154,8 @@ abstract class ProviderInstaller implements SetupScript
 
     /**
      * Set the correct repository binding on the fly for the current request
+     *
+     * @param $driver
      */
     protected function bindUserRepositoryOnTheFly($driver)
     {
@@ -168,9 +180,9 @@ abstract class ProviderInstaller implements SetupScript
     {
         $info = [
             'first_name' => $this->askForFirstName(),
-            'last_name' => $this->askForLastName(),
-            'email' => $this->askForEmail(),
-            'password' => $this->getHashedPassword(
+            'last_name'  => $this->askForLastName(),
+            'email'      => $this->askForEmail(),
+            'password'   => $this->getHashedPassword(
                 $this->askForPassword()
             ),
         ];

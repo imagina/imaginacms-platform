@@ -2,38 +2,37 @@
 
 namespace Modules\Media\Validators;
 
-use FilesystemIterator;
 use Illuminate\Contracts\Validation\Rule;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use FilesystemIterator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MaxFolderSizeRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
+     * @param  string $attribute
+     * @param  UploadedFile $value
+     * @return bool
      */
     public function passes($attribute, $value)
     {
-        //check if the tenant its initialized and the folder size must be calculated of the organization folder
-        $tenantPrefix = mediaOrganizationPrefix(null, '/');
-        $mediaPath = public_path(($tenantPrefix).config('asgard.media.config.files-path'));
-
-        $activateCheckOfDirSize = json_decode(setting('media::activateCheckOfDirSize', null, '1'));
-
-        $folderSize = $activateCheckOfDirSize ? $this->getDirSize($mediaPath) : '0';
+        $mediaPath = public_path(config('asgard.media.config.files-path'));
+        $folderSize = $this->getDirSize($mediaPath);
 
         preg_match('/([0-9]+)/', $folderSize, $match);
 
-        return ($match[0] + $value->getSize()) < setting('media::maxTotalSize', null, config('asgard.media.config.max-total-size'));
+        return ($match[0] + $value->getSize()) < config('asgard.media.config.max-total-size');
     }
 
     /**
      * Get the validation error message.
+     * @return string
      */
     public function message()
     {
-        $bytes = setting('media::maxTotalSize', null, config('asgard.media.config.max-total-size'));
+        $bytes = config('asgard.media.config.max-total-size');
         $size = $this->formatBytes($bytes);
 
         return trans('media::media.validation.max_size', ['size' => $size]);
@@ -41,18 +40,14 @@ class MaxFolderSizeRule implements Rule
 
     /**
      * Get the directory size
+     * @param string $directory
+     * @return int
      */
-    public function getDirSize($directory): int
+    public function getDirSize($directory) : int
     {
         $size = 0;
-
-        //adding this try catch to avoid the error 500 when the path don't exist
-        try {
-            foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS)) as $file) {
-                $size += $file->getSize();
-            }
-        } catch(\Exception $e) {
-            \Log::info('Media::MaxFolderSizeRule | Error getting Dir Size: '.$e->getMessage());
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory,FilesystemIterator::SKIP_DOTS)) as $file) {
+            $size += $file->getSize();
         }
 
         return $size;
@@ -74,6 +69,6 @@ class MaxFolderSizeRule implements Rule
 
         $bytes /= pow(1024, $pow);
 
-        return round($bytes, $precision).' '.$units[$pow];
+        return round($bytes, $precision) . ' ' . $units[$pow];
     }
 }

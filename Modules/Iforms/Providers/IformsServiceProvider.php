@@ -2,18 +2,17 @@
 
 namespace Modules\Iforms\Providers;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Iforms\Presenters\FormPresenter;
 use Modules\Iforms\Events\Handlers\RegisterIformsSidebar;
+use Illuminate\Support\Facades\Config;
 
 class IformsServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -23,6 +22,8 @@ class IformsServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
     public function register()
     {
@@ -30,33 +31,31 @@ class IformsServiceProvider extends ServiceProvider
         $this->app['events']->listen(BuildingSidebar::class, RegisterIformsSidebar::class);
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('forms', Arr::dot(trans('iforms::forms')));
-            $event->load('fields', Arr::dot(trans('iforms::fields')));
-            $event->load('leads', Arr::dot(trans('iforms::leads')));
+            $event->load('forms', array_dot(trans('iforms::forms')));
+            $event->load('fields', array_dot(trans('iforms::fields')));
+            $event->load('leads', array_dot(trans('iforms::leads')));
         });
+
+
     }
 
     public function boot()
     {
+        $this->publishConfig('iforms', 'permissions');
         $this->publishConfig('iforms', 'config');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'settings'), 'asgard.iforms.settings');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'settings-fields'), 'asgard.iforms.settings-fields');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'permissions'), 'asgard.iforms.permissions');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'cmsPages'), 'asgard.iforms.cmsPages');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'cmsSidebar'), 'asgard.iforms.cmsSidebar');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('iforms', 'blocks'), 'asgard.iforms.blocks');
-        $this->publishConfig('iforms', 'crud-fields');
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
-        $this->registerComponents();
+        $this->publishConfig('iforms', 'settings');
+        $this->publishConfig('iforms', 'settings-fields');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
     public function provides()
     {
-        return ['Iforms'];
+        return array('Ifomrs');
     }
 
     private function registerBindings()
@@ -97,28 +96,9 @@ class IformsServiceProvider extends ServiceProvider
                 return new \Modules\Iforms\Repositories\Cache\CacheLeadDecorator($repository);
             }
         );
-        $this->app->bind(
-            'Modules\Iforms\Repositories\BlockRepository',
-            function () {
-                $repository = new \Modules\Iforms\Repositories\Eloquent\EloquentBlockRepository(new \Modules\Iforms\Entities\Block());
-
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new \Modules\Iforms\Repositories\Cache\CacheBlockDecorator($repository);
-            }
-        );
-        // add bindings
+// add bindings
 
         $this->app->bind('Modules\Iforms\Presenters\FormPresenter');
-    }
 
-    /**
-     * Register Blade components
-     */
-    private function registerComponents()
-    {
-        Blade::componentNamespace("Modules\Iforms\View\Components", 'iforms');
     }
 }

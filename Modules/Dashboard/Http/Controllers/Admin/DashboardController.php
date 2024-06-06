@@ -4,7 +4,6 @@ namespace Modules\Dashboard\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Dashboard\Repositories\WidgetRepository;
 use Modules\User\Contracts\Authentication;
@@ -16,12 +15,16 @@ class DashboardController extends AdminBaseController
      * @var WidgetRepository
      */
     private $widget;
-
     /**
      * @var Authentication
      */
     private $auth;
 
+    /**
+     * @param RepositoryInterface $modules
+     * @param WidgetRepository $widget
+     * @param Authentication $auth
+     */
     public function __construct(RepositoryInterface $modules, WidgetRepository $widget, Authentication $auth)
     {
         parent::__construct();
@@ -37,8 +40,9 @@ class DashboardController extends AdminBaseController
 
     /**
      * Display the dashboard with its widgets
+     * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index()
     {
         $this->requireAssets();
 
@@ -54,7 +58,7 @@ class DashboardController extends AdminBaseController
 
     /**
      * Save the current state of the widgets
-     *
+     * @param Request $request
      * @return mixed
      */
     public function save(Request $request)
@@ -77,7 +81,7 @@ class DashboardController extends AdminBaseController
     {
         $widget = $this->widget->findForUser($this->auth->id());
 
-        if (! $widget) {
+        if (!$widget) {
             return redirect()->route('dashboard.index')->with('warning', trans('dashboard::dashboard.reset not needed'));
         }
 
@@ -88,11 +92,12 @@ class DashboardController extends AdminBaseController
 
     /**
      * Boot widgets for all enabled modules
+     * @param RepositoryInterface $modules
      */
     private function bootWidgets(RepositoryInterface $modules)
     {
         foreach ($modules->allEnabled() as $module) {
-            if (! isset($module->widgets)) {
+            if (! $module->widgets) {
                 continue;
             }
             foreach ($module->widgets as $widgetClass) {

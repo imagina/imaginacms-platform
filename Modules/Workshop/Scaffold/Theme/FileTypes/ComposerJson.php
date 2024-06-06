@@ -10,10 +10,11 @@ class ComposerJson extends BaseFileType implements FileType
 
     /**
      * Generate the current file type
+     * @return string
      */
-    public function generate(): string
+    public function generate()
     {
-        $stub = $this->finder->get(__DIR__.'/../stubs/composerJson.stub');
+        $stub = $this->finder->get(__DIR__ . '/../stubs/composerJson.stub');
 
         $stub = $this->replaceContentInStub($stub);
 

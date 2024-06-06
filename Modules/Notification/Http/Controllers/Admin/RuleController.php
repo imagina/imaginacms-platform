@@ -2,12 +2,13 @@
 
 namespace Modules\Notification\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Notification\Entities\Rule;
 use Modules\Notification\Http\Requests\CreateRuleRequest;
 use Modules\Notification\Http\Requests\UpdateRuleRequest;
 use Modules\Notification\Repositories\RuleRepository;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class RuleController extends AdminBaseController
 {
@@ -25,8 +26,10 @@ class RuleController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
+     *
+     * @return Response
      */
-    public function index(): Response
+    public function index()
     {
         //$rules = $this->rule->all();
 
@@ -35,16 +38,21 @@ class RuleController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return Response
      */
-    public function create(): Response
+    public function create()
     {
         return view('notification::admin.rules.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  CreateRuleRequest $request
+     * @return Response
      */
-    public function store(CreateRuleRequest $request): Response
+    public function store(CreateRuleRequest $request)
     {
         $this->rule->create($request->all());
 
@@ -54,16 +62,23 @@ class RuleController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  Rule $rule
+     * @return Response
      */
-    public function edit(Rule $rule): Response
+    public function edit(Rule $rule)
     {
         return view('notification::admin.rules.edit', compact('rule'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  Rule $rule
+     * @param  UpdateRuleRequest $request
+     * @return Response
      */
-    public function update(Rule $rule, UpdateRuleRequest $request): Response
+    public function update(Rule $rule, UpdateRuleRequest $request)
     {
         $this->rule->update($rule, $request->all());
 
@@ -73,8 +88,11 @@ class RuleController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Rule $rule
+     * @return Response
      */
-    public function destroy(Rule $rule): Response
+    public function destroy(Rule $rule)
     {
         $this->rule->destroy($rule);
 

@@ -18,7 +18,6 @@ class ModulesController extends AdminBaseController
      * @var ModuleManager
      */
     private $moduleManager;
-
     /**
      * @var RepositoryInterface
      */
@@ -34,8 +33,9 @@ class ModulesController extends AdminBaseController
 
     /**
      * Display a list of all modules
+     * @return View
      */
-    public function index(): View
+    public function index()
     {
         $modules = $this->modules->all();
 
@@ -44,8 +44,10 @@ class ModulesController extends AdminBaseController
 
     /**
      * Display module info
+     * @param Module $module
+     * @return View
      */
-    public function show(Module $module): View
+    public function show(Module $module)
     {
         $changelog = $this->moduleManager->changelogFor($module);
 
@@ -54,7 +56,7 @@ class ModulesController extends AdminBaseController
 
     /**
      * Disable the given module
-     *
+     * @param Module $module
      * @return mixed
      */
     public function disable(Module $module)
@@ -72,7 +74,7 @@ class ModulesController extends AdminBaseController
 
     /**
      * Enable the given module
-     *
+     * @param Module $module
      * @return mixed
      */
     public function enable(Module $module)
@@ -87,10 +89,10 @@ class ModulesController extends AdminBaseController
 
     /**
      * Update a given module
-     *
+     * @param Request $request
      * @return Response json
      */
-    public function update(Request $request): Response
+    public function update(Request $request)
     {
         $output = new BufferedOutput();
         Artisan::call('asgard:update', ['module' => $request->get('module')], $output);
@@ -100,8 +102,10 @@ class ModulesController extends AdminBaseController
 
     /**
      * Check if the given module is a core module that should be be disabled
+     * @param Module $module
+     * @return bool
      */
-    private function isCoreModule(Module $module): bool
+    private function isCoreModule(Module $module)
     {
         $coreModules = array_flip(config('asgard.core.config.CoreModules'));
 

@@ -2,37 +2,39 @@
 
 use Illuminate\Routing\Router;
 
-Route::prefix('/cities')->group(function (Router $router) {
-    //Route create
-    $router->post('/', [
-        'as' => 'api.ilocations.cities.create',
-        'uses' => 'CityApiController@create',
-        'middleware' => ['auth:api'],
-    ]);
+$router->group(['prefix' => '/cities'], function (Router $router) {
 
-    //Route index
-    $router->get('/', [
-        'as' => 'api.ilocations.cities.index',
-        'uses' => 'CityApiController@index',
-    ]);
+  //Route create
+  $router->post('/', [
+    'as' => 'api.ilocations.cities.create',
+    'uses' => 'CityApiController@create',
+    'middleware' => ['auth:api']
+  ]);
 
-    //Route show
-    $router->get('/{criteria}', [
-        'as' => 'api.ilocations.cities.show',
-        'uses' => 'CityApiController@show',
-    ]);
+  //Route index
+  $router->get('/', [
+    'as' => 'api.ilocations.cities.index',
+    'uses' => 'CityApiController@index',
+  ]);
 
-    //Route update
-    $router->put('/{criteria}', [
-        'as' => 'api.ilocations.cities.update',
-        'uses' => 'CityApiController@update',
-        'middleware' => ['auth:api'],
-    ]);
+  //Route show
+  $router->get('/{criteria}', [
+    'as' => 'api.ilocations.cities.show',
+    'uses' => 'CityApiController@show',
+  ]);
 
-    //Route delete
-    $router->delete('/{criteria}', [
-        'as' => 'api.ilocations.cities.delete',
-        'uses' => 'CityApiController@delete',
-        'middleware' => ['auth:api'],
-    ]);
+  //Route update
+  $router->put('/{criteria}', [
+    'as' => 'api.ilocations.cities.update',
+    'uses' => 'CityApiController@update',
+    'middleware' => ['auth:api']
+  ]);
+
+  //Route delete
+  $router->delete('/{criteria}', [
+    'as' => 'api.ilocations.cities.delete',
+    'uses' => 'CityApiController@delete',
+    'middleware' => ['auth:api']
+  ]);
+
 });

@@ -1,14 +1,16 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
+class CreateIlocationsCountriesTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ilocations__countries', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -19,24 +21,26 @@ return new class extends Migration
             $table->text('currency_symbol');
             $table->text('currency_code');
             $table->text('currency_sub_unit');
-
+            
             $table->text('region_code');
             $table->text('sub_region_code');
 
             $table->integer('country_code')->unsigned();
-            $table->text('iso_2', 2);
-            $table->text('iso_3', 3);
+            $table->text('iso_2',2);
+            $table->text('iso_3',3);
             $table->integer('calling_code')->unsigned();
 
             $table->timestamps();
         });
     }
-
+ 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('ilocations__countries');
     }
-};
+}

@@ -19,24 +19,23 @@ class CreateFolderOnDisk
 
     public function handle(FolderWasCreated $event)
     {
-        $disk = is_null($event->folder->disk) ? $this->getConfiguredFilesystem() : $event->folder->disk;
-
-        $organizationPrefix = mediaOrganizationPrefix($event->folder, '/');
-
-        $this->filesystem->disk($disk)->makeDirectory(($organizationPrefix).$this->getDestinationPath($event->folder->path->getRelativeUrl()));
+        $this->filesystem->disk($this->getConfiguredFilesystem())->makeDirectory($this->getDestinationPath($event->folder->path->getRelativeUrl()));
     }
 
     private function getDestinationPath($path)
     {
         if ($this->getConfiguredFilesystem() === 'local') {
-            return basename(public_path()).$path;
+            return basename(public_path()) . $path;
         }
 
         return $path;
     }
 
-    private function getConfiguredFilesystem(): string
+    /**
+     * @return string
+     */
+    private function getConfiguredFilesystem()
     {
-        return setting('media::filesystem', null, config('asgard.media.config.filesystem'));
+        return config('asgard.media.config.filesystem');
     }
 }

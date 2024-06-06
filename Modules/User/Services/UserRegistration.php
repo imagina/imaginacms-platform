@@ -12,12 +12,10 @@ class UserRegistration
      * @var Authentication
      */
     private $auth;
-
     /**
      * @var RoleRepository
      */
     private $role;
-
     /**
      * @var array
      */
@@ -30,6 +28,7 @@ class UserRegistration
     }
 
     /**
+     * @param array $input
      * @return mixed
      */
     public function register(array $input)
@@ -63,14 +62,16 @@ class UserRegistration
 
     /**
      * Check if the request input has a profile key
+     * @return bool
      */
-    private function hasProfileData(): bool
+    private function hasProfileData()
     {
         return isset($this->input['profile']);
     }
 
     /**
      * Create a profile for the given user
+     * @param $user
      */
     private function createProfileForUser($user)
     {

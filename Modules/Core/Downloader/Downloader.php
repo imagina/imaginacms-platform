@@ -4,7 +4,6 @@ namespace Modules\Core\Downloader;
 
 use GuzzleHttp\Client;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use RuntimeException;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,22 +15,18 @@ class Downloader
      * @var OutputInterface
      */
     private $output;
-
     /**
      * @var string
      */
     private $package;
-
     /**
      * @var Filesystem
      */
     private $finder;
-
     /**
      * @var string
      */
     private $tagName;
-
     /**
      * @var string
      */
@@ -54,7 +49,7 @@ class Downloader
 
         $this->output->writeln("<info>Downloading Module [{$this->package} {$this->tagName}{$this->branchName}]</info>");
 
-        $directory = config('modules.paths.modules').'/'.$this->extractPackageNameFrom($package);
+        $directory = config('modules.paths.modules') . '/' . $this->extractPackageNameFrom($package);
 
         if ($this->finder->isDirectory($directory) === true) {
             $this->output->writeln("<error>The folder [Modules/{$this->extractPackageNameFrom($package)}] already exists.</error>");
@@ -73,8 +68,11 @@ class Downloader
 
     /**
      * Extract the zip file into the given directory.
+     * @param  string $zipFile
+     * @param  string $directory
+     * @return $this
      */
-    protected function extract(string $zipFile, string $directory): static
+    protected function extract($zipFile, $directory)
     {
         $modulesPath = config('modules.paths.modules');
 
@@ -82,7 +80,7 @@ class Downloader
         $archive->open($zipFile);
         $archive->extractTo($modulesPath);
 
-        $original = $modulesPath.'/'.$archive->getNameIndex(0);
+        $original = $modulesPath . '/' . $archive->getNameIndex(0);
 
         $this->finder->move($original, $directory);
         $archive->close();
@@ -92,8 +90,11 @@ class Downloader
 
     /**
      * Download the temporary Zip to the given file.
+     * @param  string $zipFile
+     * @param string $latestVersionUrl
+     * @return $this
      */
-    protected function downloadFile(string $zipFile, string $latestVersionUrl): static
+    protected function downloadFile($zipFile, $latestVersionUrl)
     {
         $progress = new ProgressBar($this->output);
         $progress->setFormat('[%bar%] %elapsed:6s%');
@@ -112,8 +113,10 @@ class Downloader
 
     /**
      * Clean-up the Zip file.
+     * @param  string $zipFile
+     * @return $this
      */
-    protected function cleanUp(string $zipFile): static
+    protected function cleanUp($zipFile)
     {
         @chmod($zipFile, 0777);
         @unlink($zipFile);
@@ -123,10 +126,11 @@ class Downloader
 
     /**
      * Generate a random temporary filename.
+     * @return string
      */
-    protected function makeFilename(): string
+    protected function makeFilename()
     {
-        return getcwd().'/asgardcms_'.md5(time().uniqid()).'.zip';
+        return getcwd() . '/asgardcms_' . md5(time() . uniqid()) . '.zip';
     }
 
     private function getLatestVersionUrl()
@@ -136,7 +140,7 @@ class Downloader
         }
         $client = new Client([
             'base_uri' => 'https://api.github.com',
-            'timeout' => 2.0,
+            'timeout'  => 2.0,
         ]);
 
         $githubReleases = $client->get("repos/{$this->package}/releases/latest", ['http_errors' => false]);
@@ -153,11 +157,11 @@ class Downloader
 
     private function extractPackageNameFrom($package)
     {
-        if (Str::contains($package, '/') === false) {
+        if (str_contains($package, '/') === false) {
             throw new \Exception('You need to use vendor/name structure');
         }
 
-        return Str::studly(substr(strrchr($package, '/'), 1));
+        return studly_case(substr(strrchr($package, '/'), 1));
     }
 
     public function forBranch($branchName)

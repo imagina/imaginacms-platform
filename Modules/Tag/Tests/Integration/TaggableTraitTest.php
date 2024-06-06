@@ -15,13 +15,12 @@ class TaggableTraitTest extends BaseTestCase
      * @var TagRepository
      */
     private $tag;
-
     /**
      * @var PageRepository
      */
     private $page;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
@@ -75,7 +74,7 @@ class TaggableTraitTest extends BaseTestCase
     /** @test */
     public function it_can_remove_all_tags()
     {
-        $this->createPage(['original tag', 'tag2', 'tag3']);
+        $this->createPage(['original tag', 'tag2', 'tag3', ]);
         $page = $this->page->find(1);
 
         $this->page->update($page, ['tags' => []]);
@@ -87,7 +86,7 @@ class TaggableTraitTest extends BaseTestCase
     /** @test */
     public function it_removes_all_tag_links_when_removing_entity()
     {
-        $this->createPage(['original tag', 'tag2', 'tag3']);
+        $this->createPage(['original tag', 'tag2', 'tag3', ]);
 
         $page = $this->page->find(1);
         $pageId = $page->id;

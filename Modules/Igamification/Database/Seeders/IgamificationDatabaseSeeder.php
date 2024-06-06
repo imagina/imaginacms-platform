@@ -3,18 +3,19 @@
 namespace Modules\Igamification\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Isite\Jobs\ProcessSeeds;
+use Illuminate\Database\Eloquent\Model;
 
 class IgamificationDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
     public function run()
     {
-        ProcessSeeds::dispatch([
-            'baseClass' => "\Modules\Igamification\Database\Seeders",
-            'seeds' => ['IgamificationModuleTableSeeder', 'IgamificationSeeder'],
-        ]);
+        Model::unguard();
+
+        // $this->call("OthersTableSeeder");
     }
 }

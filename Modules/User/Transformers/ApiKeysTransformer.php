@@ -2,11 +2,11 @@
 
 namespace Modules\User\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class ApiKeysTransformer extends JsonResource
+class ApiKeysTransformer extends Resource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->resource->id,

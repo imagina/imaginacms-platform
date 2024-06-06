@@ -1,19 +1,16 @@
 {
-  "name": "Ifillable",
-  "alias": "ifillable",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "active": 1,
-  "priority": 0,
-  "providers": [
-    "Modules\\Ifillable\\Providers\\IfillableServiceProvider",
-    "Modules\\Ifillable\\Providers\\EventServiceProvider",
-    "Modules\\Ifillable\\Providers\\RouteServiceProvider"
-  ],
-  "aliases": {},
-  "files": [
-    "helpers.php"
-  ],
-  "requires": []
+    "name": "Ifillable",
+    "alias": "ifillable",
+    "version": "1.0.0",
+	"description": "",
+    "keywords": [],
+    "priority": 1,
+    "providers": [
+        "Modules\\Ifillable\\Providers\\IfillableServiceProvider",
+        "Modules\\Ifillable\\Providers\\EventServiceProvider",
+        "Modules\\Ifillable\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
 }

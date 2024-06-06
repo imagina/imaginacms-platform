@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\IbuilderController;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +11,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('ibuilder')->group(function () {
-    Route::get('/', [IbuilderController::class, 'index']);
+Route::prefix('ibuilder')->group(function() {
+    Route::get('/', 'IbuilderController@index');
 });

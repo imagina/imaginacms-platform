@@ -45,7 +45,7 @@
                             <?php $i++; ?>
                             <li class="{{ App::getLocale() == $locale ? 'active' : '' }}">
                                 <a href="#tab_{{ $i }}" data-toggle="tab">
-                                    <i class="flag-icon flag-icon-{{ $locale }}"></i> &nbsp; {{ trans('core::core.tab.'. strtolower($language['name'])) }}
+                                    {{ trans('core::core.tab.'. strtolower($language['name'])) }}
                                 </a>
                             </li>
                         @endforeach

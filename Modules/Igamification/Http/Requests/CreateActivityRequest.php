@@ -9,16 +9,17 @@ class CreateActivityRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'system_name' => 'required',
-            //'url' => 'required|min:5'
+            'url' => 'required|min:5'
         ];
     }
 
     public function translationRules()
     {
+
         return [
             'title' => 'required|min:2',
         ];
+        
     }
 
     public function authorize()
@@ -28,10 +29,7 @@ class CreateActivityRequest extends BaseFormRequest
 
     public function messages()
     {
-        return [
-            'system_name.required' => trans('igamification::common.messages.field required'),
-            //'url.required' => trans('igamification::common.messages.field required')
-        ];
+        return [];
     }
 
     public function translationMessages()
@@ -39,11 +37,12 @@ class CreateActivityRequest extends BaseFormRequest
         return [
             'title.required' => trans('igamification::common.messages.field required'),
             'title.min:2' => trans('igamification::common.messages.min 2 characters'),
+            'url.required' => trans('igamification::common.messages.field required'),
         ];
     }
 
-    public function getValidator()
-    {
+    public function getValidator(){
         return $this->getValidatorInstance();
     }
+    
 }

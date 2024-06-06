@@ -2,16 +2,20 @@
 
 use Illuminate\Routing\Router;
 
-Route::prefix('/ibuilder/v1')->group(function (Router $router) {
+$router->group(['prefix' =>'/ibuilder/v1'], function (Router $router) {
     $router->apiCrud([
-        'module' => 'ibuilder',
-        'prefix' => 'blocks',
-        'controller' => 'BlockApiController',
-        'middleware' => ['index' => [], 'show' => []],
+      'module' => 'ibuilder',
+      'prefix' => 'blocks',
+      'controller' => 'BlockApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
-    // append
-    $router->post('/block/preview', [
-        'as' => 'ibuilder.blocks.preview.post',
-        'uses' => 'BlockApiController@blockPreview',
+    $router->apiCrud([
+      'module' => 'ibuilder',
+      'prefix' => 'templates',
+      'controller' => 'TemplateApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
+// append
+
+
 });

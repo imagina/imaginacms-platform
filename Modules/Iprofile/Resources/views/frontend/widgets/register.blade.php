@@ -14,11 +14,11 @@
                 <div class="border-top title border-bottom border-top-dotted border-bottom-dotted py-4 {{isset($embedded) ? '' : 'mt-4'}} mb-4">
                     <p>{{trans('iprofile::frontend.title.social msj register')}}</p>
                     <div class="d-inline-block mr-3 mb-3">
-                        <a href="{{route('account.social.auth',['facebook']).((isset($route) && !empty(isset($route))) ? "?redirect=".route($route) : "")}}"><img class="img-fluid" src="{{url('modules/iprofile/img/facebook.png')}}" alt="Facebook"></a>
+                        <a href="{{route('account.social.auth',['facebook'])}}"><img class="img-fluid" src="{{url('modules/iprofile/img/facebook.png')}}" alt="Facebook"></a>
 
                     </div>
                     <div class="d-inline-block">
-                        <a href="{{route('account.social.auth',['google']).((isset($route) && !empty(isset($route))) ? "?redirect=".route($route) : "")}}"><img class="img-fluid" src="{{url('modules/iprofile/img/google.png')}}" alt="Google"></a>
+                        <a href="{{route('account.social.auth',['google'])}}"><img class="img-fluid" src="{{url('modules/iprofile/img/google.png')}}" alt="Google"></a>
 
                     </div>
                 </div>
@@ -31,10 +31,9 @@
 
             <hr class="border-top-dotted">
 
-            {!! Form::open(['url' => tenant_route(request()->getHost(), 'account.register.post'), 'class' => 'form-content','autocomplete' => 'off', 'id' => 'registerForm']) !!}
+            {!! Form::open(['route' => 'account.register.post', 'class' => 'form-content','autocomplete' => 'off']) !!}
 
             @if(isset($embedded))
-
                 <input name="embedded" type="hidden" value="{{isset($route) && $route ? $route : ''}}">
             @endif
             <div class="px-2 px-sm-0">
@@ -42,13 +41,13 @@
 
                     <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} py-2 has-feedback {{ $errors->has('first_name') ? ' has-error' : '' }}">
                         <label>{{trans('user::users.form.first-name')}}</label>
-                        {{ Form::text('first_name', old('first_name'),["minlength" => 3,'required'=>true,'class'=>"form-control",'placeholder' => '...']) }}
+                        {{ Form::text('first_name', old('first_name'),['required'=>true,'class'=>"form-control",'placeholder' => '...']) }}
                         {!! $errors->first('first_name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
 
                     <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} py-2 has-feedback {{ $errors->has('last_name') ? ' has-error' : '' }}">
                         <label>{{trans('user::users.form.last-name')}}</label>
-                        {{ Form::text('last_name', old('last_name'),["minlength" => 3,'required'=>true,'class'=>"form-control",'placeholder' => '...']) }}
+                        {{ Form::text('last_name', old('last_name'),['required'=>true,'class'=>"form-control",'placeholder' => '...']) }}
                         {!! $errors->first('last_name', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
 
@@ -71,9 +70,12 @@
                     </div>
 
                     @php
-                        $registerExtraFields = json_decode(setting('iprofile::registerExtraFields', null, "[]"));
+
+                            $registerExtraFields = json_decode(setting('iprofile::registerExtraFields', null, "[]"));
+
                     @endphp
                     @foreach($registerExtraFields as $extraField)
+
                         {{-- if is active--}}
                         @if(isset($extraField->active) && $extraField->active)
 
@@ -81,20 +83,13 @@
                             <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} py-2 has-feedback {{ $errors->has($extraField->field) ? ' has-error' : '' }}">
 
                                 {{-- label --}}
-                                <label for="extraField{{$extraField->field}}">
-                                  @if(isset($extraField->label))
-                                    {{$extraField->label}}
-                                  @else
-                                    {{trans("iprofile::frontend.form.$extraField->field")}}
-                                  @endif
-                                </label>
-
+                                <label for="extraField{{$extraField->field}}">{{trans("iprofile::frontend.form.$extraField->field")}}</label>
 
                                 {{-- Generic input --}}
                                 @if( !in_array($extraField->type, ["select","textarea"]) )
 
                                     {{-- Text input --}}
-                                    @if(in_array($extraField->type ,["text","number","checkbox","password","date"]))
+                                    @if(in_array($extraField->type ,["text","number","checkbox","password"]))
                                       <input  type="{{$extraField->type}}" name="fields[{{$extraField->field}}]" required="{{$extraField->required}}" class ="form-control" id = 'extraField{{$extraField->field}}'/>
                                     @endif
 
@@ -117,23 +112,18 @@
                                                     @endforeach
                                                 @endif
                                             @else
-                                            @php($optionValues = [])
-                                            @foreach ($extraField->options as $option)
-                                                    @php($optionValues = array_merge($optionValues, [ $option->value => $option->label]))
-                                            @endforeach
-
+                                                @php($optionValues = $extraField->options)
                                             @endif
 
                                             @if(isset($optionValues))
                                                 {{-- Select --}}
-
-                                            {{Form::select("fields[$extraField->field]", $optionValues, null, ['id'=>'extraField'.$extraField->field, 'required'=>$extraField->required,'class'=>"form-control",'placeholder' => '']) }}
+                                                {{Form::select("fields[$extraField->field]", $optionValues, null, ['id'=>'extraField'.$extraField->field, 'required'=>$extraField->required,'class'=>"form-control",'placeholder' => '']) }}
                                             @endif
                                             </div>
 
                                             <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} py-2 has-feedback {{ $errors->has($extraField->field) ? ' has-error' : '' }}">
                                                 <label for="extraFieldDocumentNumber">{{trans("iprofile::frontend.form.documentNumber")}}</label>
-                                              <input  type="number" minlength="6" min="100000" max="9999999999" name="fields[documentNumber]" required="{{$extraField->required}}" class ="form-control" id = 'extraFieldDocumentNumber'/>
+                                              <input  type="number" min="0" name="fields[documentNumber]" required="{{$extraField->required}}" class ="form-control" id = 'extraFieldDocumentNumber'/>
 
                                     @endif
 
@@ -188,20 +178,34 @@
                                 <input type="radio" class="custom-control-input"
                                        id="customradio-select1" name="confirmPolytics" value="1" required>
                                 <label class="custom-control-label" for="customradio-select1">
-                                    {!!  trans('icommerce::customer.form.confirmPolytics',["url" => url(trans("iprofile::frontend.button.privacy_policy_url"))])  !!}
+                                    {!!  trans('icommerce::customer.form.confirmPolytics',["url" => url("/politica-de-privacidad")])  !!}
                                 </label>
                             </div>
                         @endif
+
+                        <div class="custom-control custom-radio red mb-3">
+                            <input type="radio" class="custom-control-input"
+                                   id="customradio-select2" name="remember_me">
+                            <label class="custom-control-label" for="customradio-select2">
+                                {{trans('iprofile::frontend.title.stay connect')}}
+                            </label>
+                        </div>
+
+
                     </div>
-                    <x-isite::captcha formId="registerForm" />
                     <div class="col-sm-12 {{isset($embedded) ? '' : 'col-md-6' }} pt-4 pt-lg-0">
                         <input class="btn btn-primary text-white text-uppercase font-weight-bold rounded-pill px-3 py-2"
-                               type="submit" value="{{ trans('core::core.button.create') }}" {{ setting('isite::activateCaptcha') ? 'disabled' : '' }}>
+                               type="submit" value="{{ trans('core::core.button.create') }}">
                     </div>
                 </div>
 
             </div>
+
             {!! Form::close() !!}
+
+
         </div>
+
     </div>
 </div>
+

@@ -11,8 +11,10 @@ class RegisterMenuSidebar extends AbstractAdminSidebar
 {
     /**
      * Method used to define your sidebar menu groups and items
+     * @param Menu $menu
+     * @return Menu
      */
-    public function extendWith(Menu $menu): Menu
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->weight(90);

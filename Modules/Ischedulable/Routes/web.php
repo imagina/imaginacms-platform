@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\IschedulableController;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +11,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('ischedulable')->group(function () {
-    Route::get('/', [IschedulableController::class, 'index']);
+Route::prefix('ischedulable')->group(function() {
+    Route::get('/', 'IschedulableController@index');
 });

@@ -2,8 +2,8 @@
 
 namespace Modules\Iblog\Widgets;
 
-use Modules\Dashboard\Foundation\Widgets\BaseWidget;
 use Modules\Iblog\Repositories\PostRepository;
+use Modules\Dashboard\Foundation\Widgets\BaseWidget;
 use Modules\Setting\Contracts\Setting;
 
 class LatestPostsWidget extends BaseWidget
@@ -21,8 +21,9 @@ class LatestPostsWidget extends BaseWidget
 
     /**
      * Get the widget name
+     * @return string
      */
-    protected function name(): string
+    protected function name()
     {
         return 'LatestPostsWidget';
     }
@@ -31,8 +32,9 @@ class LatestPostsWidget extends BaseWidget
      * Get the widget options
      * Possible options:
      *  x, y, width, height
+     * @return string
      */
-    protected function options(): string
+    protected function options()
     {
         return [
             'width' => '4',
@@ -42,16 +44,18 @@ class LatestPostsWidget extends BaseWidget
 
     /**
      * Get the widget view
+     * @return string
      */
-    protected function view(): string
+    protected function view()
     {
         return 'iblog::admin.widgets.latest-posts';
     }
 
     /**
      * Get the widget data to send to the view
+     * @return string
      */
-    protected function data(): string
+    protected function data()
     {
         $limit = $this->setting->get('iblog::widget-posts-amount', locale(), 5);
 

@@ -2,12 +2,13 @@
 
 namespace Modules\Iprofile\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Iprofile\Entities\Setting;
 use Modules\Iprofile\Http\Requests\CreateSettingRequest;
 use Modules\Iprofile\Http\Requests\UpdateSettingRequest;
 use Modules\Iprofile\Repositories\SettingRepository;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class DepartmentSettingController extends AdminBaseController
 {
@@ -25,8 +26,10 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
+     *
+     * @return Response
      */
-    public function index(): Response
+    public function index()
     {
         //$departmentsettings = $this->departmentsetting->all();
 
@@ -35,16 +38,21 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return Response
      */
-    public function create(): Response
+    public function create()
     {
         return view('Iprofile::admin.departmentsettings.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  CreateSettingRequest $request
+     * @return Response
      */
-    public function store(CreateSettingRequest $request): Response
+    public function store(CreateSettingRequest $request)
     {
         $this->departmentsetting->create($request->all());
 
@@ -54,16 +62,23 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  Setting $departmentsetting
+     * @return Response
      */
-    public function edit(Setting $departmentsetting): Response
+    public function edit(Setting $departmentsetting)
     {
         return view('Iprofile::admin.departmentsettings.edit', compact('departmentsetting'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  Setting $departmentsetting
+     * @param  UpdateSettingRequest $request
+     * @return Response
      */
-    public function update(Setting $departmentsetting, UpdateSettingRequest $request): Response
+    public function update(Setting $departmentsetting, UpdateSettingRequest $request)
     {
         $this->departmentsetting->update($departmentsetting, $request->all());
 
@@ -73,8 +88,11 @@ class DepartmentSettingController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Setting $departmentsetting
+     * @return Response
      */
-    public function destroy(Setting $departmentsetting): Response
+    public function destroy(Setting $departmentsetting)
     {
         $this->departmentsetting->destroy($departmentsetting);
 

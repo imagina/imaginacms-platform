@@ -3,7 +3,6 @@
 namespace Modules\Setting\Providers;
 
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -21,7 +20,6 @@ use Modules\Setting\Support\Settings;
 class SettingServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration, CanGetSidebarClassForModule;
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -31,6 +29,8 @@ class SettingServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
     public function register()
     {
@@ -55,24 +55,26 @@ class SettingServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('settings', Arr::dot(trans('setting::settings')));
+            $event->load('settings', array_dot(trans('setting::settings')));
         });
     }
 
     public function boot()
     {
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('setting', 'permissions'), 'asgard.setting.permissions');
+        $this->publishConfig('setting', 'permissions');
         $this->publishConfig('setting', 'config');
         $this->registerBladeTags();
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
     public function provides()
     {
-        return [];
+        return array();
     }
 
     private function registerBindings()

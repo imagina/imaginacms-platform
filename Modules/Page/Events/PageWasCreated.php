@@ -2,7 +2,6 @@
 
 namespace Modules\Page\Events;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Contracts\StoringMedia;
 use Modules\Page\Entities\Page;
 
@@ -12,7 +11,6 @@ class PageWasCreated implements StoringMedia
      * @var array
      */
     public $data;
-
     /**
      * @var Page
      */
@@ -26,16 +24,18 @@ class PageWasCreated implements StoringMedia
 
     /**
      * Return the entity
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getEntity(): Model
+    public function getEntity()
     {
         return $this->page;
     }
 
     /**
      * Return the ALL data sent
+     * @return array
      */
-    public function getSubmissionData(): array
+    public function getSubmissionData()
     {
         return $this->data;
     }

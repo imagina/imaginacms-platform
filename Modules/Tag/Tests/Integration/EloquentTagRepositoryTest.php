@@ -17,7 +17,7 @@ class EloquentTagRepositoryTest extends BaseTestCase
      */
     private $tag;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 

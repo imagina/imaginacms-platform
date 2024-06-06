@@ -1,16 +1,15 @@
-<?php
-
-namespace Modules\Slider\Http\Controllers\Admin;
+<?php namespace Modules\Slider\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Media\Repositories\FileRepository;
-use Modules\Page\Repositories\PageRepository;
-use Modules\Slider\Entities\Slide;
 use Modules\Slider\Entities\Slider;
+use Modules\Slider\Entities\Slide;
 use Modules\Slider\Http\Requests\CreateSlideRequest;
 use Modules\Slider\Http\Requests\UpdateSlideRequest;
 use Modules\Slider\Repositories\SlideRepository;
+use Modules\Page\Repositories\PageRepository;
+use Modules\Media\Repositories\FileRepository;
 
 class SlideController extends AdminBaseController
 {
@@ -44,7 +43,7 @@ class SlideController extends AdminBaseController
         return view('slider::admin.slides.create')
             ->with([
                 'slider' => $slider,
-                'pages' => $pages,
+                'pages' => $pages
             ]);
     }
 
@@ -66,7 +65,7 @@ class SlideController extends AdminBaseController
                 'slider' => $slider,
                 'slide' => $slide,
                 'pages' => $pages,
-                'slideimage' => $this->file->findFileByZoneForEntity('slideimage', $slide),
+                'slideimage' => $this->file->findFileByZoneForEntity('slideimage', $slide)
             ]);
     }
 
@@ -79,7 +78,12 @@ class SlideController extends AdminBaseController
             ->withSuccess(trans('slider::messages.slide updated'));
     }
 
-    private function addSliderId(Slider $slider, FormRequest $request): array
+    /**
+     * @param  Slider $slider
+     * @param  \Illuminate\Foundation\Http\FormRequest $request
+     * @return array
+     */
+    private function addSliderId(Slider $slider, FormRequest $request)
     {
         return array_merge($request->all(), ['slider_id' => $slider->id]);
     }

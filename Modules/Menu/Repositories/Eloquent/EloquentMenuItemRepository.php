@@ -11,339 +11,302 @@ use Modules\Menu\Events\MenuItemIsUpdating;
 use Modules\Menu\Events\MenuItemWasCreated;
 use Modules\Menu\Events\MenuItemWasUpdated;
 use Modules\Menu\Repositories\MenuItemRepository;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class EloquentMenuItemRepository extends EloquentBaseRepository implements MenuItemRepository
 {
-    public function create($data)
-    {
-        event($event = new MenuItemIsCreating($data));
+  public function create($data)
+  {
+    event($event = new MenuItemIsCreating($data));
+    $menuItem = $this->model->create($event->getAttributes());
 
-        $data = $event->getAttributes();
+    event(new MenuItemWasCreated($menuItem));
 
-        //force it into the system name setter
-        $data['system_name'] = $data['system_name'] ?? '';
+    return $menuItem;
+  }
 
-        $menuItem = $this->model->create($data);
+  public function update($menuItem, $data)
+  {
+    event($event = new MenuItemIsUpdating($menuItem, $data));
+    $menuItem->update($event->getAttributes());
 
-        event(new MenuItemWasCreated($menuItem));
+    event(new MenuItemWasUpdated($menuItem));
 
-        return $menuItem;
+    return $menuItem;
+  }
+
+  /**
+   * Get online root elements
+   *
+   * @param int $menuId
+   * @return object
+   */
+  public function rootsForMenu($menuId)
+  {
+    return $this->model->whereHas('translations', function (Builder $q) {
+      $q->where('status', 1);
+      $q->where('locale', App::getLocale());
+    })->with('translations')->whereMenuId($menuId)->orderBy('position')->get();
+  }
+
+  /**
+   * Get all root elements
+   *
+   * @param int $menuId
+   * @return object
+   */
+  public function allRootsForMenu($menuId)
+  {
+    return $this->model->with('translations')->whereMenuId($menuId)->orderBy('parent_id')->orderBy('position')->get();
+  }
+
+  /**
+   * Get Items to build routes
+   *
+   * @return Array
+   */
+  public function getForRoutes()
+  {
+    $menuitems = DB::table('menu__menus')
+      ->select(
+        'primary',
+        'menu__menuitems.id',
+        'menu__menuitems.parent_id',
+        'menu__menuitems.module_name',
+        'menu__menuitem_translations.uri',
+        'menu__menuitem_translations.locale'
+      )
+      ->join('menu__menuitems', 'menu__menus.id', '=', 'menu__menuitems.menu_id')
+      ->join('menu__menuitem_translations', 'menu__menuitems.id', '=', 'menu__menuitem_translations.menuitem_id')
+      ->where('uri', '!=', '')
+      ->where('module_name', '!=', '')
+      ->where('status', '=', 1)
+      ->where('primary', '=', 1)
+      ->orderBy('module_name')
+      ->get();
+
+    $menuitemsArray = [];
+    foreach ($menuitems as $menuitem) {
+      $menuitemsArray[$menuitem->module_name][$menuitem->locale] = $menuitem->uri;
     }
 
-    public function update($menuItem, $data)
-    {
-        event($event = new MenuItemIsUpdating($menuItem, $data));
-        $menuItem->update($event->getAttributes());
+    return $menuitemsArray;
+  }
 
-        event(new MenuItemWasUpdated($menuItem));
+  /**
+   * Get the root menu item for the given menu id
+   *
+   * @param int $menuId
+   * @return object
+   */
+  public function getRootForMenu($menuId)
+  {
+    return $this->model->with('translations')->where(['menu_id' => $menuId, 'is_root' => true])->firstOrFail();
+  }
 
-        return $menuItem;
+  /**
+   * Return a complete tree for the given menu id
+   *
+   * @param int $menuId
+   * @return object
+   */
+  public function getTreeForMenu($menuId)
+  {
+    $items = $this->rootsForMenu($menuId);
+
+    return $items->noCleaning()->nest();
+  }
+
+  /**
+   * @param string $uri
+   * @param string $locale
+   * @return object
+   */
+  public function findByUriInLanguage($uri, $locale)
+  {
+    return $this->model->whereHas('translations', function (Builder $q) use ($locale, $uri) {
+      $q->where('status', 1);
+      $q->where('locale', $locale);
+      $q->where('uri', $uri);
+    })->with('translations')->first();
+  }
+
+
+  public function getItemsBy($params = false)
+  {
+    /*== initialize query ==*/
+    $query = $this->model->query();
+
+    /*== RELATIONSHIPS ==*/
+    if (in_array('*', $params->include)) {//If Request all relationships
+      $query->with([]);
+    } else {//Especific relationships
+      $includeDefault = [];//Default relationships
+      if (isset($params->include))//merge relations with default relationships
+        $includeDefault = array_merge($includeDefault, $params->include);
+      $query->with($includeDefault);//Add Relationships to query
     }
 
-    /**
-     * Get online root elements
-     */
-    public function rootsForMenu($menuId)
-    {
-        return $this->model->whereHas('translations', function (Builder $q) {
-            $q->where('status', 1);
-            $q->where('locale', App::getLocale());
-        })->with('translations')->whereMenuId($menuId)->orderBy('position')->get();
+    /*== FILTERS ==*/
+    if (isset($params->filter)) {
+      $filter = $params->filter;//Short filter
+
+      //Filter by date
+      if (isset($filter->date)) {
+        $date = $filter->date;//Short filter date
+        $date->field = $date->field ?? 'created_at';
+        if (isset($date->from))//From a date
+          $query->whereDate($date->field, '>=', $date->from);
+        if (isset($date->to))//to a date
+          $query->whereDate($date->field, '<=', $date->to);
+      }
+
+      //Order by
+      if (isset($filter->order)) {
+        $orderByField = $filter->order->field ?? 'position';//Default field
+        $orderWay = $filter->order->way ?? 'desc';//Default way
+        $query->orderBy($orderByField, $orderWay);//Add order to query
+      }
+
+      // Filter By Menu
+      if (isset($filter->menu)) {
+        $query->where('menu_id', $filter->menu);
+      }
+
+      //add filter by search
+      if (isset($filter->search)) {
+        //find search in columns
+        $query->where(function ($query) use ($filter) {
+          $query->whereHas('translations', function ($query) use ($filter) {
+            $query->where('locale', $filter->locale)
+              ->where('title', 'like', '%' . $filter->search . '%');
+          })->orWhere('id', 'like', '%' . $filter->search . '%')
+            ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
+            ->orWhere('created_at', 'like', '%' . $filter->search . '%');
+        });
+      }
+
     }
 
-    /**
-     * Get all root elements
-     */
-    public function allRootsForMenu($menuId)
-    {
-        return $this->model->with('translations')->whereMenuId($menuId)->orderBy('parent_id')->orderBy('position')->get();
+    /*== FIELDS ==*/
+    if (isset($params->fields) && count($params->fields))
+      $query->select($params->fields);
+
+    /*== REQUEST ==*/
+    if (isset($params->page) && $params->page) {
+      return $query->paginate($params->take);
+    } else {
+      $params->take ? $query->take($params->take) : false;//Take
+      return $query->get();
+    }
+  }
+
+  public function getItem($criteria, $params = false)
+  {
+    //Initialize query
+    $query = $this->model->query();
+
+    /*== RELATIONSHIPS ==*/
+    if (in_array('*', $params->include)) {//If Request all relationships
+      $query->with([]);
+    } else {//Especific relationships
+      $includeDefault = [];//Default relationships
+      if (isset($params->include))//merge relations with default relationships
+        $includeDefault = array_merge($includeDefault, $params->include);
+      $query->with($includeDefault);//Add Relationships to query
     }
 
-    /**
-     * Get Items to build routes
-     */
-    public function getForRoutes()
-    {
-        $menuitems = DB::table('menu__menus')
-          ->select(
-              'primary',
-              'menu__menuitems.id',
-              'menu__menuitems.parent_id',
-              'menu__menuitems.module_name',
-              'menu__menuitem_translations.uri',
-              'menu__menuitem_translations.locale'
-          )
-          ->join('menu__menuitems', 'menu__menus.id', '=', 'menu__menuitems.menu_id')
-          ->join('menu__menuitem_translations', 'menu__menuitems.id', '=', 'menu__menuitem_translations.menuitem_id')
-          ->where('uri', '!=', '')
-          ->where('module_name', '!=', '')
-          ->where('status', '=', 1)
-          ->where('primary', '=', 1)
-          ->orderBy('module_name')
-          ->get();
+    /*== FILTER ==*/
+    if (isset($params->filter)) {
+      $filter = $params->filter;
 
-        $menuitemsArray = [];
-        foreach ($menuitems as $menuitem) {
-            $menuitemsArray[$menuitem->module_name][$menuitem->locale] = $menuitem->uri;
-        }
-
-        return $menuitemsArray;
+      if (isset($filter->field))//Filter by specific field
+        $query->where($filter->field, $criteria);
+      else//Filter by ID
+        $query->where('id', $criteria);
     }
 
-    /**
-     * Get the root menu item for the given menu id
-     */
-    public function getRootForMenu($menuId)
-    {
-        return $this->model->with('translations')->where(['menu_id' => $menuId, 'is_root' => true])->firstOrFail();
+    /*== FIELDS ==*/
+    if (isset($params->fields) && count($params->fields))
+      $query->select($params->fields);
+
+    /*== REQUEST ==*/
+    return $query->first();
+  }
+
+
+  public function updateBy($criteria, $data, $params = false)
+  {
+    /*== initialize query ==*/
+    $query = $this->model->query();
+
+    //FILTER
+    if (isset($params->filter)) {
+      $filter = $params->filter;
+
+      //Update by field
+      if (isset($filter->field))
+        $field = $filter->field;
     }
 
-    /**
-     * Return a complete tree for the given menu id
-     */
-    public function getTreeForMenu($menuId)
-    {
-        $items = $this->rootsForMenu($menuId);
+    //Get model
+    $model = $query->where($field ?? 'id', $criteria)->first();
+    if (!$model) return false;//Validate model
 
-        return $items->noCleaning()->nest();
+    //Update menu item
+    event($event = new MenuItemIsUpdating($model, $data));
+    $model->update($event->getAttributes());
+    event(new MenuItemWasUpdated($model));
+    return $model;
+  }
+
+  public function deleteBy($criteria, $params = false)
+  {
+    /*== initialize query ==*/
+    $query = $this->model->query();
+
+    /*== FILTER ==*/
+    if (isset($params->filter)) {
+      $filter = $params->filter;
+
+      if (isset($filter->field))//Where field
+        $field = $filter->field;
     }
 
-    /**
-     * @param  string  $uri
-     * @param  string  $locale
-     * @return object
-     */
-    public function findByUriInLanguage($uri, $locale)
-    {
-        return $this->model->whereHas('translations', function (Builder $q) use ($locale, $uri) {
-            $q->where('status', 1);
-            $q->where('locale', $locale);
-            $q->where('uri', $uri);
-        })->with('translations')->first();
+    /*== REQUEST ==*/
+    $model = $query->where($field ?? 'id', $criteria)->first();
+    $model ? $model->delete() : false;
+  }
+
+  public function updateItems($criterias, $data)
+  {
+    $query = $this->model->query();
+    $query->whereIn('id', $criterias)->update($data);
+    return $query;
+
+
+  }
+
+  public function deleteItems($criterias)
+  {
+    $query = $this->model->query();
+
+    $query->whereIn('id', $criterias)->delete();
+
+    return $query;
+
+  }
+
+  public function updateOrders($data)
+  {
+    $menuitems = [];
+    foreach ($data['menuitems'] as $menuitem) {
+      $menuitems[] = $this->model->find($menuitem['id'])
+        ->update([
+          'position' => $menuitem['position'],
+          'parent_id' => $menuitem['parent_id']
+        ]);
     }
+    return $menuitems;
+  }
 
-    public function getItemsBy($params = false)
-    {
-        /*== initialize query ==*/
-        $query = $this->model->query();
-
-        /*== RELATIONSHIPS ==*/
-        if (in_array('*', $params->include ?? [])) {//If Request all relationships
-            $query->with([]);
-        } else {//Especific relationships
-            $includeDefault = []; //Default relationships
-            if (isset($params->include)) {//merge relations with default relationships
-                $includeDefault = array_merge($includeDefault, $params->include);
-            }
-            $query->with($includeDefault); //Add Relationships to query
-        }
-
-        /*== FILTERS ==*/
-        if (isset($params->filter)) {
-            $filter = $params->filter; //Short filter
-
-            //Filter by date
-            if (isset($filter->date)) {
-                $date = $filter->date; //Short filter date
-                $date->field = $date->field ?? 'created_at';
-                if (isset($date->from)) {//From a date
-                    $query->whereDate($date->field, '>=', $date->from);
-                }
-                if (isset($date->to)) {//to a date
-                    $query->whereDate($date->field, '<=', $date->to);
-                }
-            }
-
-            //Order by
-            if (isset($filter->order)) {
-                $orderByField = $filter->order->field ?? 'position'; //Default field
-                $orderWay = $filter->order->way ?? 'desc'; //Default way
-                $query->orderBy($orderByField, $orderWay); //Add order to query
-            }
-
-            // Filter By Menu
-            if (isset($filter->menu)) {
-                $query->where('menu_id', $filter->menu);
-            }
-
-            //add filter by search
-            if (isset($filter->search)) {
-                //find search in columns
-                $query->where(function ($query) use ($filter) {
-                    $query->whereHas('translations', function ($query) use ($filter) {
-                        $query->where('locale', $filter->locale)
-                          ->where('title', 'like', '%'.$filter->search.'%');
-                    })->orWhere('id', 'like', '%'.$filter->search.'%')
-                      ->orWhere('updated_at', 'like', '%'.$filter->search.'%')
-                      ->orWhere('created_at', 'like', '%'.$filter->search.'%');
-                });
-            }
-        }
-
-        $entitiesWithCentralData = json_decode(setting('isite::tenantWithCentralData', null, '[]', true));
-        $tenantWithCentralData = in_array('menuitem', $entitiesWithCentralData);
-
-        if ($tenantWithCentralData && isset(tenant()->id)) {
-            $model = $this->model;
-
-            $query->withoutTenancy();
-            $query->where(function ($query) use ($model) {
-                $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
-                  ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
-            });
-        }
-
-        /*== FIELDS ==*/
-        if (isset($params->fields) && count($params->fields)) {
-            $query->select($params->fields);
-        }
-
-        /*== REQUEST ==*/
-        if (isset($params->page) && $params->page) {
-            return $query->paginate($params->take);
-        } else {
-            isset($params->take) && $params->take ? $query->take($params->take) : false; //Take
-
-            return $query->get();
-        }
-    }
-
-    public function getItem($criteria, $params = false)
-    {
-        //Initialize query
-        $query = $this->model->query();
-
-        /*== RELATIONSHIPS ==*/
-        if (in_array('*', $params->include ?? [])) {//If Request all relationships
-            $query->with([]);
-        } else {//Especific relationships
-            $includeDefault = []; //Default relationships
-            if (isset($params->include)) {//merge relations with default relationships
-                $includeDefault = array_merge($includeDefault, $params->include);
-            }
-            $query->with($includeDefault); //Add Relationships to query
-        }
-
-        /*== FILTER ==*/
-        if (isset($params->filter)) {
-            $filter = $params->filter;
-
-            if (isset($filter->field)) {//Filter by specific field
-                $query->where($filter->field, $criteria);
-            } else {//Filter by ID
-                $query->where('id', $criteria);
-            }
-        }
-
-        $entitiesWithCentralData = json_decode(setting('isite::tenantWithCentralData', null, '[]', true));
-        $tenantWithCentralData = in_array('menuitem', $entitiesWithCentralData);
-
-        if ($tenantWithCentralData && isset(tenant()->id)) {
-            $model = $this->model;
-
-            $query->withoutTenancy();
-            $query->where(function ($query) use ($model) {
-                $query->where($model->qualifyColumn(BelongsToTenant::$tenantIdColumn), tenant()->getTenantKey())
-                  ->orWhereNull($model->qualifyColumn(BelongsToTenant::$tenantIdColumn));
-            });
-        }
-
-        /*== FIELDS ==*/
-        if (isset($params->fields) && count($params->fields)) {
-            $query->select($params->fields);
-        }
-
-        if (! isset($params->filter->field)) {
-            $query->where('id', $criteria);
-        }
-
-        /*== REQUEST ==*/
-        return $query->first();
-    }
-
-    public function updateBy($criteria, $data, $params = false)
-    {
-        /*== initialize query ==*/
-        $query = $this->model->query();
-
-        //FILTER
-        if (isset($params->filter)) {
-            $filter = $params->filter;
-
-            //Update by field
-            if (isset($filter->field)) {
-                $field = $filter->field;
-            }
-        }
-
-        //Get model
-        $model = $query->where($field ?? 'id', $criteria)->first();
-        if (! $model) {
-            return false;
-        }//Validate model
-
-        //Update menu item
-        event($event = new MenuItemIsUpdating($model, $data));
-
-        $data = $event->getAttributes();
-
-        //force it into the system name setter
-        $data['system_name'] = $data['system_name'] ?? '';
-
-        $model->update($data);
-        event(new MenuItemWasUpdated($model));
-
-        return $model;
-    }
-
-    public function deleteBy($criteria, $params = false)
-    {
-        /*== initialize query ==*/
-        $query = $this->model->query();
-
-        /*== FILTER ==*/
-        if (isset($params->filter)) {
-            $filter = $params->filter;
-
-            if (isset($filter->field)) {//Where field
-                $field = $filter->field;
-            }
-        }
-
-        /*== REQUEST ==*/
-        $model = $query->where($field ?? 'id', $criteria)->first();
-        $model ? $model->delete() : false;
-    }
-
-    public function updateItems($criterias, $data)
-    {
-        $query = $this->model->query();
-        $query->whereIn('id', $criterias)->update($data);
-
-        return $query;
-    }
-
-    public function deleteItems($criterias)
-    {
-        $query = $this->model->query();
-
-        $query->whereIn('id', $criterias)->delete();
-
-        return $query;
-    }
-
-    public function updateOrders($data)
-    {
-        $menuitems = [];
-        foreach ($data['menuitems'] as $menuitem) {
-            $menuitems[] = $this->model->find($menuitem['id'])
-              ->update([
-                  'position' => $menuitem['position'],
-                  'parent_id' => $menuitem['parent_id'],
-              ]);
-        }
-
-        return $menuitems;
-    }
 }

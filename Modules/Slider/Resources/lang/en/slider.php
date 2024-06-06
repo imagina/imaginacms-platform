@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Slider',
+    'title'  => 'Slider',
     'titles' => [
         'slider' => 'Slider management',
         'create slider' => 'Create slider',
@@ -23,7 +23,7 @@ return [
     'table' => [
         'name' => 'Name',
         'title' => 'Title',
-        'system name' => 'System name',
+        'system name' => 'System name'
     ],
     'form' => [
         'title' => 'Title',
@@ -35,20 +35,17 @@ return [
         'url' => 'URL',
         'external image url' => 'External Image URL',
         'placeholder' => [
-            'external image url' => 'http://www.example.com/link/to/image.jpg',
-        ],
+            'external image url' => 'http://www.example.com/link/to/image.jpg'
+        ]
 
     ],
     'navigation' => [
-        'back to index' => 'Go back to the slider index',
-    ],
-    'editLink' => [
-        'tooltipSlider' => 'Edit this slider',
+        'back to index' => 'Go back to the slider index'
     ],
     'list resource' => 'List Slider',
     'create resource' => 'Create Slider',
     'edit resource' => 'Edit Slider',
     'destroy resource' => 'Delete Slider',
-    'store resource' => 'Store Slider',
-    'update resource' => 'Update Slider',
+    'store resource'=>'Store Slider',
+    'update resource'=>'Update Slider'
 ];

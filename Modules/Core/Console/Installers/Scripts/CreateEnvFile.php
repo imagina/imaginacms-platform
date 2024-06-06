@@ -14,7 +14,8 @@ class CreateEnvFile implements SetupScript
     protected $env;
 
     /**
-     * @param  Config  $config
+     * @param Config        $config
+     * @param EnvFileWriter $env
      */
     public function __construct(EnvFileWriter $env)
     {
@@ -28,7 +29,7 @@ class CreateEnvFile implements SetupScript
 
     /**
      * Fire the install script
-     *
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)

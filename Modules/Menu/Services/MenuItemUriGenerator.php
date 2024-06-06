@@ -11,7 +11,6 @@ final class MenuItemUriGenerator
      * @var MenuItemRepository
      */
     private $menuItem;
-
     /**
      * @var PageRepository
      */
@@ -25,10 +24,9 @@ final class MenuItemUriGenerator
 
     /**
      * Generate a URI based of the given page and and the parent id recursively
-     *
-     * @param  string  $pageId
-     * @param  string  $parentId
-     * @param  string  $lang
+     * @param string $pageId
+     * @param string $parentId
+     * @param string $lang
      * @return string
      */
     public function generateUri($pageId, $parentId, $lang)
@@ -38,18 +36,18 @@ final class MenuItemUriGenerator
         $linkPathArray[] = $this->getPageSlug($pageId, $lang);
 
         if ($parentId !== '') {
-            $hasParentItem = ! (is_null($parentId)) ? true : false;
+            $hasParentItem = !(is_null($parentId)) ? true : false;
             while ($hasParentItem) {
                 $parentItemId = isset($parentItem) ? $parentItem->parent_id : $parentId;
                 $parentItem = $this->menuItem->find($parentItemId);
 
-                if ($parentItem && (int) $parentItem->is_root === 0) {
+                if ($parentItem && ((int)$parentItem->is_root === 0)) {
                     if ($parentItem->page_id != '') {
                         $linkPathArray[] = $this->getPageSlug($parentItem->page_id, $lang);
                     } else {
                         $linkPathArray[] = $this->getParentUri($parentItem, $linkPathArray);
                     }
-                    $hasParentItem = ! is_null($parentItem->parent_id) ? true : false;
+                    $hasParentItem = !is_null($parentItem->parent_id) ? true : false;
                 } else {
                     $hasParentItem = false;
                 }
@@ -62,7 +60,8 @@ final class MenuItemUriGenerator
 
     /**
      * Get page slug
-     *
+     * @param $id
+     * @param $lang
      * @return string
      */
     private function getPageSlug($id, $lang)
@@ -81,7 +80,6 @@ final class MenuItemUriGenerator
      * Get parent uri
      *
      * @params $pageId, $lang
-     *
      * @return string
      */
     private function getParentUri($item, $linkPathArray)

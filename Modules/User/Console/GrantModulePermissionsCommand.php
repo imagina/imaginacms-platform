@@ -9,10 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 class GrantModulePermissionsCommand extends Command
 {
     protected $name = 'asgard:user:grant-permissions';
-
     protected $description = 'Grant all the permissions to the admin role of given module';
 
-    public function handle(): void
+    public function handle()
     {
         $module = $this->argument('module');
 
@@ -23,8 +22,10 @@ class GrantModulePermissionsCommand extends Command
 
     /**
      * Get the console command arguments.
+     *
+     * @return array
      */
-    protected function getArguments(): array
+    protected function getArguments()
     {
         return [
             ['module', InputArgument::REQUIRED, 'Module name'],
@@ -33,8 +34,10 @@ class GrantModulePermissionsCommand extends Command
 
     /**
      * Get the console command options.
+     *
+     * @return array
      */
-    protected function getOptions(): array
+    protected function getOptions()
     {
         return [
         ];

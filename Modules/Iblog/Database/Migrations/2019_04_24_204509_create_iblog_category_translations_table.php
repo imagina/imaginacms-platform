@@ -1,15 +1,17 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
+class CreateIblogCategoryTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('iblog__category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -26,16 +28,19 @@ return new class extends Migration
             $table->unique(['category_id', 'locale']);
             $table->foreign('category_id')->references('id')->on('iblog__categories')->onDelete('cascade');
         });
+
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('iblog__category_translations', function (Blueprint $table) {
             $table->dropForeign(['category_id']);
         });
         Schema::dropIfExists('iblog_categories_translations');
     }
-};
+}

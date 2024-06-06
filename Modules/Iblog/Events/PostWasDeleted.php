@@ -10,7 +10,6 @@ class PostWasDeleted implements DeletingMedia
      * @var string
      */
     private $postClass;
-
     /**
      * @var int
      */
@@ -24,16 +23,18 @@ class PostWasDeleted implements DeletingMedia
 
     /**
      * Get the entity ID
+     * @return int
      */
-    public function getEntityId(): int
+    public function getEntityId()
     {
         return $this->postId;
     }
 
     /**
      * Get the class name the imageables
+     * @return string
      */
-    public function getClassName(): string
+    public function getClassName()
     {
         return $this->postClass;
     }

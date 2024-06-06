@@ -1,12 +1,14 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
+class CreateIbuilderBlockTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
@@ -14,7 +16,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your translatable fields
-            $table->string('title');
+
             $table->integer('block_id')->unsigned();
             $table->string('locale')->index();
             $table->unique(['block_id', 'locale']);
@@ -24,6 +26,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
@@ -32,4 +36,4 @@ return new class extends Migration
         });
         Schema::dropIfExists('ibuilder__block_translations');
     }
-};
+}

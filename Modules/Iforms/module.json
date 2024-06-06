@@ -5,7 +5,7 @@
     "keywords": ["forms","emails","Send Emails"],
     "version": "4.0.4",
 	"active": 1,
-    "priority": 1,
+    "order": 1,
     "providers": [
         "Modules\\Iforms\\Providers\\EventServiceProvider",
         "Modules\\Iforms\\Providers\\IformsServiceProvider",

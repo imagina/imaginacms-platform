@@ -20,7 +20,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
      */
     private $folder;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
@@ -30,7 +30,7 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
         $this->app['config']->set('asgard.media.config.files-path', '/assets/media/');
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         if ($this->app['files']->isDirectory(public_path('assets')) === true) {
             $this->app['files']->deleteDirectory(public_path('assets'));
@@ -350,8 +350,8 @@ final class EloquentFolderRepositoryTest extends MediaTestCase
     {
         return File::create([
             'filename' => $fileName,
-            'path' => config('asgard.media.config.files-path').$fileName,
-            'extension' => substr(strrchr($fileName, '.'), 1),
+            'path' => config('asgard.media.config.files-path') . $fileName,
+            'extension' => substr(strrchr($fileName, "."), 1),
             'mimetype' => 'image/jpg',
             'filesize' => '1024',
             'folder_id' => 0,

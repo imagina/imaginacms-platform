@@ -9,9 +9,9 @@ class PolygonTranslation extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
-        'description',
+      'name',
+      'description'
     ];
-
+    
     protected $table = 'ilocations__polygon_translations';
 }

@@ -9,13 +9,14 @@ class UploadMediaRequest extends FormRequest
 {
     public function rules()
     {
+        $extensions = 'mimes:' . str_replace('.', '', config('asgard.media.config.allowed-types'));
         $maxFileSize = $this->getMaxFileSizeInKilobytes();
 
         return [
             'file' => [
                 'required',
-                new MaxFolderSizeRule($this->disk ?? null),
-                mediaMimesAvailableRule(),
+                new MaxFolderSizeRule(),
+                $extensions,
                 "max:$maxFileSize",
             ],
         ];
@@ -26,7 +27,7 @@ class UploadMediaRequest extends FormRequest
         $size = $this->getMaxFileSize();
 
         return [
-            'file.max' => trans('media::media.file too large', ['size' => $size.' Mb']),
+            'file.max' => trans('media::media.file too large', ['size' => $size]),
         ];
     }
 
@@ -42,6 +43,6 @@ class UploadMediaRequest extends FormRequest
 
     private function getMaxFileSize()
     {
-        return setting('media::maxFileSize', null, config('asgard.media.config.max-file-size'));
+        return config('asgard.media.config.max-file-size');
     }
 }

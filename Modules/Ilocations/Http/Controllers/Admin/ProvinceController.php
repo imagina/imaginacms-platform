@@ -2,12 +2,13 @@
 
 namespace Modules\Ilocations\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Ilocations\Entities\Province;
 use Modules\Ilocations\Http\Requests\CreateProvinceRequest;
 use Modules\Ilocations\Http\Requests\UpdateProvinceRequest;
 use Modules\Ilocations\Repositories\ProvinceRepository;
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class ProvinceController extends AdminBaseController
 {
@@ -25,8 +26,10 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Display a listing of the resource.
+     *
+     * @return Response
      */
-    public function index(): Response
+    public function index()
     {
         //$provinces = $this->province->all();
 
@@ -35,16 +38,21 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return Response
      */
-    public function create(): Response
+    public function create()
     {
         return view('ilocations::admin.provinces.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  CreateProvinceRequest $request
+     * @return Response
      */
-    public function store(CreateProvinceRequest $request): Response
+    public function store(CreateProvinceRequest $request)
     {
         $this->province->create($request->all());
 
@@ -54,16 +62,23 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  Province $province
+     * @return Response
      */
-    public function edit(Province $province): Response
+    public function edit(Province $province)
     {
         return view('ilocations::admin.provinces.edit', compact('province'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  Province $province
+     * @param  UpdateProvinceRequest $request
+     * @return Response
      */
-    public function update(Province $province, UpdateProvinceRequest $request): Response
+    public function update(Province $province, UpdateProvinceRequest $request)
     {
         $this->province->update($province, $request->all());
 
@@ -73,8 +88,11 @@ class ProvinceController extends AdminBaseController
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Province $province
+     * @return Response
      */
-    public function destroy(Province $province): Response
+    public function destroy(Province $province)
     {
         $this->province->destroy($province);
 

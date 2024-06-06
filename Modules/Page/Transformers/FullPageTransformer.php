@@ -2,17 +2,16 @@
 
 namespace Modules\Page\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class FullPageTransformer extends JsonResource
+class FullPageTransformer extends Resource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         $pageData = [
             'id' => $this->resource->id,
             'template' => $this->resource->template,
-            'options' => $this->resource->options,
             'is_home' => $this->resource->is_home,
             'urls' => [
                 'public_url' => $this->resource->getCanonicalUrl(),

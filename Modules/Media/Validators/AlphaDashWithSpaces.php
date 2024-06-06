@@ -8,10 +8,11 @@ class AlphaDashWithSpaces implements Rule
 {
     /**
      * Determine if the validation rule passes.
-     *
-     * @param  mixed  $value
+     * @param  string $attribute
+     * @param  mixed $value
+     * @return bool
      */
-    public function passes(string $attribute, $value)
+    public function passes($attribute, $value)
     {
         if (! is_string($value) && ! is_numeric($value)) {
             return false;
@@ -22,6 +23,7 @@ class AlphaDashWithSpaces implements Rule
 
     /**
      * Get the validation error message.
+     * @return string
      */
     public function message()
     {

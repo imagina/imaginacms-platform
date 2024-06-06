@@ -9,13 +9,12 @@ use Modules\Igamification\Repositories\ActivityRepository;
 
 class ActivityApiController extends BaseCrudController
 {
-    public $model;
+  public $model;
+  public $modelRepository;
 
-    public $modelRepository;
-
-    public function __construct(Activity $model, ActivityRepository $modelRepository)
-    {
-        $this->model = $model;
-        $this->modelRepository = $modelRepository;
-    }
+  public function __construct(Activity $model, ActivityRepository $modelRepository)
+  {
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
+  }
 }

@@ -11,7 +11,6 @@ class PostPresenter extends Presenter
      * @var \Modules\Iblog\Entities\Status
      */
     protected $status;
-
     /**
      * @var \Modules\Iblog\Repositories\PostRepository
      */
@@ -26,32 +25,36 @@ class PostPresenter extends Presenter
 
     /**
      * Get the previous post of the current post
+     * @return object
      */
-    public function previous(): object
+    public function previous()
     {
         return $this->post->getPreviousOf($this->entity);
     }
 
     /**
      * Get the next post of the current post
+     * @return object
      */
-    public function next(): object
+    public function next()
     {
         return $this->post->getNextOf($this->entity);
     }
 
     /**
      * Get the post status
+     * @return string
      */
-    public function status(): string
+    public function status()
     {
         return $this->status->get($this->entity->status);
     }
 
     /**
      * Getting the label class for the appropriate status
+     * @return string
      */
-    public function statusLabelClass(): string
+    public function statusLabelClass()
     {
         switch ($this->entity->status) {
             case Status::DRAFT:
@@ -72,10 +75,10 @@ class PostPresenter extends Presenter
         }
     }
 
-    public function mainImage($post, $thumbnail = null)
+    public function mainImage($post,$thumbnail=null)
     {
-        $item = $post->mainimage2;
-        $path = $thumbnail ?: $post->path;
+        $item=$post->mainimage2;
+        $path=$thumbnail?:$post->path;
         switch ($item->mimetype) {
             case 'image/jpg':
             case 'image/png':

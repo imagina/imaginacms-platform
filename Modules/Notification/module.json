@@ -9,7 +9,7 @@
         "pusher"
     ],
     "active": 1,
-    "priority": 1,
+    "order": 1,
     "providers": [
         "Modules\\Notification\\Providers\\NotificationServiceProvider",
         "Modules\\Notification\\Providers\\RouteServiceProvider",

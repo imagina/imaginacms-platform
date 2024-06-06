@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
-use Modules\$MODULE$\Listeners\$SIDEBAR_LISTENER_NAME$;
+use Modules\$MODULE$\Events\Handlers\$SIDEBAR_LISTENER_NAME$;
 
 class $MODULE$ServiceProvider extends ServiceProvider
 {
@@ -33,20 +33,14 @@ class $MODULE$ServiceProvider extends ServiceProvider
             // append translations
         });
 
-
+        $this->registerEloquentFactoriesFrom(__DIR__ . '/../Database/factories');
     }
 
     public function boot()
     {
-       
-        $this->publishConfig('$LOWERCASE_MODULE$', 'config');
-        $this->publishConfig('$LOWERCASE_MODULE$', 'crud-fields');
+        $this->publishConfig('$LOWERCASE_MODULE$', 'permissions');
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('$LOWERCASE_MODULE$', 'settings'), "asgard.$LOWERCASE_MODULE$.settings");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('$LOWERCASE_MODULE$', 'settings-fields'), "asgard.$LOWERCASE_MODULE$.settings-fields");
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('$LOWERCASE_MODULE$', 'permissions'), "asgard.$LOWERCASE_MODULE$.permissions");
-
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
@@ -64,5 +58,14 @@ class $MODULE$ServiceProvider extends ServiceProvider
 // add bindings
     }
 
-
+    /**
+     * Register factories.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    protected function registerEloquentFactoriesFrom($path)
+    {
+        $this->app->make(EloquentFactory::class)->load($path);
+    }
 }

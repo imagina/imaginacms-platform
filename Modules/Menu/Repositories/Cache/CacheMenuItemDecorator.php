@@ -22,9 +22,10 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     /**
      * Get all root elements
      *
+     * @param  int   $menuId
      * @return mixed
      */
-    public function rootsForMenu(int $menuId)
+    public function rootsForMenu($menuId)
     {
         return $this->remember(function () use ($menuId) {
             return $this->repository->rootsForMenu($menuId);
@@ -45,6 +46,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Get the root menu item for the given menu id
+     *
+     * @param  int    $menuId
+     * @return object
      */
     public function getRootForMenu($menuId)
     {
@@ -55,6 +59,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Return a complete tree for the given menu id
+     *
+     * @param  int    $menuId
+     * @return object
      */
     public function getTreeForMenu($menuId)
     {
@@ -65,6 +72,9 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Get all root elements
+     *
+     * @param  int    $menuId
+     * @return object
      */
     public function allRootsForMenu($menuId)
     {
@@ -73,7 +83,12 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
         });
     }
 
-    public function findByUriInLanguage( $uri, $locale)
+    /**
+     * @param  string $uri
+     * @param  string $locale
+     * @return object
+     */
+    public function findByUriInLanguage($uri, $locale)
     {
         return $this->remember(function () use ($uri, $locale) {
             return $this->repository->findByUriInLanguage($uri, $locale);
@@ -81,9 +96,11 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     }
 
     /**
+     * @param $criteria
+     * @param $params
      * @return mixed
      */
-    public function getItem($criteria, $params = false)
+    public function getItem($criteria, $params)
     {
         return $this->cache
             ->tags([$this->entityName, 'global'])
@@ -95,12 +112,14 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     }
 
     /**
+     * @param $criteria
+     * @param $data
+     * @param $params
      * @return mixed
      */
-    public function updateBy($criteria, $data, $params = false)
+    public function updateBy($criteria, $data, $params)
     {
         $this->cache->tags($this->entityName)->flush();
-
         return $this->cache
             ->tags([$this->entityName, 'global'])
             ->remember("{$this->entityName}.getItem.{$criteria}", $this->cacheTime,
@@ -111,6 +130,7 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     }
 
     /**
+     * @param $params
      * @return mixed
      */
     public function getItemsBy($params)
@@ -125,12 +145,13 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
     }
 
     /**
+     * @param $criteria
+     * @param $params
      * @return mixed
      */
-    public function deleteBy($criteria, $params = false)
+    public function deleteBy($criteria, $params)
     {
         $this->cache->tags($this->entityName)->flush();
-
         return $this->cache
             ->tags([$this->entityName, 'global'])
             ->remember("{$this->entityName}.deleteBy.{$criteria}", $this->cacheTime,
@@ -139,9 +160,11 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
                 }
             );
     }
-
     /**
      * Update the Menu Items for the given ids
+     * @param array $criterias
+     * @param array $data
+     * @return bool
      */
     public function updateItems($criterias, $data)
     {
@@ -152,11 +175,13 @@ class CacheMenuItemDecorator extends BaseCacheDecorator implements MenuItemRepos
 
     /**
      * Delete the Menu Items for the given ids
+     * @param array $criterias
+     * @return bool
      */
     public function deleteItems($criterias)
     {
         $this->cache->tags($this->entityName)->flush();
 
-        return $this->repository->deleteItems($criterias);
+        return $this->repository-> deleteItems($criterias);
     }
 }

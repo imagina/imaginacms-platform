@@ -4,7 +4,6 @@ namespace Modules\Iblog\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Modules\Iblog\Repositories\CategoryRepository;
 use Modules\Iblog\Repositories\PostRepository;
 use Symfony\Component\Console\Input\InputArgument;
@@ -26,12 +25,17 @@ class MigrateIblog extends Command
      */
     protected $description = 'Migrate data Version 3 to 4';
 
+
     protected $post;
 
     protected $category;
 
+
     /**
      * Create a new command instance.
+     *
+     * @param PostRepository $post
+     * @param CategoryRepository $category
      */
     public function __construct(PostRepository $post, CategoryRepository $category)
     {
@@ -39,18 +43,22 @@ class MigrateIblog extends Command
 
         $this->category = $category;
         $this->post = $post;
+
     }
 
     /**
      * Execute the console command.
+     *
+     * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         try {
+
             DB::insert('insert into media__files ( is_folder, filename, path, folder_id) values (?, ?, ?, ?)', [1, 'media', '/assets/media', 0]);
             $media = DB::table('media__files')->select('id')->where('filename', 'media')->first()->id;
             DB::table('media__files')->where('folder_id', '0')->update(['folder_id' => $media]);
-            DB::table('media__files')->where('id', $media)->update(['folder_id' => 0]);
+            DB::table('media__files')->where('id', $media )->update(['folder_id' => 0]);
             DB::insert('insert into media__files ( is_folder, filename, path, folder_id) values (?, ?, ?, ?)', [1, 'iblog', '/assets/iblog', 0]);
             $folderBlog = DB::table('media__files')->select('id')->where('filename', 'iblog')->first()->id;
 
@@ -62,7 +70,7 @@ class MigrateIblog extends Command
             $folderCategory = DB::table('media__files')->select('id')->where('filename', 'category')->first()->id;
             $defaultImage = DB::table('media__files')->select('id')->where('filename', 'default')->first()->id;
             $posts = $this->post->all();
-            $locale = $this->ask('locale');
+            $locale = $this->ask("locale");
             foreach ($posts as $post) {
                 if (validateJson($post->title) || validateJson($post->description) || validateJson($post->summary)) {
                     if (validateJson($post->title)) {
@@ -72,7 +80,7 @@ class MigrateIblog extends Command
 
                         foreach ($title as $i => $t) {
                             $data[$i]['title'] = $t;
-                            $titlep = Str::slug($t, '-');
+                            $titlep = str_slug($t, '-');
                         }
                     } else {
                         $data[$locale]['title'] = $post->title;
@@ -81,6 +89,7 @@ class MigrateIblog extends Command
                         foreach ($description as $i => $d) {
                             $data[$i]['description'] = $d;
                         }
+
                     } else {
                         $data[$locale]['description'] = $post->description;
                     }
@@ -96,20 +105,20 @@ class MigrateIblog extends Command
                         'title' => $post->title,
                         'slug' => $post->slug,
                         'description' => $post->description,
-                        'summary' => $post->summary,
+                        'summary' => $post->summary
                     ];
 
                     $titlep = $post->slug;
                 }
 
-                if (isset($post->options->mainimage) && ! strpos($post->options->mainimage, 'default.jpg')) {
-                    $image = '/assets/iblog/post/'.$post->id.'.jpg';
+                if (isset($post->options->mainimage) && !strpos($post->options->mainimage, 'default.jpg')) {
+                    $image = '/assets/iblog/post/' . $post->id . '.jpg';
                     DB::insert('insert into media__files ( is_folder, filename, path, extension, mimetype, folder_id) values (?, ?, ?,?,?,?)', [0, $titlep, $image, 'jpg', 'image/jpeg', $folderPost]);
                     $img = DB::table('media__files')->select('id')->where('filename', $titlep)->first();
                     $imgId = $img->id ?? $defaultImage;
                 } else {
                     $imgId = $defaultImage;
-                }
+                };
                 DB::insert('insert into media__imageables (file_id, imageable_id, imageable_type, zone) values (?, ?, ?, ?)', [$imgId, $post->id, 'Modules\Iblog\Entities\Post', 'mainimage']);
 
                 if (isset($post->metatitle)) {
@@ -119,13 +128,14 @@ class MigrateIblog extends Command
                     $data[$locale]['meta_description'] = $post->options->metadescription;
                 }
                 $cats = $post->categories;
-                $categoriesPost = [];
+                $categoriesPost = array();
                 foreach ($cats as $cat) {
                     array_push($categoriesPost, $cat->id);
-                }
+                };
                 $data['categories'] = $categoriesPost;
                 $resd = $this->post->update($post, $data);
                 $this->info($resd->id);
+
             }
             $categories = $this->category->all();
             foreach ($categories as $category) {
@@ -151,6 +161,7 @@ class MigrateIblog extends Command
                         $summary = json_decode($category->summary);
                         foreach ($summary as $i => $s) {
                             $data[$i]['summary'] = $s;
+
                         }
                     } else {
                         $data[$locale]['summary'] = $category->summary;
@@ -161,24 +172,25 @@ class MigrateIblog extends Command
                         'title' => $category->title,
                         'slug' => $category->slug,
                         'description' => $category->description,
-                        'summary' => $category->summary,
+                        'summary' => $category->summary
                     ];
                     $titlec = $category->slug;
                 }
 
-                if (isset($category->options->mainimage) && ! strpos($category->options->mainimage, 'default.jpg')) {
-                    $image = '/assets/iblog/category/'.$category->id.'.jpg';
+                if (isset($category->options->mainimage) && !strpos($category->options->mainimage, 'default.jpg')) {
+                    $image = '/assets/iblog/category/' . $category->id . '.jpg';
                     DB::insert('insert into media__files ( is_folder, filename, path, extension, mimetype, folder_id) values (?, ?, ?,?, ?, ?)', [0, $titlec, $image, 'jpg', 'image/jpeg', $folderCategory]);
                     $imgId = DB::table('media__files')->select('id')->where('filename', $titlec)->first();
                 } else {
                     $imgId = $defaultImage;
-                }
+                };
                 DB::insert('insert into media__imageables (file_id, imageable_id, imageable_type, zone) values (?, ?, ?, ?)', [$imgId, $category->id, 'Modules\Iblog\Entities\Category', 'mainimage']);
                 $resd = $this->category->update($category, $data);
                 $this->info($resd->id);
+
             }
         } catch (\Exception $e) {
-            \Log::error($e->getMessage());
+            \Log::error($e);
             $this->info($e->getMessage());
         }
     }

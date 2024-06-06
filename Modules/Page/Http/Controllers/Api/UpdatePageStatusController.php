@@ -2,7 +2,6 @@
 
 namespace Modules\Page\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Repositories\PageRepository;
@@ -19,7 +18,7 @@ class UpdatePageStatusController extends Controller
         $this->page = $page;
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request)
     {
         $pageIds = json_decode($request->get('pageIds'));
 

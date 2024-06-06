@@ -1,8 +1,9 @@
 <?php
 
-namespace Modules\Media\Tests;
+namespace Modules\Tests;
 
 use Modules\Media\Image\ThumbnailManager;
+use Modules\Media\Tests\MediaTestCase;
 
 class ThumbnailsManagerTest extends MediaTestCase
 {
@@ -11,7 +12,7 @@ class ThumbnailsManagerTest extends MediaTestCase
      */
     private $thumbnailManager;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->thumbnailManager = app(ThumbnailManager::class);

@@ -9,7 +9,7 @@ $router->get('/', [
     'middleware' => 'can:dashboard.index',
 ]);
 
-Route::prefix('/dashboard')->group(function (Router $router) {
+$router->group(['prefix' => '/dashboard'], function (Router $router) {
     $router->post('grid', [
         'as' => 'dashboard.grid.save',
         'uses' => 'DashboardController@save',

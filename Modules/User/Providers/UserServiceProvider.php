@@ -3,7 +3,6 @@
 namespace Modules\User\Providers;
 
 use Cartalyst\Sentinel\Laravel\SentinelServiceProvider;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
@@ -30,7 +29,6 @@ use Modules\User\Repositories\UserTokenRepository;
 class UserServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration, CanGetSidebarClassForModule;
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -58,6 +56,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
     public function register()
     {
@@ -70,8 +70,8 @@ class UserServiceProvider extends ServiceProvider
             $this->getSidebarClassForModule('user', RegisterUserSidebar::class)
         );
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('users', Arr::dot(trans('user::users')));
-            $event->load('roles', Arr::dot(trans('user::roles')));
+            $event->load('users', array_dot(trans('user::users')));
+            $event->load('roles', array_dot(trans('user::roles')));
         });
         $this->commands([
             GrantModulePermissionsCommand::class,
@@ -89,18 +89,20 @@ class UserServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     */
     public function boot()
     {
         $this->registerMiddleware();
 
         $this->publishes([
-            __DIR__.'/../Resources/views' => base_path('resources/views/asgard/user'),
+            __DIR__ . '/../Resources/views' => base_path('resources/views/asgard/user'),
         ]);
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('user', 'permissions'), 'asgard.user.permissions');
+        $this->publishConfig('user', 'permissions');
         $this->publishConfig('user', 'config');
 
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         Auth::extend('sentinel-guard', function () {
             return new Sentinel();
@@ -109,10 +111,12 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
     public function provides()
     {
-        return [];
+        return array();
     }
 
     private function registerBindings()
@@ -153,7 +157,7 @@ class UserServiceProvider extends ServiceProvider
     {
         $driver = config('asgard.user.config.driver', 'Sentinel');
 
-        if (! isset($this->providers[$driver])) {
+        if (!isset($this->providers[$driver])) {
             throw new \Exception("Driver [{$driver}] does not exist");
         }
 

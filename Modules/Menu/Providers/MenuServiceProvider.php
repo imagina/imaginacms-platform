@@ -2,7 +2,6 @@
 
 namespace Modules\Menu\Providers;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Core\Events\BuildingSidebar;
@@ -26,7 +25,6 @@ use Nwidart\Menus\MenuItem as PingpongMenuItem;
 class MenuServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration, CanGetSidebarClassForModule;
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -36,6 +34,8 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
     public function register()
     {
@@ -51,8 +51,8 @@ class MenuServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('menu', Arr::dot(trans('menu::menu')));
-            $event->load('menu-items', Arr::dot(trans('menu::menu-items')));
+            $event->load('menu', array_dot(trans('menu::menu')));
+            $event->load('menu-items', array_dot(trans('menu::menu-items')));
         });
 
         app('router')->bind('menu', function ($id) {
@@ -70,19 +70,19 @@ class MenuServiceProvider extends ServiceProvider
     {
         $this->registerMenus();
         $this->registerBladeTags();
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'permissions'), 'asgard.menu.permissions');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsPages'), 'asgard.menu.cmsPages');
-        $this->mergeConfigFrom($this->getModuleConfigFilePath('menu', 'cmsSidebar'), 'asgard.menu.cmsSidebar');
+        $this->publishConfig('menu', 'permissions');
         $this->publishConfig('menu', 'config');
-        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
     public function provides()
     {
-        return [];
+        return array();
     }
 
     /**
@@ -113,6 +113,8 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Add a menu item to the menu
+     * @param Menuitem $item
+     * @param Builder $menu
      */
     public function addItemToMenu(Menuitem $item, Builder $menu)
     {
@@ -122,8 +124,6 @@ class MenuServiceProvider extends ServiceProvider
                 $item->items,
                 $menu,
                 [
-                    'id' => $item->id,
-                    'organization_id' => $item->organization_id,
                     'icon' => $item->icon,
                     'target' => $item->target,
                     'class' => $item->class,
@@ -137,8 +137,6 @@ class MenuServiceProvider extends ServiceProvider
                 $target,
                 $item->title,
                 [
-                    'id' => $item->id,
-                    'organization_id' => $item->organization_id,
                     'target' => $item->target,
                     'icon' => $item->icon,
                     'class' => $item->class,
@@ -150,7 +148,9 @@ class MenuServiceProvider extends ServiceProvider
     /**
      * Add children to menu under the give name
      *
-     * @param  Builder|MenuItem  $menu
+     * @param string $name
+     * @param object $children
+     * @param Builder|MenuItem $menu
      */
     private function addChildrenToMenu($name, $children, $menu, $attribs = [])
     {
@@ -163,19 +163,24 @@ class MenuServiceProvider extends ServiceProvider
 
     /**
      * Add children to the given menu recursively
+     * @param Menuitem $child
+     * @param PingpongMenuItem $sub
      */
     private function addSubItemToMenu(Menuitem $child, PingpongMenuItem $sub)
     {
         if ($this->hasChildren($child)) {
             $this->addChildrenToMenu($child->title, $child->items, $sub);
         } else {
-            $target = $child->link_type != 'external' ? $child->locale.'/'.$child->uri : $child->url;
+            $target = $child->link_type != 'external' ? $child->locale . '/' . $child->uri : $child->url;
             $sub->url($target, $child->title, 0, ['icon' => $child->icon, 'target' => $child->target, 'class' => $child->class]);
         }
     }
 
     /**
      * Check if the given menu item has children
+     *
+     * @param  object $item
+     * @return bool
      */
     private function hasChildren($item)
     {
@@ -188,18 +193,16 @@ class MenuServiceProvider extends ServiceProvider
     private function registerMenus()
     {
         if ($this->app['asgard.isInstalled'] === false ||
-          $this->app['asgard.onBackend'] === true ||
-          $this->app->runningInConsole() === true
+            $this->app['asgard.onBackend'] === true ||
+            $this->app->runningInConsole() === true
         ) {
             return;
         }
 
         $menu = $this->app->make(MenuRepository::class);
         $menuItem = $this->app->make(MenuItemRepository::class);
-
         foreach ($menu->allOnline() as $menu) {
             $menuTree = $menuItem->getTreeForMenu($menu->id);
-
             MenuFacade::create($menu->name, function (Builder $menu) use ($menuTree) {
                 foreach ($menuTree as $menuItem) {
                     $this->addItemToMenu($menuItem, $menu);

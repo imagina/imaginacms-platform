@@ -22,26 +22,11 @@
               --}}{{--
           </div>
       </div>--}}
-
-        @if(setting("iprofile::registerUsersWithSocialNetworks"))
-          <div class="border-top title border-bottom border-top-dotted border-bottom-dotted py-4 {{isset($embedded) ? '' : 'mt-4'}} mb-4">
-            <p>{{trans('iprofile::frontend.title.social msj')}}</p>
-            <div class="d-inline-block mr-3 mb-3">
-              <a href="{{route('account.social.auth',['facebook']).((isset($route) && !empty(isset($route))) ? "?redirect=".route($route) : "")}}"><img class="img-fluid" src="{{url('modules/iprofile/img/facebook.png')}}" alt="Facebook"></a>
-
-            </div>
-            <div class="d-inline-block">
-              <a href="{{route('account.social.auth',['google']).((isset($route) && !empty(isset($route))) ? "?redirect=".route($route) : "")}}"><img class="img-fluid" src="{{url('modules/iprofile/img/google.png')}}" alt="Google"></a>
-
-            </div>
-          </div>
-        @endif
-
       <hr class="border-top-dotted">
 
       <div class="form-body">
         @include('isite::frontend.partials.notifications')
-        {!! Form::open(['url' =>  tenant_route(request()->getHost(), 'account.login.post'), 'class' => 'form-content', 'id' => 'loginForm']) !!}
+        {!! Form::open(['route' => 'account.login.post', 'class' => 'form-content']) !!}
 
         @if(isset($embedded))
           <input name="embedded" type="hidden" value="{{isset($route) && $route ? $route : ''}}">
@@ -63,15 +48,10 @@
             </div>
           </div>
         </div>
-        <x-isite::captcha formId="loginForm" />
+
         <div class=" form-button text-center  border-bottom  border-bottom-dotted py-4 mb-4">
-          @php
-            //$disabled = setting('isite::activateCaptcha') ? ['disabled' => 'disabled'] : [];
-            $buttonAttrs = ['class'=>'btn btn-primary text-uppercase text-white font-weight-bold rounded-pill px-3 py-2 mr-2'];
-            //$buttonAttrs = array_merge($buttonAttrs, $disabled);
-          @endphp
-          {{ Form::submit(trans('user::auth.login'),$buttonAttrs) }}
-          {{ link_to(route('account.reset'),trans('user::auth.forgot password')) }}
+          {{ Form::submit(trans('user::auth.login'),['class'=>'btn btn-primary text-uppercase text-white font-weight-bold rounded-pill px-3 py-2 mr-2']) }}
+          {{ link_to(route('account.reset'),trans('user::auth.forgot password'),[]) }}
         </div>
 
         @if(!isset($register) || (isset($register) && $register))

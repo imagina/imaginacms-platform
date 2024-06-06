@@ -12,47 +12,46 @@ class UniqueSlugRule implements Rule
      * @return void
      */
     public $table;
-
     public $id;
-
     public $columnId;
-
-    public $message;
-
-    public function __construct($table, $id = null, $columnId = '', $message = '')
+    
+    public function __construct($table, $id = null, $columnId = "")
     {
-        $this->table = $table;
-        $this->id = $id;
-        $this->columnId = $columnId;
-        $this->message = ! empty($message) ? $message : 'There are another register with the same slug-locale.';
+      $this->table = $table;
+      $this->id = $id;
+      $this->columnId = $columnId;
     }
 
     /**
      * Determine if the validation rule passes.
      *
+     * @param  string  $attribute
      * @param  mixed  $value
+     * @return bool
      */
-    public function passes($attribute, $value): bool
+    public function passes($attribute, $value)
     {
-        $explodeAttributes = explode('.', $attribute);
-        $slugs = \DB::table($this->table)
-          ->where($explodeAttributes[1], $value)
-          ->where('locale', $explodeAttributes[0]);
+  
+      $explodeAttributes = explode(".",$attribute);
+      $slugs = \DB::connection(env('DB_CONNECTION', 'mysql'))->table($this->table)
+        ->where($explodeAttributes[1],$value)
+        ->where('locale',$explodeAttributes[0]);
+      
+      if($this->id){
+        $slugs = $slugs->where($this->columnId, "!=", $this->id);
+      }
 
-        if ($this->id) {
-            $slugs = $slugs->where($this->columnId, '!=', $this->id);
-        }
-
-        $slugs = $slugs->first();
-
-        return ! $slugs;
+      $slugs = $slugs->first();
+      return !$slugs;
     }
 
     /**
      * Get the validation error message.
+     *
+     * @return string
      */
-    public function message(): string
+    public function message()
     {
-        return $this->message;
+        return 'There are another register with the same slug-locale.';
     }
 }

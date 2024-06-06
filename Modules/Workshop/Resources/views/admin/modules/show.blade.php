@@ -8,33 +8,25 @@
                 <i class="fa fa-reply"></i>
             </a>
         </small>
-        {{ $module->getName() }} <small>{{ trans('workshop::modules.module') }}</small>
+        {{ $module->name }} <small>{{ trans('workshop::modules.module') }}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
         <li><a href="{{ route('admin.workshop.modules.index') }}">{{ trans('workshop::modules.breadcrumb.modules') }}</a></li>
-        <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $module->getName() }}</li>
+        <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $module->name }}</li>
     </ol>
 @stop
 
 @push('css-stack')
     <style>
-        .module-title-wrap {
-            display: flex;
-            align-items: center;
-        }
         .module-type {
             text-align: center;
-            margin-right: 10px;
         }
         .module-type span {
             display: block;
         }
         .module-type i {
             font-size: 124px;
-        }
-        .module-title {
-            margin: 0;
         }
         form {
             display: inline;
@@ -48,17 +40,17 @@
             <div class="box box-primary">
                 <div class="box-header">
                     <div class="box-tools pull-right">
-                        <?php $status = $module->isEnabled() ? 'disable' : 'enable'; ?>
+                        <?php $status = $module->enabled() ? 'disable' : 'enable'; ?>
                         <button class="btn btn-box-tool jsPublishAssets" data-toggle="tooltip"
                                 title="" data-original-title="{{ trans("workshop::modules.publish assets") }}">
                             <i class="fa fa-cloud-upload"></i>
                             {{ trans("workshop::modules.publish assets") }}
                         </button>
-                            <?php $routeName = $module->isEnabled() ? 'disable' : 'enable' ?>
+                            <?php $routeName = $module->enabled() ? 'disable' : 'enable' ?>
                         {!! Form::open(['route' => ["admin.workshop.modules.$routeName", $module->getName()], 'method' => 'post']) !!}
                             <button class="btn btn-box-tool" data-toggle="tooltip" type="submit"
                                     title="" data-original-title="{{ trans("workshop::modules.{$status}") }}">
-                                <i class="fa fa-toggle-{{ $module->isEnabled() ? 'on' : 'off' }}"></i>
+                                <i class="fa fa-toggle-{{ $module->enabled() ? 'on' : 'off' }}"></i>
                                 {{ trans("workshop::modules.{$status}") }}
                             </button>
                         {!! Form::close() !!}
@@ -67,13 +59,11 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-12 module-details">
-                            <div class="module-title-wrap">
-                                <div class="module-type">
-                                    <i class="fa fa-cube"></i>
-                                    <span>{{ module_version($module) }}</span>
-                                </div>
-                                <h2 class="module-title">{{ ucfirst($module->getName()) }}</h2>
+                            <div class="module-type pull-left">
+                                <i class="fa fa-cube"></i>
+                                <span>{{ module_version($module) }}</span>
                             </div>
+                            <h2>{{ ucfirst($module->getName()) }}</h2>
                             <p>{{ $module->getDescription() }}</p>
                         </div>
                     </div>

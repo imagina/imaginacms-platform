@@ -1,7 +1,7 @@
-<?php
+<?php namespace Modules\Slider\Repositories\Eloquent;
 
-namespace Modules\Slider\Repositories\Eloquent;
-
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\App;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Repositories\SliderRepository;
@@ -24,6 +24,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Count all records
+     * @return int
      */
     public function countAll()
     {
@@ -32,20 +33,22 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
     /**
      * Get all available sliders
+     * @return object
      */
     public function allOnline()
     {
         return $this->model->where('active', '=', true)
-          ->orderBy('created_at', 'DESC')
-          ->get();
+            ->orderBy('created_at', 'DESC')
+            ->get();
     }
 
+
     /**
-     * @param  string  $systemName
+     * @param string $systemName
      * @return Slider
      */
     public function findBySystemName($systemName)
     {
-        return $this->model->where('system_name', '=', $systemName)->with(['slides', 'slides.files'])->first();
+        return $this->model->where('system_name', '=', $systemName)->first();
     }
 }

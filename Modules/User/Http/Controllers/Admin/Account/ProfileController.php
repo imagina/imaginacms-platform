@@ -30,9 +30,11 @@ class ProfileController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function edit(): Response
+    public function edit()
     {
         return view('user::admin.account.profile.edit');
     }
@@ -40,9 +42,12 @@ class ProfileController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param  UpdateProfileRequest $request
+     *
+     * @return Response
      */
-    public function update(UpdateProfileRequest $request): Response
+    public function update(UpdateProfileRequest $request)
     {
         $user = $this->auth->user();
 

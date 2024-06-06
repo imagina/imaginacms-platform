@@ -3,9 +3,10 @@
 use Modules\Iforms\Entities\Form;
 
 if (! function_exists('iform')) {
-    function iform($id, $template, $options = [])
-    {
-        $default_options = ['rand' => rand(0, 100)];
+
+    function iform($id,$template,$options=array()) {
+
+        $default_options=['rand'=>rand(0,100)];
         $options = array_merge($default_options, $options);
 
         $iform = Form::find($id);
@@ -15,7 +16,6 @@ if (! function_exists('iform')) {
                 'form' => $iform,
                 'options' => $options,
             ]);
-
         return $view->render();
     }
 }

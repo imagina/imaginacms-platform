@@ -2,7 +2,6 @@
 
 namespace Modules\User\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\User\Contracts\Authentication;
@@ -21,7 +20,6 @@ class UserController extends Controller
      * @var UserRepository
      */
     private $user;
-
     /**
      * @var PermissionManager
      */
@@ -48,7 +46,7 @@ class UserController extends Controller
         return (new FullUserTransformer($user))->additional(['data' => ['is_new' => true]]);
     }
 
-    public function store(CreateUserRequest $request): JsonResponse
+    public function store(CreateUserRequest $request)
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -60,7 +58,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(User $user, UpdateUserRequest $request): JsonResponse
+    public function update(User $user, UpdateUserRequest $request)
     {
         $data = $this->mergeRequestWithPermissions($request);
 
@@ -72,7 +70,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy(User $user): JsonResponse
+    public function destroy(User $user)
     {
         $this->user->delete($user->id);
 
@@ -82,7 +80,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function sendResetPassword(User $user, Authentication $auth): JsonResponse
+    public function sendResetPassword(User $user, Authentication $auth)
     {
         $code = $auth->createReminderCode($user);
 
@@ -94,7 +92,11 @@ class UserController extends Controller
         ]);
     }
 
-    private function mergeRequestWithPermissions(Request $request): array
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function mergeRequestWithPermissions(Request $request) : array
     {
         $permissions = $this->permissions->clean($request->get('permissions'));
 

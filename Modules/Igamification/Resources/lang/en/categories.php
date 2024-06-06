@@ -21,9 +21,4 @@ return [
     ],
     'validation' => [
     ],
-    'defaults' => [
-        'panel_home' => [
-            'title' => 'Hi, ¡Welcome to ',
-        ],
-    ],
 ];

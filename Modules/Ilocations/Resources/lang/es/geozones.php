@@ -14,8 +14,8 @@ return [
         'create geozones' => 'Create a geozones',
     ],
     'table' => [
-        'name' => 'Geozones',
-        'description' => 'Description',
+      'name' => 'Geozones',
+      'description' => 'Description',
 
     ],
     'form' => [

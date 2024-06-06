@@ -18,10 +18,8 @@ return [
     'form' => [
     ],
     'messages' => [
-        'message sent successfully' => 'Message sent successfully',
-        'invalidFileExtension' => 'Invalid extension file for the field: <strong>:fieldLabel</strong>',
+        'message sent successfully'=>'Message sent successfully',
     ],
     'validation' => [
     ],
-
 ];

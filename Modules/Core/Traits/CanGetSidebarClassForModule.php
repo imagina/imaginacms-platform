@@ -4,7 +4,12 @@ namespace Modules\Core\Traits;
 
 trait CanGetSidebarClassForModule
 {
-    public function getSidebarClassForModule(string $module, string $default): string
+    /**
+     * @param string $module
+     * @param string $default
+     * @return string
+     */
+    public function getSidebarClassForModule($module, $default)
     {
         if ($this->hasCustomSidebar($module)) {
             $class = config("asgard.{$module}.config.custom-sidebar");

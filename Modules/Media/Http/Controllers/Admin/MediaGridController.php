@@ -2,7 +2,6 @@
 
 namespace Modules\Media\Http\Controllers\Admin;
 
-use Illuminate\View\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Media\Image\ThumbnailManager;
 use Modules\Media\Repositories\FileRepository;
@@ -13,7 +12,6 @@ class MediaGridController extends AdminBaseController
      * @var FileRepository
      */
     private $file;
-
     /**
      * @var ThumbnailManager
      */
@@ -29,8 +27,9 @@ class MediaGridController extends AdminBaseController
 
     /**
      * A grid view for the upload button
+     * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index()
     {
         $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();
@@ -40,8 +39,9 @@ class MediaGridController extends AdminBaseController
 
     /**
      * A grid view of uploaded files used for the wysiwyg editor
+     * @return \Illuminate\View\View
      */
-    public function ckIndex(): View
+    public function ckIndex()
     {
         $files = $this->file->allForGrid();
         $thumbnails = $this->thumbnailsManager->all();

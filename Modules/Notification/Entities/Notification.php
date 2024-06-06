@@ -2,9 +2,7 @@
 
 namespace Modules\Notification\Entities;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string type
@@ -20,52 +18,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Notification extends Model
 {
     protected $table = 'notification__notifications';
-
-    protected $fillable = [
-        'user_id',
-        'type',
-        'message',
-        'icon_class',
-        'link',
-        'is_read',
-        'title',
-        'provider',
-        'recipient',
-        'options',
-        'is_action',
-    ];
-
+    protected $fillable = ['user_id', 'type', 'message', 'icon_class', 'link', 'is_read', 'title', 'provider', 'recipient'];
+    
     protected $appends = ['time_ago'];
+    protected $casts = ['is_read' => 'bool'];
 
-    protected $casts = ['is_read' => 'bool', 'options' => 'array'];
-
-    public function user(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
     {
         $driver = config('asgard.user.config.driver');
 
-        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User", 'recipient');
+        return $this->belongsTo("Modules\\User\\Entities\\{$driver}\\User","recipient");
     }
 
     /**
      * Return the created time in difference for humans (2 min ago)
+     * @return string
      */
-    public function getTimeAgoAttribute(): string
+    public function getTimeAgoAttribute()
     {
         return $this->created_at->diffForHumans();
     }
 
-    public function isRead(): bool
+    public function isRead() : bool
     {
         return $this->is_read === true;
-    }
-
-    public function getOptionsAttribute($value)
-    {
-        return json_decode($value);
-    }
-
-    public function setOptionsAttribute($value)
-    {
-        $this->attributes['options'] = json_encode($value);
     }
 }

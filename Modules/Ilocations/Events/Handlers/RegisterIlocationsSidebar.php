@@ -16,6 +16,8 @@ class RegisterIlocationsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
     protected $auth;
 
     /**
+     * @param Authentication $auth
+     *
      * @internal param Guard $guard
      */
     public function __construct(Authentication $auth)
@@ -28,7 +30,11 @@ class RegisterIlocationsSidebar implements \Maatwebsite\Sidebar\SidebarExtender
         $sidebar->add($this->extendWith($sidebar->getMenu()));
     }
 
-    public function extendWith(Menu $menu): Menu
+    /**
+     * @param Menu $menu
+     * @return Menu
+     */
+    public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('ilocations::common.title'), function (Item $item) {

@@ -1,6 +1,4 @@
-<?php
-
-namespace Modules\Slider\Tests;
+<?php namespace Modules\Slider\Tests;
 
 class SliderRepositoryTest extends BaseSliderTest
 {
@@ -26,4 +24,5 @@ class SliderRepositoryTest extends BaseSliderTest
         $this->sliderRepository->destroy($slider);
         $this->assertNull($this->sliderRepository->find($slider->id));
     }
+
 }

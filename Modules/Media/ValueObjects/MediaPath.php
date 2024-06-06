@@ -11,53 +11,23 @@ class MediaPath
      */
     private $path;
 
-    /**
-     * @var string
-     */
-    private $disk;
-
-    /**
-     * @var string
-     */
-    private $file;
-
-    /**
-     * @var int
-     */
-    private $organizationId;
-
-    public function __construct($path, $disk = null, $organizationId = null, $file = null)
+    public function __construct($path)
     {
         if (! is_string($path)) {
             throw new \InvalidArgumentException('The path must be a string');
         }
         $this->path = $path;
-
-        $this->disk = $disk;
-
-        $this->organizationId = $organizationId;
-
-        $this->file = $file;
     }
 
     /**
      * Get the URL depending on configured disk
+     * @return string
      */
-    public function getUrl($disk = null, $organizationId = null)
+    public function getUrl()
     {
         $path = ltrim($this->path, '/');
-        $disk = is_null($disk) ? is_null($this->disk) ? setting('media::filesystem', null, config('asgard.media.config.filesystem')) : $this->disk : $disk;
-        $organizationPrefix = mediaOrganizationPrefix($this->file, '', '/', $organizationId, true);
 
-        $config = config("filesystems.disks");
-
-        if(isset($config[$disk])){
-        return Storage::disk($disk)->url(($organizationPrefix).$path);
-        }else{
-            //Case other disk (Example Unsplash)
-            return $this->file->path->getRelativeUrl();
-        }
-       
+        return Storage::disk(config('asgard.media.config.filesystem'))->url($path);
     }
 
     /**
@@ -71,7 +41,7 @@ class MediaPath
     public function __toString()
     {
         try {
-            return $this->getUrl($this->disk, $this->organizationId);
+            return $this->getUrl();
         } catch (\Exception $e) {
             return '';
         }

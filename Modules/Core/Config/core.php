@@ -13,7 +13,7 @@ return [
     | Location where your themes are located
     |--------------------------------------------------------------------------
     */
-    'themes_path' => base_path().'/Themes',
+    'themes_path' => base_path() . '/Themes',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,6 @@ return [
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
         'asgard.css' => ['theme' => 'css/asgard.css'],
-        'flag-icon.css' => ['theme' => 'vendor/flag-icon-css/css/flag-icon.min.css'],
         //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
         'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
@@ -146,7 +145,6 @@ return [
             'pace.css',
             'selectize-default.css',
             'asgard.css',
-            'flag-icon.css',
         ],
         'js' => [
             'bootstrap.js',
