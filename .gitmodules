@@ -67,3 +67,6 @@
 [submodule "Modules/Slider"]
 	path = Modules/Slider
 	url = https://github.com/imagina/imaginacms-slider.git
+[submodule "Modules/Iredirect"]
+	path = Modules/Iredirect
+	url = https://github.com/imagina/imaginacms-iredirect.git
