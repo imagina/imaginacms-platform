@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Iblog\Http\Requests;
+namespace Modules\Icustom\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
+class IcustomRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2'
-
+            //'title' => 'required|min:2|max:255',
         ];
     }
 
@@ -50,8 +49,7 @@ class TagRequest extends \Modules\Bcrud\Http\Requests\CrudRequest
     public function messages()
     {
         return [
-            'title.required' => trans('iblog::common.messages.title is required'),
-            'title.min:2'=> trans('iblog::common.messages.title min 2 ')
+            //
         ];
     }
 }

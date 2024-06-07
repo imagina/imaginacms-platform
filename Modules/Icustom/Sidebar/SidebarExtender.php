@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\$MODULE_NAME$\Sidebar;
+namespace Modules\Icustom\Sidebar;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
@@ -32,14 +32,14 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-            $group->item(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$'), function (Item $item) {
-                $item->icon('fa fa-copy');
-                $item->weight(10);
+
+           /* $group->item(trans('icustom::common.icustom'), function (Item $item) {
                 $item->authorize(
-                     /* append */
+                    $this->auth->hasAccess('icustom.icustom.index')
                 );
-// append
-            });
+            });*/
+
+
         });
 
         return $menu;

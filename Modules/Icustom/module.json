@@ -1,0 +1,16 @@
+{
+    "name": "Icustom",
+    "alias": "icustom",
+    "description": "Personalización para todos los módulos que sean solo para este sitio",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Icustom\\Providers\\IcustomServiceProvider",
+        "Modules\\Icustom\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "helpers.php"
+    ]
+}
