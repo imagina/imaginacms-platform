@@ -1,6 +1,0 @@
-{
-  "name": "Translation Module",
-  "dependencies": {
-    "x-editable": "~1.5.1"
-  }
-}
