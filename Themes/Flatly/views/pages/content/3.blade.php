@@ -1,12 +1,13 @@
 <div class="home" data-icontenttype="page" data-icontentid="3">
 
-    <div class="icontenteditable">
-        Contact
+    <div class="title">
+{{--        Contct--}}
+      {{$page->title}}
     </div>
 
 
     <div class="col-12 col-sm-8 pt-2 offset-sm-2">
-       {{-- {!! iform(1, 'iforms::frontend.form.bt-horizontal.form') !!} --}}
+       {{-- <x-iforms::form id="1"> --}}
     </div>
 
 </div>

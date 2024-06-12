@@ -2263,6 +2263,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2398,15 +2400,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/DeleteComponent.vue */ "./Modules/Core/Assets/js/components/DeleteComponent.vue");
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
 /* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
-var _this4 = undefined;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -2706,9 +2705,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     performSearch: lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (query) {
       console.log("searching:".concat(query.target.value));
-      _this4.tableIsLoading = true;
-
-      _this4.queryServer({
+      this.tableIsLoading = true;
+      this.queryServer({
         search: query.target.value
       });
     }, 300),
@@ -2753,32 +2751,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     batchDelete: function batchDelete() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.$confirm(this.trans('core.modal.confirmation-message'), this.trans('core.modal.title'), {
         confirmButtonText: this.trans('core.button.delete'),
         cancelButtonText: this.trans('core.button.cancel'),
         type: 'warning'
       }).then(function () {
-        _this5.filesAreDeleting = true;
+        _this4.filesAreDeleting = true;
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(route('api.media.media.batch-destroy'), {
-          files: _this5.selectedMedia
+          files: _this4.selectedMedia
         }).then(function (response) {
-          _this5.$message({
+          _this4.$message({
             type: 'success',
             message: response.data.message
           });
 
-          _this5.filesAreDeleting = false;
+          _this4.filesAreDeleting = false;
 
-          _this5.$refs.mediaTable.clearSelection();
+          _this4.$refs.mediaTable.clearSelection();
 
-          _this5.fetchMediaData();
+          _this4.fetchMediaData();
         });
       })["catch"](function () {
-        _this5.$message({
+        _this4.$message({
           type: 'info',
-          message: _this5.trans('core.delete cancelled')
+          message: _this4.trans('core.delete cancelled')
         });
       });
     },
@@ -3700,8 +3698,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 /* harmony import */ var _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/DeleteComponent.vue */ "./Modules/Core/Assets/js/components/DeleteComponent.vue");
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
-var _this2 = undefined;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3904,14 +3900,13 @@ var _data;
     },
     performSearch: lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (query) {
       console.log("searching:".concat(query.target.value));
-      _this2.tableIsLoading = true;
-
-      _this2.queryServer({
+      this.tableIsLoading = true;
+      this.queryServer({
         search: query.target.value
       });
     }, 300),
     handleExtraActions: function handleExtraActions(action) {
-      var _this3 = this;
+      var _this2 = this;
 
       var pageIds = lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(this.selectedPages, function (elem) {
         return elem.id;
@@ -3920,14 +3915,14 @@ var _data;
         action: action,
         pageIds: JSON.stringify(pageIds)
       })).then(function (response) {
-        _this3.$message({
+        _this2.$message({
           type: 'success',
           message: response.data.message
         });
 
-        _this3.$refs.pageTable.clearSelection();
+        _this2.$refs.pageTable.clearSelection();
 
-        _this3.data.filter(function (page) {
+        _this2.data.filter(function (page) {
           return pageIds.indexOf(page.id) >= 0;
         }).map(function (p) {
           var page = p;
@@ -3935,9 +3930,9 @@ var _data;
           return page;
         });
       })["catch"](function () {
-        _this3.$message({
+        _this2.$message({
           type: 'error',
-          message: _this3.trans('core.something went wrong')
+          message: _this2.trans('core.something went wrong')
         });
       });
     },
@@ -4503,8 +4498,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 /* harmony import */ var _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/DeleteComponent.vue */ "./Modules/Core/Assets/js/components/DeleteComponent.vue");
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
-var _this2 = undefined;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4677,9 +4670,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     performSearch: lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (query) {
       console.log("searching:".concat(query.target.value));
-      _this2.tableIsLoading = true;
-
-      _this2.queryServer({
+      this.tableIsLoading = true;
+      this.queryServer({
         search: query.target.value
       });
     }, 300),
@@ -5133,8 +5125,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Core_Assets_js_mixins_ShortcutHelper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Core/Assets/js/mixins/ShortcutHelper */ "./Modules/Core/Assets/js/mixins/ShortcutHelper.js");
 /* harmony import */ var _Core_Assets_js_components_DeleteComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/DeleteComponent.vue */ "./Modules/Core/Assets/js/components/DeleteComponent.vue");
 /* harmony import */ var _Core_Assets_js_components_EditButtonComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Core/Assets/js/components/EditButtonComponent.vue */ "./Modules/Core/Assets/js/components/EditButtonComponent.vue");
-var _this2 = undefined;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5316,9 +5306,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     performSearch: lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(function (query) {
       console.log("searching:".concat(query.target.value));
-      _this2.tableIsLoading = true;
-
-      _this2.queryServer({
+      this.tableIsLoading = true;
+      this.queryServer({
         search: query.target.value
       });
     }, 300),
@@ -5758,6 +5747,21 @@ var render = function() {
                           },
                           [
                             _c(
+                              "span",
+                              {
+                                class: { error: _vm.form.errors.has(locale) },
+                                attrs: { slot: "label" },
+                                slot: "label"
+                              },
+                              [
+                                _c("i", {
+                                  class: "flag-icon flag-icon-" + locale
+                                }),
+                                _vm._v("   " + _vm._s(localeArray.name))
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
                               "el-form-item",
                               {
                                 class: {
@@ -6057,9 +6061,9 @@ var render = function() {
         _c("div", { staticClass: "sc-table" }, [
           _c("div", { staticClass: "el-row" }, [
             _c("div", { staticClass: "title" }, [
-              _vm.singleModal
-                ? _c("h4", [_vm._v(_vm._s(_vm.trans("media.choose file")))])
-                : _c("h3", [_vm._v(_vm._s(_vm.trans("media.title.media")))]),
+              _vm.singleModal === false
+                ? _c("h3", [_vm._v(_vm._s(_vm.trans("media.title.media")))])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "div",
@@ -7095,6 +7099,7 @@ var render = function() {
           attrs: {
             visible: _vm.dialogVisible,
             "before-close": _vm.handleClose,
+            title: _vm.trans("media.choose file"),
             width: "75%"
           },
           on: {
@@ -7309,7 +7314,12 @@ var render = function() {
                                 attrs: { slot: "label" },
                                 slot: "label"
                               },
-                              [_vm._v(_vm._s(localeArray.name))]
+                              [
+                                _c("i", {
+                                  class: "flag-icon flag-icon-" + locale
+                                }),
+                                _vm._v("   " + _vm._s(localeArray.name))
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
@@ -9978,9 +9988,7 @@ var render = function() {
                                     "password"
                                   )
                                 },
-                                attrs: {
-                                  label: _vm.trans("users.form.password")
-                                }
+                                attrs: { label: _vm.trans("users.form.roles") }
                               },
                               [
                                 _c(
@@ -11279,8 +11287,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin(_Modules_Core_Assets_js_mixins_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/micheal/Code/Platform/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/micheal/Code/Platform/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\serverpath\D2018\myne\ACMS3\Platform\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\serverpath\D2018\myne\ACMS3\Platform\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

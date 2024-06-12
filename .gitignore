@@ -1,6 +1,6 @@
 /node_modules
 /public/hot
-/public/storage
+/public/storage/*
 /storage/*.key
 /vendor
 Homestead.json
@@ -11,7 +11,29 @@ yarn-error.log
 composer.lock
 package-lock.json
 yarn.lock
-.phpunit.result.cache
+/.phpunit.cache
 .php_cs.cache
 .idea
-noCleaning
+/storage
+
+
+#Ignore /public but not...
+/public/themes/adminlte
+/public/themes/flatly
+/public/themes/imaginatheme
+/public/modules
+/public/assets
+
+#Themes but not ImaginaTheme
+/Themes/*
+!/Themes/Adminlte
+!/Themes/ImaginaTheme
+
+#Modules but not Modules Icustom
+#/Modules/*
+#!Modules/Icustom
+
+#node_modules in every folder
+node_modules
+sftp-config.json
+.vscode/sftp.json

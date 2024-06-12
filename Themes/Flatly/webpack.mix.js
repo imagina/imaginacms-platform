@@ -1,84 +1,55 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 const WebpackShellPlugin = require('webpack-shell-plugin');
+const WebpackMildCompile = require('webpack-mild-compile').Plugin;
 const themeInfo = require('./theme.json');
-//Module Imports
-const { readdirSync, statSync } = require('fs')
-const { join } = require('path')
-var fs = require('fs')
 
-const dirs = p => readdirSync(p).filter(f => statSync(join(p, f)).isDirectory())
-
-var modules = dirs('../../Modules/')
-
-var jsfilestomerge = []
-
-modules.forEach(function(mname,i) {
-  let pfile = '../../Modules/'+mname+'/Resources/views/vue/components.js'
-  if(fs.existsSync(pfile)) {
-    jsfilestomerge.push(pfile)
-  }
+mix.webpackConfig({
+  watchOptions: {
+    //Not working. ignored: ['/node_modules/','./resources/scss/modules/']
+  },
+  plugins: [
+    new WebpackMildCompile(), // See: https://github.com/webpack/watchpack/issues/25.
+    new WebpackShellPlugin({onBuildEnd: ['php ../../artisan stylist:publish ' + themeInfo.name]})
+  ]
 });
 
-/**
- * Compile sass
- */
-mix.sass('resources/scss/main.scss', 'assets/css/main.css')
-  .sass('resources/scss/secondary.scss', 'assets/css/secondary.css');
+const themePublicRelPath = 'themes/'+ themeInfo.name.toLowerCase();
+mix.setPublicPath('../../public/');
 
-/**
- * Concat scripts
- */
-mix.scripts([
-  'node_modules/jquery/dist/jquery.js',
-  'node_modules/popper.js/dist/umd/popper.min.js',
-  'node_modules/bootstrap/dist/js/bootstrap.min.js',
-  'node_modules/owl.carousel/dist/owl.carousel.min.js',
-  'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
-  'node_modules/prismjs/prism.js',
-], 'assets/js/all.js')
-  .scripts([
-    'resources/js/imagina.js'
-  ], 'assets/js/secondary.js')
-  .scripts([
-    'resources/js/app.js',...jsfilestomerge
-  ], 'resources/js/main.js');
+//Import File Helpers
+const { readdirSync, statSync } = require('fs');
+const { join } = require('path');
+const fs = require('fs');
 
+//Function to get dirs recursive
+const dirs = p => readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
 
+//Let's get all the modules installed
+const modules = dirs('../../Modules/');
 
-/**
- *  Copy assets directory https://laravel.com/docs/5.4/mix#url-processing
- */
-mix.copy(
-  'assets',
-  '../../../public_html/themes/'+themeInfo.name.toLowerCase()
-);
-/**
- * Copy Font directory https://laravel.com/docs/5.4/mix#url-processing
- */
-mix.copy(
-  'node_modules/font-awesome/fonts',
-  '../../../public_html/fonts/vendor/font-awesome'
-);
+let jsfilestomerge = [];
+let scssfilestomerge = [];
 
+// reordering of modules leaving Isite first
+modules.sort(function(x,y){ return x == "Isite" ? -1 : y == "Isite" ? 1 : 0; });
+modules.forEach(function(mname) {
 
-/*
- * Copy Modules Source Resources
- */
+  let scssfile = '../../Modules/'+mname+'/Resources/scss/main.scss';
+  if(fs.existsSync(scssfile)) {
 
-modules.forEach(function(mname,i) {
-  
-  let path = '../../Modules/'+mname+'/Resources/views/vue/components/'
-  
-  if(fs.existsSync(path)) {
+    /**
+     *  Copy scss directory to the module
+     */
+    let scssModuleThemePath = './resources/scss/modules/'+mname.toLowerCase()+'/main.scss';
+    scssfilestomerge.push(scssModuleThemePath);
+
+    let scssPath = '../../Modules/'+mname+'/Resources/scss/';
     mix.copy(
-      path,
-      './resources/js/components/'+mname.toLowerCase()
+      scssPath,
+      './resources/scss/modules/'+mname.toLowerCase()
     );
   }
-  
-  
 });
-
 
 /*
 Overwrite files from components
@@ -88,16 +59,46 @@ mix.copy(
   './'
 );
 
+/**
+ * Concat scripts
+ */
+mix.scripts([
+  'node_modules/popper.js/dist/umd/popper.min.js',
+  'node_modules/bootstrap/dist/js/bootstrap.min.js',
+  'node_modules/owl.carousel/dist/owl.carousel.min.js',
+  'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js'
+], 'assets/js/secondary.js')
+  .scripts([
+    'resources/js/app.js',
+    'resources/js/imagina.js',
+    ...jsfilestomerge,
+  ], 'resources/js/main.js');
 
-mix.js(['resources/js/main.js',], 'assets/js/app.js');
+
 
 /**
- * Publishing the assets
+ * Merge main.scss of each module at the bottom of secondary.scss
  */
-mix.webpackConfig({
-  plugins: [
-    new WebpackShellPlugin({onBuildEnd: ['php ../../artisan stylist:publish ' + themeInfo.name]})
-  ]
+mix.combine([...scssfilestomerge], 'resources/scss/_modules-combined.scss');
+
+/**
+ * Compile sass
+ */
+mix.sass('resources/scss/main.scss', themePublicRelPath+'/css/app.css')
+    .sass('resources/scss/secondary.scss', themePublicRelPath+'/css/secondary.css');
+
+
+
+mix.js(['resources/js/main.js'], themePublicRelPath+'/js/app.js');
+
+
+mix.browserSync({
+  //logLevel: 'debug',
+  /*files: [
+    mix.config.publicPath+'/'+themePublicRelPath+'/css/app.css',
+    mix.config.publicPath+'/'+themePublicRelPath+'/css/secondary.css',
+    mix.config.publicPath+'/'+themePublicRelPath+'/js/app.js'
+  ],*/
+  proxy: 'localhost',
+  https: true
 });
-
-
