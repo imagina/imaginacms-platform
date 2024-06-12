@@ -49,9 +49,7 @@
             },
             instanceReadyCallback: {
                 type: Function,
-                default: () => {
-                    this.editorData = this.value;
-                },
+                default: '',
             },
             readOnlyMode: {
                 type: Boolean,

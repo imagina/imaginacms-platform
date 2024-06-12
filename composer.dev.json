@@ -1,0 +1,197 @@
+{
+    "name": "imagina/cms-platform",
+    "description": "The AsgardCms application.",
+    "keywords": [
+        "cms",
+        "asgardcms",
+        "multilingual",
+        "laravel",
+        "laravel10"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "anhskohbo/no-captcha": "^3.5",
+        "astrotomic/laravel-translatable": "^11.12",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "cartalyst/sentinel": "^7.0",
+        "composer/installers": "~1.0",
+        "cviebrock/eloquent-sluggable": "^8.0|^9.0|^10.0",
+        "doctrine/dbal": "^3.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "hisorange/browser-detect": "^4.4.0",
+        "imagina/laravel-menus": "^10.0",
+        "imagina/laravel-sidebar": "^3.1",
+        "imagina/stylist": "^4.0",
+        "intervention/image": "^2.5",
+        "jantinnerezo/livewire-alert": "^2.2",
+        "kalnoy/nestedset": "^6.0",
+        "laracasts/presenter": "^0.2.6",
+        "laravel/framework": "^10.13",
+        "laravel/passport": "^11.5",
+        "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.2",
+        "laravelcollective/html": "^6.4",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire/livewire": "^2.11",
+        "maatwebsite/excel": "^3.1",
+        "mcamara/laravel-localization": "^1.8",
+        "nwidart/laravel-modules": "^10.0",
+        "predis/predis": "^2.2",
+        "pusher/pusher-php-server": "^7.2",
+        "ramsey/uuid": "^4.1",
+        "sentry/sentry-laravel": "^3.8",
+        "spatie/laravel-responsecache": "^7.4",
+        "spatie/laravel-sitemap": "^6.3",
+        "spatie/robots-txt": "^2.0",
+        "stancl/tenancy": "^3.7",
+        "symfony/yaml": "^6.2",
+        "tightenco/ziggy": "^1.5",
+        "typicms/nestablecollection": "^3.0",
+        "venturecraft/revisionable": "^1.40",
+        "yajra/laravel-datatables-oracle": "^10.4",
+
+
+        "imagina/core-module": "v10.x-dev",
+        "imagina/dashboard-module": "v10.x-dev",
+        "imagina/iad-module": "v10.x-dev",
+        "imagina/iappointment-module": "v10.x-dev",
+        "imagina/iauctions-module": "v10.x-dev",
+        "imagina/ibanners-module": "v10.x-dev",
+        "imagina/ibinnacle-module": "v10.x-dev",
+        "imagina/iblog-module": "v10.x-dev",
+        "imagina/ibooking-module": "v10.x-dev",
+        "imagina/ibuilder-module": "v10.x-dev",
+        "imagina/ichat-module": "v10.x-dev",
+        "imagina/icheckin-module": "v10.x-dev",
+        "imagina/icomments-module": "v10.x-dev",
+        "imagina/icommerce-module": "v10.x-dev",
+        "imagina/icommerceagree-module": "v10.x-dev",
+        "imagina/icommerceauthorize-module": "v10.x-dev",
+        "imagina/icommercebraintree-module": "v10.x-dev",
+        "imagina/icommercecheckmo-module": "v10.x-dev",
+        "imagina/icommercecoordinadora-module": "v10.x-dev",
+        "imagina/icommercecredibanco-module": "v10.x-dev",
+        "imagina/icommerceepayco-module": "v10.x-dev",
+        "imagina/icommerceflatrate-module": "v10.x-dev",
+        "imagina/icommercefreeshipping-module": "v10.x-dev",
+        "imagina/icommerceopenpay-module": "v10.x-dev",
+        "imagina/icommerceordertotal-module": "v10.x-dev",
+        "imagina/icommercepaymentez-module": "v10.x-dev",
+        "imagina/icommercepaypal-module": "v10.x-dev",
+        "imagina/icommercepayu-module": "v10.x-dev",
+        "imagina/icommercepayzen-module": "v10.x-dev",
+        "imagina/icommercepricelist-module": "v10.x-dev",
+        "imagina/icommercestripe-module": "v10.x-dev",
+        "imagina/icommercewompi-module": "v10.x-dev",
+        "imagina/icommercexpay-module": "v10.x-dev",
+        "imagina/icredit-module": "v10.x-dev",
+        "imagina/icurrency-module": "v10.x-dev",
+        "imagina/idocs-module": "v10.x-dev",
+        "imagina/ifeed-module": "v10.x-dev",
+        "imagina/ifillable-module": "v10.x-dev",
+        "imagina/ifollow-module": "v10.x-dev",
+        "imagina/iforms-module": "v10.x-dev",
+        "imagina/igamification-module": "v10.x-dev",
+        "imagina/ihelpers-module": "v10.x-dev",
+        "imagina/ilocations-module": "v10.x-dev",
+        "imagina/imeeting-module": "v10.x-dev",
+        "imagina/ipay-module": "v10.x-dev",
+        "imagina/iplaces-module": "v10.x-dev",
+        "imagina/iplan-module": "v10.x-dev",
+        "imagina/ipoint-module": "v10.x-dev",
+        "imagina/iprofile-module": "v10.x-dev",
+        "imagina/iqreable": "v10.x-dev",
+        "imagina/iredirect-module": "v10.x-dev",
+        "imagina/ischedulable-module": "v10.x-dev",
+        "imagina/isearch-module": "v10.x-dev",
+        "imagina/isite-module": "v10.x-dev",
+        "imagina/iwhmcs": "v10.x-dev",
+        "imagina/media-module": "v10.x-dev",
+        "imagina/menu-module": "v10.x-dev",
+        "imagina/notification-module": "v10.x-dev",
+        "imagina/page-module": "v10.x-dev",
+        "imagina/rateable-module": "v10.x-dev",
+        "imagina/requestable-module": "v10.x-dev",
+        "imagina/setting-module": "v10.x-dev",
+        "imagina/slider-module": "v10.x-dev",
+        "imagina/tag-module": "v10.x-dev",
+        "imagina/translation-module": "v10.x-dev",
+        "imagina/user-module": "v10.x-dev",
+        "imagina/iwebhooks-module": "v10.x-dev",
+        "imagina/wishlistable-module": "v10.x-dev",
+        "imagina/workshop-module": "v10.x-dev",
+
+        "imagina/flatly-theme": "v10.x-dev",
+        "imagina/adminlte-theme": "v10.x-dev"
+
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.24",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "orchestra/testbench": "^8.5",
+        "phpunit/phpunit": "^10",
+        "spatie/laravel-ignition": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.27.0",
+        "scrutinizer/ocular": "^1.9",
+        "spatie/phpunit-snapshot-assertions": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Modules\\": "Modules/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.0.x-dev",
+            "dev-imaginacms10.x": "v10.x-dev"
+        },
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan clear-compiled",
+            "ln -s ../Themes/Adminlte/iadmin/ public/iadmin",
+            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme"
+        ],
+        "pre-update-cmd": [],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan package:discover"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.1"
+        },
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+
+}

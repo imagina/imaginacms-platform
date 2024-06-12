@@ -6,76 +6,103 @@
         "asgardcms",
         "multilingual",
         "laravel",
-        "laravel5"
+        "laravel10"
     ],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.1.3",
-        "fideloper/proxy": "^4.0",
-        "doctrine/dbal":"<2.10.3",
-        "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0",
-        "nwidart/laravel-modules": "^4.0",
-        "cartalyst/sentinel": "^2.0",
-        "imagina/adminlte-theme": "4.0.x-dev",
-        "paragonie/random_compat": "2.*",
-        "laravel/passport": "4.0",
-        "fruitcake/laravel-cors": "1.*",
-        "pusher/pusher-php-server": "~3.0",
+        "php": "^8.1",
+        "anhskohbo/no-captcha": "^3.5",
+        "astrotomic/laravel-translatable": "^11.12",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "cartalyst/sentinel": "^7.0",
+        "composer/installers": "~1.0",
+        "cviebrock/eloquent-sluggable": "^8.0|^9.0|^10.0",
+        "doctrine/dbal": "^3.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "hisorange/browser-detect": "^4.4.0",
+        "imagina/laravel-menus": "^10.0",
+        "imagina/laravel-sidebar": "^3.1",
+        "imagina/stylist": "^4.0",
+        "intervention/image": "^2.5",
+        "jantinnerezo/livewire-alert": "^2.2",
+        "kalnoy/nestedset": "^6.0",
+        "laracasts/presenter": "^0.2.6",
+        "laravel/framework": "^10.13",
+        "laravel/passport": "^11.5",
+        "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.2",
+        "laravelcollective/html": "^6.4",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire/livewire": "^2.11",
+        "maatwebsite/excel": "^3.1",
+        "mcamara/laravel-localization": "^1.7",
+        "nwidart/laravel-modules": "^10.0",
+        "predis/predis": "^2.2",
+        "pusher/pusher-php-server": "^7.2",
+        "ramsey/uuid": "^4.1",
+        "sentry/sentry-laravel": "^3.8",
+        "spatie/laravel-responsecache": "^7.4",
+        "spatie/laravel-sitemap": "^6.3",
+        "spatie/robots-txt": "^2.0",
+        "stancl/tenancy": "^3.7",
+        "symfony/yaml": "^6.2",
+        "tightenco/ziggy": "^1.5",
+        "typicms/nestablecollection": "^3.0",
+        "venturecraft/revisionable": "^1.40",
+        "yajra/laravel-datatables-oracle": "^10.4",
 
-        "imagina/core-module": "4.0.x-dev",
-        "imagina/dashboard-module": "4.0.x-dev",
 
-        "imagina/tag-module": "4.0.x-dev",
-        "imagina/media-module": "4.0.x-dev",
-        "imagina/page-module": "4.0.x-dev",
-        "imagina/menu-module": "4.0.x-dev",
-        "imagina/setting-module": "4.0.x-dev",
-        "imagina/translation-module": "4.0.x-dev",
-        "imagina/workshop-module": "4.0.x-dev",
-        "imagina/user-module": "4.0.x-dev",
-        
-        "imagina/iblog-module": "4.0.x-dev",
-        "imagina/iforms-module": "4.0.x-dev",
-        "imagina/notification-module": "4.0.x-dev",
-        "imagina/slider-module": "4.0.x-dev",
-        "imagina/isearch-module": "4.0.x-dev",
-        "imagina/ibanners-module": "4.0.x-dev",
-        "imagina/iprofile-module": "4.0.x-dev",
-        "imagina/isite-module": "4.0.x-dev",
-        "imagina/ilocations-module": "4.0.x-dev",
-        "imagina/iredirect-module": "4.0.x-dev",
+        "imagina/iblog-module": "v10.x-dev",
+        "imagina/core-module": "v10.x-dev",
+        "imagina/isite-module": "v10.x-dev",
+        "imagina/iprofile-module": "v10.x-dev",
+        "imagina/dashboard-module": "v10.x-dev",
+        "imagina/user-module": "v10.x-dev",
+        "imagina/workshop-module": "v10.x-dev",
+        "imagina/setting-module": "v10.x-dev",
+        "imagina/menu-module": "v10.x-dev",
+        "imagina/media-module": "v10.x-dev",
+        "imagina/tag-module": "v10.x-dev",
+        "imagina/page-module": "v10.x-dev",
+        "imagina/translation-module": "v10.x-dev",
+        "imagina/notification-module": "v10.x-dev",
+        "imagina/ischedulable-module": "v10.x-dev",
+        "imagina/ifillable-module": "v10.x-dev",
+        "imagina/ihelpers-module": "v10.x-dev",
+        "imagina/iforms-module": "v10.x-dev",
+        "imagina/ibuilder-module": "v10.x-dev",
+        "imagina/ilocations-module": "v10.x-dev",
+        "imagina/igamification-module": "v10.x-dev",
+        "imagina/iqreable": "v10.x-dev",
+        "imagina/slider-module": "v10.x-dev",
+        "imagina/iredirect-module": "v10.x-dev",
 
-        "imagina/flatly-theme": "4.0.x-dev"
+
+        "imagina/flatly-theme": "v10.x-dev",
+        "imagina/adminlte-theme": "v10.x-dev"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
-        "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
-        "league/commonmark": "^0.18.3",
-        "league/flysystem-aws-s3-v3": "^1.0",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
-        "orchestra/testbench": "3.7.*",
-        "phpunit/phpunit": "^7.0",
-        "predis/predis": "^1.1",
-        "roave/security-advisories": "dev-master"
+        "barryvdh/laravel-debugbar": "^3.8",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.24",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "orchestra/testbench": "^8.5",
+        "phpunit/phpunit": "^10",
+        "spatie/laravel-ignition": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.27.0",
+        "scrutinizer/ocular": "^1.9",
+        "spatie/phpunit-snapshot-assertions": "^5.1"
     },
     "autoload": {
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ],
         "psr-4": {
             "App\\": "app/",
             "Modules\\": "Modules/",
-            "Illuminate\\Http\\Resources\\": "overrides/Illuminate/Http/Resources"
-        },
-        "exclude-from-classmap": [
-            "vendor/laravel/framework/src/Illuminate/Http/Resources/DelegatesToResource.php"
-        ]
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -84,30 +111,42 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-master": "4.0.x-dev",
+            "dev-imaginacms10.x": "v10.x-dev"
         },
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {
         "post-install-cmd": [
             "@php artisan clear-compiled",
             "ln -s ../Themes/Adminlte/iadmin/ public/iadmin",
-            "cp -Rf ./Themes/Flatly ./Themes/ImaginaTheme"
+            "cp -R ./Themes/Flatly ./Themes/ImaginaTheme"
         ],
         "pre-update-cmd": [],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan package:discover"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ]
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.1"
+        },
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "composer/installers": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
 }
