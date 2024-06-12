@@ -1,0 +1,72 @@
+[submodule "Modules/Iblog"]
+	path = Modules/Iblog
+	url = https://github.com/imagina/imaginacms-iblog.git
+[submodule "Modules/Core"]
+	path = Modules/Core
+	url = https://github.com/imagina/imaginacms-core.git
+[submodule "Modules/Isite"]
+	path = Modules/Isite
+	url = https://github.com/imagina/imaginacms-isite.git
+[submodule "Modules/Iprofile"]
+	path = Modules/Iprofile
+	url = https://github.com/imagina/imaginacms-iprofile.git
+[submodule "Modules/Dashboard"]
+	path = Modules/Dashboard
+	url = https://github.com/imagina/imaginacms-dashboard.git
+[submodule "Modules/User"]
+	path = Modules/User
+	url = https://github.com/imagina/imaginacms-user.git
+[submodule "Modules/Workshop"]
+	path = Modules/Workshop
+	url = https://github.com/imagina/imaginacms-workshop.git
+[submodule "Modules/Setting"]
+	path = Modules/Setting
+	url = https://github.com/imagina/imaginacms-setting.git
+[submodule "Modules/Menu"]
+	path = Modules/Menu
+	url = https://github.com/imagina/imaginacms-menu.git
+[submodule "Modules/Media"]
+	path = Modules/Media
+	url = https://github.com/imagina/imaginacms-imedia.git
+[submodule "Modules/Tag"]
+	path = Modules/Tag
+	url = https://github.com/imagina/imaginacms-tag.git
+[submodule "Modules/Page"]
+	path = Modules/Page
+	url = https://github.com/imagina/imaginacms-page.git
+[submodule "Modules/Translation"]
+	path = Modules/Translation
+	url = https://github.com/imagina/imaginacms-translation.git
+[submodule "Modules/Notification"]
+	path = Modules/Notification
+	url = https://github.com/imagina/imaginacms-inotifications.git
+[submodule "Modules/Ischedulable"]
+	path = Modules/Ischedulable
+	url = https://github.com/imagina/imaginacms-ischedulable.git
+[submodule "Modules/Ifillable"]
+	path = Modules/Ifillable
+	url = https://github.com/imagina/imaginacms-ifillable.git
+[submodule "Modules/Ihelpers"]
+	path = Modules/Ihelpers
+	url = https://github.com/imagina/imaginacms-ihelpers.git
+[submodule "Modules/Iforms"]
+	path = Modules/Iforms
+	url = https://github.com/imagina/imaginacms-iforms.git
+[submodule "Modules/Ibuilder"]
+	path = Modules/Ibuilder
+	url = https://github.com/imagina/imaginacms-ibuilder.git
+[submodule "Modules/Ilocations"]
+	path = Modules/Ilocations
+	url = https://github.com/imagina/imaginacms-ilocations.git
+[submodule "Modules/Igamification"]
+	path = Modules/Igamification
+	url = https://github.com/imagina/imaginacms-igamification.git
+[submodule "Modules/Iqreable"]
+	path = Modules/Iqreable
+	url = https://github.com/imagina/imaginacms-iqreable.git
+[submodule "Modules/Slider"]
+	path = Modules/Slider
+	url = https://github.com/imagina/imaginacms-slider.git
+[submodule "Modules/Iredirect"]
+	path = Modules/Iredirect
+	url = https://github.com/imagina/imaginacms-iredirect.git
