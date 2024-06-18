@@ -34,7 +34,7 @@ return [
        *
        * Defaults to feed::feed if not present.
        */
-      'view' => 'feed::feed',
+      'view' => 'feed::atom',
     ],
     'products' => [
       /*
@@ -68,7 +68,7 @@ return [
        *
        * Defaults to feed::feed if not present.
        */
-      'view' => 'feed::feed',
+      'view' => 'feed::atom',
     ]
   ]
 ];
