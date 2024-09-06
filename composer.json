@@ -40,7 +40,6 @@
         "pusher/pusher-php-server": "^7.2",
         "ramsey/uuid": "^4.1",
         "sentry/sentry-laravel": "^3.8",
-        "spatie/laravel-responsecache": "^7.4",
         "spatie/laravel-sitemap": "^6.3",
         "spatie/robots-txt": "^2.0",
         "stancl/tenancy": "^3.7",
